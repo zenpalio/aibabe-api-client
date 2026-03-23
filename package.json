@@ -1,0 +1,16 @@
+{
+  "name": "aibabe-api-client",
+  "version": "0.1.0",
+  "description": "Auto-generated TypeScript fetch client for the Aibabe API",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc --project tsconfig.json"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0"
+  }
+}
