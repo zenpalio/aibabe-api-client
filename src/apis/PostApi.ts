@@ -28,6 +28,32 @@ import type {
   PostShareTagsResponse,
   PostType,
 } from '../models/index';
+import {
+    GetDetailedPostsResponseFromJSON,
+    GetDetailedPostsResponseToJSON,
+    GetPostsResponseFromJSON,
+    GetPostsResponseToJSON,
+    HTTPValidationErrorFromJSON,
+    HTTPValidationErrorToJSON,
+    PatchPostTitleRequestFromJSON,
+    PatchPostTitleRequestToJSON,
+    PostCategoryValuesFromJSON,
+    PostCategoryValuesToJSON,
+    PostPublishResponseFromJSON,
+    PostPublishResponseToJSON,
+    PostReportRequestFromJSON,
+    PostReportRequestToJSON,
+    PostSearchRequestFromJSON,
+    PostSearchRequestToJSON,
+    PostShareGetTagsRequestFromJSON,
+    PostShareGetTagsRequestToJSON,
+    PostSharePublishRequestFromJSON,
+    PostSharePublishRequestToJSON,
+    PostShareTagsResponseFromJSON,
+    PostShareTagsResponseToJSON,
+    PostTypeFromJSON,
+    PostTypeToJSON,
+} from '../models/index';
 
 export interface BlacklistPostPostBlacklistPostIdPatchRequest {
     postId: string;
@@ -250,7 +276,7 @@ export class PostApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => PostCategoryValuesFromJSON(jsonValue));
     }
 
     /**
@@ -320,7 +346,7 @@ export class PostApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetDetailedPostsResponseFromJSON(jsonValue));
     }
 
     /**
@@ -360,10 +386,10 @@ export class PostApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['postShareGetTagsRequest'],
+            body: PostShareGetTagsRequestToJSON(requestParameters['postShareGetTagsRequest']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => PostShareTagsResponseFromJSON(jsonValue));
     }
 
     /**
@@ -484,7 +510,7 @@ export class PostApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['patchPostTitleRequest'],
+            body: PatchPostTitleRequestToJSON(requestParameters['patchPostTitleRequest']),
         }, initOverrides);
 
         if (this.isJsonMime(response.headers.get('content-type'))) {
@@ -531,7 +557,7 @@ export class PostApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['postReportRequest'],
+            body: PostReportRequestToJSON(requestParameters['postReportRequest']),
         }, initOverrides);
 
         if (this.isJsonMime(response.headers.get('content-type'))) {
@@ -571,10 +597,10 @@ export class PostApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['postSearchRequest'],
+            body: PostSearchRequestToJSON(requestParameters['postSearchRequest']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetPostsResponseFromJSON(jsonValue));
     }
 
     /**
@@ -614,10 +640,10 @@ export class PostApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['postSharePublishRequest'],
+            body: PostSharePublishRequestToJSON(requestParameters['postSharePublishRequest']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => PostPublishResponseFromJSON(jsonValue));
     }
 
     /**

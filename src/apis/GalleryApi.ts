@@ -20,6 +20,16 @@ import type {
   HTTPValidationError,
   PostType,
 } from '../models/index';
+import {
+    BulkDeleteContentRequestFromJSON,
+    BulkDeleteContentRequestToJSON,
+    GetGalleryResponseFromJSON,
+    GetGalleryResponseToJSON,
+    HTTPValidationErrorFromJSON,
+    HTTPValidationErrorToJSON,
+    PostTypeFromJSON,
+    PostTypeToJSON,
+} from '../models/index';
 
 export interface BulkDeleteContentGalleryBulkDeleteRequest {
     bulkDeleteContentRequest: BulkDeleteContentRequest;
@@ -59,7 +69,7 @@ export class GalleryApi extends runtime.BaseAPI {
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['bulkDeleteContentRequest'],
+            body: BulkDeleteContentRequestToJSON(requestParameters['bulkDeleteContentRequest']),
         }, initOverrides);
 
         return new runtime.VoidApiResponse(response);
@@ -103,7 +113,7 @@ export class GalleryApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetGalleryResponseFromJSON(jsonValue));
     }
 
     /**

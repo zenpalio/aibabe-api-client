@@ -18,6 +18,12 @@ import type {
   HTTPValidationError,
   PostVastAIStatus,
 } from '../models/index';
+import {
+    HTTPValidationErrorFromJSON,
+    HTTPValidationErrorToJSON,
+    PostVastAIStatusFromJSON,
+    PostVastAIStatusToJSON,
+} from '../models/index';
 
 export interface VastaiStatusWebhookWebhookInstanceStatusPostRequest {
     postVastAIStatus: PostVastAIStatus;
@@ -80,7 +86,7 @@ export class WebhookApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['postVastAIStatus'],
+            body: PostVastAIStatusToJSON(requestParameters['postVastAIStatus']),
         }, initOverrides);
 
         if (this.isJsonMime(response.headers.get('content-type'))) {

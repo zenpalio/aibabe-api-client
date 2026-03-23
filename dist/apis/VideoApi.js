@@ -48,6 +48,7 @@ var __importStar = (this && this.__importStar) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ExtendCallbackVideoExtendCallbackGenerationIdPostStatusEnum = exports.ChatCallbackVideoCallbackChatGenerationIdPostStatusEnum = exports.CallbackVideoCallbackGenerationIdPostStatusEnum = exports.VideoApi = void 0;
 const runtime = __importStar(require("../runtime"));
+const index_1 = require("../models/index");
 /**
  *
  */
@@ -296,7 +297,7 @@ class VideoApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['extendVideoPayload'],
+            body: (0, index_1.ExtendVideoPayloadToJSON)(requestParameters['extendVideoPayload']),
         }, initOverrides);
         if (this.isJsonMime(response.headers.get('content-type'))) {
             return new runtime.JSONApiResponse(response);
@@ -327,7 +328,7 @@ class VideoApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['imageToVideoRecommendationPayload'],
+            body: (0, index_1.ImageToVideoRecommendationPayloadToJSON)(requestParameters['imageToVideoRecommendationPayload']),
         }, initOverrides);
         if (this.isJsonMime(response.headers.get('content-type'))) {
             return new runtime.JSONApiResponse(response);
@@ -358,9 +359,9 @@ class VideoApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['imageToVideoFromChatPayload'],
+            body: (0, index_1.ImageToVideoFromChatPayloadToJSON)(requestParameters['imageToVideoFromChatPayload']),
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.VideoFromChatResponseFromJSON)(jsonValue));
     }
     /**
      * Generate Video From Chat
@@ -384,7 +385,7 @@ class VideoApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['imageToVideoPayload'],
+            body: (0, index_1.ImageToVideoPayloadToJSON)(requestParameters['imageToVideoPayload']),
         }, initOverrides);
         if (this.isJsonMime(response.headers.get('content-type'))) {
             return new runtime.JSONApiResponse(response);
@@ -415,7 +416,7 @@ class VideoApi extends runtime.BaseAPI {
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetVideoGenerationTagsResponseFromJSON)(jsonValue));
     }
     /**
      * Generation Tags

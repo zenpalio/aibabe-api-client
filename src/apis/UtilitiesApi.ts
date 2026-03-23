@@ -20,6 +20,16 @@ import type {
   SendCustomMemoracekRequest,
   SendMemoracekRequest,
 } from '../models/index';
+import {
+    GetExceptionsResponseFromJSON,
+    GetExceptionsResponseToJSON,
+    HTTPValidationErrorFromJSON,
+    HTTPValidationErrorToJSON,
+    SendCustomMemoracekRequestFromJSON,
+    SendCustomMemoracekRequestToJSON,
+    SendMemoracekRequestFromJSON,
+    SendMemoracekRequestToJSON,
+} from '../models/index';
 
 export interface SendCustomMemoracekUtilsSendMemoracekCustomPostRequest {
     sendCustomMemoracekRequest: SendCustomMemoracekRequest;
@@ -79,7 +89,7 @@ export class UtilitiesApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetExceptionsResponseFromJSON(jsonValue));
     }
 
     /**
@@ -112,7 +122,7 @@ export class UtilitiesApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['sendCustomMemoracekRequest'],
+            body: SendCustomMemoracekRequestToJSON(requestParameters['sendCustomMemoracekRequest']),
         }, initOverrides);
 
         if (this.isJsonMime(response.headers.get('content-type'))) {
@@ -182,7 +192,7 @@ export class UtilitiesApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['sendMemoracekRequest'],
+            body: SendMemoracekRequestToJSON(requestParameters['sendMemoracekRequest']),
         }, initOverrides);
 
         if (this.isJsonMime(response.headers.get('content-type'))) {

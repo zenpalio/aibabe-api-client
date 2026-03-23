@@ -21,6 +21,18 @@ import type {
   HTTPValidationError,
   UserInfoResponse,
 } from '../models/index';
+import {
+    GetQualityControlImageFromJSON,
+    GetQualityControlImageToJSON,
+    GetQualityControlRequestFromJSON,
+    GetQualityControlRequestToJSON,
+    GiftCodeTypeFromJSON,
+    GiftCodeTypeToJSON,
+    HTTPValidationErrorFromJSON,
+    HTTPValidationErrorToJSON,
+    UserInfoResponseFromJSON,
+    UserInfoResponseToJSON,
+} from '../models/index';
 
 export interface AddTokensAdminAddTokensPutRequest {
     email: string;
@@ -250,10 +262,10 @@ export class AdminApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['getQualityControlRequest'],
+            body: GetQualityControlRequestToJSON(requestParameters['getQualityControlRequest']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(GetQualityControlImageFromJSON));
     }
 
     /**
@@ -323,7 +335,7 @@ export class AdminApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => UserInfoResponseFromJSON(jsonValue));
     }
 
     /**

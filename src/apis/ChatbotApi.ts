@@ -33,6 +33,42 @@ import type {
   PostProfilePictureResponse,
   SortFilter,
 } from '../models/index';
+import {
+    CharacterAboutPageReviewFromJSON,
+    CharacterAboutPageReviewToJSON,
+    ChatbotTypeFromJSON,
+    ChatbotTypeToJSON,
+    GetAboutChatbotResponseFromJSON,
+    GetAboutChatbotResponseToJSON,
+    GetChatbotListResponseFromJSON,
+    GetChatbotListResponseToJSON,
+    GetChatbotResponseFromJSON,
+    GetChatbotResponseToJSON,
+    GetCustomChatbotResponseFromJSON,
+    GetCustomChatbotResponseToJSON,
+    HTTPValidationErrorFromJSON,
+    HTTPValidationErrorToJSON,
+    PatchCustomChatbotRequestFromJSON,
+    PatchCustomChatbotRequestToJSON,
+    PostAdvancedChatbotProfilePictureFromJSON,
+    PostAdvancedChatbotProfilePictureToJSON,
+    PostAdvancedChatbotPublishPayloadFromJSON,
+    PostAdvancedChatbotPublishPayloadToJSON,
+    PostAdvancedChatbotPublishResponseFromJSON,
+    PostAdvancedChatbotPublishResponseToJSON,
+    PostCustomAboutPagePayloadFromJSON,
+    PostCustomAboutPagePayloadToJSON,
+    PostCustomChatBotPayloadFromJSON,
+    PostCustomChatBotPayloadToJSON,
+    PostCustomChatbotResponseFromJSON,
+    PostCustomChatbotResponseToJSON,
+    PostCustomChatbotV2PayloadFromJSON,
+    PostCustomChatbotV2PayloadToJSON,
+    PostProfilePictureResponseFromJSON,
+    PostProfilePictureResponseToJSON,
+    SortFilterFromJSON,
+    SortFilterToJSON,
+} from '../models/index';
 
 export interface AttachmentChatbotChatbotIdAttachmentGetRequest {
     chatbotId: string;
@@ -178,10 +214,10 @@ export class ChatbotApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['postCustomChatBotPayload'],
+            body: PostCustomChatBotPayloadToJSON(requestParameters['postCustomChatBotPayload']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => PostCustomChatbotResponseFromJSON(jsonValue));
     }
 
     /**
@@ -214,10 +250,10 @@ export class ChatbotApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['postCustomChatbotV2Payload'],
+            body: PostCustomChatbotV2PayloadToJSON(requestParameters['postCustomChatbotV2Payload']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => PostCustomChatbotResponseFromJSON(jsonValue));
     }
 
     /**
@@ -369,7 +405,7 @@ export class ChatbotApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetAboutChatbotResponseFromJSON(jsonValue));
     }
 
     /**
@@ -402,7 +438,7 @@ export class ChatbotApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetChatbotResponseFromJSON(jsonValue));
     }
 
     /**
@@ -435,7 +471,7 @@ export class ChatbotApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetCustomChatbotResponseFromJSON(jsonValue));
     }
 
     /**
@@ -477,7 +513,7 @@ export class ChatbotApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetChatbotListResponseFromJSON(jsonValue));
     }
 
     /**
@@ -522,7 +558,7 @@ export class ChatbotApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetChatbotListResponseFromJSON(jsonValue));
     }
 
     /**
@@ -555,10 +591,10 @@ export class ChatbotApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['postCustomAboutPagePayload'],
+            body: PostCustomAboutPagePayloadToJSON(requestParameters['postCustomAboutPagePayload']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => CharacterAboutPageReviewFromJSON(jsonValue));
     }
 
     /**
@@ -591,10 +627,10 @@ export class ChatbotApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['postAdvancedChatbotProfilePicture'],
+            body: PostAdvancedChatbotProfilePictureToJSON(requestParameters['postAdvancedChatbotProfilePicture']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => PostProfilePictureResponseFromJSON(jsonValue));
     }
 
     /**
@@ -627,10 +663,10 @@ export class ChatbotApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['postAdvancedChatbotPublishPayload'],
+            body: PostAdvancedChatbotPublishPayloadToJSON(requestParameters['postAdvancedChatbotPublishPayload']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => PostAdvancedChatbotPublishResponseFromJSON(jsonValue));
     }
 
     /**
@@ -670,7 +706,7 @@ export class ChatbotApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['patchCustomChatbotRequest'],
+            body: PatchCustomChatbotRequestToJSON(requestParameters['patchCustomChatbotRequest']),
         }, initOverrides);
 
         if (this.isJsonMime(response.headers.get('content-type'))) {

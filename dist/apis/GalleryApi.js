@@ -48,6 +48,7 @@ var __importStar = (this && this.__importStar) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.GalleryApi = void 0;
 const runtime = __importStar(require("../runtime"));
+const index_1 = require("../models/index");
 /**
  *
  */
@@ -67,7 +68,7 @@ class GalleryApi extends runtime.BaseAPI {
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['bulkDeleteContentRequest'],
+            body: (0, index_1.BulkDeleteContentRequestToJSON)(requestParameters['bulkDeleteContentRequest']),
         }, initOverrides);
         return new runtime.VoidApiResponse(response);
     }
@@ -101,7 +102,7 @@ class GalleryApi extends runtime.BaseAPI {
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetGalleryResponseFromJSON)(jsonValue));
     }
     /**
      * Get Gallery

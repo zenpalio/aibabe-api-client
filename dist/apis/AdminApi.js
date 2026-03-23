@@ -48,6 +48,7 @@ var __importStar = (this && this.__importStar) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AdminApi = void 0;
 const runtime = __importStar(require("../runtime"));
+const index_1 = require("../models/index");
 /**
  *
  */
@@ -200,9 +201,9 @@ class AdminApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['getQualityControlRequest'],
+            body: (0, index_1.GetQualityControlRequestToJSON)(requestParameters['getQualityControlRequest']),
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(index_1.GetQualityControlImageFromJSON));
     }
     /**
      * Get Quality Control Images
@@ -255,7 +256,7 @@ class AdminApi extends runtime.BaseAPI {
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.UserInfoResponseFromJSON)(jsonValue));
     }
     /**
      * Impersonate

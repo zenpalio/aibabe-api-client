@@ -22,6 +22,20 @@ import type {
   PostType,
   TagsExploreTypesGet200ResponseInner,
 } from '../models/index';
+import {
+    CategoryValuesFromJSON,
+    CategoryValuesToJSON,
+    ExploreSearchRequestFromJSON,
+    ExploreSearchRequestToJSON,
+    GetPostsResponseFromJSON,
+    GetPostsResponseToJSON,
+    HTTPValidationErrorFromJSON,
+    HTTPValidationErrorToJSON,
+    PostTypeFromJSON,
+    PostTypeToJSON,
+    TagsExploreTypesGet200ResponseInnerFromJSON,
+    TagsExploreTypesGet200ResponseInnerToJSON,
+} from '../models/index';
 
 export interface CategoriesExploreContentCategoriesGetRequest {
     postType?: PostType | null;
@@ -55,7 +69,7 @@ export class ExploreApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => CategoryValuesFromJSON(jsonValue));
     }
 
     /**
@@ -88,10 +102,10 @@ export class ExploreApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['exploreSearchRequest'],
+            body: ExploreSearchRequestToJSON(requestParameters['exploreSearchRequest']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetPostsResponseFromJSON(jsonValue));
     }
 
     /**
@@ -117,7 +131,7 @@ export class ExploreApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(TagsExploreTypesGet200ResponseInnerFromJSON));
     }
 
     /**

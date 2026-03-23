@@ -20,6 +20,16 @@ import type {
   InstanceType,
   PingRequest,
 } from '../models/index';
+import {
+    HTTPValidationErrorFromJSON,
+    HTTPValidationErrorToJSON,
+    InstanceDetailsFromJSON,
+    InstanceDetailsToJSON,
+    InstanceTypeFromJSON,
+    InstanceTypeToJSON,
+    PingRequestFromJSON,
+    PingRequestToJSON,
+} from '../models/index';
 
 export interface PingServerPingPostRequest {
     pingRequest: PingRequest;
@@ -91,7 +101,7 @@ export class ServerApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['pingRequest'],
+            body: PingRequestToJSON(requestParameters['pingRequest']),
         }, initOverrides);
 
         if (this.isJsonMime(response.headers.get('content-type'))) {
@@ -135,7 +145,7 @@ export class ServerApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => InstanceDetailsFromJSON(jsonValue));
     }
 
     /**

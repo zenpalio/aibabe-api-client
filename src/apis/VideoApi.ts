@@ -23,6 +23,22 @@ import type {
   ImageToVideoRecommendationPayload,
   VideoFromChatResponse,
 } from '../models/index';
+import {
+    ExtendVideoPayloadFromJSON,
+    ExtendVideoPayloadToJSON,
+    GetVideoGenerationTagsResponseFromJSON,
+    GetVideoGenerationTagsResponseToJSON,
+    HTTPValidationErrorFromJSON,
+    HTTPValidationErrorToJSON,
+    ImageToVideoFromChatPayloadFromJSON,
+    ImageToVideoFromChatPayloadToJSON,
+    ImageToVideoPayloadFromJSON,
+    ImageToVideoPayloadToJSON,
+    ImageToVideoRecommendationPayloadFromJSON,
+    ImageToVideoRecommendationPayloadToJSON,
+    VideoFromChatResponseFromJSON,
+    VideoFromChatResponseToJSON,
+} from '../models/index';
 
 export interface AttachmentVideoChatbotIdAttachmentGetRequest {
     chatbotId: string;
@@ -402,7 +418,7 @@ export class VideoApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['extendVideoPayload'],
+            body: ExtendVideoPayloadToJSON(requestParameters['extendVideoPayload']),
         }, initOverrides);
 
         if (this.isJsonMime(response.headers.get('content-type'))) {
@@ -442,7 +458,7 @@ export class VideoApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['imageToVideoRecommendationPayload'],
+            body: ImageToVideoRecommendationPayloadToJSON(requestParameters['imageToVideoRecommendationPayload']),
         }, initOverrides);
 
         if (this.isJsonMime(response.headers.get('content-type'))) {
@@ -482,10 +498,10 @@ export class VideoApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['imageToVideoFromChatPayload'],
+            body: ImageToVideoFromChatPayloadToJSON(requestParameters['imageToVideoFromChatPayload']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => VideoFromChatResponseFromJSON(jsonValue));
     }
 
     /**
@@ -518,7 +534,7 @@ export class VideoApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['imageToVideoPayload'],
+            body: ImageToVideoPayloadToJSON(requestParameters['imageToVideoPayload']),
         }, initOverrides);
 
         if (this.isJsonMime(response.headers.get('content-type'))) {
@@ -558,7 +574,7 @@ export class VideoApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetVideoGenerationTagsResponseFromJSON(jsonValue));
     }
 
     /**

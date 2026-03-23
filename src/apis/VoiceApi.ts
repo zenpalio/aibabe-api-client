@@ -18,6 +18,12 @@ import type {
   HTTPValidationError,
   Language,
 } from '../models/index';
+import {
+    HTTPValidationErrorFromJSON,
+    HTTPValidationErrorToJSON,
+    LanguageFromJSON,
+    LanguageToJSON,
+} from '../models/index';
 
 export interface CreateReferenceVoiceReferencesPostRequest {
     name: string;

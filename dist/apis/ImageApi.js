@@ -48,6 +48,7 @@ var __importStar = (this && this.__importStar) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ImageApi = void 0;
 const runtime = __importStar(require("../runtime"));
+const index_1 = require("../models/index");
 /**
  *
  */
@@ -86,7 +87,7 @@ class ImageApi extends runtime.BaseAPI {
             query: queryParameters,
             body: formParams,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ImageParametersFromJSON)(jsonValue));
     }
     /**
      * Extract Png Info
@@ -110,7 +111,7 @@ class ImageApi extends runtime.BaseAPI {
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetImageGenerationTagsResponseFromJSON)(jsonValue));
     }
     /**
      * Generation Tags
@@ -134,7 +135,7 @@ class ImageApi extends runtime.BaseAPI {
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetGeneratedImageFromJSON)(jsonValue));
     }
     /**
      * Get Image By Filename
@@ -158,7 +159,7 @@ class ImageApi extends runtime.BaseAPI {
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(index_1.LoraNameFromJSON));
     }
     /**
      * Get Loras
@@ -185,9 +186,9 @@ class ImageApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['postImagenRequest'],
+            body: (0, index_1.PostImagenRequestToJSON)(requestParameters['postImagenRequest']),
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.PostImagenResponseFromJSON)(jsonValue));
     }
     /**
      * User Generate Image

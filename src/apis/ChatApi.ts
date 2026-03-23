@@ -24,6 +24,24 @@ import type {
   PostChatRequest,
   PostConversationSettingsRequest,
 } from '../models/index';
+import {
+    ChatReponseFromJSON,
+    ChatReponseToJSON,
+    GetConversationMessagesResponseFromJSON,
+    GetConversationMessagesResponseToJSON,
+    GetConversationResponseFromJSON,
+    GetConversationResponseToJSON,
+    HTTPValidationErrorFromJSON,
+    HTTPValidationErrorToJSON,
+    ListConversationsResponseFromJSON,
+    ListConversationsResponseToJSON,
+    PatchChatMessageRequestFromJSON,
+    PatchChatMessageRequestToJSON,
+    PostChatRequestFromJSON,
+    PostChatRequestToJSON,
+    PostConversationSettingsRequestFromJSON,
+    PostConversationSettingsRequestToJSON,
+} from '../models/index';
 
 export interface ChatChatChatbotIdPostRequest {
     chatbotId: string;
@@ -117,10 +135,10 @@ export class ChatApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['postChatRequest'],
+            body: PostChatRequestToJSON(requestParameters['postChatRequest']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => ChatReponseFromJSON(jsonValue));
     }
 
     /**
@@ -157,7 +175,7 @@ export class ChatApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetConversationResponseFromJSON(jsonValue));
     }
 
     /**
@@ -205,7 +223,7 @@ export class ChatApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetConversationMessagesResponseFromJSON(jsonValue));
     }
 
     /**
@@ -239,7 +257,7 @@ export class ChatApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListConversationsResponseFromJSON(jsonValue));
     }
 
     /**
@@ -368,10 +386,10 @@ export class ChatApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['postChatRequest'],
+            body: PostChatRequestToJSON(requestParameters['postChatRequest']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => ChatReponseFromJSON(jsonValue));
     }
 
     /**
@@ -418,10 +436,10 @@ export class ChatApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['postChatRequest'],
+            body: PostChatRequestToJSON(requestParameters['postChatRequest']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => ChatReponseFromJSON(jsonValue));
     }
 
     /**
@@ -498,7 +516,7 @@ export class ChatApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['postConversationSettingsRequest'],
+            body: PostConversationSettingsRequestToJSON(requestParameters['postConversationSettingsRequest']),
         }, initOverrides);
 
         if (this.isJsonMime(response.headers.get('content-type'))) {
@@ -545,7 +563,7 @@ export class ChatApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['patchChatMessageRequest'],
+            body: PatchChatMessageRequestToJSON(requestParameters['patchChatMessageRequest']),
         }, initOverrides);
 
         if (this.isJsonMime(response.headers.get('content-type'))) {

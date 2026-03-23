@@ -20,6 +20,16 @@ import type {
   HTTPValidationError,
   MemoryUpdateReponse,
 } from '../models/index';
+import {
+    DeleteBulkMemoryRequestFromJSON,
+    DeleteBulkMemoryRequestToJSON,
+    GetMemoryResponseFromJSON,
+    GetMemoryResponseToJSON,
+    HTTPValidationErrorFromJSON,
+    HTTPValidationErrorToJSON,
+    MemoryUpdateReponseFromJSON,
+    MemoryUpdateReponseToJSON,
+} from '../models/index';
 
 export interface BulkDeleteMemoriesMemoryconversationConversationIdBulkDeleteRequest {
     conversationId: string;
@@ -83,10 +93,10 @@ export class MemoryApi extends runtime.BaseAPI {
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['deleteBulkMemoryRequest'],
+            body: DeleteBulkMemoryRequestToJSON(requestParameters['deleteBulkMemoryRequest']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => MemoryUpdateReponseFromJSON(jsonValue));
     }
 
     /**
@@ -126,7 +136,7 @@ export class MemoryApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => MemoryUpdateReponseFromJSON(jsonValue));
     }
 
     /**
@@ -159,7 +169,7 @@ export class MemoryApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetMemoryResponseFromJSON(jsonValue));
     }
 
     /**
@@ -199,7 +209,7 @@ export class MemoryApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => MemoryUpdateReponseFromJSON(jsonValue));
     }
 
     /**

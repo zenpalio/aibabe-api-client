@@ -48,6 +48,7 @@ var __importStar = (this && this.__importStar) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ExploreApi = void 0;
 const runtime = __importStar(require("../runtime"));
+const index_1 = require("../models/index");
 /**
  *
  */
@@ -67,7 +68,7 @@ class ExploreApi extends runtime.BaseAPI {
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CategoryValuesFromJSON)(jsonValue));
     }
     /**
      * Categories
@@ -91,9 +92,9 @@ class ExploreApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['exploreSearchRequest'],
+            body: (0, index_1.ExploreSearchRequestToJSON)(requestParameters['exploreSearchRequest']),
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetPostsResponseFromJSON)(jsonValue));
     }
     /**
      * Search Content
@@ -114,7 +115,7 @@ class ExploreApi extends runtime.BaseAPI {
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(index_1.TagsExploreTypesGet200ResponseInnerFromJSON));
     }
     /**
      * Tags

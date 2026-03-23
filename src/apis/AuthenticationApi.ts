@@ -23,6 +23,22 @@ import type {
   PostUserRequest,
   UserInfoResponse,
 } from '../models/index';
+import {
+    HTTPValidationErrorFromJSON,
+    HTTPValidationErrorToJSON,
+    OAuthProviderFromJSON,
+    OAuthProviderToJSON,
+    PostLoginFromJSON,
+    PostLoginToJSON,
+    PostPasswordResetFromJSON,
+    PostPasswordResetToJSON,
+    PostResendEmailRequestFromJSON,
+    PostResendEmailRequestToJSON,
+    PostUserRequestFromJSON,
+    PostUserRequestToJSON,
+    UserInfoResponseFromJSON,
+    UserInfoResponseToJSON,
+} from '../models/index';
 
 export interface CreateUserAuthUserPostRequest {
     returnUrl: string;
@@ -107,10 +123,10 @@ export class AuthenticationApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['postUserRequest'],
+            body: PostUserRequestToJSON(requestParameters['postUserRequest']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => UserInfoResponseFromJSON(jsonValue));
     }
 
     /**
@@ -263,7 +279,7 @@ export class AuthenticationApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => UserInfoResponseFromJSON(jsonValue));
     }
 
     /**
@@ -296,10 +312,10 @@ export class AuthenticationApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['postLogin'],
+            body: PostLoginToJSON(requestParameters['postLogin']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => UserInfoResponseFromJSON(jsonValue));
     }
 
     /**
@@ -395,7 +411,7 @@ export class AuthenticationApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['postPasswordReset'],
+            body: PostPasswordResetToJSON(requestParameters['postPasswordReset']),
         }, initOverrides);
 
         if (this.isJsonMime(response.headers.get('content-type'))) {
@@ -483,7 +499,7 @@ export class AuthenticationApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['postResendEmailRequest'],
+            body: PostResendEmailRequestToJSON(requestParameters['postResendEmailRequest']),
         }, initOverrides);
 
         if (this.isJsonMime(response.headers.get('content-type'))) {

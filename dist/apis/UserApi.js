@@ -48,6 +48,7 @@ var __importStar = (this && this.__importStar) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserApi = void 0;
 const runtime = __importStar(require("../runtime"));
+const index_1 = require("../models/index");
 /**
  *
  */
@@ -67,7 +68,7 @@ class UserApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['postClaimRequest'],
+            body: (0, index_1.PostClaimRequestToJSON)(requestParameters['postClaimRequest']),
         }, initOverrides);
         if (this.isJsonMime(response.headers.get('content-type'))) {
             return new runtime.JSONApiResponse(response);
@@ -98,7 +99,7 @@ class UserApi extends runtime.BaseAPI {
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['deleteUserRequest'],
+            body: (0, index_1.DeleteUserRequestToJSON)(requestParameters['deleteUserRequest']),
         }, initOverrides);
         if (this.isJsonMime(response.headers.get('content-type'))) {
             return new runtime.JSONApiResponse(response);
@@ -129,9 +130,9 @@ class UserApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['postDonateRequest'],
+            body: (0, index_1.PostDonateRequestToJSON)(requestParameters['postDonateRequest']),
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.PostDonateResponseFromJSON)(jsonValue));
     }
     /**
      * Donate
@@ -155,7 +156,7 @@ class UserApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['postFollowUserRequest'],
+            body: (0, index_1.PostFollowUserRequestToJSON)(requestParameters['postFollowUserRequest']),
         }, initOverrides);
         if (this.isJsonMime(response.headers.get('content-type'))) {
             return new runtime.JSONApiResponse(response);
@@ -183,7 +184,7 @@ class UserApi extends runtime.BaseAPI {
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetClaimablesResponseFromJSON)(jsonValue));
     }
     /**
      * Get Claimables
@@ -204,7 +205,7 @@ class UserApi extends runtime.BaseAPI {
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetFollowedUsersResponseFromJSON)(jsonValue));
     }
     /**
      * Get Followed Users
@@ -231,7 +232,7 @@ class UserApi extends runtime.BaseAPI {
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.PublicUserInfoFromJSON)(jsonValue));
     }
     /**
      * Get Public User
@@ -255,7 +256,7 @@ class UserApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['patchUserRequest'],
+            body: (0, index_1.PatchUserRequestToJSON)(requestParameters['patchUserRequest']),
         }, initOverrides);
         if (this.isJsonMime(response.headers.get('content-type'))) {
             return new runtime.JSONApiResponse(response);
@@ -286,9 +287,9 @@ class UserApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['postRatingRequest'],
+            body: (0, index_1.PostRatingRequestToJSON)(requestParameters['postRatingRequest']),
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.PostRatingResponseFromJSON)(jsonValue));
     }
     /**
      * Post Rating
@@ -315,7 +316,7 @@ class UserApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['postReportUserRequest'],
+            body: (0, index_1.PostReportUserRequestToJSON)(requestParameters['postReportUserRequest']),
         }, initOverrides);
         if (this.isJsonMime(response.headers.get('content-type'))) {
             return new runtime.JSONApiResponse(response);
@@ -346,7 +347,7 @@ class UserApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['putPasswordRequest'],
+            body: (0, index_1.PutPasswordRequestToJSON)(requestParameters['putPasswordRequest']),
         }, initOverrides);
         if (this.isJsonMime(response.headers.get('content-type'))) {
             return new runtime.JSONApiResponse(response);
@@ -377,7 +378,7 @@ class UserApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['putPublicUserRequest'],
+            body: (0, index_1.PutPublicUserRequestToJSON)(requestParameters['putPublicUserRequest']),
         }, initOverrides);
         if (this.isJsonMime(response.headers.get('content-type'))) {
             return new runtime.JSONApiResponse(response);
@@ -408,7 +409,7 @@ class UserApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['putUsernameRequest'],
+            body: (0, index_1.PutUsernameRequestToJSON)(requestParameters['putUsernameRequest']),
         }, initOverrides);
         if (this.isJsonMime(response.headers.get('content-type'))) {
             return new runtime.JSONApiResponse(response);
@@ -484,7 +485,7 @@ class UserApi extends runtime.BaseAPI {
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetPublicLatestUpdateResponseFromJSON)(jsonValue));
     }
     /**
      * Username Update Available
@@ -508,9 +509,9 @@ class UserApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['postVerifyPublicUsernameRequest'],
+            body: (0, index_1.PostVerifyPublicUsernameRequestToJSON)(requestParameters['postVerifyPublicUsernameRequest']),
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.PostVerifyPublicUsernameResponseFromJSON)(jsonValue));
     }
     /**
      * Verify Public Username

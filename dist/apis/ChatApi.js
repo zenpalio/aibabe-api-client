@@ -48,6 +48,7 @@ var __importStar = (this && this.__importStar) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ChatApi = void 0;
 const runtime = __importStar(require("../runtime"));
+const index_1 = require("../models/index");
 /**
  *
  */
@@ -70,9 +71,9 @@ class ChatApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['postChatRequest'],
+            body: (0, index_1.PostChatRequestToJSON)(requestParameters['postChatRequest']),
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ChatReponseFromJSON)(jsonValue));
     }
     /**
      * Chat
@@ -99,7 +100,7 @@ class ChatApi extends runtime.BaseAPI {
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetConversationResponseFromJSON)(jsonValue));
     }
     /**
      * Conversation
@@ -132,7 +133,7 @@ class ChatApi extends runtime.BaseAPI {
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetConversationMessagesResponseFromJSON)(jsonValue));
     }
     /**
      * Conversation Messages
@@ -159,7 +160,7 @@ class ChatApi extends runtime.BaseAPI {
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ListConversationsResponseFromJSON)(jsonValue));
     }
     /**
      * Conversations
@@ -253,9 +254,9 @@ class ChatApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['postChatRequest'],
+            body: (0, index_1.PostChatRequestToJSON)(requestParameters['postChatRequest']),
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ChatReponseFromJSON)(jsonValue));
     }
     /**
      * Generate Image On Message
@@ -285,9 +286,9 @@ class ChatApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['postChatRequest'],
+            body: (0, index_1.PostChatRequestToJSON)(requestParameters['postChatRequest']),
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ChatReponseFromJSON)(jsonValue));
     }
     /**
      * Regenerate
@@ -343,7 +344,7 @@ class ChatApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['postConversationSettingsRequest'],
+            body: (0, index_1.PostConversationSettingsRequestToJSON)(requestParameters['postConversationSettingsRequest']),
         }, initOverrides);
         if (this.isJsonMime(response.headers.get('content-type'))) {
             return new runtime.JSONApiResponse(response);
@@ -377,7 +378,7 @@ class ChatApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['patchChatMessageRequest'],
+            body: (0, index_1.PatchChatMessageRequestToJSON)(requestParameters['patchChatMessageRequest']),
         }, initOverrides);
         if (this.isJsonMime(response.headers.get('content-type'))) {
             return new runtime.JSONApiResponse(response);

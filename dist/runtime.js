@@ -15,6 +15,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TextApiResponse = exports.BlobApiResponse = exports.VoidApiResponse = exports.JSONApiResponse = exports.COLLECTION_FORMATS = exports.RequiredError = exports.FetchError = exports.ResponseError = exports.BaseAPI = exports.DefaultConfig = exports.Configuration = exports.BASE_PATH = void 0;
 exports.querystring = querystring;
+exports.mapValues = mapValues;
 exports.canConsumeForm = canConsumeForm;
 exports.BASE_PATH = "http://localhost:8080".replace(/\/+$/, "");
 class Configuration {
@@ -266,6 +267,9 @@ function querystringSingleKey(key, value, keyPrefix = '') {
         return querystring(value, fullKey);
     }
     return `${encodeURIComponent(fullKey)}=${encodeURIComponent(String(value))}`;
+}
+function mapValues(data, fn) {
+    return Object.keys(data).reduce((acc, key) => (Object.assign(Object.assign({}, acc), { [key]: fn(data[key]) })), {});
 }
 function canConsumeForm(consumes) {
     for (const consume of consumes) {

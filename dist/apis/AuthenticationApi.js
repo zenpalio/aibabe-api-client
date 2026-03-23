@@ -48,6 +48,7 @@ var __importStar = (this && this.__importStar) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthenticationApi = void 0;
 const runtime = __importStar(require("../runtime"));
+const index_1 = require("../models/index");
 /**
  *
  */
@@ -73,9 +74,9 @@ class AuthenticationApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['postUserRequest'],
+            body: (0, index_1.PostUserRequestToJSON)(requestParameters['postUserRequest']),
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.UserInfoResponseFromJSON)(jsonValue));
     }
     /**
      * Create User
@@ -195,7 +196,7 @@ class AuthenticationApi extends runtime.BaseAPI {
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.UserInfoResponseFromJSON)(jsonValue));
     }
     /**
      * Jwt
@@ -219,9 +220,9 @@ class AuthenticationApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['postLogin'],
+            body: (0, index_1.PostLoginToJSON)(requestParameters['postLogin']),
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.UserInfoResponseFromJSON)(jsonValue));
     }
     /**
      * Login
@@ -289,7 +290,7 @@ class AuthenticationApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['postPasswordReset'],
+            body: (0, index_1.PostPasswordResetToJSON)(requestParameters['postPasswordReset']),
         }, initOverrides);
         if (this.isJsonMime(response.headers.get('content-type'))) {
             return new runtime.JSONApiResponse(response);
@@ -355,7 +356,7 @@ class AuthenticationApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['postResendEmailRequest'],
+            body: (0, index_1.PostResendEmailRequestToJSON)(requestParameters['postResendEmailRequest']),
         }, initOverrides);
         if (this.isJsonMime(response.headers.get('content-type'))) {
             return new runtime.JSONApiResponse(response);

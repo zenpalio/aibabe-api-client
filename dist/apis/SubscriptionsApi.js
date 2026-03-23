@@ -48,6 +48,7 @@ var __importStar = (this && this.__importStar) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SubscriptionsApi = void 0;
 const runtime = __importStar(require("../runtime"));
+const index_1 = require("../models/index");
 /**
  *
  */
@@ -67,9 +68,9 @@ class SubscriptionsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['postAcceptOfferRequest'],
+            body: (0, index_1.PostAcceptOfferRequestToJSON)(requestParameters['postAcceptOfferRequest']),
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.PostAcceptOfferResponseFromJSON)(jsonValue));
     }
     /**
      * Accept Offer
@@ -189,7 +190,7 @@ class SubscriptionsApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['cancelSubscriptionRequest'],
+            body: (0, index_1.CancelSubscriptionRequestToJSON)(requestParameters['cancelSubscriptionRequest']),
         }, initOverrides);
         if (this.isJsonMime(response.headers.get('content-type'))) {
             return new runtime.JSONApiResponse(response);
@@ -220,9 +221,9 @@ class SubscriptionsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['postCheckoutSessionRequest'],
+            body: (0, index_1.PostCheckoutSessionRequestToJSON)(requestParameters['postCheckoutSessionRequest']),
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.PostCheckoutResponseFromJSON)(jsonValue));
     }
     /**
      * Checkout Addon
@@ -246,9 +247,9 @@ class SubscriptionsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['postCheckoutSessionRequest'],
+            body: (0, index_1.PostCheckoutSessionRequestToJSON)(requestParameters['postCheckoutSessionRequest']),
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.PostCheckoutResponseFromJSON)(jsonValue));
     }
     /**
      * Checkout
@@ -269,7 +270,7 @@ class SubscriptionsApi extends runtime.BaseAPI {
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetPricesResponseFromJSON)(jsonValue));
     }
     /**
      * Get Prices
@@ -293,7 +294,7 @@ class SubscriptionsApi extends runtime.BaseAPI {
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.BillingReconciliationResponseFromJSON)(jsonValue));
     }
     /**
      * Reconcile Billing
@@ -317,7 +318,7 @@ class SubscriptionsApi extends runtime.BaseAPI {
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.TokenReconciliationResponseFromJSON)(jsonValue));
     }
     /**
      * Reconcile Tokens
@@ -341,9 +342,9 @@ class SubscriptionsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['redeemGiftCodeRequest'],
+            body: (0, index_1.RedeemGiftCodeRequestToJSON)(requestParameters['redeemGiftCodeRequest']),
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.RedeemGiftCodeResponseFromJSON)(jsonValue));
     }
     /**
      * Redeem Code

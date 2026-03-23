@@ -48,6 +48,7 @@ var __importStar = (this && this.__importStar) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UtilitiesApi = void 0;
 const runtime = __importStar(require("../runtime"));
+const index_1 = require("../models/index");
 /**
  *
  */
@@ -90,7 +91,7 @@ class UtilitiesApi extends runtime.BaseAPI {
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetExceptionsResponseFromJSON)(jsonValue));
     }
     /**
      * Get Errors
@@ -114,7 +115,7 @@ class UtilitiesApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['sendCustomMemoracekRequest'],
+            body: (0, index_1.SendCustomMemoracekRequestToJSON)(requestParameters['sendCustomMemoracekRequest']),
         }, initOverrides);
         if (this.isJsonMime(response.headers.get('content-type'))) {
             return new runtime.JSONApiResponse(response);
@@ -171,7 +172,7 @@ class UtilitiesApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['sendMemoracekRequest'],
+            body: (0, index_1.SendMemoracekRequestToJSON)(requestParameters['sendMemoracekRequest']),
         }, initOverrides);
         if (this.isJsonMime(response.headers.get('content-type'))) {
             return new runtime.JSONApiResponse(response);

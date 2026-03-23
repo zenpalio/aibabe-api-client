@@ -48,6 +48,7 @@ var __importStar = (this && this.__importStar) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MemoryApi = void 0;
 const runtime = __importStar(require("../runtime"));
+const index_1 = require("../models/index");
 /**
  *
  */
@@ -70,9 +71,9 @@ class MemoryApi extends runtime.BaseAPI {
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['deleteBulkMemoryRequest'],
+            body: (0, index_1.DeleteBulkMemoryRequestToJSON)(requestParameters['deleteBulkMemoryRequest']),
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.MemoryUpdateReponseFromJSON)(jsonValue));
     }
     /**
      * Bulk Delete Memories
@@ -99,7 +100,7 @@ class MemoryApi extends runtime.BaseAPI {
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.MemoryUpdateReponseFromJSON)(jsonValue));
     }
     /**
      * Delete Memory
@@ -123,7 +124,7 @@ class MemoryApi extends runtime.BaseAPI {
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetMemoryResponseFromJSON)(jsonValue));
     }
     /**
      * Get Memories
@@ -150,7 +151,7 @@ class MemoryApi extends runtime.BaseAPI {
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.MemoryUpdateReponseFromJSON)(jsonValue));
     }
     /**
      * Pin Message

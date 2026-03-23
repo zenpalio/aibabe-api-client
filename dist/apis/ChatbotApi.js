@@ -48,6 +48,7 @@ var __importStar = (this && this.__importStar) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ChatbotApi = void 0;
 const runtime = __importStar(require("../runtime"));
+const index_1 = require("../models/index");
 /**
  *
  */
@@ -102,9 +103,9 @@ class ChatbotApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['postCustomChatBotPayload'],
+            body: (0, index_1.PostCustomChatBotPayloadToJSON)(requestParameters['postCustomChatBotPayload']),
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.PostCustomChatbotResponseFromJSON)(jsonValue));
     }
     /**
      * Create Custom Chatbot
@@ -128,9 +129,9 @@ class ChatbotApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['postCustomChatbotV2Payload'],
+            body: (0, index_1.PostCustomChatbotV2PayloadToJSON)(requestParameters['postCustomChatbotV2Payload']),
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.PostCustomChatbotResponseFromJSON)(jsonValue));
     }
     /**
      * Create Custom Chatbot V2
@@ -247,7 +248,7 @@ class ChatbotApi extends runtime.BaseAPI {
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetAboutChatbotResponseFromJSON)(jsonValue));
     }
     /**
      * Get About
@@ -271,7 +272,7 @@ class ChatbotApi extends runtime.BaseAPI {
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetChatbotResponseFromJSON)(jsonValue));
     }
     /**
      * Get
@@ -295,7 +296,7 @@ class ChatbotApi extends runtime.BaseAPI {
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetCustomChatbotResponseFromJSON)(jsonValue));
     }
     /**
      * Get Custom Chatbot
@@ -328,7 +329,7 @@ class ChatbotApi extends runtime.BaseAPI {
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetChatbotListResponseFromJSON)(jsonValue));
     }
     /**
      * List
@@ -361,7 +362,7 @@ class ChatbotApi extends runtime.BaseAPI {
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetChatbotListResponseFromJSON)(jsonValue));
     }
     /**
      * List Remixed Chatbots
@@ -385,9 +386,9 @@ class ChatbotApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['postCustomAboutPagePayload'],
+            body: (0, index_1.PostCustomAboutPagePayloadToJSON)(requestParameters['postCustomAboutPagePayload']),
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CharacterAboutPageReviewFromJSON)(jsonValue));
     }
     /**
      * Post About
@@ -411,9 +412,9 @@ class ChatbotApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['postAdvancedChatbotProfilePicture'],
+            body: (0, index_1.PostAdvancedChatbotProfilePictureToJSON)(requestParameters['postAdvancedChatbotProfilePicture']),
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.PostProfilePictureResponseFromJSON)(jsonValue));
     }
     /**
      * Post Profile Pic
@@ -437,9 +438,9 @@ class ChatbotApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['postAdvancedChatbotPublishPayload'],
+            body: (0, index_1.PostAdvancedChatbotPublishPayloadToJSON)(requestParameters['postAdvancedChatbotPublishPayload']),
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.PostAdvancedChatbotPublishResponseFromJSON)(jsonValue));
     }
     /**
      * Publish Advanced Chatbot
@@ -466,7 +467,7 @@ class ChatbotApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['patchCustomChatbotRequest'],
+            body: (0, index_1.PatchCustomChatbotRequestToJSON)(requestParameters['patchCustomChatbotRequest']),
         }, initOverrides);
         if (this.isJsonMime(response.headers.get('content-type'))) {
             return new runtime.JSONApiResponse(response);

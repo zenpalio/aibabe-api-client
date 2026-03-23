@@ -27,6 +27,30 @@ import type {
   RedeemGiftCodeResponse,
   TokenReconciliationResponse,
 } from '../models/index';
+import {
+    BillingReconciliationResponseFromJSON,
+    BillingReconciliationResponseToJSON,
+    CancelSubscriptionRequestFromJSON,
+    CancelSubscriptionRequestToJSON,
+    GetPricesResponseFromJSON,
+    GetPricesResponseToJSON,
+    HTTPValidationErrorFromJSON,
+    HTTPValidationErrorToJSON,
+    PostAcceptOfferRequestFromJSON,
+    PostAcceptOfferRequestToJSON,
+    PostAcceptOfferResponseFromJSON,
+    PostAcceptOfferResponseToJSON,
+    PostCheckoutResponseFromJSON,
+    PostCheckoutResponseToJSON,
+    PostCheckoutSessionRequestFromJSON,
+    PostCheckoutSessionRequestToJSON,
+    RedeemGiftCodeRequestFromJSON,
+    RedeemGiftCodeRequestToJSON,
+    RedeemGiftCodeResponseFromJSON,
+    RedeemGiftCodeResponseToJSON,
+    TokenReconciliationResponseFromJSON,
+    TokenReconciliationResponseToJSON,
+} from '../models/index';
 
 export interface AcceptOfferSubscriptionOfferAcceptPostRequest {
     postAcceptOfferRequest: PostAcceptOfferRequest;
@@ -95,10 +119,10 @@ export class SubscriptionsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['postAcceptOfferRequest'],
+            body: PostAcceptOfferRequestToJSON(requestParameters['postAcceptOfferRequest']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => PostAcceptOfferResponseFromJSON(jsonValue));
     }
 
     /**
@@ -254,7 +278,7 @@ export class SubscriptionsApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['cancelSubscriptionRequest'],
+            body: CancelSubscriptionRequestToJSON(requestParameters['cancelSubscriptionRequest']),
         }, initOverrides);
 
         if (this.isJsonMime(response.headers.get('content-type'))) {
@@ -294,10 +318,10 @@ export class SubscriptionsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['postCheckoutSessionRequest'],
+            body: PostCheckoutSessionRequestToJSON(requestParameters['postCheckoutSessionRequest']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => PostCheckoutResponseFromJSON(jsonValue));
     }
 
     /**
@@ -330,10 +354,10 @@ export class SubscriptionsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['postCheckoutSessionRequest'],
+            body: PostCheckoutSessionRequestToJSON(requestParameters['postCheckoutSessionRequest']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => PostCheckoutResponseFromJSON(jsonValue));
     }
 
     /**
@@ -359,7 +383,7 @@ export class SubscriptionsApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetPricesResponseFromJSON(jsonValue));
     }
 
     /**
@@ -389,7 +413,7 @@ export class SubscriptionsApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => BillingReconciliationResponseFromJSON(jsonValue));
     }
 
     /**
@@ -419,7 +443,7 @@ export class SubscriptionsApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => TokenReconciliationResponseFromJSON(jsonValue));
     }
 
     /**
@@ -452,10 +476,10 @@ export class SubscriptionsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['redeemGiftCodeRequest'],
+            body: RedeemGiftCodeRequestToJSON(requestParameters['redeemGiftCodeRequest']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => RedeemGiftCodeResponseFromJSON(jsonValue));
     }
 
     /**

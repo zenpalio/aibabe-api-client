@@ -48,6 +48,7 @@ var __importStar = (this && this.__importStar) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PostApi = void 0;
 const runtime = __importStar(require("../runtime"));
+const index_1 = require("../models/index");
 /**
  *
  */
@@ -173,7 +174,7 @@ class PostApi extends runtime.BaseAPI {
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.PostCategoryValuesFromJSON)(jsonValue));
     }
     /**
      * Categories
@@ -226,7 +227,7 @@ class PostApi extends runtime.BaseAPI {
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetDetailedPostsResponseFromJSON)(jsonValue));
     }
     /**
      * Get Post
@@ -253,9 +254,9 @@ class PostApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['postShareGetTagsRequest'],
+            body: (0, index_1.PostShareGetTagsRequestToJSON)(requestParameters['postShareGetTagsRequest']),
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.PostShareTagsResponseFromJSON)(jsonValue));
     }
     /**
      * Get Tags
@@ -348,7 +349,7 @@ class PostApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['patchPostTitleRequest'],
+            body: (0, index_1.PatchPostTitleRequestToJSON)(requestParameters['patchPostTitleRequest']),
         }, initOverrides);
         if (this.isJsonMime(response.headers.get('content-type'))) {
             return new runtime.JSONApiResponse(response);
@@ -382,7 +383,7 @@ class PostApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['postReportRequest'],
+            body: (0, index_1.PostReportRequestToJSON)(requestParameters['postReportRequest']),
         }, initOverrides);
         if (this.isJsonMime(response.headers.get('content-type'))) {
             return new runtime.JSONApiResponse(response);
@@ -413,9 +414,9 @@ class PostApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['postSearchRequest'],
+            body: (0, index_1.PostSearchRequestToJSON)(requestParameters['postSearchRequest']),
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetPostsResponseFromJSON)(jsonValue));
     }
     /**
      * Search Posts
@@ -442,9 +443,9 @@ class PostApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['postSharePublishRequest'],
+            body: (0, index_1.PostSharePublishRequestToJSON)(requestParameters['postSharePublishRequest']),
         }, initOverrides);
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.PostPublishResponseFromJSON)(jsonValue));
     }
     /**
      * Share

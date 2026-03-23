@@ -23,6 +23,22 @@ import type {
   PostImagenRequest,
   PostImagenResponse,
 } from '../models/index';
+import {
+    GetGeneratedImageFromJSON,
+    GetGeneratedImageToJSON,
+    GetImageGenerationTagsResponseFromJSON,
+    GetImageGenerationTagsResponseToJSON,
+    HTTPValidationErrorFromJSON,
+    HTTPValidationErrorToJSON,
+    ImageParametersFromJSON,
+    ImageParametersToJSON,
+    LoraNameFromJSON,
+    LoraNameToJSON,
+    PostImagenRequestFromJSON,
+    PostImagenRequestToJSON,
+    PostImagenResponseFromJSON,
+    PostImagenResponseToJSON,
+} from '../models/index';
 
 export interface ExtractPngInfoImagenPngInfoPostRequest {
     image: Blob;
@@ -93,7 +109,7 @@ export class ImageApi extends runtime.BaseAPI {
             body: formParams,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => ImageParametersFromJSON(jsonValue));
     }
 
     /**
@@ -126,7 +142,7 @@ export class ImageApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetImageGenerationTagsResponseFromJSON(jsonValue));
     }
 
     /**
@@ -159,7 +175,7 @@ export class ImageApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetGeneratedImageFromJSON(jsonValue));
     }
 
     /**
@@ -192,7 +208,7 @@ export class ImageApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(LoraNameFromJSON));
     }
 
     /**
@@ -232,10 +248,10 @@ export class ImageApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters['postImagenRequest'],
+            body: PostImagenRequestToJSON(requestParameters['postImagenRequest']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => PostImagenResponseFromJSON(jsonValue));
     }
 
     /**

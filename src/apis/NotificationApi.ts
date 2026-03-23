@@ -18,6 +18,12 @@ import type {
   HTTPValidationError,
   NotificationResponse,
 } from '../models/index';
+import {
+    HTTPValidationErrorFromJSON,
+    HTTPValidationErrorToJSON,
+    NotificationResponseFromJSON,
+    NotificationResponseToJSON,
+} from '../models/index';
 
 export interface ClearNotificationsNotificationClearPatchRequest {
     postId?: string | null;
@@ -125,7 +131,7 @@ export class NotificationApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => NotificationResponseFromJSON(jsonValue));
     }
 
     /**
