@@ -30,7 +30,10 @@ exports.ArtStyle = {
     Cartoon: 'cartoon',
     Truelook: 'truelook',
     Velvetheat: 'velvetheat',
-    Dreammix: 'dreammix'
+    Dreammix: 'dreammix',
+    FantasyRealism: 'fantasy_realism',
+    CyberRealism: 'cyber_realism',
+    IllustriousRealism: 'illustrious_realism'
 };
 function instanceOfArtStyle(value) {
     for (const key in exports.ArtStyle) {

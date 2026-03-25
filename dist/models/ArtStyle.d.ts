@@ -21,6 +21,9 @@ export declare const ArtStyle: {
     readonly Truelook: "truelook";
     readonly Velvetheat: "velvetheat";
     readonly Dreammix: "dreammix";
+    readonly FantasyRealism: "fantasy_realism";
+    readonly CyberRealism: "cyber_realism";
+    readonly IllustriousRealism: "illustrious_realism";
 };
 export type ArtStyle = typeof ArtStyle[keyof typeof ArtStyle];
 export declare function instanceOfArtStyle(value: any): boolean;
