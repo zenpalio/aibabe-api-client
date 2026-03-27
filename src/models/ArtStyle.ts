@@ -25,9 +25,10 @@ export const ArtStyle = {
     Truelook: 'truelook',
     Velvetheat: 'velvetheat',
     Dreammix: 'dreammix',
-    FantasyRealism: 'fantasy_realism',
-    CyberRealism: 'cyber_realism',
-    IllustriousRealism: 'illustrious_realism'
+    DarkFantasy: 'dark_fantasy',
+    Aphrodite: 'aphrodite',
+    Anthro: 'anthro',
+    Furry: 'furry'
 } as const;
 export type ArtStyle = typeof ArtStyle[keyof typeof ArtStyle];
 
