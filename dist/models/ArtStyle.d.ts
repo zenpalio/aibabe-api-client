@@ -21,7 +21,7 @@ export declare const ArtStyle: {
     readonly Truelook: "truelook";
     readonly Velvetheat: "velvetheat";
     readonly Dreammix: "dreammix";
-    readonly DarkFantasy: "dark_fantasy";
+    readonly Darkfantasy: "darkfantasy";
     readonly Aphrodite: "aphrodite";
     readonly Anthro: "anthro";
     readonly Furry: "furry";

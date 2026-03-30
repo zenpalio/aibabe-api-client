@@ -25,7 +25,7 @@ export const ArtStyle = {
     Truelook: 'truelook',
     Velvetheat: 'velvetheat',
     Dreammix: 'dreammix',
-    DarkFantasy: 'dark_fantasy',
+    Darkfantasy: 'darkfantasy',
     Aphrodite: 'aphrodite',
     Anthro: 'anthro',
     Furry: 'furry'
