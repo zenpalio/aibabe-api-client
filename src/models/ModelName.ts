@@ -26,7 +26,11 @@ export const ModelName = {
     UberRealisticPornMergePonyxlPonyxlHybridV1: 'uberRealisticPornMergePonyxl_ponyxlHybridV1',
     BabesByStableYogiPonyV3: 'babesByStableYogi_ponyV3',
     WallnutIllustrious: 'wallnut_illustrious',
-    IllustriousByStableYogi: 'illustriousByStableYogi'
+    IllustriousByStableYogi: 'illustriousByStableYogi',
+    IllustriousRealism: 'illustriousRealism',
+    IllustriousDamn: 'illustriousDAMN',
+    CyberRealisticPony: 'cyberRealisticPony',
+    PonyRealism: 'ponyRealism'
 } as const;
 export type ModelName = typeof ModelName[keyof typeof ModelName];
 

@@ -32,7 +32,11 @@ exports.ModelName = {
     UberRealisticPornMergePonyxlPonyxlHybridV1: 'uberRealisticPornMergePonyxl_ponyxlHybridV1',
     BabesByStableYogiPonyV3: 'babesByStableYogi_ponyV3',
     WallnutIllustrious: 'wallnut_illustrious',
-    IllustriousByStableYogi: 'illustriousByStableYogi'
+    IllustriousByStableYogi: 'illustriousByStableYogi',
+    IllustriousRealism: 'illustriousRealism',
+    IllustriousDamn: 'illustriousDAMN',
+    CyberRealisticPony: 'cyberRealisticPony',
+    PonyRealism: 'ponyRealism'
 };
 function instanceOfModelName(value) {
     for (const key in exports.ModelName) {

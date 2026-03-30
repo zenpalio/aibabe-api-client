@@ -22,6 +22,7 @@ export const LLM = {
     Llama: 'llama',
     Lemonade: 'lemonade',
     Qwen3: 'qwen3',
+    Qwen3Premium: 'qwen3_premium',
     LemonadePremium: 'lemonade_premium',
     GemmaPremium: 'gemma_premium'
 } as const;

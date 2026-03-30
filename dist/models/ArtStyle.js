@@ -30,7 +30,11 @@ exports.ArtStyle = {
     Cartoon: 'cartoon',
     Truelook: 'truelook',
     Velvetheat: 'velvetheat',
-    Dreammix: 'dreammix'
+    Dreammix: 'dreammix',
+    Darkfantasy: 'darkfantasy',
+    Aphrodite: 'aphrodite',
+    Anthro: 'anthro',
+    Furry: 'furry'
 };
 function instanceOfArtStyle(value) {
     for (const key in exports.ArtStyle) {

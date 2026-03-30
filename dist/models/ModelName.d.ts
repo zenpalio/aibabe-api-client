@@ -23,6 +23,10 @@ export declare const ModelName: {
     readonly BabesByStableYogiPonyV3: "babesByStableYogi_ponyV3";
     readonly WallnutIllustrious: "wallnut_illustrious";
     readonly IllustriousByStableYogi: "illustriousByStableYogi";
+    readonly IllustriousRealism: "illustriousRealism";
+    readonly IllustriousDamn: "illustriousDAMN";
+    readonly CyberRealisticPony: "cyberRealisticPony";
+    readonly PonyRealism: "ponyRealism";
 };
 export type ModelName = typeof ModelName[keyof typeof ModelName];
 export declare function instanceOfModelName(value: any): boolean;
