@@ -16,6 +16,7 @@
 export declare const FeatureFlagName: {
     readonly GrokModeration: "GROK_MODERATION";
     readonly MarketingBanners: "MARKETING_BANNERS";
+    readonly Qwen3: "QWEN3";
 };
 export type FeatureFlagName = typeof FeatureFlagName[keyof typeof FeatureFlagName];
 export declare function instanceOfFeatureFlagName(value: any): boolean;
