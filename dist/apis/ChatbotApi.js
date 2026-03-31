@@ -313,6 +313,9 @@ class ChatbotApi extends runtime.BaseAPI {
         if (requestParameters['paginationToken'] != null) {
             queryParameters['pagination_token'] = requestParameters['paginationToken'];
         }
+        if (requestParameters['freeTextQuery'] != null) {
+            queryParameters['free_text_query'] = requestParameters['freeTextQuery'];
+        }
         if (requestParameters['type'] != null) {
             queryParameters['type'] = requestParameters['type'];
         }

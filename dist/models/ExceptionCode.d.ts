@@ -99,6 +99,8 @@ export declare const ExceptionCode: {
     readonly ServerNotFound: "server_not_found";
     readonly WebsocketServerNotAvailable: "websocket_server_not_available";
     readonly LlmModelNotAvailable: "llm_model_not_available";
+    readonly OpensearchDisabled: "opensearch_disabled";
+    readonly OpensearchUnsupportedSort: "opensearch_unsupported_sort";
     readonly EmailSendFailed: "email_send_failed";
     readonly InvalidParams: "invalid_params";
     readonly ModerationFlagged: "moderation_flagged";

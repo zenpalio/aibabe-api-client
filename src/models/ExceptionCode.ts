@@ -103,6 +103,8 @@ export const ExceptionCode = {
     ServerNotFound: 'server_not_found',
     WebsocketServerNotAvailable: 'websocket_server_not_available',
     LlmModelNotAvailable: 'llm_model_not_available',
+    OpensearchDisabled: 'opensearch_disabled',
+    OpensearchUnsupportedSort: 'opensearch_unsupported_sort',
     EmailSendFailed: 'email_send_failed',
     InvalidParams: 'invalid_params',
     ModerationFlagged: 'moderation_flagged',
