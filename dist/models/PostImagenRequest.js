@@ -18,9 +18,7 @@ exports.PostImagenRequestFromJSON = PostImagenRequestFromJSON;
 exports.PostImagenRequestFromJSONTyped = PostImagenRequestFromJSONTyped;
 exports.PostImagenRequestToJSON = PostImagenRequestToJSON;
 exports.PostImagenRequestToJSONTyped = PostImagenRequestToJSONTyped;
-const PhotoStyle_1 = require("./PhotoStyle");
 const LoraName_1 = require("./LoraName");
-const ImageGenerationQuality_1 = require("./ImageGenerationQuality");
 /**
  * Check if a given object implements the PostImagenRequest interface.
  */
@@ -32,8 +30,6 @@ function instanceOfPostImagenRequest(value) {
     if (!('requestId' in value) || value['requestId'] === undefined)
         return false;
     if (!('numberOfImages' in value) || value['numberOfImages'] === undefined)
-        return false;
-    if (!('style' in value) || value['style'] === undefined)
         return false;
     return true;
 }
@@ -50,8 +46,6 @@ function PostImagenRequestFromJSONTyped(json, ignoreDiscriminator) {
         'clientId': json['client_id'],
         'requestId': json['request_id'],
         'numberOfImages': json['number_of_images'],
-        'style': (0, PhotoStyle_1.PhotoStyleFromJSON)(json['style']),
-        'quality': json['quality'] == null ? undefined : (0, ImageGenerationQuality_1.ImageGenerationQualityFromJSON)(json['quality']),
         'loras': json['loras'] == null ? undefined : (json['loras'].map(LoraName_1.LoraNameFromJSON)),
     };
 }
@@ -68,8 +62,6 @@ function PostImagenRequestToJSONTyped(value, ignoreDiscriminator = false) {
         'client_id': value['clientId'],
         'request_id': value['requestId'],
         'number_of_images': value['numberOfImages'],
-        'style': (0, PhotoStyle_1.PhotoStyleToJSON)(value['style']),
-        'quality': (0, ImageGenerationQuality_1.ImageGenerationQualityToJSON)(value['quality']),
         'loras': value['loras'] == null ? undefined : (value['loras'].map(LoraName_1.LoraNameToJSON)),
     };
 }

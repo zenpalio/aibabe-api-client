@@ -10,10 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { GetGeneratedImage, GetImageGenerationTagsResponse, ImageParameters, LoraName, PostImagenRequest, PostImagenResponse } from '../models/index';
-export interface ExtractPngInfoImagenPngInfoPostRequest {
-    image: Blob;
-}
+import type { GetGeneratedImage, GetImageGenerationTagsResponse, LoraName, PostImagenRequest, PostImagenResponse } from '../models/index';
 export interface GenerationTagsImagenImageIdTagsGetRequest {
     imageId: string;
 }
@@ -27,18 +24,20 @@ export interface UserGenerateImageImagenGenerateChatbotIdPostRequest {
     chatbotId: string;
     postImagenRequest: PostImagenRequest;
 }
+export interface UserInpaintImageImagenInpaintChatbotIdPostRequest {
+    chatbotId: string;
+    originalImageId: string;
+    inpaintingMask: Blob;
+    query: string;
+    clientId: string;
+    requestId: string;
+    numberOfImages: number;
+    loras?: Array<LoraName> | null;
+}
 /**
  *
  */
 export declare class ImageApi extends runtime.BaseAPI {
-    /**
-     * Extract Png Info
-     */
-    extractPngInfoImagenPngInfoPostRaw(requestParameters: ExtractPngInfoImagenPngInfoPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ImageParameters>>;
-    /**
-     * Extract Png Info
-     */
-    extractPngInfoImagenPngInfoPost(requestParameters: ExtractPngInfoImagenPngInfoPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ImageParameters>;
     /**
      * Generation Tags
      */
@@ -71,5 +70,13 @@ export declare class ImageApi extends runtime.BaseAPI {
      * User Generate Image
      */
     userGenerateImageImagenGenerateChatbotIdPost(requestParameters: UserGenerateImageImagenGenerateChatbotIdPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PostImagenResponse>;
+    /**
+     * User Inpaint Image
+     */
+    userInpaintImageImagenInpaintChatbotIdPostRaw(requestParameters: UserInpaintImageImagenInpaintChatbotIdPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostImagenResponse>>;
+    /**
+     * User Inpaint Image
+     */
+    userInpaintImageImagenInpaintChatbotIdPost(requestParameters: UserInpaintImageImagenInpaintChatbotIdPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PostImagenResponse>;
 }
 //# sourceMappingURL=ImageApi.d.ts.map

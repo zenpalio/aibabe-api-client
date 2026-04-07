@@ -9,9 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { PhotoStyle } from './PhotoStyle';
 import type { LoraName } from './LoraName';
-import type { ImageGenerationQuality } from './ImageGenerationQuality';
 /**
  *
  * @export
@@ -48,18 +46,6 @@ export interface PostImagenRequest {
      * @memberof PostImagenRequest
      */
     numberOfImages: number;
-    /**
-     *
-     * @type {PhotoStyle}
-     * @memberof PostImagenRequest
-     */
-    style: PhotoStyle;
-    /**
-     *
-     * @type {ImageGenerationQuality}
-     * @memberof PostImagenRequest
-     */
-    quality?: ImageGenerationQuality;
     /**
      *
      * @type {Array<LoraName>}
