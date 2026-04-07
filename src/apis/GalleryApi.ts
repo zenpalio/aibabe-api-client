@@ -40,6 +40,7 @@ export interface GetGalleryGalleryGetRequest {
     type?: PostType;
     limit?: number;
     chatbotId?: string | null;
+    freeTextSearch?: string | null;
 }
 
 /**
@@ -102,6 +103,10 @@ export class GalleryApi extends runtime.BaseAPI {
 
         if (requestParameters['chatbotId'] != null) {
             queryParameters['chatbot_id'] = requestParameters['chatbotId'];
+        }
+
+        if (requestParameters['freeTextSearch'] != null) {
+            queryParameters['free_text_search'] = requestParameters['freeTextSearch'];
         }
 
         const headerParameters: runtime.HTTPHeaders = {};

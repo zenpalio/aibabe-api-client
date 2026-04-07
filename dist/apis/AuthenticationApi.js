@@ -232,32 +232,6 @@ class AuthenticationApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * Logout
-     */
-    async logoutAuthLogoutPostRaw(initOverrides) {
-        const queryParameters = {};
-        const headerParameters = {};
-        const response = await this.request({
-            path: `/auth/logout`,
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-        if (this.isJsonMime(response.headers.get('content-type'))) {
-            return new runtime.JSONApiResponse(response);
-        }
-        else {
-            return new runtime.TextApiResponse(response);
-        }
-    }
-    /**
-     * Logout
-     */
-    async logoutAuthLogoutPost(initOverrides) {
-        const response = await this.logoutAuthLogoutPostRaw(initOverrides);
-        return await response.value();
-    }
-    /**
      * Oauth Login
      */
     async oauthLoginAuthOauthAuthorizationGetRaw(requestParameters, initOverrides) {

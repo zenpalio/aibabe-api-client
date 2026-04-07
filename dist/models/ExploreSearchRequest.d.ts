@@ -22,6 +22,12 @@ import type { DateRangeFilter } from './DateRangeFilter';
 export interface ExploreSearchRequest {
     /**
      *
+     * @type {string}
+     * @memberof ExploreSearchRequest
+     */
+    freeTextSearch?: string | null;
+    /**
+     *
      * @type {SortFilter}
      * @memberof ExploreSearchRequest
      */

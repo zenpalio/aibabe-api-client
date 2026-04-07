@@ -110,6 +110,7 @@ export interface GetCustomChatbotChatbotCustomChatbotIdGetRequest {
 
 export interface ListChatbotGetRequest {
     paginationToken?: string | null;
+    freeTextQuery?: string | null;
     type?: ChatbotType | null;
     limit?: number;
     sort?: SortFilter;
@@ -490,6 +491,10 @@ export class ChatbotApi extends runtime.BaseAPI {
 
         if (requestParameters['paginationToken'] != null) {
             queryParameters['pagination_token'] = requestParameters['paginationToken'];
+        }
+
+        if (requestParameters['freeTextQuery'] != null) {
+            queryParameters['free_text_query'] = requestParameters['freeTextQuery'];
         }
 
         if (requestParameters['type'] != null) {

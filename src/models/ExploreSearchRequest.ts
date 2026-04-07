@@ -57,6 +57,12 @@ import {
 export interface ExploreSearchRequest {
     /**
      * 
+     * @type {string}
+     * @memberof ExploreSearchRequest
+     */
+    freeTextSearch?: string | null;
+    /**
+     * 
      * @type {SortFilter}
      * @memberof ExploreSearchRequest
      */
@@ -130,6 +136,7 @@ export function ExploreSearchRequestFromJSONTyped(json: any, ignoreDiscriminator
     }
     return {
         
+        'freeTextSearch': json['free_text_search'] == null ? undefined : json['free_text_search'],
         'sortFilter': json['sort_filter'] == null ? undefined : SortFilterFromJSON(json['sort_filter']),
         'limit': json['limit'] == null ? undefined : json['limit'],
         'paginationToken': json['pagination_token'] == null ? undefined : json['pagination_token'],
@@ -153,6 +160,7 @@ export function ExploreSearchRequestFromJSONTyped(json: any, ignoreDiscriminator
 
     return {
         
+        'free_text_search': value['freeTextSearch'],
         'sort_filter': SortFilterToJSON(value['sortFilter']),
         'limit': value['limit'],
         'pagination_token': value['paginationToken'],
