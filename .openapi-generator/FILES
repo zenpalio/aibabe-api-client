@@ -97,10 +97,8 @@ src/models/HairColor.ts
 src/models/HairStyle.ts
 src/models/Hobby.ts
 src/models/ImageContent.ts
-src/models/ImageGenerationQuality.ts
 src/models/ImageGenerationSource.ts
 src/models/ImageGenerationStatus.ts
-src/models/ImageParameters.ts
 src/models/ImageSendingMode.ts
 src/models/ImageToVideoFromChatPayload.ts
 src/models/ImageToVideoPayload.ts
@@ -132,7 +130,6 @@ src/models/PatchPostTitleRequest.ts
 src/models/PatchUserRequest.ts
 src/models/PaymentProviderType.ts
 src/models/Personality.ts
-src/models/PhotoStyle.ts
 src/models/PingRequest.ts
 src/models/PostAcceptOfferRequest.ts
 src/models/PostAcceptOfferResponse.ts
