@@ -217,6 +217,9 @@ class ImageApi extends runtime.BaseAPI {
         if (requestParameters['loras'] != null) {
             formParams.append('loras', requestParameters['loras'].join(runtime.COLLECTION_FORMATS["csv"]));
         }
+        if (requestParameters['denoisingStrength'] != null) {
+            formParams.append('denoising_strength', requestParameters['denoisingStrength']);
+        }
         const response = await this.request({
             path: `/imagen/inpaint/{chatbot_id}`.replace(`{${"chatbot_id"}}`, encodeURIComponent(String(requestParameters['chatbotId']))),
             method: 'POST',

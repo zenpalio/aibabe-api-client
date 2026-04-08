@@ -33,6 +33,7 @@ export interface UserInpaintImageImagenInpaintChatbotIdPostRequest {
     requestId: string;
     numberOfImages: number;
     loras?: Array<LoraName> | null;
+    denoisingStrength?: number;
 }
 /**
  *

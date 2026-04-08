@@ -63,6 +63,7 @@ export interface UserInpaintImageImagenInpaintChatbotIdPostRequest {
     requestId: string;
     numberOfImages: number;
     loras?: Array<LoraName> | null;
+    denoisingStrength?: number;
 }
 
 /**
@@ -311,6 +312,10 @@ export class ImageApi extends runtime.BaseAPI {
 
         if (requestParameters['loras'] != null) {
             formParams.append('loras', requestParameters['loras']!.join(runtime.COLLECTION_FORMATS["csv"]));
+        }
+
+        if (requestParameters['denoisingStrength'] != null) {
+            formParams.append('denoising_strength', requestParameters['denoisingStrength'] as any);
         }
 
         const response = await this.request({
