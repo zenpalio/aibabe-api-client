@@ -48,6 +48,12 @@ export interface PostImagenRequest {
     numberOfImages: number;
     /**
      *
+     * @type {number}
+     * @memberof PostImagenRequest
+     */
+    denoisingStrength?: number;
+    /**
+     *
      * @type {Array<LoraName>}
      * @memberof PostImagenRequest
      */

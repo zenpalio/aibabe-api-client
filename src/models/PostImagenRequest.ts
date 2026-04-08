@@ -59,6 +59,12 @@ export interface PostImagenRequest {
     numberOfImages: number;
     /**
      * 
+     * @type {number}
+     * @memberof PostImagenRequest
+     */
+    denoisingStrength?: number;
+    /**
+     * 
      * @type {Array<LoraName>}
      * @memberof PostImagenRequest
      */
@@ -91,6 +97,7 @@ export function PostImagenRequestFromJSONTyped(json: any, ignoreDiscriminator: b
         'clientId': json['client_id'],
         'requestId': json['request_id'],
         'numberOfImages': json['number_of_images'],
+        'denoisingStrength': json['denoising_strength'] == null ? undefined : json['denoising_strength'],
         'loras': json['loras'] == null ? undefined : ((json['loras'] as Array<any>).map(LoraNameFromJSON)),
     };
 }
@@ -111,6 +118,7 @@ export function PostImagenRequestFromJSONTyped(json: any, ignoreDiscriminator: b
         'client_id': value['clientId'],
         'request_id': value['requestId'],
         'number_of_images': value['numberOfImages'],
+        'denoising_strength': value['denoisingStrength'],
         'loras': value['loras'] == null ? undefined : ((value['loras'] as Array<any>).map(LoraNameToJSON)),
     };
 }
