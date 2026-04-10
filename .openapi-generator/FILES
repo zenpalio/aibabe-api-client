@@ -84,6 +84,7 @@ src/models/GetGalleryResponse.ts
 src/models/GetGalleryResponseItemsInner.ts
 src/models/GetGeneratedImage.ts
 src/models/GetImageGenerationTagsResponse.ts
+src/models/GetInstancesDBVastAiListResponse.ts
 src/models/GetMemoryResponse.ts
 src/models/GetPostsResponse.ts
 src/models/GetPricesResponse.ts
@@ -106,6 +107,7 @@ src/models/ImageToVideoRecommendationPayload.ts
 src/models/InstanceDetails.ts
 src/models/InstanceProvider.ts
 src/models/InstanceType.ts
+src/models/InstanceTypeUrlResponse.ts
 src/models/LLM.ts
 src/models/Language.ts
 src/models/LikePostNotification.ts
@@ -153,6 +155,7 @@ src/models/PostDonateResponse.ts
 src/models/PostFollowUserRequest.ts
 src/models/PostImagenRequest.ts
 src/models/PostImagenResponse.ts
+src/models/PostInstancesDBVastAiListResponse.ts
 src/models/PostLogin.ts
 src/models/PostPasswordReset.ts
 src/models/PostProfilePictureResponse.ts
