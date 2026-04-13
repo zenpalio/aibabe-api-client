@@ -86,6 +86,11 @@ export declare const ExceptionCode: {
     readonly PostDeleteNotAuthorized: "post_delete_not_authorized";
     readonly PostUpdateNotAuthorized: "post_update_not_authorized";
     readonly PostReportContentMissing: "post_report_content_missing";
+    readonly StoryNotFound: "story_not_found";
+    readonly StoryUpdateNotAuthorized: "story_update_not_authorized";
+    readonly EpisodeNotFound: "episode_not_found";
+    readonly EpisodeDeleteNotAuthorized: "episode_delete_not_authorized";
+    readonly EpisodeUpdateNotAuthorized: "episode_update_not_authorized";
     readonly ShareContentTypeUnsupported: "share_content_type_unsupported";
     readonly ShareVideoNonOwnedForbidden: "share_video_non_owned_forbidden";
     readonly ShareImageNonOwnedForbidden: "share_image_non_owned_forbidden";
