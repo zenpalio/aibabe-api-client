@@ -51,7 +51,7 @@ export interface GeneratedImages {
      * @type {string}
      * @memberof GeneratedImages
      */
-    chatbotId: string;
+    chatbotId: string | null;
     /**
      * 
      * @type {string}

@@ -54,6 +54,32 @@ const index_1 = require("../models/index");
  */
 class ImageApi extends runtime.BaseAPI {
     /**
+     * Generate Scene
+     */
+    async generateSceneImagenGenerateScenePostRaw(requestParameters, initOverrides) {
+        if (requestParameters['postGenerateSceneRequest'] == null) {
+            throw new runtime.RequiredError('postGenerateSceneRequest', 'Required parameter "postGenerateSceneRequest" was null or undefined when calling generateSceneImagenGenerateScenePost().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        const response = await this.request({
+            path: `/imagen/generate-scene`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.PostGenerateSceneRequestToJSON)(requestParameters['postGenerateSceneRequest']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.PostImagenResponseFromJSON)(jsonValue));
+    }
+    /**
+     * Generate Scene
+     */
+    async generateSceneImagenGenerateScenePost(requestParameters, initOverrides) {
+        const response = await this.generateSceneImagenGenerateScenePostRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * Generation Tags
      */
     async generationTagsImagenImageIdTagsGetRaw(requestParameters, initOverrides) {
@@ -116,7 +142,7 @@ class ImageApi extends runtime.BaseAPI {
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetLorasResponseFromJSON)(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(index_1.LoraNameFromJSON));
     }
     /**
      * Get Loras
@@ -132,8 +158,8 @@ class ImageApi extends runtime.BaseAPI {
         if (requestParameters['chatbotId'] == null) {
             throw new runtime.RequiredError('chatbotId', 'Required parameter "chatbotId" was null or undefined when calling userGenerateImageImagenGenerateChatbotIdPost().');
         }
-        if (requestParameters['postImagenRequest'] == null) {
-            throw new runtime.RequiredError('postImagenRequest', 'Required parameter "postImagenRequest" was null or undefined when calling userGenerateImageImagenGenerateChatbotIdPost().');
+        if (requestParameters['postGenerateImageRequest'] == null) {
+            throw new runtime.RequiredError('postGenerateImageRequest', 'Required parameter "postGenerateImageRequest" was null or undefined when calling userGenerateImageImagenGenerateChatbotIdPost().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -143,7 +169,7 @@ class ImageApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: (0, index_1.PostImagenRequestToJSON)(requestParameters['postImagenRequest']),
+            body: (0, index_1.PostGenerateImageRequestToJSON)(requestParameters['postGenerateImageRequest']),
         }, initOverrides);
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.PostImagenResponseFromJSON)(jsonValue));
     }
@@ -179,6 +205,9 @@ class ImageApi extends runtime.BaseAPI {
         if (requestParameters['numberOfImages'] == null) {
             throw new runtime.RequiredError('numberOfImages', 'Required parameter "numberOfImages" was null or undefined when calling userInpaintImageImagenInpaintChatbotIdPost().');
         }
+        if (requestParameters['artStyle'] == null) {
+            throw new runtime.RequiredError('artStyle', 'Required parameter "artStyle" was null or undefined when calling userInpaintImageImagenInpaintChatbotIdPost().');
+        }
         const queryParameters = {};
         const headerParameters = {};
         const consumes = [
@@ -213,6 +242,9 @@ class ImageApi extends runtime.BaseAPI {
         }
         if (requestParameters['numberOfImages'] != null) {
             formParams.append('number_of_images', requestParameters['numberOfImages']);
+        }
+        if (requestParameters['artStyle'] != null) {
+            formParams.append('art_style', requestParameters['artStyle']);
         }
         if (requestParameters['loras'] != null) {
             formParams.append('loras', requestParameters['loras'].join(runtime.COLLECTION_FORMATS["csv"]));

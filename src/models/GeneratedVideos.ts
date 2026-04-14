@@ -51,7 +51,7 @@ export interface GeneratedVideos {
      * @type {string}
      * @memberof GeneratedVideos
      */
-    chatbotId: string;
+    chatbotId: string | null;
     /**
      * 
      * @type {string}

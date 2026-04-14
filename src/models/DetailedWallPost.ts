@@ -72,7 +72,7 @@ export interface DetailedWallPost {
      * @type {string}
      * @memberof DetailedWallPost
      */
-    chatbotId: string;
+    chatbotId: string | null;
     /**
      * 
      * @type {string}

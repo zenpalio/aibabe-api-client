@@ -85,7 +85,6 @@ src/models/GetGalleryResponseItemsInner.ts
 src/models/GetGeneratedImage.ts
 src/models/GetImageGenerationTagsResponse.ts
 src/models/GetInstancesDBVastAiListResponse.ts
-src/models/GetLorasResponse.ts
 src/models/GetMemoryResponse.ts
 src/models/GetPostsResponse.ts
 src/models/GetPricesResponse.ts
@@ -101,10 +100,6 @@ src/models/Hobby.ts
 src/models/ImageContent.ts
 src/models/ImageGenerationSource.ts
 src/models/ImageGenerationStatus.ts
-src/models/ImageMod.ts
-src/models/ImageModCategory.ts
-src/models/ImagePreset.ts
-src/models/ImagePresetCategory.ts
 src/models/ImageSendingMode.ts
 src/models/ImageToVideoFromChatPayload.ts
 src/models/ImageToVideoPayload.ts
@@ -158,7 +153,8 @@ src/models/PostDetailsWithDate.ts
 src/models/PostDonateRequest.ts
 src/models/PostDonateResponse.ts
 src/models/PostFollowUserRequest.ts
-src/models/PostImagenRequest.ts
+src/models/PostGenerateImageRequest.ts
+src/models/PostGenerateSceneRequest.ts
 src/models/PostImagenResponse.ts
 src/models/PostInstancesDBVastAiListResponse.ts
 src/models/PostLogin.ts
@@ -226,10 +222,6 @@ src/models/VideoContent.ts
 src/models/VideoFromChatResponse.ts
 src/models/VideoGenerationStatus.ts
 src/models/VideoLoraName.ts
-src/models/VideoMod.ts
-src/models/VideoModCategory.ts
-src/models/VideoPreset.ts
-src/models/VideoPresetCategory.ts
 src/models/VisualType.ts
 src/models/WallPost.ts
 src/models/index.ts
