@@ -18,6 +18,7 @@ import type {
   ArtStyle,
   GetGeneratedImage,
   GetImageGenerationTagsResponse,
+  GetLorasResponse,
   HTTPValidationError,
   LoraName,
   PostGenerateImageRequest,
@@ -31,6 +32,8 @@ import {
     GetGeneratedImageToJSON,
     GetImageGenerationTagsResponseFromJSON,
     GetImageGenerationTagsResponseToJSON,
+    GetLorasResponseFromJSON,
+    GetLorasResponseToJSON,
     HTTPValidationErrorFromJSON,
     HTTPValidationErrorToJSON,
     LoraNameFromJSON,
@@ -187,7 +190,7 @@ export class ImageApi extends runtime.BaseAPI {
     /**
      * Get Loras
      */
-    async getLorasImagenChatbotIdLorasGetRaw(requestParameters: GetLorasImagenChatbotIdLorasGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<LoraName>>> {
+    async getLorasImagenChatbotIdLorasGetRaw(requestParameters: GetLorasImagenChatbotIdLorasGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetLorasResponse>> {
         if (requestParameters['chatbotId'] == null) {
             throw new runtime.RequiredError(
                 'chatbotId',
@@ -206,13 +209,13 @@ export class ImageApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(LoraNameFromJSON));
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetLorasResponseFromJSON(jsonValue));
     }
 
     /**
      * Get Loras
      */
-    async getLorasImagenChatbotIdLorasGet(requestParameters: GetLorasImagenChatbotIdLorasGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<LoraName>> {
+    async getLorasImagenChatbotIdLorasGet(requestParameters: GetLorasImagenChatbotIdLorasGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetLorasResponse> {
         const response = await this.getLorasImagenChatbotIdLorasGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
