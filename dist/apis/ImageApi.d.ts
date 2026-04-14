@@ -10,7 +10,10 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { GetGeneratedImage, GetImageGenerationTagsResponse, LoraName, PostImagenRequest, PostImagenResponse } from '../models/index';
+import type { ArtStyle, GetGeneratedImage, GetImageGenerationTagsResponse, LoraName, PostGenerateImageRequest, PostGenerateSceneRequest, PostImagenResponse } from '../models/index';
+export interface GenerateSceneImagenGenerateScenePostRequest {
+    postGenerateSceneRequest: PostGenerateSceneRequest;
+}
 export interface GenerationTagsImagenImageIdTagsGetRequest {
     imageId: string;
 }
@@ -22,7 +25,7 @@ export interface GetLorasImagenChatbotIdLorasGetRequest {
 }
 export interface UserGenerateImageImagenGenerateChatbotIdPostRequest {
     chatbotId: string;
-    postImagenRequest: PostImagenRequest;
+    postGenerateImageRequest: PostGenerateImageRequest;
 }
 export interface UserInpaintImageImagenInpaintChatbotIdPostRequest {
     chatbotId: string;
@@ -32,6 +35,7 @@ export interface UserInpaintImageImagenInpaintChatbotIdPostRequest {
     clientId: string;
     requestId: string;
     numberOfImages: number;
+    artStyle: ArtStyle;
     loras?: Array<LoraName> | null;
     denoisingStrength?: number;
 }
@@ -39,6 +43,14 @@ export interface UserInpaintImageImagenInpaintChatbotIdPostRequest {
  *
  */
 export declare class ImageApi extends runtime.BaseAPI {
+    /**
+     * Generate Scene
+     */
+    generateSceneImagenGenerateScenePostRaw(requestParameters: GenerateSceneImagenGenerateScenePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostImagenResponse>>;
+    /**
+     * Generate Scene
+     */
+    generateSceneImagenGenerateScenePost(requestParameters: GenerateSceneImagenGenerateScenePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PostImagenResponse>;
     /**
      * Generation Tags
      */

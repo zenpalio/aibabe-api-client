@@ -153,7 +153,8 @@ src/models/PostDetailsWithDate.ts
 src/models/PostDonateRequest.ts
 src/models/PostDonateResponse.ts
 src/models/PostFollowUserRequest.ts
-src/models/PostImagenRequest.ts
+src/models/PostGenerateImageRequest.ts
+src/models/PostGenerateSceneRequest.ts
 src/models/PostImagenResponse.ts
 src/models/PostInstancesDBVastAiListResponse.ts
 src/models/PostLogin.ts
