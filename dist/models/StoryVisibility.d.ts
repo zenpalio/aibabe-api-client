@@ -16,7 +16,6 @@
 export declare const StoryVisibility: {
     readonly Private: "private";
     readonly Public: "public";
-    readonly Profile: "profile";
 };
 export type StoryVisibility = typeof StoryVisibility[keyof typeof StoryVisibility];
 export declare function instanceOfStoryVisibility(value: any): boolean;

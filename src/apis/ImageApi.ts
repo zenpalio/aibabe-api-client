@@ -15,27 +15,40 @@
 
 import * as runtime from '../runtime';
 import type {
+  ArtStyle,
   GetGeneratedImage,
   GetImageGenerationTagsResponse,
+  GetLorasResponse,
   HTTPValidationError,
   LoraName,
-  PostImagenRequest,
+  PostGenerateImageRequest,
+  PostGenerateSceneRequest,
   PostImagenResponse,
 } from '../models/index';
 import {
+    ArtStyleFromJSON,
+    ArtStyleToJSON,
     GetGeneratedImageFromJSON,
     GetGeneratedImageToJSON,
     GetImageGenerationTagsResponseFromJSON,
     GetImageGenerationTagsResponseToJSON,
+    GetLorasResponseFromJSON,
+    GetLorasResponseToJSON,
     HTTPValidationErrorFromJSON,
     HTTPValidationErrorToJSON,
     LoraNameFromJSON,
     LoraNameToJSON,
-    PostImagenRequestFromJSON,
-    PostImagenRequestToJSON,
+    PostGenerateImageRequestFromJSON,
+    PostGenerateImageRequestToJSON,
+    PostGenerateSceneRequestFromJSON,
+    PostGenerateSceneRequestToJSON,
     PostImagenResponseFromJSON,
     PostImagenResponseToJSON,
 } from '../models/index';
+
+export interface GenerateSceneImagenGenerateScenePostRequest {
+    postGenerateSceneRequest: PostGenerateSceneRequest;
+}
 
 export interface GenerationTagsImagenImageIdTagsGetRequest {
     imageId: string;
@@ -51,7 +64,7 @@ export interface GetLorasImagenChatbotIdLorasGetRequest {
 
 export interface UserGenerateImageImagenGenerateChatbotIdPostRequest {
     chatbotId: string;
-    postImagenRequest: PostImagenRequest;
+    postGenerateImageRequest: PostGenerateImageRequest;
 }
 
 export interface UserInpaintImageImagenInpaintChatbotIdPostRequest {
@@ -62,6 +75,7 @@ export interface UserInpaintImageImagenInpaintChatbotIdPostRequest {
     clientId: string;
     requestId: string;
     numberOfImages: number;
+    artStyle: ArtStyle;
     loras?: Array<LoraName> | null;
     denoisingStrength?: number;
 }
@@ -70,6 +84,42 @@ export interface UserInpaintImageImagenInpaintChatbotIdPostRequest {
  * 
  */
 export class ImageApi extends runtime.BaseAPI {
+
+    /**
+     * Generate Scene
+     */
+    async generateSceneImagenGenerateScenePostRaw(requestParameters: GenerateSceneImagenGenerateScenePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostImagenResponse>> {
+        if (requestParameters['postGenerateSceneRequest'] == null) {
+            throw new runtime.RequiredError(
+                'postGenerateSceneRequest',
+                'Required parameter "postGenerateSceneRequest" was null or undefined when calling generateSceneImagenGenerateScenePost().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        const response = await this.request({
+            path: `/imagen/generate-scene`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: PostGenerateSceneRequestToJSON(requestParameters['postGenerateSceneRequest']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => PostImagenResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Generate Scene
+     */
+    async generateSceneImagenGenerateScenePost(requestParameters: GenerateSceneImagenGenerateScenePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PostImagenResponse> {
+        const response = await this.generateSceneImagenGenerateScenePostRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
 
     /**
      * Generation Tags
@@ -140,7 +190,7 @@ export class ImageApi extends runtime.BaseAPI {
     /**
      * Get Loras
      */
-    async getLorasImagenChatbotIdLorasGetRaw(requestParameters: GetLorasImagenChatbotIdLorasGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<LoraName>>> {
+    async getLorasImagenChatbotIdLorasGetRaw(requestParameters: GetLorasImagenChatbotIdLorasGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetLorasResponse>> {
         if (requestParameters['chatbotId'] == null) {
             throw new runtime.RequiredError(
                 'chatbotId',
@@ -159,13 +209,13 @@ export class ImageApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(LoraNameFromJSON));
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetLorasResponseFromJSON(jsonValue));
     }
 
     /**
      * Get Loras
      */
-    async getLorasImagenChatbotIdLorasGet(requestParameters: GetLorasImagenChatbotIdLorasGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<LoraName>> {
+    async getLorasImagenChatbotIdLorasGet(requestParameters: GetLorasImagenChatbotIdLorasGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetLorasResponse> {
         const response = await this.getLorasImagenChatbotIdLorasGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -181,10 +231,10 @@ export class ImageApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['postImagenRequest'] == null) {
+        if (requestParameters['postGenerateImageRequest'] == null) {
             throw new runtime.RequiredError(
-                'postImagenRequest',
-                'Required parameter "postImagenRequest" was null or undefined when calling userGenerateImageImagenGenerateChatbotIdPost().'
+                'postGenerateImageRequest',
+                'Required parameter "postGenerateImageRequest" was null or undefined when calling userGenerateImageImagenGenerateChatbotIdPost().'
             );
         }
 
@@ -199,7 +249,7 @@ export class ImageApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: PostImagenRequestToJSON(requestParameters['postImagenRequest']),
+            body: PostGenerateImageRequestToJSON(requestParameters['postGenerateImageRequest']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => PostImagenResponseFromJSON(jsonValue));
@@ -266,6 +316,13 @@ export class ImageApi extends runtime.BaseAPI {
             );
         }
 
+        if (requestParameters['artStyle'] == null) {
+            throw new runtime.RequiredError(
+                'artStyle',
+                'Required parameter "artStyle" was null or undefined when calling userInpaintImageImagenInpaintChatbotIdPost().'
+            );
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -308,6 +365,10 @@ export class ImageApi extends runtime.BaseAPI {
 
         if (requestParameters['numberOfImages'] != null) {
             formParams.append('number_of_images', requestParameters['numberOfImages'] as any);
+        }
+
+        if (requestParameters['artStyle'] != null) {
+            formParams.append('art_style', requestParameters['artStyle'] as any);
         }
 
         if (requestParameters['loras'] != null) {

@@ -92,6 +92,8 @@ export const ExceptionCode = {
     PostReportContentMissing: 'post_report_content_missing',
     StoryNotFound: 'story_not_found',
     StoryUpdateNotAuthorized: 'story_update_not_authorized',
+    ActorNotFound: 'actor_not_found',
+    PanelNotFound: 'panel_not_found',
     EpisodeNotFound: 'episode_not_found',
     EpisodeDeleteNotAuthorized: 'episode_delete_not_authorized',
     EpisodeUpdateNotAuthorized: 'episode_update_not_authorized',

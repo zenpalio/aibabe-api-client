@@ -88,6 +88,8 @@ export declare const ExceptionCode: {
     readonly PostReportContentMissing: "post_report_content_missing";
     readonly StoryNotFound: "story_not_found";
     readonly StoryUpdateNotAuthorized: "story_update_not_authorized";
+    readonly ActorNotFound: "actor_not_found";
+    readonly PanelNotFound: "panel_not_found";
     readonly EpisodeNotFound: "episode_not_found";
     readonly EpisodeDeleteNotAuthorized: "episode_delete_not_authorized";
     readonly EpisodeUpdateNotAuthorized: "episode_update_not_authorized";
