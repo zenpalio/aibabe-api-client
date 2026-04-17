@@ -30,6 +30,12 @@ export interface StoryCreatorPanel {
     episodeId: string;
     /**
      *
+     * @type {string}
+     * @memberof StoryCreatorPanel
+     */
+    name: string;
+    /**
+     *
      * @type {EpisodePanelType}
      * @memberof StoryCreatorPanel
      */
@@ -78,10 +84,22 @@ export interface StoryCreatorPanel {
     voice?: string | null;
     /**
      *
+     * @type {boolean}
+     * @memberof StoryCreatorPanel
+     */
+    voiceAutoReplay?: boolean;
+    /**
+     *
      * @type {string}
      * @memberof StoryCreatorPanel
      */
     sfx?: string | null;
+    /**
+     *
+     * @type {boolean}
+     * @memberof StoryCreatorPanel
+     */
+    sfxAutoReplay?: boolean;
     /**
      *
      * @type {number}

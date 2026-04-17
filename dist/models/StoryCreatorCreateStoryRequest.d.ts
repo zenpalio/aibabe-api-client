@@ -10,8 +10,6 @@
  * Do not edit the class manually.
  */
 import type { StoryCreatorCreateEpisodeInput } from './StoryCreatorCreateEpisodeInput';
-import type { StoryVisibility } from './StoryVisibility';
-import type { StoryCreatorCreatePanelInput } from './StoryCreatorCreatePanelInput';
 /**
  *
  * @export
@@ -38,22 +36,10 @@ export interface StoryCreatorCreateStoryRequest {
     coverImage?: string | null;
     /**
      *
-     * @type {StoryVisibility}
-     * @memberof StoryCreatorCreateStoryRequest
-     */
-    visibility?: StoryVisibility;
-    /**
-     *
      * @type {StoryCreatorCreateEpisodeInput}
      * @memberof StoryCreatorCreateStoryRequest
      */
     firstEpisode: StoryCreatorCreateEpisodeInput;
-    /**
-     *
-     * @type {StoryCreatorCreatePanelInput}
-     * @memberof StoryCreatorCreateStoryRequest
-     */
-    firstPanel?: StoryCreatorCreatePanelInput;
     /**
      *
      * @type {string}

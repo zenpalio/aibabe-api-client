@@ -24,143 +24,121 @@ import {
 /**
  * 
  * @export
- * @interface StoryCreatorPanel
+ * @interface StoryCreatorSaveEpisodePanel
  */
-export interface StoryCreatorPanel {
+export interface StoryCreatorSaveEpisodePanel {
     /**
      * 
      * @type {string}
-     * @memberof StoryCreatorPanel
+     * @memberof StoryCreatorSaveEpisodePanel
      */
-    id: string;
+    id?: string | null;
     /**
      * 
      * @type {string}
-     * @memberof StoryCreatorPanel
-     */
-    episodeId: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof StoryCreatorPanel
+     * @memberof StoryCreatorSaveEpisodePanel
      */
     name: string;
     /**
      * 
      * @type {EpisodePanelType}
-     * @memberof StoryCreatorPanel
+     * @memberof StoryCreatorSaveEpisodePanel
      */
     panelType: EpisodePanelType;
     /**
      * 
+     * @type {number}
+     * @memberof StoryCreatorSaveEpisodePanel
+     */
+    panelIndex: number;
+    /**
+     * 
      * @type {string}
-     * @memberof StoryCreatorPanel
+     * @memberof StoryCreatorSaveEpisodePanel
      */
     imageUrl?: string | null;
     /**
      * 
      * @type {string}
-     * @memberof StoryCreatorPanel
+     * @memberof StoryCreatorSaveEpisodePanel
      */
     imagePrompt?: string | null;
     /**
      * 
      * @type {string}
-     * @memberof StoryCreatorPanel
+     * @memberof StoryCreatorSaveEpisodePanel
      */
     videoUrl?: string | null;
     /**
      * 
      * @type {string}
-     * @memberof StoryCreatorPanel
+     * @memberof StoryCreatorSaveEpisodePanel
      */
     videoPrompt?: string | null;
     /**
      * 
      * @type {string}
-     * @memberof StoryCreatorPanel
+     * @memberof StoryCreatorSaveEpisodePanel
      */
     message?: string | null;
     /**
      * 
      * @type {string}
-     * @memberof StoryCreatorPanel
+     * @memberof StoryCreatorSaveEpisodePanel
      */
     messageActorId?: string | null;
     /**
      * 
      * @type {string}
-     * @memberof StoryCreatorPanel
+     * @memberof StoryCreatorSaveEpisodePanel
      */
     voice?: string | null;
     /**
      * 
      * @type {boolean}
-     * @memberof StoryCreatorPanel
+     * @memberof StoryCreatorSaveEpisodePanel
      */
     voiceAutoReplay?: boolean;
     /**
      * 
      * @type {string}
-     * @memberof StoryCreatorPanel
+     * @memberof StoryCreatorSaveEpisodePanel
      */
     sfx?: string | null;
     /**
      * 
      * @type {boolean}
-     * @memberof StoryCreatorPanel
+     * @memberof StoryCreatorSaveEpisodePanel
      */
     sfxAutoReplay?: boolean;
-    /**
-     * 
-     * @type {number}
-     * @memberof StoryCreatorPanel
-     */
-    panelIndex: number;
-    /**
-     * 
-     * @type {Date}
-     * @memberof StoryCreatorPanel
-     */
-    createdAt: Date;
-    /**
-     * 
-     * @type {Date}
-     * @memberof StoryCreatorPanel
-     */
-    updatedAt: Date;
 }
 
 
 
 /**
- * Check if a given object implements the StoryCreatorPanel interface.
+ * Check if a given object implements the StoryCreatorSaveEpisodePanel interface.
  */
-export function instanceOfStoryCreatorPanel(value: object): value is StoryCreatorPanel {
-    if (!('id' in value) || value['id'] === undefined) return false;
-    if (!('episodeId' in value) || value['episodeId'] === undefined) return false;
+export function instanceOfStoryCreatorSaveEpisodePanel(value: object): value is StoryCreatorSaveEpisodePanel {
     if (!('name' in value) || value['name'] === undefined) return false;
     if (!('panelType' in value) || value['panelType'] === undefined) return false;
     if (!('panelIndex' in value) || value['panelIndex'] === undefined) return false;
-    if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
-    if (!('updatedAt' in value) || value['updatedAt'] === undefined) return false;
     return true;
 }
 
-export function StoryCreatorPanelFromJSON(json: any): StoryCreatorPanel {
-    return StoryCreatorPanelFromJSONTyped(json, false);
+export function StoryCreatorSaveEpisodePanelFromJSON(json: any): StoryCreatorSaveEpisodePanel {
+    return StoryCreatorSaveEpisodePanelFromJSONTyped(json, false);
 }
 
-export function StoryCreatorPanelFromJSONTyped(json: any, ignoreDiscriminator: boolean): StoryCreatorPanel {
+export function StoryCreatorSaveEpisodePanelFromJSONTyped(json: any, ignoreDiscriminator: boolean): StoryCreatorSaveEpisodePanel {
     if (json == null) {
         return json;
     }
     return {
         
-        'id': json['id'],
-        'episodeId': json['episode_id'],
+        'id': json['id'] == null ? undefined : json['id'],
         'name': json['name'],
         'panelType': EpisodePanelTypeFromJSON(json['panel_type']),
+        'panelIndex': json['panel_index'],
         'imageUrl': json['image_url'] == null ? undefined : json['image_url'],
         'imagePrompt': json['image_prompt'] == null ? undefined : json['image_prompt'],
         'videoUrl': json['video_url'] == null ? undefined : json['video_url'],
@@ -171,17 +149,14 @@ export function StoryCreatorPanelFromJSONTyped(json: any, ignoreDiscriminator: b
         'voiceAutoReplay': json['voice_auto_replay'] == null ? undefined : json['voice_auto_replay'],
         'sfx': json['sfx'] == null ? undefined : json['sfx'],
         'sfxAutoReplay': json['sfx_auto_replay'] == null ? undefined : json['sfx_auto_replay'],
-        'panelIndex': json['panel_index'],
-        'createdAt': (new Date(json['created_at'])),
-        'updatedAt': (new Date(json['updated_at'])),
     };
 }
 
-  export function StoryCreatorPanelToJSON(json: any): StoryCreatorPanel {
-      return StoryCreatorPanelToJSONTyped(json, false);
+  export function StoryCreatorSaveEpisodePanelToJSON(json: any): StoryCreatorSaveEpisodePanel {
+      return StoryCreatorSaveEpisodePanelToJSONTyped(json, false);
   }
 
-  export function StoryCreatorPanelToJSONTyped(value?: StoryCreatorPanel | null, ignoreDiscriminator: boolean = false): any {
+  export function StoryCreatorSaveEpisodePanelToJSONTyped(value?: StoryCreatorSaveEpisodePanel | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
@@ -189,9 +164,9 @@ export function StoryCreatorPanelFromJSONTyped(json: any, ignoreDiscriminator: b
     return {
         
         'id': value['id'],
-        'episode_id': value['episodeId'],
         'name': value['name'],
         'panel_type': EpisodePanelTypeToJSON(value['panelType']),
+        'panel_index': value['panelIndex'],
         'image_url': value['imageUrl'],
         'image_prompt': value['imagePrompt'],
         'video_url': value['videoUrl'],
@@ -202,9 +177,6 @@ export function StoryCreatorPanelFromJSONTyped(json: any, ignoreDiscriminator: b
         'voice_auto_replay': value['voiceAutoReplay'],
         'sfx': value['sfx'],
         'sfx_auto_replay': value['sfxAutoReplay'],
-        'panel_index': value['panelIndex'],
-        'created_at': ((value['createdAt']).toISOString()),
-        'updated_at': ((value['updatedAt']).toISOString()),
     };
 }
 

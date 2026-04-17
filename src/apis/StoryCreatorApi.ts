@@ -20,18 +20,17 @@ import type {
   StoryCreatorActorResponse,
   StoryCreatorCreateActorRequest,
   StoryCreatorCreateEpisodeRequest,
-  StoryCreatorCreatePanelRequest,
   StoryCreatorCreateStoryRequest,
   StoryCreatorCreateStoryResponse,
   StoryCreatorEpisodeListResponse,
   StoryCreatorEpisodeResponse,
+  StoryCreatorEpisodeWithPanelsResponse,
   StoryCreatorPanelListResponse,
-  StoryCreatorPanelResponse,
+  StoryCreatorSaveEpisodeRequest,
   StoryCreatorStoryListResponse,
   StoryCreatorStoryResponse,
   StoryCreatorUpdateActorRequest,
   StoryCreatorUpdateEpisodeRequest,
-  StoryCreatorUpdatePanelRequest,
   StoryCreatorUpdateStoryRequest,
 } from '../models/index';
 import {
@@ -45,8 +44,6 @@ import {
     StoryCreatorCreateActorRequestToJSON,
     StoryCreatorCreateEpisodeRequestFromJSON,
     StoryCreatorCreateEpisodeRequestToJSON,
-    StoryCreatorCreatePanelRequestFromJSON,
-    StoryCreatorCreatePanelRequestToJSON,
     StoryCreatorCreateStoryRequestFromJSON,
     StoryCreatorCreateStoryRequestToJSON,
     StoryCreatorCreateStoryResponseFromJSON,
@@ -55,10 +52,12 @@ import {
     StoryCreatorEpisodeListResponseToJSON,
     StoryCreatorEpisodeResponseFromJSON,
     StoryCreatorEpisodeResponseToJSON,
+    StoryCreatorEpisodeWithPanelsResponseFromJSON,
+    StoryCreatorEpisodeWithPanelsResponseToJSON,
     StoryCreatorPanelListResponseFromJSON,
     StoryCreatorPanelListResponseToJSON,
-    StoryCreatorPanelResponseFromJSON,
-    StoryCreatorPanelResponseToJSON,
+    StoryCreatorSaveEpisodeRequestFromJSON,
+    StoryCreatorSaveEpisodeRequestToJSON,
     StoryCreatorStoryListResponseFromJSON,
     StoryCreatorStoryListResponseToJSON,
     StoryCreatorStoryResponseFromJSON,
@@ -67,8 +66,6 @@ import {
     StoryCreatorUpdateActorRequestToJSON,
     StoryCreatorUpdateEpisodeRequestFromJSON,
     StoryCreatorUpdateEpisodeRequestToJSON,
-    StoryCreatorUpdatePanelRequestFromJSON,
-    StoryCreatorUpdatePanelRequestToJSON,
     StoryCreatorUpdateStoryRequestFromJSON,
     StoryCreatorUpdateStoryRequestToJSON,
 } from '../models/index';
@@ -83,11 +80,6 @@ export interface CreateEpisodeStoryCreatorStoriesStoryIdEpisodesPostRequest {
     storyCreatorCreateEpisodeRequest: StoryCreatorCreateEpisodeRequest;
 }
 
-export interface CreatePanelStoryCreatorEpisodesEpisodeIdPanelsPostRequest {
-    episodeId: string;
-    storyCreatorCreatePanelRequest: StoryCreatorCreatePanelRequest;
-}
-
 export interface CreateStoryStoryCreatorStoriesPostRequest {
     storyCreatorCreateStoryRequest: StoryCreatorCreateStoryRequest;
 }
@@ -98,10 +90,6 @@ export interface DeleteActorStoryCreatorActorsActorIdDeleteRequest {
 
 export interface DeleteEpisodeStoryCreatorEpisodesEpisodeIdDeleteRequest {
     episodeId: string;
-}
-
-export interface DeletePanelStoryCreatorPanelsPanelIdDeleteRequest {
-    panelId: string;
 }
 
 export interface DeleteStoryStoryCreatorStoriesStoryIdDeleteRequest {
@@ -120,6 +108,11 @@ export interface ListPanelsStoryCreatorEpisodesEpisodeIdPanelsGetRequest {
     episodeId: string;
 }
 
+export interface SaveEpisodeStoryCreatorEpisodesEpisodeIdPutRequest {
+    episodeId: string;
+    storyCreatorSaveEpisodeRequest: StoryCreatorSaveEpisodeRequest;
+}
+
 export interface UpdateActorStoryCreatorActorsActorIdPatchRequest {
     actorId: string;
     storyCreatorUpdateActorRequest: StoryCreatorUpdateActorRequest;
@@ -128,11 +121,6 @@ export interface UpdateActorStoryCreatorActorsActorIdPatchRequest {
 export interface UpdateEpisodeStoryCreatorEpisodesEpisodeIdPatchRequest {
     episodeId: string;
     storyCreatorUpdateEpisodeRequest: StoryCreatorUpdateEpisodeRequest;
-}
-
-export interface UpdatePanelStoryCreatorPanelsPanelIdPatchRequest {
-    panelId: string;
-    storyCreatorUpdatePanelRequest: StoryCreatorUpdatePanelRequest;
 }
 
 export interface UpdateStoryStoryCreatorStoriesStoryIdPatchRequest {
@@ -228,49 +216,6 @@ export class StoryCreatorApi extends runtime.BaseAPI {
      */
     async createEpisodeStoryCreatorStoriesStoryIdEpisodesPost(requestParameters: CreateEpisodeStoryCreatorStoriesStoryIdEpisodesPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StoryCreatorEpisodeResponse> {
         const response = await this.createEpisodeStoryCreatorStoriesStoryIdEpisodesPostRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * Create Panel
-     */
-    async createPanelStoryCreatorEpisodesEpisodeIdPanelsPostRaw(requestParameters: CreatePanelStoryCreatorEpisodesEpisodeIdPanelsPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StoryCreatorPanelResponse>> {
-        if (requestParameters['episodeId'] == null) {
-            throw new runtime.RequiredError(
-                'episodeId',
-                'Required parameter "episodeId" was null or undefined when calling createPanelStoryCreatorEpisodesEpisodeIdPanelsPost().'
-            );
-        }
-
-        if (requestParameters['storyCreatorCreatePanelRequest'] == null) {
-            throw new runtime.RequiredError(
-                'storyCreatorCreatePanelRequest',
-                'Required parameter "storyCreatorCreatePanelRequest" was null or undefined when calling createPanelStoryCreatorEpisodesEpisodeIdPanelsPost().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        const response = await this.request({
-            path: `/story-creator/episodes/{episode_id}/panels`.replace(`{${"episode_id"}}`, encodeURIComponent(String(requestParameters['episodeId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: StoryCreatorCreatePanelRequestToJSON(requestParameters['storyCreatorCreatePanelRequest']),
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => StoryCreatorPanelResponseFromJSON(jsonValue));
-    }
-
-    /**
-     * Create Panel
-     */
-    async createPanelStoryCreatorEpisodesEpisodeIdPanelsPost(requestParameters: CreatePanelStoryCreatorEpisodesEpisodeIdPanelsPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StoryCreatorPanelResponse> {
-        const response = await this.createPanelStoryCreatorEpisodesEpisodeIdPanelsPostRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -372,38 +317,6 @@ export class StoryCreatorApi extends runtime.BaseAPI {
      */
     async deleteEpisodeStoryCreatorEpisodesEpisodeIdDelete(requestParameters: DeleteEpisodeStoryCreatorEpisodesEpisodeIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.deleteEpisodeStoryCreatorEpisodesEpisodeIdDeleteRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     * Delete Panel
-     */
-    async deletePanelStoryCreatorPanelsPanelIdDeleteRaw(requestParameters: DeletePanelStoryCreatorPanelsPanelIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters['panelId'] == null) {
-            throw new runtime.RequiredError(
-                'panelId',
-                'Required parameter "panelId" was null or undefined when calling deletePanelStoryCreatorPanelsPanelIdDelete().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/story-creator/panels/{panel_id}`.replace(`{${"panel_id"}}`, encodeURIComponent(String(requestParameters['panelId']))),
-            method: 'DELETE',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     * Delete Panel
-     */
-    async deletePanelStoryCreatorPanelsPanelIdDelete(requestParameters: DeletePanelStoryCreatorPanelsPanelIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.deletePanelStoryCreatorPanelsPanelIdDeleteRaw(requestParameters, initOverrides);
     }
 
     /**
@@ -564,6 +477,49 @@ export class StoryCreatorApi extends runtime.BaseAPI {
     }
 
     /**
+     * Save Episode
+     */
+    async saveEpisodeStoryCreatorEpisodesEpisodeIdPutRaw(requestParameters: SaveEpisodeStoryCreatorEpisodesEpisodeIdPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StoryCreatorEpisodeWithPanelsResponse>> {
+        if (requestParameters['episodeId'] == null) {
+            throw new runtime.RequiredError(
+                'episodeId',
+                'Required parameter "episodeId" was null or undefined when calling saveEpisodeStoryCreatorEpisodesEpisodeIdPut().'
+            );
+        }
+
+        if (requestParameters['storyCreatorSaveEpisodeRequest'] == null) {
+            throw new runtime.RequiredError(
+                'storyCreatorSaveEpisodeRequest',
+                'Required parameter "storyCreatorSaveEpisodeRequest" was null or undefined when calling saveEpisodeStoryCreatorEpisodesEpisodeIdPut().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        const response = await this.request({
+            path: `/story-creator/episodes/{episode_id}`.replace(`{${"episode_id"}}`, encodeURIComponent(String(requestParameters['episodeId']))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: StoryCreatorSaveEpisodeRequestToJSON(requestParameters['storyCreatorSaveEpisodeRequest']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => StoryCreatorEpisodeWithPanelsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Save Episode
+     */
+    async saveEpisodeStoryCreatorEpisodesEpisodeIdPut(requestParameters: SaveEpisodeStoryCreatorEpisodesEpisodeIdPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StoryCreatorEpisodeWithPanelsResponse> {
+        const response = await this.saveEpisodeStoryCreatorEpisodesEpisodeIdPutRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Update Actor
      */
     async updateActorStoryCreatorActorsActorIdPatchRaw(requestParameters: UpdateActorStoryCreatorActorsActorIdPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StoryCreatorActorResponse>> {
@@ -646,49 +602,6 @@ export class StoryCreatorApi extends runtime.BaseAPI {
      */
     async updateEpisodeStoryCreatorEpisodesEpisodeIdPatch(requestParameters: UpdateEpisodeStoryCreatorEpisodesEpisodeIdPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StoryCreatorEpisodeResponse> {
         const response = await this.updateEpisodeStoryCreatorEpisodesEpisodeIdPatchRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * Update Panel
-     */
-    async updatePanelStoryCreatorPanelsPanelIdPatchRaw(requestParameters: UpdatePanelStoryCreatorPanelsPanelIdPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StoryCreatorPanelResponse>> {
-        if (requestParameters['panelId'] == null) {
-            throw new runtime.RequiredError(
-                'panelId',
-                'Required parameter "panelId" was null or undefined when calling updatePanelStoryCreatorPanelsPanelIdPatch().'
-            );
-        }
-
-        if (requestParameters['storyCreatorUpdatePanelRequest'] == null) {
-            throw new runtime.RequiredError(
-                'storyCreatorUpdatePanelRequest',
-                'Required parameter "storyCreatorUpdatePanelRequest" was null or undefined when calling updatePanelStoryCreatorPanelsPanelIdPatch().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        const response = await this.request({
-            path: `/story-creator/panels/{panel_id}`.replace(`{${"panel_id"}}`, encodeURIComponent(String(requestParameters['panelId']))),
-            method: 'PATCH',
-            headers: headerParameters,
-            query: queryParameters,
-            body: StoryCreatorUpdatePanelRequestToJSON(requestParameters['storyCreatorUpdatePanelRequest']),
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => StoryCreatorPanelResponseFromJSON(jsonValue));
-    }
-
-    /**
-     * Update Panel
-     */
-    async updatePanelStoryCreatorPanelsPanelIdPatch(requestParameters: UpdatePanelStoryCreatorPanelsPanelIdPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StoryCreatorPanelResponse> {
-        const response = await this.updatePanelStoryCreatorPanelsPanelIdPatchRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

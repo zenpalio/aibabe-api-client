@@ -20,20 +20,6 @@ import {
     StoryCreatorCreateEpisodeInputToJSON,
     StoryCreatorCreateEpisodeInputToJSONTyped,
 } from './StoryCreatorCreateEpisodeInput';
-import type { StoryVisibility } from './StoryVisibility';
-import {
-    StoryVisibilityFromJSON,
-    StoryVisibilityFromJSONTyped,
-    StoryVisibilityToJSON,
-    StoryVisibilityToJSONTyped,
-} from './StoryVisibility';
-import type { StoryCreatorCreatePanelInput } from './StoryCreatorCreatePanelInput';
-import {
-    StoryCreatorCreatePanelInputFromJSON,
-    StoryCreatorCreatePanelInputFromJSONTyped,
-    StoryCreatorCreatePanelInputToJSON,
-    StoryCreatorCreatePanelInputToJSONTyped,
-} from './StoryCreatorCreatePanelInput';
 
 /**
  * 
@@ -61,22 +47,10 @@ export interface StoryCreatorCreateStoryRequest {
     coverImage?: string | null;
     /**
      * 
-     * @type {StoryVisibility}
-     * @memberof StoryCreatorCreateStoryRequest
-     */
-    visibility?: StoryVisibility;
-    /**
-     * 
      * @type {StoryCreatorCreateEpisodeInput}
      * @memberof StoryCreatorCreateStoryRequest
      */
     firstEpisode: StoryCreatorCreateEpisodeInput;
-    /**
-     * 
-     * @type {StoryCreatorCreatePanelInput}
-     * @memberof StoryCreatorCreateStoryRequest
-     */
-    firstPanel?: StoryCreatorCreatePanelInput;
     /**
      * 
      * @type {string}
@@ -103,8 +77,6 @@ export interface StoryCreatorCreateStoryRequest {
     userDisplayName?: string;
 }
 
-
-
 /**
  * Check if a given object implements the StoryCreatorCreateStoryRequest interface.
  */
@@ -129,9 +101,7 @@ export function StoryCreatorCreateStoryRequestFromJSONTyped(json: any, ignoreDis
         'title': json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
-        'visibility': json['visibility'] == null ? undefined : StoryVisibilityFromJSON(json['visibility']),
         'firstEpisode': StoryCreatorCreateEpisodeInputFromJSON(json['first_episode']),
-        'firstPanel': json['first_panel'] == null ? undefined : StoryCreatorCreatePanelInputFromJSON(json['first_panel']),
         'mainCharacterChatbotId': json['main_character_chatbot_id'],
         'mainCharacterDisplayName': json['main_character_display_name'],
         'narratorDisplayName': json['narrator_display_name'] == null ? undefined : json['narrator_display_name'],
@@ -153,9 +123,7 @@ export function StoryCreatorCreateStoryRequestFromJSONTyped(json: any, ignoreDis
         'title': value['title'],
         'description': value['description'],
         'cover_image': value['coverImage'],
-        'visibility': StoryVisibilityToJSON(value['visibility']),
         'first_episode': StoryCreatorCreateEpisodeInputToJSON(value['firstEpisode']),
-        'first_panel': StoryCreatorCreatePanelInputToJSON(value['firstPanel']),
         'main_character_chatbot_id': value['mainCharacterChatbotId'],
         'main_character_display_name': value['mainCharacterDisplayName'],
         'narrator_display_name': value['narratorDisplayName'],

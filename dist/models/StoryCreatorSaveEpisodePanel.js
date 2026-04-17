@@ -13,44 +13,36 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.instanceOfStoryCreatorPanel = instanceOfStoryCreatorPanel;
-exports.StoryCreatorPanelFromJSON = StoryCreatorPanelFromJSON;
-exports.StoryCreatorPanelFromJSONTyped = StoryCreatorPanelFromJSONTyped;
-exports.StoryCreatorPanelToJSON = StoryCreatorPanelToJSON;
-exports.StoryCreatorPanelToJSONTyped = StoryCreatorPanelToJSONTyped;
+exports.instanceOfStoryCreatorSaveEpisodePanel = instanceOfStoryCreatorSaveEpisodePanel;
+exports.StoryCreatorSaveEpisodePanelFromJSON = StoryCreatorSaveEpisodePanelFromJSON;
+exports.StoryCreatorSaveEpisodePanelFromJSONTyped = StoryCreatorSaveEpisodePanelFromJSONTyped;
+exports.StoryCreatorSaveEpisodePanelToJSON = StoryCreatorSaveEpisodePanelToJSON;
+exports.StoryCreatorSaveEpisodePanelToJSONTyped = StoryCreatorSaveEpisodePanelToJSONTyped;
 const EpisodePanelType_1 = require("./EpisodePanelType");
 /**
- * Check if a given object implements the StoryCreatorPanel interface.
+ * Check if a given object implements the StoryCreatorSaveEpisodePanel interface.
  */
-function instanceOfStoryCreatorPanel(value) {
-    if (!('id' in value) || value['id'] === undefined)
-        return false;
-    if (!('episodeId' in value) || value['episodeId'] === undefined)
-        return false;
+function instanceOfStoryCreatorSaveEpisodePanel(value) {
     if (!('name' in value) || value['name'] === undefined)
         return false;
     if (!('panelType' in value) || value['panelType'] === undefined)
         return false;
     if (!('panelIndex' in value) || value['panelIndex'] === undefined)
         return false;
-    if (!('createdAt' in value) || value['createdAt'] === undefined)
-        return false;
-    if (!('updatedAt' in value) || value['updatedAt'] === undefined)
-        return false;
     return true;
 }
-function StoryCreatorPanelFromJSON(json) {
-    return StoryCreatorPanelFromJSONTyped(json, false);
+function StoryCreatorSaveEpisodePanelFromJSON(json) {
+    return StoryCreatorSaveEpisodePanelFromJSONTyped(json, false);
 }
-function StoryCreatorPanelFromJSONTyped(json, ignoreDiscriminator) {
+function StoryCreatorSaveEpisodePanelFromJSONTyped(json, ignoreDiscriminator) {
     if (json == null) {
         return json;
     }
     return {
-        'id': json['id'],
-        'episodeId': json['episode_id'],
+        'id': json['id'] == null ? undefined : json['id'],
         'name': json['name'],
         'panelType': (0, EpisodePanelType_1.EpisodePanelTypeFromJSON)(json['panel_type']),
+        'panelIndex': json['panel_index'],
         'imageUrl': json['image_url'] == null ? undefined : json['image_url'],
         'imagePrompt': json['image_prompt'] == null ? undefined : json['image_prompt'],
         'videoUrl': json['video_url'] == null ? undefined : json['video_url'],
@@ -61,23 +53,20 @@ function StoryCreatorPanelFromJSONTyped(json, ignoreDiscriminator) {
         'voiceAutoReplay': json['voice_auto_replay'] == null ? undefined : json['voice_auto_replay'],
         'sfx': json['sfx'] == null ? undefined : json['sfx'],
         'sfxAutoReplay': json['sfx_auto_replay'] == null ? undefined : json['sfx_auto_replay'],
-        'panelIndex': json['panel_index'],
-        'createdAt': (new Date(json['created_at'])),
-        'updatedAt': (new Date(json['updated_at'])),
     };
 }
-function StoryCreatorPanelToJSON(json) {
-    return StoryCreatorPanelToJSONTyped(json, false);
+function StoryCreatorSaveEpisodePanelToJSON(json) {
+    return StoryCreatorSaveEpisodePanelToJSONTyped(json, false);
 }
-function StoryCreatorPanelToJSONTyped(value, ignoreDiscriminator = false) {
+function StoryCreatorSaveEpisodePanelToJSONTyped(value, ignoreDiscriminator = false) {
     if (value == null) {
         return value;
     }
     return {
         'id': value['id'],
-        'episode_id': value['episodeId'],
         'name': value['name'],
         'panel_type': (0, EpisodePanelType_1.EpisodePanelTypeToJSON)(value['panelType']),
+        'panel_index': value['panelIndex'],
         'image_url': value['imageUrl'],
         'image_prompt': value['imagePrompt'],
         'video_url': value['videoUrl'],
@@ -88,9 +77,6 @@ function StoryCreatorPanelToJSONTyped(value, ignoreDiscriminator = false) {
         'voice_auto_replay': value['voiceAutoReplay'],
         'sfx': value['sfx'],
         'sfx_auto_replay': value['sfxAutoReplay'],
-        'panel_index': value['panelIndex'],
-        'created_at': ((value['createdAt']).toISOString()),
-        'updated_at': ((value['updatedAt']).toISOString()),
     };
 }
-//# sourceMappingURL=StoryCreatorPanel.js.map
+//# sourceMappingURL=StoryCreatorSaveEpisodePanel.js.map

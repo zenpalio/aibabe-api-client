@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { StoryCreatorActorListResponse, StoryCreatorActorResponse, StoryCreatorCreateActorRequest, StoryCreatorCreateEpisodeRequest, StoryCreatorCreatePanelRequest, StoryCreatorCreateStoryRequest, StoryCreatorCreateStoryResponse, StoryCreatorEpisodeListResponse, StoryCreatorEpisodeResponse, StoryCreatorPanelListResponse, StoryCreatorPanelResponse, StoryCreatorStoryListResponse, StoryCreatorStoryResponse, StoryCreatorUpdateActorRequest, StoryCreatorUpdateEpisodeRequest, StoryCreatorUpdatePanelRequest, StoryCreatorUpdateStoryRequest } from '../models/index';
+import type { StoryCreatorActorListResponse, StoryCreatorActorResponse, StoryCreatorCreateActorRequest, StoryCreatorCreateEpisodeRequest, StoryCreatorCreateStoryRequest, StoryCreatorCreateStoryResponse, StoryCreatorEpisodeListResponse, StoryCreatorEpisodeResponse, StoryCreatorEpisodeWithPanelsResponse, StoryCreatorPanelListResponse, StoryCreatorSaveEpisodeRequest, StoryCreatorStoryListResponse, StoryCreatorStoryResponse, StoryCreatorUpdateActorRequest, StoryCreatorUpdateEpisodeRequest, StoryCreatorUpdateStoryRequest } from '../models/index';
 export interface CreateActorStoryCreatorStoriesStoryIdActorsPostRequest {
     storyId: string;
     storyCreatorCreateActorRequest: StoryCreatorCreateActorRequest;
@@ -18,10 +18,6 @@ export interface CreateActorStoryCreatorStoriesStoryIdActorsPostRequest {
 export interface CreateEpisodeStoryCreatorStoriesStoryIdEpisodesPostRequest {
     storyId: string;
     storyCreatorCreateEpisodeRequest: StoryCreatorCreateEpisodeRequest;
-}
-export interface CreatePanelStoryCreatorEpisodesEpisodeIdPanelsPostRequest {
-    episodeId: string;
-    storyCreatorCreatePanelRequest: StoryCreatorCreatePanelRequest;
 }
 export interface CreateStoryStoryCreatorStoriesPostRequest {
     storyCreatorCreateStoryRequest: StoryCreatorCreateStoryRequest;
@@ -31,9 +27,6 @@ export interface DeleteActorStoryCreatorActorsActorIdDeleteRequest {
 }
 export interface DeleteEpisodeStoryCreatorEpisodesEpisodeIdDeleteRequest {
     episodeId: string;
-}
-export interface DeletePanelStoryCreatorPanelsPanelIdDeleteRequest {
-    panelId: string;
 }
 export interface DeleteStoryStoryCreatorStoriesStoryIdDeleteRequest {
     storyId: string;
@@ -47,6 +40,10 @@ export interface ListEpisodesStoryCreatorStoriesStoryIdEpisodesGetRequest {
 export interface ListPanelsStoryCreatorEpisodesEpisodeIdPanelsGetRequest {
     episodeId: string;
 }
+export interface SaveEpisodeStoryCreatorEpisodesEpisodeIdPutRequest {
+    episodeId: string;
+    storyCreatorSaveEpisodeRequest: StoryCreatorSaveEpisodeRequest;
+}
 export interface UpdateActorStoryCreatorActorsActorIdPatchRequest {
     actorId: string;
     storyCreatorUpdateActorRequest: StoryCreatorUpdateActorRequest;
@@ -54,10 +51,6 @@ export interface UpdateActorStoryCreatorActorsActorIdPatchRequest {
 export interface UpdateEpisodeStoryCreatorEpisodesEpisodeIdPatchRequest {
     episodeId: string;
     storyCreatorUpdateEpisodeRequest: StoryCreatorUpdateEpisodeRequest;
-}
-export interface UpdatePanelStoryCreatorPanelsPanelIdPatchRequest {
-    panelId: string;
-    storyCreatorUpdatePanelRequest: StoryCreatorUpdatePanelRequest;
 }
 export interface UpdateStoryStoryCreatorStoriesStoryIdPatchRequest {
     storyId: string;
@@ -84,14 +77,6 @@ export declare class StoryCreatorApi extends runtime.BaseAPI {
      */
     createEpisodeStoryCreatorStoriesStoryIdEpisodesPost(requestParameters: CreateEpisodeStoryCreatorStoriesStoryIdEpisodesPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StoryCreatorEpisodeResponse>;
     /**
-     * Create Panel
-     */
-    createPanelStoryCreatorEpisodesEpisodeIdPanelsPostRaw(requestParameters: CreatePanelStoryCreatorEpisodesEpisodeIdPanelsPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StoryCreatorPanelResponse>>;
-    /**
-     * Create Panel
-     */
-    createPanelStoryCreatorEpisodesEpisodeIdPanelsPost(requestParameters: CreatePanelStoryCreatorEpisodesEpisodeIdPanelsPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StoryCreatorPanelResponse>;
-    /**
      * Create Story
      */
     createStoryStoryCreatorStoriesPostRaw(requestParameters: CreateStoryStoryCreatorStoriesPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StoryCreatorCreateStoryResponse>>;
@@ -115,14 +100,6 @@ export declare class StoryCreatorApi extends runtime.BaseAPI {
      * Delete Episode
      */
     deleteEpisodeStoryCreatorEpisodesEpisodeIdDelete(requestParameters: DeleteEpisodeStoryCreatorEpisodesEpisodeIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
-    /**
-     * Delete Panel
-     */
-    deletePanelStoryCreatorPanelsPanelIdDeleteRaw(requestParameters: DeletePanelStoryCreatorPanelsPanelIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>>;
-    /**
-     * Delete Panel
-     */
-    deletePanelStoryCreatorPanelsPanelIdDelete(requestParameters: DeletePanelStoryCreatorPanelsPanelIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
     /**
      * Delete Story
      */
@@ -164,6 +141,14 @@ export declare class StoryCreatorApi extends runtime.BaseAPI {
      */
     listStoriesStoryCreatorStoriesGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StoryCreatorStoryListResponse>;
     /**
+     * Save Episode
+     */
+    saveEpisodeStoryCreatorEpisodesEpisodeIdPutRaw(requestParameters: SaveEpisodeStoryCreatorEpisodesEpisodeIdPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StoryCreatorEpisodeWithPanelsResponse>>;
+    /**
+     * Save Episode
+     */
+    saveEpisodeStoryCreatorEpisodesEpisodeIdPut(requestParameters: SaveEpisodeStoryCreatorEpisodesEpisodeIdPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StoryCreatorEpisodeWithPanelsResponse>;
+    /**
      * Update Actor
      */
     updateActorStoryCreatorActorsActorIdPatchRaw(requestParameters: UpdateActorStoryCreatorActorsActorIdPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StoryCreatorActorResponse>>;
@@ -179,14 +164,6 @@ export declare class StoryCreatorApi extends runtime.BaseAPI {
      * Update Episode
      */
     updateEpisodeStoryCreatorEpisodesEpisodeIdPatch(requestParameters: UpdateEpisodeStoryCreatorEpisodesEpisodeIdPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StoryCreatorEpisodeResponse>;
-    /**
-     * Update Panel
-     */
-    updatePanelStoryCreatorPanelsPanelIdPatchRaw(requestParameters: UpdatePanelStoryCreatorPanelsPanelIdPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StoryCreatorPanelResponse>>;
-    /**
-     * Update Panel
-     */
-    updatePanelStoryCreatorPanelsPanelIdPatch(requestParameters: UpdatePanelStoryCreatorPanelsPanelIdPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StoryCreatorPanelResponse>;
     /**
      * Update Story
      */
