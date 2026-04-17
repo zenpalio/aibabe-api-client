@@ -28,7 +28,6 @@ __exportStar(require("./MemoryApi"), exports);
 __exportStar(require("./NotificationApi"), exports);
 __exportStar(require("./PostApi"), exports);
 __exportStar(require("./ServerApi"), exports);
-__exportStar(require("./StoryCreatorApi"), exports);
 __exportStar(require("./SubscriptionsApi"), exports);
 __exportStar(require("./UserApi"), exports);
 __exportStar(require("./UtilitiesApi"), exports);

@@ -10,7 +10,6 @@ export * from './MemoryApi';
 export * from './NotificationApi';
 export * from './PostApi';
 export * from './ServerApi';
-export * from './StoryCreatorApi';
 export * from './SubscriptionsApi';
 export * from './UserApi';
 export * from './UtilitiesApi';
