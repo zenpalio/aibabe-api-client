@@ -58,7 +58,7 @@ export interface WallPost {
      * @type {string}
      * @memberof WallPost
      */
-    chatbotId: string;
+    chatbotId: string | null;
     /**
      * 
      * @type {string}
