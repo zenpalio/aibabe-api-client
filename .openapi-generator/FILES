@@ -115,6 +115,7 @@ src/models/InstanceType.ts
 src/models/InstanceTypeUrlResponse.ts
 src/models/LLM.ts
 src/models/Language.ts
+src/models/LastVideoFrameResponse.ts
 src/models/LikePostNotification.ts
 src/models/ListChatbotItem.ts
 src/models/ListConversationsResponse.ts

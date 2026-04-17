@@ -92,6 +92,7 @@ export * from './InstanceType';
 export * from './InstanceTypeUrlResponse';
 export * from './LLM';
 export * from './Language';
+export * from './LastVideoFrameResponse';
 export * from './LikePostNotification';
 export * from './ListChatbotItem';
 export * from './ListConversationsResponse';

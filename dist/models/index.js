@@ -108,6 +108,7 @@ __exportStar(require("./InstanceType"), exports);
 __exportStar(require("./InstanceTypeUrlResponse"), exports);
 __exportStar(require("./LLM"), exports);
 __exportStar(require("./Language"), exports);
+__exportStar(require("./LastVideoFrameResponse"), exports);
 __exportStar(require("./LikePostNotification"), exports);
 __exportStar(require("./ListChatbotItem"), exports);
 __exportStar(require("./ListConversationsResponse"), exports);
