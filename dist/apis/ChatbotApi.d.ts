@@ -42,6 +42,7 @@ export interface GetCustomChatbotChatbotCustomChatbotIdGetRequest {
 }
 export interface ListChatbotGetRequest {
     paginationToken?: string | null;
+    freeTextQuery?: string | null;
     type?: ChatbotType | null;
     limit?: number;
     sort?: SortFilter;

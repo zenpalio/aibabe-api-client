@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { InstanceDetails, InstanceType, PingRequest } from '../models/index';
+import type { GetInstancesDBVastAiListResponse, InstanceDetails, InstanceType, PingRequest, PostInstancesDBVastAiListResponse } from '../models/index';
 export interface PingServerPingPostRequest {
     pingRequest: PingRequest;
 }
@@ -33,6 +33,14 @@ export declare class ServerApi extends runtime.BaseAPI {
      * Get Instances
      */
     getInstancesServerInstancesGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string>;
+    /**
+     * Instancesvastai
+     */
+    instancesVASTAIServerInstancesDBVastAiListGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetInstancesDBVastAiListResponse>>;
+    /**
+     * Instancesvastai
+     */
+    instancesVASTAIServerInstancesDBVastAiListGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetInstancesDBVastAiListResponse>;
     /**
      * Ping
      */
@@ -65,6 +73,14 @@ export declare class ServerApi extends runtime.BaseAPI {
      * Sync Force Queues
      */
     syncForceQueuesServerQueuesForceSyncPost(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string>;
+    /**
+     * Syncinstancesvastai
+     */
+    syncInstancesVASTAIServerInstancesDBVastAiSyncPostRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostInstancesDBVastAiListResponse>>;
+    /**
+     * Syncinstancesvastai
+     */
+    syncInstancesVASTAIServerInstancesDBVastAiSyncPost(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PostInstancesDBVastAiListResponse>;
     /**
      * Sync Queues
      */

@@ -80,6 +80,27 @@ class ServerApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * Instancesvastai
+     */
+    async instancesVASTAIServerInstancesDBVastAiListGetRaw(initOverrides) {
+        const queryParameters = {};
+        const headerParameters = {};
+        const response = await this.request({
+            path: `/server/instancesDBVastAiList`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetInstancesDBVastAiListResponseFromJSON)(jsonValue));
+    }
+    /**
+     * Instancesvastai
+     */
+    async instancesVASTAIServerInstancesDBVastAiListGet(initOverrides) {
+        const response = await this.instancesVASTAIServerInstancesDBVastAiListGetRaw(initOverrides);
+        return await response.value();
+    }
+    /**
      * Ping
      */
     async pingServerPingPostRaw(requestParameters, initOverrides) {
@@ -213,6 +234,27 @@ class ServerApi extends runtime.BaseAPI {
      */
     async syncForceQueuesServerQueuesForceSyncPost(initOverrides) {
         const response = await this.syncForceQueuesServerQueuesForceSyncPostRaw(initOverrides);
+        return await response.value();
+    }
+    /**
+     * Syncinstancesvastai
+     */
+    async syncInstancesVASTAIServerInstancesDBVastAiSyncPostRaw(initOverrides) {
+        const queryParameters = {};
+        const headerParameters = {};
+        const response = await this.request({
+            path: `/server/instancesDBVastAiSync`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.PostInstancesDBVastAiListResponseFromJSON)(jsonValue));
+    }
+    /**
+     * Syncinstancesvastai
+     */
+    async syncInstancesVASTAIServerInstancesDBVastAiSyncPost(initOverrides) {
+        const response = await this.syncInstancesVASTAIServerInstancesDBVastAiSyncPostRaw(initOverrides);
         return await response.value();
     }
     /**

@@ -13,13 +13,6 @@
  */
 
 import { mapValues } from '../runtime';
-import type { PhotoStyle } from './PhotoStyle';
-import {
-    PhotoStyleFromJSON,
-    PhotoStyleFromJSONTyped,
-    PhotoStyleToJSON,
-    PhotoStyleToJSONTyped,
-} from './PhotoStyle';
 import type { LoraName } from './LoraName';
 import {
     LoraNameFromJSON,
@@ -27,89 +20,67 @@ import {
     LoraNameToJSON,
     LoraNameToJSONTyped,
 } from './LoraName';
-import type { ImageGenerationQuality } from './ImageGenerationQuality';
-import {
-    ImageGenerationQualityFromJSON,
-    ImageGenerationQualityFromJSONTyped,
-    ImageGenerationQualityToJSON,
-    ImageGenerationQualityToJSONTyped,
-} from './ImageGenerationQuality';
 
 /**
  * 
  * @export
- * @interface PostImagenRequest
+ * @interface PostGenerateImageRequest
  */
-export interface PostImagenRequest {
+export interface PostGenerateImageRequest {
     /**
      * 
      * @type {string}
-     * @memberof PostImagenRequest
+     * @memberof PostGenerateImageRequest
      */
     query: string;
     /**
      * 
      * @type {boolean}
-     * @memberof PostImagenRequest
+     * @memberof PostGenerateImageRequest
      */
     debug?: boolean | null;
     /**
      * 
      * @type {string}
-     * @memberof PostImagenRequest
+     * @memberof PostGenerateImageRequest
      */
     clientId: string;
     /**
      * 
      * @type {string}
-     * @memberof PostImagenRequest
+     * @memberof PostGenerateImageRequest
      */
     requestId: string;
     /**
      * 
      * @type {number}
-     * @memberof PostImagenRequest
+     * @memberof PostGenerateImageRequest
      */
     numberOfImages: number;
     /**
      * 
-     * @type {PhotoStyle}
-     * @memberof PostImagenRequest
-     */
-    style: PhotoStyle;
-    /**
-     * 
-     * @type {ImageGenerationQuality}
-     * @memberof PostImagenRequest
-     */
-    quality?: ImageGenerationQuality;
-    /**
-     * 
      * @type {Array<LoraName>}
-     * @memberof PostImagenRequest
+     * @memberof PostGenerateImageRequest
      */
     loras?: Array<LoraName> | null;
 }
 
-
-
 /**
- * Check if a given object implements the PostImagenRequest interface.
+ * Check if a given object implements the PostGenerateImageRequest interface.
  */
-export function instanceOfPostImagenRequest(value: object): value is PostImagenRequest {
+export function instanceOfPostGenerateImageRequest(value: object): value is PostGenerateImageRequest {
     if (!('query' in value) || value['query'] === undefined) return false;
     if (!('clientId' in value) || value['clientId'] === undefined) return false;
     if (!('requestId' in value) || value['requestId'] === undefined) return false;
     if (!('numberOfImages' in value) || value['numberOfImages'] === undefined) return false;
-    if (!('style' in value) || value['style'] === undefined) return false;
     return true;
 }
 
-export function PostImagenRequestFromJSON(json: any): PostImagenRequest {
-    return PostImagenRequestFromJSONTyped(json, false);
+export function PostGenerateImageRequestFromJSON(json: any): PostGenerateImageRequest {
+    return PostGenerateImageRequestFromJSONTyped(json, false);
 }
 
-export function PostImagenRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): PostImagenRequest {
+export function PostGenerateImageRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): PostGenerateImageRequest {
     if (json == null) {
         return json;
     }
@@ -120,17 +91,15 @@ export function PostImagenRequestFromJSONTyped(json: any, ignoreDiscriminator: b
         'clientId': json['client_id'],
         'requestId': json['request_id'],
         'numberOfImages': json['number_of_images'],
-        'style': PhotoStyleFromJSON(json['style']),
-        'quality': json['quality'] == null ? undefined : ImageGenerationQualityFromJSON(json['quality']),
         'loras': json['loras'] == null ? undefined : ((json['loras'] as Array<any>).map(LoraNameFromJSON)),
     };
 }
 
-  export function PostImagenRequestToJSON(json: any): PostImagenRequest {
-      return PostImagenRequestToJSONTyped(json, false);
+  export function PostGenerateImageRequestToJSON(json: any): PostGenerateImageRequest {
+      return PostGenerateImageRequestToJSONTyped(json, false);
   }
 
-  export function PostImagenRequestToJSONTyped(value?: PostImagenRequest | null, ignoreDiscriminator: boolean = false): any {
+  export function PostGenerateImageRequestToJSONTyped(value?: PostGenerateImageRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
@@ -142,8 +111,6 @@ export function PostImagenRequestFromJSONTyped(json: any, ignoreDiscriminator: b
         'client_id': value['clientId'],
         'request_id': value['requestId'],
         'number_of_images': value['numberOfImages'],
-        'style': PhotoStyleToJSON(value['style']),
-        'quality': ImageGenerationQualityToJSON(value['quality']),
         'loras': value['loras'] == null ? undefined : ((value['loras'] as Array<any>).map(LoraNameToJSON)),
     };
 }

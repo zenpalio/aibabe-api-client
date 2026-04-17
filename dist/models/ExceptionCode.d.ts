@@ -86,6 +86,14 @@ export declare const ExceptionCode: {
     readonly PostDeleteNotAuthorized: "post_delete_not_authorized";
     readonly PostUpdateNotAuthorized: "post_update_not_authorized";
     readonly PostReportContentMissing: "post_report_content_missing";
+    readonly StoryNotFound: "story_not_found";
+    readonly StoryUpdateNotAuthorized: "story_update_not_authorized";
+    readonly ActorNotFound: "actor_not_found";
+    readonly PanelNotFound: "panel_not_found";
+    readonly EpisodeNotFound: "episode_not_found";
+    readonly MissingOrderIndex: "missing_order_index";
+    readonly EpisodeDeleteNotAuthorized: "episode_delete_not_authorized";
+    readonly EpisodeUpdateNotAuthorized: "episode_update_not_authorized";
     readonly ShareContentTypeUnsupported: "share_content_type_unsupported";
     readonly ShareVideoNonOwnedForbidden: "share_video_non_owned_forbidden";
     readonly ShareImageNonOwnedForbidden: "share_image_non_owned_forbidden";
@@ -99,6 +107,9 @@ export declare const ExceptionCode: {
     readonly ServerNotFound: "server_not_found";
     readonly WebsocketServerNotAvailable: "websocket_server_not_available";
     readonly LlmModelNotAvailable: "llm_model_not_available";
+    readonly OpenSearchDisabled: "open_search_disabled";
+    readonly OpenSearchNotSuportedSort: "open_search_not_suported_sort";
+    readonly OpenSearchNotSuportedPostFiltering: "open_search_not_suported_post_filtering";
     readonly EmailSendFailed: "email_send_failed";
     readonly InvalidParams: "invalid_params";
     readonly ModerationFlagged: "moderation_flagged";

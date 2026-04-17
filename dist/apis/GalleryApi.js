@@ -95,6 +95,9 @@ class GalleryApi extends runtime.BaseAPI {
         if (requestParameters['chatbotId'] != null) {
             queryParameters['chatbot_id'] = requestParameters['chatbotId'];
         }
+        if (requestParameters['freeTextSearch'] != null) {
+            queryParameters['free_text_search'] = requestParameters['freeTextSearch'];
+        }
         const headerParameters = {};
         const response = await this.request({
             path: `/gallery/`,
