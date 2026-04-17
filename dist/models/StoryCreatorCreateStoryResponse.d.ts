@@ -33,10 +33,10 @@ export interface StoryCreatorCreateStoryResponse {
     episode: StoryCreatorEpisode;
     /**
      *
-     * @type {StoryCreatorPanel}
+     * @type {Array<StoryCreatorPanel>}
      * @memberof StoryCreatorCreateStoryResponse
      */
-    panel: StoryCreatorPanel;
+    panels: Array<StoryCreatorPanel>;
     /**
      *
      * @type {Array<StoryCreatorActor>}

@@ -30,7 +30,7 @@ function instanceOfStoryCreatorCreateStoryResponse(value) {
         return false;
     if (!('episode' in value) || value['episode'] === undefined)
         return false;
-    if (!('panel' in value) || value['panel'] === undefined)
+    if (!('panels' in value) || value['panels'] === undefined)
         return false;
     if (!('actors' in value) || value['actors'] === undefined)
         return false;
@@ -46,7 +46,7 @@ function StoryCreatorCreateStoryResponseFromJSONTyped(json, ignoreDiscriminator)
     return {
         'story': (0, StoryCreatorStory_1.StoryCreatorStoryFromJSON)(json['story']),
         'episode': (0, StoryCreatorEpisode_1.StoryCreatorEpisodeFromJSON)(json['episode']),
-        'panel': (0, StoryCreatorPanel_1.StoryCreatorPanelFromJSON)(json['panel']),
+        'panels': (json['panels'].map(StoryCreatorPanel_1.StoryCreatorPanelFromJSON)),
         'actors': (json['actors'].map(StoryCreatorActor_1.StoryCreatorActorFromJSON)),
     };
 }
@@ -60,7 +60,7 @@ function StoryCreatorCreateStoryResponseToJSONTyped(value, ignoreDiscriminator =
     return {
         'story': (0, StoryCreatorStory_1.StoryCreatorStoryToJSON)(value['story']),
         'episode': (0, StoryCreatorEpisode_1.StoryCreatorEpisodeToJSON)(value['episode']),
-        'panel': (0, StoryCreatorPanel_1.StoryCreatorPanelToJSON)(value['panel']),
+        'panels': (value['panels'].map(StoryCreatorPanel_1.StoryCreatorPanelToJSON)),
         'actors': (value['actors'].map(StoryCreatorActor_1.StoryCreatorActorToJSON)),
     };
 }

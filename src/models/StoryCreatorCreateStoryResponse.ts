@@ -62,10 +62,10 @@ export interface StoryCreatorCreateStoryResponse {
     episode: StoryCreatorEpisode;
     /**
      * 
-     * @type {StoryCreatorPanel}
+     * @type {Array<StoryCreatorPanel>}
      * @memberof StoryCreatorCreateStoryResponse
      */
-    panel: StoryCreatorPanel;
+    panels: Array<StoryCreatorPanel>;
     /**
      * 
      * @type {Array<StoryCreatorActor>}
@@ -80,7 +80,7 @@ export interface StoryCreatorCreateStoryResponse {
 export function instanceOfStoryCreatorCreateStoryResponse(value: object): value is StoryCreatorCreateStoryResponse {
     if (!('story' in value) || value['story'] === undefined) return false;
     if (!('episode' in value) || value['episode'] === undefined) return false;
-    if (!('panel' in value) || value['panel'] === undefined) return false;
+    if (!('panels' in value) || value['panels'] === undefined) return false;
     if (!('actors' in value) || value['actors'] === undefined) return false;
     return true;
 }
@@ -97,7 +97,7 @@ export function StoryCreatorCreateStoryResponseFromJSONTyped(json: any, ignoreDi
         
         'story': StoryCreatorStoryFromJSON(json['story']),
         'episode': StoryCreatorEpisodeFromJSON(json['episode']),
-        'panel': StoryCreatorPanelFromJSON(json['panel']),
+        'panels': ((json['panels'] as Array<any>).map(StoryCreatorPanelFromJSON)),
         'actors': ((json['actors'] as Array<any>).map(StoryCreatorActorFromJSON)),
     };
 }
@@ -115,7 +115,7 @@ export function StoryCreatorCreateStoryResponseFromJSONTyped(json: any, ignoreDi
         
         'story': StoryCreatorStoryToJSON(value['story']),
         'episode': StoryCreatorEpisodeToJSON(value['episode']),
-        'panel': StoryCreatorPanelToJSON(value['panel']),
+        'panels': ((value['panels'] as Array<any>).map(StoryCreatorPanelToJSON)),
         'actors': ((value['actors'] as Array<any>).map(StoryCreatorActorToJSON)),
     };
 }
