@@ -18,7 +18,6 @@ exports.StoryCreatorCreateEpisodeInputFromJSON = StoryCreatorCreateEpisodeInputF
 exports.StoryCreatorCreateEpisodeInputFromJSONTyped = StoryCreatorCreateEpisodeInputFromJSONTyped;
 exports.StoryCreatorCreateEpisodeInputToJSON = StoryCreatorCreateEpisodeInputToJSON;
 exports.StoryCreatorCreateEpisodeInputToJSONTyped = StoryCreatorCreateEpisodeInputToJSONTyped;
-const EpisodeVisibility_1 = require("./EpisodeVisibility");
 /**
  * Check if a given object implements the StoryCreatorCreateEpisodeInput interface.
  */
@@ -38,7 +37,6 @@ function StoryCreatorCreateEpisodeInputFromJSONTyped(json, ignoreDiscriminator) 
         'title': json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
-        'visibility': json['visibility'] == null ? undefined : (0, EpisodeVisibility_1.EpisodeVisibilityFromJSON)(json['visibility']),
     };
 }
 function StoryCreatorCreateEpisodeInputToJSON(json) {
@@ -52,7 +50,6 @@ function StoryCreatorCreateEpisodeInputToJSONTyped(value, ignoreDiscriminator = 
         'title': value['title'],
         'description': value['description'],
         'cover_image': value['coverImage'],
-        'visibility': (0, EpisodeVisibility_1.EpisodeVisibilityToJSON)(value['visibility']),
     };
 }
 //# sourceMappingURL=StoryCreatorCreateEpisodeInput.js.map

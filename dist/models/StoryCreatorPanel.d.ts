@@ -27,12 +27,6 @@ export interface StoryCreatorPanel {
      * @type {string}
      * @memberof StoryCreatorPanel
      */
-    episodeId: string;
-    /**
-     *
-     * @type {string}
-     * @memberof StoryCreatorPanel
-     */
     name: string;
     /**
      *
@@ -106,18 +100,6 @@ export interface StoryCreatorPanel {
      * @memberof StoryCreatorPanel
      */
     panelIndex: number;
-    /**
-     *
-     * @type {Date}
-     * @memberof StoryCreatorPanel
-     */
-    createdAt: Date;
-    /**
-     *
-     * @type {Date}
-     * @memberof StoryCreatorPanel
-     */
-    updatedAt: Date;
 }
 /**
  * Check if a given object implements the StoryCreatorPanel interface.

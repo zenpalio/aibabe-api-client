@@ -31,10 +31,6 @@ function instanceOfStoryCreatorStory(value) {
         return false;
     if (!('visibility' in value) || value['visibility'] === undefined)
         return false;
-    if (!('createdAt' in value) || value['createdAt'] === undefined)
-        return false;
-    if (!('updatedAt' in value) || value['updatedAt'] === undefined)
-        return false;
     return true;
 }
 function StoryCreatorStoryFromJSON(json) {
@@ -51,8 +47,6 @@ function StoryCreatorStoryFromJSONTyped(json, ignoreDiscriminator) {
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
         'visibility': (0, StoryVisibility_1.StoryVisibilityFromJSON)(json['visibility']),
-        'createdAt': (new Date(json['created_at'])),
-        'updatedAt': (new Date(json['updated_at'])),
     };
 }
 function StoryCreatorStoryToJSON(json) {
@@ -69,8 +63,6 @@ function StoryCreatorStoryToJSONTyped(value, ignoreDiscriminator = false) {
         'description': value['description'],
         'cover_image': value['coverImage'],
         'visibility': (0, StoryVisibility_1.StoryVisibilityToJSON)(value['visibility']),
-        'created_at': ((value['createdAt']).toISOString()),
-        'updated_at': ((value['updatedAt']).toISOString()),
     };
 }
 //# sourceMappingURL=StoryCreatorStory.js.map

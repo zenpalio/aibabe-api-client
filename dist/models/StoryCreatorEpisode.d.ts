@@ -27,18 +27,6 @@ export interface StoryCreatorEpisode {
      * @type {string}
      * @memberof StoryCreatorEpisode
      */
-    ownerId: string;
-    /**
-     *
-     * @type {string}
-     * @memberof StoryCreatorEpisode
-     */
-    storyId: string;
-    /**
-     *
-     * @type {string}
-     * @memberof StoryCreatorEpisode
-     */
     title: string;
     /**
      *
@@ -64,18 +52,6 @@ export interface StoryCreatorEpisode {
      * @memberof StoryCreatorEpisode
      */
     episodeIndex: number;
-    /**
-     *
-     * @type {Date}
-     * @memberof StoryCreatorEpisode
-     */
-    createdAt: Date;
-    /**
-     *
-     * @type {Date}
-     * @memberof StoryCreatorEpisode
-     */
-    updatedAt: Date;
 }
 /**
  * Check if a given object implements the StoryCreatorEpisode interface.

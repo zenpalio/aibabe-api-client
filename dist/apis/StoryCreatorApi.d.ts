@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { StoryCreatorActorListResponse, StoryCreatorActorResponse, StoryCreatorCreateActorRequest, StoryCreatorCreateEpisodeRequest, StoryCreatorCreateStoryRequest, StoryCreatorCreateStoryResponse, StoryCreatorEpisodeListResponse, StoryCreatorEpisodeResponse, StoryCreatorEpisodeWithPanelsResponse, StoryCreatorPanelListResponse, StoryCreatorSaveEpisodeRequest, StoryCreatorStoryListResponse, StoryCreatorStoryResponse, StoryCreatorUpdateActorRequest, StoryCreatorUpdateEpisodeRequest, StoryCreatorUpdateStoryRequest } from '../models/index';
+import type { StoryCreatorActorListResponse, StoryCreatorActorResponse, StoryCreatorCreateActorRequest, StoryCreatorCreateEpisodeRequest, StoryCreatorCreateStoryRequest, StoryCreatorCreateStoryResponse, StoryCreatorEpisodeListResponse, StoryCreatorEpisodeResponse, StoryCreatorEpisodeWithPanelsResponse, StoryCreatorSaveEpisodeRequest, StoryCreatorStoryListResponse, StoryCreatorStoryResponse, StoryCreatorUpdateActorRequest, StoryCreatorUpdateEpisodeRequest, StoryCreatorUpdateStoryRequest } from '../models/index';
 export interface CreateActorStoryCreatorStoriesStoryIdActorsPostRequest {
     storyId: string;
     storyCreatorCreateActorRequest: StoryCreatorCreateActorRequest;
@@ -31,14 +31,14 @@ export interface DeleteEpisodeStoryCreatorEpisodesEpisodeIdDeleteRequest {
 export interface DeleteStoryStoryCreatorStoriesStoryIdDeleteRequest {
     storyId: string;
 }
+export interface GetEpisodeStoryCreatorEpisodesEpisodeIdGetRequest {
+    episodeId: string;
+}
 export interface ListActorsStoryCreatorStoriesStoryIdActorsGetRequest {
     storyId: string;
 }
 export interface ListEpisodesStoryCreatorStoriesStoryIdEpisodesGetRequest {
     storyId: string;
-}
-export interface ListPanelsStoryCreatorEpisodesEpisodeIdPanelsGetRequest {
-    episodeId: string;
 }
 export interface SaveEpisodeStoryCreatorEpisodesEpisodeIdPutRequest {
     episodeId: string;
@@ -109,6 +109,14 @@ export declare class StoryCreatorApi extends runtime.BaseAPI {
      */
     deleteStoryStoryCreatorStoriesStoryIdDelete(requestParameters: DeleteStoryStoryCreatorStoriesStoryIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
     /**
+     * Get Episode
+     */
+    getEpisodeStoryCreatorEpisodesEpisodeIdGetRaw(requestParameters: GetEpisodeStoryCreatorEpisodesEpisodeIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StoryCreatorEpisodeWithPanelsResponse>>;
+    /**
+     * Get Episode
+     */
+    getEpisodeStoryCreatorEpisodesEpisodeIdGet(requestParameters: GetEpisodeStoryCreatorEpisodesEpisodeIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StoryCreatorEpisodeWithPanelsResponse>;
+    /**
      * List Actors
      */
     listActorsStoryCreatorStoriesStoryIdActorsGetRaw(requestParameters: ListActorsStoryCreatorStoriesStoryIdActorsGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StoryCreatorActorListResponse>>;
@@ -124,14 +132,6 @@ export declare class StoryCreatorApi extends runtime.BaseAPI {
      * List Episodes
      */
     listEpisodesStoryCreatorStoriesStoryIdEpisodesGet(requestParameters: ListEpisodesStoryCreatorStoriesStoryIdEpisodesGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StoryCreatorEpisodeListResponse>;
-    /**
-     * List Panels
-     */
-    listPanelsStoryCreatorEpisodesEpisodeIdPanelsGetRaw(requestParameters: ListPanelsStoryCreatorEpisodesEpisodeIdPanelsGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StoryCreatorPanelListResponse>>;
-    /**
-     * List Panels
-     */
-    listPanelsStoryCreatorEpisodesEpisodeIdPanelsGet(requestParameters: ListPanelsStoryCreatorEpisodesEpisodeIdPanelsGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StoryCreatorPanelListResponse>;
     /**
      * List Stories
      */

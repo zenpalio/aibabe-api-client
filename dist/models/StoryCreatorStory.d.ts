@@ -52,18 +52,6 @@ export interface StoryCreatorStory {
      * @memberof StoryCreatorStory
      */
     visibility: StoryVisibility;
-    /**
-     *
-     * @type {Date}
-     * @memberof StoryCreatorStory
-     */
-    createdAt: Date;
-    /**
-     *
-     * @type {Date}
-     * @memberof StoryCreatorStory
-     */
-    updatedAt: Date;
 }
 /**
  * Check if a given object implements the StoryCreatorStory interface.

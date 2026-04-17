@@ -58,18 +58,6 @@ export interface StoryCreatorActor {
      * @memberof StoryCreatorActor
      */
     referenceAudioId?: string | null;
-    /**
-     *
-     * @type {Date}
-     * @memberof StoryCreatorActor
-     */
-    createdAt: Date;
-    /**
-     *
-     * @type {Date}
-     * @memberof StoryCreatorActor
-     */
-    updatedAt: Date;
 }
 /**
  * Check if a given object implements the StoryCreatorActor interface.

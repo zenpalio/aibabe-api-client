@@ -9,7 +9,6 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { EpisodeVisibility } from './EpisodeVisibility';
 /**
  *
  * @export
@@ -34,12 +33,6 @@ export interface StoryCreatorCreateEpisodeRequest {
      * @memberof StoryCreatorCreateEpisodeRequest
      */
     coverImage?: string | null;
-    /**
-     *
-     * @type {EpisodeVisibility}
-     * @memberof StoryCreatorCreateEpisodeRequest
-     */
-    visibility?: EpisodeVisibility;
 }
 /**
  * Check if a given object implements the StoryCreatorCreateEpisodeRequest interface.

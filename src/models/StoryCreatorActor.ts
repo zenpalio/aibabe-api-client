@@ -69,18 +69,6 @@ export interface StoryCreatorActor {
      * @memberof StoryCreatorActor
      */
     referenceAudioId?: string | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof StoryCreatorActor
-     */
-    createdAt: Date;
-    /**
-     * 
-     * @type {Date}
-     * @memberof StoryCreatorActor
-     */
-    updatedAt: Date;
 }
 
 
@@ -93,8 +81,6 @@ export function instanceOfStoryCreatorActor(value: object): value is StoryCreato
     if (!('storyId' in value) || value['storyId'] === undefined) return false;
     if (!('displayName' in value) || value['displayName'] === undefined) return false;
     if (!('role' in value) || value['role'] === undefined) return false;
-    if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
-    if (!('updatedAt' in value) || value['updatedAt'] === undefined) return false;
     return true;
 }
 
@@ -115,8 +101,6 @@ export function StoryCreatorActorFromJSONTyped(json: any, ignoreDiscriminator: b
         'avatar': json['avatar'] == null ? undefined : json['avatar'],
         'chatbotId': json['chatbot_id'] == null ? undefined : json['chatbot_id'],
         'referenceAudioId': json['reference_audio_id'] == null ? undefined : json['reference_audio_id'],
-        'createdAt': (new Date(json['created_at'])),
-        'updatedAt': (new Date(json['updated_at'])),
     };
 }
 
@@ -138,8 +122,6 @@ export function StoryCreatorActorFromJSONTyped(json: any, ignoreDiscriminator: b
         'avatar': value['avatar'],
         'chatbot_id': value['chatbotId'],
         'reference_audio_id': value['referenceAudioId'],
-        'created_at': ((value['createdAt']).toISOString()),
-        'updated_at': ((value['updatedAt']).toISOString()),
     };
 }
 

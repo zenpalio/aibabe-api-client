@@ -96,6 +96,7 @@ exports.ExceptionCode = {
     PostNotFoundOrNotAuthorized: 'post_not_found_or_not_authorized',
     PostReportContentMissing: 'post_report_content_missing',
     ActorNotFound: 'actor_not_found',
+    ActorCannotBeDeleted: 'actor_cannot_be_deleted',
     PanelNotFound: 'panel_not_found',
     MissingOrderIndex: 'missing_order_index',
     StoryNotFoundOrNotAuthorized: 'story_not_found_or_not_authorized',

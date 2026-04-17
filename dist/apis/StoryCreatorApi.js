@@ -207,6 +207,30 @@ class StoryCreatorApi extends runtime.BaseAPI {
         await this.deleteStoryStoryCreatorStoriesStoryIdDeleteRaw(requestParameters, initOverrides);
     }
     /**
+     * Get Episode
+     */
+    async getEpisodeStoryCreatorEpisodesEpisodeIdGetRaw(requestParameters, initOverrides) {
+        if (requestParameters['episodeId'] == null) {
+            throw new runtime.RequiredError('episodeId', 'Required parameter "episodeId" was null or undefined when calling getEpisodeStoryCreatorEpisodesEpisodeIdGet().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        const response = await this.request({
+            path: `/story-creator/episodes/{episode_id}`.replace(`{${"episode_id"}}`, encodeURIComponent(String(requestParameters['episodeId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.StoryCreatorEpisodeWithPanelsResponseFromJSON)(jsonValue));
+    }
+    /**
+     * Get Episode
+     */
+    async getEpisodeStoryCreatorEpisodesEpisodeIdGet(requestParameters, initOverrides) {
+        const response = await this.getEpisodeStoryCreatorEpisodesEpisodeIdGetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * List Actors
      */
     async listActorsStoryCreatorStoriesStoryIdActorsGetRaw(requestParameters, initOverrides) {
@@ -252,30 +276,6 @@ class StoryCreatorApi extends runtime.BaseAPI {
      */
     async listEpisodesStoryCreatorStoriesStoryIdEpisodesGet(requestParameters, initOverrides) {
         const response = await this.listEpisodesStoryCreatorStoriesStoryIdEpisodesGetRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * List Panels
-     */
-    async listPanelsStoryCreatorEpisodesEpisodeIdPanelsGetRaw(requestParameters, initOverrides) {
-        if (requestParameters['episodeId'] == null) {
-            throw new runtime.RequiredError('episodeId', 'Required parameter "episodeId" was null or undefined when calling listPanelsStoryCreatorEpisodesEpisodeIdPanelsGet().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        const response = await this.request({
-            path: `/story-creator/episodes/{episode_id}/panels`.replace(`{${"episode_id"}}`, encodeURIComponent(String(requestParameters['episodeId']))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.StoryCreatorPanelListResponseFromJSON)(jsonValue));
-    }
-    /**
-     * List Panels
-     */
-    async listPanelsStoryCreatorEpisodesEpisodeIdPanelsGet(requestParameters, initOverrides) {
-        const response = await this.listPanelsStoryCreatorEpisodesEpisodeIdPanelsGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**

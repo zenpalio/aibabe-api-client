@@ -68,12 +68,6 @@ export interface StoryCreatorCreateStoryRequest {
      * @type {string}
      * @memberof StoryCreatorCreateStoryRequest
      */
-    narratorDisplayName?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof StoryCreatorCreateStoryRequest
-     */
     userDisplayName?: string;
 }
 
@@ -104,7 +98,6 @@ export function StoryCreatorCreateStoryRequestFromJSONTyped(json: any, ignoreDis
         'firstEpisode': StoryCreatorCreateEpisodeInputFromJSON(json['first_episode']),
         'mainCharacterChatbotId': json['main_character_chatbot_id'],
         'mainCharacterDisplayName': json['main_character_display_name'],
-        'narratorDisplayName': json['narrator_display_name'] == null ? undefined : json['narrator_display_name'],
         'userDisplayName': json['user_display_name'] == null ? undefined : json['user_display_name'],
     };
 }
@@ -126,7 +119,6 @@ export function StoryCreatorCreateStoryRequestFromJSONTyped(json: any, ignoreDis
         'first_episode': StoryCreatorCreateEpisodeInputToJSON(value['firstEpisode']),
         'main_character_chatbot_id': value['mainCharacterChatbotId'],
         'main_character_display_name': value['mainCharacterDisplayName'],
-        'narrator_display_name': value['narratorDisplayName'],
         'user_display_name': value['userDisplayName'],
     };
 }

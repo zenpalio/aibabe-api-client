@@ -63,18 +63,6 @@ export interface StoryCreatorStory {
      * @memberof StoryCreatorStory
      */
     visibility: StoryVisibility;
-    /**
-     * 
-     * @type {Date}
-     * @memberof StoryCreatorStory
-     */
-    createdAt: Date;
-    /**
-     * 
-     * @type {Date}
-     * @memberof StoryCreatorStory
-     */
-    updatedAt: Date;
 }
 
 
@@ -87,8 +75,6 @@ export function instanceOfStoryCreatorStory(value: object): value is StoryCreato
     if (!('ownerId' in value) || value['ownerId'] === undefined) return false;
     if (!('title' in value) || value['title'] === undefined) return false;
     if (!('visibility' in value) || value['visibility'] === undefined) return false;
-    if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
-    if (!('updatedAt' in value) || value['updatedAt'] === undefined) return false;
     return true;
 }
 
@@ -108,8 +94,6 @@ export function StoryCreatorStoryFromJSONTyped(json: any, ignoreDiscriminator: b
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
         'visibility': StoryVisibilityFromJSON(json['visibility']),
-        'createdAt': (new Date(json['created_at'])),
-        'updatedAt': (new Date(json['updated_at'])),
     };
 }
 
@@ -130,8 +114,6 @@ export function StoryCreatorStoryFromJSONTyped(json: any, ignoreDiscriminator: b
         'description': value['description'],
         'cover_image': value['coverImage'],
         'visibility': StoryVisibilityToJSON(value['visibility']),
-        'created_at': ((value['createdAt']).toISOString()),
-        'updated_at': ((value['updatedAt']).toISOString()),
     };
 }
 

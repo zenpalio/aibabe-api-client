@@ -193,7 +193,6 @@ export * from './StoryCreatorEpisodeListResponse';
 export * from './StoryCreatorEpisodeResponse';
 export * from './StoryCreatorEpisodeWithPanelsResponse';
 export * from './StoryCreatorPanel';
-export * from './StoryCreatorPanelListResponse';
 export * from './StoryCreatorSaveEpisodePanel';
 export * from './StoryCreatorSaveEpisodeRequest';
 export * from './StoryCreatorStory';

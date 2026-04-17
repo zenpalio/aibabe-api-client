@@ -18,7 +18,6 @@ exports.StoryCreatorSaveEpisodeRequestFromJSON = StoryCreatorSaveEpisodeRequestF
 exports.StoryCreatorSaveEpisodeRequestFromJSONTyped = StoryCreatorSaveEpisodeRequestFromJSONTyped;
 exports.StoryCreatorSaveEpisodeRequestToJSON = StoryCreatorSaveEpisodeRequestToJSON;
 exports.StoryCreatorSaveEpisodeRequestToJSONTyped = StoryCreatorSaveEpisodeRequestToJSONTyped;
-const EpisodeVisibility_1 = require("./EpisodeVisibility");
 const StoryCreatorSaveEpisodePanel_1 = require("./StoryCreatorSaveEpisodePanel");
 /**
  * Check if a given object implements the StoryCreatorSaveEpisodeRequest interface.
@@ -39,8 +38,6 @@ function StoryCreatorSaveEpisodeRequestFromJSONTyped(json, ignoreDiscriminator) 
         'title': json['title'] == null ? undefined : json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
-        'visibility': json['visibility'] == null ? undefined : (0, EpisodeVisibility_1.EpisodeVisibilityFromJSON)(json['visibility']),
-        'episodeIndex': json['episode_index'] == null ? undefined : json['episode_index'],
         'panels': (json['panels'].map(StoryCreatorSaveEpisodePanel_1.StoryCreatorSaveEpisodePanelFromJSON)),
     };
 }
@@ -55,8 +52,6 @@ function StoryCreatorSaveEpisodeRequestToJSONTyped(value, ignoreDiscriminator = 
         'title': value['title'],
         'description': value['description'],
         'cover_image': value['coverImage'],
-        'visibility': (0, EpisodeVisibility_1.EpisodeVisibilityToJSON)(value['visibility']),
-        'episode_index': value['episodeIndex'],
         'panels': (value['panels'].map(StoryCreatorSaveEpisodePanel_1.StoryCreatorSaveEpisodePanelToJSON)),
     };
 }

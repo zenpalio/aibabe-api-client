@@ -57,12 +57,6 @@ export interface StoryCreatorCreateStoryRequest {
      * @type {string}
      * @memberof StoryCreatorCreateStoryRequest
      */
-    narratorDisplayName?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof StoryCreatorCreateStoryRequest
-     */
     userDisplayName?: string;
 }
 /**

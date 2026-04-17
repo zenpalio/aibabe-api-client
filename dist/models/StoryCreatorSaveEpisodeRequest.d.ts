@@ -9,7 +9,6 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { EpisodeVisibility } from './EpisodeVisibility';
 import type { StoryCreatorSaveEpisodePanel } from './StoryCreatorSaveEpisodePanel';
 /**
  *
@@ -35,18 +34,6 @@ export interface StoryCreatorSaveEpisodeRequest {
      * @memberof StoryCreatorSaveEpisodeRequest
      */
     coverImage?: string | null;
-    /**
-     *
-     * @type {EpisodeVisibility}
-     * @memberof StoryCreatorSaveEpisodeRequest
-     */
-    visibility?: EpisodeVisibility | null;
-    /**
-     *
-     * @type {number}
-     * @memberof StoryCreatorSaveEpisodeRequest
-     */
-    episodeIndex?: number | null;
     /**
      *
      * @type {Array<StoryCreatorSaveEpisodePanel>}

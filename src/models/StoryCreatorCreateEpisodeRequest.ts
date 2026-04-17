@@ -13,14 +13,6 @@
  */
 
 import { mapValues } from '../runtime';
-import type { EpisodeVisibility } from './EpisodeVisibility';
-import {
-    EpisodeVisibilityFromJSON,
-    EpisodeVisibilityFromJSONTyped,
-    EpisodeVisibilityToJSON,
-    EpisodeVisibilityToJSONTyped,
-} from './EpisodeVisibility';
-
 /**
  * 
  * @export
@@ -45,15 +37,7 @@ export interface StoryCreatorCreateEpisodeRequest {
      * @memberof StoryCreatorCreateEpisodeRequest
      */
     coverImage?: string | null;
-    /**
-     * 
-     * @type {EpisodeVisibility}
-     * @memberof StoryCreatorCreateEpisodeRequest
-     */
-    visibility?: EpisodeVisibility;
 }
-
-
 
 /**
  * Check if a given object implements the StoryCreatorCreateEpisodeRequest interface.
@@ -76,7 +60,6 @@ export function StoryCreatorCreateEpisodeRequestFromJSONTyped(json: any, ignoreD
         'title': json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
-        'visibility': json['visibility'] == null ? undefined : EpisodeVisibilityFromJSON(json['visibility']),
     };
 }
 
@@ -94,7 +77,6 @@ export function StoryCreatorCreateEpisodeRequestFromJSONTyped(json: any, ignoreD
         'title': value['title'],
         'description': value['description'],
         'cover_image': value['coverImage'],
-        'visibility': EpisodeVisibilityToJSON(value['visibility']),
     };
 }
 

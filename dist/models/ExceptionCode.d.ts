@@ -86,6 +86,7 @@ export declare const ExceptionCode: {
     readonly PostNotFoundOrNotAuthorized: "post_not_found_or_not_authorized";
     readonly PostReportContentMissing: "post_report_content_missing";
     readonly ActorNotFound: "actor_not_found";
+    readonly ActorCannotBeDeleted: "actor_cannot_be_deleted";
     readonly PanelNotFound: "panel_not_found";
     readonly MissingOrderIndex: "missing_order_index";
     readonly StoryNotFoundOrNotAuthorized: "story_not_found_or_not_authorized";

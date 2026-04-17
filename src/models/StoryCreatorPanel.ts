@@ -38,12 +38,6 @@ export interface StoryCreatorPanel {
      * @type {string}
      * @memberof StoryCreatorPanel
      */
-    episodeId: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof StoryCreatorPanel
-     */
     name: string;
     /**
      * 
@@ -117,18 +111,6 @@ export interface StoryCreatorPanel {
      * @memberof StoryCreatorPanel
      */
     panelIndex: number;
-    /**
-     * 
-     * @type {Date}
-     * @memberof StoryCreatorPanel
-     */
-    createdAt: Date;
-    /**
-     * 
-     * @type {Date}
-     * @memberof StoryCreatorPanel
-     */
-    updatedAt: Date;
 }
 
 
@@ -138,12 +120,9 @@ export interface StoryCreatorPanel {
  */
 export function instanceOfStoryCreatorPanel(value: object): value is StoryCreatorPanel {
     if (!('id' in value) || value['id'] === undefined) return false;
-    if (!('episodeId' in value) || value['episodeId'] === undefined) return false;
     if (!('name' in value) || value['name'] === undefined) return false;
     if (!('panelType' in value) || value['panelType'] === undefined) return false;
     if (!('panelIndex' in value) || value['panelIndex'] === undefined) return false;
-    if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
-    if (!('updatedAt' in value) || value['updatedAt'] === undefined) return false;
     return true;
 }
 
@@ -158,7 +137,6 @@ export function StoryCreatorPanelFromJSONTyped(json: any, ignoreDiscriminator: b
     return {
         
         'id': json['id'],
-        'episodeId': json['episode_id'],
         'name': json['name'],
         'panelType': EpisodePanelTypeFromJSON(json['panel_type']),
         'imageUrl': json['image_url'] == null ? undefined : json['image_url'],
@@ -172,8 +150,6 @@ export function StoryCreatorPanelFromJSONTyped(json: any, ignoreDiscriminator: b
         'sfx': json['sfx'] == null ? undefined : json['sfx'],
         'sfxAutoReplay': json['sfx_auto_replay'] == null ? undefined : json['sfx_auto_replay'],
         'panelIndex': json['panel_index'],
-        'createdAt': (new Date(json['created_at'])),
-        'updatedAt': (new Date(json['updated_at'])),
     };
 }
 
@@ -189,7 +165,6 @@ export function StoryCreatorPanelFromJSONTyped(json: any, ignoreDiscriminator: b
     return {
         
         'id': value['id'],
-        'episode_id': value['episodeId'],
         'name': value['name'],
         'panel_type': EpisodePanelTypeToJSON(value['panelType']),
         'image_url': value['imageUrl'],
@@ -203,8 +178,6 @@ export function StoryCreatorPanelFromJSONTyped(json: any, ignoreDiscriminator: b
         'sfx': value['sfx'],
         'sfx_auto_replay': value['sfxAutoReplay'],
         'panel_index': value['panelIndex'],
-        'created_at': ((value['createdAt']).toISOString()),
-        'updated_at': ((value['updatedAt']).toISOString()),
     };
 }
 

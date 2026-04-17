@@ -25,17 +25,11 @@ const EpisodePanelType_1 = require("./EpisodePanelType");
 function instanceOfStoryCreatorPanel(value) {
     if (!('id' in value) || value['id'] === undefined)
         return false;
-    if (!('episodeId' in value) || value['episodeId'] === undefined)
-        return false;
     if (!('name' in value) || value['name'] === undefined)
         return false;
     if (!('panelType' in value) || value['panelType'] === undefined)
         return false;
     if (!('panelIndex' in value) || value['panelIndex'] === undefined)
-        return false;
-    if (!('createdAt' in value) || value['createdAt'] === undefined)
-        return false;
-    if (!('updatedAt' in value) || value['updatedAt'] === undefined)
         return false;
     return true;
 }
@@ -48,7 +42,6 @@ function StoryCreatorPanelFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'id': json['id'],
-        'episodeId': json['episode_id'],
         'name': json['name'],
         'panelType': (0, EpisodePanelType_1.EpisodePanelTypeFromJSON)(json['panel_type']),
         'imageUrl': json['image_url'] == null ? undefined : json['image_url'],
@@ -62,8 +55,6 @@ function StoryCreatorPanelFromJSONTyped(json, ignoreDiscriminator) {
         'sfx': json['sfx'] == null ? undefined : json['sfx'],
         'sfxAutoReplay': json['sfx_auto_replay'] == null ? undefined : json['sfx_auto_replay'],
         'panelIndex': json['panel_index'],
-        'createdAt': (new Date(json['created_at'])),
-        'updatedAt': (new Date(json['updated_at'])),
     };
 }
 function StoryCreatorPanelToJSON(json) {
@@ -75,7 +66,6 @@ function StoryCreatorPanelToJSONTyped(value, ignoreDiscriminator = false) {
     }
     return {
         'id': value['id'],
-        'episode_id': value['episodeId'],
         'name': value['name'],
         'panel_type': (0, EpisodePanelType_1.EpisodePanelTypeToJSON)(value['panelType']),
         'image_url': value['imageUrl'],
@@ -89,8 +79,6 @@ function StoryCreatorPanelToJSONTyped(value, ignoreDiscriminator = false) {
         'sfx': value['sfx'],
         'sfx_auto_replay': value['sfxAutoReplay'],
         'panel_index': value['panelIndex'],
-        'created_at': ((value['createdAt']).toISOString()),
-        'updated_at': ((value['updatedAt']).toISOString()),
     };
 }
 //# sourceMappingURL=StoryCreatorPanel.js.map

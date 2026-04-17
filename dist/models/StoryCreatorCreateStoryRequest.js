@@ -47,7 +47,6 @@ function StoryCreatorCreateStoryRequestFromJSONTyped(json, ignoreDiscriminator) 
         'firstEpisode': (0, StoryCreatorCreateEpisodeInput_1.StoryCreatorCreateEpisodeInputFromJSON)(json['first_episode']),
         'mainCharacterChatbotId': json['main_character_chatbot_id'],
         'mainCharacterDisplayName': json['main_character_display_name'],
-        'narratorDisplayName': json['narrator_display_name'] == null ? undefined : json['narrator_display_name'],
         'userDisplayName': json['user_display_name'] == null ? undefined : json['user_display_name'],
     };
 }
@@ -65,7 +64,6 @@ function StoryCreatorCreateStoryRequestToJSONTyped(value, ignoreDiscriminator = 
         'first_episode': (0, StoryCreatorCreateEpisodeInput_1.StoryCreatorCreateEpisodeInputToJSON)(value['firstEpisode']),
         'main_character_chatbot_id': value['mainCharacterChatbotId'],
         'main_character_display_name': value['mainCharacterDisplayName'],
-        'narrator_display_name': value['narratorDisplayName'],
         'user_display_name': value['userDisplayName'],
     };
 }

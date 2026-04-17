@@ -13,13 +13,6 @@
  */
 
 import { mapValues } from '../runtime';
-import type { EpisodeVisibility } from './EpisodeVisibility';
-import {
-    EpisodeVisibilityFromJSON,
-    EpisodeVisibilityFromJSONTyped,
-    EpisodeVisibilityToJSON,
-    EpisodeVisibilityToJSONTyped,
-} from './EpisodeVisibility';
 import type { StoryCreatorSaveEpisodePanel } from './StoryCreatorSaveEpisodePanel';
 import {
     StoryCreatorSaveEpisodePanelFromJSON,
@@ -54,25 +47,11 @@ export interface StoryCreatorSaveEpisodeRequest {
     coverImage?: string | null;
     /**
      * 
-     * @type {EpisodeVisibility}
-     * @memberof StoryCreatorSaveEpisodeRequest
-     */
-    visibility?: EpisodeVisibility | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof StoryCreatorSaveEpisodeRequest
-     */
-    episodeIndex?: number | null;
-    /**
-     * 
      * @type {Array<StoryCreatorSaveEpisodePanel>}
      * @memberof StoryCreatorSaveEpisodeRequest
      */
     panels: Array<StoryCreatorSaveEpisodePanel>;
 }
-
-
 
 /**
  * Check if a given object implements the StoryCreatorSaveEpisodeRequest interface.
@@ -95,8 +74,6 @@ export function StoryCreatorSaveEpisodeRequestFromJSONTyped(json: any, ignoreDis
         'title': json['title'] == null ? undefined : json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
-        'visibility': json['visibility'] == null ? undefined : EpisodeVisibilityFromJSON(json['visibility']),
-        'episodeIndex': json['episode_index'] == null ? undefined : json['episode_index'],
         'panels': ((json['panels'] as Array<any>).map(StoryCreatorSaveEpisodePanelFromJSON)),
     };
 }
@@ -115,8 +92,6 @@ export function StoryCreatorSaveEpisodeRequestFromJSONTyped(json: any, ignoreDis
         'title': value['title'],
         'description': value['description'],
         'cover_image': value['coverImage'],
-        'visibility': EpisodeVisibilityToJSON(value['visibility']),
-        'episode_index': value['episodeIndex'],
         'panels': ((value['panels'] as Array<any>).map(StoryCreatorSaveEpisodePanelToJSON)),
     };
 }

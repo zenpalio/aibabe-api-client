@@ -25,19 +25,11 @@ const EpisodeVisibility_1 = require("./EpisodeVisibility");
 function instanceOfStoryCreatorEpisode(value) {
     if (!('id' in value) || value['id'] === undefined)
         return false;
-    if (!('ownerId' in value) || value['ownerId'] === undefined)
-        return false;
-    if (!('storyId' in value) || value['storyId'] === undefined)
-        return false;
     if (!('title' in value) || value['title'] === undefined)
         return false;
     if (!('visibility' in value) || value['visibility'] === undefined)
         return false;
     if (!('episodeIndex' in value) || value['episodeIndex'] === undefined)
-        return false;
-    if (!('createdAt' in value) || value['createdAt'] === undefined)
-        return false;
-    if (!('updatedAt' in value) || value['updatedAt'] === undefined)
         return false;
     return true;
 }
@@ -50,15 +42,11 @@ function StoryCreatorEpisodeFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'id': json['id'],
-        'ownerId': json['owner_id'],
-        'storyId': json['story_id'],
         'title': json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
         'visibility': (0, EpisodeVisibility_1.EpisodeVisibilityFromJSON)(json['visibility']),
         'episodeIndex': json['episode_index'],
-        'createdAt': (new Date(json['created_at'])),
-        'updatedAt': (new Date(json['updated_at'])),
     };
 }
 function StoryCreatorEpisodeToJSON(json) {
@@ -70,15 +58,11 @@ function StoryCreatorEpisodeToJSONTyped(value, ignoreDiscriminator = false) {
     }
     return {
         'id': value['id'],
-        'owner_id': value['ownerId'],
-        'story_id': value['storyId'],
         'title': value['title'],
         'description': value['description'],
         'cover_image': value['coverImage'],
         'visibility': (0, EpisodeVisibility_1.EpisodeVisibilityToJSON)(value['visibility']),
         'episode_index': value['episodeIndex'],
-        'created_at': ((value['createdAt']).toISOString()),
-        'updated_at': ((value['updatedAt']).toISOString()),
     };
 }
 //# sourceMappingURL=StoryCreatorEpisode.js.map

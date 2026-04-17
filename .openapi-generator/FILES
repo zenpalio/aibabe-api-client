@@ -219,7 +219,6 @@ src/models/StoryCreatorEpisodeListResponse.ts
 src/models/StoryCreatorEpisodeResponse.ts
 src/models/StoryCreatorEpisodeWithPanelsResponse.ts
 src/models/StoryCreatorPanel.ts
-src/models/StoryCreatorPanelListResponse.ts
 src/models/StoryCreatorSaveEpisodePanel.ts
 src/models/StoryCreatorSaveEpisodeRequest.ts
 src/models/StoryCreatorStory.ts
