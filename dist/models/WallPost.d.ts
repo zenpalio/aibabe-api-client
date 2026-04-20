@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { ChatbotPreview } from './ChatbotPreview';
 import type { VideoContent } from './VideoContent';
 import type { SharedContentType } from './SharedContentType';
 import type { ImageContent } from './ImageContent';
@@ -32,34 +33,10 @@ export interface WallPost {
     creatorId: string;
     /**
      *
-     * @type {string}
+     * @type {ChatbotPreview}
      * @memberof WallPost
      */
-    chatbotId: string;
-    /**
-     *
-     * @type {string}
-     * @memberof WallPost
-     */
-    chatbotName: string;
-    /**
-     *
-     * @type {string}
-     * @memberof WallPost
-     */
-    chatbotProfilePicture: string;
-    /**
-     *
-     * @type {string}
-     * @memberof WallPost
-     */
-    chatbotProfileVideo: string | null;
-    /**
-     *
-     * @type {boolean}
-     * @memberof WallPost
-     */
-    chatbotPublic: boolean;
+    chatbot: ChatbotPreview | null;
     /**
      *
      * @type {Array<ImageContent>}

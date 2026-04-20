@@ -21,6 +21,7 @@ import type {
   ImageToVideoFromChatPayload,
   ImageToVideoPayload,
   ImageToVideoRecommendationPayload,
+  LastVideoFrameResponse,
   VideoFromChatResponse,
 } from '../models/index';
 import {
@@ -36,6 +37,8 @@ import {
     ImageToVideoPayloadToJSON,
     ImageToVideoRecommendationPayloadFromJSON,
     ImageToVideoRecommendationPayloadToJSON,
+    LastVideoFrameResponseFromJSON,
+    LastVideoFrameResponseToJSON,
     VideoFromChatResponseFromJSON,
     VideoFromChatResponseToJSON,
 } from '../models/index';
@@ -87,6 +90,10 @@ export interface GenerateVideoVideoPostRequest {
 }
 
 export interface GenerationTagsVideoVideoIdTagsGetRequest {
+    videoId: string;
+}
+
+export interface VideoLastFrameVideoVideoIdLastFrameGetRequest {
     videoId: string;
 }
 
@@ -582,6 +589,39 @@ export class VideoApi extends runtime.BaseAPI {
      */
     async generationTagsVideoVideoIdTagsGet(requestParameters: GenerationTagsVideoVideoIdTagsGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetVideoGenerationTagsResponse> {
         const response = await this.generationTagsVideoVideoIdTagsGetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Video Last Frame
+     */
+    async videoLastFrameVideoVideoIdLastFrameGetRaw(requestParameters: VideoLastFrameVideoVideoIdLastFrameGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LastVideoFrameResponse>> {
+        if (requestParameters['videoId'] == null) {
+            throw new runtime.RequiredError(
+                'videoId',
+                'Required parameter "videoId" was null or undefined when calling videoLastFrameVideoVideoIdLastFrameGet().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/video/{video_id}/last_frame`.replace(`{${"video_id"}}`, encodeURIComponent(String(requestParameters['videoId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => LastVideoFrameResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Video Last Frame
+     */
+    async videoLastFrameVideoVideoIdLastFrameGet(requestParameters: VideoLastFrameVideoVideoIdLastFrameGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LastVideoFrameResponse> {
+        const response = await this.videoLastFrameVideoVideoIdLastFrameGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
