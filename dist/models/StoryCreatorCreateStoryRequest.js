@@ -18,7 +18,7 @@ exports.StoryCreatorCreateStoryRequestFromJSON = StoryCreatorCreateStoryRequestF
 exports.StoryCreatorCreateStoryRequestFromJSONTyped = StoryCreatorCreateStoryRequestFromJSONTyped;
 exports.StoryCreatorCreateStoryRequestToJSON = StoryCreatorCreateStoryRequestToJSON;
 exports.StoryCreatorCreateStoryRequestToJSONTyped = StoryCreatorCreateStoryRequestToJSONTyped;
-const StoryCreatorCreateEpisodeInput_1 = require("./StoryCreatorCreateEpisodeInput");
+const StoryCreatorEpisodeBase_1 = require("./StoryCreatorEpisodeBase");
 /**
  * Check if a given object implements the StoryCreatorCreateStoryRequest interface.
  */
@@ -44,7 +44,7 @@ function StoryCreatorCreateStoryRequestFromJSONTyped(json, ignoreDiscriminator) 
         'title': json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
-        'firstEpisode': (0, StoryCreatorCreateEpisodeInput_1.StoryCreatorCreateEpisodeInputFromJSON)(json['first_episode']),
+        'firstEpisode': (0, StoryCreatorEpisodeBase_1.StoryCreatorEpisodeBaseFromJSON)(json['first_episode']),
         'mainCharacterChatbotId': json['main_character_chatbot_id'],
         'mainCharacterDisplayName': json['main_character_display_name'],
         'userDisplayName': json['user_display_name'] == null ? undefined : json['user_display_name'],
@@ -61,7 +61,7 @@ function StoryCreatorCreateStoryRequestToJSONTyped(value, ignoreDiscriminator = 
         'title': value['title'],
         'description': value['description'],
         'cover_image': value['coverImage'],
-        'first_episode': (0, StoryCreatorCreateEpisodeInput_1.StoryCreatorCreateEpisodeInputToJSON)(value['firstEpisode']),
+        'first_episode': (0, StoryCreatorEpisodeBase_1.StoryCreatorEpisodeBaseToJSON)(value['firstEpisode']),
         'main_character_chatbot_id': value['mainCharacterChatbotId'],
         'main_character_display_name': value['mainCharacterDisplayName'],
         'user_display_name': value['userDisplayName'],

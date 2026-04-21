@@ -18,7 +18,6 @@ exports.StoryCreatorUpdateEpisodeRequestFromJSON = StoryCreatorUpdateEpisodeRequ
 exports.StoryCreatorUpdateEpisodeRequestFromJSONTyped = StoryCreatorUpdateEpisodeRequestFromJSONTyped;
 exports.StoryCreatorUpdateEpisodeRequestToJSON = StoryCreatorUpdateEpisodeRequestToJSON;
 exports.StoryCreatorUpdateEpisodeRequestToJSONTyped = StoryCreatorUpdateEpisodeRequestToJSONTyped;
-const EpisodeVisibility_1 = require("./EpisodeVisibility");
 /**
  * Check if a given object implements the StoryCreatorUpdateEpisodeRequest interface.
  */
@@ -36,7 +35,7 @@ function StoryCreatorUpdateEpisodeRequestFromJSONTyped(json, ignoreDiscriminator
         'title': json['title'] == null ? undefined : json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
-        'visibility': json['visibility'] == null ? undefined : (0, EpisodeVisibility_1.EpisodeVisibilityFromJSON)(json['visibility']),
+        'lockAfter': json['lock_after'] == null ? undefined : json['lock_after'],
         'episodeIndex': json['episode_index'] == null ? undefined : json['episode_index'],
     };
 }
@@ -51,7 +50,7 @@ function StoryCreatorUpdateEpisodeRequestToJSONTyped(value, ignoreDiscriminator 
         'title': value['title'],
         'description': value['description'],
         'cover_image': value['coverImage'],
-        'visibility': (0, EpisodeVisibility_1.EpisodeVisibilityToJSON)(value['visibility']),
+        'lock_after': value['lockAfter'],
         'episode_index': value['episodeIndex'],
     };
 }

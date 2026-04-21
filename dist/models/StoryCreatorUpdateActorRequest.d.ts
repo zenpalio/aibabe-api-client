@@ -9,19 +9,12 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { ActorRole } from './ActorRole';
 /**
  *
  * @export
  * @interface StoryCreatorUpdateActorRequest
  */
 export interface StoryCreatorUpdateActorRequest {
-    /**
-     *
-     * @type {ActorRole}
-     * @memberof StoryCreatorUpdateActorRequest
-     */
-    role?: ActorRole | null;
     /**
      *
      * @type {string}
@@ -34,12 +27,6 @@ export interface StoryCreatorUpdateActorRequest {
      * @memberof StoryCreatorUpdateActorRequest
      */
     avatar?: string | null;
-    /**
-     *
-     * @type {string}
-     * @memberof StoryCreatorUpdateActorRequest
-     */
-    chatbotId?: string | null;
     /**
      *
      * @type {string}

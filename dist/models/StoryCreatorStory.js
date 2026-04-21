@@ -23,11 +23,11 @@ const StoryVisibility_1 = require("./StoryVisibility");
  * Check if a given object implements the StoryCreatorStory interface.
  */
 function instanceOfStoryCreatorStory(value) {
+    if (!('title' in value) || value['title'] === undefined)
+        return false;
     if (!('id' in value) || value['id'] === undefined)
         return false;
     if (!('ownerId' in value) || value['ownerId'] === undefined)
-        return false;
-    if (!('title' in value) || value['title'] === undefined)
         return false;
     if (!('visibility' in value) || value['visibility'] === undefined)
         return false;
@@ -41,11 +41,11 @@ function StoryCreatorStoryFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
-        'id': json['id'],
-        'ownerId': json['owner_id'],
         'title': json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
+        'id': json['id'],
+        'ownerId': json['owner_id'],
         'visibility': (0, StoryVisibility_1.StoryVisibilityFromJSON)(json['visibility']),
     };
 }
@@ -57,11 +57,11 @@ function StoryCreatorStoryToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
-        'id': value['id'],
-        'owner_id': value['ownerId'],
         'title': value['title'],
         'description': value['description'],
         'cover_image': value['coverImage'],
+        'id': value['id'],
+        'owner_id': value['ownerId'],
         'visibility': (0, StoryVisibility_1.StoryVisibilityToJSON)(value['visibility']),
     };
 }

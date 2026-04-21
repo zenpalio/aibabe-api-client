@@ -36,12 +36,6 @@ export interface StoryCreatorSaveEpisodePanel {
     panelType: EpisodePanelType;
     /**
      *
-     * @type {number}
-     * @memberof StoryCreatorSaveEpisodePanel
-     */
-    panelIndex: number;
-    /**
-     *
      * @type {string}
      * @memberof StoryCreatorSaveEpisodePanel
      */
@@ -100,6 +94,12 @@ export interface StoryCreatorSaveEpisodePanel {
      * @memberof StoryCreatorSaveEpisodePanel
      */
     sfxAutoReplay?: boolean;
+    /**
+     *
+     * @type {number}
+     * @memberof StoryCreatorSaveEpisodePanel
+     */
+    panelIndex: number;
 }
 /**
  * Check if a given object implements the StoryCreatorSaveEpisodePanel interface.

@@ -32,12 +32,6 @@ export interface StoryCreatorEpisode {
      * @type {string}
      * @memberof StoryCreatorEpisode
      */
-    id: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof StoryCreatorEpisode
-     */
     title: string;
     /**
      * 
@@ -51,6 +45,18 @@ export interface StoryCreatorEpisode {
      * @memberof StoryCreatorEpisode
      */
     coverImage?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof StoryCreatorEpisode
+     */
+    lockAfter?: number | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof StoryCreatorEpisode
+     */
+    id: string;
     /**
      * 
      * @type {EpisodeVisibility}
@@ -71,8 +77,8 @@ export interface StoryCreatorEpisode {
  * Check if a given object implements the StoryCreatorEpisode interface.
  */
 export function instanceOfStoryCreatorEpisode(value: object): value is StoryCreatorEpisode {
-    if (!('id' in value) || value['id'] === undefined) return false;
     if (!('title' in value) || value['title'] === undefined) return false;
+    if (!('id' in value) || value['id'] === undefined) return false;
     if (!('visibility' in value) || value['visibility'] === undefined) return false;
     if (!('episodeIndex' in value) || value['episodeIndex'] === undefined) return false;
     return true;
@@ -88,10 +94,11 @@ export function StoryCreatorEpisodeFromJSONTyped(json: any, ignoreDiscriminator:
     }
     return {
         
-        'id': json['id'],
         'title': json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
+        'lockAfter': json['lock_after'] == null ? undefined : json['lock_after'],
+        'id': json['id'],
         'visibility': EpisodeVisibilityFromJSON(json['visibility']),
         'episodeIndex': json['episode_index'],
     };
@@ -108,10 +115,11 @@ export function StoryCreatorEpisodeFromJSONTyped(json: any, ignoreDiscriminator:
 
     return {
         
-        'id': value['id'],
         'title': value['title'],
         'description': value['description'],
         'cover_image': value['coverImage'],
+        'lock_after': value['lockAfter'],
+        'id': value['id'],
         'visibility': EpisodeVisibilityToJSON(value['visibility']),
         'episode_index': value['episodeIndex'],
     };

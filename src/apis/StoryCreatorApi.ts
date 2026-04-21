@@ -217,7 +217,8 @@ export class StoryCreatorApi extends runtime.BaseAPI {
     }
 
     /**
-     * Create Story
+     * **Creates new story with first episode and adds default Cast to the story consisting of 3 actors: \'main-character\' created from a chatbot, \'user\' and \'narrator\'**
+     * Create new story
      */
     async createStoryStoryCreatorStoriesPostRaw(requestParameters: CreateStoryStoryCreatorStoriesPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StoryCreatorCreateStoryResponse>> {
         if (requestParameters['storyCreatorCreateStoryRequest'] == null) {
@@ -245,7 +246,8 @@ export class StoryCreatorApi extends runtime.BaseAPI {
     }
 
     /**
-     * Create Story
+     * **Creates new story with first episode and adds default Cast to the story consisting of 3 actors: \'main-character\' created from a chatbot, \'user\' and \'narrator\'**
+     * Create new story
      */
     async createStoryStoryCreatorStoriesPost(requestParameters: CreateStoryStoryCreatorStoriesPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StoryCreatorCreateStoryResponse> {
         const response = await this.createStoryStoryCreatorStoriesPostRaw(requestParameters, initOverrides);

@@ -9,7 +9,6 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { EpisodeVisibility } from './EpisodeVisibility';
 /**
  *
  * @export
@@ -21,7 +20,7 @@ export interface StoryCreatorUpdateEpisodeRequest {
      * @type {string}
      * @memberof StoryCreatorUpdateEpisodeRequest
      */
-    title?: string | null;
+    title?: string;
     /**
      *
      * @type {string}
@@ -36,10 +35,10 @@ export interface StoryCreatorUpdateEpisodeRequest {
     coverImage?: string | null;
     /**
      *
-     * @type {EpisodeVisibility}
+     * @type {number}
      * @memberof StoryCreatorUpdateEpisodeRequest
      */
-    visibility?: EpisodeVisibility | null;
+    lockAfter?: number | null;
     /**
      *
      * @type {number}

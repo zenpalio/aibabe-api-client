@@ -21,12 +21,6 @@ export interface StoryCreatorEpisode {
      * @type {string}
      * @memberof StoryCreatorEpisode
      */
-    id: string;
-    /**
-     *
-     * @type {string}
-     * @memberof StoryCreatorEpisode
-     */
     title: string;
     /**
      *
@@ -40,6 +34,18 @@ export interface StoryCreatorEpisode {
      * @memberof StoryCreatorEpisode
      */
     coverImage?: string | null;
+    /**
+     *
+     * @type {number}
+     * @memberof StoryCreatorEpisode
+     */
+    lockAfter?: number | null;
+    /**
+     *
+     * @type {string}
+     * @memberof StoryCreatorEpisode
+     */
+    id: string;
     /**
      *
      * @type {EpisodeVisibility}

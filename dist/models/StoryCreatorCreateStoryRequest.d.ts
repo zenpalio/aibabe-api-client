@@ -9,7 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { StoryCreatorCreateEpisodeInput } from './StoryCreatorCreateEpisodeInput';
+import type { StoryCreatorEpisodeBase } from './StoryCreatorEpisodeBase';
 /**
  *
  * @export
@@ -36,10 +36,10 @@ export interface StoryCreatorCreateStoryRequest {
     coverImage?: string | null;
     /**
      *
-     * @type {StoryCreatorCreateEpisodeInput}
+     * @type {StoryCreatorEpisodeBase}
      * @memberof StoryCreatorCreateStoryRequest
      */
-    firstEpisode: StoryCreatorCreateEpisodeInput;
+    firstEpisode: StoryCreatorEpisodeBase;
     /**
      *
      * @type {string}

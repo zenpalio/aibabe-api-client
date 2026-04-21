@@ -29,16 +29,16 @@ import {
 export interface StoryCreatorCreateActorRequest {
     /**
      * 
-     * @type {ActorRole}
-     * @memberof StoryCreatorCreateActorRequest
-     */
-    role: ActorRole;
-    /**
-     * 
      * @type {string}
      * @memberof StoryCreatorCreateActorRequest
      */
     displayName: string;
+    /**
+     * 
+     * @type {ActorRole}
+     * @memberof StoryCreatorCreateActorRequest
+     */
+    role: ActorRole;
     /**
      * 
      * @type {string}
@@ -65,8 +65,8 @@ export interface StoryCreatorCreateActorRequest {
  * Check if a given object implements the StoryCreatorCreateActorRequest interface.
  */
 export function instanceOfStoryCreatorCreateActorRequest(value: object): value is StoryCreatorCreateActorRequest {
-    if (!('role' in value) || value['role'] === undefined) return false;
     if (!('displayName' in value) || value['displayName'] === undefined) return false;
+    if (!('role' in value) || value['role'] === undefined) return false;
     return true;
 }
 
@@ -80,8 +80,8 @@ export function StoryCreatorCreateActorRequestFromJSONTyped(json: any, ignoreDis
     }
     return {
         
-        'role': ActorRoleFromJSON(json['role']),
         'displayName': json['display_name'],
+        'role': ActorRoleFromJSON(json['role']),
         'avatar': json['avatar'] == null ? undefined : json['avatar'],
         'chatbotId': json['chatbot_id'] == null ? undefined : json['chatbot_id'],
         'referenceAudioId': json['reference_audio_id'] == null ? undefined : json['reference_audio_id'],
@@ -99,8 +99,8 @@ export function StoryCreatorCreateActorRequestFromJSONTyped(json: any, ignoreDis
 
     return {
         
-        'role': ActorRoleToJSON(value['role']),
         'display_name': value['displayName'],
+        'role': ActorRoleToJSON(value['role']),
         'avatar': value['avatar'],
         'chatbot_id': value['chatbotId'],
         'reference_audio_id': value['referenceAudioId'],

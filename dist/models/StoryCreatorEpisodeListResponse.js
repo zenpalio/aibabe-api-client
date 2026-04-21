@@ -23,7 +23,7 @@ const StoryCreatorEpisode_1 = require("./StoryCreatorEpisode");
  * Check if a given object implements the StoryCreatorEpisodeListResponse interface.
  */
 function instanceOfStoryCreatorEpisodeListResponse(value) {
-    if (!('items' in value) || value['items'] === undefined)
+    if (!('episodes' in value) || value['episodes'] === undefined)
         return false;
     return true;
 }
@@ -35,7 +35,7 @@ function StoryCreatorEpisodeListResponseFromJSONTyped(json, ignoreDiscriminator)
         return json;
     }
     return {
-        'items': (json['items'].map(StoryCreatorEpisode_1.StoryCreatorEpisodeFromJSON)),
+        'episodes': (json['episodes'].map(StoryCreatorEpisode_1.StoryCreatorEpisodeFromJSON)),
     };
 }
 function StoryCreatorEpisodeListResponseToJSON(json) {
@@ -46,7 +46,7 @@ function StoryCreatorEpisodeListResponseToJSONTyped(value, ignoreDiscriminator =
         return value;
     }
     return {
-        'items': (value['items'].map(StoryCreatorEpisode_1.StoryCreatorEpisodeToJSON)),
+        'episodes': (value['episodes'].map(StoryCreatorEpisode_1.StoryCreatorEpisodeToJSON)),
     };
 }
 //# sourceMappingURL=StoryCreatorEpisodeListResponse.js.map

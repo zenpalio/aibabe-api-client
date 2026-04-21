@@ -9,7 +9,6 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { StoryVisibility } from './StoryVisibility';
 /**
  *
  * @export
@@ -21,7 +20,7 @@ export interface StoryCreatorUpdateStoryRequest {
      * @type {string}
      * @memberof StoryCreatorUpdateStoryRequest
      */
-    title?: string | null;
+    title?: string;
     /**
      *
      * @type {string}
@@ -34,12 +33,6 @@ export interface StoryCreatorUpdateStoryRequest {
      * @memberof StoryCreatorUpdateStoryRequest
      */
     coverImage?: string | null;
-    /**
-     *
-     * @type {StoryVisibility}
-     * @memberof StoryCreatorUpdateStoryRequest
-     */
-    visibility?: StoryVisibility | null;
 }
 /**
  * Check if a given object implements the StoryCreatorUpdateStoryRequest interface.

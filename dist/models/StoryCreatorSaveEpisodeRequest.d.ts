@@ -21,7 +21,7 @@ export interface StoryCreatorSaveEpisodeRequest {
      * @type {string}
      * @memberof StoryCreatorSaveEpisodeRequest
      */
-    title?: string | null;
+    title: string;
     /**
      *
      * @type {string}
@@ -34,6 +34,12 @@ export interface StoryCreatorSaveEpisodeRequest {
      * @memberof StoryCreatorSaveEpisodeRequest
      */
     coverImage?: string | null;
+    /**
+     *
+     * @type {number}
+     * @memberof StoryCreatorSaveEpisodeRequest
+     */
+    lockAfter?: number | null;
     /**
      *
      * @type {Array<StoryCreatorSaveEpisodePanel>}

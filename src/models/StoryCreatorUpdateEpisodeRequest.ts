@@ -13,14 +13,6 @@
  */
 
 import { mapValues } from '../runtime';
-import type { EpisodeVisibility } from './EpisodeVisibility';
-import {
-    EpisodeVisibilityFromJSON,
-    EpisodeVisibilityFromJSONTyped,
-    EpisodeVisibilityToJSON,
-    EpisodeVisibilityToJSONTyped,
-} from './EpisodeVisibility';
-
 /**
  * 
  * @export
@@ -32,7 +24,7 @@ export interface StoryCreatorUpdateEpisodeRequest {
      * @type {string}
      * @memberof StoryCreatorUpdateEpisodeRequest
      */
-    title?: string | null;
+    title?: string;
     /**
      * 
      * @type {string}
@@ -47,10 +39,10 @@ export interface StoryCreatorUpdateEpisodeRequest {
     coverImage?: string | null;
     /**
      * 
-     * @type {EpisodeVisibility}
+     * @type {number}
      * @memberof StoryCreatorUpdateEpisodeRequest
      */
-    visibility?: EpisodeVisibility | null;
+    lockAfter?: number | null;
     /**
      * 
      * @type {number}
@@ -58,8 +50,6 @@ export interface StoryCreatorUpdateEpisodeRequest {
      */
     episodeIndex?: number | null;
 }
-
-
 
 /**
  * Check if a given object implements the StoryCreatorUpdateEpisodeRequest interface.
@@ -81,7 +71,7 @@ export function StoryCreatorUpdateEpisodeRequestFromJSONTyped(json: any, ignoreD
         'title': json['title'] == null ? undefined : json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
-        'visibility': json['visibility'] == null ? undefined : EpisodeVisibilityFromJSON(json['visibility']),
+        'lockAfter': json['lock_after'] == null ? undefined : json['lock_after'],
         'episodeIndex': json['episode_index'] == null ? undefined : json['episode_index'],
     };
 }
@@ -100,7 +90,7 @@ export function StoryCreatorUpdateEpisodeRequestFromJSONTyped(json: any, ignoreD
         'title': value['title'],
         'description': value['description'],
         'cover_image': value['coverImage'],
-        'visibility': EpisodeVisibilityToJSON(value['visibility']),
+        'lock_after': value['lockAfter'],
         'episode_index': value['episodeIndex'],
     };
 }

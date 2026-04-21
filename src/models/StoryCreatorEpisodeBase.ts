@@ -16,42 +16,48 @@ import { mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface StoryCreatorCreateEpisodeInput
+ * @interface StoryCreatorEpisodeBase
  */
-export interface StoryCreatorCreateEpisodeInput {
+export interface StoryCreatorEpisodeBase {
     /**
      * 
      * @type {string}
-     * @memberof StoryCreatorCreateEpisodeInput
+     * @memberof StoryCreatorEpisodeBase
      */
     title: string;
     /**
      * 
      * @type {string}
-     * @memberof StoryCreatorCreateEpisodeInput
+     * @memberof StoryCreatorEpisodeBase
      */
     description?: string | null;
     /**
      * 
      * @type {string}
-     * @memberof StoryCreatorCreateEpisodeInput
+     * @memberof StoryCreatorEpisodeBase
      */
     coverImage?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof StoryCreatorEpisodeBase
+     */
+    lockAfter?: number | null;
 }
 
 /**
- * Check if a given object implements the StoryCreatorCreateEpisodeInput interface.
+ * Check if a given object implements the StoryCreatorEpisodeBase interface.
  */
-export function instanceOfStoryCreatorCreateEpisodeInput(value: object): value is StoryCreatorCreateEpisodeInput {
+export function instanceOfStoryCreatorEpisodeBase(value: object): value is StoryCreatorEpisodeBase {
     if (!('title' in value) || value['title'] === undefined) return false;
     return true;
 }
 
-export function StoryCreatorCreateEpisodeInputFromJSON(json: any): StoryCreatorCreateEpisodeInput {
-    return StoryCreatorCreateEpisodeInputFromJSONTyped(json, false);
+export function StoryCreatorEpisodeBaseFromJSON(json: any): StoryCreatorEpisodeBase {
+    return StoryCreatorEpisodeBaseFromJSONTyped(json, false);
 }
 
-export function StoryCreatorCreateEpisodeInputFromJSONTyped(json: any, ignoreDiscriminator: boolean): StoryCreatorCreateEpisodeInput {
+export function StoryCreatorEpisodeBaseFromJSONTyped(json: any, ignoreDiscriminator: boolean): StoryCreatorEpisodeBase {
     if (json == null) {
         return json;
     }
@@ -60,14 +66,15 @@ export function StoryCreatorCreateEpisodeInputFromJSONTyped(json: any, ignoreDis
         'title': json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
+        'lockAfter': json['lock_after'] == null ? undefined : json['lock_after'],
     };
 }
 
-  export function StoryCreatorCreateEpisodeInputToJSON(json: any): StoryCreatorCreateEpisodeInput {
-      return StoryCreatorCreateEpisodeInputToJSONTyped(json, false);
+  export function StoryCreatorEpisodeBaseToJSON(json: any): StoryCreatorEpisodeBase {
+      return StoryCreatorEpisodeBaseToJSONTyped(json, false);
   }
 
-  export function StoryCreatorCreateEpisodeInputToJSONTyped(value?: StoryCreatorCreateEpisodeInput | null, ignoreDiscriminator: boolean = false): any {
+  export function StoryCreatorEpisodeBaseToJSONTyped(value?: StoryCreatorEpisodeBase | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
@@ -77,6 +84,7 @@ export function StoryCreatorCreateEpisodeInputFromJSONTyped(json: any, ignoreDis
         'title': value['title'],
         'description': value['description'],
         'cover_image': value['coverImage'],
+        'lock_after': value['lockAfter'],
     };
 }
 

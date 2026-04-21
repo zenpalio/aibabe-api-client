@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { StoryCreatorCreateEpisodeInput } from './StoryCreatorCreateEpisodeInput';
+import type { StoryCreatorEpisodeBase } from './StoryCreatorEpisodeBase';
 import {
-    StoryCreatorCreateEpisodeInputFromJSON,
-    StoryCreatorCreateEpisodeInputFromJSONTyped,
-    StoryCreatorCreateEpisodeInputToJSON,
-    StoryCreatorCreateEpisodeInputToJSONTyped,
-} from './StoryCreatorCreateEpisodeInput';
+    StoryCreatorEpisodeBaseFromJSON,
+    StoryCreatorEpisodeBaseFromJSONTyped,
+    StoryCreatorEpisodeBaseToJSON,
+    StoryCreatorEpisodeBaseToJSONTyped,
+} from './StoryCreatorEpisodeBase';
 
 /**
  * 
@@ -47,10 +47,10 @@ export interface StoryCreatorCreateStoryRequest {
     coverImage?: string | null;
     /**
      * 
-     * @type {StoryCreatorCreateEpisodeInput}
+     * @type {StoryCreatorEpisodeBase}
      * @memberof StoryCreatorCreateStoryRequest
      */
-    firstEpisode: StoryCreatorCreateEpisodeInput;
+    firstEpisode: StoryCreatorEpisodeBase;
     /**
      * 
      * @type {string}
@@ -95,7 +95,7 @@ export function StoryCreatorCreateStoryRequestFromJSONTyped(json: any, ignoreDis
         'title': json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
-        'firstEpisode': StoryCreatorCreateEpisodeInputFromJSON(json['first_episode']),
+        'firstEpisode': StoryCreatorEpisodeBaseFromJSON(json['first_episode']),
         'mainCharacterChatbotId': json['main_character_chatbot_id'],
         'mainCharacterDisplayName': json['main_character_display_name'],
         'userDisplayName': json['user_display_name'] == null ? undefined : json['user_display_name'],
@@ -116,7 +116,7 @@ export function StoryCreatorCreateStoryRequestFromJSONTyped(json: any, ignoreDis
         'title': value['title'],
         'description': value['description'],
         'cover_image': value['coverImage'],
-        'first_episode': StoryCreatorCreateEpisodeInputToJSON(value['firstEpisode']),
+        'first_episode': StoryCreatorEpisodeBaseToJSON(value['firstEpisode']),
         'main_character_chatbot_id': value['mainCharacterChatbotId'],
         'main_character_display_name': value['mainCharacterDisplayName'],
         'user_display_name': value['userDisplayName'],

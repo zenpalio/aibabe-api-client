@@ -37,6 +37,7 @@ function StoryCreatorCreateEpisodeRequestFromJSONTyped(json, ignoreDiscriminator
         'title': json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
+        'lockAfter': json['lock_after'] == null ? undefined : json['lock_after'],
     };
 }
 function StoryCreatorCreateEpisodeRequestToJSON(json) {
@@ -50,6 +51,7 @@ function StoryCreatorCreateEpisodeRequestToJSONTyped(value, ignoreDiscriminator 
         'title': value['title'],
         'description': value['description'],
         'cover_image': value['coverImage'],
+        'lock_after': value['lockAfter'],
     };
 }
 //# sourceMappingURL=StoryCreatorCreateEpisodeRequest.js.map

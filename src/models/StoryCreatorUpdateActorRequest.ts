@@ -13,26 +13,12 @@
  */
 
 import { mapValues } from '../runtime';
-import type { ActorRole } from './ActorRole';
-import {
-    ActorRoleFromJSON,
-    ActorRoleFromJSONTyped,
-    ActorRoleToJSON,
-    ActorRoleToJSONTyped,
-} from './ActorRole';
-
 /**
  * 
  * @export
  * @interface StoryCreatorUpdateActorRequest
  */
 export interface StoryCreatorUpdateActorRequest {
-    /**
-     * 
-     * @type {ActorRole}
-     * @memberof StoryCreatorUpdateActorRequest
-     */
-    role?: ActorRole | null;
     /**
      * 
      * @type {string}
@@ -50,16 +36,8 @@ export interface StoryCreatorUpdateActorRequest {
      * @type {string}
      * @memberof StoryCreatorUpdateActorRequest
      */
-    chatbotId?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof StoryCreatorUpdateActorRequest
-     */
     referenceAudioId?: string | null;
 }
-
-
 
 /**
  * Check if a given object implements the StoryCreatorUpdateActorRequest interface.
@@ -78,10 +56,8 @@ export function StoryCreatorUpdateActorRequestFromJSONTyped(json: any, ignoreDis
     }
     return {
         
-        'role': json['role'] == null ? undefined : ActorRoleFromJSON(json['role']),
         'displayName': json['display_name'] == null ? undefined : json['display_name'],
         'avatar': json['avatar'] == null ? undefined : json['avatar'],
-        'chatbotId': json['chatbot_id'] == null ? undefined : json['chatbot_id'],
         'referenceAudioId': json['reference_audio_id'] == null ? undefined : json['reference_audio_id'],
     };
 }
@@ -97,10 +73,8 @@ export function StoryCreatorUpdateActorRequestFromJSONTyped(json: any, ignoreDis
 
     return {
         
-        'role': ActorRoleToJSON(value['role']),
         'display_name': value['displayName'],
         'avatar': value['avatar'],
-        'chatbot_id': value['chatbotId'],
         'reference_audio_id': value['referenceAudioId'],
     };
 }

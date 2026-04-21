@@ -112,7 +112,8 @@ class StoryCreatorApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * Create Story
+     * **Creates new story with first episode and adds default Cast to the story consisting of 3 actors: \'main-character\' created from a chatbot, \'user\' and \'narrator\'**
+     * Create new story
      */
     async createStoryStoryCreatorStoriesPostRaw(requestParameters, initOverrides) {
         if (requestParameters['storyCreatorCreateStoryRequest'] == null) {
@@ -131,7 +132,8 @@ class StoryCreatorApi extends runtime.BaseAPI {
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.StoryCreatorCreateStoryResponseFromJSON)(jsonValue));
     }
     /**
-     * Create Story
+     * **Creates new story with first episode and adds default Cast to the story consisting of 3 actors: \'main-character\' created from a chatbot, \'user\' and \'narrator\'**
+     * Create new story
      */
     async createStoryStoryCreatorStoriesPost(requestParameters, initOverrides) {
         const response = await this.createStoryStoryCreatorStoriesPostRaw(requestParameters, initOverrides);

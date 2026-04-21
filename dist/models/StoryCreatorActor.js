@@ -23,13 +23,13 @@ const ActorRole_1 = require("./ActorRole");
  * Check if a given object implements the StoryCreatorActor interface.
  */
 function instanceOfStoryCreatorActor(value) {
-    if (!('id' in value) || value['id'] === undefined)
-        return false;
-    if (!('storyId' in value) || value['storyId'] === undefined)
-        return false;
     if (!('displayName' in value) || value['displayName'] === undefined)
         return false;
     if (!('role' in value) || value['role'] === undefined)
+        return false;
+    if (!('id' in value) || value['id'] === undefined)
+        return false;
+    if (!('storyId' in value) || value['storyId'] === undefined)
         return false;
     return true;
 }
@@ -41,13 +41,13 @@ function StoryCreatorActorFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
-        'id': json['id'],
-        'storyId': json['story_id'],
         'displayName': json['display_name'],
         'role': (0, ActorRole_1.ActorRoleFromJSON)(json['role']),
         'avatar': json['avatar'] == null ? undefined : json['avatar'],
         'chatbotId': json['chatbot_id'] == null ? undefined : json['chatbot_id'],
         'referenceAudioId': json['reference_audio_id'] == null ? undefined : json['reference_audio_id'],
+        'id': json['id'],
+        'storyId': json['story_id'],
     };
 }
 function StoryCreatorActorToJSON(json) {
@@ -58,13 +58,13 @@ function StoryCreatorActorToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
-        'id': value['id'],
-        'story_id': value['storyId'],
         'display_name': value['displayName'],
         'role': (0, ActorRole_1.ActorRoleToJSON)(value['role']),
         'avatar': value['avatar'],
         'chatbot_id': value['chatbotId'],
         'reference_audio_id': value['referenceAudioId'],
+        'id': value['id'],
+        'story_id': value['storyId'],
     };
 }
 //# sourceMappingURL=StoryCreatorActor.js.map

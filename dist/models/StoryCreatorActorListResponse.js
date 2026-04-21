@@ -23,7 +23,7 @@ const StoryCreatorActor_1 = require("./StoryCreatorActor");
  * Check if a given object implements the StoryCreatorActorListResponse interface.
  */
 function instanceOfStoryCreatorActorListResponse(value) {
-    if (!('items' in value) || value['items'] === undefined)
+    if (!('actors' in value) || value['actors'] === undefined)
         return false;
     return true;
 }
@@ -35,7 +35,7 @@ function StoryCreatorActorListResponseFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
-        'items': (json['items'].map(StoryCreatorActor_1.StoryCreatorActorFromJSON)),
+        'actors': (json['actors'].map(StoryCreatorActor_1.StoryCreatorActorFromJSON)),
     };
 }
 function StoryCreatorActorListResponseToJSON(json) {
@@ -46,7 +46,7 @@ function StoryCreatorActorListResponseToJSONTyped(value, ignoreDiscriminator = f
         return value;
     }
     return {
-        'items': (value['items'].map(StoryCreatorActor_1.StoryCreatorActorToJSON)),
+        'actors': (value['actors'].map(StoryCreatorActor_1.StoryCreatorActorToJSON)),
     };
 }
 //# sourceMappingURL=StoryCreatorActorListResponse.js.map

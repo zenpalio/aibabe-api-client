@@ -77,11 +77,13 @@ export declare class StoryCreatorApi extends runtime.BaseAPI {
      */
     createEpisodeStoryCreatorStoriesStoryIdEpisodesPost(requestParameters: CreateEpisodeStoryCreatorStoriesStoryIdEpisodesPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StoryCreatorEpisodeResponse>;
     /**
-     * Create Story
+     * **Creates new story with first episode and adds default Cast to the story consisting of 3 actors: \'main-character\' created from a chatbot, \'user\' and \'narrator\'**
+     * Create new story
      */
     createStoryStoryCreatorStoriesPostRaw(requestParameters: CreateStoryStoryCreatorStoriesPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StoryCreatorCreateStoryResponse>>;
     /**
-     * Create Story
+     * **Creates new story with first episode and adds default Cast to the story consisting of 3 actors: \'main-character\' created from a chatbot, \'user\' and \'narrator\'**
+     * Create new story
      */
     createStoryStoryCreatorStoriesPost(requestParameters: CreateStoryStoryCreatorStoriesPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StoryCreatorCreateStoryResponse>;
     /**

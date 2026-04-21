@@ -32,14 +32,14 @@ export interface StoryCreatorEpisodeListResponse {
      * @type {Array<StoryCreatorEpisode>}
      * @memberof StoryCreatorEpisodeListResponse
      */
-    items: Array<StoryCreatorEpisode>;
+    episodes: Array<StoryCreatorEpisode>;
 }
 
 /**
  * Check if a given object implements the StoryCreatorEpisodeListResponse interface.
  */
 export function instanceOfStoryCreatorEpisodeListResponse(value: object): value is StoryCreatorEpisodeListResponse {
-    if (!('items' in value) || value['items'] === undefined) return false;
+    if (!('episodes' in value) || value['episodes'] === undefined) return false;
     return true;
 }
 
@@ -53,7 +53,7 @@ export function StoryCreatorEpisodeListResponseFromJSONTyped(json: any, ignoreDi
     }
     return {
         
-        'items': ((json['items'] as Array<any>).map(StoryCreatorEpisodeFromJSON)),
+        'episodes': ((json['episodes'] as Array<any>).map(StoryCreatorEpisodeFromJSON)),
     };
 }
 
@@ -68,7 +68,7 @@ export function StoryCreatorEpisodeListResponseFromJSONTyped(json: any, ignoreDi
 
     return {
         
-        'items': ((value['items'] as Array<any>).map(StoryCreatorEpisodeToJSON)),
+        'episodes': ((value['episodes'] as Array<any>).map(StoryCreatorEpisodeToJSON)),
     };
 }
 

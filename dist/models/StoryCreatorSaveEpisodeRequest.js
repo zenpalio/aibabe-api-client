@@ -23,6 +23,8 @@ const StoryCreatorSaveEpisodePanel_1 = require("./StoryCreatorSaveEpisodePanel")
  * Check if a given object implements the StoryCreatorSaveEpisodeRequest interface.
  */
 function instanceOfStoryCreatorSaveEpisodeRequest(value) {
+    if (!('title' in value) || value['title'] === undefined)
+        return false;
     if (!('panels' in value) || value['panels'] === undefined)
         return false;
     return true;
@@ -35,9 +37,10 @@ function StoryCreatorSaveEpisodeRequestFromJSONTyped(json, ignoreDiscriminator) 
         return json;
     }
     return {
-        'title': json['title'] == null ? undefined : json['title'],
+        'title': json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
+        'lockAfter': json['lock_after'] == null ? undefined : json['lock_after'],
         'panels': (json['panels'].map(StoryCreatorSaveEpisodePanel_1.StoryCreatorSaveEpisodePanelFromJSON)),
     };
 }
@@ -52,6 +55,7 @@ function StoryCreatorSaveEpisodeRequestToJSONTyped(value, ignoreDiscriminator = 
         'title': value['title'],
         'description': value['description'],
         'cover_image': value['coverImage'],
+        'lock_after': value['lockAfter'],
         'panels': (value['panels'].map(StoryCreatorSaveEpisodePanel_1.StoryCreatorSaveEpisodePanelToJSON)),
     };
 }

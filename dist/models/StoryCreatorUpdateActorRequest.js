@@ -18,7 +18,6 @@ exports.StoryCreatorUpdateActorRequestFromJSON = StoryCreatorUpdateActorRequestF
 exports.StoryCreatorUpdateActorRequestFromJSONTyped = StoryCreatorUpdateActorRequestFromJSONTyped;
 exports.StoryCreatorUpdateActorRequestToJSON = StoryCreatorUpdateActorRequestToJSON;
 exports.StoryCreatorUpdateActorRequestToJSONTyped = StoryCreatorUpdateActorRequestToJSONTyped;
-const ActorRole_1 = require("./ActorRole");
 /**
  * Check if a given object implements the StoryCreatorUpdateActorRequest interface.
  */
@@ -33,10 +32,8 @@ function StoryCreatorUpdateActorRequestFromJSONTyped(json, ignoreDiscriminator) 
         return json;
     }
     return {
-        'role': json['role'] == null ? undefined : (0, ActorRole_1.ActorRoleFromJSON)(json['role']),
         'displayName': json['display_name'] == null ? undefined : json['display_name'],
         'avatar': json['avatar'] == null ? undefined : json['avatar'],
-        'chatbotId': json['chatbot_id'] == null ? undefined : json['chatbot_id'],
         'referenceAudioId': json['reference_audio_id'] == null ? undefined : json['reference_audio_id'],
     };
 }
@@ -48,10 +45,8 @@ function StoryCreatorUpdateActorRequestToJSONTyped(value, ignoreDiscriminator = 
         return value;
     }
     return {
-        'role': (0, ActorRole_1.ActorRoleToJSON)(value['role']),
         'display_name': value['displayName'],
         'avatar': value['avatar'],
-        'chatbot_id': value['chatbotId'],
         'reference_audio_id': value['referenceAudioId'],
     };
 }

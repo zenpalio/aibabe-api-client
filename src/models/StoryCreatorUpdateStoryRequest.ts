@@ -13,14 +13,6 @@
  */
 
 import { mapValues } from '../runtime';
-import type { StoryVisibility } from './StoryVisibility';
-import {
-    StoryVisibilityFromJSON,
-    StoryVisibilityFromJSONTyped,
-    StoryVisibilityToJSON,
-    StoryVisibilityToJSONTyped,
-} from './StoryVisibility';
-
 /**
  * 
  * @export
@@ -32,7 +24,7 @@ export interface StoryCreatorUpdateStoryRequest {
      * @type {string}
      * @memberof StoryCreatorUpdateStoryRequest
      */
-    title?: string | null;
+    title?: string;
     /**
      * 
      * @type {string}
@@ -45,15 +37,7 @@ export interface StoryCreatorUpdateStoryRequest {
      * @memberof StoryCreatorUpdateStoryRequest
      */
     coverImage?: string | null;
-    /**
-     * 
-     * @type {StoryVisibility}
-     * @memberof StoryCreatorUpdateStoryRequest
-     */
-    visibility?: StoryVisibility | null;
 }
-
-
 
 /**
  * Check if a given object implements the StoryCreatorUpdateStoryRequest interface.
@@ -75,7 +59,6 @@ export function StoryCreatorUpdateStoryRequestFromJSONTyped(json: any, ignoreDis
         'title': json['title'] == null ? undefined : json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
-        'visibility': json['visibility'] == null ? undefined : StoryVisibilityFromJSON(json['visibility']),
     };
 }
 
@@ -93,7 +76,6 @@ export function StoryCreatorUpdateStoryRequestFromJSONTyped(json: any, ignoreDis
         'title': value['title'],
         'description': value['description'],
         'cover_image': value['coverImage'],
-        'visibility': StoryVisibilityToJSON(value['visibility']),
     };
 }
 

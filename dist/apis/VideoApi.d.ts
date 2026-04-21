@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ExtendVideoPayload, GetVideoGenerationTagsResponse, ImageToVideoFromChatPayload, ImageToVideoPayload, ImageToVideoRecommendationPayload, VideoFromChatResponse } from '../models/index';
+import type { ExtendVideoPayload, GetVideoGenerationTagsResponse, ImageToVideoFromChatPayload, ImageToVideoPayload, ImageToVideoRecommendationPayload, LastVideoFrameResponse, VideoFromChatResponse } from '../models/index';
 export interface AttachmentVideoChatbotIdAttachmentGetRequest {
     chatbotId: string;
     videoName: string;
@@ -49,6 +49,9 @@ export interface GenerateVideoVideoPostRequest {
     imageToVideoPayload: ImageToVideoPayload;
 }
 export interface GenerationTagsVideoVideoIdTagsGetRequest {
+    videoId: string;
+}
+export interface VideoLastFrameVideoVideoIdLastFrameGetRequest {
     videoId: string;
 }
 /**
@@ -135,6 +138,14 @@ export declare class VideoApi extends runtime.BaseAPI {
      * Generation Tags
      */
     generationTagsVideoVideoIdTagsGet(requestParameters: GenerationTagsVideoVideoIdTagsGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetVideoGenerationTagsResponse>;
+    /**
+     * Video Last Frame
+     */
+    videoLastFrameVideoVideoIdLastFrameGetRaw(requestParameters: VideoLastFrameVideoVideoIdLastFrameGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LastVideoFrameResponse>>;
+    /**
+     * Video Last Frame
+     */
+    videoLastFrameVideoVideoIdLastFrameGet(requestParameters: VideoLastFrameVideoVideoIdLastFrameGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LastVideoFrameResponse>;
 }
 /**
  * @export

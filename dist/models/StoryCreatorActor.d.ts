@@ -21,18 +21,6 @@ export interface StoryCreatorActor {
      * @type {string}
      * @memberof StoryCreatorActor
      */
-    id: string;
-    /**
-     *
-     * @type {string}
-     * @memberof StoryCreatorActor
-     */
-    storyId: string;
-    /**
-     *
-     * @type {string}
-     * @memberof StoryCreatorActor
-     */
     displayName: string;
     /**
      *
@@ -58,6 +46,18 @@ export interface StoryCreatorActor {
      * @memberof StoryCreatorActor
      */
     referenceAudioId?: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof StoryCreatorActor
+     */
+    id: string;
+    /**
+     *
+     * @type {string}
+     * @memberof StoryCreatorActor
+     */
+    storyId: string;
 }
 /**
  * Check if a given object implements the StoryCreatorActor interface.

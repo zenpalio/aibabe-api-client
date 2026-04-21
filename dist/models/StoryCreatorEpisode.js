@@ -23,9 +23,9 @@ const EpisodeVisibility_1 = require("./EpisodeVisibility");
  * Check if a given object implements the StoryCreatorEpisode interface.
  */
 function instanceOfStoryCreatorEpisode(value) {
-    if (!('id' in value) || value['id'] === undefined)
-        return false;
     if (!('title' in value) || value['title'] === undefined)
+        return false;
+    if (!('id' in value) || value['id'] === undefined)
         return false;
     if (!('visibility' in value) || value['visibility'] === undefined)
         return false;
@@ -41,10 +41,11 @@ function StoryCreatorEpisodeFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
-        'id': json['id'],
         'title': json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
+        'lockAfter': json['lock_after'] == null ? undefined : json['lock_after'],
+        'id': json['id'],
         'visibility': (0, EpisodeVisibility_1.EpisodeVisibilityFromJSON)(json['visibility']),
         'episodeIndex': json['episode_index'],
     };
@@ -57,10 +58,11 @@ function StoryCreatorEpisodeToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
-        'id': value['id'],
         'title': value['title'],
         'description': value['description'],
         'cover_image': value['coverImage'],
+        'lock_after': value['lockAfter'],
+        'id': value['id'],
         'visibility': (0, EpisodeVisibility_1.EpisodeVisibilityToJSON)(value['visibility']),
         'episode_index': value['episodeIndex'],
     };

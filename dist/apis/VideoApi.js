@@ -425,6 +425,30 @@ class VideoApi extends runtime.BaseAPI {
         const response = await this.generationTagsVideoVideoIdTagsGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
+    /**
+     * Video Last Frame
+     */
+    async videoLastFrameVideoVideoIdLastFrameGetRaw(requestParameters, initOverrides) {
+        if (requestParameters['videoId'] == null) {
+            throw new runtime.RequiredError('videoId', 'Required parameter "videoId" was null or undefined when calling videoLastFrameVideoVideoIdLastFrameGet().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        const response = await this.request({
+            path: `/video/{video_id}/last_frame`.replace(`{${"video_id"}}`, encodeURIComponent(String(requestParameters['videoId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.LastVideoFrameResponseFromJSON)(jsonValue));
+    }
+    /**
+     * Video Last Frame
+     */
+    async videoLastFrameVideoVideoIdLastFrameGet(requestParameters, initOverrides) {
+        const response = await this.videoLastFrameVideoVideoIdLastFrameGetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
 }
 exports.VideoApi = VideoApi;
 /**

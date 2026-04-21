@@ -32,18 +32,6 @@ export interface StoryCreatorActor {
      * @type {string}
      * @memberof StoryCreatorActor
      */
-    id: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof StoryCreatorActor
-     */
-    storyId: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof StoryCreatorActor
-     */
     displayName: string;
     /**
      * 
@@ -69,6 +57,18 @@ export interface StoryCreatorActor {
      * @memberof StoryCreatorActor
      */
     referenceAudioId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof StoryCreatorActor
+     */
+    id: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof StoryCreatorActor
+     */
+    storyId: string;
 }
 
 
@@ -77,10 +77,10 @@ export interface StoryCreatorActor {
  * Check if a given object implements the StoryCreatorActor interface.
  */
 export function instanceOfStoryCreatorActor(value: object): value is StoryCreatorActor {
-    if (!('id' in value) || value['id'] === undefined) return false;
-    if (!('storyId' in value) || value['storyId'] === undefined) return false;
     if (!('displayName' in value) || value['displayName'] === undefined) return false;
     if (!('role' in value) || value['role'] === undefined) return false;
+    if (!('id' in value) || value['id'] === undefined) return false;
+    if (!('storyId' in value) || value['storyId'] === undefined) return false;
     return true;
 }
 
@@ -94,13 +94,13 @@ export function StoryCreatorActorFromJSONTyped(json: any, ignoreDiscriminator: b
     }
     return {
         
-        'id': json['id'],
-        'storyId': json['story_id'],
         'displayName': json['display_name'],
         'role': ActorRoleFromJSON(json['role']),
         'avatar': json['avatar'] == null ? undefined : json['avatar'],
         'chatbotId': json['chatbot_id'] == null ? undefined : json['chatbot_id'],
         'referenceAudioId': json['reference_audio_id'] == null ? undefined : json['reference_audio_id'],
+        'id': json['id'],
+        'storyId': json['story_id'],
     };
 }
 
@@ -115,13 +115,13 @@ export function StoryCreatorActorFromJSONTyped(json: any, ignoreDiscriminator: b
 
     return {
         
-        'id': value['id'],
-        'story_id': value['storyId'],
         'display_name': value['displayName'],
         'role': ActorRoleToJSON(value['role']),
         'avatar': value['avatar'],
         'chatbot_id': value['chatbotId'],
         'reference_audio_id': value['referenceAudioId'],
+        'id': value['id'],
+        'story_id': value['storyId'],
     };
 }
 

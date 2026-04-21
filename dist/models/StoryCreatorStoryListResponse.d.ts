@@ -21,7 +21,7 @@ export interface StoryCreatorStoryListResponse {
      * @type {Array<StoryCreatorStory>}
      * @memberof StoryCreatorStoryListResponse
      */
-    items: Array<StoryCreatorStory>;
+    stories: Array<StoryCreatorStory>;
 }
 /**
  * Check if a given object implements the StoryCreatorStoryListResponse interface.

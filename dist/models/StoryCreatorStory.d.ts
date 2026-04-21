@@ -21,18 +21,6 @@ export interface StoryCreatorStory {
      * @type {string}
      * @memberof StoryCreatorStory
      */
-    id: string;
-    /**
-     *
-     * @type {string}
-     * @memberof StoryCreatorStory
-     */
-    ownerId: string;
-    /**
-     *
-     * @type {string}
-     * @memberof StoryCreatorStory
-     */
     title: string;
     /**
      *
@@ -46,6 +34,18 @@ export interface StoryCreatorStory {
      * @memberof StoryCreatorStory
      */
     coverImage?: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof StoryCreatorStory
+     */
+    id: string;
+    /**
+     *
+     * @type {string}
+     * @memberof StoryCreatorStory
+     */
+    ownerId: string;
     /**
      *
      * @type {StoryVisibility}

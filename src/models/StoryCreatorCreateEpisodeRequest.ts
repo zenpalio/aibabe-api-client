@@ -37,6 +37,12 @@ export interface StoryCreatorCreateEpisodeRequest {
      * @memberof StoryCreatorCreateEpisodeRequest
      */
     coverImage?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof StoryCreatorCreateEpisodeRequest
+     */
+    lockAfter?: number | null;
 }
 
 /**
@@ -60,6 +66,7 @@ export function StoryCreatorCreateEpisodeRequestFromJSONTyped(json: any, ignoreD
         'title': json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
+        'lockAfter': json['lock_after'] == null ? undefined : json['lock_after'],
     };
 }
 
@@ -77,6 +84,7 @@ export function StoryCreatorCreateEpisodeRequestFromJSONTyped(json: any, ignoreD
         'title': value['title'],
         'description': value['description'],
         'cover_image': value['coverImage'],
+        'lock_after': value['lockAfter'],
     };
 }
 

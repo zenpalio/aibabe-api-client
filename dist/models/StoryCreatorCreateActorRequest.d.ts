@@ -18,16 +18,16 @@ import type { ActorRole } from './ActorRole';
 export interface StoryCreatorCreateActorRequest {
     /**
      *
-     * @type {ActorRole}
-     * @memberof StoryCreatorCreateActorRequest
-     */
-    role: ActorRole;
-    /**
-     *
      * @type {string}
      * @memberof StoryCreatorCreateActorRequest
      */
     displayName: string;
+    /**
+     *
+     * @type {ActorRole}
+     * @memberof StoryCreatorCreateActorRequest
+     */
+    role: ActorRole;
     /**
      *
      * @type {string}

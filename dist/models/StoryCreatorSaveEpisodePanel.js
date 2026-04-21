@@ -42,7 +42,6 @@ function StoryCreatorSaveEpisodePanelFromJSONTyped(json, ignoreDiscriminator) {
         'id': json['id'] == null ? undefined : json['id'],
         'name': json['name'],
         'panelType': (0, EpisodePanelType_1.EpisodePanelTypeFromJSON)(json['panel_type']),
-        'panelIndex': json['panel_index'],
         'imageUrl': json['image_url'] == null ? undefined : json['image_url'],
         'imagePrompt': json['image_prompt'] == null ? undefined : json['image_prompt'],
         'videoUrl': json['video_url'] == null ? undefined : json['video_url'],
@@ -53,6 +52,7 @@ function StoryCreatorSaveEpisodePanelFromJSONTyped(json, ignoreDiscriminator) {
         'voiceAutoReplay': json['voice_auto_replay'] == null ? undefined : json['voice_auto_replay'],
         'sfx': json['sfx'] == null ? undefined : json['sfx'],
         'sfxAutoReplay': json['sfx_auto_replay'] == null ? undefined : json['sfx_auto_replay'],
+        'panelIndex': json['panel_index'],
     };
 }
 function StoryCreatorSaveEpisodePanelToJSON(json) {
@@ -66,7 +66,6 @@ function StoryCreatorSaveEpisodePanelToJSONTyped(value, ignoreDiscriminator = fa
         'id': value['id'],
         'name': value['name'],
         'panel_type': (0, EpisodePanelType_1.EpisodePanelTypeToJSON)(value['panelType']),
-        'panel_index': value['panelIndex'],
         'image_url': value['imageUrl'],
         'image_prompt': value['imagePrompt'],
         'video_url': value['videoUrl'],
@@ -77,6 +76,7 @@ function StoryCreatorSaveEpisodePanelToJSONTyped(value, ignoreDiscriminator = fa
         'voice_auto_replay': value['voiceAutoReplay'],
         'sfx': value['sfx'],
         'sfx_auto_replay': value['sfxAutoReplay'],
+        'panel_index': value['panelIndex'],
     };
 }
 //# sourceMappingURL=StoryCreatorSaveEpisodePanel.js.map

@@ -33,6 +33,12 @@ export interface StoryCreatorCreateEpisodeRequest {
      * @memberof StoryCreatorCreateEpisodeRequest
      */
     coverImage?: string | null;
+    /**
+     *
+     * @type {number}
+     * @memberof StoryCreatorCreateEpisodeRequest
+     */
+    lockAfter?: number | null;
 }
 /**
  * Check if a given object implements the StoryCreatorCreateEpisodeRequest interface.

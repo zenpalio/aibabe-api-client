@@ -32,14 +32,14 @@ export interface StoryCreatorStoryListResponse {
      * @type {Array<StoryCreatorStory>}
      * @memberof StoryCreatorStoryListResponse
      */
-    items: Array<StoryCreatorStory>;
+    stories: Array<StoryCreatorStory>;
 }
 
 /**
  * Check if a given object implements the StoryCreatorStoryListResponse interface.
  */
 export function instanceOfStoryCreatorStoryListResponse(value: object): value is StoryCreatorStoryListResponse {
-    if (!('items' in value) || value['items'] === undefined) return false;
+    if (!('stories' in value) || value['stories'] === undefined) return false;
     return true;
 }
 
@@ -53,7 +53,7 @@ export function StoryCreatorStoryListResponseFromJSONTyped(json: any, ignoreDisc
     }
     return {
         
-        'items': ((json['items'] as Array<any>).map(StoryCreatorStoryFromJSON)),
+        'stories': ((json['stories'] as Array<any>).map(StoryCreatorStoryFromJSON)),
     };
 }
 
@@ -68,7 +68,7 @@ export function StoryCreatorStoryListResponseFromJSONTyped(json: any, ignoreDisc
 
     return {
         
-        'items': ((value['items'] as Array<any>).map(StoryCreatorStoryToJSON)),
+        'stories': ((value['stories'] as Array<any>).map(StoryCreatorStoryToJSON)),
     };
 }
 

@@ -32,18 +32,6 @@ export interface StoryCreatorStory {
      * @type {string}
      * @memberof StoryCreatorStory
      */
-    id: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof StoryCreatorStory
-     */
-    ownerId: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof StoryCreatorStory
-     */
     title: string;
     /**
      * 
@@ -59,6 +47,18 @@ export interface StoryCreatorStory {
     coverImage?: string | null;
     /**
      * 
+     * @type {string}
+     * @memberof StoryCreatorStory
+     */
+    id: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof StoryCreatorStory
+     */
+    ownerId: string;
+    /**
+     * 
      * @type {StoryVisibility}
      * @memberof StoryCreatorStory
      */
@@ -71,9 +71,9 @@ export interface StoryCreatorStory {
  * Check if a given object implements the StoryCreatorStory interface.
  */
 export function instanceOfStoryCreatorStory(value: object): value is StoryCreatorStory {
+    if (!('title' in value) || value['title'] === undefined) return false;
     if (!('id' in value) || value['id'] === undefined) return false;
     if (!('ownerId' in value) || value['ownerId'] === undefined) return false;
-    if (!('title' in value) || value['title'] === undefined) return false;
     if (!('visibility' in value) || value['visibility'] === undefined) return false;
     return true;
 }
@@ -88,11 +88,11 @@ export function StoryCreatorStoryFromJSONTyped(json: any, ignoreDiscriminator: b
     }
     return {
         
-        'id': json['id'],
-        'ownerId': json['owner_id'],
         'title': json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
+        'id': json['id'],
+        'ownerId': json['owner_id'],
         'visibility': StoryVisibilityFromJSON(json['visibility']),
     };
 }
@@ -108,11 +108,11 @@ export function StoryCreatorStoryFromJSONTyped(json: any, ignoreDiscriminator: b
 
     return {
         
-        'id': value['id'],
-        'owner_id': value['ownerId'],
         'title': value['title'],
         'description': value['description'],
         'cover_image': value['coverImage'],
+        'id': value['id'],
+        'owner_id': value['ownerId'],
         'visibility': StoryVisibilityToJSON(value['visibility']),
     };
 }

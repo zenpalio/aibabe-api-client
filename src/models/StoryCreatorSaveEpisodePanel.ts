@@ -47,12 +47,6 @@ export interface StoryCreatorSaveEpisodePanel {
     panelType: EpisodePanelType;
     /**
      * 
-     * @type {number}
-     * @memberof StoryCreatorSaveEpisodePanel
-     */
-    panelIndex: number;
-    /**
-     * 
      * @type {string}
      * @memberof StoryCreatorSaveEpisodePanel
      */
@@ -111,6 +105,12 @@ export interface StoryCreatorSaveEpisodePanel {
      * @memberof StoryCreatorSaveEpisodePanel
      */
     sfxAutoReplay?: boolean;
+    /**
+     * 
+     * @type {number}
+     * @memberof StoryCreatorSaveEpisodePanel
+     */
+    panelIndex: number;
 }
 
 
@@ -138,7 +138,6 @@ export function StoryCreatorSaveEpisodePanelFromJSONTyped(json: any, ignoreDiscr
         'id': json['id'] == null ? undefined : json['id'],
         'name': json['name'],
         'panelType': EpisodePanelTypeFromJSON(json['panel_type']),
-        'panelIndex': json['panel_index'],
         'imageUrl': json['image_url'] == null ? undefined : json['image_url'],
         'imagePrompt': json['image_prompt'] == null ? undefined : json['image_prompt'],
         'videoUrl': json['video_url'] == null ? undefined : json['video_url'],
@@ -149,6 +148,7 @@ export function StoryCreatorSaveEpisodePanelFromJSONTyped(json: any, ignoreDiscr
         'voiceAutoReplay': json['voice_auto_replay'] == null ? undefined : json['voice_auto_replay'],
         'sfx': json['sfx'] == null ? undefined : json['sfx'],
         'sfxAutoReplay': json['sfx_auto_replay'] == null ? undefined : json['sfx_auto_replay'],
+        'panelIndex': json['panel_index'],
     };
 }
 
@@ -166,7 +166,6 @@ export function StoryCreatorSaveEpisodePanelFromJSONTyped(json: any, ignoreDiscr
         'id': value['id'],
         'name': value['name'],
         'panel_type': EpisodePanelTypeToJSON(value['panelType']),
-        'panel_index': value['panelIndex'],
         'image_url': value['imageUrl'],
         'image_prompt': value['imagePrompt'],
         'video_url': value['videoUrl'],
@@ -177,6 +176,7 @@ export function StoryCreatorSaveEpisodePanelFromJSONTyped(json: any, ignoreDiscr
         'voice_auto_replay': value['voiceAutoReplay'],
         'sfx': value['sfx'],
         'sfx_auto_replay': value['sfxAutoReplay'],
+        'panel_index': value['panelIndex'],
     };
 }
 

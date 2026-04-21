@@ -32,7 +32,7 @@ export interface StoryCreatorSaveEpisodeRequest {
      * @type {string}
      * @memberof StoryCreatorSaveEpisodeRequest
      */
-    title?: string | null;
+    title: string;
     /**
      * 
      * @type {string}
@@ -47,6 +47,12 @@ export interface StoryCreatorSaveEpisodeRequest {
     coverImage?: string | null;
     /**
      * 
+     * @type {number}
+     * @memberof StoryCreatorSaveEpisodeRequest
+     */
+    lockAfter?: number | null;
+    /**
+     * 
      * @type {Array<StoryCreatorSaveEpisodePanel>}
      * @memberof StoryCreatorSaveEpisodeRequest
      */
@@ -57,6 +63,7 @@ export interface StoryCreatorSaveEpisodeRequest {
  * Check if a given object implements the StoryCreatorSaveEpisodeRequest interface.
  */
 export function instanceOfStoryCreatorSaveEpisodeRequest(value: object): value is StoryCreatorSaveEpisodeRequest {
+    if (!('title' in value) || value['title'] === undefined) return false;
     if (!('panels' in value) || value['panels'] === undefined) return false;
     return true;
 }
@@ -71,9 +78,10 @@ export function StoryCreatorSaveEpisodeRequestFromJSONTyped(json: any, ignoreDis
     }
     return {
         
-        'title': json['title'] == null ? undefined : json['title'],
+        'title': json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
+        'lockAfter': json['lock_after'] == null ? undefined : json['lock_after'],
         'panels': ((json['panels'] as Array<any>).map(StoryCreatorSaveEpisodePanelFromJSON)),
     };
 }
@@ -92,6 +100,7 @@ export function StoryCreatorSaveEpisodeRequestFromJSONTyped(json: any, ignoreDis
         'title': value['title'],
         'description': value['description'],
         'cover_image': value['coverImage'],
+        'lock_after': value['lockAfter'],
         'panels': ((value['panels'] as Array<any>).map(StoryCreatorSaveEpisodePanelToJSON)),
     };
 }

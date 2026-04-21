@@ -18,7 +18,6 @@ exports.StoryCreatorUpdateStoryRequestFromJSON = StoryCreatorUpdateStoryRequestF
 exports.StoryCreatorUpdateStoryRequestFromJSONTyped = StoryCreatorUpdateStoryRequestFromJSONTyped;
 exports.StoryCreatorUpdateStoryRequestToJSON = StoryCreatorUpdateStoryRequestToJSON;
 exports.StoryCreatorUpdateStoryRequestToJSONTyped = StoryCreatorUpdateStoryRequestToJSONTyped;
-const StoryVisibility_1 = require("./StoryVisibility");
 /**
  * Check if a given object implements the StoryCreatorUpdateStoryRequest interface.
  */
@@ -36,7 +35,6 @@ function StoryCreatorUpdateStoryRequestFromJSONTyped(json, ignoreDiscriminator) 
         'title': json['title'] == null ? undefined : json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
-        'visibility': json['visibility'] == null ? undefined : (0, StoryVisibility_1.StoryVisibilityFromJSON)(json['visibility']),
     };
 }
 function StoryCreatorUpdateStoryRequestToJSON(json) {
@@ -50,7 +48,6 @@ function StoryCreatorUpdateStoryRequestToJSONTyped(value, ignoreDiscriminator = 
         'title': value['title'],
         'description': value['description'],
         'cover_image': value['coverImage'],
-        'visibility': (0, StoryVisibility_1.StoryVisibilityToJSON)(value['visibility']),
     };
 }
 //# sourceMappingURL=StoryCreatorUpdateStoryRequest.js.map
