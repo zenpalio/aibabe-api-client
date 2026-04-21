@@ -205,6 +205,9 @@ class ImageApi extends runtime.BaseAPI {
         if (requestParameters['numberOfImages'] == null) {
             throw new runtime.RequiredError('numberOfImages', 'Required parameter "numberOfImages" was null or undefined when calling userInpaintImageImagenInpaintChatbotIdPost().');
         }
+        if (requestParameters['artStyle'] == null) {
+            throw new runtime.RequiredError('artStyle', 'Required parameter "artStyle" was null or undefined when calling userInpaintImageImagenInpaintChatbotIdPost().');
+        }
         const queryParameters = {};
         const headerParameters = {};
         const consumes = [

@@ -19,6 +19,7 @@ exports.GetGalleryResponseItemsInnerFromJSON = GetGalleryResponseItemsInnerFromJ
 exports.GetGalleryResponseItemsInnerFromJSONTyped = GetGalleryResponseItemsInnerFromJSONTyped;
 exports.GetGalleryResponseItemsInnerToJSON = GetGalleryResponseItemsInnerToJSON;
 exports.GetGalleryResponseItemsInnerToJSONTyped = GetGalleryResponseItemsInnerToJSONTyped;
+const ChatbotPreview_1 = require("./ChatbotPreview");
 const PostDetails_1 = require("./PostDetails");
 const VideoGenerationStatus_1 = require("./VideoGenerationStatus");
 /**
@@ -36,15 +37,11 @@ function instanceOfGetGalleryResponseItemsInner(value) {
         return false;
     if (!('id' in value) || value['id'] === undefined)
         return false;
-    if (!('chatbotId' in value) || value['chatbotId'] === undefined)
-        return false;
-    if (!('chatbotName' in value) || value['chatbotName'] === undefined)
-        return false;
-    if (!('chatbotAvatar' in value) || value['chatbotAvatar'] === undefined)
-        return false;
     if (!('urls' in value) || value['urls'] === undefined)
         return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined)
+        return false;
+    if (!('chatbot' in value) || value['chatbot'] === undefined)
         return false;
     if (!('imageIds' in value) || value['imageIds'] === undefined)
         return false;
@@ -70,11 +67,9 @@ function GetGalleryResponseItemsInnerFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'type': json['type'],
         'id': json['id'],
-        'chatbotId': json['chatbot_id'],
-        'chatbotName': json['chatbot_name'],
-        'chatbotAvatar': json['chatbot_avatar'],
         'urls': json['urls'],
         'createdAt': (new Date(json['created_at'])),
+        'chatbot': (0, ChatbotPreview_1.ChatbotPreviewFromJSON)(json['chatbot']),
         'postDetails': json['post_details'] == null ? undefined : (0, PostDetails_1.PostDetailsFromJSON)(json['post_details']),
         'imageIds': json['image_ids'],
         'eta': json['eta'],
@@ -94,11 +89,9 @@ function GetGalleryResponseItemsInnerToJSONTyped(value, ignoreDiscriminator = fa
     return {
         'type': value['type'],
         'id': value['id'],
-        'chatbot_id': value['chatbotId'],
-        'chatbot_name': value['chatbotName'],
-        'chatbot_avatar': value['chatbotAvatar'],
         'urls': value['urls'],
         'created_at': ((value['createdAt']).toISOString()),
+        'chatbot': (0, ChatbotPreview_1.ChatbotPreviewToJSON)(value['chatbot']),
         'post_details': (0, PostDetails_1.PostDetailsToJSON)(value['postDetails']),
         'image_ids': value['imageIds'],
         'eta': value['eta'],

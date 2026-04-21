@@ -21,6 +21,7 @@ export * from './ChatReponse';
 export * from './ChatRole';
 export * from './ChatbotCreatedOrigin';
 export * from './ChatbotInfo';
+export * from './ChatbotPreview';
 export * from './ChatbotType';
 export * from './ContentItem';
 export * from './ContentReportReason';

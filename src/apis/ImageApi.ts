@@ -75,7 +75,7 @@ export interface UserInpaintImageImagenInpaintChatbotIdPostRequest {
     clientId: string;
     requestId: string;
     numberOfImages: number;
-    artStyle?: ArtStyle | null;
+    artStyle: ArtStyle;
     loras?: Array<LoraName> | null;
     denoisingStrength?: number;
 }
@@ -313,6 +313,13 @@ export class ImageApi extends runtime.BaseAPI {
             throw new runtime.RequiredError(
                 'numberOfImages',
                 'Required parameter "numberOfImages" was null or undefined when calling userInpaintImageImagenInpaintChatbotIdPost().'
+            );
+        }
+
+        if (requestParameters['artStyle'] == null) {
+            throw new runtime.RequiredError(
+                'artStyle',
+                'Required parameter "artStyle" was null or undefined when calling userInpaintImageImagenInpaintChatbotIdPost().'
             );
         }
 

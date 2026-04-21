@@ -39,6 +39,7 @@ __exportStar(require("./ChatReponse"), exports);
 __exportStar(require("./ChatRole"), exports);
 __exportStar(require("./ChatbotCreatedOrigin"), exports);
 __exportStar(require("./ChatbotInfo"), exports);
+__exportStar(require("./ChatbotPreview"), exports);
 __exportStar(require("./ChatbotType"), exports);
 __exportStar(require("./ContentItem"), exports);
 __exportStar(require("./ContentReportReason"), exports);
