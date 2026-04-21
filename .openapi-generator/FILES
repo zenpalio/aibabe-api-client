@@ -48,6 +48,7 @@ src/models/ChatReponse.ts
 src/models/ChatRole.ts
 src/models/ChatbotCreatedOrigin.ts
 src/models/ChatbotInfo.ts
+src/models/ChatbotPreview.ts
 src/models/ChatbotType.ts
 src/models/ContentItem.ts
 src/models/ContentReportReason.ts
