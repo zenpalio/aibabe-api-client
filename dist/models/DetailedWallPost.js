@@ -19,6 +19,7 @@ exports.DetailedWallPostFromJSONTyped = DetailedWallPostFromJSONTyped;
 exports.DetailedWallPostToJSON = DetailedWallPostToJSON;
 exports.DetailedWallPostToJSONTyped = DetailedWallPostToJSONTyped;
 const PublicUserPreviewWithFollow_1 = require("./PublicUserPreviewWithFollow");
+const ChatbotPreview_1 = require("./ChatbotPreview");
 const VideoContent_1 = require("./VideoContent");
 const SharedContentType_1 = require("./SharedContentType");
 const ImageContent_1 = require("./ImageContent");
@@ -31,15 +32,7 @@ function instanceOfDetailedWallPost(value) {
         return false;
     if (!('creatorId' in value) || value['creatorId'] === undefined)
         return false;
-    if (!('chatbotId' in value) || value['chatbotId'] === undefined)
-        return false;
-    if (!('chatbotName' in value) || value['chatbotName'] === undefined)
-        return false;
-    if (!('chatbotProfilePicture' in value) || value['chatbotProfilePicture'] === undefined)
-        return false;
-    if (!('chatbotProfileVideo' in value) || value['chatbotProfileVideo'] === undefined)
-        return false;
-    if (!('chatbotPublic' in value) || value['chatbotPublic'] === undefined)
+    if (!('chatbot' in value) || value['chatbot'] === undefined)
         return false;
     if (!('pictures' in value) || value['pictures'] === undefined)
         return false;
@@ -77,11 +70,7 @@ function DetailedWallPostFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'id': json['id'],
         'creatorId': json['creator_id'],
-        'chatbotId': json['chatbot_id'],
-        'chatbotName': json['chatbot_name'],
-        'chatbotProfilePicture': json['chatbot_profile_picture'],
-        'chatbotProfileVideo': json['chatbot_profile_video'],
-        'chatbotPublic': json['chatbot_public'],
+        'chatbot': (0, ChatbotPreview_1.ChatbotPreviewFromJSON)(json['chatbot']),
         'pictures': (json['pictures'].map(ImageContent_1.ImageContentFromJSON)),
         'videos': (json['videos'].map(VideoContent_1.VideoContentFromJSON)),
         'likes': json['likes'],
@@ -106,11 +95,7 @@ function DetailedWallPostToJSONTyped(value, ignoreDiscriminator = false) {
     return {
         'id': value['id'],
         'creator_id': value['creatorId'],
-        'chatbot_id': value['chatbotId'],
-        'chatbot_name': value['chatbotName'],
-        'chatbot_profile_picture': value['chatbotProfilePicture'],
-        'chatbot_profile_video': value['chatbotProfileVideo'],
-        'chatbot_public': value['chatbotPublic'],
+        'chatbot': (0, ChatbotPreview_1.ChatbotPreviewToJSON)(value['chatbot']),
         'pictures': (value['pictures'].map(ImageContent_1.ImageContentToJSON)),
         'videos': (value['videos'].map(VideoContent_1.VideoContentToJSON)),
         'likes': value['likes'],
