@@ -9,7 +9,6 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { ChatbotPreview } from './ChatbotPreview';
 import type { PostDetails } from './PostDetails';
 import type { VideoGenerationStatus } from './VideoGenerationStatus';
 /**
@@ -32,6 +31,24 @@ export interface GetGalleryResponseItemsInner {
     id: string;
     /**
      *
+     * @type {string}
+     * @memberof GetGalleryResponseItemsInner
+     */
+    chatbotId: string;
+    /**
+     *
+     * @type {string}
+     * @memberof GetGalleryResponseItemsInner
+     */
+    chatbotName: string;
+    /**
+     *
+     * @type {string}
+     * @memberof GetGalleryResponseItemsInner
+     */
+    chatbotAvatar: string;
+    /**
+     *
      * @type {Array<string>}
      * @memberof GetGalleryResponseItemsInner
      */
@@ -42,12 +59,6 @@ export interface GetGalleryResponseItemsInner {
      * @memberof GetGalleryResponseItemsInner
      */
     createdAt: Date;
-    /**
-     *
-     * @type {ChatbotPreview}
-     * @memberof GetGalleryResponseItemsInner
-     */
-    chatbot: ChatbotPreview;
     /**
      *
      * @type {PostDetails}

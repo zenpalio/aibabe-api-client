@@ -9,7 +9,6 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { ChatbotPreview } from './ChatbotPreview';
 import type { PostDetails } from './PostDetails';
 import type { ImageGenerationStatus } from './ImageGenerationStatus';
 /**
@@ -32,6 +31,24 @@ export interface GeneratedImages {
     id: string;
     /**
      *
+     * @type {string}
+     * @memberof GeneratedImages
+     */
+    chatbotId: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof GeneratedImages
+     */
+    chatbotName: string;
+    /**
+     *
+     * @type {string}
+     * @memberof GeneratedImages
+     */
+    chatbotAvatar: string;
+    /**
+     *
      * @type {Array<string>}
      * @memberof GeneratedImages
      */
@@ -42,12 +59,6 @@ export interface GeneratedImages {
      * @memberof GeneratedImages
      */
     createdAt: Date;
-    /**
-     *
-     * @type {ChatbotPreview}
-     * @memberof GeneratedImages
-     */
-    chatbot: ChatbotPreview | null;
     /**
      *
      * @type {PostDetails}

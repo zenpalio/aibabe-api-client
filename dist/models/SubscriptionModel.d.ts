@@ -48,7 +48,7 @@ export interface SubscriptionModel {
      * @type {string}
      * @memberof SubscriptionModel
      */
-    externalId: string | null;
+    externalId?: string | null;
     /**
      *
      * @type {SubscriptionStatus}
@@ -84,7 +84,7 @@ export interface SubscriptionModel {
      * @type {string}
      * @memberof SubscriptionModel
      */
-    currency: string | null;
+    currency?: string | null;
     /**
      *
      * @type {PaymentProviderType}
@@ -102,7 +102,7 @@ export interface SubscriptionModel {
      * @type {Date}
      * @memberof SubscriptionModel
      */
-    renewalDate: Date | null;
+    renewalDate?: Date | null;
     /**
      *
      * @type {number}

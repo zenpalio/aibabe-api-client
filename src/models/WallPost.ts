@@ -13,13 +13,6 @@
  */
 
 import { mapValues } from '../runtime';
-import type { ChatbotPreview } from './ChatbotPreview';
-import {
-    ChatbotPreviewFromJSON,
-    ChatbotPreviewFromJSONTyped,
-    ChatbotPreviewToJSON,
-    ChatbotPreviewToJSONTyped,
-} from './ChatbotPreview';
 import type { VideoContent } from './VideoContent';
 import {
     VideoContentFromJSON,
@@ -62,10 +55,34 @@ export interface WallPost {
     creatorId: string;
     /**
      * 
-     * @type {ChatbotPreview}
+     * @type {string}
      * @memberof WallPost
      */
-    chatbot: ChatbotPreview | null;
+    chatbotId: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof WallPost
+     */
+    chatbotName: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof WallPost
+     */
+    chatbotProfilePicture: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof WallPost
+     */
+    chatbotProfileVideo: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof WallPost
+     */
+    chatbotPublic: boolean;
     /**
      * 
      * @type {Array<ImageContent>}
@@ -130,7 +147,11 @@ export interface WallPost {
 export function instanceOfWallPost(value: object): value is WallPost {
     if (!('id' in value) || value['id'] === undefined) return false;
     if (!('creatorId' in value) || value['creatorId'] === undefined) return false;
-    if (!('chatbot' in value) || value['chatbot'] === undefined) return false;
+    if (!('chatbotId' in value) || value['chatbotId'] === undefined) return false;
+    if (!('chatbotName' in value) || value['chatbotName'] === undefined) return false;
+    if (!('chatbotProfilePicture' in value) || value['chatbotProfilePicture'] === undefined) return false;
+    if (!('chatbotProfileVideo' in value) || value['chatbotProfileVideo'] === undefined) return false;
+    if (!('chatbotPublic' in value) || value['chatbotPublic'] === undefined) return false;
     if (!('pictures' in value) || value['pictures'] === undefined) return false;
     if (!('videos' in value) || value['videos'] === undefined) return false;
     if (!('likes' in value) || value['likes'] === undefined) return false;
@@ -155,7 +176,11 @@ export function WallPostFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
         
         'id': json['id'],
         'creatorId': json['creator_id'],
-        'chatbot': ChatbotPreviewFromJSON(json['chatbot']),
+        'chatbotId': json['chatbot_id'],
+        'chatbotName': json['chatbot_name'],
+        'chatbotProfilePicture': json['chatbot_profile_picture'],
+        'chatbotProfileVideo': json['chatbot_profile_video'],
+        'chatbotPublic': json['chatbot_public'],
         'pictures': ((json['pictures'] as Array<any>).map(ImageContentFromJSON)),
         'videos': ((json['videos'] as Array<any>).map(VideoContentFromJSON)),
         'likes': json['likes'],
@@ -181,7 +206,11 @@ export function WallPostFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
         
         'id': value['id'],
         'creator_id': value['creatorId'],
-        'chatbot': ChatbotPreviewToJSON(value['chatbot']),
+        'chatbot_id': value['chatbotId'],
+        'chatbot_name': value['chatbotName'],
+        'chatbot_profile_picture': value['chatbotProfilePicture'],
+        'chatbot_profile_video': value['chatbotProfileVideo'],
+        'chatbot_public': value['chatbotPublic'],
         'pictures': ((value['pictures'] as Array<any>).map(ImageContentToJSON)),
         'videos': ((value['videos'] as Array<any>).map(VideoContentToJSON)),
         'likes': value['likes'],

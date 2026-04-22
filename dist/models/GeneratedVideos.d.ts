@@ -9,7 +9,6 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { ChatbotPreview } from './ChatbotPreview';
 import type { PostDetails } from './PostDetails';
 import type { VideoGenerationStatus } from './VideoGenerationStatus';
 /**
@@ -32,6 +31,24 @@ export interface GeneratedVideos {
     id: string;
     /**
      *
+     * @type {string}
+     * @memberof GeneratedVideos
+     */
+    chatbotId: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof GeneratedVideos
+     */
+    chatbotName: string;
+    /**
+     *
+     * @type {string}
+     * @memberof GeneratedVideos
+     */
+    chatbotAvatar: string;
+    /**
+     *
      * @type {Array<string>}
      * @memberof GeneratedVideos
      */
@@ -42,12 +59,6 @@ export interface GeneratedVideos {
      * @memberof GeneratedVideos
      */
     createdAt: Date;
-    /**
-     *
-     * @type {ChatbotPreview}
-     * @memberof GeneratedVideos
-     */
-    chatbot: ChatbotPreview | null;
     /**
      *
      * @type {PostDetails}
