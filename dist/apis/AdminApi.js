@@ -187,27 +187,6 @@ class AdminApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * Get Image Moderation Prompt
-     */
-    async getImageModerationPromptAdminImageModerationPromptGetRaw(initOverrides) {
-        const queryParameters = {};
-        const headerParameters = {};
-        const response = await this.request({
-            path: `/admin/image-moderation-prompt`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetImageModerationPromptResponseFromJSON)(jsonValue));
-    }
-    /**
-     * Get Image Moderation Prompt
-     */
-    async getImageModerationPromptAdminImageModerationPromptGet(initOverrides) {
-        const response = await this.getImageModerationPromptAdminImageModerationPromptGetRaw(initOverrides);
-        return await response.value();
-    }
-    /**
      * Get Quality Control Images
      */
     async getQualityControlImagesAdminImageQualityControlPostRaw(requestParameters, initOverrides) {
@@ -313,21 +292,36 @@ class AdminApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * Update Image Moderation Prompt
+     * Update Grok Moderation Prompt
      */
-    async updateImageModerationPromptAdminImageModerationPromptPatchRaw(requestParameters, initOverrides) {
-        if (requestParameters['patchImageModerationPromptRequest'] == null) {
-            throw new runtime.RequiredError('patchImageModerationPromptRequest', 'Required parameter "patchImageModerationPromptRequest" was null or undefined when calling updateImageModerationPromptAdminImageModerationPromptPatch().');
+    async updateGrokModerationPromptAdminModerationPromptPatchRaw(requestParameters, initOverrides) {
+        if (requestParameters['newPrompt'] == null) {
+            throw new runtime.RequiredError('newPrompt', 'Required parameter "newPrompt" was null or undefined when calling updateGrokModerationPromptAdminModerationPromptPatch().');
         }
         const queryParameters = {};
         const headerParameters = {};
-        headerParameters['Content-Type'] = 'application/json';
+        const consumes = [
+            { contentType: 'application/x-www-form-urlencoded' },
+        ];
+        // @ts-ignore: canConsumeForm may be unused
+        const canConsumeForm = runtime.canConsumeForm(consumes);
+        let formParams;
+        let useForm = false;
+        if (useForm) {
+            formParams = new FormData();
+        }
+        else {
+            formParams = new URLSearchParams();
+        }
+        if (requestParameters['newPrompt'] != null) {
+            formParams.append('new_prompt', requestParameters['newPrompt']);
+        }
         const response = await this.request({
-            path: `/admin/image-moderation-prompt`,
+            path: `/admin/moderation-prompt`,
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
-            body: (0, index_1.PatchImageModerationPromptRequestToJSON)(requestParameters['patchImageModerationPromptRequest']),
+            body: formParams,
         }, initOverrides);
         if (this.isJsonMime(response.headers.get('content-type'))) {
             return new runtime.JSONApiResponse(response);
@@ -337,10 +331,10 @@ class AdminApi extends runtime.BaseAPI {
         }
     }
     /**
-     * Update Image Moderation Prompt
+     * Update Grok Moderation Prompt
      */
-    async updateImageModerationPromptAdminImageModerationPromptPatch(requestParameters, initOverrides) {
-        const response = await this.updateImageModerationPromptAdminImageModerationPromptPatchRaw(requestParameters, initOverrides);
+    async updateGrokModerationPromptAdminModerationPromptPatch(requestParameters, initOverrides) {
+        const response = await this.updateGrokModerationPromptAdminModerationPromptPatchRaw(requestParameters, initOverrides);
         return await response.value();
     }
 }

@@ -85,7 +85,6 @@ src/models/GetGalleryResponse.ts
 src/models/GetGalleryResponseItemsInner.ts
 src/models/GetGeneratedImage.ts
 src/models/GetImageGenerationTagsResponse.ts
-src/models/GetImageModerationPromptResponse.ts
 src/models/GetInstancesDBVastAiListResponse.ts
 src/models/GetLorasResponse.ts
 src/models/GetMemoryResponse.ts
@@ -136,7 +135,6 @@ src/models/Occupation.ts
 src/models/OwnerFilter.ts
 src/models/PatchChatMessageRequest.ts
 src/models/PatchCustomChatbotRequest.ts
-src/models/PatchImageModerationPromptRequest.ts
 src/models/PatchPostTitleRequest.ts
 src/models/PatchUserRequest.ts
 src/models/PaymentProviderType.ts

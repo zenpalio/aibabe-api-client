@@ -15,17 +15,13 @@
 
 import * as runtime from '../runtime';
 import type {
-  GetImageModerationPromptResponse,
   GetQualityControlImage,
   GetQualityControlRequest,
   GiftCodeType,
   HTTPValidationError,
-  PatchImageModerationPromptRequest,
   UserInfoResponse,
 } from '../models/index';
 import {
-    GetImageModerationPromptResponseFromJSON,
-    GetImageModerationPromptResponseToJSON,
     GetQualityControlImageFromJSON,
     GetQualityControlImageToJSON,
     GetQualityControlRequestFromJSON,
@@ -34,8 +30,6 @@ import {
     GiftCodeTypeToJSON,
     HTTPValidationErrorFromJSON,
     HTTPValidationErrorToJSON,
-    PatchImageModerationPromptRequestFromJSON,
-    PatchImageModerationPromptRequestToJSON,
     UserInfoResponseFromJSON,
     UserInfoResponseToJSON,
 } from '../models/index';
@@ -66,8 +60,8 @@ export interface ImpersonateAdminImpersonateEmailPostRequest {
     email: string;
 }
 
-export interface UpdateImageModerationPromptAdminImageModerationPromptPatchRequest {
-    patchImageModerationPromptRequest: PatchImageModerationPromptRequest;
+export interface UpdateGrokModerationPromptAdminModerationPromptPatchRequest {
+    newPrompt: string;
 }
 
 /**
@@ -247,32 +241,6 @@ export class AdminApi extends runtime.BaseAPI {
     }
 
     /**
-     * Get Image Moderation Prompt
-     */
-    async getImageModerationPromptAdminImageModerationPromptGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetImageModerationPromptResponse>> {
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/admin/image-moderation-prompt`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => GetImageModerationPromptResponseFromJSON(jsonValue));
-    }
-
-    /**
-     * Get Image Moderation Prompt
-     */
-    async getImageModerationPromptAdminImageModerationPromptGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetImageModerationPromptResponse> {
-        const response = await this.getImageModerationPromptAdminImageModerationPromptGetRaw(initOverrides);
-        return await response.value();
-    }
-
-    /**
      * Get Quality Control Images
      */
     async getQualityControlImagesAdminImageQualityControlPostRaw(requestParameters: GetQualityControlImagesAdminImageQualityControlPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<GetQualityControlImage>>> {
@@ -409,13 +377,13 @@ export class AdminApi extends runtime.BaseAPI {
     }
 
     /**
-     * Update Image Moderation Prompt
+     * Update Grok Moderation Prompt
      */
-    async updateImageModerationPromptAdminImageModerationPromptPatchRaw(requestParameters: UpdateImageModerationPromptAdminImageModerationPromptPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
-        if (requestParameters['patchImageModerationPromptRequest'] == null) {
+    async updateGrokModerationPromptAdminModerationPromptPatchRaw(requestParameters: UpdateGrokModerationPromptAdminModerationPromptPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
+        if (requestParameters['newPrompt'] == null) {
             throw new runtime.RequiredError(
-                'patchImageModerationPromptRequest',
-                'Required parameter "patchImageModerationPromptRequest" was null or undefined when calling updateImageModerationPromptAdminImageModerationPromptPatch().'
+                'newPrompt',
+                'Required parameter "newPrompt" was null or undefined when calling updateGrokModerationPromptAdminModerationPromptPatch().'
             );
         }
 
@@ -423,14 +391,30 @@ export class AdminApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        headerParameters['Content-Type'] = 'application/json';
+        const consumes: runtime.Consume[] = [
+            { contentType: 'application/x-www-form-urlencoded' },
+        ];
+        // @ts-ignore: canConsumeForm may be unused
+        const canConsumeForm = runtime.canConsumeForm(consumes);
+
+        let formParams: { append(param: string, value: any): any };
+        let useForm = false;
+        if (useForm) {
+            formParams = new FormData();
+        } else {
+            formParams = new URLSearchParams();
+        }
+
+        if (requestParameters['newPrompt'] != null) {
+            formParams.append('new_prompt', requestParameters['newPrompt'] as any);
+        }
 
         const response = await this.request({
-            path: `/admin/image-moderation-prompt`,
+            path: `/admin/moderation-prompt`,
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
-            body: PatchImageModerationPromptRequestToJSON(requestParameters['patchImageModerationPromptRequest']),
+            body: formParams,
         }, initOverrides);
 
         if (this.isJsonMime(response.headers.get('content-type'))) {
@@ -441,10 +425,10 @@ export class AdminApi extends runtime.BaseAPI {
     }
 
     /**
-     * Update Image Moderation Prompt
+     * Update Grok Moderation Prompt
      */
-    async updateImageModerationPromptAdminImageModerationPromptPatch(requestParameters: UpdateImageModerationPromptAdminImageModerationPromptPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
-        const response = await this.updateImageModerationPromptAdminImageModerationPromptPatchRaw(requestParameters, initOverrides);
+    async updateGrokModerationPromptAdminModerationPromptPatch(requestParameters: UpdateGrokModerationPromptAdminModerationPromptPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
+        const response = await this.updateGrokModerationPromptAdminModerationPromptPatchRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

@@ -77,7 +77,7 @@ export interface SubscriptionModel {
      * @type {string}
      * @memberof SubscriptionModel
      */
-    externalId?: string | null;
+    externalId: string | null;
     /**
      * 
      * @type {SubscriptionStatus}
@@ -113,7 +113,7 @@ export interface SubscriptionModel {
      * @type {string}
      * @memberof SubscriptionModel
      */
-    currency?: string | null;
+    currency: string | null;
     /**
      * 
      * @type {PaymentProviderType}
@@ -131,7 +131,7 @@ export interface SubscriptionModel {
      * @type {Date}
      * @memberof SubscriptionModel
      */
-    renewalDate?: Date | null;
+    renewalDate: Date | null;
     /**
      * 
      * @type {number}
@@ -153,8 +153,11 @@ export interface SubscriptionModel {
  */
 export function instanceOfSubscriptionModel(value: object): value is SubscriptionModel {
     if (!('userId' in value) || value['userId'] === undefined) return false;
+    if (!('externalId' in value) || value['externalId'] === undefined) return false;
     if (!('status' in value) || value['status'] === undefined) return false;
+    if (!('currency' in value) || value['currency'] === undefined) return false;
     if (!('psp' in value) || value['psp'] === undefined) return false;
+    if (!('renewalDate' in value) || value['renewalDate'] === undefined) return false;
     if (!('tier' in value) || value['tier'] === undefined) return false;
     return true;
 }
@@ -173,16 +176,16 @@ export function SubscriptionModelFromJSONTyped(json: any, ignoreDiscriminator: b
         'updatedAt': json['updated_at'] == null ? undefined : (new Date(json['updated_at'])),
         'id': json['id'] == null ? undefined : json['id'],
         'userId': json['user_id'],
-        'externalId': json['external_id'] == null ? undefined : json['external_id'],
+        'externalId': json['external_id'],
         'status': SubscriptionStatusFromJSON(json['status']),
         'tokens': json['tokens'] == null ? undefined : json['tokens'],
         'nextBillingDate': json['next_billing_date'] == null ? undefined : (new Date(json['next_billing_date'])),
         'price': json['price'] == null ? undefined : json['price'],
         'billingPeriod': json['billing_period'] == null ? undefined : BillingPeriodFromJSON(json['billing_period']),
-        'currency': json['currency'] == null ? undefined : json['currency'],
+        'currency': json['currency'],
         'psp': PaymentProviderTypeFromJSON(json['psp']),
         'remainingRenewals': json['remaining_renewals'] == null ? undefined : json['remaining_renewals'],
-        'renewalDate': json['renewal_date'] == null ? undefined : (new Date(json['renewal_date'])),
+        'renewalDate': (json['renewal_date'] == null ? null : new Date(json['renewal_date'])),
         'monthlyTokens': json['monthly_tokens'] == null ? undefined : json['monthly_tokens'],
         'tier': SubscriptionTierFromJSON(json['tier']),
     };
@@ -212,7 +215,7 @@ export function SubscriptionModelFromJSONTyped(json: any, ignoreDiscriminator: b
         'currency': value['currency'],
         'psp': PaymentProviderTypeToJSON(value['psp']),
         'remaining_renewals': value['remainingRenewals'],
-        'renewal_date': value['renewalDate'] == null ? undefined : ((value['renewalDate'] as any).toISOString()),
+        'renewal_date': (value['renewalDate'] == null ? null : (value['renewalDate'] as any).toISOString()),
         'monthly_tokens': value['monthlyTokens'],
         'tier': SubscriptionTierToJSON(value['tier']),
     };

@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { GetImageModerationPromptResponse, GetQualityControlImage, GetQualityControlRequest, GiftCodeType, PatchImageModerationPromptRequest, UserInfoResponse } from '../models/index';
+import type { GetQualityControlImage, GetQualityControlRequest, GiftCodeType, UserInfoResponse } from '../models/index';
 export interface AddTokensAdminAddTokensPutRequest {
     email: string;
     tokens: number;
@@ -31,8 +31,8 @@ export interface GetTokenBalanceAdminTokenBalanceEmailGetRequest {
 export interface ImpersonateAdminImpersonateEmailPostRequest {
     email: string;
 }
-export interface UpdateImageModerationPromptAdminImageModerationPromptPatchRequest {
-    patchImageModerationPromptRequest: PatchImageModerationPromptRequest;
+export interface UpdateGrokModerationPromptAdminModerationPromptPatchRequest {
+    newPrompt: string;
 }
 /**
  *
@@ -62,14 +62,6 @@ export declare class AdminApi extends runtime.BaseAPI {
      * Generate Codes
      */
     generateCodesAdminGiftCodesGeneratePost(requestParameters: GenerateCodesAdminGiftCodesGeneratePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
-    /**
-     * Get Image Moderation Prompt
-     */
-    getImageModerationPromptAdminImageModerationPromptGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetImageModerationPromptResponse>>;
-    /**
-     * Get Image Moderation Prompt
-     */
-    getImageModerationPromptAdminImageModerationPromptGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetImageModerationPromptResponse>;
     /**
      * Get Quality Control Images
      */
@@ -103,12 +95,12 @@ export declare class AdminApi extends runtime.BaseAPI {
      */
     resetUserClaimablesAdminUserResetClaimablesPost(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
     /**
-     * Update Image Moderation Prompt
+     * Update Grok Moderation Prompt
      */
-    updateImageModerationPromptAdminImageModerationPromptPatchRaw(requestParameters: UpdateImageModerationPromptAdminImageModerationPromptPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
+    updateGrokModerationPromptAdminModerationPromptPatchRaw(requestParameters: UpdateGrokModerationPromptAdminModerationPromptPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
     /**
-     * Update Image Moderation Prompt
+     * Update Grok Moderation Prompt
      */
-    updateImageModerationPromptAdminImageModerationPromptPatch(requestParameters: UpdateImageModerationPromptAdminImageModerationPromptPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
+    updateGrokModerationPromptAdminModerationPromptPatch(requestParameters: UpdateGrokModerationPromptAdminModerationPromptPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
 }
 //# sourceMappingURL=AdminApi.d.ts.map

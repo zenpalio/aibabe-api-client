@@ -35,7 +35,7 @@ export interface UserInpaintImageImagenInpaintChatbotIdPostRequest {
     clientId: string;
     requestId: string;
     numberOfImages: number;
-    artStyle: ArtStyle;
+    artStyle?: ArtStyle | null;
     loras?: Array<LoraName> | null;
     denoisingStrength?: number;
 }
