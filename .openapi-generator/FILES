@@ -229,6 +229,7 @@ src/models/StoryCreatorStoryResponse.ts
 src/models/StoryCreatorUpdateActorRequest.ts
 src/models/StoryCreatorUpdateEpisodeRequest.ts
 src/models/StoryCreatorUpdateStoryRequest.ts
+src/models/StoryPreview.ts
 src/models/StoryVisibility.ts
 src/models/Subscription.ts
 src/models/SubscriptionModel.ts

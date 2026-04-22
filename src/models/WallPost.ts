@@ -41,6 +41,13 @@ import {
     ImageContentToJSON,
     ImageContentToJSONTyped,
 } from './ImageContent';
+import type { StoryPreview } from './StoryPreview';
+import {
+    StoryPreviewFromJSON,
+    StoryPreviewFromJSONTyped,
+    StoryPreviewToJSON,
+    StoryPreviewToJSONTyped,
+} from './StoryPreview';
 
 /**
  * 
@@ -66,6 +73,12 @@ export interface WallPost {
      * @memberof WallPost
      */
     chatbot: ChatbotPreview | null;
+    /**
+     * 
+     * @type {StoryPreview}
+     * @memberof WallPost
+     */
+    story: StoryPreview | null;
     /**
      * 
      * @type {Array<ImageContent>}
@@ -131,6 +144,7 @@ export function instanceOfWallPost(value: object): value is WallPost {
     if (!('id' in value) || value['id'] === undefined) return false;
     if (!('creatorId' in value) || value['creatorId'] === undefined) return false;
     if (!('chatbot' in value) || value['chatbot'] === undefined) return false;
+    if (!('story' in value) || value['story'] === undefined) return false;
     if (!('pictures' in value) || value['pictures'] === undefined) return false;
     if (!('videos' in value) || value['videos'] === undefined) return false;
     if (!('likes' in value) || value['likes'] === undefined) return false;
@@ -156,6 +170,7 @@ export function WallPostFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
         'id': json['id'],
         'creatorId': json['creator_id'],
         'chatbot': ChatbotPreviewFromJSON(json['chatbot']),
+        'story': StoryPreviewFromJSON(json['story']),
         'pictures': ((json['pictures'] as Array<any>).map(ImageContentFromJSON)),
         'videos': ((json['videos'] as Array<any>).map(VideoContentFromJSON)),
         'likes': json['likes'],
@@ -182,6 +197,7 @@ export function WallPostFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
         'id': value['id'],
         'creator_id': value['creatorId'],
         'chatbot': ChatbotPreviewToJSON(value['chatbot']),
+        'story': StoryPreviewToJSON(value['story']),
         'pictures': ((value['pictures'] as Array<any>).map(ImageContentToJSON)),
         'videos': ((value['videos'] as Array<any>).map(VideoContentToJSON)),
         'likes': value['likes'],

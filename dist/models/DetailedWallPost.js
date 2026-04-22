@@ -23,6 +23,7 @@ const ChatbotPreview_1 = require("./ChatbotPreview");
 const VideoContent_1 = require("./VideoContent");
 const SharedContentType_1 = require("./SharedContentType");
 const ImageContent_1 = require("./ImageContent");
+const StoryPreview_1 = require("./StoryPreview");
 const TagModel_1 = require("./TagModel");
 /**
  * Check if a given object implements the DetailedWallPost interface.
@@ -33,6 +34,8 @@ function instanceOfDetailedWallPost(value) {
     if (!('creatorId' in value) || value['creatorId'] === undefined)
         return false;
     if (!('chatbot' in value) || value['chatbot'] === undefined)
+        return false;
+    if (!('story' in value) || value['story'] === undefined)
         return false;
     if (!('pictures' in value) || value['pictures'] === undefined)
         return false;
@@ -71,6 +74,7 @@ function DetailedWallPostFromJSONTyped(json, ignoreDiscriminator) {
         'id': json['id'],
         'creatorId': json['creator_id'],
         'chatbot': (0, ChatbotPreview_1.ChatbotPreviewFromJSON)(json['chatbot']),
+        'story': (0, StoryPreview_1.StoryPreviewFromJSON)(json['story']),
         'pictures': (json['pictures'].map(ImageContent_1.ImageContentFromJSON)),
         'videos': (json['videos'].map(VideoContent_1.VideoContentFromJSON)),
         'likes': json['likes'],
@@ -96,6 +100,7 @@ function DetailedWallPostToJSONTyped(value, ignoreDiscriminator = false) {
         'id': value['id'],
         'creator_id': value['creatorId'],
         'chatbot': (0, ChatbotPreview_1.ChatbotPreviewToJSON)(value['chatbot']),
+        'story': (0, StoryPreview_1.StoryPreviewToJSON)(value['story']),
         'pictures': (value['pictures'].map(ImageContent_1.ImageContentToJSON)),
         'videos': (value['videos'].map(VideoContent_1.VideoContentToJSON)),
         'likes': value['likes'],

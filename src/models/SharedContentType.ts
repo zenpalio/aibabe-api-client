@@ -20,7 +20,8 @@
 export const SharedContentType = {
     Picture: 'picture',
     Video: 'video',
-    Character: 'character'
+    Character: 'character',
+    Story: 'story'
 } as const;
 export type SharedContentType = typeof SharedContentType[keyof typeof SharedContentType];
 

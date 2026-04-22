@@ -70,6 +70,12 @@ export interface ExploreSearchRequest {
     chatbotId?: string | null;
     /**
      *
+     * @type {string}
+     * @memberof ExploreSearchRequest
+     */
+    storyId?: string | null;
+    /**
+     *
      * @type {PostType}
      * @memberof ExploreSearchRequest
      */

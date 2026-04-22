@@ -17,6 +17,7 @@ export declare const SharedContentType: {
     readonly Picture: "picture";
     readonly Video: "video";
     readonly Character: "character";
+    readonly Story: "story";
 };
 export type SharedContentType = typeof SharedContentType[keyof typeof SharedContentType];
 export declare function instanceOfSharedContentType(value: any): boolean;

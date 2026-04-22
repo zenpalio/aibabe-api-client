@@ -203,6 +203,7 @@ export * from './StoryCreatorStoryResponse';
 export * from './StoryCreatorUpdateActorRequest';
 export * from './StoryCreatorUpdateEpisodeRequest';
 export * from './StoryCreatorUpdateStoryRequest';
+export * from './StoryPreview';
 export * from './StoryVisibility';
 export * from './Subscription';
 export * from './SubscriptionModel';

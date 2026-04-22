@@ -26,7 +26,8 @@ exports.SharedContentTypeToJSONTyped = SharedContentTypeToJSONTyped;
 exports.SharedContentType = {
     Picture: 'picture',
     Video: 'video',
-    Character: 'character'
+    Character: 'character',
+    Story: 'story'
 };
 function instanceOfSharedContentType(value) {
     for (const key in exports.SharedContentType) {

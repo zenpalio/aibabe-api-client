@@ -13,6 +13,7 @@ import type { ChatbotPreview } from './ChatbotPreview';
 import type { VideoContent } from './VideoContent';
 import type { SharedContentType } from './SharedContentType';
 import type { ImageContent } from './ImageContent';
+import type { StoryPreview } from './StoryPreview';
 /**
  *
  * @export
@@ -37,6 +38,12 @@ export interface WallPost {
      * @memberof WallPost
      */
     chatbot: ChatbotPreview | null;
+    /**
+     *
+     * @type {StoryPreview}
+     * @memberof WallPost
+     */
+    story: StoryPreview | null;
     /**
      *
      * @type {Array<ImageContent>}

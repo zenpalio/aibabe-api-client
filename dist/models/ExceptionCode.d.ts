@@ -74,6 +74,7 @@ export declare const ExceptionCode: {
     readonly ImageNotOwned: "image_not_owned";
     readonly VideoNotFound: "video_not_found";
     readonly VideoNotOwned: "video_not_owned";
+    readonly ImageOrVideoNotFound: "image_or_video_not_found";
     readonly VideoUploadImageFailed: "video_upload_image_failed";
     readonly VideoRetrieveFailed: "video_retrieve_failed";
     readonly VideoGenerationLimitReached: "video_generation_limit_reached";

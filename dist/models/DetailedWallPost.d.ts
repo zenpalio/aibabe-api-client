@@ -14,6 +14,7 @@ import type { ChatbotPreview } from './ChatbotPreview';
 import type { VideoContent } from './VideoContent';
 import type { SharedContentType } from './SharedContentType';
 import type { ImageContent } from './ImageContent';
+import type { StoryPreview } from './StoryPreview';
 import type { TagModel } from './TagModel';
 /**
  *
@@ -39,6 +40,12 @@ export interface DetailedWallPost {
      * @memberof DetailedWallPost
      */
     chatbot: ChatbotPreview | null;
+    /**
+     *
+     * @type {StoryPreview}
+     * @memberof DetailedWallPost
+     */
+    story: StoryPreview | null;
     /**
      *
      * @type {Array<ImageContent>}

@@ -84,6 +84,7 @@ exports.ExceptionCode = {
     ImageNotOwned: 'image_not_owned',
     VideoNotFound: 'video_not_found',
     VideoNotOwned: 'video_not_owned',
+    ImageOrVideoNotFound: 'image_or_video_not_found',
     VideoUploadImageFailed: 'video_upload_image_failed',
     VideoRetrieveFailed: 'video_retrieve_failed',
     VideoGenerationLimitReached: 'video_generation_limit_reached',

@@ -221,6 +221,7 @@ __exportStar(require("./StoryCreatorStoryResponse"), exports);
 __exportStar(require("./StoryCreatorUpdateActorRequest"), exports);
 __exportStar(require("./StoryCreatorUpdateEpisodeRequest"), exports);
 __exportStar(require("./StoryCreatorUpdateStoryRequest"), exports);
+__exportStar(require("./StoryPreview"), exports);
 __exportStar(require("./StoryVisibility"), exports);
 __exportStar(require("./Subscription"), exports);
 __exportStar(require("./SubscriptionModel"), exports);
