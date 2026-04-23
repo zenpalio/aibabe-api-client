@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CharacterAboutPageReview, ChatbotType, GetAboutChatbotResponse, GetChatbotListResponse, GetChatbotResponse, GetCustomChatbotResponse, PatchCustomChatbotRequest, PostAdvancedChatbotProfilePicture, PostAdvancedChatbotPublishPayload, PostAdvancedChatbotPublishResponse, PostCustomAboutPagePayload, PostCustomChatBotPayload, PostCustomChatbotResponse, PostCustomChatbotV2Payload, PostProfilePictureResponse, SortFilter } from '../models/index';
+import type { CharacterIdentityPageReview, CharacterPersonalityPageReview, ChatbotType, GetChatbotListResponse, GetChatbotResponse, GetCustomChatbotResponse, GetIdentityChatbotResponse, GetPersonalityChatbotResponse, PatchCustomChatbotRequest, PostAdvancedCharacterBuilderSuggestionPayload, PostAdvancedCharacterBuilderSuggestionResponse, PostAdvancedChatbotProfilePicture, PostAdvancedChatbotPublishPayload, PostAdvancedChatbotPublishResponse, PostAdvancedIdentityPayload, PostAdvancedPersonalityPayload, PostCustomChatBotPayload, PostCustomChatbotResponse, PostCustomChatbotV2Payload, PostProfilePictureResponse, SortFilter } from '../models/index';
 export interface AttachmentChatbotChatbotIdAttachmentGetRequest {
     chatbotId: string;
     imageName: string;
@@ -31,14 +31,17 @@ export interface DeleteImageChatbotChatbotIdImageDeleteRequest {
 export interface EditChatbotChatbotChatbotIdRemixPostRequest {
     chatbotId: string;
 }
-export interface GetAboutChatbotAdvancedAboutGetRequest {
-    raiseIfNotFound?: boolean;
-}
 export interface GetChatbotChatbotIdGetRequest {
     chatbotId: string;
 }
 export interface GetCustomChatbotChatbotCustomChatbotIdGetRequest {
     chatbotId: string;
+}
+export interface GetIdentityChatbotAdvancedIdentityGetRequest {
+    raiseIfNotFound?: boolean;
+}
+export interface GetPersonalityChatbotAdvancedPersonalityGetRequest {
+    raiseIfNotFound?: boolean;
 }
 export interface ListChatbotGetRequest {
     paginationToken?: string | null;
@@ -53,8 +56,14 @@ export interface ListRemixedChatbotsChatbotRemixedChatbotIdGetRequest {
     limit?: number;
     sort?: SortFilter;
 }
-export interface PostAboutChatbotAdvancedAboutPostRequest {
-    postCustomAboutPagePayload: PostCustomAboutPagePayload;
+export interface PostCharacterBuilderSuggestionChatbotAdvancedSuggestionPostRequest {
+    postAdvancedCharacterBuilderSuggestionPayload: PostAdvancedCharacterBuilderSuggestionPayload;
+}
+export interface PostIdentityChatbotAdvancedIdentityPostRequest {
+    postAdvancedIdentityPayload: PostAdvancedIdentityPayload;
+}
+export interface PostPersonalityChatbotAdvancedPersonalityPostRequest {
+    postAdvancedPersonalityPayload: PostAdvancedPersonalityPayload;
 }
 export interface PostProfilePicChatbotAdvancedProfilePicturePostRequest {
     postAdvancedChatbotProfilePicture: PostAdvancedChatbotProfilePicture;
@@ -119,14 +128,6 @@ export declare class ChatbotApi extends runtime.BaseAPI {
      */
     editChatbotChatbotChatbotIdRemixPost(requestParameters: EditChatbotChatbotChatbotIdRemixPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
     /**
-     * Get About
-     */
-    getAboutChatbotAdvancedAboutGetRaw(requestParameters: GetAboutChatbotAdvancedAboutGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetAboutChatbotResponse>>;
-    /**
-     * Get About
-     */
-    getAboutChatbotAdvancedAboutGet(requestParameters?: GetAboutChatbotAdvancedAboutGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetAboutChatbotResponse>;
-    /**
      * Get
      */
     getChatbotChatbotIdGetRaw(requestParameters: GetChatbotChatbotIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetChatbotResponse>>;
@@ -142,6 +143,22 @@ export declare class ChatbotApi extends runtime.BaseAPI {
      * Get Custom Chatbot
      */
     getCustomChatbotChatbotCustomChatbotIdGet(requestParameters: GetCustomChatbotChatbotCustomChatbotIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetCustomChatbotResponse>;
+    /**
+     * Get Identity
+     */
+    getIdentityChatbotAdvancedIdentityGetRaw(requestParameters: GetIdentityChatbotAdvancedIdentityGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetIdentityChatbotResponse>>;
+    /**
+     * Get Identity
+     */
+    getIdentityChatbotAdvancedIdentityGet(requestParameters?: GetIdentityChatbotAdvancedIdentityGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetIdentityChatbotResponse>;
+    /**
+     * Get Personality
+     */
+    getPersonalityChatbotAdvancedPersonalityGetRaw(requestParameters: GetPersonalityChatbotAdvancedPersonalityGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetPersonalityChatbotResponse>>;
+    /**
+     * Get Personality
+     */
+    getPersonalityChatbotAdvancedPersonalityGet(requestParameters?: GetPersonalityChatbotAdvancedPersonalityGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetPersonalityChatbotResponse>;
     /**
      * List
      */
@@ -159,13 +176,29 @@ export declare class ChatbotApi extends runtime.BaseAPI {
      */
     listRemixedChatbotsChatbotRemixedChatbotIdGet(requestParameters: ListRemixedChatbotsChatbotRemixedChatbotIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetChatbotListResponse>;
     /**
-     * Post About
+     * Post Character Builder Suggestion
      */
-    postAboutChatbotAdvancedAboutPostRaw(requestParameters: PostAboutChatbotAdvancedAboutPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CharacterAboutPageReview>>;
+    postCharacterBuilderSuggestionChatbotAdvancedSuggestionPostRaw(requestParameters: PostCharacterBuilderSuggestionChatbotAdvancedSuggestionPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostAdvancedCharacterBuilderSuggestionResponse>>;
     /**
-     * Post About
+     * Post Character Builder Suggestion
      */
-    postAboutChatbotAdvancedAboutPost(requestParameters: PostAboutChatbotAdvancedAboutPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CharacterAboutPageReview>;
+    postCharacterBuilderSuggestionChatbotAdvancedSuggestionPost(requestParameters: PostCharacterBuilderSuggestionChatbotAdvancedSuggestionPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PostAdvancedCharacterBuilderSuggestionResponse>;
+    /**
+     * Post Identity
+     */
+    postIdentityChatbotAdvancedIdentityPostRaw(requestParameters: PostIdentityChatbotAdvancedIdentityPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CharacterIdentityPageReview>>;
+    /**
+     * Post Identity
+     */
+    postIdentityChatbotAdvancedIdentityPost(requestParameters: PostIdentityChatbotAdvancedIdentityPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CharacterIdentityPageReview>;
+    /**
+     * Post Personality
+     */
+    postPersonalityChatbotAdvancedPersonalityPostRaw(requestParameters: PostPersonalityChatbotAdvancedPersonalityPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CharacterPersonalityPageReview>>;
+    /**
+     * Post Personality
+     */
+    postPersonalityChatbotAdvancedPersonalityPost(requestParameters: PostPersonalityChatbotAdvancedPersonalityPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CharacterPersonalityPageReview>;
     /**
      * Post Profile Pic
      */

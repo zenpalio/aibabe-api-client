@@ -51,6 +51,8 @@ exports.ExceptionCode = {
     AdvancedChatbotBuilderInProgressNotFound: 'advanced_chatbot_builder_in_progress_not_found',
     AdvancedChatbotBuilderInconsistentData: 'advanced_chatbot_builder_inconsistent_data',
     AdvancedCharacterBuilderDataMissing: 'advanced_character_builder_data_missing',
+    AdvancedCharacterBuilderFailedToCreateTags: 'advanced_character_builder_failed_to_create_tags',
+    AdvancedCharacterBuilderProfileModerationException: 'advanced_character_builder_profile_moderation_exception',
     CharacterProfileTagsInvalid: 'character_profile_tags_invalid',
     CharacterProfileAgeInvalid: 'character_profile_age_invalid',
     CharacterProfileGenderMissing: 'character_profile_gender_missing',
