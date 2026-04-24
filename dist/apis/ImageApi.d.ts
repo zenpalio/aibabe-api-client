@@ -27,8 +27,7 @@ export interface UserGenerateImageImagenGenerateChatbotIdPostRequest {
     chatbotId: string;
     postGenerateImageRequest: PostGenerateImageRequest;
 }
-export interface UserInpaintImageImagenInpaintChatbotIdPostRequest {
-    chatbotId: string;
+export interface UserInpaintImageImagenInpaintPostRequest {
     originalImageId: string;
     inpaintingMask: Blob;
     query: string;
@@ -86,10 +85,10 @@ export declare class ImageApi extends runtime.BaseAPI {
     /**
      * User Inpaint Image
      */
-    userInpaintImageImagenInpaintChatbotIdPostRaw(requestParameters: UserInpaintImageImagenInpaintChatbotIdPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostImagenResponse>>;
+    userInpaintImageImagenInpaintPostRaw(requestParameters: UserInpaintImageImagenInpaintPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostImagenResponse>>;
     /**
      * User Inpaint Image
      */
-    userInpaintImageImagenInpaintChatbotIdPost(requestParameters: UserInpaintImageImagenInpaintChatbotIdPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PostImagenResponse>;
+    userInpaintImageImagenInpaintPost(requestParameters: UserInpaintImageImagenInpaintPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PostImagenResponse>;
 }
 //# sourceMappingURL=ImageApi.d.ts.map

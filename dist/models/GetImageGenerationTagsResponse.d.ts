@@ -33,7 +33,7 @@ export interface GetImageGenerationTagsResponse {
      * @type {string}
      * @memberof GetImageGenerationTagsResponse
      */
-    chatbotName: string;
+    chatbotName: string | null;
     /**
      *
      * @type {Array<LoraName>}

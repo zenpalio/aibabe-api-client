@@ -80,6 +80,7 @@ export declare const ExceptionCode: {
     readonly VideoRetrieveFailed: "video_retrieve_failed";
     readonly VideoGenerationLimitReached: "video_generation_limit_reached";
     readonly GenerationTagsNotFound: "generation_tags_not_found";
+    readonly ArtStyleNotFound: "art_style_not_found";
     readonly VerificationCodeExprired: "verification_code_exprired";
     readonly VerificationCodeInvalid: "verification_code_invalid";
     readonly VerificationCodeNotSet: "verification_code_not_set";

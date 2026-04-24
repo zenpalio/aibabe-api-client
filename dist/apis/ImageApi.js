@@ -183,27 +183,24 @@ class ImageApi extends runtime.BaseAPI {
     /**
      * User Inpaint Image
      */
-    async userInpaintImageImagenInpaintChatbotIdPostRaw(requestParameters, initOverrides) {
-        if (requestParameters['chatbotId'] == null) {
-            throw new runtime.RequiredError('chatbotId', 'Required parameter "chatbotId" was null or undefined when calling userInpaintImageImagenInpaintChatbotIdPost().');
-        }
+    async userInpaintImageImagenInpaintPostRaw(requestParameters, initOverrides) {
         if (requestParameters['originalImageId'] == null) {
-            throw new runtime.RequiredError('originalImageId', 'Required parameter "originalImageId" was null or undefined when calling userInpaintImageImagenInpaintChatbotIdPost().');
+            throw new runtime.RequiredError('originalImageId', 'Required parameter "originalImageId" was null or undefined when calling userInpaintImageImagenInpaintPost().');
         }
         if (requestParameters['inpaintingMask'] == null) {
-            throw new runtime.RequiredError('inpaintingMask', 'Required parameter "inpaintingMask" was null or undefined when calling userInpaintImageImagenInpaintChatbotIdPost().');
+            throw new runtime.RequiredError('inpaintingMask', 'Required parameter "inpaintingMask" was null or undefined when calling userInpaintImageImagenInpaintPost().');
         }
         if (requestParameters['query'] == null) {
-            throw new runtime.RequiredError('query', 'Required parameter "query" was null or undefined when calling userInpaintImageImagenInpaintChatbotIdPost().');
+            throw new runtime.RequiredError('query', 'Required parameter "query" was null or undefined when calling userInpaintImageImagenInpaintPost().');
         }
         if (requestParameters['clientId'] == null) {
-            throw new runtime.RequiredError('clientId', 'Required parameter "clientId" was null or undefined when calling userInpaintImageImagenInpaintChatbotIdPost().');
+            throw new runtime.RequiredError('clientId', 'Required parameter "clientId" was null or undefined when calling userInpaintImageImagenInpaintPost().');
         }
         if (requestParameters['requestId'] == null) {
-            throw new runtime.RequiredError('requestId', 'Required parameter "requestId" was null or undefined when calling userInpaintImageImagenInpaintChatbotIdPost().');
+            throw new runtime.RequiredError('requestId', 'Required parameter "requestId" was null or undefined when calling userInpaintImageImagenInpaintPost().');
         }
         if (requestParameters['numberOfImages'] == null) {
-            throw new runtime.RequiredError('numberOfImages', 'Required parameter "numberOfImages" was null or undefined when calling userInpaintImageImagenInpaintChatbotIdPost().');
+            throw new runtime.RequiredError('numberOfImages', 'Required parameter "numberOfImages" was null or undefined when calling userInpaintImageImagenInpaintPost().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -250,7 +247,7 @@ class ImageApi extends runtime.BaseAPI {
             formParams.append('denoising_strength', requestParameters['denoisingStrength']);
         }
         const response = await this.request({
-            path: `/imagen/inpaint/{chatbot_id}`.replace(`{${"chatbot_id"}}`, encodeURIComponent(String(requestParameters['chatbotId']))),
+            path: `/imagen/inpaint`,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -261,8 +258,8 @@ class ImageApi extends runtime.BaseAPI {
     /**
      * User Inpaint Image
      */
-    async userInpaintImageImagenInpaintChatbotIdPost(requestParameters, initOverrides) {
-        const response = await this.userInpaintImageImagenInpaintChatbotIdPostRaw(requestParameters, initOverrides);
+    async userInpaintImageImagenInpaintPost(requestParameters, initOverrides) {
+        const response = await this.userInpaintImageImagenInpaintPostRaw(requestParameters, initOverrides);
         return await response.value();
     }
 }

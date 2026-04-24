@@ -44,7 +44,7 @@ export interface ExtendVideoPayload {
      * @type {string}
      * @memberof ExtendVideoPayload
      */
-    chatbotId: string;
+    chatbotId: string | null;
     /**
      * 
      * @type {number}
