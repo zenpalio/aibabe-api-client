@@ -25,10 +25,8 @@ export interface ChatCallbackVideoCallbackChatGenerationIdPostRequest {
     status: ChatCallbackVideoCallbackChatGenerationIdPostStatusEnum;
     errorMessage?: string | null;
 }
-export interface DeleteVideoVideoChatbotIdDeleteRequest {
-    chatbotId: string;
-    videoName?: string | null;
-    generationId?: string | null;
+export interface DeleteVideoVideoVideoIdDeleteRequest {
+    videoId: string;
 }
 export interface ExtendCallbackVideoExtendCallbackGenerationIdPostRequest {
     generationId: string;
@@ -85,11 +83,11 @@ export declare class VideoApi extends runtime.BaseAPI {
     /**
      * Delete Video
      */
-    deleteVideoVideoChatbotIdDeleteRaw(requestParameters: DeleteVideoVideoChatbotIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
+    deleteVideoVideoVideoIdDeleteRaw(requestParameters: DeleteVideoVideoVideoIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
     /**
      * Delete Video
      */
-    deleteVideoVideoChatbotIdDelete(requestParameters: DeleteVideoVideoChatbotIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
+    deleteVideoVideoVideoIdDelete(requestParameters: DeleteVideoVideoVideoIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
     /**
      * Extend Callback
      */

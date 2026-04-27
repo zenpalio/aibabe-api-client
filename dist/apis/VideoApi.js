@@ -195,20 +195,14 @@ class VideoApi extends runtime.BaseAPI {
     /**
      * Delete Video
      */
-    async deleteVideoVideoChatbotIdDeleteRaw(requestParameters, initOverrides) {
-        if (requestParameters['chatbotId'] == null) {
-            throw new runtime.RequiredError('chatbotId', 'Required parameter "chatbotId" was null or undefined when calling deleteVideoVideoChatbotIdDelete().');
+    async deleteVideoVideoVideoIdDeleteRaw(requestParameters, initOverrides) {
+        if (requestParameters['videoId'] == null) {
+            throw new runtime.RequiredError('videoId', 'Required parameter "videoId" was null or undefined when calling deleteVideoVideoVideoIdDelete().');
         }
         const queryParameters = {};
-        if (requestParameters['videoName'] != null) {
-            queryParameters['video_name'] = requestParameters['videoName'];
-        }
-        if (requestParameters['generationId'] != null) {
-            queryParameters['generation_id'] = requestParameters['generationId'];
-        }
         const headerParameters = {};
         const response = await this.request({
-            path: `/video/{chatbot_id}`.replace(`{${"chatbot_id"}}`, encodeURIComponent(String(requestParameters['chatbotId']))),
+            path: `/video/{video_id}`.replace(`{${"video_id"}}`, encodeURIComponent(String(requestParameters['videoId']))),
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
@@ -223,8 +217,8 @@ class VideoApi extends runtime.BaseAPI {
     /**
      * Delete Video
      */
-    async deleteVideoVideoChatbotIdDelete(requestParameters, initOverrides) {
-        const response = await this.deleteVideoVideoChatbotIdDeleteRaw(requestParameters, initOverrides);
+    async deleteVideoVideoVideoIdDelete(requestParameters, initOverrides) {
+        const response = await this.deleteVideoVideoVideoIdDeleteRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**

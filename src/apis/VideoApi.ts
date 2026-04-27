@@ -60,10 +60,8 @@ export interface ChatCallbackVideoCallbackChatGenerationIdPostRequest {
     errorMessage?: string | null;
 }
 
-export interface DeleteVideoVideoChatbotIdDeleteRequest {
-    chatbotId: string;
-    videoName?: string | null;
-    generationId?: string | null;
+export interface DeleteVideoVideoVideoIdDeleteRequest {
+    videoId: string;
 }
 
 export interface ExtendCallbackVideoExtendCallbackGenerationIdPostRequest {
@@ -287,28 +285,20 @@ export class VideoApi extends runtime.BaseAPI {
     /**
      * Delete Video
      */
-    async deleteVideoVideoChatbotIdDeleteRaw(requestParameters: DeleteVideoVideoChatbotIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
-        if (requestParameters['chatbotId'] == null) {
+    async deleteVideoVideoVideoIdDeleteRaw(requestParameters: DeleteVideoVideoVideoIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
+        if (requestParameters['videoId'] == null) {
             throw new runtime.RequiredError(
-                'chatbotId',
-                'Required parameter "chatbotId" was null or undefined when calling deleteVideoVideoChatbotIdDelete().'
+                'videoId',
+                'Required parameter "videoId" was null or undefined when calling deleteVideoVideoVideoIdDelete().'
             );
         }
 
         const queryParameters: any = {};
 
-        if (requestParameters['videoName'] != null) {
-            queryParameters['video_name'] = requestParameters['videoName'];
-        }
-
-        if (requestParameters['generationId'] != null) {
-            queryParameters['generation_id'] = requestParameters['generationId'];
-        }
-
         const headerParameters: runtime.HTTPHeaders = {};
 
         const response = await this.request({
-            path: `/video/{chatbot_id}`.replace(`{${"chatbot_id"}}`, encodeURIComponent(String(requestParameters['chatbotId']))),
+            path: `/video/{video_id}`.replace(`{${"video_id"}}`, encodeURIComponent(String(requestParameters['videoId']))),
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
@@ -324,8 +314,8 @@ export class VideoApi extends runtime.BaseAPI {
     /**
      * Delete Video
      */
-    async deleteVideoVideoChatbotIdDelete(requestParameters: DeleteVideoVideoChatbotIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
-        const response = await this.deleteVideoVideoChatbotIdDeleteRaw(requestParameters, initOverrides);
+    async deleteVideoVideoVideoIdDelete(requestParameters: DeleteVideoVideoVideoIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
+        const response = await this.deleteVideoVideoVideoIdDeleteRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

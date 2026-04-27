@@ -11,6 +11,13 @@
  */
 import * as runtime from '../runtime';
 import type { ArtStyle, GetGeneratedImage, GetImageGenerationTagsResponse, GetLorasResponse, LoraName, PostGenerateImageRequest, PostGenerateSceneRequest, PostImagenResponse } from '../models/index';
+export interface AttachmentImagenImageIdAttachmentGetRequest {
+    imageId: string;
+    imageName: string;
+}
+export interface DeleteImageImagenImageIdDeleteRequest {
+    imageId: string;
+}
 export interface GenerateSceneImagenGenerateScenePostRequest {
     postGenerateSceneRequest: PostGenerateSceneRequest;
 }
@@ -43,6 +50,22 @@ export interface UserInpaintImageImagenInpaintPostRequest {
  *
  */
 export declare class ImageApi extends runtime.BaseAPI {
+    /**
+     * Attachment
+     */
+    attachmentImagenImageIdAttachmentGetRaw(requestParameters: AttachmentImagenImageIdAttachmentGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
+    /**
+     * Attachment
+     */
+    attachmentImagenImageIdAttachmentGet(requestParameters: AttachmentImagenImageIdAttachmentGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
+    /**
+     * Delete Image
+     */
+    deleteImageImagenImageIdDeleteRaw(requestParameters: DeleteImageImagenImageIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
+    /**
+     * Delete Image
+     */
+    deleteImageImagenImageIdDelete(requestParameters: DeleteImageImagenImageIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
     /**
      * Generate Scene
      */

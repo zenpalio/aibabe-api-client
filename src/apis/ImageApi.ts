@@ -46,6 +46,15 @@ import {
     PostImagenResponseToJSON,
 } from '../models/index';
 
+export interface AttachmentImagenImageIdAttachmentGetRequest {
+    imageId: string;
+    imageName: string;
+}
+
+export interface DeleteImageImagenImageIdDeleteRequest {
+    imageId: string;
+}
+
 export interface GenerateSceneImagenGenerateScenePostRequest {
     postGenerateSceneRequest: PostGenerateSceneRequest;
 }
@@ -84,6 +93,91 @@ export interface UserInpaintImageImagenInpaintPostRequest {
  * 
  */
 export class ImageApi extends runtime.BaseAPI {
+
+    /**
+     * Attachment
+     */
+    async attachmentImagenImageIdAttachmentGetRaw(requestParameters: AttachmentImagenImageIdAttachmentGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
+        if (requestParameters['imageId'] == null) {
+            throw new runtime.RequiredError(
+                'imageId',
+                'Required parameter "imageId" was null or undefined when calling attachmentImagenImageIdAttachmentGet().'
+            );
+        }
+
+        if (requestParameters['imageName'] == null) {
+            throw new runtime.RequiredError(
+                'imageName',
+                'Required parameter "imageName" was null or undefined when calling attachmentImagenImageIdAttachmentGet().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['imageName'] != null) {
+            queryParameters['image_name'] = requestParameters['imageName'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/imagen/{image_id}/attachment`.replace(`{${"image_id"}}`, encodeURIComponent(String(requestParameters['imageId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse<any>(response);
+        } else {
+            return new runtime.TextApiResponse(response) as any;
+        }
+    }
+
+    /**
+     * Attachment
+     */
+    async attachmentImagenImageIdAttachmentGet(requestParameters: AttachmentImagenImageIdAttachmentGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
+        const response = await this.attachmentImagenImageIdAttachmentGetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Delete Image
+     */
+    async deleteImageImagenImageIdDeleteRaw(requestParameters: DeleteImageImagenImageIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
+        if (requestParameters['imageId'] == null) {
+            throw new runtime.RequiredError(
+                'imageId',
+                'Required parameter "imageId" was null or undefined when calling deleteImageImagenImageIdDelete().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/imagen/{image_id}`.replace(`{${"image_id"}}`, encodeURIComponent(String(requestParameters['imageId']))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse<any>(response);
+        } else {
+            return new runtime.TextApiResponse(response) as any;
+        }
+    }
+
+    /**
+     * Delete Image
+     */
+    async deleteImageImagenImageIdDelete(requestParameters: DeleteImageImagenImageIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
+        const response = await this.deleteImageImagenImageIdDeleteRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
 
     /**
      * Generate Scene

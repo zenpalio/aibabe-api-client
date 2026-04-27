@@ -54,6 +54,70 @@ const index_1 = require("../models/index");
  */
 class ImageApi extends runtime.BaseAPI {
     /**
+     * Attachment
+     */
+    async attachmentImagenImageIdAttachmentGetRaw(requestParameters, initOverrides) {
+        if (requestParameters['imageId'] == null) {
+            throw new runtime.RequiredError('imageId', 'Required parameter "imageId" was null or undefined when calling attachmentImagenImageIdAttachmentGet().');
+        }
+        if (requestParameters['imageName'] == null) {
+            throw new runtime.RequiredError('imageName', 'Required parameter "imageName" was null or undefined when calling attachmentImagenImageIdAttachmentGet().');
+        }
+        const queryParameters = {};
+        if (requestParameters['imageName'] != null) {
+            queryParameters['image_name'] = requestParameters['imageName'];
+        }
+        const headerParameters = {};
+        const response = await this.request({
+            path: `/imagen/{image_id}/attachment`.replace(`{${"image_id"}}`, encodeURIComponent(String(requestParameters['imageId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse(response);
+        }
+        else {
+            return new runtime.TextApiResponse(response);
+        }
+    }
+    /**
+     * Attachment
+     */
+    async attachmentImagenImageIdAttachmentGet(requestParameters, initOverrides) {
+        const response = await this.attachmentImagenImageIdAttachmentGetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * Delete Image
+     */
+    async deleteImageImagenImageIdDeleteRaw(requestParameters, initOverrides) {
+        if (requestParameters['imageId'] == null) {
+            throw new runtime.RequiredError('imageId', 'Required parameter "imageId" was null or undefined when calling deleteImageImagenImageIdDelete().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        const response = await this.request({
+            path: `/imagen/{image_id}`.replace(`{${"image_id"}}`, encodeURIComponent(String(requestParameters['imageId']))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse(response);
+        }
+        else {
+            return new runtime.TextApiResponse(response);
+        }
+    }
+    /**
+     * Delete Image
+     */
+    async deleteImageImagenImageIdDelete(requestParameters, initOverrides) {
+        const response = await this.deleteImageImagenImageIdDeleteRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * Generate Scene
      */
     async generateSceneImagenGenerateScenePostRaw(requestParameters, initOverrides) {
