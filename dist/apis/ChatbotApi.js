@@ -234,6 +234,30 @@ class ChatbotApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * Get About
+     */
+    async getAboutChatbotAdvancedAboutGetRaw(requestParameters, initOverrides) {
+        const queryParameters = {};
+        if (requestParameters['raiseIfNotFound'] != null) {
+            queryParameters['raise_if_not_found'] = requestParameters['raiseIfNotFound'];
+        }
+        const headerParameters = {};
+        const response = await this.request({
+            path: `/chatbot/advanced/about`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetAboutChatbotResponseFromJSON)(jsonValue));
+    }
+    /**
+     * Get About
+     */
+    async getAboutChatbotAdvancedAboutGet(requestParameters = {}, initOverrides) {
+        const response = await this.getAboutChatbotAdvancedAboutGetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * Get
      */
     async getChatbotChatbotIdGetRaw(requestParameters, initOverrides) {

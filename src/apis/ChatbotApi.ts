@@ -19,6 +19,7 @@ import type {
   CharacterIdentityPageReview,
   CharacterPersonalityPageReview,
   ChatbotType,
+  GetAboutChatbotResponse,
   GetChatbotListResponse,
   GetChatbotResponse,
   GetCustomChatbotResponse,
@@ -49,6 +50,8 @@ import {
     CharacterPersonalityPageReviewToJSON,
     ChatbotTypeFromJSON,
     ChatbotTypeToJSON,
+    GetAboutChatbotResponseFromJSON,
+    GetAboutChatbotResponseToJSON,
     GetChatbotListResponseFromJSON,
     GetChatbotListResponseToJSON,
     GetChatbotResponseFromJSON,
@@ -115,6 +118,10 @@ export interface DeleteImageChatbotChatbotIdImageDeleteRequest {
 
 export interface EditChatbotChatbotChatbotIdRemixPostRequest {
     chatbotId: string;
+}
+
+export interface GetAboutChatbotAdvancedAboutGetRequest {
+    raiseIfNotFound?: boolean;
 }
 
 export interface GetChatbotChatbotIdGetRequest {
@@ -421,6 +428,36 @@ export class ChatbotApi extends runtime.BaseAPI {
      */
     async editChatbotChatbotChatbotIdRemixPost(requestParameters: EditChatbotChatbotChatbotIdRemixPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
         const response = await this.editChatbotChatbotChatbotIdRemixPostRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Get About
+     */
+    async getAboutChatbotAdvancedAboutGetRaw(requestParameters: GetAboutChatbotAdvancedAboutGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetAboutChatbotResponse>> {
+        const queryParameters: any = {};
+
+        if (requestParameters['raiseIfNotFound'] != null) {
+            queryParameters['raise_if_not_found'] = requestParameters['raiseIfNotFound'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/chatbot/advanced/about`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetAboutChatbotResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Get About
+     */
+    async getAboutChatbotAdvancedAboutGet(requestParameters: GetAboutChatbotAdvancedAboutGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetAboutChatbotResponse> {
+        const response = await this.getAboutChatbotAdvancedAboutGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

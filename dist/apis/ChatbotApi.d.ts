@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CharacterAboutPageReview, CharacterIdentityPageReview, CharacterPersonalityPageReview, ChatbotType, GetChatbotListResponse, GetChatbotResponse, GetCustomChatbotResponse, GetIdentityChatbotResponse, GetPersonalityChatbotResponse, PatchCustomChatbotRequest, PostAdvancedCharacterBuilderSuggestionPayload, PostAdvancedCharacterBuilderSuggestionResponse, PostAdvancedChatbotProfilePicture, PostAdvancedChatbotPublishPayload, PostAdvancedChatbotPublishResponse, PostAdvancedIdentityPayload, PostAdvancedPersonalityPayload, PostCustomAboutPagePayload, PostCustomChatBotPayload, PostCustomChatbotResponse, PostCustomChatbotV2Payload, PostProfilePictureResponse, SortFilter } from '../models/index';
+import type { CharacterAboutPageReview, CharacterIdentityPageReview, CharacterPersonalityPageReview, ChatbotType, GetAboutChatbotResponse, GetChatbotListResponse, GetChatbotResponse, GetCustomChatbotResponse, GetIdentityChatbotResponse, GetPersonalityChatbotResponse, PatchCustomChatbotRequest, PostAdvancedCharacterBuilderSuggestionPayload, PostAdvancedCharacterBuilderSuggestionResponse, PostAdvancedChatbotProfilePicture, PostAdvancedChatbotPublishPayload, PostAdvancedChatbotPublishResponse, PostAdvancedIdentityPayload, PostAdvancedPersonalityPayload, PostCustomAboutPagePayload, PostCustomChatBotPayload, PostCustomChatbotResponse, PostCustomChatbotV2Payload, PostProfilePictureResponse, SortFilter } from '../models/index';
 export interface AttachmentChatbotChatbotIdAttachmentGetRequest {
     chatbotId: string;
     imageName: string;
@@ -30,6 +30,9 @@ export interface DeleteImageChatbotChatbotIdImageDeleteRequest {
 }
 export interface EditChatbotChatbotChatbotIdRemixPostRequest {
     chatbotId: string;
+}
+export interface GetAboutChatbotAdvancedAboutGetRequest {
+    raiseIfNotFound?: boolean;
 }
 export interface GetChatbotChatbotIdGetRequest {
     chatbotId: string;
@@ -130,6 +133,14 @@ export declare class ChatbotApi extends runtime.BaseAPI {
      * Edit Chatbot
      */
     editChatbotChatbotChatbotIdRemixPost(requestParameters: EditChatbotChatbotChatbotIdRemixPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
+    /**
+     * Get About
+     */
+    getAboutChatbotAdvancedAboutGetRaw(requestParameters: GetAboutChatbotAdvancedAboutGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetAboutChatbotResponse>>;
+    /**
+     * Get About
+     */
+    getAboutChatbotAdvancedAboutGet(requestParameters?: GetAboutChatbotAdvancedAboutGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetAboutChatbotResponse>;
     /**
      * Get
      */

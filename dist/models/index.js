@@ -67,6 +67,7 @@ __exportStar(require("./GalleryItem"), exports);
 __exportStar(require("./GeneratedAudioStatus"), exports);
 __exportStar(require("./GeneratedImages"), exports);
 __exportStar(require("./GeneratedVideos"), exports);
+__exportStar(require("./GetAboutChatbotResponse"), exports);
 __exportStar(require("./GetChatbotListResponse"), exports);
 __exportStar(require("./GetChatbotResponse"), exports);
 __exportStar(require("./GetClaimablesResponse"), exports);

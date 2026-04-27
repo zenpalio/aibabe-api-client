@@ -74,6 +74,7 @@ src/models/GalleryItem.ts
 src/models/GeneratedAudioStatus.ts
 src/models/GeneratedImages.ts
 src/models/GeneratedVideos.ts
+src/models/GetAboutChatbotResponse.ts
 src/models/GetChatbotListResponse.ts
 src/models/GetChatbotResponse.ts
 src/models/GetClaimablesResponse.ts

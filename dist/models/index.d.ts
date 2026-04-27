@@ -49,6 +49,7 @@ export * from './GalleryItem';
 export * from './GeneratedAudioStatus';
 export * from './GeneratedImages';
 export * from './GeneratedVideos';
+export * from './GetAboutChatbotResponse';
 export * from './GetChatbotListResponse';
 export * from './GetChatbotResponse';
 export * from './GetClaimablesResponse';
