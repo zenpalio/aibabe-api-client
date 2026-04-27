@@ -20,7 +20,8 @@
 export const CharacterBuilderSuggestionField = {
     Bio: 'bio',
     Greetings: 'greetings',
-    Personality: 'personality'
+    Personality: 'personality',
+    ProfilePic: 'profile_pic'
 } as const;
 export type CharacterBuilderSuggestionField = typeof CharacterBuilderSuggestionField[keyof typeof CharacterBuilderSuggestionField];
 

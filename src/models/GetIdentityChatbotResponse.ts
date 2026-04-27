@@ -36,6 +36,12 @@ export interface GetIdentityChatbotResponse {
      * @type {string}
      * @memberof GetIdentityChatbotResponse
      */
+    gender: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetIdentityChatbotResponse
+     */
     bio: string | null;
     /**
      * 
@@ -51,6 +57,7 @@ export interface GetIdentityChatbotResponse {
 export function instanceOfGetIdentityChatbotResponse(value: object): value is GetIdentityChatbotResponse {
     if (!('userId' in value) || value['userId'] === undefined) return false;
     if (!('name' in value) || value['name'] === undefined) return false;
+    if (!('gender' in value) || value['gender'] === undefined) return false;
     if (!('bio' in value) || value['bio'] === undefined) return false;
     if (!('greetings' in value) || value['greetings'] === undefined) return false;
     return true;
@@ -68,6 +75,7 @@ export function GetIdentityChatbotResponseFromJSONTyped(json: any, ignoreDiscrim
         
         'userId': json['user_id'],
         'name': json['name'],
+        'gender': json['gender'],
         'bio': json['bio'],
         'greetings': json['greetings'],
     };
@@ -86,6 +94,7 @@ export function GetIdentityChatbotResponseFromJSONTyped(json: any, ignoreDiscrim
         
         'user_id': value['userId'],
         'name': value['name'],
+        'gender': value['gender'],
         'bio': value['bio'],
         'greetings': value['greetings'],
     };

@@ -26,7 +26,8 @@ exports.CharacterBuilderSuggestionFieldToJSONTyped = CharacterBuilderSuggestionF
 exports.CharacterBuilderSuggestionField = {
     Bio: 'bio',
     Greetings: 'greetings',
-    Personality: 'personality'
+    Personality: 'personality',
+    ProfilePic: 'profile_pic'
 };
 function instanceOfCharacterBuilderSuggestionField(value) {
     for (const key in exports.CharacterBuilderSuggestionField) {

@@ -28,6 +28,8 @@ function instanceOfPostAdvancedIdentityPayload(value) {
         return false;
     if (!('greetings' in value) || value['greetings'] === undefined)
         return false;
+    if (!('gender' in value) || value['gender'] === undefined)
+        return false;
     return true;
 }
 function PostAdvancedIdentityPayloadFromJSON(json) {
@@ -41,6 +43,7 @@ function PostAdvancedIdentityPayloadFromJSONTyped(json, ignoreDiscriminator) {
         'name': json['name'],
         'bio': json['bio'],
         'greetings': json['greetings'],
+        'gender': json['gender'],
     };
 }
 function PostAdvancedIdentityPayloadToJSON(json) {
@@ -54,6 +57,7 @@ function PostAdvancedIdentityPayloadToJSONTyped(value, ignoreDiscriminator = fal
         'name': value['name'],
         'bio': value['bio'],
         'greetings': value['greetings'],
+        'gender': value['gender'],
     };
 }
 //# sourceMappingURL=PostAdvancedIdentityPayload.js.map

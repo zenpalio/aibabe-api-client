@@ -33,6 +33,12 @@ export interface PostAdvancedIdentityPayload {
      * @memberof PostAdvancedIdentityPayload
      */
     greetings: string;
+    /**
+     *
+     * @type {string}
+     * @memberof PostAdvancedIdentityPayload
+     */
+    gender: string;
 }
 /**
  * Check if a given object implements the PostAdvancedIdentityPayload interface.

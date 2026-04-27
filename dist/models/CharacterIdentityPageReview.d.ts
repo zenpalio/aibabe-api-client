@@ -27,6 +27,12 @@ export interface CharacterIdentityPageReview {
      * @type {AvatarRequiredField}
      * @memberof CharacterIdentityPageReview
      */
+    gender?: AvatarRequiredField | null;
+    /**
+     *
+     * @type {AvatarRequiredField}
+     * @memberof CharacterIdentityPageReview
+     */
     bio?: AvatarRequiredField | null;
     /**
      *

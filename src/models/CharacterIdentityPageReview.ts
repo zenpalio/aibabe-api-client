@@ -38,6 +38,12 @@ export interface CharacterIdentityPageReview {
      * @type {AvatarRequiredField}
      * @memberof CharacterIdentityPageReview
      */
+    gender?: AvatarRequiredField | null;
+    /**
+     * 
+     * @type {AvatarRequiredField}
+     * @memberof CharacterIdentityPageReview
+     */
     bio?: AvatarRequiredField | null;
     /**
      * 
@@ -65,6 +71,7 @@ export function CharacterIdentityPageReviewFromJSONTyped(json: any, ignoreDiscri
     return {
         
         'characterName': json['character_name'] == null ? undefined : AvatarRequiredFieldFromJSON(json['character_name']),
+        'gender': json['gender'] == null ? undefined : AvatarRequiredFieldFromJSON(json['gender']),
         'bio': json['bio'] == null ? undefined : AvatarRequiredFieldFromJSON(json['bio']),
         'greetings': json['greetings'] == null ? undefined : AvatarRequiredFieldFromJSON(json['greetings']),
     };
@@ -82,6 +89,7 @@ export function CharacterIdentityPageReviewFromJSONTyped(json: any, ignoreDiscri
     return {
         
         'character_name': AvatarRequiredFieldToJSON(value['characterName']),
+        'gender': AvatarRequiredFieldToJSON(value['gender']),
         'bio': AvatarRequiredFieldToJSON(value['bio']),
         'greetings': AvatarRequiredFieldToJSON(value['greetings']),
     };

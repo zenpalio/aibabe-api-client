@@ -26,6 +26,8 @@ function instanceOfGetIdentityChatbotResponse(value) {
         return false;
     if (!('name' in value) || value['name'] === undefined)
         return false;
+    if (!('gender' in value) || value['gender'] === undefined)
+        return false;
     if (!('bio' in value) || value['bio'] === undefined)
         return false;
     if (!('greetings' in value) || value['greetings'] === undefined)
@@ -42,6 +44,7 @@ function GetIdentityChatbotResponseFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'userId': json['user_id'],
         'name': json['name'],
+        'gender': json['gender'],
         'bio': json['bio'],
         'greetings': json['greetings'],
     };
@@ -56,6 +59,7 @@ function GetIdentityChatbotResponseToJSONTyped(value, ignoreDiscriminator = fals
     return {
         'user_id': value['userId'],
         'name': value['name'],
+        'gender': value['gender'],
         'bio': value['bio'],
         'greetings': value['greetings'],
     };

@@ -32,6 +32,12 @@ export interface GetIdentityChatbotResponse {
      * @type {string}
      * @memberof GetIdentityChatbotResponse
      */
+    gender: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof GetIdentityChatbotResponse
+     */
     bio: string | null;
     /**
      *

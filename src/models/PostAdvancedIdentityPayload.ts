@@ -37,6 +37,12 @@ export interface PostAdvancedIdentityPayload {
      * @memberof PostAdvancedIdentityPayload
      */
     greetings: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PostAdvancedIdentityPayload
+     */
+    gender: string;
 }
 
 /**
@@ -46,6 +52,7 @@ export function instanceOfPostAdvancedIdentityPayload(value: object): value is P
     if (!('name' in value) || value['name'] === undefined) return false;
     if (!('bio' in value) || value['bio'] === undefined) return false;
     if (!('greetings' in value) || value['greetings'] === undefined) return false;
+    if (!('gender' in value) || value['gender'] === undefined) return false;
     return true;
 }
 
@@ -62,6 +69,7 @@ export function PostAdvancedIdentityPayloadFromJSONTyped(json: any, ignoreDiscri
         'name': json['name'],
         'bio': json['bio'],
         'greetings': json['greetings'],
+        'gender': json['gender'],
     };
 }
 
@@ -79,6 +87,7 @@ export function PostAdvancedIdentityPayloadFromJSONTyped(json: any, ignoreDiscri
         'name': value['name'],
         'bio': value['bio'],
         'greetings': value['greetings'],
+        'gender': value['gender'],
     };
 }
 
