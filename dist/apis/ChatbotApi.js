@@ -399,6 +399,32 @@ class ChatbotApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * Post About
+     */
+    async postAboutChatbotAdvancedAboutPostRaw(requestParameters, initOverrides) {
+        if (requestParameters['postCustomAboutPagePayload'] == null) {
+            throw new runtime.RequiredError('postCustomAboutPagePayload', 'Required parameter "postCustomAboutPagePayload" was null or undefined when calling postAboutChatbotAdvancedAboutPost().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        const response = await this.request({
+            path: `/chatbot/advanced/about`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.PostCustomAboutPagePayloadToJSON)(requestParameters['postCustomAboutPagePayload']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.CharacterAboutPageReviewFromJSON)(jsonValue));
+    }
+    /**
+     * Post About
+     */
+    async postAboutChatbotAdvancedAboutPost(requestParameters, initOverrides) {
+        const response = await this.postAboutChatbotAdvancedAboutPostRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * Post Character Builder Suggestion
      */
     async postCharacterBuilderSuggestionChatbotAdvancedSuggestionPostRaw(requestParameters, initOverrides) {

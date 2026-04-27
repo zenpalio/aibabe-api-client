@@ -38,6 +38,7 @@ src/models/BulkDeleteContentRequest.ts
 src/models/ButtSize.ts
 src/models/CancelSubscriptionRequest.ts
 src/models/CategoryValues.ts
+src/models/CharacterAboutPageReview.ts
 src/models/CharacterAvatarReview.ts
 src/models/CharacterBuilderSuggestionField.ts
 src/models/CharacterIdentityPageReview.ts
@@ -160,6 +161,7 @@ src/models/PostCheckoutResponse.ts
 src/models/PostCheckoutSessionRequest.ts
 src/models/PostClaimRequest.ts
 src/models/PostConversationSettingsRequest.ts
+src/models/PostCustomAboutPagePayload.ts
 src/models/PostCustomChatBotPayload.ts
 src/models/PostCustomChatbotResponse.ts
 src/models/PostCustomChatbotV2Payload.ts

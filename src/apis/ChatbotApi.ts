@@ -15,6 +15,7 @@
 
 import * as runtime from '../runtime';
 import type {
+  CharacterAboutPageReview,
   CharacterIdentityPageReview,
   CharacterPersonalityPageReview,
   ChatbotType,
@@ -32,6 +33,7 @@ import type {
   PostAdvancedChatbotPublishResponse,
   PostAdvancedIdentityPayload,
   PostAdvancedPersonalityPayload,
+  PostCustomAboutPagePayload,
   PostCustomChatBotPayload,
   PostCustomChatbotResponse,
   PostCustomChatbotV2Payload,
@@ -39,6 +41,8 @@ import type {
   SortFilter,
 } from '../models/index';
 import {
+    CharacterAboutPageReviewFromJSON,
+    CharacterAboutPageReviewToJSON,
     CharacterIdentityPageReviewFromJSON,
     CharacterIdentityPageReviewToJSON,
     CharacterPersonalityPageReviewFromJSON,
@@ -73,6 +77,8 @@ import {
     PostAdvancedIdentityPayloadToJSON,
     PostAdvancedPersonalityPayloadFromJSON,
     PostAdvancedPersonalityPayloadToJSON,
+    PostCustomAboutPagePayloadFromJSON,
+    PostCustomAboutPagePayloadToJSON,
     PostCustomChatBotPayloadFromJSON,
     PostCustomChatBotPayloadToJSON,
     PostCustomChatbotResponseFromJSON,
@@ -140,6 +146,10 @@ export interface ListRemixedChatbotsChatbotRemixedChatbotIdGetRequest {
     paginationToken?: string | null;
     limit?: number;
     sort?: SortFilter;
+}
+
+export interface PostAboutChatbotAdvancedAboutPostRequest {
+    postCustomAboutPagePayload: PostCustomAboutPagePayload;
 }
 
 export interface PostCharacterBuilderSuggestionChatbotAdvancedSuggestionPostRequest {
@@ -628,6 +638,42 @@ export class ChatbotApi extends runtime.BaseAPI {
      */
     async listRemixedChatbotsChatbotRemixedChatbotIdGet(requestParameters: ListRemixedChatbotsChatbotRemixedChatbotIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetChatbotListResponse> {
         const response = await this.listRemixedChatbotsChatbotRemixedChatbotIdGetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Post About
+     */
+    async postAboutChatbotAdvancedAboutPostRaw(requestParameters: PostAboutChatbotAdvancedAboutPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CharacterAboutPageReview>> {
+        if (requestParameters['postCustomAboutPagePayload'] == null) {
+            throw new runtime.RequiredError(
+                'postCustomAboutPagePayload',
+                'Required parameter "postCustomAboutPagePayload" was null or undefined when calling postAboutChatbotAdvancedAboutPost().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        const response = await this.request({
+            path: `/chatbot/advanced/about`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: PostCustomAboutPagePayloadToJSON(requestParameters['postCustomAboutPagePayload']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CharacterAboutPageReviewFromJSON(jsonValue));
+    }
+
+    /**
+     * Post About
+     */
+    async postAboutChatbotAdvancedAboutPost(requestParameters: PostAboutChatbotAdvancedAboutPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CharacterAboutPageReview> {
+        const response = await this.postAboutChatbotAdvancedAboutPostRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

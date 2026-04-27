@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CharacterIdentityPageReview, CharacterPersonalityPageReview, ChatbotType, GetChatbotListResponse, GetChatbotResponse, GetCustomChatbotResponse, GetIdentityChatbotResponse, GetPersonalityChatbotResponse, PatchCustomChatbotRequest, PostAdvancedCharacterBuilderSuggestionPayload, PostAdvancedCharacterBuilderSuggestionResponse, PostAdvancedChatbotProfilePicture, PostAdvancedChatbotPublishPayload, PostAdvancedChatbotPublishResponse, PostAdvancedIdentityPayload, PostAdvancedPersonalityPayload, PostCustomChatBotPayload, PostCustomChatbotResponse, PostCustomChatbotV2Payload, PostProfilePictureResponse, SortFilter } from '../models/index';
+import type { CharacterAboutPageReview, CharacterIdentityPageReview, CharacterPersonalityPageReview, ChatbotType, GetChatbotListResponse, GetChatbotResponse, GetCustomChatbotResponse, GetIdentityChatbotResponse, GetPersonalityChatbotResponse, PatchCustomChatbotRequest, PostAdvancedCharacterBuilderSuggestionPayload, PostAdvancedCharacterBuilderSuggestionResponse, PostAdvancedChatbotProfilePicture, PostAdvancedChatbotPublishPayload, PostAdvancedChatbotPublishResponse, PostAdvancedIdentityPayload, PostAdvancedPersonalityPayload, PostCustomAboutPagePayload, PostCustomChatBotPayload, PostCustomChatbotResponse, PostCustomChatbotV2Payload, PostProfilePictureResponse, SortFilter } from '../models/index';
 export interface AttachmentChatbotChatbotIdAttachmentGetRequest {
     chatbotId: string;
     imageName: string;
@@ -55,6 +55,9 @@ export interface ListRemixedChatbotsChatbotRemixedChatbotIdGetRequest {
     paginationToken?: string | null;
     limit?: number;
     sort?: SortFilter;
+}
+export interface PostAboutChatbotAdvancedAboutPostRequest {
+    postCustomAboutPagePayload: PostCustomAboutPagePayload;
 }
 export interface PostCharacterBuilderSuggestionChatbotAdvancedSuggestionPostRequest {
     postAdvancedCharacterBuilderSuggestionPayload: PostAdvancedCharacterBuilderSuggestionPayload;
@@ -175,6 +178,14 @@ export declare class ChatbotApi extends runtime.BaseAPI {
      * List Remixed Chatbots
      */
     listRemixedChatbotsChatbotRemixedChatbotIdGet(requestParameters: ListRemixedChatbotsChatbotRemixedChatbotIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetChatbotListResponse>;
+    /**
+     * Post About
+     */
+    postAboutChatbotAdvancedAboutPostRaw(requestParameters: PostAboutChatbotAdvancedAboutPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CharacterAboutPageReview>>;
+    /**
+     * Post About
+     */
+    postAboutChatbotAdvancedAboutPost(requestParameters: PostAboutChatbotAdvancedAboutPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CharacterAboutPageReview>;
     /**
      * Post Character Builder Suggestion
      */
