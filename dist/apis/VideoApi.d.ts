@@ -11,8 +11,8 @@
  */
 import * as runtime from '../runtime';
 import type { ExtendVideoPayload, GetVideoGenerationTagsResponse, ImageToVideoFromChatPayload, ImageToVideoPayload, ImageToVideoRecommendationPayload, LastVideoFrameResponse, VideoFromChatResponse } from '../models/index';
-export interface AttachmentVideoChatbotIdAttachmentGetRequest {
-    chatbotId: string;
+export interface AttachmentVideoVideoIdAttachmentGetRequest {
+    videoId: string;
     videoName: string;
 }
 export interface CallbackVideoCallbackGenerationIdPostRequest {
@@ -59,11 +59,11 @@ export declare class VideoApi extends runtime.BaseAPI {
     /**
      * Attachment
      */
-    attachmentVideoChatbotIdAttachmentGetRaw(requestParameters: AttachmentVideoChatbotIdAttachmentGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
+    attachmentVideoVideoIdAttachmentGetRaw(requestParameters: AttachmentVideoVideoIdAttachmentGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
     /**
      * Attachment
      */
-    attachmentVideoChatbotIdAttachmentGet(requestParameters: AttachmentVideoChatbotIdAttachmentGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
+    attachmentVideoVideoIdAttachmentGet(requestParameters: AttachmentVideoVideoIdAttachmentGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
     /**
      * Callback
      */

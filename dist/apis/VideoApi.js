@@ -56,12 +56,12 @@ class VideoApi extends runtime.BaseAPI {
     /**
      * Attachment
      */
-    async attachmentVideoChatbotIdAttachmentGetRaw(requestParameters, initOverrides) {
-        if (requestParameters['chatbotId'] == null) {
-            throw new runtime.RequiredError('chatbotId', 'Required parameter "chatbotId" was null or undefined when calling attachmentVideoChatbotIdAttachmentGet().');
+    async attachmentVideoVideoIdAttachmentGetRaw(requestParameters, initOverrides) {
+        if (requestParameters['videoId'] == null) {
+            throw new runtime.RequiredError('videoId', 'Required parameter "videoId" was null or undefined when calling attachmentVideoVideoIdAttachmentGet().');
         }
         if (requestParameters['videoName'] == null) {
-            throw new runtime.RequiredError('videoName', 'Required parameter "videoName" was null or undefined when calling attachmentVideoChatbotIdAttachmentGet().');
+            throw new runtime.RequiredError('videoName', 'Required parameter "videoName" was null or undefined when calling attachmentVideoVideoIdAttachmentGet().');
         }
         const queryParameters = {};
         if (requestParameters['videoName'] != null) {
@@ -69,7 +69,7 @@ class VideoApi extends runtime.BaseAPI {
         }
         const headerParameters = {};
         const response = await this.request({
-            path: `/video/{chatbot_id}/attachment`.replace(`{${"chatbot_id"}}`, encodeURIComponent(String(requestParameters['chatbotId']))),
+            path: `/video/{video_id}/attachment`.replace(`{${"video_id"}}`, encodeURIComponent(String(requestParameters['videoId']))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -84,8 +84,8 @@ class VideoApi extends runtime.BaseAPI {
     /**
      * Attachment
      */
-    async attachmentVideoChatbotIdAttachmentGet(requestParameters, initOverrides) {
-        const response = await this.attachmentVideoChatbotIdAttachmentGetRaw(requestParameters, initOverrides);
+    async attachmentVideoVideoIdAttachmentGet(requestParameters, initOverrides) {
+        const response = await this.attachmentVideoVideoIdAttachmentGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**

@@ -43,8 +43,8 @@ import {
     VideoFromChatResponseToJSON,
 } from '../models/index';
 
-export interface AttachmentVideoChatbotIdAttachmentGetRequest {
-    chatbotId: string;
+export interface AttachmentVideoVideoIdAttachmentGetRequest {
+    videoId: string;
     videoName: string;
 }
 
@@ -103,18 +103,18 @@ export class VideoApi extends runtime.BaseAPI {
     /**
      * Attachment
      */
-    async attachmentVideoChatbotIdAttachmentGetRaw(requestParameters: AttachmentVideoChatbotIdAttachmentGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
-        if (requestParameters['chatbotId'] == null) {
+    async attachmentVideoVideoIdAttachmentGetRaw(requestParameters: AttachmentVideoVideoIdAttachmentGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
+        if (requestParameters['videoId'] == null) {
             throw new runtime.RequiredError(
-                'chatbotId',
-                'Required parameter "chatbotId" was null or undefined when calling attachmentVideoChatbotIdAttachmentGet().'
+                'videoId',
+                'Required parameter "videoId" was null or undefined when calling attachmentVideoVideoIdAttachmentGet().'
             );
         }
 
         if (requestParameters['videoName'] == null) {
             throw new runtime.RequiredError(
                 'videoName',
-                'Required parameter "videoName" was null or undefined when calling attachmentVideoChatbotIdAttachmentGet().'
+                'Required parameter "videoName" was null or undefined when calling attachmentVideoVideoIdAttachmentGet().'
             );
         }
 
@@ -127,7 +127,7 @@ export class VideoApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         const response = await this.request({
-            path: `/video/{chatbot_id}/attachment`.replace(`{${"chatbot_id"}}`, encodeURIComponent(String(requestParameters['chatbotId']))),
+            path: `/video/{video_id}/attachment`.replace(`{${"video_id"}}`, encodeURIComponent(String(requestParameters['videoId']))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -143,8 +143,8 @@ export class VideoApi extends runtime.BaseAPI {
     /**
      * Attachment
      */
-    async attachmentVideoChatbotIdAttachmentGet(requestParameters: AttachmentVideoChatbotIdAttachmentGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
-        const response = await this.attachmentVideoChatbotIdAttachmentGetRaw(requestParameters, initOverrides);
+    async attachmentVideoVideoIdAttachmentGet(requestParameters: AttachmentVideoVideoIdAttachmentGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
+        const response = await this.attachmentVideoVideoIdAttachmentGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
