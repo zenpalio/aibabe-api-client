@@ -74,6 +74,7 @@ export interface UserInpaintImageImagenInpaintPostRequest {
     clientId: string;
     requestId: string;
     numberOfImages: number;
+    chatbotId?: string | null;
     artStyle?: ArtStyle | null;
     loras?: Array<LoraName> | null;
     denoisingStrength?: number;
@@ -350,6 +351,10 @@ export class ImageApi extends runtime.BaseAPI {
 
         if (requestParameters['numberOfImages'] != null) {
             formParams.append('number_of_images', requestParameters['numberOfImages'] as any);
+        }
+
+        if (requestParameters['chatbotId'] != null) {
+            formParams.append('chatbot_id', requestParameters['chatbotId'] as any);
         }
 
         if (requestParameters['artStyle'] != null) {

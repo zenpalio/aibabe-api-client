@@ -237,6 +237,9 @@ class ImageApi extends runtime.BaseAPI {
         if (requestParameters['numberOfImages'] != null) {
             formParams.append('number_of_images', requestParameters['numberOfImages']);
         }
+        if (requestParameters['chatbotId'] != null) {
+            formParams.append('chatbot_id', requestParameters['chatbotId']);
+        }
         if (requestParameters['artStyle'] != null) {
             formParams.append('art_style', requestParameters['artStyle']);
         }
