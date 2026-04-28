@@ -41,10 +41,10 @@ export interface UserInpaintImageImagenInpaintPostRequest {
     clientId: string;
     requestId: string;
     numberOfImages: number;
+    keepStructure: boolean;
     chatbotId?: string | null;
     artStyle?: ArtStyle | null;
     loras?: Array<LoraName> | null;
-    denoisingStrength?: number;
 }
 /**
  *

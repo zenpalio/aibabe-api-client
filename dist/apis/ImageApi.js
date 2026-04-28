@@ -266,6 +266,9 @@ class ImageApi extends runtime.BaseAPI {
         if (requestParameters['numberOfImages'] == null) {
             throw new runtime.RequiredError('numberOfImages', 'Required parameter "numberOfImages" was null or undefined when calling userInpaintImageImagenInpaintPost().');
         }
+        if (requestParameters['keepStructure'] == null) {
+            throw new runtime.RequiredError('keepStructure', 'Required parameter "keepStructure" was null or undefined when calling userInpaintImageImagenInpaintPost().');
+        }
         const queryParameters = {};
         const headerParameters = {};
         const consumes = [
@@ -301,6 +304,9 @@ class ImageApi extends runtime.BaseAPI {
         if (requestParameters['numberOfImages'] != null) {
             formParams.append('number_of_images', requestParameters['numberOfImages']);
         }
+        if (requestParameters['keepStructure'] != null) {
+            formParams.append('keep_structure', requestParameters['keepStructure']);
+        }
         if (requestParameters['chatbotId'] != null) {
             formParams.append('chatbot_id', requestParameters['chatbotId']);
         }
@@ -309,9 +315,6 @@ class ImageApi extends runtime.BaseAPI {
         }
         if (requestParameters['loras'] != null) {
             formParams.append('loras', requestParameters['loras'].join(runtime.COLLECTION_FORMATS["csv"]));
-        }
-        if (requestParameters['denoisingStrength'] != null) {
-            formParams.append('denoising_strength', requestParameters['denoisingStrength']);
         }
         const response = await this.request({
             path: `/imagen/inpaint`,
