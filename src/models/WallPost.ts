@@ -81,16 +81,16 @@ export interface WallPost {
     story: StoryPreview | null;
     /**
      * 
-     * @type {Array<ImageContent>}
+     * @type {ImageContent}
      * @memberof WallPost
      */
-    pictures: Array<ImageContent>;
+    picture: ImageContent | null;
     /**
      * 
-     * @type {Array<VideoContent>}
+     * @type {VideoContent}
      * @memberof WallPost
      */
-    videos: Array<VideoContent>;
+    video: VideoContent | null;
     /**
      * 
      * @type {number}
@@ -145,8 +145,8 @@ export function instanceOfWallPost(value: object): value is WallPost {
     if (!('creatorId' in value) || value['creatorId'] === undefined) return false;
     if (!('chatbot' in value) || value['chatbot'] === undefined) return false;
     if (!('story' in value) || value['story'] === undefined) return false;
-    if (!('pictures' in value) || value['pictures'] === undefined) return false;
-    if (!('videos' in value) || value['videos'] === undefined) return false;
+    if (!('picture' in value) || value['picture'] === undefined) return false;
+    if (!('video' in value) || value['video'] === undefined) return false;
     if (!('likes' in value) || value['likes'] === undefined) return false;
     if (!('messageCount' in value) || value['messageCount'] === undefined) return false;
     if (!('description' in value) || value['description'] === undefined) return false;
@@ -171,8 +171,8 @@ export function WallPostFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
         'creatorId': json['creator_id'],
         'chatbot': ChatbotPreviewFromJSON(json['chatbot']),
         'story': StoryPreviewFromJSON(json['story']),
-        'pictures': ((json['pictures'] as Array<any>).map(ImageContentFromJSON)),
-        'videos': ((json['videos'] as Array<any>).map(VideoContentFromJSON)),
+        'picture': ImageContentFromJSON(json['picture']),
+        'video': VideoContentFromJSON(json['video']),
         'likes': json['likes'],
         'messageCount': json['message_count'],
         'description': json['description'],
@@ -198,8 +198,8 @@ export function WallPostFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
         'creator_id': value['creatorId'],
         'chatbot': ChatbotPreviewToJSON(value['chatbot']),
         'story': StoryPreviewToJSON(value['story']),
-        'pictures': ((value['pictures'] as Array<any>).map(ImageContentToJSON)),
-        'videos': ((value['videos'] as Array<any>).map(VideoContentToJSON)),
+        'picture': ImageContentToJSON(value['picture']),
+        'video': VideoContentToJSON(value['video']),
         'likes': value['likes'],
         'message_count': value['messageCount'],
         'description': value['description'],

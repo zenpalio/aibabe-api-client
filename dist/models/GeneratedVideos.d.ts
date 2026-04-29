@@ -32,10 +32,10 @@ export interface GeneratedVideos {
     id: string;
     /**
      *
-     * @type {Array<string>}
+     * @type {string}
      * @memberof GeneratedVideos
      */
-    urls: Array<string>;
+    url: string | null;
     /**
      *
      * @type {Date}
@@ -84,6 +84,12 @@ export interface GeneratedVideos {
      * @memberof GeneratedVideos
      */
     originalImageId: string;
+    /**
+     *
+     * @type {string}
+     * @memberof GeneratedVideos
+     */
+    originalImageUrl: string | null;
 }
 /**
  * @export

@@ -28,6 +28,12 @@ export interface CharacterAboutPageReview {
      * @type {AvatarRequiredField}
      * @memberof CharacterAboutPageReview
      */
+    gender?: AvatarRequiredField | null;
+    /**
+     *
+     * @type {AvatarRequiredField}
+     * @memberof CharacterAboutPageReview
+     */
     bio?: AvatarRequiredField | null;
     /**
      *

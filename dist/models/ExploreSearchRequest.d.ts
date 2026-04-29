@@ -86,6 +86,12 @@ export interface ExploreSearchRequest {
      * @memberof ExploreSearchRequest
      */
     creatorUserId?: string | null;
+    /**
+     *
+     * @type {boolean}
+     * @memberof ExploreSearchRequest
+     */
+    scene?: boolean;
 }
 /**
  * Check if a given object implements the ExploreSearchRequest interface.

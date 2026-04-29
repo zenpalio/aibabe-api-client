@@ -51,6 +51,12 @@ export interface GetAboutChatbotResponse {
      * @type {string}
      * @memberof GetAboutChatbotResponse
      */
+    gender: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetAboutChatbotResponse
+     */
     story: string | null;
     /**
      * 
@@ -110,6 +116,7 @@ export interface GetAboutChatbotResponse {
 export function instanceOfGetAboutChatbotResponse(value: object): value is GetAboutChatbotResponse {
     if (!('userId' in value) || value['userId'] === undefined) return false;
     if (!('name' in value) || value['name'] === undefined) return false;
+    if (!('gender' in value) || value['gender'] === undefined) return false;
     if (!('story' in value) || value['story'] === undefined) return false;
     if (!('bio' in value) || value['bio'] === undefined) return false;
     if (!('exampleConversation' in value) || value['exampleConversation'] === undefined) return false;
@@ -134,6 +141,7 @@ export function GetAboutChatbotResponseFromJSONTyped(json: any, ignoreDiscrimina
         
         'userId': json['user_id'],
         'name': json['name'],
+        'gender': json['gender'],
         'story': json['story'],
         'bio': json['bio'],
         'exampleConversation': json['example_conversation'],
@@ -159,6 +167,7 @@ export function GetAboutChatbotResponseFromJSONTyped(json: any, ignoreDiscrimina
         
         'user_id': value['userId'],
         'name': value['name'],
+        'gender': value['gender'],
         'story': value['story'],
         'bio': value['bio'],
         'example_conversation': value['exampleConversation'],

@@ -54,6 +54,70 @@ const index_1 = require("../models/index");
  */
 class ImageApi extends runtime.BaseAPI {
     /**
+     * Attachment
+     */
+    async attachmentImagenImageIdAttachmentGetRaw(requestParameters, initOverrides) {
+        if (requestParameters['imageId'] == null) {
+            throw new runtime.RequiredError('imageId', 'Required parameter "imageId" was null or undefined when calling attachmentImagenImageIdAttachmentGet().');
+        }
+        if (requestParameters['imageName'] == null) {
+            throw new runtime.RequiredError('imageName', 'Required parameter "imageName" was null or undefined when calling attachmentImagenImageIdAttachmentGet().');
+        }
+        const queryParameters = {};
+        if (requestParameters['imageName'] != null) {
+            queryParameters['image_name'] = requestParameters['imageName'];
+        }
+        const headerParameters = {};
+        const response = await this.request({
+            path: `/imagen/{image_id}/attachment`.replace(`{${"image_id"}}`, encodeURIComponent(String(requestParameters['imageId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse(response);
+        }
+        else {
+            return new runtime.TextApiResponse(response);
+        }
+    }
+    /**
+     * Attachment
+     */
+    async attachmentImagenImageIdAttachmentGet(requestParameters, initOverrides) {
+        const response = await this.attachmentImagenImageIdAttachmentGetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * Delete Image
+     */
+    async deleteImageImagenImageIdDeleteRaw(requestParameters, initOverrides) {
+        if (requestParameters['imageId'] == null) {
+            throw new runtime.RequiredError('imageId', 'Required parameter "imageId" was null or undefined when calling deleteImageImagenImageIdDelete().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        const response = await this.request({
+            path: `/imagen/{image_id}`.replace(`{${"image_id"}}`, encodeURIComponent(String(requestParameters['imageId']))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse(response);
+        }
+        else {
+            return new runtime.TextApiResponse(response);
+        }
+    }
+    /**
+     * Delete Image
+     */
+    async deleteImageImagenImageIdDelete(requestParameters, initOverrides) {
+        const response = await this.deleteImageImagenImageIdDeleteRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * Generate Scene
      */
     async generateSceneImagenGenerateScenePostRaw(requestParameters, initOverrides) {
@@ -183,27 +247,24 @@ class ImageApi extends runtime.BaseAPI {
     /**
      * User Inpaint Image
      */
-    async userInpaintImageImagenInpaintChatbotIdPostRaw(requestParameters, initOverrides) {
-        if (requestParameters['chatbotId'] == null) {
-            throw new runtime.RequiredError('chatbotId', 'Required parameter "chatbotId" was null or undefined when calling userInpaintImageImagenInpaintChatbotIdPost().');
-        }
+    async userInpaintImageImagenInpaintPostRaw(requestParameters, initOverrides) {
         if (requestParameters['originalImageId'] == null) {
-            throw new runtime.RequiredError('originalImageId', 'Required parameter "originalImageId" was null or undefined when calling userInpaintImageImagenInpaintChatbotIdPost().');
+            throw new runtime.RequiredError('originalImageId', 'Required parameter "originalImageId" was null or undefined when calling userInpaintImageImagenInpaintPost().');
         }
         if (requestParameters['inpaintingMask'] == null) {
-            throw new runtime.RequiredError('inpaintingMask', 'Required parameter "inpaintingMask" was null or undefined when calling userInpaintImageImagenInpaintChatbotIdPost().');
+            throw new runtime.RequiredError('inpaintingMask', 'Required parameter "inpaintingMask" was null or undefined when calling userInpaintImageImagenInpaintPost().');
         }
         if (requestParameters['query'] == null) {
-            throw new runtime.RequiredError('query', 'Required parameter "query" was null or undefined when calling userInpaintImageImagenInpaintChatbotIdPost().');
+            throw new runtime.RequiredError('query', 'Required parameter "query" was null or undefined when calling userInpaintImageImagenInpaintPost().');
         }
         if (requestParameters['clientId'] == null) {
-            throw new runtime.RequiredError('clientId', 'Required parameter "clientId" was null or undefined when calling userInpaintImageImagenInpaintChatbotIdPost().');
+            throw new runtime.RequiredError('clientId', 'Required parameter "clientId" was null or undefined when calling userInpaintImageImagenInpaintPost().');
         }
         if (requestParameters['requestId'] == null) {
-            throw new runtime.RequiredError('requestId', 'Required parameter "requestId" was null or undefined when calling userInpaintImageImagenInpaintChatbotIdPost().');
+            throw new runtime.RequiredError('requestId', 'Required parameter "requestId" was null or undefined when calling userInpaintImageImagenInpaintPost().');
         }
         if (requestParameters['numberOfImages'] == null) {
-            throw new runtime.RequiredError('numberOfImages', 'Required parameter "numberOfImages" was null or undefined when calling userInpaintImageImagenInpaintChatbotIdPost().');
+            throw new runtime.RequiredError('numberOfImages', 'Required parameter "numberOfImages" was null or undefined when calling userInpaintImageImagenInpaintPost().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -240,6 +301,9 @@ class ImageApi extends runtime.BaseAPI {
         if (requestParameters['numberOfImages'] != null) {
             formParams.append('number_of_images', requestParameters['numberOfImages']);
         }
+        if (requestParameters['chatbotId'] != null) {
+            formParams.append('chatbot_id', requestParameters['chatbotId']);
+        }
         if (requestParameters['artStyle'] != null) {
             formParams.append('art_style', requestParameters['artStyle']);
         }
@@ -250,7 +314,7 @@ class ImageApi extends runtime.BaseAPI {
             formParams.append('denoising_strength', requestParameters['denoisingStrength']);
         }
         const response = await this.request({
-            path: `/imagen/inpaint/{chatbot_id}`.replace(`{${"chatbot_id"}}`, encodeURIComponent(String(requestParameters['chatbotId']))),
+            path: `/imagen/inpaint`,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -261,8 +325,8 @@ class ImageApi extends runtime.BaseAPI {
     /**
      * User Inpaint Image
      */
-    async userInpaintImageImagenInpaintChatbotIdPost(requestParameters, initOverrides) {
-        const response = await this.userInpaintImageImagenInpaintChatbotIdPostRaw(requestParameters, initOverrides);
+    async userInpaintImageImagenInpaintPost(requestParameters, initOverrides) {
+        const response = await this.userInpaintImageImagenInpaintPostRaw(requestParameters, initOverrides);
         return await response.value();
     }
 }

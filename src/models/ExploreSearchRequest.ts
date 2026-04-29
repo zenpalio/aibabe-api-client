@@ -121,6 +121,12 @@ export interface ExploreSearchRequest {
      * @memberof ExploreSearchRequest
      */
     creatorUserId?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ExploreSearchRequest
+     */
+    scene?: boolean;
 }
 
 
@@ -153,6 +159,7 @@ export function ExploreSearchRequestFromJSONTyped(json: any, ignoreDiscriminator
         'storyId': json['story_id'] == null ? undefined : json['story_id'],
         'postType': json['post_type'] == null ? undefined : PostTypeFromJSON(json['post_type']),
         'creatorUserId': json['creator_user_id'] == null ? undefined : json['creator_user_id'],
+        'scene': json['scene'] == null ? undefined : json['scene'],
     };
 }
 
@@ -178,6 +185,7 @@ export function ExploreSearchRequestFromJSONTyped(json: any, ignoreDiscriminator
         'story_id': value['storyId'],
         'post_type': PostTypeToJSON(value['postType']),
         'creator_user_id': value['creatorUserId'],
+        'scene': value['scene'],
     };
 }
 

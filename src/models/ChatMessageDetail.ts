@@ -71,7 +71,7 @@ export interface ChatMessageDetail {
      * @type {string}
      * @memberof ChatMessageDetail
      */
-    content: string;
+    url: string;
     /**
      * 
      * @type {ChatRole}
@@ -114,6 +114,12 @@ export interface ChatMessageDetail {
      * @memberof ChatMessageDetail
      */
     originalImageId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ChatMessageDetail
+     */
+    originalImageUrl?: string | null;
 }
 
 
@@ -125,7 +131,7 @@ export function instanceOfChatMessageDetail(value: object): value is ChatMessage
     if (!('id' in value) || value['id'] === undefined) return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
     if (!('type' in value) || value['type'] === undefined) return false;
-    if (!('content' in value) || value['content'] === undefined) return false;
+    if (!('url' in value) || value['url'] === undefined) return false;
     if (!('role' in value) || value['role'] === undefined) return false;
     if (!('requestId' in value) || value['requestId'] === undefined) return false;
     if (!('status' in value) || value['status'] === undefined) return false;
@@ -145,7 +151,7 @@ export function ChatMessageDetailFromJSONTyped(json: any, ignoreDiscriminator: b
         'id': json['id'],
         'createdAt': json['created_at'],
         'type': TypeFromJSON(json['type']),
-        'content': json['content'],
+        'url': json['url'],
         'role': ChatRoleFromJSON(json['role']),
         'requestId': json['request_id'],
         'status': StatusFromJSON(json['status']),
@@ -153,6 +159,7 @@ export function ChatMessageDetailFromJSONTyped(json: any, ignoreDiscriminator: b
         'audioUrl': json['audio_url'] == null ? undefined : json['audio_url'],
         'audioStatus': json['audio_status'] == null ? undefined : GeneratedAudioStatusFromJSON(json['audio_status']),
         'originalImageId': json['original_image_id'] == null ? undefined : json['original_image_id'],
+        'originalImageUrl': json['original_image_url'] == null ? undefined : json['original_image_url'],
     };
 }
 
@@ -170,7 +177,7 @@ export function ChatMessageDetailFromJSONTyped(json: any, ignoreDiscriminator: b
         'id': value['id'],
         'created_at': value['createdAt'],
         'type': TypeToJSON(value['type']),
-        'content': value['content'],
+        'url': value['url'],
         'role': ChatRoleToJSON(value['role']),
         'request_id': value['requestId'],
         'status': StatusToJSON(value['status']),
@@ -178,6 +185,7 @@ export function ChatMessageDetailFromJSONTyped(json: any, ignoreDiscriminator: b
         'audio_url': value['audioUrl'],
         'audio_status': GeneratedAudioStatusToJSON(value['audioStatus']),
         'original_image_id': value['originalImageId'],
+        'original_image_url': value['originalImageUrl'],
     };
 }
 

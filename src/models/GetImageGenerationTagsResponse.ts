@@ -44,7 +44,7 @@ export interface GetImageGenerationTagsResponse {
      * @type {string}
      * @memberof GetImageGenerationTagsResponse
      */
-    chatbotName: string;
+    chatbotName: string | null;
     /**
      * 
      * @type {Array<LoraName>}
@@ -76,7 +76,7 @@ export function GetImageGenerationTagsResponseFromJSONTyped(json: any, ignoreDis
         
         'tags': json['tags'],
         'downloadUrl': json['download_url'],
-        'chatbotName': json['chatbotName'],
+        'chatbotName': json['chatbot_name'],
         'loras': ((json['loras'] as Array<any>).map(LoraNameFromJSON)),
     };
 }
@@ -94,7 +94,7 @@ export function GetImageGenerationTagsResponseFromJSONTyped(json: any, ignoreDis
         
         'tags': value['tags'],
         'download_url': value['downloadUrl'],
-        'chatbotName': value['chatbotName'],
+        'chatbot_name': value['chatbotName'],
         'loras': ((value['loras'] as Array<any>).map(LoraNameToJSON)),
     };
 }

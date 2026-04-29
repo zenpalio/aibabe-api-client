@@ -55,10 +55,10 @@ export interface GeneratedImages {
     id: string;
     /**
      * 
-     * @type {Array<string>}
+     * @type {string}
      * @memberof GeneratedImages
      */
-    urls: Array<string>;
+    url: string | null;
     /**
      * 
      * @type {Date}
@@ -77,12 +77,6 @@ export interface GeneratedImages {
      * @memberof GeneratedImages
      */
     postDetails?: PostDetails | null;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof GeneratedImages
-     */
-    imageIds: Array<string>;
     /**
      * 
      * @type {string}
@@ -126,10 +120,9 @@ export type GeneratedImagesTypeEnum = typeof GeneratedImagesTypeEnum[keyof typeo
 export function instanceOfGeneratedImages(value: object): value is GeneratedImages {
     if (!('type' in value) || value['type'] === undefined) return false;
     if (!('id' in value) || value['id'] === undefined) return false;
-    if (!('urls' in value) || value['urls'] === undefined) return false;
+    if (!('url' in value) || value['url'] === undefined) return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
     if (!('chatbot' in value) || value['chatbot'] === undefined) return false;
-    if (!('imageIds' in value) || value['imageIds'] === undefined) return false;
     if (!('eta' in value) || value['eta'] === undefined) return false;
     if (!('status' in value) || value['status'] === undefined) return false;
     if (!('generationId' in value) || value['generationId'] === undefined) return false;
@@ -149,11 +142,10 @@ export function GeneratedImagesFromJSONTyped(json: any, ignoreDiscriminator: boo
         
         'type': json['type'],
         'id': json['id'],
-        'urls': json['urls'],
+        'url': json['url'],
         'createdAt': (new Date(json['created_at'])),
         'chatbot': ChatbotPreviewFromJSON(json['chatbot']),
         'postDetails': json['post_details'] == null ? undefined : PostDetailsFromJSON(json['post_details']),
-        'imageIds': json['image_ids'],
         'eta': json['eta'],
         'status': ImageGenerationStatusFromJSON(json['status']),
         'generationId': json['generation_id'],
@@ -174,11 +166,10 @@ export function GeneratedImagesFromJSONTyped(json: any, ignoreDiscriminator: boo
         
         'type': value['type'],
         'id': value['id'],
-        'urls': value['urls'],
+        'url': value['url'],
         'created_at': ((value['createdAt']).toISOString()),
         'chatbot': ChatbotPreviewToJSON(value['chatbot']),
         'post_details': PostDetailsToJSON(value['postDetails']),
-        'image_ids': value['imageIds'],
         'eta': value['eta'],
         'status': ImageGenerationStatusToJSON(value['status']),
         'generation_id': value['generationId'],

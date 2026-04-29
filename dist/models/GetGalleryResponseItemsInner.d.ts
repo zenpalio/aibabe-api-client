@@ -32,10 +32,10 @@ export interface GetGalleryResponseItemsInner {
     id: string;
     /**
      *
-     * @type {Array<string>}
+     * @type {string}
      * @memberof GetGalleryResponseItemsInner
      */
-    urls: Array<string>;
+    url: string;
     /**
      *
      * @type {Date}
@@ -54,12 +54,6 @@ export interface GetGalleryResponseItemsInner {
      * @memberof GetGalleryResponseItemsInner
      */
     postDetails?: PostDetails;
-    /**
-     *
-     * @type {Array<string>}
-     * @memberof GetGalleryResponseItemsInner
-     */
-    imageIds: Array<string>;
     /**
      *
      * @type {string}
@@ -90,6 +84,12 @@ export interface GetGalleryResponseItemsInner {
      * @memberof GetGalleryResponseItemsInner
      */
     originalImageId: string;
+    /**
+     *
+     * @type {string}
+     * @memberof GetGalleryResponseItemsInner
+     */
+    originalImageUrl: string;
 }
 /**
  * @export

@@ -11,8 +11,8 @@
  */
 import * as runtime from '../runtime';
 import type { ExtendVideoPayload, GetVideoGenerationTagsResponse, ImageToVideoFromChatPayload, ImageToVideoPayload, ImageToVideoRecommendationPayload, LastVideoFrameResponse, VideoFromChatResponse } from '../models/index';
-export interface AttachmentVideoChatbotIdAttachmentGetRequest {
-    chatbotId: string;
+export interface AttachmentVideoVideoIdAttachmentGetRequest {
+    videoId: string;
     videoName: string;
 }
 export interface CallbackVideoCallbackGenerationIdPostRequest {
@@ -25,10 +25,8 @@ export interface ChatCallbackVideoCallbackChatGenerationIdPostRequest {
     status: ChatCallbackVideoCallbackChatGenerationIdPostStatusEnum;
     errorMessage?: string | null;
 }
-export interface DeleteVideoVideoChatbotIdDeleteRequest {
-    chatbotId: string;
-    videoName?: string | null;
-    generationId?: string | null;
+export interface DeleteVideoVideoVideoIdDeleteRequest {
+    videoId: string;
 }
 export interface ExtendCallbackVideoExtendCallbackGenerationIdPostRequest {
     generationId: string;
@@ -61,11 +59,11 @@ export declare class VideoApi extends runtime.BaseAPI {
     /**
      * Attachment
      */
-    attachmentVideoChatbotIdAttachmentGetRaw(requestParameters: AttachmentVideoChatbotIdAttachmentGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
+    attachmentVideoVideoIdAttachmentGetRaw(requestParameters: AttachmentVideoVideoIdAttachmentGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
     /**
      * Attachment
      */
-    attachmentVideoChatbotIdAttachmentGet(requestParameters: AttachmentVideoChatbotIdAttachmentGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
+    attachmentVideoVideoIdAttachmentGet(requestParameters: AttachmentVideoVideoIdAttachmentGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
     /**
      * Callback
      */
@@ -85,11 +83,11 @@ export declare class VideoApi extends runtime.BaseAPI {
     /**
      * Delete Video
      */
-    deleteVideoVideoChatbotIdDeleteRaw(requestParameters: DeleteVideoVideoChatbotIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
+    deleteVideoVideoVideoIdDeleteRaw(requestParameters: DeleteVideoVideoVideoIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
     /**
      * Delete Video
      */
-    deleteVideoVideoChatbotIdDelete(requestParameters: DeleteVideoVideoChatbotIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
+    deleteVideoVideoVideoIdDelete(requestParameters: DeleteVideoVideoVideoIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
     /**
      * Extend Callback
      */

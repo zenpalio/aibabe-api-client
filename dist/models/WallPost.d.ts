@@ -46,16 +46,16 @@ export interface WallPost {
     story: StoryPreview | null;
     /**
      *
-     * @type {Array<ImageContent>}
+     * @type {ImageContent}
      * @memberof WallPost
      */
-    pictures: Array<ImageContent>;
+    picture: ImageContent | null;
     /**
      *
-     * @type {Array<VideoContent>}
+     * @type {VideoContent}
      * @memberof WallPost
      */
-    videos: Array<VideoContent>;
+    video: VideoContent | null;
     /**
      *
      * @type {number}

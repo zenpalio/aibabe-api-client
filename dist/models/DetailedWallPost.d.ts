@@ -48,16 +48,16 @@ export interface DetailedWallPost {
     story: StoryPreview | null;
     /**
      *
-     * @type {Array<ImageContent>}
+     * @type {ImageContent}
      * @memberof DetailedWallPost
      */
-    pictures: Array<ImageContent>;
+    picture: ImageContent | null;
     /**
      *
-     * @type {Array<VideoContent>}
+     * @type {VideoContent}
      * @memberof DetailedWallPost
      */
-    videos: Array<VideoContent>;
+    video: VideoContent | null;
     /**
      *
      * @type {number}

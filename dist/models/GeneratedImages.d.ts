@@ -32,10 +32,10 @@ export interface GeneratedImages {
     id: string;
     /**
      *
-     * @type {Array<string>}
+     * @type {string}
      * @memberof GeneratedImages
      */
-    urls: Array<string>;
+    url: string | null;
     /**
      *
      * @type {Date}
@@ -54,12 +54,6 @@ export interface GeneratedImages {
      * @memberof GeneratedImages
      */
     postDetails?: PostDetails | null;
-    /**
-     *
-     * @type {Array<string>}
-     * @memberof GeneratedImages
-     */
-    imageIds: Array<string>;
     /**
      *
      * @type {string}

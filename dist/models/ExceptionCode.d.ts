@@ -41,6 +41,8 @@ export declare const ExceptionCode: {
     readonly AdvancedChatbotBuilderInProgressNotFound: "advanced_chatbot_builder_in_progress_not_found";
     readonly AdvancedChatbotBuilderInconsistentData: "advanced_chatbot_builder_inconsistent_data";
     readonly AdvancedCharacterBuilderDataMissing: "advanced_character_builder_data_missing";
+    readonly AdvancedCharacterBuilderFailedToCreateTags: "advanced_character_builder_failed_to_create_tags";
+    readonly AdvancedCharacterBuilderProfileModerationException: "advanced_character_builder_profile_moderation_exception";
     readonly CharacterProfileTagsInvalid: "character_profile_tags_invalid";
     readonly CharacterProfileAgeInvalid: "character_profile_age_invalid";
     readonly CharacterProfileGenderMissing: "character_profile_gender_missing";
@@ -76,9 +78,11 @@ export declare const ExceptionCode: {
     readonly VideoNotOwned: "video_not_owned";
     readonly ImageOrVideoNotFound: "image_or_video_not_found";
     readonly VideoUploadImageFailed: "video_upload_image_failed";
+    readonly VideoSizeNotSupported: "video_size_not_supported";
     readonly VideoRetrieveFailed: "video_retrieve_failed";
     readonly VideoGenerationLimitReached: "video_generation_limit_reached";
     readonly GenerationTagsNotFound: "generation_tags_not_found";
+    readonly ArtStyleNotFound: "art_style_not_found";
     readonly VerificationCodeExprired: "verification_code_exprired";
     readonly VerificationCodeInvalid: "verification_code_invalid";
     readonly VerificationCodeNotSet: "verification_code_not_set";

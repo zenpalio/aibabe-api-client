@@ -42,7 +42,7 @@ export interface ChatMessageDetail {
      * @type {string}
      * @memberof ChatMessageDetail
      */
-    content: string;
+    url: string;
     /**
      *
      * @type {ChatRole}
@@ -85,6 +85,12 @@ export interface ChatMessageDetail {
      * @memberof ChatMessageDetail
      */
     originalImageId?: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof ChatMessageDetail
+     */
+    originalImageUrl?: string | null;
 }
 /**
  * Check if a given object implements the ChatMessageDetail interface.

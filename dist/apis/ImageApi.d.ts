@@ -11,6 +11,13 @@
  */
 import * as runtime from '../runtime';
 import type { ArtStyle, GetGeneratedImage, GetImageGenerationTagsResponse, GetLorasResponse, LoraName, PostGenerateImageRequest, PostGenerateSceneRequest, PostImagenResponse } from '../models/index';
+export interface AttachmentImagenImageIdAttachmentGetRequest {
+    imageId: string;
+    imageName: string;
+}
+export interface DeleteImageImagenImageIdDeleteRequest {
+    imageId: string;
+}
 export interface GenerateSceneImagenGenerateScenePostRequest {
     postGenerateSceneRequest: PostGenerateSceneRequest;
 }
@@ -27,14 +34,14 @@ export interface UserGenerateImageImagenGenerateChatbotIdPostRequest {
     chatbotId: string;
     postGenerateImageRequest: PostGenerateImageRequest;
 }
-export interface UserInpaintImageImagenInpaintChatbotIdPostRequest {
-    chatbotId: string;
+export interface UserInpaintImageImagenInpaintPostRequest {
     originalImageId: string;
     inpaintingMask: Blob;
     query: string;
     clientId: string;
     requestId: string;
     numberOfImages: number;
+    chatbotId?: string | null;
     artStyle?: ArtStyle | null;
     loras?: Array<LoraName> | null;
     denoisingStrength?: number;
@@ -43,6 +50,22 @@ export interface UserInpaintImageImagenInpaintChatbotIdPostRequest {
  *
  */
 export declare class ImageApi extends runtime.BaseAPI {
+    /**
+     * Attachment
+     */
+    attachmentImagenImageIdAttachmentGetRaw(requestParameters: AttachmentImagenImageIdAttachmentGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
+    /**
+     * Attachment
+     */
+    attachmentImagenImageIdAttachmentGet(requestParameters: AttachmentImagenImageIdAttachmentGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
+    /**
+     * Delete Image
+     */
+    deleteImageImagenImageIdDeleteRaw(requestParameters: DeleteImageImagenImageIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
+    /**
+     * Delete Image
+     */
+    deleteImageImagenImageIdDelete(requestParameters: DeleteImageImagenImageIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
     /**
      * Generate Scene
      */
@@ -86,10 +109,10 @@ export declare class ImageApi extends runtime.BaseAPI {
     /**
      * User Inpaint Image
      */
-    userInpaintImageImagenInpaintChatbotIdPostRaw(requestParameters: UserInpaintImageImagenInpaintChatbotIdPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostImagenResponse>>;
+    userInpaintImageImagenInpaintPostRaw(requestParameters: UserInpaintImageImagenInpaintPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostImagenResponse>>;
     /**
      * User Inpaint Image
      */
-    userInpaintImageImagenInpaintChatbotIdPost(requestParameters: UserInpaintImageImagenInpaintChatbotIdPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PostImagenResponse>;
+    userInpaintImageImagenInpaintPost(requestParameters: UserInpaintImageImagenInpaintPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PostImagenResponse>;
 }
 //# sourceMappingURL=ImageApi.d.ts.map

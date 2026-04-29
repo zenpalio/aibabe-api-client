@@ -35,9 +35,9 @@ function instanceOfWallPost(value) {
         return false;
     if (!('story' in value) || value['story'] === undefined)
         return false;
-    if (!('pictures' in value) || value['pictures'] === undefined)
+    if (!('picture' in value) || value['picture'] === undefined)
         return false;
-    if (!('videos' in value) || value['videos'] === undefined)
+    if (!('video' in value) || value['video'] === undefined)
         return false;
     if (!('likes' in value) || value['likes'] === undefined)
         return false;
@@ -67,8 +67,8 @@ function WallPostFromJSONTyped(json, ignoreDiscriminator) {
         'creatorId': json['creator_id'],
         'chatbot': (0, ChatbotPreview_1.ChatbotPreviewFromJSON)(json['chatbot']),
         'story': (0, StoryPreview_1.StoryPreviewFromJSON)(json['story']),
-        'pictures': (json['pictures'].map(ImageContent_1.ImageContentFromJSON)),
-        'videos': (json['videos'].map(VideoContent_1.VideoContentFromJSON)),
+        'picture': (0, ImageContent_1.ImageContentFromJSON)(json['picture']),
+        'video': (0, VideoContent_1.VideoContentFromJSON)(json['video']),
         'likes': json['likes'],
         'messageCount': json['message_count'],
         'description': json['description'],
@@ -90,8 +90,8 @@ function WallPostToJSONTyped(value, ignoreDiscriminator = false) {
         'creator_id': value['creatorId'],
         'chatbot': (0, ChatbotPreview_1.ChatbotPreviewToJSON)(value['chatbot']),
         'story': (0, StoryPreview_1.StoryPreviewToJSON)(value['story']),
-        'pictures': (value['pictures'].map(ImageContent_1.ImageContentToJSON)),
-        'videos': (value['videos'].map(VideoContent_1.VideoContentToJSON)),
+        'picture': (0, ImageContent_1.ImageContentToJSON)(value['picture']),
+        'video': (0, VideoContent_1.VideoContentToJSON)(value['video']),
         'likes': value['likes'],
         'message_count': value['messageCount'],
         'description': value['description'],
