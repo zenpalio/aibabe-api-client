@@ -68,8 +68,8 @@ export interface GetImageByFilenameImagenFilenameGetRequest {
 }
 
 export interface GetLorasImagenLorasGetRequest {
-    chatbotId?: any | null;
-    imageId?: any | null;
+    chatbotId?: string | null;
+    imageId?: string | null;
 }
 
 export interface UserGenerateImageImagenGenerateChatbotIdPostRequest {
