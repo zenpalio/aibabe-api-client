@@ -117,7 +117,7 @@ export declare const LoraName: {
     readonly PowerpuffmixloraV10: "powerpuffmixlora_v1_0";
     readonly DetailereijV20: "detailereij_v2_0";
     readonly PinkieRetroAnimeIllustrious: "pinkie_retro_anime_illustrious";
-    readonly _748cmShiirosStylesNiji: "748cm_shiiros_styles_niji";
+    readonly ShiirosStylesNiji: "shiiros_styles_niji ";
     readonly CommixStyleLoraPonyIllusFlux: "commix_style_lora_pony_illus_flux";
     readonly PonyPeoplesWorksV1V6: "pony_peoples_works_v1_v6";
     readonly None: "none";

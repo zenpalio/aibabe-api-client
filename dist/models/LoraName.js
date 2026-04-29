@@ -127,7 +127,7 @@ exports.LoraName = {
     PowerpuffmixloraV10: 'powerpuffmixlora_v1_0',
     DetailereijV20: 'detailereij_v2_0',
     PinkieRetroAnimeIllustrious: 'pinkie_retro_anime_illustrious',
-    _748cmShiirosStylesNiji: '748cm_shiiros_styles_niji',
+    ShiirosStylesNiji: 'shiiros_styles_niji ',
     CommixStyleLoraPonyIllusFlux: 'commix_style_lora_pony_illus_flux',
     PonyPeoplesWorksV1V6: 'pony_peoples_works_v1_v6',
     None: 'none'

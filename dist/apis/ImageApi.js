@@ -194,14 +194,14 @@ class ImageApi extends runtime.BaseAPI {
     /**
      * Get Loras
      */
-    async getLorasImagenChatbotIdLorasGetRaw(requestParameters, initOverrides) {
-        if (requestParameters['chatbotId'] == null) {
-            throw new runtime.RequiredError('chatbotId', 'Required parameter "chatbotId" was null or undefined when calling getLorasImagenChatbotIdLorasGet().');
+    async getLorasImagenImageIdLorasGetRaw(requestParameters, initOverrides) {
+        if (requestParameters['imageId'] == null) {
+            throw new runtime.RequiredError('imageId', 'Required parameter "imageId" was null or undefined when calling getLorasImagenImageIdLorasGet().');
         }
         const queryParameters = {};
         const headerParameters = {};
         const response = await this.request({
-            path: `/imagen/{chatbot_id}/loras`.replace(`{${"chatbot_id"}}`, encodeURIComponent(String(requestParameters['chatbotId']))),
+            path: `/imagen/{image_id}/loras`.replace(`{${"image_id"}}`, encodeURIComponent(String(requestParameters['imageId']))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -211,8 +211,8 @@ class ImageApi extends runtime.BaseAPI {
     /**
      * Get Loras
      */
-    async getLorasImagenChatbotIdLorasGet(requestParameters, initOverrides) {
-        const response = await this.getLorasImagenChatbotIdLorasGetRaw(requestParameters, initOverrides);
+    async getLorasImagenImageIdLorasGet(requestParameters, initOverrides) {
+        const response = await this.getLorasImagenImageIdLorasGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**

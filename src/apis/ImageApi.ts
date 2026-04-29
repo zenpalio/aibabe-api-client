@@ -67,8 +67,8 @@ export interface GetImageByFilenameImagenFilenameGetRequest {
     filename: string;
 }
 
-export interface GetLorasImagenChatbotIdLorasGetRequest {
-    chatbotId: string;
+export interface GetLorasImagenImageIdLorasGetRequest {
+    imageId: string;
 }
 
 export interface UserGenerateImageImagenGenerateChatbotIdPostRequest {
@@ -284,11 +284,11 @@ export class ImageApi extends runtime.BaseAPI {
     /**
      * Get Loras
      */
-    async getLorasImagenChatbotIdLorasGetRaw(requestParameters: GetLorasImagenChatbotIdLorasGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetLorasResponse>> {
-        if (requestParameters['chatbotId'] == null) {
+    async getLorasImagenImageIdLorasGetRaw(requestParameters: GetLorasImagenImageIdLorasGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetLorasResponse>> {
+        if (requestParameters['imageId'] == null) {
             throw new runtime.RequiredError(
-                'chatbotId',
-                'Required parameter "chatbotId" was null or undefined when calling getLorasImagenChatbotIdLorasGet().'
+                'imageId',
+                'Required parameter "imageId" was null or undefined when calling getLorasImagenImageIdLorasGet().'
             );
         }
 
@@ -297,7 +297,7 @@ export class ImageApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         const response = await this.request({
-            path: `/imagen/{chatbot_id}/loras`.replace(`{${"chatbot_id"}}`, encodeURIComponent(String(requestParameters['chatbotId']))),
+            path: `/imagen/{image_id}/loras`.replace(`{${"image_id"}}`, encodeURIComponent(String(requestParameters['imageId']))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -309,8 +309,8 @@ export class ImageApi extends runtime.BaseAPI {
     /**
      * Get Loras
      */
-    async getLorasImagenChatbotIdLorasGet(requestParameters: GetLorasImagenChatbotIdLorasGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetLorasResponse> {
-        const response = await this.getLorasImagenChatbotIdLorasGetRaw(requestParameters, initOverrides);
+    async getLorasImagenImageIdLorasGet(requestParameters: GetLorasImagenImageIdLorasGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetLorasResponse> {
+        const response = await this.getLorasImagenImageIdLorasGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
