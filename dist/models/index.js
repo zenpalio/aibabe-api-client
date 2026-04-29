@@ -84,6 +84,7 @@ __exportStar(require("./GetIdentityChatbotResponse"), exports);
 __exportStar(require("./GetImageGenerationTagsResponse"), exports);
 __exportStar(require("./GetImageModerationPromptResponse"), exports);
 __exportStar(require("./GetInstancesDBVastAiListResponse"), exports);
+__exportStar(require("./GetLorasRequest"), exports);
 __exportStar(require("./GetLorasResponse"), exports);
 __exportStar(require("./GetMemoryResponse"), exports);
 __exportStar(require("./GetPersonalityChatbotResponse"), exports);

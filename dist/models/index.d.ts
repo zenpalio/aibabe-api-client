@@ -66,6 +66,7 @@ export * from './GetIdentityChatbotResponse';
 export * from './GetImageGenerationTagsResponse';
 export * from './GetImageModerationPromptResponse';
 export * from './GetInstancesDBVastAiListResponse';
+export * from './GetLorasRequest';
 export * from './GetLorasResponse';
 export * from './GetMemoryResponse';
 export * from './GetPersonalityChatbotResponse';

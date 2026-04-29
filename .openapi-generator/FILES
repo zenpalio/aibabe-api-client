@@ -91,6 +91,7 @@ src/models/GetIdentityChatbotResponse.ts
 src/models/GetImageGenerationTagsResponse.ts
 src/models/GetImageModerationPromptResponse.ts
 src/models/GetInstancesDBVastAiListResponse.ts
+src/models/GetLorasRequest.ts
 src/models/GetLorasResponse.ts
 src/models/GetMemoryResponse.ts
 src/models/GetPersonalityChatbotResponse.ts
