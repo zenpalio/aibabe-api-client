@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ArtStyle, GetGeneratedImage, GetImageGenerationTagsResponse, GetLorasRequest, GetLorasResponse, LoraName, PostGenerateImageRequest, PostGenerateSceneRequest, PostImagenResponse } from '../models/index';
+import type { ArtStyle, GetGeneratedImage, GetImageGenerationTagsResponse, GetLorasResponse, LoraName, PostGenerateImageRequest, PostGenerateSceneRequest, PostImagenResponse } from '../models/index';
 export interface AttachmentImagenImageIdAttachmentGetRequest {
     imageId: string;
     imageName: string;
@@ -28,7 +28,8 @@ export interface GetImageByFilenameImagenFilenameGetRequest {
     filename: string;
 }
 export interface GetLorasImagenLorasGetRequest {
-    getLorasRequest: GetLorasRequest;
+    chatbotId?: any | null;
+    imageId?: any | null;
 }
 export interface UserGenerateImageImagenGenerateChatbotIdPostRequest {
     chatbotId: string;
@@ -97,7 +98,7 @@ export declare class ImageApi extends runtime.BaseAPI {
     /**
      * Get Loras
      */
-    getLorasImagenLorasGet(requestParameters: GetLorasImagenLorasGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetLorasResponse>;
+    getLorasImagenLorasGet(requestParameters?: GetLorasImagenLorasGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetLorasResponse>;
     /**
      * User Generate Image
      */

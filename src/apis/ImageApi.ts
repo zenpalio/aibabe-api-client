@@ -18,7 +18,6 @@ import type {
   ArtStyle,
   GetGeneratedImage,
   GetImageGenerationTagsResponse,
-  GetLorasRequest,
   GetLorasResponse,
   HTTPValidationError,
   LoraName,
@@ -33,8 +32,6 @@ import {
     GetGeneratedImageToJSON,
     GetImageGenerationTagsResponseFromJSON,
     GetImageGenerationTagsResponseToJSON,
-    GetLorasRequestFromJSON,
-    GetLorasRequestToJSON,
     GetLorasResponseFromJSON,
     GetLorasResponseToJSON,
     HTTPValidationErrorFromJSON,
@@ -71,7 +68,8 @@ export interface GetImageByFilenameImagenFilenameGetRequest {
 }
 
 export interface GetLorasImagenLorasGetRequest {
-    getLorasRequest: GetLorasRequest;
+    chatbotId?: any | null;
+    imageId?: any | null;
 }
 
 export interface UserGenerateImageImagenGenerateChatbotIdPostRequest {
@@ -288,25 +286,23 @@ export class ImageApi extends runtime.BaseAPI {
      * Get Loras
      */
     async getLorasImagenLorasGetRaw(requestParameters: GetLorasImagenLorasGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetLorasResponse>> {
-        if (requestParameters['getLorasRequest'] == null) {
-            throw new runtime.RequiredError(
-                'getLorasRequest',
-                'Required parameter "getLorasRequest" was null or undefined when calling getLorasImagenLorasGet().'
-            );
-        }
-
         const queryParameters: any = {};
 
-        const headerParameters: runtime.HTTPHeaders = {};
+        if (requestParameters['chatbotId'] != null) {
+            queryParameters['chatbot_id'] = requestParameters['chatbotId'];
+        }
 
-        headerParameters['Content-Type'] = 'application/json';
+        if (requestParameters['imageId'] != null) {
+            queryParameters['image_id'] = requestParameters['imageId'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
 
         const response = await this.request({
             path: `/imagen/loras`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
-            body: GetLorasRequestToJSON(requestParameters['getLorasRequest']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => GetLorasResponseFromJSON(jsonValue));
@@ -315,7 +311,7 @@ export class ImageApi extends runtime.BaseAPI {
     /**
      * Get Loras
      */
-    async getLorasImagenLorasGet(requestParameters: GetLorasImagenLorasGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetLorasResponse> {
+    async getLorasImagenLorasGet(requestParameters: GetLorasImagenLorasGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetLorasResponse> {
         const response = await this.getLorasImagenLorasGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
