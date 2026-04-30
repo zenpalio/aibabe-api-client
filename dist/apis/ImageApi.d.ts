@@ -30,7 +30,7 @@ export interface GetImageByFilenameImagenFilenameGetRequest {
 export interface GetLorasImagenLorasGetRequest {
     chatbotId?: string | null;
     imageId?: string | null;
-    artStyle?: ArtStyle | null;
+    artStyle?: string | null;
 }
 export interface UserGenerateImageImagenGenerateChatbotIdPostRequest {
     chatbotId: string;
