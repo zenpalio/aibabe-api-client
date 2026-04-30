@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ChatReponse, GetConversationMessagesResponse, GetConversationResponse, ListConversationsResponse, PatchChatMessageRequest, PostChatRequest, PostConversationSettingsRequest } from '../models/index';
+import type { ChatReponse, GetConversationMessagesResponse, GetConversationResponse, ListConversationsResponse, PatchChatMessageRequest, PostChatRequest, PostConversationSettingsRequest, RemainingFreeUsesResponse } from '../models/index';
 export interface ChatChatChatbotIdPostRequest {
     chatbotId: string;
     postChatRequest: PostChatRequest;
@@ -126,6 +126,14 @@ export declare class ChatApi extends runtime.BaseAPI {
      * Regenerate
      */
     regenerateChatChatbotIdMessageMessageIdRegeneratePost(requestParameters: RegenerateChatChatbotIdMessageMessageIdRegeneratePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ChatReponse>;
+    /**
+     * Remaining Free Uses
+     */
+    remainingFreeUsesChatRemainingFreeUsesGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<RemainingFreeUsesResponse>>;
+    /**
+     * Remaining Free Uses
+     */
+    remainingFreeUsesChatRemainingFreeUsesGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<RemainingFreeUsesResponse>;
     /**
      * Reset Conversation
      */

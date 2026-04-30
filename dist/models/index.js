@@ -197,6 +197,7 @@ __exportStar(require("./PutUsernameRequest"), exports);
 __exportStar(require("./RedeemGiftCodeRequest"), exports);
 __exportStar(require("./RedeemGiftCodeResponse"), exports);
 __exportStar(require("./RelationshipStatus"), exports);
+__exportStar(require("./RemainingFreeUsesResponse"), exports);
 __exportStar(require("./ReviewCharacterFieldStatus"), exports);
 __exportStar(require("./RoleplayType"), exports);
 __exportStar(require("./SeduceDifficulty"), exports);

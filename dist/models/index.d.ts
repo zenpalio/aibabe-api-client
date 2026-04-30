@@ -179,6 +179,7 @@ export * from './PutUsernameRequest';
 export * from './RedeemGiftCodeRequest';
 export * from './RedeemGiftCodeResponse';
 export * from './RelationshipStatus';
+export * from './RemainingFreeUsesResponse';
 export * from './ReviewCharacterFieldStatus';
 export * from './RoleplayType';
 export * from './SeduceDifficulty';

@@ -204,6 +204,7 @@ src/models/PutUsernameRequest.ts
 src/models/RedeemGiftCodeRequest.ts
 src/models/RedeemGiftCodeResponse.ts
 src/models/RelationshipStatus.ts
+src/models/RemainingFreeUsesResponse.ts
 src/models/ReviewCharacterFieldStatus.ts
 src/models/RoleplayType.ts
 src/models/SeduceDifficulty.ts

@@ -23,6 +23,7 @@ import type {
   PatchChatMessageRequest,
   PostChatRequest,
   PostConversationSettingsRequest,
+  RemainingFreeUsesResponse,
 } from '../models/index';
 import {
     ChatReponseFromJSON,
@@ -41,6 +42,8 @@ import {
     PostChatRequestToJSON,
     PostConversationSettingsRequestFromJSON,
     PostConversationSettingsRequestToJSON,
+    RemainingFreeUsesResponseFromJSON,
+    RemainingFreeUsesResponseToJSON,
 } from '../models/index';
 
 export interface ChatChatChatbotIdPostRequest {
@@ -447,6 +450,32 @@ export class ChatApi extends runtime.BaseAPI {
      */
     async regenerateChatChatbotIdMessageMessageIdRegeneratePost(requestParameters: RegenerateChatChatbotIdMessageMessageIdRegeneratePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ChatReponse> {
         const response = await this.regenerateChatChatbotIdMessageMessageIdRegeneratePostRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Remaining Free Uses
+     */
+    async remainingFreeUsesChatRemainingFreeUsesGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<RemainingFreeUsesResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/chat/remaining-free-uses`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => RemainingFreeUsesResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Remaining Free Uses
+     */
+    async remainingFreeUsesChatRemainingFreeUsesGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<RemainingFreeUsesResponse> {
+        const response = await this.remainingFreeUsesChatRemainingFreeUsesGetRaw(initOverrides);
         return await response.value();
     }
 

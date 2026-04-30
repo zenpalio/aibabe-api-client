@@ -32,7 +32,7 @@ function instanceOfChatMessageDetail(value) {
         return false;
     if (!('type' in value) || value['type'] === undefined)
         return false;
-    if (!('content' in value) || value['content'] === undefined)
+    if (!('url' in value) || value['url'] === undefined)
         return false;
     if (!('role' in value) || value['role'] === undefined)
         return false;
@@ -53,7 +53,7 @@ function ChatMessageDetailFromJSONTyped(json, ignoreDiscriminator) {
         'id': json['id'],
         'createdAt': json['created_at'],
         'type': (0, Type_1.TypeFromJSON)(json['type']),
-        'content': json['content'],
+        'url': json['url'],
         'role': (0, ChatRole_1.ChatRoleFromJSON)(json['role']),
         'requestId': json['request_id'],
         'status': (0, Status_1.StatusFromJSON)(json['status']),
@@ -61,6 +61,7 @@ function ChatMessageDetailFromJSONTyped(json, ignoreDiscriminator) {
         'audioUrl': json['audio_url'] == null ? undefined : json['audio_url'],
         'audioStatus': json['audio_status'] == null ? undefined : (0, GeneratedAudioStatus_1.GeneratedAudioStatusFromJSON)(json['audio_status']),
         'originalImageId': json['original_image_id'] == null ? undefined : json['original_image_id'],
+        'originalImageUrl': json['original_image_url'] == null ? undefined : json['original_image_url'],
     };
 }
 function ChatMessageDetailToJSON(json) {
@@ -74,7 +75,7 @@ function ChatMessageDetailToJSONTyped(value, ignoreDiscriminator = false) {
         'id': value['id'],
         'created_at': value['createdAt'],
         'type': (0, Type_1.TypeToJSON)(value['type']),
-        'content': value['content'],
+        'url': value['url'],
         'role': (0, ChatRole_1.ChatRoleToJSON)(value['role']),
         'request_id': value['requestId'],
         'status': (0, Status_1.StatusToJSON)(value['status']),
@@ -82,6 +83,7 @@ function ChatMessageDetailToJSONTyped(value, ignoreDiscriminator = false) {
         'audio_url': value['audioUrl'],
         'audio_status': (0, GeneratedAudioStatus_1.GeneratedAudioStatusToJSON)(value['audioStatus']),
         'original_image_id': value['originalImageId'],
+        'original_image_url': value['originalImageUrl'],
     };
 }
 //# sourceMappingURL=ChatMessageDetail.js.map
