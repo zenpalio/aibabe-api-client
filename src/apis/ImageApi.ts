@@ -21,7 +21,6 @@ import type {
   GetLorasResponse,
   HTTPValidationError,
   LoraName,
-  ModelName,
   PostGenerateImageRequest,
   PostGenerateSceneRequest,
   PostImagenResponse,
@@ -39,8 +38,6 @@ import {
     HTTPValidationErrorToJSON,
     LoraNameFromJSON,
     LoraNameToJSON,
-    ModelNameFromJSON,
-    ModelNameToJSON,
     PostGenerateImageRequestFromJSON,
     PostGenerateImageRequestToJSON,
     PostGenerateSceneRequestFromJSON,
@@ -73,7 +70,7 @@ export interface GetImageByFilenameImagenFilenameGetRequest {
 export interface GetLorasImagenLorasGetRequest {
     chatbotId?: string | null;
     imageId?: string | null;
-    modelName?: ModelName | null;
+    artStyle?: ArtStyle | null;
 }
 
 export interface UserGenerateImageImagenGenerateChatbotIdPostRequest {
@@ -300,8 +297,8 @@ export class ImageApi extends runtime.BaseAPI {
             queryParameters['image_id'] = requestParameters['imageId'];
         }
 
-        if (requestParameters['modelName'] != null) {
-            queryParameters['model_name'] = requestParameters['modelName'];
+        if (requestParameters['artStyle'] != null) {
+            queryParameters['art_style'] = requestParameters['artStyle'];
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
