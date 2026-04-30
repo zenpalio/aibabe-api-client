@@ -202,6 +202,9 @@ class ImageApi extends runtime.BaseAPI {
         if (requestParameters['imageId'] != null) {
             queryParameters['image_id'] = requestParameters['imageId'];
         }
+        if (requestParameters['modelName'] != null) {
+            queryParameters['model_name'] = requestParameters['modelName'];
+        }
         const headerParameters = {};
         const response = await this.request({
             path: `/imagen/loras`,
