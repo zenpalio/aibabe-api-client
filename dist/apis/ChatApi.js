@@ -298,27 +298,6 @@ class ChatApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * Remaining Free Uses
-     */
-    async remainingFreeUsesChatRemainingFreeUsesGetRaw(initOverrides) {
-        const queryParameters = {};
-        const headerParameters = {};
-        const response = await this.request({
-            path: `/chat/remaining-free-uses`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.RemainingFreeUsesResponseFromJSON)(jsonValue));
-    }
-    /**
-     * Remaining Free Uses
-     */
-    async remainingFreeUsesChatRemainingFreeUsesGet(initOverrides) {
-        const response = await this.remainingFreeUsesChatRemainingFreeUsesGetRaw(initOverrides);
-        return await response.value();
-    }
-    /**
      * Reset Conversation
      */
     async resetConversationChatConversationConversationIdResetPostRaw(requestParameters, initOverrides) {
