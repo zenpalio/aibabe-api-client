@@ -27,6 +27,12 @@ export interface RemainingFreeUsesResponse {
      * @memberof RemainingFreeUsesResponse
      */
     remainingFreeImages?: number | null;
+    /**
+     *
+     * @type {number}
+     * @memberof RemainingFreeUsesResponse
+     */
+    resetAt?: number | null;
 }
 /**
  * Check if a given object implements the RemainingFreeUsesResponse interface.

@@ -34,6 +34,7 @@ function RemainingFreeUsesResponseFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'remainingFreeMessages': json['remaining_free_messages'] == null ? undefined : json['remaining_free_messages'],
         'remainingFreeImages': json['remaining_free_images'] == null ? undefined : json['remaining_free_images'],
+        'resetAt': json['reset_at'] == null ? undefined : json['reset_at'],
     };
 }
 function RemainingFreeUsesResponseToJSON(json) {
@@ -46,6 +47,7 @@ function RemainingFreeUsesResponseToJSONTyped(value, ignoreDiscriminator = false
     return {
         'remaining_free_messages': value['remainingFreeMessages'],
         'remaining_free_images': value['remainingFreeImages'],
+        'reset_at': value['resetAt'],
     };
 }
 //# sourceMappingURL=RemainingFreeUsesResponse.js.map

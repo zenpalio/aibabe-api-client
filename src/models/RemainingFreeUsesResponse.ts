@@ -31,6 +31,12 @@ export interface RemainingFreeUsesResponse {
      * @memberof RemainingFreeUsesResponse
      */
     remainingFreeImages?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof RemainingFreeUsesResponse
+     */
+    resetAt?: number | null;
 }
 
 /**
@@ -52,6 +58,7 @@ export function RemainingFreeUsesResponseFromJSONTyped(json: any, ignoreDiscrimi
         
         'remainingFreeMessages': json['remaining_free_messages'] == null ? undefined : json['remaining_free_messages'],
         'remainingFreeImages': json['remaining_free_images'] == null ? undefined : json['remaining_free_images'],
+        'resetAt': json['reset_at'] == null ? undefined : json['reset_at'],
     };
 }
 
@@ -68,6 +75,7 @@ export function RemainingFreeUsesResponseFromJSONTyped(json: any, ignoreDiscrimi
         
         'remaining_free_messages': value['remainingFreeMessages'],
         'remaining_free_images': value['remainingFreeImages'],
+        'reset_at': value['resetAt'],
     };
 }
 
