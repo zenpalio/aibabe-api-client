@@ -19,6 +19,7 @@ exports.GeneratedImagesFromJSON = GeneratedImagesFromJSON;
 exports.GeneratedImagesFromJSONTyped = GeneratedImagesFromJSONTyped;
 exports.GeneratedImagesToJSON = GeneratedImagesToJSON;
 exports.GeneratedImagesToJSONTyped = GeneratedImagesToJSONTyped;
+const ArtStyle_1 = require("./ArtStyle");
 const ChatbotPreview_1 = require("./ChatbotPreview");
 const PostDetails_1 = require("./PostDetails");
 const ImageGenerationStatus_1 = require("./ImageGenerationStatus");
@@ -53,6 +54,8 @@ function instanceOfGeneratedImages(value) {
         return false;
     if (!('seenByUser' in value) || value['seenByUser'] === undefined)
         return false;
+    if (!('artStyle' in value) || value['artStyle'] === undefined)
+        return false;
     return true;
 }
 function GeneratedImagesFromJSON(json) {
@@ -74,6 +77,7 @@ function GeneratedImagesFromJSONTyped(json, ignoreDiscriminator) {
         'status': (0, ImageGenerationStatus_1.ImageGenerationStatusFromJSON)(json['status']),
         'generationId': json['generation_id'],
         'seenByUser': json['seen_by_user'],
+        'artStyle': (0, ArtStyle_1.ArtStyleFromJSON)(json['art_style']),
     };
 }
 function GeneratedImagesToJSON(json) {
@@ -95,6 +99,7 @@ function GeneratedImagesToJSONTyped(value, ignoreDiscriminator = false) {
         'status': (0, ImageGenerationStatus_1.ImageGenerationStatusToJSON)(value['status']),
         'generation_id': value['generationId'],
         'seen_by_user': value['seenByUser'],
+        'art_style': (0, ArtStyle_1.ArtStyleToJSON)(value['artStyle']),
     };
 }
 //# sourceMappingURL=GeneratedImages.js.map

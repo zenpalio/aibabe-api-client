@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { ArtStyle } from './ArtStyle';
+import {
+    ArtStyleFromJSON,
+    ArtStyleFromJSONTyped,
+    ArtStyleToJSON,
+    ArtStyleToJSONTyped,
+} from './ArtStyle';
 import type { ChatbotPreview } from './ChatbotPreview';
 import {
     ChatbotPreviewFromJSON,
@@ -107,6 +114,12 @@ export interface GeneratedImages {
      * @memberof GeneratedImages
      */
     seenByUser: boolean;
+    /**
+     * 
+     * @type {ArtStyle}
+     * @memberof GeneratedImages
+     */
+    artStyle: ArtStyle;
 }
 
 
@@ -134,6 +147,7 @@ export function instanceOfGeneratedImages(value: object): value is GeneratedImag
     if (!('status' in value) || value['status'] === undefined) return false;
     if (!('generationId' in value) || value['generationId'] === undefined) return false;
     if (!('seenByUser' in value) || value['seenByUser'] === undefined) return false;
+    if (!('artStyle' in value) || value['artStyle'] === undefined) return false;
     return true;
 }
 
@@ -158,6 +172,7 @@ export function GeneratedImagesFromJSONTyped(json: any, ignoreDiscriminator: boo
         'status': ImageGenerationStatusFromJSON(json['status']),
         'generationId': json['generation_id'],
         'seenByUser': json['seen_by_user'],
+        'artStyle': ArtStyleFromJSON(json['art_style']),
     };
 }
 
@@ -183,6 +198,7 @@ export function GeneratedImagesFromJSONTyped(json: any, ignoreDiscriminator: boo
         'status': ImageGenerationStatusToJSON(value['status']),
         'generation_id': value['generationId'],
         'seen_by_user': value['seenByUser'],
+        'art_style': ArtStyleToJSON(value['artStyle']),
     };
 }
 

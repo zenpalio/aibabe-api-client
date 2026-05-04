@@ -19,6 +19,7 @@ exports.GetGalleryResponseItemsInnerFromJSON = GetGalleryResponseItemsInnerFromJ
 exports.GetGalleryResponseItemsInnerFromJSONTyped = GetGalleryResponseItemsInnerFromJSONTyped;
 exports.GetGalleryResponseItemsInnerToJSON = GetGalleryResponseItemsInnerToJSON;
 exports.GetGalleryResponseItemsInnerToJSONTyped = GetGalleryResponseItemsInnerToJSONTyped;
+const ArtStyle_1 = require("./ArtStyle");
 const ChatbotPreview_1 = require("./ChatbotPreview");
 const PostDetails_1 = require("./PostDetails");
 const VideoGenerationStatus_1 = require("./VideoGenerationStatus");
@@ -53,6 +54,8 @@ function instanceOfGetGalleryResponseItemsInner(value) {
         return false;
     if (!('seenByUser' in value) || value['seenByUser'] === undefined)
         return false;
+    if (!('artStyle' in value) || value['artStyle'] === undefined)
+        return false;
     if (!('originalImageId' in value) || value['originalImageId'] === undefined)
         return false;
     return true;
@@ -76,6 +79,7 @@ function GetGalleryResponseItemsInnerFromJSONTyped(json, ignoreDiscriminator) {
         'status': (0, VideoGenerationStatus_1.VideoGenerationStatusFromJSON)(json['status']),
         'generationId': json['generation_id'],
         'seenByUser': json['seen_by_user'],
+        'artStyle': (0, ArtStyle_1.ArtStyleFromJSON)(json['art_style']),
         'originalImageId': json['original_image_id'],
     };
 }
@@ -98,6 +102,7 @@ function GetGalleryResponseItemsInnerToJSONTyped(value, ignoreDiscriminator = fa
         'status': (0, VideoGenerationStatus_1.VideoGenerationStatusToJSON)(value['status']),
         'generation_id': value['generationId'],
         'seen_by_user': value['seenByUser'],
+        'art_style': (0, ArtStyle_1.ArtStyleToJSON)(value['artStyle']),
         'original_image_id': value['originalImageId'],
     };
 }

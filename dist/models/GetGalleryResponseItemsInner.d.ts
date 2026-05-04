@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { ArtStyle } from './ArtStyle';
 import type { ChatbotPreview } from './ChatbotPreview';
 import type { PostDetails } from './PostDetails';
 import type { VideoGenerationStatus } from './VideoGenerationStatus';
@@ -84,6 +85,12 @@ export interface GetGalleryResponseItemsInner {
      * @memberof GetGalleryResponseItemsInner
      */
     seenByUser: boolean;
+    /**
+     *
+     * @type {ArtStyle}
+     * @memberof GetGalleryResponseItemsInner
+     */
+    artStyle: ArtStyle;
     /**
      *
      * @type {string}

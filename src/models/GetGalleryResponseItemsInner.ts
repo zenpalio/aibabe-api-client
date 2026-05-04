@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { ArtStyle } from './ArtStyle';
+import {
+    ArtStyleFromJSON,
+    ArtStyleFromJSONTyped,
+    ArtStyleToJSON,
+    ArtStyleToJSONTyped,
+} from './ArtStyle';
 import type { ChatbotPreview } from './ChatbotPreview';
 import {
     ChatbotPreviewFromJSON,
@@ -123,6 +130,12 @@ export interface GetGalleryResponseItemsInner {
     seenByUser: boolean;
     /**
      * 
+     * @type {ArtStyle}
+     * @memberof GetGalleryResponseItemsInner
+     */
+    artStyle: ArtStyle;
+    /**
+     * 
      * @type {string}
      * @memberof GetGalleryResponseItemsInner
      */
@@ -154,6 +167,7 @@ export function instanceOfGetGalleryResponseItemsInner(value: object): value is 
     if (!('status' in value) || value['status'] === undefined) return false;
     if (!('generationId' in value) || value['generationId'] === undefined) return false;
     if (!('seenByUser' in value) || value['seenByUser'] === undefined) return false;
+    if (!('artStyle' in value) || value['artStyle'] === undefined) return false;
     if (!('originalImageId' in value) || value['originalImageId'] === undefined) return false;
     return true;
 }
@@ -179,6 +193,7 @@ export function GetGalleryResponseItemsInnerFromJSONTyped(json: any, ignoreDiscr
         'status': VideoGenerationStatusFromJSON(json['status']),
         'generationId': json['generation_id'],
         'seenByUser': json['seen_by_user'],
+        'artStyle': ArtStyleFromJSON(json['art_style']),
         'originalImageId': json['original_image_id'],
     };
 }
@@ -205,6 +220,7 @@ export function GetGalleryResponseItemsInnerFromJSONTyped(json: any, ignoreDiscr
         'status': VideoGenerationStatusToJSON(value['status']),
         'generation_id': value['generationId'],
         'seen_by_user': value['seenByUser'],
+        'art_style': ArtStyleToJSON(value['artStyle']),
         'original_image_id': value['originalImageId'],
     };
 }
