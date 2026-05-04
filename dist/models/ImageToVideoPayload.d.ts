@@ -21,7 +21,7 @@ export interface ImageToVideoPayload {
      * @type {string}
      * @memberof ImageToVideoPayload
      */
-    chatbotId: string;
+    chatbotId: string | null;
     /**
      *
      * @type {string}

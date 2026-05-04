@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import type { PublicUserPreviewWithFollow } from './PublicUserPreviewWithFollow';
+import type { ChatbotPreview } from './ChatbotPreview';
 import type { VideoContent } from './VideoContent';
 import type { SharedContentType } from './SharedContentType';
 import type { ImageContent } from './ImageContent';
@@ -34,34 +35,10 @@ export interface DetailedWallPost {
     creatorId: string;
     /**
      *
-     * @type {string}
+     * @type {ChatbotPreview}
      * @memberof DetailedWallPost
      */
-    chatbotId: string;
-    /**
-     *
-     * @type {string}
-     * @memberof DetailedWallPost
-     */
-    chatbotName: string;
-    /**
-     *
-     * @type {string}
-     * @memberof DetailedWallPost
-     */
-    chatbotProfilePicture: string;
-    /**
-     *
-     * @type {string}
-     * @memberof DetailedWallPost
-     */
-    chatbotProfileVideo: string | null;
-    /**
-     *
-     * @type {boolean}
-     * @memberof DetailedWallPost
-     */
-    chatbotPublic: boolean;
+    chatbot: ChatbotPreview | null;
     /**
      *
      * @type {Array<ImageContent>}

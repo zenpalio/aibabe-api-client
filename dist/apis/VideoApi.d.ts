@@ -10,9 +10,9 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ExtendVideoPayload, GetVideoGenerationTagsResponse, ImageToVideoFromChatPayload, ImageToVideoPayload, ImageToVideoRecommendationPayload, VideoFromChatResponse } from '../models/index';
-export interface AttachmentVideoChatbotIdAttachmentGetRequest {
-    chatbotId: string;
+import type { ExtendVideoPayload, GetVideoGenerationTagsResponse, ImageToVideoFromChatPayload, ImageToVideoPayload, ImageToVideoRecommendationPayload, LastVideoFrameResponse, VideoFromChatResponse } from '../models/index';
+export interface AttachmentVideoVideoIdAttachmentGetRequest {
+    videoId: string;
     videoName: string;
 }
 export interface CallbackVideoCallbackGenerationIdPostRequest {
@@ -25,10 +25,8 @@ export interface ChatCallbackVideoCallbackChatGenerationIdPostRequest {
     status: ChatCallbackVideoCallbackChatGenerationIdPostStatusEnum;
     errorMessage?: string | null;
 }
-export interface DeleteVideoVideoChatbotIdDeleteRequest {
-    chatbotId: string;
-    videoName?: string | null;
-    generationId?: string | null;
+export interface DeleteVideoVideoVideoIdDeleteRequest {
+    videoId: string;
 }
 export interface ExtendCallbackVideoExtendCallbackGenerationIdPostRequest {
     generationId: string;
@@ -51,6 +49,9 @@ export interface GenerateVideoVideoPostRequest {
 export interface GenerationTagsVideoVideoIdTagsGetRequest {
     videoId: string;
 }
+export interface VideoLastFrameVideoVideoIdLastFrameGetRequest {
+    videoId: string;
+}
 /**
  *
  */
@@ -58,11 +59,11 @@ export declare class VideoApi extends runtime.BaseAPI {
     /**
      * Attachment
      */
-    attachmentVideoChatbotIdAttachmentGetRaw(requestParameters: AttachmentVideoChatbotIdAttachmentGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
+    attachmentVideoVideoIdAttachmentGetRaw(requestParameters: AttachmentVideoVideoIdAttachmentGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
     /**
      * Attachment
      */
-    attachmentVideoChatbotIdAttachmentGet(requestParameters: AttachmentVideoChatbotIdAttachmentGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
+    attachmentVideoVideoIdAttachmentGet(requestParameters: AttachmentVideoVideoIdAttachmentGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
     /**
      * Callback
      */
@@ -82,11 +83,11 @@ export declare class VideoApi extends runtime.BaseAPI {
     /**
      * Delete Video
      */
-    deleteVideoVideoChatbotIdDeleteRaw(requestParameters: DeleteVideoVideoChatbotIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
+    deleteVideoVideoVideoIdDeleteRaw(requestParameters: DeleteVideoVideoVideoIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
     /**
      * Delete Video
      */
-    deleteVideoVideoChatbotIdDelete(requestParameters: DeleteVideoVideoChatbotIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
+    deleteVideoVideoVideoIdDelete(requestParameters: DeleteVideoVideoVideoIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
     /**
      * Extend Callback
      */
@@ -135,6 +136,14 @@ export declare class VideoApi extends runtime.BaseAPI {
      * Generation Tags
      */
     generationTagsVideoVideoIdTagsGet(requestParameters: GenerationTagsVideoVideoIdTagsGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetVideoGenerationTagsResponse>;
+    /**
+     * Video Last Frame
+     */
+    videoLastFrameVideoVideoIdLastFrameGetRaw(requestParameters: VideoLastFrameVideoVideoIdLastFrameGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LastVideoFrameResponse>>;
+    /**
+     * Video Last Frame
+     */
+    videoLastFrameVideoVideoIdLastFrameGet(requestParameters: VideoLastFrameVideoVideoIdLastFrameGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LastVideoFrameResponse>;
 }
 /**
  * @export

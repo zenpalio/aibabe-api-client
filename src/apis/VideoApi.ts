@@ -21,6 +21,7 @@ import type {
   ImageToVideoFromChatPayload,
   ImageToVideoPayload,
   ImageToVideoRecommendationPayload,
+  LastVideoFrameResponse,
   VideoFromChatResponse,
 } from '../models/index';
 import {
@@ -36,12 +37,14 @@ import {
     ImageToVideoPayloadToJSON,
     ImageToVideoRecommendationPayloadFromJSON,
     ImageToVideoRecommendationPayloadToJSON,
+    LastVideoFrameResponseFromJSON,
+    LastVideoFrameResponseToJSON,
     VideoFromChatResponseFromJSON,
     VideoFromChatResponseToJSON,
 } from '../models/index';
 
-export interface AttachmentVideoChatbotIdAttachmentGetRequest {
-    chatbotId: string;
+export interface AttachmentVideoVideoIdAttachmentGetRequest {
+    videoId: string;
     videoName: string;
 }
 
@@ -57,10 +60,8 @@ export interface ChatCallbackVideoCallbackChatGenerationIdPostRequest {
     errorMessage?: string | null;
 }
 
-export interface DeleteVideoVideoChatbotIdDeleteRequest {
-    chatbotId: string;
-    videoName?: string | null;
-    generationId?: string | null;
+export interface DeleteVideoVideoVideoIdDeleteRequest {
+    videoId: string;
 }
 
 export interface ExtendCallbackVideoExtendCallbackGenerationIdPostRequest {
@@ -90,6 +91,10 @@ export interface GenerationTagsVideoVideoIdTagsGetRequest {
     videoId: string;
 }
 
+export interface VideoLastFrameVideoVideoIdLastFrameGetRequest {
+    videoId: string;
+}
+
 /**
  * 
  */
@@ -98,18 +103,18 @@ export class VideoApi extends runtime.BaseAPI {
     /**
      * Attachment
      */
-    async attachmentVideoChatbotIdAttachmentGetRaw(requestParameters: AttachmentVideoChatbotIdAttachmentGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
-        if (requestParameters['chatbotId'] == null) {
+    async attachmentVideoVideoIdAttachmentGetRaw(requestParameters: AttachmentVideoVideoIdAttachmentGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
+        if (requestParameters['videoId'] == null) {
             throw new runtime.RequiredError(
-                'chatbotId',
-                'Required parameter "chatbotId" was null or undefined when calling attachmentVideoChatbotIdAttachmentGet().'
+                'videoId',
+                'Required parameter "videoId" was null or undefined when calling attachmentVideoVideoIdAttachmentGet().'
             );
         }
 
         if (requestParameters['videoName'] == null) {
             throw new runtime.RequiredError(
                 'videoName',
-                'Required parameter "videoName" was null or undefined when calling attachmentVideoChatbotIdAttachmentGet().'
+                'Required parameter "videoName" was null or undefined when calling attachmentVideoVideoIdAttachmentGet().'
             );
         }
 
@@ -122,7 +127,7 @@ export class VideoApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         const response = await this.request({
-            path: `/video/{chatbot_id}/attachment`.replace(`{${"chatbot_id"}}`, encodeURIComponent(String(requestParameters['chatbotId']))),
+            path: `/video/{video_id}/attachment`.replace(`{${"video_id"}}`, encodeURIComponent(String(requestParameters['videoId']))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -138,8 +143,8 @@ export class VideoApi extends runtime.BaseAPI {
     /**
      * Attachment
      */
-    async attachmentVideoChatbotIdAttachmentGet(requestParameters: AttachmentVideoChatbotIdAttachmentGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
-        const response = await this.attachmentVideoChatbotIdAttachmentGetRaw(requestParameters, initOverrides);
+    async attachmentVideoVideoIdAttachmentGet(requestParameters: AttachmentVideoVideoIdAttachmentGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
+        const response = await this.attachmentVideoVideoIdAttachmentGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -280,28 +285,20 @@ export class VideoApi extends runtime.BaseAPI {
     /**
      * Delete Video
      */
-    async deleteVideoVideoChatbotIdDeleteRaw(requestParameters: DeleteVideoVideoChatbotIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
-        if (requestParameters['chatbotId'] == null) {
+    async deleteVideoVideoVideoIdDeleteRaw(requestParameters: DeleteVideoVideoVideoIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
+        if (requestParameters['videoId'] == null) {
             throw new runtime.RequiredError(
-                'chatbotId',
-                'Required parameter "chatbotId" was null or undefined when calling deleteVideoVideoChatbotIdDelete().'
+                'videoId',
+                'Required parameter "videoId" was null or undefined when calling deleteVideoVideoVideoIdDelete().'
             );
         }
 
         const queryParameters: any = {};
 
-        if (requestParameters['videoName'] != null) {
-            queryParameters['video_name'] = requestParameters['videoName'];
-        }
-
-        if (requestParameters['generationId'] != null) {
-            queryParameters['generation_id'] = requestParameters['generationId'];
-        }
-
         const headerParameters: runtime.HTTPHeaders = {};
 
         const response = await this.request({
-            path: `/video/{chatbot_id}`.replace(`{${"chatbot_id"}}`, encodeURIComponent(String(requestParameters['chatbotId']))),
+            path: `/video/{video_id}`.replace(`{${"video_id"}}`, encodeURIComponent(String(requestParameters['videoId']))),
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
@@ -317,8 +314,8 @@ export class VideoApi extends runtime.BaseAPI {
     /**
      * Delete Video
      */
-    async deleteVideoVideoChatbotIdDelete(requestParameters: DeleteVideoVideoChatbotIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
-        const response = await this.deleteVideoVideoChatbotIdDeleteRaw(requestParameters, initOverrides);
+    async deleteVideoVideoVideoIdDelete(requestParameters: DeleteVideoVideoVideoIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
+        const response = await this.deleteVideoVideoVideoIdDeleteRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -582,6 +579,39 @@ export class VideoApi extends runtime.BaseAPI {
      */
     async generationTagsVideoVideoIdTagsGet(requestParameters: GenerationTagsVideoVideoIdTagsGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetVideoGenerationTagsResponse> {
         const response = await this.generationTagsVideoVideoIdTagsGetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Video Last Frame
+     */
+    async videoLastFrameVideoVideoIdLastFrameGetRaw(requestParameters: VideoLastFrameVideoVideoIdLastFrameGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LastVideoFrameResponse>> {
+        if (requestParameters['videoId'] == null) {
+            throw new runtime.RequiredError(
+                'videoId',
+                'Required parameter "videoId" was null or undefined when calling videoLastFrameVideoVideoIdLastFrameGet().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/video/{video_id}/last_frame`.replace(`{${"video_id"}}`, encodeURIComponent(String(requestParameters['videoId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => LastVideoFrameResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Video Last Frame
+     */
+    async videoLastFrameVideoVideoIdLastFrameGet(requestParameters: VideoLastFrameVideoVideoIdLastFrameGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LastVideoFrameResponse> {
+        const response = await this.videoLastFrameVideoVideoIdLastFrameGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

@@ -24,7 +24,7 @@ export interface ImageToVideoRecommendationPayload {
      * @type {string}
      * @memberof ImageToVideoRecommendationPayload
      */
-    chatbotId: string;
+    chatbotId: string | null;
     /**
      * 
      * @type {string}

@@ -44,6 +44,8 @@ function ChatReponseFromJSONTyped(json, ignoreDiscriminator) {
         'userMessageId': json['user_message_id'],
         'assistantMessageId': json['assistant_message_id'],
         'imageId': json['image_id'],
+        'remainingFreeMessages': json['remaining_free_messages'] == null ? undefined : json['remaining_free_messages'],
+        'remainingFreeImages': json['remaining_free_images'] == null ? undefined : json['remaining_free_images'],
     };
 }
 function ChatReponseToJSON(json) {
@@ -58,6 +60,8 @@ function ChatReponseToJSONTyped(value, ignoreDiscriminator = false) {
         'user_message_id': value['userMessageId'],
         'assistant_message_id': value['assistantMessageId'],
         'image_id': value['imageId'],
+        'remaining_free_messages': value['remainingFreeMessages'],
+        'remaining_free_images': value['remainingFreeImages'],
     };
 }
 //# sourceMappingURL=ChatReponse.js.map

@@ -44,7 +44,7 @@ export interface GetVideoGenerationTagsResponse {
      * @type {string}
      * @memberof GetVideoGenerationTagsResponse
      */
-    chatbotName: string;
+    chatbotName: string | null;
     /**
      * 
      * @type {string}
