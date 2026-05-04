@@ -115,12 +115,6 @@ export interface ExploreSearchRequest {
      * @memberof ExploreSearchRequest
      */
     creatorUserId?: string | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof ExploreSearchRequest
-     */
-    scene?: boolean;
 }
 
 
@@ -152,7 +146,6 @@ export function ExploreSearchRequestFromJSONTyped(json: any, ignoreDiscriminator
         'chatbotId': json['chatbot_id'] == null ? undefined : json['chatbot_id'],
         'postType': json['post_type'] == null ? undefined : PostTypeFromJSON(json['post_type']),
         'creatorUserId': json['creator_user_id'] == null ? undefined : json['creator_user_id'],
-        'scene': json['scene'] == null ? undefined : json['scene'],
     };
 }
 
@@ -177,7 +170,6 @@ export function ExploreSearchRequestFromJSONTyped(json: any, ignoreDiscriminator
         'chatbot_id': value['chatbotId'],
         'post_type': PostTypeToJSON(value['postType']),
         'creator_user_id': value['creatorUserId'],
-        'scene': value['scene'],
     };
 }
 

@@ -47,7 +47,6 @@ function ExploreSearchRequestFromJSONTyped(json, ignoreDiscriminator) {
         'chatbotId': json['chatbot_id'] == null ? undefined : json['chatbot_id'],
         'postType': json['post_type'] == null ? undefined : (0, PostType_1.PostTypeFromJSON)(json['post_type']),
         'creatorUserId': json['creator_user_id'] == null ? undefined : json['creator_user_id'],
-        'scene': json['scene'] == null ? undefined : json['scene'],
     };
 }
 function ExploreSearchRequestToJSON(json) {
@@ -68,7 +67,6 @@ function ExploreSearchRequestToJSONTyped(value, ignoreDiscriminator = false) {
         'chatbot_id': value['chatbotId'],
         'post_type': (0, PostType_1.PostTypeToJSON)(value['postType']),
         'creator_user_id': value['creatorUserId'],
-        'scene': value['scene'],
     };
 }
 //# sourceMappingURL=ExploreSearchRequest.js.map
