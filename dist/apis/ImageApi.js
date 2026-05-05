@@ -194,14 +194,20 @@ class ImageApi extends runtime.BaseAPI {
     /**
      * Get Loras
      */
-    async getLorasImagenChatbotIdLorasGetRaw(requestParameters, initOverrides) {
-        if (requestParameters['chatbotId'] == null) {
-            throw new runtime.RequiredError('chatbotId', 'Required parameter "chatbotId" was null or undefined when calling getLorasImagenChatbotIdLorasGet().');
-        }
+    async getLorasImagenLorasGetRaw(requestParameters, initOverrides) {
         const queryParameters = {};
+        if (requestParameters['chatbotId'] != null) {
+            queryParameters['chatbot_id'] = requestParameters['chatbotId'];
+        }
+        if (requestParameters['imageId'] != null) {
+            queryParameters['image_id'] = requestParameters['imageId'];
+        }
+        if (requestParameters['artStyle'] != null) {
+            queryParameters['art_style'] = requestParameters['artStyle'];
+        }
         const headerParameters = {};
         const response = await this.request({
-            path: `/imagen/{chatbot_id}/loras`.replace(`{${"chatbot_id"}}`, encodeURIComponent(String(requestParameters['chatbotId']))),
+            path: `/imagen/loras`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -211,8 +217,8 @@ class ImageApi extends runtime.BaseAPI {
     /**
      * Get Loras
      */
-    async getLorasImagenChatbotIdLorasGet(requestParameters, initOverrides) {
-        const response = await this.getLorasImagenChatbotIdLorasGetRaw(requestParameters, initOverrides);
+    async getLorasImagenLorasGet(requestParameters = {}, initOverrides) {
+        const response = await this.getLorasImagenLorasGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -266,6 +272,9 @@ class ImageApi extends runtime.BaseAPI {
         if (requestParameters['numberOfImages'] == null) {
             throw new runtime.RequiredError('numberOfImages', 'Required parameter "numberOfImages" was null or undefined when calling userInpaintImageImagenInpaintPost().');
         }
+        if (requestParameters['keepStructure'] == null) {
+            throw new runtime.RequiredError('keepStructure', 'Required parameter "keepStructure" was null or undefined when calling userInpaintImageImagenInpaintPost().');
+        }
         const queryParameters = {};
         const headerParameters = {};
         const consumes = [
@@ -301,6 +310,9 @@ class ImageApi extends runtime.BaseAPI {
         if (requestParameters['numberOfImages'] != null) {
             formParams.append('number_of_images', requestParameters['numberOfImages']);
         }
+        if (requestParameters['keepStructure'] != null) {
+            formParams.append('keep_structure', requestParameters['keepStructure']);
+        }
         if (requestParameters['chatbotId'] != null) {
             formParams.append('chatbot_id', requestParameters['chatbotId']);
         }
@@ -309,9 +321,6 @@ class ImageApi extends runtime.BaseAPI {
         }
         if (requestParameters['loras'] != null) {
             formParams.append('loras', requestParameters['loras'].join(runtime.COLLECTION_FORMATS["csv"]));
-        }
-        if (requestParameters['denoisingStrength'] != null) {
-            formParams.append('denoising_strength', requestParameters['denoisingStrength']);
         }
         const response = await this.request({
             path: `/imagen/inpaint`,

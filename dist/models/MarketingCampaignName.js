@@ -25,7 +25,7 @@ exports.MarketingCampaignNameToJSONTyped = MarketingCampaignNameToJSONTyped;
  */
 exports.MarketingCampaignName = {
     LimitReset: 'limit_reset',
-    FirstTimeOfferReminder: 'first_time_offer_reminder',
+    ActiveUserReach: 'active_user_reach',
     FailedPaymentReminder: 'failed_payment_reminder'
 };
 function instanceOfMarketingCampaignName(value) {

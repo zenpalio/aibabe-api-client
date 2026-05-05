@@ -299,6 +299,27 @@ class UserApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * Remaining Free Uses
+     */
+    async remainingFreeUsesUserRemainingFreeUsesGetRaw(initOverrides) {
+        const queryParameters = {};
+        const headerParameters = {};
+        const response = await this.request({
+            path: `/user/remaining-free-uses`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.RemainingFreeUsesResponseFromJSON)(jsonValue));
+    }
+    /**
+     * Remaining Free Uses
+     */
+    async remainingFreeUsesUserRemainingFreeUsesGet(initOverrides) {
+        const response = await this.remainingFreeUsesUserRemainingFreeUsesGetRaw(initOverrides);
+        return await response.value();
+    }
+    /**
      * Report User
      */
     async reportUserUserUserIdReportPostRaw(requestParameters, initOverrides) {

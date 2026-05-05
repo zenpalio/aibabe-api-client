@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { DeleteUserRequest, GetClaimablesResponse, GetFollowedUsersResponse, GetPublicLatestUpdateResponse, PatchUserRequest, PostClaimRequest, PostDonateRequest, PostDonateResponse, PostFollowUserRequest, PostRatingRequest, PostRatingResponse, PostReportUserRequest, PostVerifyPublicUsernameRequest, PostVerifyPublicUsernameResponse, PublicUserInfo, PutPasswordRequest, PutPublicUserRequest, PutUsernameRequest } from '../models/index';
+import type { DeleteUserRequest, GetClaimablesResponse, GetFollowedUsersResponse, GetPublicLatestUpdateResponse, PatchUserRequest, PostClaimRequest, PostDonateRequest, PostDonateResponse, PostFollowUserRequest, PostRatingRequest, PostRatingResponse, PostReportUserRequest, PostVerifyPublicUsernameRequest, PostVerifyPublicUsernameResponse, PublicUserInfo, PutPasswordRequest, PutPublicUserRequest, PutUsernameRequest, RemainingFreeUsesResponse } from '../models/index';
 export interface ClaimUserClaimPostRequest {
     postClaimRequest: PostClaimRequest;
 }
@@ -128,6 +128,14 @@ export declare class UserApi extends runtime.BaseAPI {
      * Post Rating
      */
     postRatingUserRatingPost(requestParameters: PostRatingUserRatingPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PostRatingResponse>;
+    /**
+     * Remaining Free Uses
+     */
+    remainingFreeUsesUserRemainingFreeUsesGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<RemainingFreeUsesResponse>>;
+    /**
+     * Remaining Free Uses
+     */
+    remainingFreeUsesUserRemainingFreeUsesGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<RemainingFreeUsesResponse>;
     /**
      * Report User
      */

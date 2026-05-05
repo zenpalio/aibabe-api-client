@@ -34,13 +34,13 @@ import {
     VideoContentToJSON,
     VideoContentToJSONTyped,
 } from './VideoContent';
-import type { SharedContentType } from './SharedContentType';
+import type { ContentType } from './ContentType';
 import {
-    SharedContentTypeFromJSON,
-    SharedContentTypeFromJSONTyped,
-    SharedContentTypeToJSON,
-    SharedContentTypeToJSONTyped,
-} from './SharedContentType';
+    ContentTypeFromJSON,
+    ContentTypeFromJSONTyped,
+    ContentTypeToJSON,
+    ContentTypeToJSONTyped,
+} from './ContentType';
 import type { ImageContent } from './ImageContent';
 import {
     ImageContentFromJSON,
@@ -143,10 +143,10 @@ export interface DetailedWallPost {
     liked: boolean;
     /**
      * 
-     * @type {SharedContentType}
+     * @type {ContentType}
      * @memberof DetailedWallPost
      */
-    type: SharedContentType;
+    type: ContentType;
     /**
      * 
      * @type {string}
@@ -214,7 +214,7 @@ export function DetailedWallPostFromJSONTyped(json: any, ignoreDiscriminator: bo
         'createdAt': (new Date(json['created_at'])),
         'updatedAt': (new Date(json['updated_at'])),
         'liked': json['liked'],
-        'type': SharedContentTypeFromJSON(json['type']),
+        'type': ContentTypeFromJSON(json['type']),
         'title': json['title'],
         'tags': ((json['tags'] as Array<any>).map(TagModelFromJSON)),
         'creator': PublicUserPreviewWithFollowFromJSON(json['creator']),
@@ -244,7 +244,7 @@ export function DetailedWallPostFromJSONTyped(json: any, ignoreDiscriminator: bo
         'created_at': ((value['createdAt']).toISOString()),
         'updated_at': ((value['updatedAt']).toISOString()),
         'liked': value['liked'],
-        'type': SharedContentTypeToJSON(value['type']),
+        'type': ContentTypeToJSON(value['type']),
         'title': value['title'],
         'tags': ((value['tags'] as Array<any>).map(TagModelToJSON)),
         'creator': PublicUserPreviewWithFollowToJSON(value['creator']),

@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { ArtStyle } from './ArtStyle';
+import {
+    ArtStyleFromJSON,
+    ArtStyleFromJSONTyped,
+    ArtStyleToJSON,
+    ArtStyleToJSONTyped,
+} from './ArtStyle';
 import type { LoraName } from './LoraName';
 import {
     LoraNameFromJSON,
@@ -51,7 +58,15 @@ export interface GetImageGenerationTagsResponse {
      * @memberof GetImageGenerationTagsResponse
      */
     loras: Array<LoraName>;
+    /**
+     * 
+     * @type {ArtStyle}
+     * @memberof GetImageGenerationTagsResponse
+     */
+    artStyle: ArtStyle;
 }
+
+
 
 /**
  * Check if a given object implements the GetImageGenerationTagsResponse interface.
@@ -61,6 +76,7 @@ export function instanceOfGetImageGenerationTagsResponse(value: object): value i
     if (!('downloadUrl' in value) || value['downloadUrl'] === undefined) return false;
     if (!('chatbotName' in value) || value['chatbotName'] === undefined) return false;
     if (!('loras' in value) || value['loras'] === undefined) return false;
+    if (!('artStyle' in value) || value['artStyle'] === undefined) return false;
     return true;
 }
 
@@ -78,6 +94,7 @@ export function GetImageGenerationTagsResponseFromJSONTyped(json: any, ignoreDis
         'downloadUrl': json['download_url'],
         'chatbotName': json['chatbot_name'],
         'loras': ((json['loras'] as Array<any>).map(LoraNameFromJSON)),
+        'artStyle': ArtStyleFromJSON(json['art_style']),
     };
 }
 
@@ -96,6 +113,7 @@ export function GetImageGenerationTagsResponseFromJSONTyped(json: any, ignoreDis
         'download_url': value['downloadUrl'],
         'chatbot_name': value['chatbotName'],
         'loras': ((value['loras'] as Array<any>).map(LoraNameToJSON)),
+        'art_style': ArtStyleToJSON(value['artStyle']),
     };
 }
 

@@ -22,6 +22,36 @@ export interface PostAdvancedCharacterBuilderSuggestionPayload {
      * @memberof PostAdvancedCharacterBuilderSuggestionPayload
      */
     fieldName: CharacterBuilderSuggestionField;
+    /**
+     *
+     * @type {string}
+     * @memberof PostAdvancedCharacterBuilderSuggestionPayload
+     */
+    currentName?: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof PostAdvancedCharacterBuilderSuggestionPayload
+     */
+    currentBio?: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof PostAdvancedCharacterBuilderSuggestionPayload
+     */
+    currentGreetings?: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof PostAdvancedCharacterBuilderSuggestionPayload
+     */
+    currentStory?: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof PostAdvancedCharacterBuilderSuggestionPayload
+     */
+    currentExampleConversation?: string | null;
 }
 /**
  * Check if a given object implements the PostAdvancedCharacterBuilderSuggestionPayload interface.

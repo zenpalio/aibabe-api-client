@@ -34,6 +34,7 @@ import type {
   PutPasswordRequest,
   PutPublicUserRequest,
   PutUsernameRequest,
+  RemainingFreeUsesResponse,
 } from '../models/index';
 import {
     DeleteUserRequestFromJSON,
@@ -74,6 +75,8 @@ import {
     PutPublicUserRequestToJSON,
     PutUsernameRequestFromJSON,
     PutUsernameRequestToJSON,
+    RemainingFreeUsesResponseFromJSON,
+    RemainingFreeUsesResponseToJSON,
 } from '../models/index';
 
 export interface ClaimUserClaimPostRequest {
@@ -450,6 +453,32 @@ export class UserApi extends runtime.BaseAPI {
      */
     async postRatingUserRatingPost(requestParameters: PostRatingUserRatingPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PostRatingResponse> {
         const response = await this.postRatingUserRatingPostRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Remaining Free Uses
+     */
+    async remainingFreeUsesUserRemainingFreeUsesGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<RemainingFreeUsesResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/user/remaining-free-uses`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => RemainingFreeUsesResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Remaining Free Uses
+     */
+    async remainingFreeUsesUserRemainingFreeUsesGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<RemainingFreeUsesResponse> {
+        const response = await this.remainingFreeUsesUserRemainingFreeUsesGetRaw(initOverrides);
         return await response.value();
     }
 

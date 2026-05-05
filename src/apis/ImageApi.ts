@@ -67,8 +67,10 @@ export interface GetImageByFilenameImagenFilenameGetRequest {
     filename: string;
 }
 
-export interface GetLorasImagenChatbotIdLorasGetRequest {
-    chatbotId: string;
+export interface GetLorasImagenLorasGetRequest {
+    chatbotId?: string | null;
+    imageId?: string | null;
+    artStyle?: string | null;
 }
 
 export interface UserGenerateImageImagenGenerateChatbotIdPostRequest {
@@ -83,10 +85,10 @@ export interface UserInpaintImageImagenInpaintPostRequest {
     clientId: string;
     requestId: string;
     numberOfImages: number;
+    keepStructure: boolean;
     chatbotId?: string | null;
     artStyle?: ArtStyle | null;
     loras?: Array<LoraName> | null;
-    denoisingStrength?: number;
 }
 
 /**
@@ -284,20 +286,25 @@ export class ImageApi extends runtime.BaseAPI {
     /**
      * Get Loras
      */
-    async getLorasImagenChatbotIdLorasGetRaw(requestParameters: GetLorasImagenChatbotIdLorasGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetLorasResponse>> {
-        if (requestParameters['chatbotId'] == null) {
-            throw new runtime.RequiredError(
-                'chatbotId',
-                'Required parameter "chatbotId" was null or undefined when calling getLorasImagenChatbotIdLorasGet().'
-            );
+    async getLorasImagenLorasGetRaw(requestParameters: GetLorasImagenLorasGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetLorasResponse>> {
+        const queryParameters: any = {};
+
+        if (requestParameters['chatbotId'] != null) {
+            queryParameters['chatbot_id'] = requestParameters['chatbotId'];
         }
 
-        const queryParameters: any = {};
+        if (requestParameters['imageId'] != null) {
+            queryParameters['image_id'] = requestParameters['imageId'];
+        }
+
+        if (requestParameters['artStyle'] != null) {
+            queryParameters['art_style'] = requestParameters['artStyle'];
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
         const response = await this.request({
-            path: `/imagen/{chatbot_id}/loras`.replace(`{${"chatbot_id"}}`, encodeURIComponent(String(requestParameters['chatbotId']))),
+            path: `/imagen/loras`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -309,8 +316,8 @@ export class ImageApi extends runtime.BaseAPI {
     /**
      * Get Loras
      */
-    async getLorasImagenChatbotIdLorasGet(requestParameters: GetLorasImagenChatbotIdLorasGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetLorasResponse> {
-        const response = await this.getLorasImagenChatbotIdLorasGetRaw(requestParameters, initOverrides);
+    async getLorasImagenLorasGet(requestParameters: GetLorasImagenLorasGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetLorasResponse> {
+        const response = await this.getLorasImagenLorasGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -403,6 +410,13 @@ export class ImageApi extends runtime.BaseAPI {
             );
         }
 
+        if (requestParameters['keepStructure'] == null) {
+            throw new runtime.RequiredError(
+                'keepStructure',
+                'Required parameter "keepStructure" was null or undefined when calling userInpaintImageImagenInpaintPost().'
+            );
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -447,6 +461,10 @@ export class ImageApi extends runtime.BaseAPI {
             formParams.append('number_of_images', requestParameters['numberOfImages'] as any);
         }
 
+        if (requestParameters['keepStructure'] != null) {
+            formParams.append('keep_structure', requestParameters['keepStructure'] as any);
+        }
+
         if (requestParameters['chatbotId'] != null) {
             formParams.append('chatbot_id', requestParameters['chatbotId'] as any);
         }
@@ -457,10 +475,6 @@ export class ImageApi extends runtime.BaseAPI {
 
         if (requestParameters['loras'] != null) {
             formParams.append('loras', requestParameters['loras']!.join(runtime.COLLECTION_FORMATS["csv"]));
-        }
-
-        if (requestParameters['denoisingStrength'] != null) {
-            formParams.append('denoising_strength', requestParameters['denoisingStrength'] as any);
         }
 
         const response = await this.request({

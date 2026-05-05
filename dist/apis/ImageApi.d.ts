@@ -27,8 +27,10 @@ export interface GenerationTagsImagenImageIdTagsGetRequest {
 export interface GetImageByFilenameImagenFilenameGetRequest {
     filename: string;
 }
-export interface GetLorasImagenChatbotIdLorasGetRequest {
-    chatbotId: string;
+export interface GetLorasImagenLorasGetRequest {
+    chatbotId?: string | null;
+    imageId?: string | null;
+    artStyle?: string | null;
 }
 export interface UserGenerateImageImagenGenerateChatbotIdPostRequest {
     chatbotId: string;
@@ -41,10 +43,10 @@ export interface UserInpaintImageImagenInpaintPostRequest {
     clientId: string;
     requestId: string;
     numberOfImages: number;
+    keepStructure: boolean;
     chatbotId?: string | null;
     artStyle?: ArtStyle | null;
     loras?: Array<LoraName> | null;
-    denoisingStrength?: number;
 }
 /**
  *
@@ -93,11 +95,11 @@ export declare class ImageApi extends runtime.BaseAPI {
     /**
      * Get Loras
      */
-    getLorasImagenChatbotIdLorasGetRaw(requestParameters: GetLorasImagenChatbotIdLorasGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetLorasResponse>>;
+    getLorasImagenLorasGetRaw(requestParameters: GetLorasImagenLorasGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetLorasResponse>>;
     /**
      * Get Loras
      */
-    getLorasImagenChatbotIdLorasGet(requestParameters: GetLorasImagenChatbotIdLorasGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetLorasResponse>;
+    getLorasImagenLorasGet(requestParameters?: GetLorasImagenLorasGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetLorasResponse>;
     /**
      * User Generate Image
      */

@@ -20,7 +20,7 @@ exports.WallPostToJSON = WallPostToJSON;
 exports.WallPostToJSONTyped = WallPostToJSONTyped;
 const ChatbotPreview_1 = require("./ChatbotPreview");
 const VideoContent_1 = require("./VideoContent");
-const SharedContentType_1 = require("./SharedContentType");
+const ContentType_1 = require("./ContentType");
 const ImageContent_1 = require("./ImageContent");
 const StoryPreview_1 = require("./StoryPreview");
 /**
@@ -75,7 +75,7 @@ function WallPostFromJSONTyped(json, ignoreDiscriminator) {
         'createdAt': (new Date(json['created_at'])),
         'updatedAt': (new Date(json['updated_at'])),
         'liked': json['liked'],
-        'type': (0, SharedContentType_1.SharedContentTypeFromJSON)(json['type']),
+        'type': (0, ContentType_1.ContentTypeFromJSON)(json['type']),
     };
 }
 function WallPostToJSON(json) {
@@ -98,7 +98,7 @@ function WallPostToJSONTyped(value, ignoreDiscriminator = false) {
         'created_at': ((value['createdAt']).toISOString()),
         'updated_at': ((value['updatedAt']).toISOString()),
         'liked': value['liked'],
-        'type': (0, SharedContentType_1.SharedContentTypeToJSON)(value['type']),
+        'type': (0, ContentType_1.ContentTypeToJSON)(value['type']),
     };
 }
 //# sourceMappingURL=WallPost.js.map

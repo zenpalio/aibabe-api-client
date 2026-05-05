@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { ArtStyle } from './ArtStyle';
 import type { ChatbotPreview } from './ChatbotPreview';
 import type { PostDetails } from './PostDetails';
 import type { ImageGenerationStatus } from './ImageGenerationStatus';
@@ -78,6 +79,12 @@ export interface GeneratedImages {
      * @memberof GeneratedImages
      */
     seenByUser: boolean;
+    /**
+     *
+     * @type {ArtStyle}
+     * @memberof GeneratedImages
+     */
+    artStyle: ArtStyle;
 }
 /**
  * @export

@@ -55,6 +55,7 @@ src/models/ChatbotPreview.ts
 src/models/ChatbotType.ts
 src/models/ContentItem.ts
 src/models/ContentReportReason.ts
+src/models/ContentType.ts
 src/models/ConversationListItem.ts
 src/models/ConversationMessageFeedback.ts
 src/models/ConversationSettings.ts
@@ -208,12 +209,12 @@ src/models/PutUsernameRequest.ts
 src/models/RedeemGiftCodeRequest.ts
 src/models/RedeemGiftCodeResponse.ts
 src/models/RelationshipStatus.ts
+src/models/RemainingFreeUsesResponse.ts
 src/models/ReviewCharacterFieldStatus.ts
 src/models/RoleplayType.ts
 src/models/SeduceDifficulty.ts
 src/models/SendCustomMemoracekRequest.ts
 src/models/SendMemoracekRequest.ts
-src/models/SharedContentType.ts
 src/models/SortFilter.ts
 src/models/SpecialAddonOffer.ts
 src/models/SpecialFeatures.ts

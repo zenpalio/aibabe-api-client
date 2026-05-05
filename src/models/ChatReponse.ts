@@ -43,6 +43,18 @@ export interface ChatReponse {
      * @memberof ChatReponse
      */
     imageId: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof ChatReponse
+     */
+    remainingFreeMessages?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof ChatReponse
+     */
+    remainingFreeImages?: number | null;
 }
 
 /**
@@ -70,6 +82,8 @@ export function ChatReponseFromJSONTyped(json: any, ignoreDiscriminator: boolean
         'userMessageId': json['user_message_id'],
         'assistantMessageId': json['assistant_message_id'],
         'imageId': json['image_id'],
+        'remainingFreeMessages': json['remaining_free_messages'] == null ? undefined : json['remaining_free_messages'],
+        'remainingFreeImages': json['remaining_free_images'] == null ? undefined : json['remaining_free_images'],
     };
 }
 
@@ -88,6 +102,8 @@ export function ChatReponseFromJSONTyped(json: any, ignoreDiscriminator: boolean
         'user_message_id': value['userMessageId'],
         'assistant_message_id': value['assistantMessageId'],
         'image_id': value['imageId'],
+        'remaining_free_messages': value['remainingFreeMessages'],
+        'remaining_free_images': value['remainingFreeImages'],
     };
 }
 

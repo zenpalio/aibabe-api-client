@@ -27,13 +27,13 @@ import {
     VideoContentToJSON,
     VideoContentToJSONTyped,
 } from './VideoContent';
-import type { SharedContentType } from './SharedContentType';
+import type { ContentType } from './ContentType';
 import {
-    SharedContentTypeFromJSON,
-    SharedContentTypeFromJSONTyped,
-    SharedContentTypeToJSON,
-    SharedContentTypeToJSONTyped,
-} from './SharedContentType';
+    ContentTypeFromJSON,
+    ContentTypeFromJSONTyped,
+    ContentTypeToJSON,
+    ContentTypeToJSONTyped,
+} from './ContentType';
 import type { ImageContent } from './ImageContent';
 import {
     ImageContentFromJSON,
@@ -129,10 +129,10 @@ export interface WallPost {
     liked: boolean;
     /**
      * 
-     * @type {SharedContentType}
+     * @type {ContentType}
      * @memberof WallPost
      */
-    type: SharedContentType;
+    type: ContentType;
 }
 
 
@@ -179,7 +179,7 @@ export function WallPostFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
         'createdAt': (new Date(json['created_at'])),
         'updatedAt': (new Date(json['updated_at'])),
         'liked': json['liked'],
-        'type': SharedContentTypeFromJSON(json['type']),
+        'type': ContentTypeFromJSON(json['type']),
     };
 }
 
@@ -206,7 +206,7 @@ export function WallPostFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
         'created_at': ((value['createdAt']).toISOString()),
         'updated_at': ((value['updatedAt']).toISOString()),
         'liked': value['liked'],
-        'type': SharedContentTypeToJSON(value['type']),
+        'type': ContentTypeToJSON(value['type']),
     };
 }
 

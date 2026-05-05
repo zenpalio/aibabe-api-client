@@ -12,7 +12,7 @@
 import type { PublicUserPreviewWithFollow } from './PublicUserPreviewWithFollow';
 import type { ChatbotPreview } from './ChatbotPreview';
 import type { VideoContent } from './VideoContent';
-import type { SharedContentType } from './SharedContentType';
+import type { ContentType } from './ContentType';
 import type { ImageContent } from './ImageContent';
 import type { StoryPreview } from './StoryPreview';
 import type { TagModel } from './TagModel';
@@ -96,10 +96,10 @@ export interface DetailedWallPost {
     liked: boolean;
     /**
      *
-     * @type {SharedContentType}
+     * @type {ContentType}
      * @memberof DetailedWallPost
      */
-    type: SharedContentType;
+    type: ContentType;
     /**
      *
      * @type {string}

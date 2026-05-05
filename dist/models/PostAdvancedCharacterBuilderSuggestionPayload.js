@@ -36,6 +36,11 @@ function PostAdvancedCharacterBuilderSuggestionPayloadFromJSONTyped(json, ignore
     }
     return {
         'fieldName': (0, CharacterBuilderSuggestionField_1.CharacterBuilderSuggestionFieldFromJSON)(json['field_name']),
+        'currentName': json['current_name'] == null ? undefined : json['current_name'],
+        'currentBio': json['current_bio'] == null ? undefined : json['current_bio'],
+        'currentGreetings': json['current_greetings'] == null ? undefined : json['current_greetings'],
+        'currentStory': json['current_story'] == null ? undefined : json['current_story'],
+        'currentExampleConversation': json['current_example_conversation'] == null ? undefined : json['current_example_conversation'],
     };
 }
 function PostAdvancedCharacterBuilderSuggestionPayloadToJSON(json) {
@@ -47,6 +52,11 @@ function PostAdvancedCharacterBuilderSuggestionPayloadToJSONTyped(value, ignoreD
     }
     return {
         'field_name': (0, CharacterBuilderSuggestionField_1.CharacterBuilderSuggestionFieldToJSON)(value['fieldName']),
+        'current_name': value['currentName'],
+        'current_bio': value['currentBio'],
+        'current_greetings': value['currentGreetings'],
+        'current_story': value['currentStory'],
+        'current_example_conversation': value['currentExampleConversation'],
     };
 }
 //# sourceMappingURL=PostAdvancedCharacterBuilderSuggestionPayload.js.map

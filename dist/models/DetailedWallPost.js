@@ -21,7 +21,7 @@ exports.DetailedWallPostToJSONTyped = DetailedWallPostToJSONTyped;
 const PublicUserPreviewWithFollow_1 = require("./PublicUserPreviewWithFollow");
 const ChatbotPreview_1 = require("./ChatbotPreview");
 const VideoContent_1 = require("./VideoContent");
-const SharedContentType_1 = require("./SharedContentType");
+const ContentType_1 = require("./ContentType");
 const ImageContent_1 = require("./ImageContent");
 const StoryPreview_1 = require("./StoryPreview");
 const TagModel_1 = require("./TagModel");
@@ -83,7 +83,7 @@ function DetailedWallPostFromJSONTyped(json, ignoreDiscriminator) {
         'createdAt': (new Date(json['created_at'])),
         'updatedAt': (new Date(json['updated_at'])),
         'liked': json['liked'],
-        'type': (0, SharedContentType_1.SharedContentTypeFromJSON)(json['type']),
+        'type': (0, ContentType_1.ContentTypeFromJSON)(json['type']),
         'title': json['title'],
         'tags': (json['tags'].map(TagModel_1.TagModelFromJSON)),
         'creator': (0, PublicUserPreviewWithFollow_1.PublicUserPreviewWithFollowFromJSON)(json['creator']),
@@ -109,7 +109,7 @@ function DetailedWallPostToJSONTyped(value, ignoreDiscriminator = false) {
         'created_at': ((value['createdAt']).toISOString()),
         'updated_at': ((value['updatedAt']).toISOString()),
         'liked': value['liked'],
-        'type': (0, SharedContentType_1.SharedContentTypeToJSON)(value['type']),
+        'type': (0, ContentType_1.ContentTypeToJSON)(value['type']),
         'title': value['title'],
         'tags': (value['tags'].map(TagModel_1.TagModelToJSON)),
         'creator': (0, PublicUserPreviewWithFollow_1.PublicUserPreviewWithFollowToJSON)(value['creator']),
