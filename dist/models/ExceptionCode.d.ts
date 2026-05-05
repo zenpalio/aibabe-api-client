@@ -67,6 +67,12 @@ export declare const ExceptionCode: {
     readonly LimitsReached: "limits_reached";
     readonly ClaimInvalid: "claim_invalid";
     readonly ClaimablesNotFound: "claimables_not_found";
+    readonly BadgeNotFound: "badge_not_found";
+    readonly BadgeNotClaimable: "badge_not_claimable";
+    readonly BadgeNotUsable: "badge_not_usable";
+    readonly BadgeNotClaimed: "badge_not_claimed";
+    readonly BadgeAlreadyClaimed: "badge_already_claimed";
+    readonly BadgeRequirementNotMet: "badge_requirement_not_met";
     readonly FormatNotSupported: "format_not_supported";
     readonly FileSizeExceeded: "file_size_exceeded";
     readonly FileUploadFailed: "file_upload_failed";
