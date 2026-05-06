@@ -39,12 +39,6 @@ export interface StoryCreatorCreateActorRequest {
      * @type {string}
      * @memberof StoryCreatorCreateActorRequest
      */
-    chatbotId?: string | null;
-    /**
-     *
-     * @type {string}
-     * @memberof StoryCreatorCreateActorRequest
-     */
     referenceAudioId?: string | null;
 }
 /**

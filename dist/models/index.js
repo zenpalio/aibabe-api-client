@@ -227,6 +227,8 @@ __exportStar(require("./StoryCreatorEpisodeListResponse"), exports);
 __exportStar(require("./StoryCreatorEpisodePrice"), exports);
 __exportStar(require("./StoryCreatorEpisodeResponse"), exports);
 __exportStar(require("./StoryCreatorEpisodeWithPanelsResponse"), exports);
+__exportStar(require("./StoryCreatorGenerateAvatarRequest"), exports);
+__exportStar(require("./StoryCreatorImportActorRequest"), exports);
 __exportStar(require("./StoryCreatorLockEpisodeRequest"), exports);
 __exportStar(require("./StoryCreatorPanel"), exports);
 __exportStar(require("./StoryCreatorPurchaseEpisodeRequest"), exports);

@@ -50,12 +50,6 @@ export interface StoryCreatorActor {
      * @type {string}
      * @memberof StoryCreatorActor
      */
-    chatbotId?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof StoryCreatorActor
-     */
     referenceAudioId?: string | null;
     /**
      * 
@@ -69,6 +63,12 @@ export interface StoryCreatorActor {
      * @memberof StoryCreatorActor
      */
     storyId: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof StoryCreatorActor
+     */
+    chatbotId?: string | null;
 }
 
 
@@ -97,10 +97,10 @@ export function StoryCreatorActorFromJSONTyped(json: any, ignoreDiscriminator: b
         'displayName': json['display_name'],
         'role': ActorRoleFromJSON(json['role']),
         'avatar': json['avatar'] == null ? undefined : json['avatar'],
-        'chatbotId': json['chatbot_id'] == null ? undefined : json['chatbot_id'],
         'referenceAudioId': json['reference_audio_id'] == null ? undefined : json['reference_audio_id'],
         'id': json['id'],
         'storyId': json['story_id'],
+        'chatbotId': json['chatbot_id'] == null ? undefined : json['chatbot_id'],
     };
 }
 
@@ -118,10 +118,10 @@ export function StoryCreatorActorFromJSONTyped(json: any, ignoreDiscriminator: b
         'display_name': value['displayName'],
         'role': ActorRoleToJSON(value['role']),
         'avatar': value['avatar'],
-        'chatbot_id': value['chatbotId'],
         'reference_audio_id': value['referenceAudioId'],
         'id': value['id'],
         'story_id': value['storyId'],
+        'chatbot_id': value['chatbotId'],
     };
 }
 

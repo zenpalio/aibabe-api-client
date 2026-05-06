@@ -54,35 +54,6 @@ const index_1 = require("../models/index");
  */
 class StoryCreatorApi extends runtime.BaseAPI {
     /**
-     * Create Actor
-     */
-    async createActorStoryCreatorStoriesStoryIdActorsPostRaw(requestParameters, initOverrides) {
-        if (requestParameters['storyId'] == null) {
-            throw new runtime.RequiredError('storyId', 'Required parameter "storyId" was null or undefined when calling createActorStoryCreatorStoriesStoryIdActorsPost().');
-        }
-        if (requestParameters['storyCreatorCreateActorRequest'] == null) {
-            throw new runtime.RequiredError('storyCreatorCreateActorRequest', 'Required parameter "storyCreatorCreateActorRequest" was null or undefined when calling createActorStoryCreatorStoriesStoryIdActorsPost().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        headerParameters['Content-Type'] = 'application/json';
-        const response = await this.request({
-            path: `/story-creator/stories/{story_id}/actors`.replace(`{${"story_id"}}`, encodeURIComponent(String(requestParameters['storyId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: (0, index_1.StoryCreatorCreateActorRequestToJSON)(requestParameters['storyCreatorCreateActorRequest']),
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.StoryCreatorActorResponseFromJSON)(jsonValue));
-    }
-    /**
-     * Create Actor
-     */
-    async createActorStoryCreatorStoriesStoryIdActorsPost(requestParameters, initOverrides) {
-        const response = await this.createActorStoryCreatorStoriesStoryIdActorsPostRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
      * Create Episode
      */
     async createEpisodeStoryCreatorStoriesStoryIdEpisodesPostRaw(requestParameters, initOverrides) {
@@ -109,6 +80,35 @@ class StoryCreatorApi extends runtime.BaseAPI {
      */
     async createEpisodeStoryCreatorStoriesStoryIdEpisodesPost(requestParameters, initOverrides) {
         const response = await this.createEpisodeStoryCreatorStoriesStoryIdEpisodesPostRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * Create New Actor
+     */
+    async createNewActorStoryCreatorStoriesStoryIdActorNewPostRaw(requestParameters, initOverrides) {
+        if (requestParameters['storyId'] == null) {
+            throw new runtime.RequiredError('storyId', 'Required parameter "storyId" was null or undefined when calling createNewActorStoryCreatorStoriesStoryIdActorNewPost().');
+        }
+        if (requestParameters['storyCreatorCreateActorRequest'] == null) {
+            throw new runtime.RequiredError('storyCreatorCreateActorRequest', 'Required parameter "storyCreatorCreateActorRequest" was null or undefined when calling createNewActorStoryCreatorStoriesStoryIdActorNewPost().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        const response = await this.request({
+            path: `/story-creator/stories/{story_id}/actor/new`.replace(`{${"story_id"}}`, encodeURIComponent(String(requestParameters['storyId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.StoryCreatorCreateActorRequestToJSON)(requestParameters['storyCreatorCreateActorRequest']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.StoryCreatorActorResponseFromJSON)(jsonValue));
+    }
+    /**
+     * Create New Actor
+     */
+    async createNewActorStoryCreatorStoriesStoryIdActorNewPost(requestParameters, initOverrides) {
+        const response = await this.createNewActorStoryCreatorStoriesStoryIdActorNewPostRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -209,6 +209,35 @@ class StoryCreatorApi extends runtime.BaseAPI {
         await this.deleteStoryStoryCreatorStoriesStoryIdDeleteRaw(requestParameters, initOverrides);
     }
     /**
+     * Generate Avatar
+     */
+    async generateAvatarStoryCreatorStoriesStoryIdActorAvatarPostRaw(requestParameters, initOverrides) {
+        if (requestParameters['storyId'] == null) {
+            throw new runtime.RequiredError('storyId', 'Required parameter "storyId" was null or undefined when calling generateAvatarStoryCreatorStoriesStoryIdActorAvatarPost().');
+        }
+        if (requestParameters['storyCreatorGenerateAvatarRequest'] == null) {
+            throw new runtime.RequiredError('storyCreatorGenerateAvatarRequest', 'Required parameter "storyCreatorGenerateAvatarRequest" was null or undefined when calling generateAvatarStoryCreatorStoriesStoryIdActorAvatarPost().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        const response = await this.request({
+            path: `/story-creator/stories/{story_id}/actor/avatar`.replace(`{${"story_id"}}`, encodeURIComponent(String(requestParameters['storyId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.StoryCreatorGenerateAvatarRequestToJSON)(requestParameters['storyCreatorGenerateAvatarRequest']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.PostImagenResponseFromJSON)(jsonValue));
+    }
+    /**
+     * Generate Avatar
+     */
+    async generateAvatarStoryCreatorStoriesStoryIdActorAvatarPost(requestParameters, initOverrides) {
+        const response = await this.generateAvatarStoryCreatorStoriesStoryIdActorAvatarPostRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * Get Episode
      */
     async getEpisodeStoryCreatorEpisodesEpisodeIdGetRaw(requestParameters, initOverrides) {
@@ -230,6 +259,35 @@ class StoryCreatorApi extends runtime.BaseAPI {
      */
     async getEpisodeStoryCreatorEpisodesEpisodeIdGet(requestParameters, initOverrides) {
         const response = await this.getEpisodeStoryCreatorEpisodesEpisodeIdGetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * Import Actor
+     */
+    async importActorStoryCreatorStoriesStoryIdActorImportPostRaw(requestParameters, initOverrides) {
+        if (requestParameters['storyId'] == null) {
+            throw new runtime.RequiredError('storyId', 'Required parameter "storyId" was null or undefined when calling importActorStoryCreatorStoriesStoryIdActorImportPost().');
+        }
+        if (requestParameters['storyCreatorImportActorRequest'] == null) {
+            throw new runtime.RequiredError('storyCreatorImportActorRequest', 'Required parameter "storyCreatorImportActorRequest" was null or undefined when calling importActorStoryCreatorStoriesStoryIdActorImportPost().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        const response = await this.request({
+            path: `/story-creator/stories/{story_id}/actor/import`.replace(`{${"story_id"}}`, encodeURIComponent(String(requestParameters['storyId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.StoryCreatorImportActorRequestToJSON)(requestParameters['storyCreatorImportActorRequest']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.StoryCreatorActorResponseFromJSON)(jsonValue));
+    }
+    /**
+     * Import Actor
+     */
+    async importActorStoryCreatorStoriesStoryIdActorImportPost(requestParameters, initOverrides) {
+        const response = await this.importActorStoryCreatorStoriesStoryIdActorImportPostRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**

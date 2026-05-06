@@ -209,6 +209,8 @@ export * from './StoryCreatorEpisodeListResponse';
 export * from './StoryCreatorEpisodePrice';
 export * from './StoryCreatorEpisodeResponse';
 export * from './StoryCreatorEpisodeWithPanelsResponse';
+export * from './StoryCreatorGenerateAvatarRequest';
+export * from './StoryCreatorImportActorRequest';
 export * from './StoryCreatorLockEpisodeRequest';
 export * from './StoryCreatorPanel';
 export * from './StoryCreatorPurchaseEpisodeRequest';

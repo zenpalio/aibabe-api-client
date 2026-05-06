@@ -235,6 +235,8 @@ src/models/StoryCreatorEpisodeListResponse.ts
 src/models/StoryCreatorEpisodePrice.ts
 src/models/StoryCreatorEpisodeResponse.ts
 src/models/StoryCreatorEpisodeWithPanelsResponse.ts
+src/models/StoryCreatorGenerateAvatarRequest.ts
+src/models/StoryCreatorImportActorRequest.ts
 src/models/StoryCreatorLockEpisodeRequest.ts
 src/models/StoryCreatorPanel.ts
 src/models/StoryCreatorPurchaseEpisodeRequest.ts

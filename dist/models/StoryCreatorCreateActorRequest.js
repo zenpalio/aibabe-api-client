@@ -40,7 +40,6 @@ function StoryCreatorCreateActorRequestFromJSONTyped(json, ignoreDiscriminator) 
         'displayName': json['display_name'],
         'role': (0, ActorRole_1.ActorRoleFromJSON)(json['role']),
         'avatar': json['avatar'] == null ? undefined : json['avatar'],
-        'chatbotId': json['chatbot_id'] == null ? undefined : json['chatbot_id'],
         'referenceAudioId': json['reference_audio_id'] == null ? undefined : json['reference_audio_id'],
     };
 }
@@ -55,7 +54,6 @@ function StoryCreatorCreateActorRequestToJSONTyped(value, ignoreDiscriminator = 
         'display_name': value['displayName'],
         'role': (0, ActorRole_1.ActorRoleToJSON)(value['role']),
         'avatar': value['avatar'],
-        'chatbot_id': value['chatbotId'],
         'reference_audio_id': value['referenceAudioId'],
     };
 }

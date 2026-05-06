@@ -39,12 +39,6 @@ export interface StoryCreatorActor {
      * @type {string}
      * @memberof StoryCreatorActor
      */
-    chatbotId?: string | null;
-    /**
-     *
-     * @type {string}
-     * @memberof StoryCreatorActor
-     */
     referenceAudioId?: string | null;
     /**
      *
@@ -58,6 +52,12 @@ export interface StoryCreatorActor {
      * @memberof StoryCreatorActor
      */
     storyId: string;
+    /**
+     *
+     * @type {string}
+     * @memberof StoryCreatorActor
+     */
+    chatbotId?: string | null;
 }
 /**
  * Check if a given object implements the StoryCreatorActor interface.

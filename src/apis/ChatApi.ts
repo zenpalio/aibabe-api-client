@@ -18,9 +18,11 @@ import type {
   ChatReponse,
   GetConversationMessagesResponse,
   GetConversationResponse,
+  GetImageModerationPromptResponse,
   HTTPValidationError,
   ListConversationsResponse,
   PatchChatMessageRequest,
+  PatchImageModerationPromptRequest,
   PostChatRequest,
   PostConversationSettingsRequest,
 } from '../models/index';
@@ -31,12 +33,16 @@ import {
     GetConversationMessagesResponseToJSON,
     GetConversationResponseFromJSON,
     GetConversationResponseToJSON,
+    GetImageModerationPromptResponseFromJSON,
+    GetImageModerationPromptResponseToJSON,
     HTTPValidationErrorFromJSON,
     HTTPValidationErrorToJSON,
     ListConversationsResponseFromJSON,
     ListConversationsResponseToJSON,
     PatchChatMessageRequestFromJSON,
     PatchChatMessageRequestToJSON,
+    PatchImageModerationPromptRequestFromJSON,
+    PatchImageModerationPromptRequestToJSON,
     PostChatRequestFromJSON,
     PostChatRequestToJSON,
     PostConversationSettingsRequestFromJSON,
@@ -94,6 +100,10 @@ export interface ResetConversationChatConversationConversationIdResetPostRequest
 export interface UpdateConversationSettingsChatConversationConversationIdSettingsPatchRequest {
     conversationId: string;
     postConversationSettingsRequest: PostConversationSettingsRequest;
+}
+
+export interface UpdateImageModerationPromptChatImageModerationPromptPatchRequest {
+    patchImageModerationPromptRequest: PatchImageModerationPromptRequest;
 }
 
 export interface UpdateMessageChatMessageMessageIdPatchRequest {
@@ -401,6 +411,32 @@ export class ChatApi extends runtime.BaseAPI {
     }
 
     /**
+     * Get Image Moderation Prompt
+     */
+    async getImageModerationPromptChatImageModerationPromptGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetImageModerationPromptResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/chat/image-moderation-prompt`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetImageModerationPromptResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Get Image Moderation Prompt
+     */
+    async getImageModerationPromptChatImageModerationPromptGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetImageModerationPromptResponse> {
+        const response = await this.getImageModerationPromptChatImageModerationPromptGetRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Regenerate
      */
     async regenerateChatChatbotIdMessageMessageIdRegeneratePostRaw(requestParameters: RegenerateChatChatbotIdMessageMessageIdRegeneratePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ChatReponse>> {
@@ -531,6 +567,46 @@ export class ChatApi extends runtime.BaseAPI {
      */
     async updateConversationSettingsChatConversationConversationIdSettingsPatch(requestParameters: UpdateConversationSettingsChatConversationConversationIdSettingsPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
         const response = await this.updateConversationSettingsChatConversationConversationIdSettingsPatchRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Update Image Moderation Prompt
+     */
+    async updateImageModerationPromptChatImageModerationPromptPatchRaw(requestParameters: UpdateImageModerationPromptChatImageModerationPromptPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
+        if (requestParameters['patchImageModerationPromptRequest'] == null) {
+            throw new runtime.RequiredError(
+                'patchImageModerationPromptRequest',
+                'Required parameter "patchImageModerationPromptRequest" was null or undefined when calling updateImageModerationPromptChatImageModerationPromptPatch().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        const response = await this.request({
+            path: `/chat/image-moderation-prompt`,
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: PatchImageModerationPromptRequestToJSON(requestParameters['patchImageModerationPromptRequest']),
+        }, initOverrides);
+
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse<any>(response);
+        } else {
+            return new runtime.TextApiResponse(response) as any;
+        }
+    }
+
+    /**
+     * Update Image Moderation Prompt
+     */
+    async updateImageModerationPromptChatImageModerationPromptPatch(requestParameters: UpdateImageModerationPromptChatImageModerationPromptPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
+        const response = await this.updateImageModerationPromptChatImageModerationPromptPatchRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

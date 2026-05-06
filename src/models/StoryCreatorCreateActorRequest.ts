@@ -50,12 +50,6 @@ export interface StoryCreatorCreateActorRequest {
      * @type {string}
      * @memberof StoryCreatorCreateActorRequest
      */
-    chatbotId?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof StoryCreatorCreateActorRequest
-     */
     referenceAudioId?: string | null;
 }
 
@@ -83,7 +77,6 @@ export function StoryCreatorCreateActorRequestFromJSONTyped(json: any, ignoreDis
         'displayName': json['display_name'],
         'role': ActorRoleFromJSON(json['role']),
         'avatar': json['avatar'] == null ? undefined : json['avatar'],
-        'chatbotId': json['chatbot_id'] == null ? undefined : json['chatbot_id'],
         'referenceAudioId': json['reference_audio_id'] == null ? undefined : json['reference_audio_id'],
     };
 }
@@ -102,7 +95,6 @@ export function StoryCreatorCreateActorRequestFromJSONTyped(json: any, ignoreDis
         'display_name': value['displayName'],
         'role': ActorRoleToJSON(value['role']),
         'avatar': value['avatar'],
-        'chatbot_id': value['chatbotId'],
         'reference_audio_id': value['referenceAudioId'],
     };
 }
