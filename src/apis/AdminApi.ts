@@ -15,17 +15,13 @@
 
 import * as runtime from '../runtime';
 import type {
-  GetImageModerationPromptResponse,
   GetQualityControlImage,
   GetQualityControlRequest,
   GiftCodeType,
   HTTPValidationError,
-  PatchImageModerationPromptRequest,
   UserInfoResponse,
 } from '../models/index';
 import {
-    GetImageModerationPromptResponseFromJSON,
-    GetImageModerationPromptResponseToJSON,
     GetQualityControlImageFromJSON,
     GetQualityControlImageToJSON,
     GetQualityControlRequestFromJSON,
@@ -34,8 +30,6 @@ import {
     GiftCodeTypeToJSON,
     HTTPValidationErrorFromJSON,
     HTTPValidationErrorToJSON,
-    PatchImageModerationPromptRequestFromJSON,
-    PatchImageModerationPromptRequestToJSON,
     UserInfoResponseFromJSON,
     UserInfoResponseToJSON,
 } from '../models/index';
@@ -64,10 +58,6 @@ export interface GetTokenBalanceAdminTokenBalanceEmailGetRequest {
 
 export interface ImpersonateAdminImpersonateEmailPostRequest {
     email: string;
-}
-
-export interface UpdateImageModerationPromptAdminImageModerationPromptPatchRequest {
-    patchImageModerationPromptRequest: PatchImageModerationPromptRequest;
 }
 
 /**
@@ -247,32 +237,6 @@ export class AdminApi extends runtime.BaseAPI {
     }
 
     /**
-     * Get Image Moderation Prompt
-     */
-    async getImageModerationPromptAdminImageModerationPromptGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetImageModerationPromptResponse>> {
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/admin/image-moderation-prompt`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => GetImageModerationPromptResponseFromJSON(jsonValue));
-    }
-
-    /**
-     * Get Image Moderation Prompt
-     */
-    async getImageModerationPromptAdminImageModerationPromptGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetImageModerationPromptResponse> {
-        const response = await this.getImageModerationPromptAdminImageModerationPromptGetRaw(initOverrides);
-        return await response.value();
-    }
-
-    /**
      * Get Quality Control Images
      */
     async getQualityControlImagesAdminImageQualityControlPostRaw(requestParameters: GetQualityControlImagesAdminImageQualityControlPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<GetQualityControlImage>>> {
@@ -405,46 +369,6 @@ export class AdminApi extends runtime.BaseAPI {
      */
     async resetUserClaimablesAdminUserResetClaimablesPost(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
         const response = await this.resetUserClaimablesAdminUserResetClaimablesPostRaw(initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * Update Image Moderation Prompt
-     */
-    async updateImageModerationPromptAdminImageModerationPromptPatchRaw(requestParameters: UpdateImageModerationPromptAdminImageModerationPromptPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
-        if (requestParameters['patchImageModerationPromptRequest'] == null) {
-            throw new runtime.RequiredError(
-                'patchImageModerationPromptRequest',
-                'Required parameter "patchImageModerationPromptRequest" was null or undefined when calling updateImageModerationPromptAdminImageModerationPromptPatch().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        const response = await this.request({
-            path: `/admin/image-moderation-prompt`,
-            method: 'PATCH',
-            headers: headerParameters,
-            query: queryParameters,
-            body: PatchImageModerationPromptRequestToJSON(requestParameters['patchImageModerationPromptRequest']),
-        }, initOverrides);
-
-        if (this.isJsonMime(response.headers.get('content-type'))) {
-            return new runtime.JSONApiResponse<any>(response);
-        } else {
-            return new runtime.TextApiResponse(response) as any;
-        }
-    }
-
-    /**
-     * Update Image Moderation Prompt
-     */
-    async updateImageModerationPromptAdminImageModerationPromptPatch(requestParameters: UpdateImageModerationPromptAdminImageModerationPromptPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
-        const response = await this.updateImageModerationPromptAdminImageModerationPromptPatchRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
