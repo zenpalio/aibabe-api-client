@@ -18,7 +18,9 @@ exports.StoryCreatorEpisodeFromJSON = StoryCreatorEpisodeFromJSON;
 exports.StoryCreatorEpisodeFromJSONTyped = StoryCreatorEpisodeFromJSONTyped;
 exports.StoryCreatorEpisodeToJSON = StoryCreatorEpisodeToJSON;
 exports.StoryCreatorEpisodeToJSONTyped = StoryCreatorEpisodeToJSONTyped;
+const StoryCreatorEpisodePrice_1 = require("./StoryCreatorEpisodePrice");
 const EpisodeVisibility_1 = require("./EpisodeVisibility");
+const AccessType_1 = require("./AccessType");
 /**
  * Check if a given object implements the StoryCreatorEpisode interface.
  */
@@ -48,6 +50,8 @@ function StoryCreatorEpisodeFromJSONTyped(json, ignoreDiscriminator) {
         'id': json['id'],
         'visibility': (0, EpisodeVisibility_1.EpisodeVisibilityFromJSON)(json['visibility']),
         'episodeIndex': json['episode_index'],
+        'accessType': json['access_type'] == null ? undefined : (0, AccessType_1.AccessTypeFromJSON)(json['access_type']),
+        'prices': json['prices'] == null ? undefined : (json['prices'].map(StoryCreatorEpisodePrice_1.StoryCreatorEpisodePriceFromJSON)),
     };
 }
 function StoryCreatorEpisodeToJSON(json) {
@@ -65,6 +69,8 @@ function StoryCreatorEpisodeToJSONTyped(value, ignoreDiscriminator = false) {
         'id': value['id'],
         'visibility': (0, EpisodeVisibility_1.EpisodeVisibilityToJSON)(value['visibility']),
         'episode_index': value['episodeIndex'],
+        'access_type': (0, AccessType_1.AccessTypeToJSON)(value['accessType']),
+        'prices': value['prices'] == null ? undefined : (value['prices'].map(StoryCreatorEpisodePrice_1.StoryCreatorEpisodePriceToJSON)),
     };
 }
 //# sourceMappingURL=StoryCreatorEpisode.js.map

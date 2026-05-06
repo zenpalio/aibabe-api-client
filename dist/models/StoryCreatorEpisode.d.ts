@@ -9,7 +9,9 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { StoryCreatorEpisodePrice } from './StoryCreatorEpisodePrice';
 import type { EpisodeVisibility } from './EpisodeVisibility';
+import type { AccessType } from './AccessType';
 /**
  *
  * @export
@@ -58,6 +60,18 @@ export interface StoryCreatorEpisode {
      * @memberof StoryCreatorEpisode
      */
     episodeIndex: number;
+    /**
+     *
+     * @type {AccessType}
+     * @memberof StoryCreatorEpisode
+     */
+    accessType?: AccessType | null;
+    /**
+     *
+     * @type {Array<StoryCreatorEpisodePrice>}
+     * @memberof StoryCreatorEpisode
+     */
+    prices?: Array<StoryCreatorEpisodePrice>;
 }
 /**
  * Check if a given object implements the StoryCreatorEpisode interface.

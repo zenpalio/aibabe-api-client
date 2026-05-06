@@ -106,6 +106,7 @@ export const ExceptionCode = {
     MissingOrderIndex: 'missing_order_index',
     StoryNotFoundOrNotAuthorized: 'story_not_found_or_not_authorized',
     EpisodeNotFoundOrNotAuthorized: 'episode_not_found_or_not_authorized',
+    EpisodeIsFree: 'episode_is_free',
     InvalidIndices: 'invalid_indices',
     ShareContentTypeUnsupported: 'share_content_type_unsupported',
     ShareVideoNonOwnedForbidden: 'share_video_non_owned_forbidden',

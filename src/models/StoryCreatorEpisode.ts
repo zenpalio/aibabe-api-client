@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { StoryCreatorEpisodePrice } from './StoryCreatorEpisodePrice';
+import {
+    StoryCreatorEpisodePriceFromJSON,
+    StoryCreatorEpisodePriceFromJSONTyped,
+    StoryCreatorEpisodePriceToJSON,
+    StoryCreatorEpisodePriceToJSONTyped,
+} from './StoryCreatorEpisodePrice';
 import type { EpisodeVisibility } from './EpisodeVisibility';
 import {
     EpisodeVisibilityFromJSON,
@@ -20,6 +27,13 @@ import {
     EpisodeVisibilityToJSON,
     EpisodeVisibilityToJSONTyped,
 } from './EpisodeVisibility';
+import type { AccessType } from './AccessType';
+import {
+    AccessTypeFromJSON,
+    AccessTypeFromJSONTyped,
+    AccessTypeToJSON,
+    AccessTypeToJSONTyped,
+} from './AccessType';
 
 /**
  * 
@@ -69,6 +83,18 @@ export interface StoryCreatorEpisode {
      * @memberof StoryCreatorEpisode
      */
     episodeIndex: number;
+    /**
+     * 
+     * @type {AccessType}
+     * @memberof StoryCreatorEpisode
+     */
+    accessType?: AccessType | null;
+    /**
+     * 
+     * @type {Array<StoryCreatorEpisodePrice>}
+     * @memberof StoryCreatorEpisode
+     */
+    prices?: Array<StoryCreatorEpisodePrice>;
 }
 
 
@@ -101,6 +127,8 @@ export function StoryCreatorEpisodeFromJSONTyped(json: any, ignoreDiscriminator:
         'id': json['id'],
         'visibility': EpisodeVisibilityFromJSON(json['visibility']),
         'episodeIndex': json['episode_index'],
+        'accessType': json['access_type'] == null ? undefined : AccessTypeFromJSON(json['access_type']),
+        'prices': json['prices'] == null ? undefined : ((json['prices'] as Array<any>).map(StoryCreatorEpisodePriceFromJSON)),
     };
 }
 
@@ -122,6 +150,8 @@ export function StoryCreatorEpisodeFromJSONTyped(json: any, ignoreDiscriminator:
         'id': value['id'],
         'visibility': EpisodeVisibilityToJSON(value['visibility']),
         'episode_index': value['episodeIndex'],
+        'access_type': AccessTypeToJSON(value['accessType']),
+        'prices': value['prices'] == null ? undefined : ((value['prices'] as Array<any>).map(StoryCreatorEpisodePriceToJSON)),
     };
 }
 

@@ -24,6 +24,7 @@ src/apis/VoiceApi.ts
 src/apis/WebhookApi.ts
 src/apis/index.ts
 src/index.ts
+src/models/AccessType.ts
 src/models/ActorRole.ts
 src/models/AddonPrice.ts
 src/models/AnimeLora.ts
@@ -65,6 +66,7 @@ src/models/DeleteUserRequest.ts
 src/models/DetailedWallPost.ts
 src/models/DonationNotification.ts
 src/models/EpisodePanelType.ts
+src/models/EpisodePaymentType.ts
 src/models/EpisodeVisibility.ts
 src/models/Ethnicity.ts
 src/models/ExceptionCode.ts
@@ -230,9 +232,13 @@ src/models/StoryCreatorCreateStoryResponse.ts
 src/models/StoryCreatorEpisode.ts
 src/models/StoryCreatorEpisodeBase.ts
 src/models/StoryCreatorEpisodeListResponse.ts
+src/models/StoryCreatorEpisodePrice.ts
 src/models/StoryCreatorEpisodeResponse.ts
 src/models/StoryCreatorEpisodeWithPanelsResponse.ts
+src/models/StoryCreatorLockEpisodeRequest.ts
 src/models/StoryCreatorPanel.ts
+src/models/StoryCreatorPurchaseEpisodeRequest.ts
+src/models/StoryCreatorPurchaseEpisodeResponse.ts
 src/models/StoryCreatorSaveEpisodePanel.ts
 src/models/StoryCreatorSaveEpisodeRequest.ts
 src/models/StoryCreatorStory.ts

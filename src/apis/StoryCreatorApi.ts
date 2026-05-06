@@ -25,6 +25,9 @@ import type {
   StoryCreatorEpisodeListResponse,
   StoryCreatorEpisodeResponse,
   StoryCreatorEpisodeWithPanelsResponse,
+  StoryCreatorLockEpisodeRequest,
+  StoryCreatorPurchaseEpisodeRequest,
+  StoryCreatorPurchaseEpisodeResponse,
   StoryCreatorSaveEpisodeRequest,
   StoryCreatorStoryListResponse,
   StoryCreatorStoryResponse,
@@ -53,6 +56,12 @@ import {
     StoryCreatorEpisodeResponseToJSON,
     StoryCreatorEpisodeWithPanelsResponseFromJSON,
     StoryCreatorEpisodeWithPanelsResponseToJSON,
+    StoryCreatorLockEpisodeRequestFromJSON,
+    StoryCreatorLockEpisodeRequestToJSON,
+    StoryCreatorPurchaseEpisodeRequestFromJSON,
+    StoryCreatorPurchaseEpisodeRequestToJSON,
+    StoryCreatorPurchaseEpisodeResponseFromJSON,
+    StoryCreatorPurchaseEpisodeResponseToJSON,
     StoryCreatorSaveEpisodeRequestFromJSON,
     StoryCreatorSaveEpisodeRequestToJSON,
     StoryCreatorStoryListResponseFromJSON,
@@ -103,6 +112,16 @@ export interface ListActorsStoryCreatorStoriesStoryIdActorsGetRequest {
 
 export interface ListEpisodesStoryCreatorStoriesStoryIdEpisodesGetRequest {
     storyId: string;
+}
+
+export interface LockEpisodeStoryCreatorEpisodesEpisodeIdLockPatchRequest {
+    episodeId: string;
+    storyCreatorLockEpisodeRequest: StoryCreatorLockEpisodeRequest;
+}
+
+export interface PurchaseEpisodeStoryCreatorEpisodesEpisodeIdPurchasePostRequest {
+    episodeId: string;
+    storyCreatorPurchaseEpisodeRequest: StoryCreatorPurchaseEpisodeRequest;
 }
 
 export interface SaveEpisodeStoryCreatorEpisodesEpisodeIdPutRequest {
@@ -472,6 +491,92 @@ export class StoryCreatorApi extends runtime.BaseAPI {
      */
     async listStoriesStoryCreatorStoriesGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StoryCreatorStoryListResponse> {
         const response = await this.listStoriesStoryCreatorStoriesGetRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Lock Episode
+     */
+    async lockEpisodeStoryCreatorEpisodesEpisodeIdLockPatchRaw(requestParameters: LockEpisodeStoryCreatorEpisodesEpisodeIdLockPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StoryCreatorEpisodeResponse>> {
+        if (requestParameters['episodeId'] == null) {
+            throw new runtime.RequiredError(
+                'episodeId',
+                'Required parameter "episodeId" was null or undefined when calling lockEpisodeStoryCreatorEpisodesEpisodeIdLockPatch().'
+            );
+        }
+
+        if (requestParameters['storyCreatorLockEpisodeRequest'] == null) {
+            throw new runtime.RequiredError(
+                'storyCreatorLockEpisodeRequest',
+                'Required parameter "storyCreatorLockEpisodeRequest" was null or undefined when calling lockEpisodeStoryCreatorEpisodesEpisodeIdLockPatch().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        const response = await this.request({
+            path: `/story-creator/episodes/{episode_id}/lock`.replace(`{${"episode_id"}}`, encodeURIComponent(String(requestParameters['episodeId']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: StoryCreatorLockEpisodeRequestToJSON(requestParameters['storyCreatorLockEpisodeRequest']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => StoryCreatorEpisodeResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Lock Episode
+     */
+    async lockEpisodeStoryCreatorEpisodesEpisodeIdLockPatch(requestParameters: LockEpisodeStoryCreatorEpisodesEpisodeIdLockPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StoryCreatorEpisodeResponse> {
+        const response = await this.lockEpisodeStoryCreatorEpisodesEpisodeIdLockPatchRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Purchase Episode
+     */
+    async purchaseEpisodeStoryCreatorEpisodesEpisodeIdPurchasePostRaw(requestParameters: PurchaseEpisodeStoryCreatorEpisodesEpisodeIdPurchasePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StoryCreatorPurchaseEpisodeResponse>> {
+        if (requestParameters['episodeId'] == null) {
+            throw new runtime.RequiredError(
+                'episodeId',
+                'Required parameter "episodeId" was null or undefined when calling purchaseEpisodeStoryCreatorEpisodesEpisodeIdPurchasePost().'
+            );
+        }
+
+        if (requestParameters['storyCreatorPurchaseEpisodeRequest'] == null) {
+            throw new runtime.RequiredError(
+                'storyCreatorPurchaseEpisodeRequest',
+                'Required parameter "storyCreatorPurchaseEpisodeRequest" was null or undefined when calling purchaseEpisodeStoryCreatorEpisodesEpisodeIdPurchasePost().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        const response = await this.request({
+            path: `/story-creator/episodes/{episode_id}/purchase`.replace(`{${"episode_id"}}`, encodeURIComponent(String(requestParameters['episodeId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: StoryCreatorPurchaseEpisodeRequestToJSON(requestParameters['storyCreatorPurchaseEpisodeRequest']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => StoryCreatorPurchaseEpisodeResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Purchase Episode
+     */
+    async purchaseEpisodeStoryCreatorEpisodesEpisodeIdPurchasePost(requestParameters: PurchaseEpisodeStoryCreatorEpisodesEpisodeIdPurchasePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StoryCreatorPurchaseEpisodeResponse> {
+        const response = await this.purchaseEpisodeStoryCreatorEpisodesEpisodeIdPurchasePostRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

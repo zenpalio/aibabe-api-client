@@ -102,6 +102,7 @@ export declare const ExceptionCode: {
     readonly MissingOrderIndex: "missing_order_index";
     readonly StoryNotFoundOrNotAuthorized: "story_not_found_or_not_authorized";
     readonly EpisodeNotFoundOrNotAuthorized: "episode_not_found_or_not_authorized";
+    readonly EpisodeIsFree: "episode_is_free";
     readonly InvalidIndices: "invalid_indices";
     readonly ShareContentTypeUnsupported: "share_content_type_unsupported";
     readonly ShareVideoNonOwnedForbidden: "share_video_non_owned_forbidden";
