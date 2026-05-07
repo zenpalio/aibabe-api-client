@@ -38,13 +38,11 @@ function instanceOfGetGalleryResponseItemsInner(value) {
         return false;
     if (!('id' in value) || value['id'] === undefined)
         return false;
-    if (!('urls' in value) || value['urls'] === undefined)
+    if (!('url' in value) || value['url'] === undefined)
         return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined)
         return false;
     if (!('chatbot' in value) || value['chatbot'] === undefined)
-        return false;
-    if (!('imageIds' in value) || value['imageIds'] === undefined)
         return false;
     if (!('eta' in value) || value['eta'] === undefined)
         return false;
@@ -58,6 +56,8 @@ function instanceOfGetGalleryResponseItemsInner(value) {
         return false;
     if (!('originalImageId' in value) || value['originalImageId'] === undefined)
         return false;
+    if (!('originalImageUrl' in value) || value['originalImageUrl'] === undefined)
+        return false;
     return true;
 }
 function GetGalleryResponseItemsInnerFromJSON(json) {
@@ -70,17 +70,17 @@ function GetGalleryResponseItemsInnerFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'type': json['type'],
         'id': json['id'],
-        'urls': json['urls'],
+        'url': json['url'],
         'createdAt': (new Date(json['created_at'])),
         'chatbot': (0, ChatbotPreview_1.ChatbotPreviewFromJSON)(json['chatbot']),
         'postDetails': json['post_details'] == null ? undefined : (0, PostDetails_1.PostDetailsFromJSON)(json['post_details']),
-        'imageIds': json['image_ids'],
         'eta': json['eta'],
         'status': (0, VideoGenerationStatus_1.VideoGenerationStatusFromJSON)(json['status']),
         'generationId': json['generation_id'],
         'seenByUser': json['seen_by_user'],
         'artStyle': (0, ArtStyle_1.ArtStyleFromJSON)(json['art_style']),
         'originalImageId': json['original_image_id'],
+        'originalImageUrl': json['original_image_url'],
     };
 }
 function GetGalleryResponseItemsInnerToJSON(json) {
@@ -93,17 +93,17 @@ function GetGalleryResponseItemsInnerToJSONTyped(value, ignoreDiscriminator = fa
     return {
         'type': value['type'],
         'id': value['id'],
-        'urls': value['urls'],
+        'url': value['url'],
         'created_at': ((value['createdAt']).toISOString()),
         'chatbot': (0, ChatbotPreview_1.ChatbotPreviewToJSON)(value['chatbot']),
         'post_details': (0, PostDetails_1.PostDetailsToJSON)(value['postDetails']),
-        'image_ids': value['imageIds'],
         'eta': value['eta'],
         'status': (0, VideoGenerationStatus_1.VideoGenerationStatusToJSON)(value['status']),
         'generation_id': value['generationId'],
         'seen_by_user': value['seenByUser'],
         'art_style': (0, ArtStyle_1.ArtStyleToJSON)(value['artStyle']),
         'original_image_id': value['originalImageId'],
+        'original_image_url': value['originalImageUrl'],
     };
 }
 //# sourceMappingURL=GetGalleryResponseItemsInner.js.map

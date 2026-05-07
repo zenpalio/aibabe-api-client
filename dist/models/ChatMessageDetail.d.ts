@@ -42,7 +42,7 @@ export interface ChatMessageDetail {
      * @type {string}
      * @memberof ChatMessageDetail
      */
-    content: string;
+    url: string;
     /**
      *
      * @type {ChatRole}

@@ -48,6 +48,7 @@ var __importStar = (this && this.__importStar) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.VoiceApi = void 0;
 const runtime = __importStar(require("../runtime"));
+const index_1 = require("../models/index");
 /**
  *
  */
@@ -127,6 +128,68 @@ class VoiceApi extends runtime.BaseAPI {
      */
     async createReferenceVoiceReferencesPost(requestParameters, initOverrides) {
         const response = await this.createReferenceVoiceReferencesPostRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * Generate Sound Effects
+     */
+    async generateSoundEffectsVoiceSfxPostRaw(requestParameters, initOverrides) {
+        if (requestParameters['soundEffectsRequest'] == null) {
+            throw new runtime.RequiredError('soundEffectsRequest', 'Required parameter "soundEffectsRequest" was null or undefined when calling generateSoundEffectsVoiceSfxPost().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        const response = await this.request({
+            path: `/voice/sfx`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.SoundEffectsRequestToJSON)(requestParameters['soundEffectsRequest']),
+        }, initOverrides);
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse(response);
+        }
+        else {
+            return new runtime.TextApiResponse(response);
+        }
+    }
+    /**
+     * Generate Sound Effects
+     */
+    async generateSoundEffectsVoiceSfxPost(requestParameters, initOverrides) {
+        const response = await this.generateSoundEffectsVoiceSfxPostRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * Generate Text To Speech
+     */
+    async generateTextToSpeechVoiceTextToSpeechPostRaw(requestParameters, initOverrides) {
+        if (requestParameters['textToSpeechRequest'] == null) {
+            throw new runtime.RequiredError('textToSpeechRequest', 'Required parameter "textToSpeechRequest" was null or undefined when calling generateTextToSpeechVoiceTextToSpeechPost().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        const response = await this.request({
+            path: `/voice/text-to-speech`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.TextToSpeechRequestToJSON)(requestParameters['textToSpeechRequest']),
+        }, initOverrides);
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse(response);
+        }
+        else {
+            return new runtime.TextApiResponse(response);
+        }
+    }
+    /**
+     * Generate Text To Speech
+     */
+    async generateTextToSpeechVoiceTextToSpeechPost(requestParameters, initOverrides) {
+        const response = await this.generateTextToSpeechVoiceTextToSpeechPostRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
