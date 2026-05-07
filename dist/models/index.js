@@ -254,6 +254,7 @@ __exportStar(require("./TagImageLora"), exports);
 __exportStar(require("./TagModel"), exports);
 __exportStar(require("./TagVideoLora"), exports);
 __exportStar(require("./TagsExploreTypesGet200ResponseInner"), exports);
+__exportStar(require("./TextToSpeechRequest"), exports);
 __exportStar(require("./TokenReconciliationResponse"), exports);
 __exportStar(require("./Type"), exports);
 __exportStar(require("./UserClaimType"), exports);

@@ -262,6 +262,7 @@ src/models/TagImageLora.ts
 src/models/TagModel.ts
 src/models/TagVideoLora.ts
 src/models/TagsExploreTypesGet200ResponseInner.ts
+src/models/TextToSpeechRequest.ts
 src/models/TokenReconciliationResponse.ts
 src/models/Type.ts
 src/models/UserClaimType.ts

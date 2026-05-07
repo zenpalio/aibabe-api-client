@@ -236,6 +236,7 @@ export * from './TagImageLora';
 export * from './TagModel';
 export * from './TagVideoLora';
 export * from './TagsExploreTypesGet200ResponseInner';
+export * from './TextToSpeechRequest';
 export * from './TokenReconciliationResponse';
 export * from './Type';
 export * from './UserClaimType';
