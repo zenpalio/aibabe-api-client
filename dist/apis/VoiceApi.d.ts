@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { Language, TextToSpeechRequest } from '../models/index';
+import type { Language, SoundEffectsRequest, TextToSpeechRequest } from '../models/index';
 export interface CreateReferenceVoiceReferencesPostRequest {
     name: string;
     audio: Blob;
@@ -18,6 +18,9 @@ export interface CreateReferenceVoiceReferencesPostRequest {
     referenceText: string;
     locale: Language;
     description?: string;
+}
+export interface GenerateSoundEffectsVoiceSfxPostRequest {
+    soundEffectsRequest: SoundEffectsRequest;
 }
 export interface GenerateTextToSpeechVoiceTextToSpeechPostRequest {
     textToSpeechRequest: TextToSpeechRequest;
@@ -41,6 +44,14 @@ export declare class VoiceApi extends runtime.BaseAPI {
      * Create Reference
      */
     createReferenceVoiceReferencesPost(requestParameters: CreateReferenceVoiceReferencesPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
+    /**
+     * Generate Sound Effects
+     */
+    generateSoundEffectsVoiceSfxPostRaw(requestParameters: GenerateSoundEffectsVoiceSfxPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
+    /**
+     * Generate Sound Effects
+     */
+    generateSoundEffectsVoiceSfxPost(requestParameters: GenerateSoundEffectsVoiceSfxPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
     /**
      * Generate Text To Speech
      */

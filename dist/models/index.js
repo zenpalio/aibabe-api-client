@@ -210,6 +210,7 @@ __exportStar(require("./SeduceDifficulty"), exports);
 __exportStar(require("./SendCustomMemoracekRequest"), exports);
 __exportStar(require("./SendMemoracekRequest"), exports);
 __exportStar(require("./SortFilter"), exports);
+__exportStar(require("./SoundEffectsRequest"), exports);
 __exportStar(require("./SpecialAddonOffer"), exports);
 __exportStar(require("./SpecialFeatures"), exports);
 __exportStar(require("./SpecialSubscriptionOffer"), exports);

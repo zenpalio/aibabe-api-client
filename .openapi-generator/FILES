@@ -218,6 +218,7 @@ src/models/SeduceDifficulty.ts
 src/models/SendCustomMemoracekRequest.ts
 src/models/SendMemoracekRequest.ts
 src/models/SortFilter.ts
+src/models/SoundEffectsRequest.ts
 src/models/SpecialAddonOffer.ts
 src/models/SpecialFeatures.ts
 src/models/SpecialSubscriptionOffer.ts

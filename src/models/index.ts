@@ -194,6 +194,7 @@ export * from './SeduceDifficulty';
 export * from './SendCustomMemoracekRequest';
 export * from './SendMemoracekRequest';
 export * from './SortFilter';
+export * from './SoundEffectsRequest';
 export * from './SpecialAddonOffer';
 export * from './SpecialFeatures';
 export * from './SpecialSubscriptionOffer';
