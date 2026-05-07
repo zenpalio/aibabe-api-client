@@ -98,6 +98,7 @@ exports.ExceptionCode = {
     VideoRetrieveFailed: 'video_retrieve_failed',
     VideoGenerationLimitReached: 'video_generation_limit_reached',
     GenerationTagsNotFound: 'generation_tags_not_found',
+    OriginalImageNotFound: 'original_image_not_found',
     ArtStyleNotFound: 'art_style_not_found',
     VerificationCodeExprired: 'verification_code_exprired',
     VerificationCodeInvalid: 'verification_code_invalid',
