@@ -28,7 +28,7 @@ export interface GenerateTextToSpeechVoiceTextToSpeechPostRequest {
 export interface GenerateVoiceChatVoiceMessageMessageIdPostRequest {
     messageId: string;
 }
-export interface GetAudioVoiceAudioIdGetRequest {
+export interface GetAudioVoiceDetailsAudioIdGetRequest {
     audioId: string;
 }
 export interface ListAudioVoiceListGetRequest {
@@ -78,11 +78,11 @@ export declare class VoiceApi extends runtime.BaseAPI {
     /**
      * Get Audio
      */
-    getAudioVoiceAudioIdGetRaw(requestParameters: GetAudioVoiceAudioIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GeneratedAudioItem>>;
+    getAudioVoiceDetailsAudioIdGetRaw(requestParameters: GetAudioVoiceDetailsAudioIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GeneratedAudioItem>>;
     /**
      * Get Audio
      */
-    getAudioVoiceAudioIdGet(requestParameters: GetAudioVoiceAudioIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GeneratedAudioItem>;
+    getAudioVoiceDetailsAudioIdGet(requestParameters: GetAudioVoiceDetailsAudioIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GeneratedAudioItem>;
     /**
      * List Audio
      */

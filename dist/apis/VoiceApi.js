@@ -214,14 +214,14 @@ class VoiceApi extends runtime.BaseAPI {
     /**
      * Get Audio
      */
-    async getAudioVoiceAudioIdGetRaw(requestParameters, initOverrides) {
+    async getAudioVoiceDetailsAudioIdGetRaw(requestParameters, initOverrides) {
         if (requestParameters['audioId'] == null) {
-            throw new runtime.RequiredError('audioId', 'Required parameter "audioId" was null or undefined when calling getAudioVoiceAudioIdGet().');
+            throw new runtime.RequiredError('audioId', 'Required parameter "audioId" was null or undefined when calling getAudioVoiceDetailsAudioIdGet().');
         }
         const queryParameters = {};
         const headerParameters = {};
         const response = await this.request({
-            path: `/voice/{audio_id}`.replace(`{${"audio_id"}}`, encodeURIComponent(String(requestParameters['audioId']))),
+            path: `/voice/details/{audio_id}`.replace(`{${"audio_id"}}`, encodeURIComponent(String(requestParameters['audioId']))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -231,8 +231,8 @@ class VoiceApi extends runtime.BaseAPI {
     /**
      * Get Audio
      */
-    async getAudioVoiceAudioIdGet(requestParameters, initOverrides) {
-        const response = await this.getAudioVoiceAudioIdGetRaw(requestParameters, initOverrides);
+    async getAudioVoiceDetailsAudioIdGet(requestParameters, initOverrides) {
+        const response = await this.getAudioVoiceDetailsAudioIdGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**

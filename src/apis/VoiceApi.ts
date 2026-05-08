@@ -64,7 +64,7 @@ export interface GenerateVoiceChatVoiceMessageMessageIdPostRequest {
     messageId: string;
 }
 
-export interface GetAudioVoiceAudioIdGetRequest {
+export interface GetAudioVoiceDetailsAudioIdGetRequest {
     audioId: string;
 }
 
@@ -303,11 +303,11 @@ export class VoiceApi extends runtime.BaseAPI {
     /**
      * Get Audio
      */
-    async getAudioVoiceAudioIdGetRaw(requestParameters: GetAudioVoiceAudioIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GeneratedAudioItem>> {
+    async getAudioVoiceDetailsAudioIdGetRaw(requestParameters: GetAudioVoiceDetailsAudioIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GeneratedAudioItem>> {
         if (requestParameters['audioId'] == null) {
             throw new runtime.RequiredError(
                 'audioId',
-                'Required parameter "audioId" was null or undefined when calling getAudioVoiceAudioIdGet().'
+                'Required parameter "audioId" was null or undefined when calling getAudioVoiceDetailsAudioIdGet().'
             );
         }
 
@@ -316,7 +316,7 @@ export class VoiceApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         const response = await this.request({
-            path: `/voice/{audio_id}`.replace(`{${"audio_id"}}`, encodeURIComponent(String(requestParameters['audioId']))),
+            path: `/voice/details/{audio_id}`.replace(`{${"audio_id"}}`, encodeURIComponent(String(requestParameters['audioId']))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -328,8 +328,8 @@ export class VoiceApi extends runtime.BaseAPI {
     /**
      * Get Audio
      */
-    async getAudioVoiceAudioIdGet(requestParameters: GetAudioVoiceAudioIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GeneratedAudioItem> {
-        const response = await this.getAudioVoiceAudioIdGetRaw(requestParameters, initOverrides);
+    async getAudioVoiceDetailsAudioIdGet(requestParameters: GetAudioVoiceDetailsAudioIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GeneratedAudioItem> {
+        const response = await this.getAudioVoiceDetailsAudioIdGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
