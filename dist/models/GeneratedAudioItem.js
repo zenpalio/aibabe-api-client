@@ -46,6 +46,7 @@ function GeneratedAudioItemFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'audioId': json['audio_id'],
         'url': json['url'],
+        'content': json['content'] == null ? undefined : json['content'],
         'status': (0, GeneratedAudioStatus_1.GeneratedAudioStatusFromJSON)(json['status']),
         'generationType': (0, GeneratedAudioGenerationType_1.GeneratedAudioGenerationTypeFromJSON)(json['generation_type']),
         'createdAt': (new Date(json['created_at'])),
@@ -61,6 +62,7 @@ function GeneratedAudioItemToJSONTyped(value, ignoreDiscriminator = false) {
     return {
         'audio_id': value['audioId'],
         'url': value['url'],
+        'content': value['content'],
         'status': (0, GeneratedAudioStatus_1.GeneratedAudioStatusToJSON)(value['status']),
         'generation_type': (0, GeneratedAudioGenerationType_1.GeneratedAudioGenerationTypeToJSON)(value['generationType']),
         'created_at': ((value['createdAt']).toISOString()),

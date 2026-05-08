@@ -31,6 +31,12 @@ export interface GeneratedAudioItem {
     url: string | null;
     /**
      *
+     * @type {string}
+     * @memberof GeneratedAudioItem
+     */
+    content?: string | null;
+    /**
+     *
      * @type {GeneratedAudioStatus}
      * @memberof GeneratedAudioItem
      */

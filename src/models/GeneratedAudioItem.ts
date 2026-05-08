@@ -48,6 +48,12 @@ export interface GeneratedAudioItem {
     url: string | null;
     /**
      * 
+     * @type {string}
+     * @memberof GeneratedAudioItem
+     */
+    content?: string | null;
+    /**
+     * 
      * @type {GeneratedAudioStatus}
      * @memberof GeneratedAudioItem
      */
@@ -92,6 +98,7 @@ export function GeneratedAudioItemFromJSONTyped(json: any, ignoreDiscriminator: 
         
         'audioId': json['audio_id'],
         'url': json['url'],
+        'content': json['content'] == null ? undefined : json['content'],
         'status': GeneratedAudioStatusFromJSON(json['status']),
         'generationType': GeneratedAudioGenerationTypeFromJSON(json['generation_type']),
         'createdAt': (new Date(json['created_at'])),
@@ -111,6 +118,7 @@ export function GeneratedAudioItemFromJSONTyped(json: any, ignoreDiscriminator: 
         
         'audio_id': value['audioId'],
         'url': value['url'],
+        'content': value['content'],
         'status': GeneratedAudioStatusToJSON(value['status']),
         'generation_type': GeneratedAudioGenerationTypeToJSON(value['generationType']),
         'created_at': ((value['createdAt']).toISOString()),
