@@ -17,18 +17,24 @@ import * as runtime from '../runtime';
 import type {
   HTTPValidationError,
   Language,
+  SoundEffectResponse,
   SoundEffectsRequest,
   TextToSpeechRequest,
+  TextToSpeechResponse,
 } from '../models/index';
 import {
     HTTPValidationErrorFromJSON,
     HTTPValidationErrorToJSON,
     LanguageFromJSON,
     LanguageToJSON,
+    SoundEffectResponseFromJSON,
+    SoundEffectResponseToJSON,
     SoundEffectsRequestFromJSON,
     SoundEffectsRequestToJSON,
     TextToSpeechRequestFromJSON,
     TextToSpeechRequestToJSON,
+    TextToSpeechResponseFromJSON,
+    TextToSpeechResponseToJSON,
 } from '../models/index';
 
 export interface CreateReferenceVoiceReferencesPostRequest {
@@ -173,7 +179,7 @@ export class VoiceApi extends runtime.BaseAPI {
     /**
      * Generate Sound Effects
      */
-    async generateSoundEffectsVoiceSfxPostRaw(requestParameters: GenerateSoundEffectsVoiceSfxPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
+    async generateSoundEffectsVoiceSfxPostRaw(requestParameters: GenerateSoundEffectsVoiceSfxPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SoundEffectResponse>> {
         if (requestParameters['soundEffectsRequest'] == null) {
             throw new runtime.RequiredError(
                 'soundEffectsRequest',
@@ -195,17 +201,13 @@ export class VoiceApi extends runtime.BaseAPI {
             body: SoundEffectsRequestToJSON(requestParameters['soundEffectsRequest']),
         }, initOverrides);
 
-        if (this.isJsonMime(response.headers.get('content-type'))) {
-            return new runtime.JSONApiResponse<any>(response);
-        } else {
-            return new runtime.TextApiResponse(response) as any;
-        }
+        return new runtime.JSONApiResponse(response, (jsonValue) => SoundEffectResponseFromJSON(jsonValue));
     }
 
     /**
      * Generate Sound Effects
      */
-    async generateSoundEffectsVoiceSfxPost(requestParameters: GenerateSoundEffectsVoiceSfxPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
+    async generateSoundEffectsVoiceSfxPost(requestParameters: GenerateSoundEffectsVoiceSfxPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SoundEffectResponse> {
         const response = await this.generateSoundEffectsVoiceSfxPostRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -213,7 +215,7 @@ export class VoiceApi extends runtime.BaseAPI {
     /**
      * Generate Text To Speech
      */
-    async generateTextToSpeechVoiceTextToSpeechPostRaw(requestParameters: GenerateTextToSpeechVoiceTextToSpeechPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
+    async generateTextToSpeechVoiceTextToSpeechPostRaw(requestParameters: GenerateTextToSpeechVoiceTextToSpeechPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TextToSpeechResponse>> {
         if (requestParameters['textToSpeechRequest'] == null) {
             throw new runtime.RequiredError(
                 'textToSpeechRequest',
@@ -235,17 +237,13 @@ export class VoiceApi extends runtime.BaseAPI {
             body: TextToSpeechRequestToJSON(requestParameters['textToSpeechRequest']),
         }, initOverrides);
 
-        if (this.isJsonMime(response.headers.get('content-type'))) {
-            return new runtime.JSONApiResponse<any>(response);
-        } else {
-            return new runtime.TextApiResponse(response) as any;
-        }
+        return new runtime.JSONApiResponse(response, (jsonValue) => TextToSpeechResponseFromJSON(jsonValue));
     }
 
     /**
      * Generate Text To Speech
      */
-    async generateTextToSpeechVoiceTextToSpeechPost(requestParameters: GenerateTextToSpeechVoiceTextToSpeechPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
+    async generateTextToSpeechVoiceTextToSpeechPost(requestParameters: GenerateTextToSpeechVoiceTextToSpeechPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TextToSpeechResponse> {
         const response = await this.generateTextToSpeechVoiceTextToSpeechPostRaw(requestParameters, initOverrides);
         return await response.value();
     }

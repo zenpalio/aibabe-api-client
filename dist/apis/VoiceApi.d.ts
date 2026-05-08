@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { Language, SoundEffectsRequest, TextToSpeechRequest } from '../models/index';
+import type { Language, SoundEffectResponse, SoundEffectsRequest, TextToSpeechRequest, TextToSpeechResponse } from '../models/index';
 export interface CreateReferenceVoiceReferencesPostRequest {
     name: string;
     audio: Blob;
@@ -47,19 +47,19 @@ export declare class VoiceApi extends runtime.BaseAPI {
     /**
      * Generate Sound Effects
      */
-    generateSoundEffectsVoiceSfxPostRaw(requestParameters: GenerateSoundEffectsVoiceSfxPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
+    generateSoundEffectsVoiceSfxPostRaw(requestParameters: GenerateSoundEffectsVoiceSfxPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SoundEffectResponse>>;
     /**
      * Generate Sound Effects
      */
-    generateSoundEffectsVoiceSfxPost(requestParameters: GenerateSoundEffectsVoiceSfxPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
+    generateSoundEffectsVoiceSfxPost(requestParameters: GenerateSoundEffectsVoiceSfxPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SoundEffectResponse>;
     /**
      * Generate Text To Speech
      */
-    generateTextToSpeechVoiceTextToSpeechPostRaw(requestParameters: GenerateTextToSpeechVoiceTextToSpeechPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
+    generateTextToSpeechVoiceTextToSpeechPostRaw(requestParameters: GenerateTextToSpeechVoiceTextToSpeechPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TextToSpeechResponse>>;
     /**
      * Generate Text To Speech
      */
-    generateTextToSpeechVoiceTextToSpeechPost(requestParameters: GenerateTextToSpeechVoiceTextToSpeechPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
+    generateTextToSpeechVoiceTextToSpeechPost(requestParameters: GenerateTextToSpeechVoiceTextToSpeechPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TextToSpeechResponse>;
     /**
      * Generate Voice Chat
      */

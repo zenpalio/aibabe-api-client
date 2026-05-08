@@ -218,6 +218,7 @@ src/models/SeduceDifficulty.ts
 src/models/SendCustomMemoracekRequest.ts
 src/models/SendMemoracekRequest.ts
 src/models/SortFilter.ts
+src/models/SoundEffectResponse.ts
 src/models/SoundEffectsRequest.ts
 src/models/SpecialAddonOffer.ts
 src/models/SpecialFeatures.ts
@@ -264,6 +265,7 @@ src/models/TagModel.ts
 src/models/TagVideoLora.ts
 src/models/TagsExploreTypesGet200ResponseInner.ts
 src/models/TextToSpeechRequest.ts
+src/models/TextToSpeechResponse.ts
 src/models/TokenReconciliationResponse.ts
 src/models/Type.ts
 src/models/UserClaimType.ts

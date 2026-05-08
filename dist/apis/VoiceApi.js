@@ -147,12 +147,7 @@ class VoiceApi extends runtime.BaseAPI {
             query: queryParameters,
             body: (0, index_1.SoundEffectsRequestToJSON)(requestParameters['soundEffectsRequest']),
         }, initOverrides);
-        if (this.isJsonMime(response.headers.get('content-type'))) {
-            return new runtime.JSONApiResponse(response);
-        }
-        else {
-            return new runtime.TextApiResponse(response);
-        }
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SoundEffectResponseFromJSON)(jsonValue));
     }
     /**
      * Generate Sound Effects
@@ -178,12 +173,7 @@ class VoiceApi extends runtime.BaseAPI {
             query: queryParameters,
             body: (0, index_1.TextToSpeechRequestToJSON)(requestParameters['textToSpeechRequest']),
         }, initOverrides);
-        if (this.isJsonMime(response.headers.get('content-type'))) {
-            return new runtime.JSONApiResponse(response);
-        }
-        else {
-            return new runtime.TextApiResponse(response);
-        }
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.TextToSpeechResponseFromJSON)(jsonValue));
     }
     /**
      * Generate Text To Speech
