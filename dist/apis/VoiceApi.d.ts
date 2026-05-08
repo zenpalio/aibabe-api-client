@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { Language, SoundEffectResponse, SoundEffectsRequest, TextToSpeechRequest, TextToSpeechResponse } from '../models/index';
+import type { GeneratedAudioItem, GetGeneratedAudioResponse, Language, SoundEffectResponse, SoundEffectsRequest, TextToSpeechRequest, TextToSpeechResponse } from '../models/index';
 export interface CreateReferenceVoiceReferencesPostRequest {
     name: string;
     audio: Blob;
@@ -27,6 +27,13 @@ export interface GenerateTextToSpeechVoiceTextToSpeechPostRequest {
 }
 export interface GenerateVoiceChatVoiceMessageMessageIdPostRequest {
     messageId: string;
+}
+export interface GetAudioVoiceAudioIdGetRequest {
+    audioId: string;
+}
+export interface ListAudioVoiceListGetRequest {
+    paginationToken?: string | null;
+    limit?: number;
 }
 export interface StreamVoiceStreamAudioIdGetRequest {
     audioId: string;
@@ -68,6 +75,22 @@ export declare class VoiceApi extends runtime.BaseAPI {
      * Generate Voice Chat
      */
     generateVoiceChatVoiceMessageMessageIdPost(requestParameters: GenerateVoiceChatVoiceMessageMessageIdPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
+    /**
+     * Get Audio
+     */
+    getAudioVoiceAudioIdGetRaw(requestParameters: GetAudioVoiceAudioIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GeneratedAudioItem>>;
+    /**
+     * Get Audio
+     */
+    getAudioVoiceAudioIdGet(requestParameters: GetAudioVoiceAudioIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GeneratedAudioItem>;
+    /**
+     * List Audio
+     */
+    listAudioVoiceListGetRaw(requestParameters: ListAudioVoiceListGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetGeneratedAudioResponse>>;
+    /**
+     * List Audio
+     */
+    listAudioVoiceListGet(requestParameters?: ListAudioVoiceListGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetGeneratedAudioResponse>;
     /**
      * List References
      */

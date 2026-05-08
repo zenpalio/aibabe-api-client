@@ -15,6 +15,8 @@
 
 import * as runtime from '../runtime';
 import type {
+  GeneratedAudioItem,
+  GetGeneratedAudioResponse,
   HTTPValidationError,
   Language,
   SoundEffectResponse,
@@ -23,6 +25,10 @@ import type {
   TextToSpeechResponse,
 } from '../models/index';
 import {
+    GeneratedAudioItemFromJSON,
+    GeneratedAudioItemToJSON,
+    GetGeneratedAudioResponseFromJSON,
+    GetGeneratedAudioResponseToJSON,
     HTTPValidationErrorFromJSON,
     HTTPValidationErrorToJSON,
     LanguageFromJSON,
@@ -56,6 +62,15 @@ export interface GenerateTextToSpeechVoiceTextToSpeechPostRequest {
 
 export interface GenerateVoiceChatVoiceMessageMessageIdPostRequest {
     messageId: string;
+}
+
+export interface GetAudioVoiceAudioIdGetRequest {
+    audioId: string;
+}
+
+export interface ListAudioVoiceListGetRequest {
+    paginationToken?: string | null;
+    limit?: number;
 }
 
 export interface StreamVoiceStreamAudioIdGetRequest {
@@ -282,6 +297,73 @@ export class VoiceApi extends runtime.BaseAPI {
      */
     async generateVoiceChatVoiceMessageMessageIdPost(requestParameters: GenerateVoiceChatVoiceMessageMessageIdPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
         const response = await this.generateVoiceChatVoiceMessageMessageIdPostRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Get Audio
+     */
+    async getAudioVoiceAudioIdGetRaw(requestParameters: GetAudioVoiceAudioIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GeneratedAudioItem>> {
+        if (requestParameters['audioId'] == null) {
+            throw new runtime.RequiredError(
+                'audioId',
+                'Required parameter "audioId" was null or undefined when calling getAudioVoiceAudioIdGet().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/voice/{audio_id}`.replace(`{${"audio_id"}}`, encodeURIComponent(String(requestParameters['audioId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GeneratedAudioItemFromJSON(jsonValue));
+    }
+
+    /**
+     * Get Audio
+     */
+    async getAudioVoiceAudioIdGet(requestParameters: GetAudioVoiceAudioIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GeneratedAudioItem> {
+        const response = await this.getAudioVoiceAudioIdGetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * List Audio
+     */
+    async listAudioVoiceListGetRaw(requestParameters: ListAudioVoiceListGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetGeneratedAudioResponse>> {
+        const queryParameters: any = {};
+
+        if (requestParameters['paginationToken'] != null) {
+            queryParameters['pagination_token'] = requestParameters['paginationToken'];
+        }
+
+        if (requestParameters['limit'] != null) {
+            queryParameters['limit'] = requestParameters['limit'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/voice/list`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetGeneratedAudioResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * List Audio
+     */
+    async listAudioVoiceListGet(requestParameters: ListAudioVoiceListGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetGeneratedAudioResponse> {
+        const response = await this.listAudioVoiceListGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

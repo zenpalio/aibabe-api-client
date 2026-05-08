@@ -78,6 +78,8 @@ src/models/FeatureFlagName.ts
 src/models/FollowNotification.ts
 src/models/FurryVisualType.ts
 src/models/GalleryItem.ts
+src/models/GeneratedAudioGenerationType.ts
+src/models/GeneratedAudioItem.ts
 src/models/GeneratedAudioStatus.ts
 src/models/GeneratedImages.ts
 src/models/GeneratedVideos.ts
@@ -93,6 +95,7 @@ src/models/GetExceptionsResponse.ts
 src/models/GetFollowedUsersResponse.ts
 src/models/GetGalleryResponse.ts
 src/models/GetGalleryResponseItemsInner.ts
+src/models/GetGeneratedAudioResponse.ts
 src/models/GetGeneratedImage.ts
 src/models/GetIdentityChatbotResponse.ts
 src/models/GetImageGenerationTagsResponse.ts
