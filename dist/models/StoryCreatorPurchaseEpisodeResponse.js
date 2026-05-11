@@ -25,6 +25,8 @@ const EpisodePaymentType_1 = require("./EpisodePaymentType");
 function instanceOfStoryCreatorPurchaseEpisodeResponse(value) {
     if (!('episodeId' in value) || value['episodeId'] === undefined)
         return false;
+    if (!('episodeVersionId' in value) || value['episodeVersionId'] === undefined)
+        return false;
     if (!('paymentType' in value) || value['paymentType'] === undefined)
         return false;
     if (!('amount' in value) || value['amount'] === undefined)
@@ -42,6 +44,7 @@ function StoryCreatorPurchaseEpisodeResponseFromJSONTyped(json, ignoreDiscrimina
     }
     return {
         'episodeId': json['episode_id'],
+        'episodeVersionId': json['episode_version_id'],
         'paymentType': (0, EpisodePaymentType_1.EpisodePaymentTypeFromJSON)(json['payment_type']),
         'amount': json['amount'],
         'remainingTokens': json['remaining_tokens'],
@@ -56,6 +59,7 @@ function StoryCreatorPurchaseEpisodeResponseToJSONTyped(value, ignoreDiscriminat
     }
     return {
         'episode_id': value['episodeId'],
+        'episode_version_id': value['episodeVersionId'],
         'payment_type': (0, EpisodePaymentType_1.EpisodePaymentTypeToJSON)(value['paymentType']),
         'amount': value['amount'],
         'remaining_tokens': value['remainingTokens'],

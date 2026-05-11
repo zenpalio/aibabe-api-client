@@ -24,6 +24,12 @@ export interface StoryCreatorPurchaseEpisodeResponse {
     episodeId: string;
     /**
      *
+     * @type {string}
+     * @memberof StoryCreatorPurchaseEpisodeResponse
+     */
+    episodeVersionId: string;
+    /**
+     *
      * @type {EpisodePaymentType}
      * @memberof StoryCreatorPurchaseEpisodeResponse
      */

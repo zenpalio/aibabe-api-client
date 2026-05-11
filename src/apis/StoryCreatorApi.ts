@@ -25,7 +25,7 @@ import type {
   StoryCreatorCreateStoryResponse,
   StoryCreatorEpisodeListResponse,
   StoryCreatorEpisodeResponse,
-  StoryCreatorEpisodeWithPanelsResponse,
+  StoryCreatorEpisodeWithStoryAndPanelsResponse,
   StoryCreatorGenerateAvatarRequest,
   StoryCreatorImportActorRequest,
   StoryCreatorLockEpisodeRequest,
@@ -36,6 +36,7 @@ import type {
   StoryCreatorStoryResponse,
   StoryCreatorUpdateActorRequest,
   StoryCreatorUpdateEpisodeRequest,
+  StoryCreatorUpdateEpisodeVisibilityRequest,
   StoryCreatorUpdateStoryRequest,
 } from '../models/index';
 import {
@@ -59,8 +60,8 @@ import {
     StoryCreatorEpisodeListResponseToJSON,
     StoryCreatorEpisodeResponseFromJSON,
     StoryCreatorEpisodeResponseToJSON,
-    StoryCreatorEpisodeWithPanelsResponseFromJSON,
-    StoryCreatorEpisodeWithPanelsResponseToJSON,
+    StoryCreatorEpisodeWithStoryAndPanelsResponseFromJSON,
+    StoryCreatorEpisodeWithStoryAndPanelsResponseToJSON,
     StoryCreatorGenerateAvatarRequestFromJSON,
     StoryCreatorGenerateAvatarRequestToJSON,
     StoryCreatorImportActorRequestFromJSON,
@@ -81,6 +82,8 @@ import {
     StoryCreatorUpdateActorRequestToJSON,
     StoryCreatorUpdateEpisodeRequestFromJSON,
     StoryCreatorUpdateEpisodeRequestToJSON,
+    StoryCreatorUpdateEpisodeVisibilityRequestFromJSON,
+    StoryCreatorUpdateEpisodeVisibilityRequestToJSON,
     StoryCreatorUpdateStoryRequestFromJSON,
     StoryCreatorUpdateStoryRequestToJSON,
 } from '../models/index';
@@ -148,6 +151,10 @@ export interface SaveEpisodeStoryCreatorEpisodesEpisodeIdPutRequest {
     storyCreatorSaveEpisodeRequest: StoryCreatorSaveEpisodeRequest;
 }
 
+export interface UnlockEpisodeStoryCreatorEpisodesEpisodeIdLockDeleteRequest {
+    episodeId: string;
+}
+
 export interface UpdateActorStoryCreatorActorsActorIdPatchRequest {
     actorId: string;
     storyCreatorUpdateActorRequest: StoryCreatorUpdateActorRequest;
@@ -156,6 +163,11 @@ export interface UpdateActorStoryCreatorActorsActorIdPatchRequest {
 export interface UpdateEpisodeStoryCreatorEpisodesEpisodeIdPatchRequest {
     episodeId: string;
     storyCreatorUpdateEpisodeRequest: StoryCreatorUpdateEpisodeRequest;
+}
+
+export interface UpdateEpisodeVisibilityStoryCreatorEpisodesEpisodeIdVisibilityPatchRequest {
+    episodeId: string;
+    storyCreatorUpdateEpisodeVisibilityRequest: StoryCreatorUpdateEpisodeVisibilityRequest;
 }
 
 export interface UpdateStoryStoryCreatorStoriesStoryIdPatchRequest {
@@ -434,7 +446,7 @@ export class StoryCreatorApi extends runtime.BaseAPI {
     /**
      * Get Episode
      */
-    async getEpisodeStoryCreatorEpisodesEpisodeIdGetRaw(requestParameters: GetEpisodeStoryCreatorEpisodesEpisodeIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StoryCreatorEpisodeWithPanelsResponse>> {
+    async getEpisodeStoryCreatorEpisodesEpisodeIdGetRaw(requestParameters: GetEpisodeStoryCreatorEpisodesEpisodeIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StoryCreatorEpisodeWithStoryAndPanelsResponse>> {
         if (requestParameters['episodeId'] == null) {
             throw new runtime.RequiredError(
                 'episodeId',
@@ -453,13 +465,13 @@ export class StoryCreatorApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => StoryCreatorEpisodeWithPanelsResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => StoryCreatorEpisodeWithStoryAndPanelsResponseFromJSON(jsonValue));
     }
 
     /**
      * Get Episode
      */
-    async getEpisodeStoryCreatorEpisodesEpisodeIdGet(requestParameters: GetEpisodeStoryCreatorEpisodesEpisodeIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StoryCreatorEpisodeWithPanelsResponse> {
+    async getEpisodeStoryCreatorEpisodesEpisodeIdGet(requestParameters: GetEpisodeStoryCreatorEpisodesEpisodeIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StoryCreatorEpisodeWithStoryAndPanelsResponse> {
         const response = await this.getEpisodeStoryCreatorEpisodesEpisodeIdGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -602,7 +614,7 @@ export class StoryCreatorApi extends runtime.BaseAPI {
     /**
      * Lock Episode
      */
-    async lockEpisodeStoryCreatorEpisodesEpisodeIdLockPatchRaw(requestParameters: LockEpisodeStoryCreatorEpisodesEpisodeIdLockPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StoryCreatorEpisodeResponse>> {
+    async lockEpisodeStoryCreatorEpisodesEpisodeIdLockPatchRaw(requestParameters: LockEpisodeStoryCreatorEpisodesEpisodeIdLockPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
         if (requestParameters['episodeId'] == null) {
             throw new runtime.RequiredError(
                 'episodeId',
@@ -631,13 +643,17 @@ export class StoryCreatorApi extends runtime.BaseAPI {
             body: StoryCreatorLockEpisodeRequestToJSON(requestParameters['storyCreatorLockEpisodeRequest']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => StoryCreatorEpisodeResponseFromJSON(jsonValue));
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse<any>(response);
+        } else {
+            return new runtime.TextApiResponse(response) as any;
+        }
     }
 
     /**
      * Lock Episode
      */
-    async lockEpisodeStoryCreatorEpisodesEpisodeIdLockPatch(requestParameters: LockEpisodeStoryCreatorEpisodesEpisodeIdLockPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StoryCreatorEpisodeResponse> {
+    async lockEpisodeStoryCreatorEpisodesEpisodeIdLockPatch(requestParameters: LockEpisodeStoryCreatorEpisodesEpisodeIdLockPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
         const response = await this.lockEpisodeStoryCreatorEpisodesEpisodeIdLockPatchRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -688,7 +704,7 @@ export class StoryCreatorApi extends runtime.BaseAPI {
     /**
      * Save Episode
      */
-    async saveEpisodeStoryCreatorEpisodesEpisodeIdPutRaw(requestParameters: SaveEpisodeStoryCreatorEpisodesEpisodeIdPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StoryCreatorEpisodeWithPanelsResponse>> {
+    async saveEpisodeStoryCreatorEpisodesEpisodeIdPutRaw(requestParameters: SaveEpisodeStoryCreatorEpisodesEpisodeIdPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StoryCreatorEpisodeWithStoryAndPanelsResponse>> {
         if (requestParameters['episodeId'] == null) {
             throw new runtime.RequiredError(
                 'episodeId',
@@ -717,14 +733,51 @@ export class StoryCreatorApi extends runtime.BaseAPI {
             body: StoryCreatorSaveEpisodeRequestToJSON(requestParameters['storyCreatorSaveEpisodeRequest']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => StoryCreatorEpisodeWithPanelsResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => StoryCreatorEpisodeWithStoryAndPanelsResponseFromJSON(jsonValue));
     }
 
     /**
      * Save Episode
      */
-    async saveEpisodeStoryCreatorEpisodesEpisodeIdPut(requestParameters: SaveEpisodeStoryCreatorEpisodesEpisodeIdPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StoryCreatorEpisodeWithPanelsResponse> {
+    async saveEpisodeStoryCreatorEpisodesEpisodeIdPut(requestParameters: SaveEpisodeStoryCreatorEpisodesEpisodeIdPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StoryCreatorEpisodeWithStoryAndPanelsResponse> {
         const response = await this.saveEpisodeStoryCreatorEpisodesEpisodeIdPutRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Unlock Episode
+     */
+    async unlockEpisodeStoryCreatorEpisodesEpisodeIdLockDeleteRaw(requestParameters: UnlockEpisodeStoryCreatorEpisodesEpisodeIdLockDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
+        if (requestParameters['episodeId'] == null) {
+            throw new runtime.RequiredError(
+                'episodeId',
+                'Required parameter "episodeId" was null or undefined when calling unlockEpisodeStoryCreatorEpisodesEpisodeIdLockDelete().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/story-creator/episodes/{episode_id}/lock`.replace(`{${"episode_id"}}`, encodeURIComponent(String(requestParameters['episodeId']))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse<any>(response);
+        } else {
+            return new runtime.TextApiResponse(response) as any;
+        }
+    }
+
+    /**
+     * Unlock Episode
+     */
+    async unlockEpisodeStoryCreatorEpisodesEpisodeIdLockDelete(requestParameters: UnlockEpisodeStoryCreatorEpisodesEpisodeIdLockDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
+        const response = await this.unlockEpisodeStoryCreatorEpisodesEpisodeIdLockDeleteRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -811,6 +864,53 @@ export class StoryCreatorApi extends runtime.BaseAPI {
      */
     async updateEpisodeStoryCreatorEpisodesEpisodeIdPatch(requestParameters: UpdateEpisodeStoryCreatorEpisodesEpisodeIdPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StoryCreatorEpisodeResponse> {
         const response = await this.updateEpisodeStoryCreatorEpisodesEpisodeIdPatchRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Update Episode Visibility
+     */
+    async updateEpisodeVisibilityStoryCreatorEpisodesEpisodeIdVisibilityPatchRaw(requestParameters: UpdateEpisodeVisibilityStoryCreatorEpisodesEpisodeIdVisibilityPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
+        if (requestParameters['episodeId'] == null) {
+            throw new runtime.RequiredError(
+                'episodeId',
+                'Required parameter "episodeId" was null or undefined when calling updateEpisodeVisibilityStoryCreatorEpisodesEpisodeIdVisibilityPatch().'
+            );
+        }
+
+        if (requestParameters['storyCreatorUpdateEpisodeVisibilityRequest'] == null) {
+            throw new runtime.RequiredError(
+                'storyCreatorUpdateEpisodeVisibilityRequest',
+                'Required parameter "storyCreatorUpdateEpisodeVisibilityRequest" was null or undefined when calling updateEpisodeVisibilityStoryCreatorEpisodesEpisodeIdVisibilityPatch().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        const response = await this.request({
+            path: `/story-creator/episodes/{episode_id}/visibility`.replace(`{${"episode_id"}}`, encodeURIComponent(String(requestParameters['episodeId']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: StoryCreatorUpdateEpisodeVisibilityRequestToJSON(requestParameters['storyCreatorUpdateEpisodeVisibilityRequest']),
+        }, initOverrides);
+
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse<any>(response);
+        } else {
+            return new runtime.TextApiResponse(response) as any;
+        }
+    }
+
+    /**
+     * Update Episode Visibility
+     */
+    async updateEpisodeVisibilityStoryCreatorEpisodesEpisodeIdVisibilityPatch(requestParameters: UpdateEpisodeVisibilityStoryCreatorEpisodesEpisodeIdVisibilityPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
+        const response = await this.updateEpisodeVisibilityStoryCreatorEpisodesEpisodeIdVisibilityPatchRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

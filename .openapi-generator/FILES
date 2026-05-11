@@ -239,7 +239,7 @@ src/models/StoryCreatorEpisodeBase.ts
 src/models/StoryCreatorEpisodeListResponse.ts
 src/models/StoryCreatorEpisodePrice.ts
 src/models/StoryCreatorEpisodeResponse.ts
-src/models/StoryCreatorEpisodeWithPanelsResponse.ts
+src/models/StoryCreatorEpisodeWithStoryAndPanelsResponse.ts
 src/models/StoryCreatorGenerateAvatarRequest.ts
 src/models/StoryCreatorImportActorRequest.ts
 src/models/StoryCreatorLockEpisodeRequest.ts
@@ -253,9 +253,9 @@ src/models/StoryCreatorStoryListResponse.ts
 src/models/StoryCreatorStoryResponse.ts
 src/models/StoryCreatorUpdateActorRequest.ts
 src/models/StoryCreatorUpdateEpisodeRequest.ts
+src/models/StoryCreatorUpdateEpisodeVisibilityRequest.ts
 src/models/StoryCreatorUpdateStoryRequest.ts
 src/models/StoryPreview.ts
-src/models/StoryVisibility.ts
 src/models/Subscription.ts
 src/models/SubscriptionModel.ts
 src/models/SubscriptionPrice.ts
@@ -276,6 +276,7 @@ src/models/UserInfoResponse.ts
 src/models/UserPreferenceModel.ts
 src/models/UserPreferences.ts
 src/models/UserRole.ts
+src/models/UserStoryProgressType.ts
 src/models/ValidationError.ts
 src/models/ValidationErrorLocInner.ts
 src/models/Value.ts

@@ -9,7 +9,6 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { StoryVisibility } from './StoryVisibility';
 /**
  *
  * @export
@@ -46,12 +45,6 @@ export interface StoryCreatorStory {
      * @memberof StoryCreatorStory
      */
     ownerId: string;
-    /**
-     *
-     * @type {StoryVisibility}
-     * @memberof StoryCreatorStory
-     */
-    visibility: StoryVisibility;
 }
 /**
  * Check if a given object implements the StoryCreatorStory interface.

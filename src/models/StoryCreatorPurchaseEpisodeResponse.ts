@@ -35,6 +35,12 @@ export interface StoryCreatorPurchaseEpisodeResponse {
     episodeId: string;
     /**
      * 
+     * @type {string}
+     * @memberof StoryCreatorPurchaseEpisodeResponse
+     */
+    episodeVersionId: string;
+    /**
+     * 
      * @type {EpisodePaymentType}
      * @memberof StoryCreatorPurchaseEpisodeResponse
      */
@@ -60,6 +66,7 @@ export interface StoryCreatorPurchaseEpisodeResponse {
  */
 export function instanceOfStoryCreatorPurchaseEpisodeResponse(value: object): value is StoryCreatorPurchaseEpisodeResponse {
     if (!('episodeId' in value) || value['episodeId'] === undefined) return false;
+    if (!('episodeVersionId' in value) || value['episodeVersionId'] === undefined) return false;
     if (!('paymentType' in value) || value['paymentType'] === undefined) return false;
     if (!('amount' in value) || value['amount'] === undefined) return false;
     if (!('remainingTokens' in value) || value['remainingTokens'] === undefined) return false;
@@ -77,6 +84,7 @@ export function StoryCreatorPurchaseEpisodeResponseFromJSONTyped(json: any, igno
     return {
         
         'episodeId': json['episode_id'],
+        'episodeVersionId': json['episode_version_id'],
         'paymentType': EpisodePaymentTypeFromJSON(json['payment_type']),
         'amount': json['amount'],
         'remainingTokens': json['remaining_tokens'],
@@ -95,6 +103,7 @@ export function StoryCreatorPurchaseEpisodeResponseFromJSONTyped(json: any, igno
     return {
         
         'episode_id': value['episodeId'],
+        'episode_version_id': value['episodeVersionId'],
         'payment_type': EpisodePaymentTypeToJSON(value['paymentType']),
         'amount': value['amount'],
         'remaining_tokens': value['remainingTokens'],

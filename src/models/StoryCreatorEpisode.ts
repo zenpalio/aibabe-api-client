@@ -27,6 +27,13 @@ import {
     EpisodeVisibilityToJSON,
     EpisodeVisibilityToJSONTyped,
 } from './EpisodeVisibility';
+import type { UserStoryProgressType } from './UserStoryProgressType';
+import {
+    UserStoryProgressTypeFromJSON,
+    UserStoryProgressTypeFromJSONTyped,
+    UserStoryProgressTypeToJSON,
+    UserStoryProgressTypeToJSONTyped,
+} from './UserStoryProgressType';
 import type { AccessType } from './AccessType';
 import {
     AccessTypeFromJSON,
@@ -91,6 +98,12 @@ export interface StoryCreatorEpisode {
     accessType?: AccessType | null;
     /**
      * 
+     * @type {UserStoryProgressType}
+     * @memberof StoryCreatorEpisode
+     */
+    progress?: UserStoryProgressType | null;
+    /**
+     * 
      * @type {Array<StoryCreatorEpisodePrice>}
      * @memberof StoryCreatorEpisode
      */
@@ -128,6 +141,7 @@ export function StoryCreatorEpisodeFromJSONTyped(json: any, ignoreDiscriminator:
         'visibility': EpisodeVisibilityFromJSON(json['visibility']),
         'episodeIndex': json['episode_index'],
         'accessType': json['access_type'] == null ? undefined : AccessTypeFromJSON(json['access_type']),
+        'progress': json['progress'] == null ? undefined : UserStoryProgressTypeFromJSON(json['progress']),
         'prices': json['prices'] == null ? undefined : ((json['prices'] as Array<any>).map(StoryCreatorEpisodePriceFromJSON)),
     };
 }
@@ -151,6 +165,7 @@ export function StoryCreatorEpisodeFromJSONTyped(json: any, ignoreDiscriminator:
         'visibility': EpisodeVisibilityToJSON(value['visibility']),
         'episode_index': value['episodeIndex'],
         'access_type': AccessTypeToJSON(value['accessType']),
+        'progress': UserStoryProgressTypeToJSON(value['progress']),
         'prices': value['prices'] == null ? undefined : ((value['prices'] as Array<any>).map(StoryCreatorEpisodePriceToJSON)),
     };
 }

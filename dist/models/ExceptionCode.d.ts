@@ -105,6 +105,7 @@ export declare const ExceptionCode: {
     readonly EpisodeNotFoundOrNotAuthorized: "episode_not_found_or_not_authorized";
     readonly EpisodeIsFree: "episode_is_free";
     readonly InvalidIndices: "invalid_indices";
+    readonly PanelDuplicate: "panel_duplicate";
     readonly ShareContentTypeUnsupported: "share_content_type_unsupported";
     readonly ShareVideoNonOwnedForbidden: "share_video_non_owned_forbidden";
     readonly ShareImageNonOwnedForbidden: "share_image_non_owned_forbidden";
@@ -127,6 +128,8 @@ export declare const ExceptionCode: {
     readonly MarketingCampaignNotFound: "marketing_campaign_not_found";
     readonly MarketingCampaignNotAcceptable: "marketing_campaign_not_acceptable";
     readonly MarketingCampaignNoState: "marketing_campaign_no_state";
+    readonly EpisodeAndVersionMismatch: "episode_and_version_mismatch";
+    readonly EpisodeNotFound: "episode_not_found";
 };
 export type ExceptionCode = typeof ExceptionCode[keyof typeof ExceptionCode];
 export declare function instanceOfExceptionCode(value: any): boolean;

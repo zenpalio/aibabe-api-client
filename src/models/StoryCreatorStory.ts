@@ -13,14 +13,6 @@
  */
 
 import { mapValues } from '../runtime';
-import type { StoryVisibility } from './StoryVisibility';
-import {
-    StoryVisibilityFromJSON,
-    StoryVisibilityFromJSONTyped,
-    StoryVisibilityToJSON,
-    StoryVisibilityToJSONTyped,
-} from './StoryVisibility';
-
 /**
  * 
  * @export
@@ -57,15 +49,7 @@ export interface StoryCreatorStory {
      * @memberof StoryCreatorStory
      */
     ownerId: string;
-    /**
-     * 
-     * @type {StoryVisibility}
-     * @memberof StoryCreatorStory
-     */
-    visibility: StoryVisibility;
 }
-
-
 
 /**
  * Check if a given object implements the StoryCreatorStory interface.
@@ -74,7 +58,6 @@ export function instanceOfStoryCreatorStory(value: object): value is StoryCreato
     if (!('title' in value) || value['title'] === undefined) return false;
     if (!('id' in value) || value['id'] === undefined) return false;
     if (!('ownerId' in value) || value['ownerId'] === undefined) return false;
-    if (!('visibility' in value) || value['visibility'] === undefined) return false;
     return true;
 }
 
@@ -93,7 +76,6 @@ export function StoryCreatorStoryFromJSONTyped(json: any, ignoreDiscriminator: b
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
         'id': json['id'],
         'ownerId': json['owner_id'],
-        'visibility': StoryVisibilityFromJSON(json['visibility']),
     };
 }
 
@@ -113,7 +95,6 @@ export function StoryCreatorStoryFromJSONTyped(json: any, ignoreDiscriminator: b
         'cover_image': value['coverImage'],
         'id': value['id'],
         'owner_id': value['ownerId'],
-        'visibility': StoryVisibilityToJSON(value['visibility']),
     };
 }
 

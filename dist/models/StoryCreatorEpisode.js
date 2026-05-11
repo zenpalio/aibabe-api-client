@@ -20,6 +20,7 @@ exports.StoryCreatorEpisodeToJSON = StoryCreatorEpisodeToJSON;
 exports.StoryCreatorEpisodeToJSONTyped = StoryCreatorEpisodeToJSONTyped;
 const StoryCreatorEpisodePrice_1 = require("./StoryCreatorEpisodePrice");
 const EpisodeVisibility_1 = require("./EpisodeVisibility");
+const UserStoryProgressType_1 = require("./UserStoryProgressType");
 const AccessType_1 = require("./AccessType");
 /**
  * Check if a given object implements the StoryCreatorEpisode interface.
@@ -51,6 +52,7 @@ function StoryCreatorEpisodeFromJSONTyped(json, ignoreDiscriminator) {
         'visibility': (0, EpisodeVisibility_1.EpisodeVisibilityFromJSON)(json['visibility']),
         'episodeIndex': json['episode_index'],
         'accessType': json['access_type'] == null ? undefined : (0, AccessType_1.AccessTypeFromJSON)(json['access_type']),
+        'progress': json['progress'] == null ? undefined : (0, UserStoryProgressType_1.UserStoryProgressTypeFromJSON)(json['progress']),
         'prices': json['prices'] == null ? undefined : (json['prices'].map(StoryCreatorEpisodePrice_1.StoryCreatorEpisodePriceFromJSON)),
     };
 }
@@ -70,6 +72,7 @@ function StoryCreatorEpisodeToJSONTyped(value, ignoreDiscriminator = false) {
         'visibility': (0, EpisodeVisibility_1.EpisodeVisibilityToJSON)(value['visibility']),
         'episode_index': value['episodeIndex'],
         'access_type': (0, AccessType_1.AccessTypeToJSON)(value['accessType']),
+        'progress': (0, UserStoryProgressType_1.UserStoryProgressTypeToJSON)(value['progress']),
         'prices': value['prices'] == null ? undefined : (value['prices'].map(StoryCreatorEpisodePrice_1.StoryCreatorEpisodePriceToJSON)),
     };
 }
