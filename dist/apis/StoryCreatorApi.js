@@ -209,6 +209,35 @@ class StoryCreatorApi extends runtime.BaseAPI {
         await this.deleteStoryStoryCreatorStoriesStoryIdDeleteRaw(requestParameters, initOverrides);
     }
     /**
+     * Finish Episode
+     */
+    async finishEpisodeStoryCreatorEpisodesEpisodeIdFinishPostRaw(requestParameters, initOverrides) {
+        if (requestParameters['episodeId'] == null) {
+            throw new runtime.RequiredError('episodeId', 'Required parameter "episodeId" was null or undefined when calling finishEpisodeStoryCreatorEpisodesEpisodeIdFinishPost().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        const response = await this.request({
+            path: `/story-creator/episodes/{episode_id}/finish`.replace(`{${"episode_id"}}`, encodeURIComponent(String(requestParameters['episodeId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse(response);
+        }
+        else {
+            return new runtime.TextApiResponse(response);
+        }
+    }
+    /**
+     * Finish Episode
+     */
+    async finishEpisodeStoryCreatorEpisodesEpisodeIdFinishPost(requestParameters, initOverrides) {
+        const response = await this.finishEpisodeStoryCreatorEpisodesEpisodeIdFinishPostRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * Generate Avatar
      */
     async generateAvatarStoryCreatorStoriesStoryIdActorAvatarPostRaw(requestParameters, initOverrides) {

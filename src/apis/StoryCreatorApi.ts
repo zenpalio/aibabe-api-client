@@ -114,6 +114,10 @@ export interface DeleteStoryStoryCreatorStoriesStoryIdDeleteRequest {
     storyId: string;
 }
 
+export interface FinishEpisodeStoryCreatorEpisodesEpisodeIdFinishPostRequest {
+    episodeId: string;
+}
+
 export interface GenerateAvatarStoryCreatorStoriesStoryIdActorAvatarPostRequest {
     storyId: string;
     storyCreatorGenerateAvatarRequest: StoryCreatorGenerateAvatarRequest;
@@ -398,6 +402,43 @@ export class StoryCreatorApi extends runtime.BaseAPI {
      */
     async deleteStoryStoryCreatorStoriesStoryIdDelete(requestParameters: DeleteStoryStoryCreatorStoriesStoryIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.deleteStoryStoryCreatorStoriesStoryIdDeleteRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     * Finish Episode
+     */
+    async finishEpisodeStoryCreatorEpisodesEpisodeIdFinishPostRaw(requestParameters: FinishEpisodeStoryCreatorEpisodesEpisodeIdFinishPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
+        if (requestParameters['episodeId'] == null) {
+            throw new runtime.RequiredError(
+                'episodeId',
+                'Required parameter "episodeId" was null or undefined when calling finishEpisodeStoryCreatorEpisodesEpisodeIdFinishPost().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/story-creator/episodes/{episode_id}/finish`.replace(`{${"episode_id"}}`, encodeURIComponent(String(requestParameters['episodeId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse<any>(response);
+        } else {
+            return new runtime.TextApiResponse(response) as any;
+        }
+    }
+
+    /**
+     * Finish Episode
+     */
+    async finishEpisodeStoryCreatorEpisodesEpisodeIdFinishPost(requestParameters: FinishEpisodeStoryCreatorEpisodesEpisodeIdFinishPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
+        const response = await this.finishEpisodeStoryCreatorEpisodesEpisodeIdFinishPostRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**

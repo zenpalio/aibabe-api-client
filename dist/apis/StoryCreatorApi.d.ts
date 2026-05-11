@@ -31,6 +31,9 @@ export interface DeleteEpisodeStoryCreatorEpisodesEpisodeIdDeleteRequest {
 export interface DeleteStoryStoryCreatorStoriesStoryIdDeleteRequest {
     storyId: string;
 }
+export interface FinishEpisodeStoryCreatorEpisodesEpisodeIdFinishPostRequest {
+    episodeId: string;
+}
 export interface GenerateAvatarStoryCreatorStoriesStoryIdActorAvatarPostRequest {
     storyId: string;
     storyCreatorGenerateAvatarRequest: StoryCreatorGenerateAvatarRequest;
@@ -133,6 +136,14 @@ export declare class StoryCreatorApi extends runtime.BaseAPI {
      * Delete Story
      */
     deleteStoryStoryCreatorStoriesStoryIdDelete(requestParameters: DeleteStoryStoryCreatorStoriesStoryIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void>;
+    /**
+     * Finish Episode
+     */
+    finishEpisodeStoryCreatorEpisodesEpisodeIdFinishPostRaw(requestParameters: FinishEpisodeStoryCreatorEpisodesEpisodeIdFinishPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
+    /**
+     * Finish Episode
+     */
+    finishEpisodeStoryCreatorEpisodesEpisodeIdFinishPost(requestParameters: FinishEpisodeStoryCreatorEpisodesEpisodeIdFinishPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
     /**
      * Generate Avatar
      */
