@@ -101,6 +101,14 @@ export declare class ImageApi extends runtime.BaseAPI {
      */
     getLorasImagenLorasGet(requestParameters?: GetLorasImagenLorasGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetLorasResponse>;
     /**
+     * Restart Servers
+     */
+    restartServersImagenRestartAllPostRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
+    /**
+     * Restart Servers
+     */
+    restartServersImagenRestartAllPost(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
+    /**
      * User Generate Image
      */
     userGenerateImageImagenGenerateChatbotIdPostRaw(requestParameters: UserGenerateImageImagenGenerateChatbotIdPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostImagenResponse>>;
