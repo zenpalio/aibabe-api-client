@@ -18,6 +18,7 @@ exports.StoryCreatorStoryFromJSON = StoryCreatorStoryFromJSON;
 exports.StoryCreatorStoryFromJSONTyped = StoryCreatorStoryFromJSONTyped;
 exports.StoryCreatorStoryToJSON = StoryCreatorStoryToJSON;
 exports.StoryCreatorStoryToJSONTyped = StoryCreatorStoryToJSONTyped;
+const UserStoryProgressType_1 = require("./UserStoryProgressType");
 /**
  * Check if a given object implements the StoryCreatorStory interface.
  */
@@ -43,6 +44,7 @@ function StoryCreatorStoryFromJSONTyped(json, ignoreDiscriminator) {
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
         'id': json['id'],
         'ownerId': json['owner_id'],
+        'progress': json['progress'] == null ? undefined : (0, UserStoryProgressType_1.UserStoryProgressTypeFromJSON)(json['progress']),
     };
 }
 function StoryCreatorStoryToJSON(json) {
@@ -58,6 +60,7 @@ function StoryCreatorStoryToJSONTyped(value, ignoreDiscriminator = false) {
         'cover_image': value['coverImage'],
         'id': value['id'],
         'owner_id': value['ownerId'],
+        'progress': (0, UserStoryProgressType_1.UserStoryProgressTypeToJSON)(value['progress']),
     };
 }
 //# sourceMappingURL=StoryCreatorStory.js.map

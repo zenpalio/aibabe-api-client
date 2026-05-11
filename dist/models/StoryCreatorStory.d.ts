@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { UserStoryProgressType } from './UserStoryProgressType';
 /**
  *
  * @export
@@ -45,6 +46,12 @@ export interface StoryCreatorStory {
      * @memberof StoryCreatorStory
      */
     ownerId: string;
+    /**
+     *
+     * @type {UserStoryProgressType}
+     * @memberof StoryCreatorStory
+     */
+    progress?: UserStoryProgressType | null;
 }
 /**
  * Check if a given object implements the StoryCreatorStory interface.

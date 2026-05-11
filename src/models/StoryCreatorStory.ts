@@ -13,6 +13,14 @@
  */
 
 import { mapValues } from '../runtime';
+import type { UserStoryProgressType } from './UserStoryProgressType';
+import {
+    UserStoryProgressTypeFromJSON,
+    UserStoryProgressTypeFromJSONTyped,
+    UserStoryProgressTypeToJSON,
+    UserStoryProgressTypeToJSONTyped,
+} from './UserStoryProgressType';
+
 /**
  * 
  * @export
@@ -49,7 +57,15 @@ export interface StoryCreatorStory {
      * @memberof StoryCreatorStory
      */
     ownerId: string;
+    /**
+     * 
+     * @type {UserStoryProgressType}
+     * @memberof StoryCreatorStory
+     */
+    progress?: UserStoryProgressType | null;
 }
+
+
 
 /**
  * Check if a given object implements the StoryCreatorStory interface.
@@ -76,6 +92,7 @@ export function StoryCreatorStoryFromJSONTyped(json: any, ignoreDiscriminator: b
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
         'id': json['id'],
         'ownerId': json['owner_id'],
+        'progress': json['progress'] == null ? undefined : UserStoryProgressTypeFromJSON(json['progress']),
     };
 }
 
@@ -95,6 +112,7 @@ export function StoryCreatorStoryFromJSONTyped(json: any, ignoreDiscriminator: b
         'cover_image': value['coverImage'],
         'id': value['id'],
         'owner_id': value['ownerId'],
+        'progress': UserStoryProgressTypeToJSON(value['progress']),
     };
 }
 
