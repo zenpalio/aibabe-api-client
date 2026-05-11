@@ -48,7 +48,7 @@ export interface StoryCreatorEpisode {
      * @type {string}
      * @memberof StoryCreatorEpisode
      */
-    id: string;
+    episodeId: string;
     /**
      *
      * @type {EpisodeVisibility}

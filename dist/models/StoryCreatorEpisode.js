@@ -28,7 +28,7 @@ const AccessType_1 = require("./AccessType");
 function instanceOfStoryCreatorEpisode(value) {
     if (!('title' in value) || value['title'] === undefined)
         return false;
-    if (!('id' in value) || value['id'] === undefined)
+    if (!('episodeId' in value) || value['episodeId'] === undefined)
         return false;
     if (!('visibility' in value) || value['visibility'] === undefined)
         return false;
@@ -48,7 +48,7 @@ function StoryCreatorEpisodeFromJSONTyped(json, ignoreDiscriminator) {
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
         'lockAfter': json['lock_after'] == null ? undefined : json['lock_after'],
-        'id': json['id'],
+        'episodeId': json['episode_id'],
         'visibility': (0, EpisodeVisibility_1.EpisodeVisibilityFromJSON)(json['visibility']),
         'episodeIndex': json['episode_index'],
         'accessType': json['access_type'] == null ? undefined : (0, AccessType_1.AccessTypeFromJSON)(json['access_type']),
@@ -68,7 +68,7 @@ function StoryCreatorEpisodeToJSONTyped(value, ignoreDiscriminator = false) {
         'description': value['description'],
         'cover_image': value['coverImage'],
         'lock_after': value['lockAfter'],
-        'id': value['id'],
+        'episode_id': value['episodeId'],
         'visibility': (0, EpisodeVisibility_1.EpisodeVisibilityToJSON)(value['visibility']),
         'episode_index': value['episodeIndex'],
         'access_type': (0, AccessType_1.AccessTypeToJSON)(value['accessType']),
