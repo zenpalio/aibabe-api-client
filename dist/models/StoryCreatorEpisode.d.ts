@@ -63,6 +63,18 @@ export interface StoryCreatorEpisode {
     episodeIndex: number;
     /**
      *
+     * @type {number}
+     * @memberof StoryCreatorEpisode
+     */
+    panelsCount: number;
+    /**
+     *
+     * @type {number}
+     * @memberof StoryCreatorEpisode
+     */
+    rating?: number | null;
+    /**
+     *
      * @type {AccessType}
      * @memberof StoryCreatorEpisode
      */

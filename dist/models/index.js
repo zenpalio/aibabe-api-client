@@ -238,6 +238,7 @@ __exportStar(require("./StoryCreatorLockEpisodeRequest"), exports);
 __exportStar(require("./StoryCreatorPanel"), exports);
 __exportStar(require("./StoryCreatorPurchaseEpisodeRequest"), exports);
 __exportStar(require("./StoryCreatorPurchaseEpisodeResponse"), exports);
+__exportStar(require("./StoryCreatorRateEpisodeRequest"), exports);
 __exportStar(require("./StoryCreatorSaveEpisodePanel"), exports);
 __exportStar(require("./StoryCreatorSaveEpisodeRequest"), exports);
 __exportStar(require("./StoryCreatorStory"), exports);

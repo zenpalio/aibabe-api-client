@@ -452,6 +452,35 @@ class StoryCreatorApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * Rate Episode
+     */
+    async rateEpisodeStoryCreatorEpisodesEpisodeIdRatingPostRaw(requestParameters, initOverrides) {
+        if (requestParameters['episodeId'] == null) {
+            throw new runtime.RequiredError('episodeId', 'Required parameter "episodeId" was null or undefined when calling rateEpisodeStoryCreatorEpisodesEpisodeIdRatingPost().');
+        }
+        if (requestParameters['storyCreatorRateEpisodeRequest'] == null) {
+            throw new runtime.RequiredError('storyCreatorRateEpisodeRequest', 'Required parameter "storyCreatorRateEpisodeRequest" was null or undefined when calling rateEpisodeStoryCreatorEpisodesEpisodeIdRatingPost().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        const response = await this.request({
+            path: `/story-creator/episodes/{episode_id}/rating`.replace(`{${"episode_id"}}`, encodeURIComponent(String(requestParameters['episodeId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.StoryCreatorRateEpisodeRequestToJSON)(requestParameters['storyCreatorRateEpisodeRequest']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.StoryCreatorEpisodeResponseFromJSON)(jsonValue));
+    }
+    /**
+     * Rate Episode
+     */
+    async rateEpisodeStoryCreatorEpisodesEpisodeIdRatingPost(requestParameters, initOverrides) {
+        const response = await this.rateEpisodeStoryCreatorEpisodesEpisodeIdRatingPostRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * Save Episode
      */
     async saveEpisodeStoryCreatorEpisodesEpisodeIdPutRaw(requestParameters, initOverrides) {

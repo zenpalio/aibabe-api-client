@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { PostImagenResponse, StoryCreatorActorListResponse, StoryCreatorActorResponse, StoryCreatorCreateActorRequest, StoryCreatorCreateEpisodeRequest, StoryCreatorCreateStoryRequest, StoryCreatorCreateStoryResponse, StoryCreatorEpisodeListResponse, StoryCreatorEpisodeResponse, StoryCreatorEpisodeWithStoryAndPanelsResponse, StoryCreatorGenerateAvatarRequest, StoryCreatorImportActorRequest, StoryCreatorLockEpisodeRequest, StoryCreatorPurchaseEpisodeRequest, StoryCreatorPurchaseEpisodeResponse, StoryCreatorSaveEpisodeRequest, StoryCreatorStoryListResponse, StoryCreatorStoryResponse, StoryCreatorUpdateActorRequest, StoryCreatorUpdateEpisodeRequest, StoryCreatorUpdateEpisodeVisibilityRequest, StoryCreatorUpdateStoryRequest } from '../models/index';
+import type { PostImagenResponse, StoryCreatorActorListResponse, StoryCreatorActorResponse, StoryCreatorCreateActorRequest, StoryCreatorCreateEpisodeRequest, StoryCreatorCreateStoryRequest, StoryCreatorCreateStoryResponse, StoryCreatorEpisodeListResponse, StoryCreatorEpisodeResponse, StoryCreatorEpisodeWithStoryAndPanelsResponse, StoryCreatorGenerateAvatarRequest, StoryCreatorImportActorRequest, StoryCreatorLockEpisodeRequest, StoryCreatorPurchaseEpisodeRequest, StoryCreatorPurchaseEpisodeResponse, StoryCreatorRateEpisodeRequest, StoryCreatorSaveEpisodeRequest, StoryCreatorStoryListResponse, StoryCreatorStoryResponse, StoryCreatorUpdateActorRequest, StoryCreatorUpdateEpisodeRequest, StoryCreatorUpdateEpisodeVisibilityRequest, StoryCreatorUpdateStoryRequest } from '../models/index';
 export interface CreateEpisodeStoryCreatorStoriesStoryIdEpisodesPostRequest {
     storyId: string;
     storyCreatorCreateEpisodeRequest: StoryCreatorCreateEpisodeRequest;
@@ -58,6 +58,10 @@ export interface LockEpisodeStoryCreatorEpisodesEpisodeIdLockPatchRequest {
 export interface PurchaseEpisodeStoryCreatorEpisodesEpisodeIdPurchasePostRequest {
     episodeId: string;
     storyCreatorPurchaseEpisodeRequest: StoryCreatorPurchaseEpisodeRequest;
+}
+export interface RateEpisodeStoryCreatorEpisodesEpisodeIdRatingPostRequest {
+    episodeId: string;
+    storyCreatorRateEpisodeRequest: StoryCreatorRateEpisodeRequest;
 }
 export interface SaveEpisodeStoryCreatorEpisodesEpisodeIdPutRequest {
     episodeId: string;
@@ -208,6 +212,14 @@ export declare class StoryCreatorApi extends runtime.BaseAPI {
      * Purchase Episode
      */
     purchaseEpisodeStoryCreatorEpisodesEpisodeIdPurchasePost(requestParameters: PurchaseEpisodeStoryCreatorEpisodesEpisodeIdPurchasePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StoryCreatorPurchaseEpisodeResponse>;
+    /**
+     * Rate Episode
+     */
+    rateEpisodeStoryCreatorEpisodesEpisodeIdRatingPostRaw(requestParameters: RateEpisodeStoryCreatorEpisodesEpisodeIdRatingPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StoryCreatorEpisodeResponse>>;
+    /**
+     * Rate Episode
+     */
+    rateEpisodeStoryCreatorEpisodesEpisodeIdRatingPost(requestParameters: RateEpisodeStoryCreatorEpisodesEpisodeIdRatingPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StoryCreatorEpisodeResponse>;
     /**
      * Save Episode
      */

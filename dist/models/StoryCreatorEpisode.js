@@ -34,6 +34,8 @@ function instanceOfStoryCreatorEpisode(value) {
         return false;
     if (!('episodeIndex' in value) || value['episodeIndex'] === undefined)
         return false;
+    if (!('panelsCount' in value) || value['panelsCount'] === undefined)
+        return false;
     return true;
 }
 function StoryCreatorEpisodeFromJSON(json) {
@@ -51,6 +53,8 @@ function StoryCreatorEpisodeFromJSONTyped(json, ignoreDiscriminator) {
         'episodeId': json['episode_id'],
         'visibility': (0, EpisodeVisibility_1.EpisodeVisibilityFromJSON)(json['visibility']),
         'episodeIndex': json['episode_index'],
+        'panelsCount': json['panels_count'],
+        'rating': json['rating'] == null ? undefined : json['rating'],
         'accessType': json['access_type'] == null ? undefined : (0, AccessType_1.AccessTypeFromJSON)(json['access_type']),
         'progress': json['progress'] == null ? undefined : (0, UserStoryProgressType_1.UserStoryProgressTypeFromJSON)(json['progress']),
         'prices': json['prices'] == null ? undefined : (json['prices'].map(StoryCreatorEpisodePrice_1.StoryCreatorEpisodePriceFromJSON)),
@@ -71,6 +75,8 @@ function StoryCreatorEpisodeToJSONTyped(value, ignoreDiscriminator = false) {
         'episode_id': value['episodeId'],
         'visibility': (0, EpisodeVisibility_1.EpisodeVisibilityToJSON)(value['visibility']),
         'episode_index': value['episodeIndex'],
+        'panels_count': value['panelsCount'],
+        'rating': value['rating'],
         'access_type': (0, AccessType_1.AccessTypeToJSON)(value['accessType']),
         'progress': (0, UserStoryProgressType_1.UserStoryProgressTypeToJSON)(value['progress']),
         'prices': value['prices'] == null ? undefined : (value['prices'].map(StoryCreatorEpisodePrice_1.StoryCreatorEpisodePriceToJSON)),

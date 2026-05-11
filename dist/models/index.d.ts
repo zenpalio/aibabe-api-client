@@ -220,6 +220,7 @@ export * from './StoryCreatorLockEpisodeRequest';
 export * from './StoryCreatorPanel';
 export * from './StoryCreatorPurchaseEpisodeRequest';
 export * from './StoryCreatorPurchaseEpisodeResponse';
+export * from './StoryCreatorRateEpisodeRequest';
 export * from './StoryCreatorSaveEpisodePanel';
 export * from './StoryCreatorSaveEpisodeRequest';
 export * from './StoryCreatorStory';

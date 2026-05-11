@@ -59,6 +59,12 @@ export interface StoryCreatorStory {
     ownerId: string;
     /**
      * 
+     * @type {number}
+     * @memberof StoryCreatorStory
+     */
+    rating?: number | null;
+    /**
+     * 
      * @type {UserStoryProgressType}
      * @memberof StoryCreatorStory
      */
@@ -92,6 +98,7 @@ export function StoryCreatorStoryFromJSONTyped(json: any, ignoreDiscriminator: b
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
         'id': json['id'],
         'ownerId': json['owner_id'],
+        'rating': json['rating'] == null ? undefined : json['rating'],
         'progress': json['progress'] == null ? undefined : UserStoryProgressTypeFromJSON(json['progress']),
     };
 }
@@ -112,6 +119,7 @@ export function StoryCreatorStoryFromJSONTyped(json: any, ignoreDiscriminator: b
         'cover_image': value['coverImage'],
         'id': value['id'],
         'owner_id': value['ownerId'],
+        'rating': value['rating'],
         'progress': UserStoryProgressTypeToJSON(value['progress']),
     };
 }

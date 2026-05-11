@@ -44,6 +44,7 @@ function StoryCreatorStoryFromJSONTyped(json, ignoreDiscriminator) {
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
         'id': json['id'],
         'ownerId': json['owner_id'],
+        'rating': json['rating'] == null ? undefined : json['rating'],
         'progress': json['progress'] == null ? undefined : (0, UserStoryProgressType_1.UserStoryProgressTypeFromJSON)(json['progress']),
     };
 }
@@ -60,6 +61,7 @@ function StoryCreatorStoryToJSONTyped(value, ignoreDiscriminator = false) {
         'cover_image': value['coverImage'],
         'id': value['id'],
         'owner_id': value['ownerId'],
+        'rating': value['rating'],
         'progress': (0, UserStoryProgressType_1.UserStoryProgressTypeToJSON)(value['progress']),
     };
 }

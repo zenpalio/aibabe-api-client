@@ -246,6 +246,7 @@ src/models/StoryCreatorLockEpisodeRequest.ts
 src/models/StoryCreatorPanel.ts
 src/models/StoryCreatorPurchaseEpisodeRequest.ts
 src/models/StoryCreatorPurchaseEpisodeResponse.ts
+src/models/StoryCreatorRateEpisodeRequest.ts
 src/models/StoryCreatorSaveEpisodePanel.ts
 src/models/StoryCreatorSaveEpisodeRequest.ts
 src/models/StoryCreatorStory.ts

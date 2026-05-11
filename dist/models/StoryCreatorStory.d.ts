@@ -48,6 +48,12 @@ export interface StoryCreatorStory {
     ownerId: string;
     /**
      *
+     * @type {number}
+     * @memberof StoryCreatorStory
+     */
+    rating?: number | null;
+    /**
+     *
      * @type {UserStoryProgressType}
      * @memberof StoryCreatorStory
      */
