@@ -109,6 +109,7 @@ export const ExceptionCode = {
     EpisodeNotFoundOrNotAuthorized: 'episode_not_found_or_not_authorized',
     EpisodeIsFree: 'episode_is_free',
     InvalidIndices: 'invalid_indices',
+    PanelDuplicate: 'panel_duplicate',
     ShareContentTypeUnsupported: 'share_content_type_unsupported',
     ShareVideoNonOwnedForbidden: 'share_video_non_owned_forbidden',
     ShareImageNonOwnedForbidden: 'share_image_non_owned_forbidden',
@@ -130,7 +131,9 @@ export const ExceptionCode = {
     ModerationFlagged: 'moderation_flagged',
     MarketingCampaignNotFound: 'marketing_campaign_not_found',
     MarketingCampaignNotAcceptable: 'marketing_campaign_not_acceptable',
-    MarketingCampaignNoState: 'marketing_campaign_no_state'
+    MarketingCampaignNoState: 'marketing_campaign_no_state',
+    EpisodeAndVersionMismatch: 'episode_and_version_mismatch',
+    EpisodeNotFound: 'episode_not_found'
 } as const;
 export type ExceptionCode = typeof ExceptionCode[keyof typeof ExceptionCode];
 

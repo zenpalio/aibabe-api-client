@@ -18,7 +18,6 @@ exports.StoryCreatorStoryFromJSON = StoryCreatorStoryFromJSON;
 exports.StoryCreatorStoryFromJSONTyped = StoryCreatorStoryFromJSONTyped;
 exports.StoryCreatorStoryToJSON = StoryCreatorStoryToJSON;
 exports.StoryCreatorStoryToJSONTyped = StoryCreatorStoryToJSONTyped;
-const StoryVisibility_1 = require("./StoryVisibility");
 /**
  * Check if a given object implements the StoryCreatorStory interface.
  */
@@ -28,8 +27,6 @@ function instanceOfStoryCreatorStory(value) {
     if (!('id' in value) || value['id'] === undefined)
         return false;
     if (!('ownerId' in value) || value['ownerId'] === undefined)
-        return false;
-    if (!('visibility' in value) || value['visibility'] === undefined)
         return false;
     return true;
 }
@@ -46,7 +43,6 @@ function StoryCreatorStoryFromJSONTyped(json, ignoreDiscriminator) {
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
         'id': json['id'],
         'ownerId': json['owner_id'],
-        'visibility': (0, StoryVisibility_1.StoryVisibilityFromJSON)(json['visibility']),
     };
 }
 function StoryCreatorStoryToJSON(json) {
@@ -62,7 +58,6 @@ function StoryCreatorStoryToJSONTyped(value, ignoreDiscriminator = false) {
         'cover_image': value['coverImage'],
         'id': value['id'],
         'owner_id': value['ownerId'],
-        'visibility': (0, StoryVisibility_1.StoryVisibilityToJSON)(value['visibility']),
     };
 }
 //# sourceMappingURL=StoryCreatorStory.js.map

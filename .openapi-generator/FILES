@@ -78,6 +78,8 @@ src/models/FeatureFlagName.ts
 src/models/FollowNotification.ts
 src/models/FurryVisualType.ts
 src/models/GalleryItem.ts
+src/models/GeneratedAudioGenerationType.ts
+src/models/GeneratedAudioItem.ts
 src/models/GeneratedAudioStatus.ts
 src/models/GeneratedImages.ts
 src/models/GeneratedVideos.ts
@@ -93,6 +95,7 @@ src/models/GetExceptionsResponse.ts
 src/models/GetFollowedUsersResponse.ts
 src/models/GetGalleryResponse.ts
 src/models/GetGalleryResponseItemsInner.ts
+src/models/GetGeneratedAudioResponse.ts
 src/models/GetGeneratedImage.ts
 src/models/GetIdentityChatbotResponse.ts
 src/models/GetImageGenerationTagsResponse.ts
@@ -218,6 +221,7 @@ src/models/SeduceDifficulty.ts
 src/models/SendCustomMemoracekRequest.ts
 src/models/SendMemoracekRequest.ts
 src/models/SortFilter.ts
+src/models/SoundEffectResponse.ts
 src/models/SoundEffectsRequest.ts
 src/models/SpecialAddonOffer.ts
 src/models/SpecialFeatures.ts
@@ -235,7 +239,7 @@ src/models/StoryCreatorEpisodeBase.ts
 src/models/StoryCreatorEpisodeListResponse.ts
 src/models/StoryCreatorEpisodePrice.ts
 src/models/StoryCreatorEpisodeResponse.ts
-src/models/StoryCreatorEpisodeWithPanelsResponse.ts
+src/models/StoryCreatorEpisodeWithStoryAndPanelsResponse.ts
 src/models/StoryCreatorGenerateAvatarRequest.ts
 src/models/StoryCreatorImportActorRequest.ts
 src/models/StoryCreatorLockEpisodeRequest.ts
@@ -249,9 +253,9 @@ src/models/StoryCreatorStoryListResponse.ts
 src/models/StoryCreatorStoryResponse.ts
 src/models/StoryCreatorUpdateActorRequest.ts
 src/models/StoryCreatorUpdateEpisodeRequest.ts
+src/models/StoryCreatorUpdateEpisodeVisibilityRequest.ts
 src/models/StoryCreatorUpdateStoryRequest.ts
 src/models/StoryPreview.ts
-src/models/StoryVisibility.ts
 src/models/Subscription.ts
 src/models/SubscriptionModel.ts
 src/models/SubscriptionPrice.ts
@@ -264,6 +268,7 @@ src/models/TagModel.ts
 src/models/TagVideoLora.ts
 src/models/TagsExploreTypesGet200ResponseInner.ts
 src/models/TextToSpeechRequest.ts
+src/models/TextToSpeechResponse.ts
 src/models/TokenReconciliationResponse.ts
 src/models/Type.ts
 src/models/UserClaimType.ts
@@ -271,6 +276,7 @@ src/models/UserInfoResponse.ts
 src/models/UserPreferenceModel.ts
 src/models/UserPreferences.ts
 src/models/UserRole.ts
+src/models/UserStoryProgressType.ts
 src/models/ValidationError.ts
 src/models/ValidationErrorLocInner.ts
 src/models/Value.ts

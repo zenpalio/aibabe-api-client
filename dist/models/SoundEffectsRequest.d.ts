@@ -39,6 +39,18 @@ export interface SoundEffectsRequest {
      * @memberof SoundEffectsRequest
      */
     promptInfluence?: number | null;
+    /**
+     *
+     * @type {string}
+     * @memberof SoundEffectsRequest
+     */
+    modelId?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof SoundEffectsRequest
+     */
+    outputFormat?: string | null;
 }
 /**
  * Check if a given object implements the SoundEffectsRequest interface.

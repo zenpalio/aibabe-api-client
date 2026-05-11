@@ -252,7 +252,7 @@ class StoryCreatorApi extends runtime.BaseAPI {
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.StoryCreatorEpisodeWithPanelsResponseFromJSON)(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.StoryCreatorEpisodeWithStoryAndPanelsResponseFromJSON)(jsonValue));
     }
     /**
      * Get Episode
@@ -379,7 +379,12 @@ class StoryCreatorApi extends runtime.BaseAPI {
             query: queryParameters,
             body: (0, index_1.StoryCreatorLockEpisodeRequestToJSON)(requestParameters['storyCreatorLockEpisodeRequest']),
         }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.StoryCreatorEpisodeResponseFromJSON)(jsonValue));
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse(response);
+        }
+        else {
+            return new runtime.TextApiResponse(response);
+        }
     }
     /**
      * Lock Episode
@@ -437,13 +442,42 @@ class StoryCreatorApi extends runtime.BaseAPI {
             query: queryParameters,
             body: (0, index_1.StoryCreatorSaveEpisodeRequestToJSON)(requestParameters['storyCreatorSaveEpisodeRequest']),
         }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.StoryCreatorEpisodeWithPanelsResponseFromJSON)(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.StoryCreatorEpisodeWithStoryAndPanelsResponseFromJSON)(jsonValue));
     }
     /**
      * Save Episode
      */
     async saveEpisodeStoryCreatorEpisodesEpisodeIdPut(requestParameters, initOverrides) {
         const response = await this.saveEpisodeStoryCreatorEpisodesEpisodeIdPutRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * Unlock Episode
+     */
+    async unlockEpisodeStoryCreatorEpisodesEpisodeIdLockDeleteRaw(requestParameters, initOverrides) {
+        if (requestParameters['episodeId'] == null) {
+            throw new runtime.RequiredError('episodeId', 'Required parameter "episodeId" was null or undefined when calling unlockEpisodeStoryCreatorEpisodesEpisodeIdLockDelete().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        const response = await this.request({
+            path: `/story-creator/episodes/{episode_id}/lock`.replace(`{${"episode_id"}}`, encodeURIComponent(String(requestParameters['episodeId']))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse(response);
+        }
+        else {
+            return new runtime.TextApiResponse(response);
+        }
+    }
+    /**
+     * Unlock Episode
+     */
+    async unlockEpisodeStoryCreatorEpisodesEpisodeIdLockDelete(requestParameters, initOverrides) {
+        const response = await this.unlockEpisodeStoryCreatorEpisodesEpisodeIdLockDeleteRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -502,6 +536,40 @@ class StoryCreatorApi extends runtime.BaseAPI {
      */
     async updateEpisodeStoryCreatorEpisodesEpisodeIdPatch(requestParameters, initOverrides) {
         const response = await this.updateEpisodeStoryCreatorEpisodesEpisodeIdPatchRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * Update Episode Visibility
+     */
+    async updateEpisodeVisibilityStoryCreatorEpisodesEpisodeIdVisibilityPatchRaw(requestParameters, initOverrides) {
+        if (requestParameters['episodeId'] == null) {
+            throw new runtime.RequiredError('episodeId', 'Required parameter "episodeId" was null or undefined when calling updateEpisodeVisibilityStoryCreatorEpisodesEpisodeIdVisibilityPatch().');
+        }
+        if (requestParameters['storyCreatorUpdateEpisodeVisibilityRequest'] == null) {
+            throw new runtime.RequiredError('storyCreatorUpdateEpisodeVisibilityRequest', 'Required parameter "storyCreatorUpdateEpisodeVisibilityRequest" was null or undefined when calling updateEpisodeVisibilityStoryCreatorEpisodesEpisodeIdVisibilityPatch().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        const response = await this.request({
+            path: `/story-creator/episodes/{episode_id}/visibility`.replace(`{${"episode_id"}}`, encodeURIComponent(String(requestParameters['episodeId']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.StoryCreatorUpdateEpisodeVisibilityRequestToJSON)(requestParameters['storyCreatorUpdateEpisodeVisibilityRequest']),
+        }, initOverrides);
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse(response);
+        }
+        else {
+            return new runtime.TextApiResponse(response);
+        }
+    }
+    /**
+     * Update Episode Visibility
+     */
+    async updateEpisodeVisibilityStoryCreatorEpisodesEpisodeIdVisibilityPatch(requestParameters, initOverrides) {
+        const response = await this.updateEpisodeVisibilityStoryCreatorEpisodesEpisodeIdVisibilityPatchRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**

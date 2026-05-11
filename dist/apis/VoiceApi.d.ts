@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { Language, SoundEffectsRequest, TextToSpeechRequest } from '../models/index';
+import type { GeneratedAudioItem, GetGeneratedAudioResponse, Language, SoundEffectResponse, SoundEffectsRequest, TextToSpeechRequest, TextToSpeechResponse } from '../models/index';
 export interface CreateReferenceVoiceReferencesPostRequest {
     name: string;
     audio: Blob;
@@ -27,6 +27,13 @@ export interface GenerateTextToSpeechVoiceTextToSpeechPostRequest {
 }
 export interface GenerateVoiceChatVoiceMessageMessageIdPostRequest {
     messageId: string;
+}
+export interface GetAudioVoiceDetailsAudioIdGetRequest {
+    audioId: string;
+}
+export interface ListAudioVoiceListGetRequest {
+    paginationToken?: string | null;
+    limit?: number;
 }
 export interface StreamVoiceStreamAudioIdGetRequest {
     audioId: string;
@@ -47,19 +54,19 @@ export declare class VoiceApi extends runtime.BaseAPI {
     /**
      * Generate Sound Effects
      */
-    generateSoundEffectsVoiceSfxPostRaw(requestParameters: GenerateSoundEffectsVoiceSfxPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
+    generateSoundEffectsVoiceSfxPostRaw(requestParameters: GenerateSoundEffectsVoiceSfxPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SoundEffectResponse>>;
     /**
      * Generate Sound Effects
      */
-    generateSoundEffectsVoiceSfxPost(requestParameters: GenerateSoundEffectsVoiceSfxPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
+    generateSoundEffectsVoiceSfxPost(requestParameters: GenerateSoundEffectsVoiceSfxPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SoundEffectResponse>;
     /**
      * Generate Text To Speech
      */
-    generateTextToSpeechVoiceTextToSpeechPostRaw(requestParameters: GenerateTextToSpeechVoiceTextToSpeechPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
+    generateTextToSpeechVoiceTextToSpeechPostRaw(requestParameters: GenerateTextToSpeechVoiceTextToSpeechPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TextToSpeechResponse>>;
     /**
      * Generate Text To Speech
      */
-    generateTextToSpeechVoiceTextToSpeechPost(requestParameters: GenerateTextToSpeechVoiceTextToSpeechPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
+    generateTextToSpeechVoiceTextToSpeechPost(requestParameters: GenerateTextToSpeechVoiceTextToSpeechPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TextToSpeechResponse>;
     /**
      * Generate Voice Chat
      */
@@ -68,6 +75,22 @@ export declare class VoiceApi extends runtime.BaseAPI {
      * Generate Voice Chat
      */
     generateVoiceChatVoiceMessageMessageIdPost(requestParameters: GenerateVoiceChatVoiceMessageMessageIdPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
+    /**
+     * Get Audio
+     */
+    getAudioVoiceDetailsAudioIdGetRaw(requestParameters: GetAudioVoiceDetailsAudioIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GeneratedAudioItem>>;
+    /**
+     * Get Audio
+     */
+    getAudioVoiceDetailsAudioIdGet(requestParameters: GetAudioVoiceDetailsAudioIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GeneratedAudioItem>;
+    /**
+     * List Audio
+     */
+    listAudioVoiceListGetRaw(requestParameters: ListAudioVoiceListGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetGeneratedAudioResponse>>;
+    /**
+     * List Audio
+     */
+    listAudioVoiceListGet(requestParameters?: ListAudioVoiceListGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetGeneratedAudioResponse>;
     /**
      * List References
      */

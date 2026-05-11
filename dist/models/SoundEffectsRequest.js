@@ -38,6 +38,8 @@ function SoundEffectsRequestFromJSONTyped(json, ignoreDiscriminator) {
         'loop': json['loop'] == null ? undefined : json['loop'],
         'durationSeconds': json['duration_seconds'] == null ? undefined : json['duration_seconds'],
         'promptInfluence': json['prompt_influence'] == null ? undefined : json['prompt_influence'],
+        'modelId': json['model_id'] == null ? undefined : json['model_id'],
+        'outputFormat': json['output_format'] == null ? undefined : json['output_format'],
     };
 }
 function SoundEffectsRequestToJSON(json) {
@@ -52,6 +54,8 @@ function SoundEffectsRequestToJSONTyped(value, ignoreDiscriminator = false) {
         'loop': value['loop'],
         'duration_seconds': value['durationSeconds'],
         'prompt_influence': value['promptInfluence'],
+        'model_id': value['modelId'],
+        'output_format': value['outputFormat'],
     };
 }
 //# sourceMappingURL=SoundEffectsRequest.js.map

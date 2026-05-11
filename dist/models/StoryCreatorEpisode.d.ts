@@ -11,6 +11,7 @@
  */
 import type { StoryCreatorEpisodePrice } from './StoryCreatorEpisodePrice';
 import type { EpisodeVisibility } from './EpisodeVisibility';
+import type { UserStoryProgressType } from './UserStoryProgressType';
 import type { AccessType } from './AccessType';
 /**
  *
@@ -66,6 +67,12 @@ export interface StoryCreatorEpisode {
      * @memberof StoryCreatorEpisode
      */
     accessType?: AccessType | null;
+    /**
+     *
+     * @type {UserStoryProgressType}
+     * @memberof StoryCreatorEpisode
+     */
+    progress?: UserStoryProgressType | null;
     /**
      *
      * @type {Array<StoryCreatorEpisodePrice>}

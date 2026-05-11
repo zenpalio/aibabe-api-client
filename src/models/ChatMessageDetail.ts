@@ -71,7 +71,7 @@ export interface ChatMessageDetail {
      * @type {string}
      * @memberof ChatMessageDetail
      */
-    url: string;
+    content: string;
     /**
      * 
      * @type {ChatRole}
@@ -131,7 +131,7 @@ export function instanceOfChatMessageDetail(value: object): value is ChatMessage
     if (!('id' in value) || value['id'] === undefined) return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
     if (!('type' in value) || value['type'] === undefined) return false;
-    if (!('url' in value) || value['url'] === undefined) return false;
+    if (!('content' in value) || value['content'] === undefined) return false;
     if (!('role' in value) || value['role'] === undefined) return false;
     if (!('requestId' in value) || value['requestId'] === undefined) return false;
     if (!('status' in value) || value['status'] === undefined) return false;
@@ -151,7 +151,7 @@ export function ChatMessageDetailFromJSONTyped(json: any, ignoreDiscriminator: b
         'id': json['id'],
         'createdAt': json['created_at'],
         'type': TypeFromJSON(json['type']),
-        'url': json['url'],
+        'content': json['content'],
         'role': ChatRoleFromJSON(json['role']),
         'requestId': json['request_id'],
         'status': StatusFromJSON(json['status']),
@@ -177,7 +177,7 @@ export function ChatMessageDetailFromJSONTyped(json: any, ignoreDiscriminator: b
         'id': value['id'],
         'created_at': value['createdAt'],
         'type': TypeToJSON(value['type']),
-        'url': value['url'],
+        'content': value['content'],
         'role': ChatRoleToJSON(value['role']),
         'request_id': value['requestId'],
         'status': StatusToJSON(value['status']),
