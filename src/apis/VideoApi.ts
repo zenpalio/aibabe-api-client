@@ -19,10 +19,13 @@ import type {
   GetVideoGenerationTagsResponse,
   HTTPValidationError,
   ImageToVideoFromChatPayload,
-  ImageToVideoPayload,
   ImageToVideoRecommendationPayload,
+  ImageToVideoRequest,
   LastVideoFrameResponse,
+  MuleRouterWanTaskResponse,
   VideoFromChatResponse,
+  VideoResolution,
+  WanImageToVideoResponse,
 } from '../models/index';
 import {
     ExtendVideoPayloadFromJSON,
@@ -33,14 +36,20 @@ import {
     HTTPValidationErrorToJSON,
     ImageToVideoFromChatPayloadFromJSON,
     ImageToVideoFromChatPayloadToJSON,
-    ImageToVideoPayloadFromJSON,
-    ImageToVideoPayloadToJSON,
     ImageToVideoRecommendationPayloadFromJSON,
     ImageToVideoRecommendationPayloadToJSON,
+    ImageToVideoRequestFromJSON,
+    ImageToVideoRequestToJSON,
     LastVideoFrameResponseFromJSON,
     LastVideoFrameResponseToJSON,
+    MuleRouterWanTaskResponseFromJSON,
+    MuleRouterWanTaskResponseToJSON,
     VideoFromChatResponseFromJSON,
     VideoFromChatResponseToJSON,
+    VideoResolutionFromJSON,
+    VideoResolutionToJSON,
+    WanImageToVideoResponseFromJSON,
+    WanImageToVideoResponseToJSON,
 } from '../models/index';
 
 export interface AttachmentVideoVideoIdAttachmentGetRequest {
@@ -84,11 +93,25 @@ export interface GenerateVideoFromChatVideoChatPostRequest {
 }
 
 export interface GenerateVideoVideoPostRequest {
-    imageToVideoPayload: ImageToVideoPayload;
+    imageToVideoRequest: ImageToVideoRequest;
+}
+
+export interface GenerateWanVideoDirectVideoWanGeneratePostRequest {
+    image: Blob;
+    prompt: string;
+    negativePrompt?: string | null;
+    resolution?: VideoResolution;
+    duration?: number;
+    promptExtend?: boolean;
+    seed?: number | null;
 }
 
 export interface GenerationTagsVideoVideoIdTagsGetRequest {
     videoId: string;
+}
+
+export interface GetWanTaskStatusVideoWanTaskTaskIdGetRequest {
+    taskId: string;
 }
 
 export interface VideoLastFrameVideoVideoIdLastFrameGetRequest {
@@ -513,10 +536,10 @@ export class VideoApi extends runtime.BaseAPI {
      * Generate Video
      */
     async generateVideoVideoPostRaw(requestParameters: GenerateVideoVideoPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
-        if (requestParameters['imageToVideoPayload'] == null) {
+        if (requestParameters['imageToVideoRequest'] == null) {
             throw new runtime.RequiredError(
-                'imageToVideoPayload',
-                'Required parameter "imageToVideoPayload" was null or undefined when calling generateVideoVideoPost().'
+                'imageToVideoRequest',
+                'Required parameter "imageToVideoRequest" was null or undefined when calling generateVideoVideoPost().'
             );
         }
 
@@ -531,7 +554,7 @@ export class VideoApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: ImageToVideoPayloadToJSON(requestParameters['imageToVideoPayload']),
+            body: ImageToVideoRequestToJSON(requestParameters['imageToVideoRequest']),
         }, initOverrides);
 
         if (this.isJsonMime(response.headers.get('content-type'))) {
@@ -546,6 +569,91 @@ export class VideoApi extends runtime.BaseAPI {
      */
     async generateVideoVideoPost(requestParameters: GenerateVideoVideoPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
         const response = await this.generateVideoVideoPostRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Generate Wan Video Direct
+     */
+    async generateWanVideoDirectVideoWanGeneratePostRaw(requestParameters: GenerateWanVideoDirectVideoWanGeneratePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<WanImageToVideoResponse>> {
+        if (requestParameters['image'] == null) {
+            throw new runtime.RequiredError(
+                'image',
+                'Required parameter "image" was null or undefined when calling generateWanVideoDirectVideoWanGeneratePost().'
+            );
+        }
+
+        if (requestParameters['prompt'] == null) {
+            throw new runtime.RequiredError(
+                'prompt',
+                'Required parameter "prompt" was null or undefined when calling generateWanVideoDirectVideoWanGeneratePost().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const consumes: runtime.Consume[] = [
+            { contentType: 'multipart/form-data' },
+        ];
+        // @ts-ignore: canConsumeForm may be unused
+        const canConsumeForm = runtime.canConsumeForm(consumes);
+
+        let formParams: { append(param: string, value: any): any };
+        let useForm = false;
+        // use FormData to transmit files using content-type "multipart/form-data"
+        useForm = canConsumeForm;
+        if (useForm) {
+            formParams = new FormData();
+        } else {
+            formParams = new URLSearchParams();
+        }
+
+        if (requestParameters['image'] != null) {
+            formParams.append('image', requestParameters['image'] as any);
+        }
+
+        if (requestParameters['prompt'] != null) {
+            formParams.append('prompt', requestParameters['prompt'] as any);
+        }
+
+        if (requestParameters['negativePrompt'] != null) {
+            formParams.append('negative_prompt', requestParameters['negativePrompt'] as any);
+        }
+
+        if (requestParameters['resolution'] != null) {
+            formParams.append('resolution', requestParameters['resolution'] as any);
+        }
+
+        if (requestParameters['duration'] != null) {
+            formParams.append('duration', requestParameters['duration'] as any);
+        }
+
+        if (requestParameters['promptExtend'] != null) {
+            formParams.append('prompt_extend', requestParameters['promptExtend'] as any);
+        }
+
+        if (requestParameters['seed'] != null) {
+            formParams.append('seed', requestParameters['seed'] as any);
+        }
+
+        const response = await this.request({
+            path: `/video/wan/generate`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: formParams,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => WanImageToVideoResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Generate Wan Video Direct
+     */
+    async generateWanVideoDirectVideoWanGeneratePost(requestParameters: GenerateWanVideoDirectVideoWanGeneratePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<WanImageToVideoResponse> {
+        const response = await this.generateWanVideoDirectVideoWanGeneratePostRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -579,6 +687,39 @@ export class VideoApi extends runtime.BaseAPI {
      */
     async generationTagsVideoVideoIdTagsGet(requestParameters: GenerationTagsVideoVideoIdTagsGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetVideoGenerationTagsResponse> {
         const response = await this.generationTagsVideoVideoIdTagsGetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Get Wan Task Status
+     */
+    async getWanTaskStatusVideoWanTaskTaskIdGetRaw(requestParameters: GetWanTaskStatusVideoWanTaskTaskIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MuleRouterWanTaskResponse>> {
+        if (requestParameters['taskId'] == null) {
+            throw new runtime.RequiredError(
+                'taskId',
+                'Required parameter "taskId" was null or undefined when calling getWanTaskStatusVideoWanTaskTaskIdGet().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/video/wan/task/{task_id}`.replace(`{${"task_id"}}`, encodeURIComponent(String(requestParameters['taskId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => MuleRouterWanTaskResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Get Wan Task Status
+     */
+    async getWanTaskStatusVideoWanTaskTaskIdGet(requestParameters: GetWanTaskStatusVideoWanTaskTaskIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MuleRouterWanTaskResponse> {
+        const response = await this.getWanTaskStatusVideoWanTaskTaskIdGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

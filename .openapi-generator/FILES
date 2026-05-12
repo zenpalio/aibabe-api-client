@@ -124,8 +124,9 @@ src/models/ImagePreset.ts
 src/models/ImagePresetCategory.ts
 src/models/ImageSendingMode.ts
 src/models/ImageToVideoFromChatPayload.ts
-src/models/ImageToVideoPayload.ts
+src/models/ImageToVideoModel.ts
 src/models/ImageToVideoRecommendationPayload.ts
+src/models/ImageToVideoRequest.ts
 src/models/InstanceDetails.ts
 src/models/InstanceProvider.ts
 src/models/InstanceType.ts
@@ -143,6 +144,9 @@ src/models/MemoryChat.ts
 src/models/MemoryUpdateReponse.ts
 src/models/MessageType.ts
 src/models/ModelName.ts
+src/models/MuleRouterWanTaskError.ts
+src/models/MuleRouterWanTaskInfo.ts
+src/models/MuleRouterWanTaskResponse.ts
 src/models/NotificationResponse.ts
 src/models/NotificationResponseNotificationsInner.ts
 src/models/NotificationType.ts
@@ -289,8 +293,10 @@ src/models/VideoMod.ts
 src/models/VideoModCategory.ts
 src/models/VideoPreset.ts
 src/models/VideoPresetCategory.ts
+src/models/VideoResolution.ts
 src/models/VisualType.ts
 src/models/WallPost.ts
+src/models/WanImageToVideoResponse.ts
 src/models/index.ts
 src/runtime.ts
 tsconfig.esm.json
