@@ -84,6 +84,12 @@ export interface StoryCreatorPanel {
     voiceAutoReplay?: boolean;
     /**
      *
+     * @type {number}
+     * @memberof StoryCreatorPanel
+     */
+    voiceVolume?: number;
+    /**
+     *
      * @type {string}
      * @memberof StoryCreatorPanel
      */
@@ -94,6 +100,12 @@ export interface StoryCreatorPanel {
      * @memberof StoryCreatorPanel
      */
     sfxAutoReplay?: boolean;
+    /**
+     *
+     * @type {number}
+     * @memberof StoryCreatorPanel
+     */
+    sfxVolume?: number;
     /**
      *
      * @type {number}

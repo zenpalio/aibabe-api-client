@@ -95,6 +95,12 @@ export interface StoryCreatorSaveEpisodePanel {
     voiceAutoReplay?: boolean;
     /**
      * 
+     * @type {number}
+     * @memberof StoryCreatorSaveEpisodePanel
+     */
+    voiceVolume?: number;
+    /**
+     * 
      * @type {string}
      * @memberof StoryCreatorSaveEpisodePanel
      */
@@ -105,6 +111,12 @@ export interface StoryCreatorSaveEpisodePanel {
      * @memberof StoryCreatorSaveEpisodePanel
      */
     sfxAutoReplay?: boolean;
+    /**
+     * 
+     * @type {number}
+     * @memberof StoryCreatorSaveEpisodePanel
+     */
+    sfxVolume?: number;
     /**
      * 
      * @type {number}
@@ -146,8 +158,10 @@ export function StoryCreatorSaveEpisodePanelFromJSONTyped(json: any, ignoreDiscr
         'messageActorId': json['message_actor_id'] == null ? undefined : json['message_actor_id'],
         'voice': json['voice'] == null ? undefined : json['voice'],
         'voiceAutoReplay': json['voice_auto_replay'] == null ? undefined : json['voice_auto_replay'],
+        'voiceVolume': json['voice_volume'] == null ? undefined : json['voice_volume'],
         'sfx': json['sfx'] == null ? undefined : json['sfx'],
         'sfxAutoReplay': json['sfx_auto_replay'] == null ? undefined : json['sfx_auto_replay'],
+        'sfxVolume': json['sfx_volume'] == null ? undefined : json['sfx_volume'],
         'panelIndex': json['panel_index'],
     };
 }
@@ -174,8 +188,10 @@ export function StoryCreatorSaveEpisodePanelFromJSONTyped(json: any, ignoreDiscr
         'message_actor_id': value['messageActorId'],
         'voice': value['voice'],
         'voice_auto_replay': value['voiceAutoReplay'],
+        'voice_volume': value['voiceVolume'],
         'sfx': value['sfx'],
         'sfx_auto_replay': value['sfxAutoReplay'],
+        'sfx_volume': value['sfxVolume'],
         'panel_index': value['panelIndex'],
     };
 }

@@ -84,6 +84,12 @@ export interface StoryCreatorSaveEpisodePanel {
     voiceAutoReplay?: boolean;
     /**
      *
+     * @type {number}
+     * @memberof StoryCreatorSaveEpisodePanel
+     */
+    voiceVolume?: number;
+    /**
+     *
      * @type {string}
      * @memberof StoryCreatorSaveEpisodePanel
      */
@@ -94,6 +100,12 @@ export interface StoryCreatorSaveEpisodePanel {
      * @memberof StoryCreatorSaveEpisodePanel
      */
     sfxAutoReplay?: boolean;
+    /**
+     *
+     * @type {number}
+     * @memberof StoryCreatorSaveEpisodePanel
+     */
+    sfxVolume?: number;
     /**
      *
      * @type {number}
