@@ -25,6 +25,7 @@ import type {
   StoryCreatorCreateStoryResponse,
   StoryCreatorEpisodeListResponse,
   StoryCreatorEpisodeResponse,
+  StoryCreatorEpisodeWithPanelsResponse,
   StoryCreatorEpisodeWithStoryAndPanelsResponse,
   StoryCreatorGenerateAvatarRequest,
   StoryCreatorImportActorRequest,
@@ -61,6 +62,8 @@ import {
     StoryCreatorEpisodeListResponseToJSON,
     StoryCreatorEpisodeResponseFromJSON,
     StoryCreatorEpisodeResponseToJSON,
+    StoryCreatorEpisodeWithPanelsResponseFromJSON,
+    StoryCreatorEpisodeWithPanelsResponseToJSON,
     StoryCreatorEpisodeWithStoryAndPanelsResponseFromJSON,
     StoryCreatorEpisodeWithStoryAndPanelsResponseToJSON,
     StoryCreatorGenerateAvatarRequestFromJSON,
@@ -128,6 +131,11 @@ export interface GenerateAvatarStoryCreatorStoriesStoryIdActorAvatarPostRequest 
 
 export interface GetEpisodeStoryCreatorEpisodesEpisodeIdGetRequest {
     episodeId: string;
+}
+
+export interface GetEpisodeVersionStoryCreatorEpisodesEpisodeIdVersionIdGetRequest {
+    episodeId: string;
+    versionId: string;
 }
 
 export interface ImportActorStoryCreatorStoriesStoryIdActorImportPostRequest {
@@ -526,6 +534,46 @@ export class StoryCreatorApi extends runtime.BaseAPI {
     }
 
     /**
+     * Get Episode Version
+     */
+    async getEpisodeVersionStoryCreatorEpisodesEpisodeIdVersionIdGetRaw(requestParameters: GetEpisodeVersionStoryCreatorEpisodesEpisodeIdVersionIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StoryCreatorEpisodeWithStoryAndPanelsResponse>> {
+        if (requestParameters['episodeId'] == null) {
+            throw new runtime.RequiredError(
+                'episodeId',
+                'Required parameter "episodeId" was null or undefined when calling getEpisodeVersionStoryCreatorEpisodesEpisodeIdVersionIdGet().'
+            );
+        }
+
+        if (requestParameters['versionId'] == null) {
+            throw new runtime.RequiredError(
+                'versionId',
+                'Required parameter "versionId" was null or undefined when calling getEpisodeVersionStoryCreatorEpisodesEpisodeIdVersionIdGet().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/story-creator/episodes/{episode_id}/{version_id}`.replace(`{${"episode_id"}}`, encodeURIComponent(String(requestParameters['episodeId']))).replace(`{${"version_id"}}`, encodeURIComponent(String(requestParameters['versionId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => StoryCreatorEpisodeWithStoryAndPanelsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Get Episode Version
+     */
+    async getEpisodeVersionStoryCreatorEpisodesEpisodeIdVersionIdGet(requestParameters: GetEpisodeVersionStoryCreatorEpisodesEpisodeIdVersionIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StoryCreatorEpisodeWithStoryAndPanelsResponse> {
+        const response = await this.getEpisodeVersionStoryCreatorEpisodesEpisodeIdVersionIdGetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Import Actor
      */
     async importActorStoryCreatorStoriesStoryIdActorImportPostRaw(requestParameters: ImportActorStoryCreatorStoriesStoryIdActorImportPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StoryCreatorActorResponse>> {
@@ -796,7 +844,7 @@ export class StoryCreatorApi extends runtime.BaseAPI {
     /**
      * Save Episode
      */
-    async saveEpisodeStoryCreatorEpisodesEpisodeIdPutRaw(requestParameters: SaveEpisodeStoryCreatorEpisodesEpisodeIdPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StoryCreatorEpisodeWithStoryAndPanelsResponse>> {
+    async saveEpisodeStoryCreatorEpisodesEpisodeIdPutRaw(requestParameters: SaveEpisodeStoryCreatorEpisodesEpisodeIdPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StoryCreatorEpisodeWithPanelsResponse>> {
         if (requestParameters['episodeId'] == null) {
             throw new runtime.RequiredError(
                 'episodeId',
@@ -825,13 +873,13 @@ export class StoryCreatorApi extends runtime.BaseAPI {
             body: StoryCreatorSaveEpisodeRequestToJSON(requestParameters['storyCreatorSaveEpisodeRequest']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => StoryCreatorEpisodeWithStoryAndPanelsResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => StoryCreatorEpisodeWithPanelsResponseFromJSON(jsonValue));
     }
 
     /**
      * Save Episode
      */
-    async saveEpisodeStoryCreatorEpisodesEpisodeIdPut(requestParameters: SaveEpisodeStoryCreatorEpisodesEpisodeIdPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StoryCreatorEpisodeWithStoryAndPanelsResponse> {
+    async saveEpisodeStoryCreatorEpisodesEpisodeIdPut(requestParameters: SaveEpisodeStoryCreatorEpisodesEpisodeIdPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StoryCreatorEpisodeWithPanelsResponse> {
         const response = await this.saveEpisodeStoryCreatorEpisodesEpisodeIdPutRaw(requestParameters, initOverrides);
         return await response.value();
     }

@@ -130,6 +130,8 @@ export declare const ExceptionCode: {
     readonly MarketingCampaignNoState: "marketing_campaign_no_state";
     readonly EpisodeAndVersionMismatch: "episode_and_version_mismatch";
     readonly EpisodeNotFound: "episode_not_found";
+    readonly PurchasedEpisodeAndVersionMismatch: "purchased_episode_and_version_mismatch";
+    readonly PurchasedEpisodeVersionNotFound: "purchased_episode_version_not_found";
 };
 export type ExceptionCode = typeof ExceptionCode[keyof typeof ExceptionCode];
 export declare function instanceOfExceptionCode(value: any): boolean;

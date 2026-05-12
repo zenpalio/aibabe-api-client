@@ -139,7 +139,9 @@ exports.ExceptionCode = {
     MarketingCampaignNotAcceptable: 'marketing_campaign_not_acceptable',
     MarketingCampaignNoState: 'marketing_campaign_no_state',
     EpisodeAndVersionMismatch: 'episode_and_version_mismatch',
-    EpisodeNotFound: 'episode_not_found'
+    EpisodeNotFound: 'episode_not_found',
+    PurchasedEpisodeAndVersionMismatch: 'purchased_episode_and_version_mismatch',
+    PurchasedEpisodeVersionNotFound: 'purchased_episode_version_not_found'
 };
 function instanceOfExceptionCode(value) {
     for (const key in exports.ExceptionCode) {

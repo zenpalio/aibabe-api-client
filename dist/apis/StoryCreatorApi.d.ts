@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { PostImagenResponse, StoryCreatorActorListResponse, StoryCreatorActorResponse, StoryCreatorCreateActorRequest, StoryCreatorCreateEpisodeRequest, StoryCreatorCreateStoryRequest, StoryCreatorCreateStoryResponse, StoryCreatorEpisodeListResponse, StoryCreatorEpisodeResponse, StoryCreatorEpisodeWithStoryAndPanelsResponse, StoryCreatorGenerateAvatarRequest, StoryCreatorImportActorRequest, StoryCreatorLockEpisodeRequest, StoryCreatorPurchaseEpisodeRequest, StoryCreatorPurchaseEpisodeResponse, StoryCreatorRateEpisodeRequest, StoryCreatorSaveEpisodeRequest, StoryCreatorStoryListResponse, StoryCreatorStoryResponse, StoryCreatorUpdateActorRequest, StoryCreatorUpdateEpisodeRequest, StoryCreatorUpdateEpisodeVisibilityRequest, StoryCreatorUpdateStoryRequest } from '../models/index';
+import type { PostImagenResponse, StoryCreatorActorListResponse, StoryCreatorActorResponse, StoryCreatorCreateActorRequest, StoryCreatorCreateEpisodeRequest, StoryCreatorCreateStoryRequest, StoryCreatorCreateStoryResponse, StoryCreatorEpisodeListResponse, StoryCreatorEpisodeResponse, StoryCreatorEpisodeWithPanelsResponse, StoryCreatorEpisodeWithStoryAndPanelsResponse, StoryCreatorGenerateAvatarRequest, StoryCreatorImportActorRequest, StoryCreatorLockEpisodeRequest, StoryCreatorPurchaseEpisodeRequest, StoryCreatorPurchaseEpisodeResponse, StoryCreatorRateEpisodeRequest, StoryCreatorSaveEpisodeRequest, StoryCreatorStoryListResponse, StoryCreatorStoryResponse, StoryCreatorUpdateActorRequest, StoryCreatorUpdateEpisodeRequest, StoryCreatorUpdateEpisodeVisibilityRequest, StoryCreatorUpdateStoryRequest } from '../models/index';
 export interface CreateEpisodeStoryCreatorStoriesStoryIdEpisodesPostRequest {
     storyId: string;
     storyCreatorCreateEpisodeRequest: StoryCreatorCreateEpisodeRequest;
@@ -40,6 +40,10 @@ export interface GenerateAvatarStoryCreatorStoriesStoryIdActorAvatarPostRequest 
 }
 export interface GetEpisodeStoryCreatorEpisodesEpisodeIdGetRequest {
     episodeId: string;
+}
+export interface GetEpisodeVersionStoryCreatorEpisodesEpisodeIdVersionIdGetRequest {
+    episodeId: string;
+    versionId: string;
 }
 export interface ImportActorStoryCreatorStoriesStoryIdActorImportPostRequest {
     storyId: string;
@@ -165,6 +169,14 @@ export declare class StoryCreatorApi extends runtime.BaseAPI {
      */
     getEpisodeStoryCreatorEpisodesEpisodeIdGet(requestParameters: GetEpisodeStoryCreatorEpisodesEpisodeIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StoryCreatorEpisodeWithStoryAndPanelsResponse>;
     /**
+     * Get Episode Version
+     */
+    getEpisodeVersionStoryCreatorEpisodesEpisodeIdVersionIdGetRaw(requestParameters: GetEpisodeVersionStoryCreatorEpisodesEpisodeIdVersionIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StoryCreatorEpisodeWithStoryAndPanelsResponse>>;
+    /**
+     * Get Episode Version
+     */
+    getEpisodeVersionStoryCreatorEpisodesEpisodeIdVersionIdGet(requestParameters: GetEpisodeVersionStoryCreatorEpisodesEpisodeIdVersionIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StoryCreatorEpisodeWithStoryAndPanelsResponse>;
+    /**
      * Import Actor
      */
     importActorStoryCreatorStoriesStoryIdActorImportPostRaw(requestParameters: ImportActorStoryCreatorStoriesStoryIdActorImportPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StoryCreatorActorResponse>>;
@@ -223,11 +235,11 @@ export declare class StoryCreatorApi extends runtime.BaseAPI {
     /**
      * Save Episode
      */
-    saveEpisodeStoryCreatorEpisodesEpisodeIdPutRaw(requestParameters: SaveEpisodeStoryCreatorEpisodesEpisodeIdPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StoryCreatorEpisodeWithStoryAndPanelsResponse>>;
+    saveEpisodeStoryCreatorEpisodesEpisodeIdPutRaw(requestParameters: SaveEpisodeStoryCreatorEpisodesEpisodeIdPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StoryCreatorEpisodeWithPanelsResponse>>;
     /**
      * Save Episode
      */
-    saveEpisodeStoryCreatorEpisodesEpisodeIdPut(requestParameters: SaveEpisodeStoryCreatorEpisodesEpisodeIdPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StoryCreatorEpisodeWithStoryAndPanelsResponse>;
+    saveEpisodeStoryCreatorEpisodesEpisodeIdPut(requestParameters: SaveEpisodeStoryCreatorEpisodesEpisodeIdPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StoryCreatorEpisodeWithPanelsResponse>;
     /**
      * Unlock Episode
      */

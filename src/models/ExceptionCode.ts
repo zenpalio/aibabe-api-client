@@ -133,7 +133,9 @@ export const ExceptionCode = {
     MarketingCampaignNotAcceptable: 'marketing_campaign_not_acceptable',
     MarketingCampaignNoState: 'marketing_campaign_no_state',
     EpisodeAndVersionMismatch: 'episode_and_version_mismatch',
-    EpisodeNotFound: 'episode_not_found'
+    EpisodeNotFound: 'episode_not_found',
+    PurchasedEpisodeAndVersionMismatch: 'purchased_episode_and_version_mismatch',
+    PurchasedEpisodeVersionNotFound: 'purchased_episode_version_not_found'
 } as const;
 export type ExceptionCode = typeof ExceptionCode[keyof typeof ExceptionCode];
 

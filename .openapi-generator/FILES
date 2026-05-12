@@ -243,6 +243,7 @@ src/models/StoryCreatorEpisodeBase.ts
 src/models/StoryCreatorEpisodeListResponse.ts
 src/models/StoryCreatorEpisodePrice.ts
 src/models/StoryCreatorEpisodeResponse.ts
+src/models/StoryCreatorEpisodeWithPanelsResponse.ts
 src/models/StoryCreatorEpisodeWithStoryAndPanelsResponse.ts
 src/models/StoryCreatorGenerateAvatarRequest.ts
 src/models/StoryCreatorImportActorRequest.ts
