@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ArtStyle, GetGeneratedImage, GetImageGenerationTagsResponse, GetLorasResponse, LoraName, PostGenerateImageRequest, PostGenerateSceneRequest, PostImagenResponse } from '../models/index';
+import type { ArtStyle, GetGeneratedImage, GetImageGenerationTagsResponse, GetLorasResponse, LoraName, PostGenerateImageRequest, PostGenerateSceneRequest, PostImagenResponse, PostRestartServersRequest } from '../models/index';
 export interface AttachmentImagenImageIdAttachmentGetRequest {
     imageId: string;
     imageName: string;
@@ -31,6 +31,9 @@ export interface GetLorasImagenLorasGetRequest {
     chatbotId?: string | null;
     imageId?: string | null;
     artStyle?: string | null;
+}
+export interface RestartServersImagenRestartAllPostRequest {
+    postRestartServersRequest?: PostRestartServersRequest;
 }
 export interface UserGenerateImageImagenGenerateChatbotIdPostRequest {
     chatbotId: string;
@@ -103,11 +106,11 @@ export declare class ImageApi extends runtime.BaseAPI {
     /**
      * Restart Servers
      */
-    restartServersImagenRestartAllPostRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
+    restartServersImagenRestartAllPostRaw(requestParameters: RestartServersImagenRestartAllPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
     /**
      * Restart Servers
      */
-    restartServersImagenRestartAllPost(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
+    restartServersImagenRestartAllPost(requestParameters?: RestartServersImagenRestartAllPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
     /**
      * User Generate Image
      */

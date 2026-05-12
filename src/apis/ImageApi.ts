@@ -24,6 +24,7 @@ import type {
   PostGenerateImageRequest,
   PostGenerateSceneRequest,
   PostImagenResponse,
+  PostRestartServersRequest,
 } from '../models/index';
 import {
     ArtStyleFromJSON,
@@ -44,6 +45,8 @@ import {
     PostGenerateSceneRequestToJSON,
     PostImagenResponseFromJSON,
     PostImagenResponseToJSON,
+    PostRestartServersRequestFromJSON,
+    PostRestartServersRequestToJSON,
 } from '../models/index';
 
 export interface AttachmentImagenImageIdAttachmentGetRequest {
@@ -71,6 +74,10 @@ export interface GetLorasImagenLorasGetRequest {
     chatbotId?: string | null;
     imageId?: string | null;
     artStyle?: string | null;
+}
+
+export interface RestartServersImagenRestartAllPostRequest {
+    postRestartServersRequest?: PostRestartServersRequest;
 }
 
 export interface UserGenerateImageImagenGenerateChatbotIdPostRequest {
@@ -324,16 +331,19 @@ export class ImageApi extends runtime.BaseAPI {
     /**
      * Restart Servers
      */
-    async restartServersImagenRestartAllPostRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
+    async restartServersImagenRestartAllPostRaw(requestParameters: RestartServersImagenRestartAllPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         const response = await this.request({
             path: `/imagen/restart-all`,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: PostRestartServersRequestToJSON(requestParameters['postRestartServersRequest']),
         }, initOverrides);
 
         if (this.isJsonMime(response.headers.get('content-type'))) {
@@ -346,8 +356,8 @@ export class ImageApi extends runtime.BaseAPI {
     /**
      * Restart Servers
      */
-    async restartServersImagenRestartAllPost(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
-        const response = await this.restartServersImagenRestartAllPostRaw(initOverrides);
+    async restartServersImagenRestartAllPost(requestParameters: RestartServersImagenRestartAllPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
+        const response = await this.restartServersImagenRestartAllPostRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

@@ -224,14 +224,16 @@ class ImageApi extends runtime.BaseAPI {
     /**
      * Restart Servers
      */
-    async restartServersImagenRestartAllPostRaw(initOverrides) {
+    async restartServersImagenRestartAllPostRaw(requestParameters, initOverrides) {
         const queryParameters = {};
         const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
         const response = await this.request({
             path: `/imagen/restart-all`,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: (0, index_1.PostRestartServersRequestToJSON)(requestParameters['postRestartServersRequest']),
         }, initOverrides);
         if (this.isJsonMime(response.headers.get('content-type'))) {
             return new runtime.JSONApiResponse(response);
@@ -243,8 +245,8 @@ class ImageApi extends runtime.BaseAPI {
     /**
      * Restart Servers
      */
-    async restartServersImagenRestartAllPost(initOverrides) {
-        const response = await this.restartServersImagenRestartAllPostRaw(initOverrides);
+    async restartServersImagenRestartAllPost(requestParameters = {}, initOverrides) {
+        const response = await this.restartServersImagenRestartAllPostRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
