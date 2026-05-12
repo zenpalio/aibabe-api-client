@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { SharedContentType } from './SharedContentType';
+import type { ContentType } from './ContentType';
 import {
-    SharedContentTypeFromJSON,
-    SharedContentTypeFromJSONTyped,
-    SharedContentTypeToJSON,
-    SharedContentTypeToJSONTyped,
-} from './SharedContentType';
+    ContentTypeFromJSON,
+    ContentTypeFromJSONTyped,
+    ContentTypeToJSON,
+    ContentTypeToJSONTyped,
+} from './ContentType';
 
 /**
  * 
@@ -35,10 +35,10 @@ export interface ContentItem {
     contentId: string;
     /**
      * 
-     * @type {SharedContentType}
+     * @type {ContentType}
      * @memberof ContentItem
      */
-    contentType: SharedContentType;
+    contentType: ContentType;
 }
 
 
@@ -63,7 +63,7 @@ export function ContentItemFromJSONTyped(json: any, ignoreDiscriminator: boolean
     return {
         
         'contentId': json['content_id'],
-        'contentType': SharedContentTypeFromJSON(json['content_type']),
+        'contentType': ContentTypeFromJSON(json['content_type']),
     };
 }
 
@@ -79,7 +79,7 @@ export function ContentItemFromJSONTyped(json: any, ignoreDiscriminator: boolean
     return {
         
         'content_id': value['contentId'],
-        'content_type': SharedContentTypeToJSON(value['contentType']),
+        'content_type': ContentTypeToJSON(value['contentType']),
     };
 }
 

@@ -322,36 +322,6 @@ export class ImageApi extends runtime.BaseAPI {
     }
 
     /**
-     * Restart Servers
-     */
-    async restartServersImagenRestartAllPostRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/imagen/restart-all`,
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        if (this.isJsonMime(response.headers.get('content-type'))) {
-            return new runtime.JSONApiResponse<any>(response);
-        } else {
-            return new runtime.TextApiResponse(response) as any;
-        }
-    }
-
-    /**
-     * Restart Servers
-     */
-    async restartServersImagenRestartAllPost(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
-        const response = await this.restartServersImagenRestartAllPostRaw(initOverrides);
-        return await response.value();
-    }
-
-    /**
      * User Generate Image
      */
     async userGenerateImageImagenGenerateChatbotIdPostRaw(requestParameters: UserGenerateImageImagenGenerateChatbotIdPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostImagenResponse>> {

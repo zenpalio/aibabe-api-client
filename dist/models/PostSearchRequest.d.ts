@@ -62,6 +62,12 @@ export interface PostSearchRequest {
      * @memberof PostSearchRequest
      */
     chatbotId?: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof PostSearchRequest
+     */
+    storyId?: string | null;
 }
 /**
  * Check if a given object implements the PostSearchRequest interface.
