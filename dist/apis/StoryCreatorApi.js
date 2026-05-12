@@ -267,6 +267,30 @@ class StoryCreatorApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * Get Current Episode Version
+     */
+    async getCurrentEpisodeVersionStoryCreatorEpisodesEpisodeIdCurrentGetRaw(requestParameters, initOverrides) {
+        if (requestParameters['episodeId'] == null) {
+            throw new runtime.RequiredError('episodeId', 'Required parameter "episodeId" was null or undefined when calling getCurrentEpisodeVersionStoryCreatorEpisodesEpisodeIdCurrentGet().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        const response = await this.request({
+            path: `/story-creator/episodes/{episode_id}/current`.replace(`{${"episode_id"}}`, encodeURIComponent(String(requestParameters['episodeId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.StoryCreatorEpisodeWithStoryAndPanelsResponseFromJSON)(jsonValue));
+    }
+    /**
+     * Get Current Episode Version
+     */
+    async getCurrentEpisodeVersionStoryCreatorEpisodesEpisodeIdCurrentGet(requestParameters, initOverrides) {
+        const response = await this.getCurrentEpisodeVersionStoryCreatorEpisodesEpisodeIdCurrentGetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * Get Episode
      */
     async getEpisodeStoryCreatorEpisodesEpisodeIdGetRaw(requestParameters, initOverrides) {
@@ -288,33 +312,6 @@ class StoryCreatorApi extends runtime.BaseAPI {
      */
     async getEpisodeStoryCreatorEpisodesEpisodeIdGet(requestParameters, initOverrides) {
         const response = await this.getEpisodeStoryCreatorEpisodesEpisodeIdGetRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * Get Episode Version
-     */
-    async getEpisodeVersionStoryCreatorEpisodesEpisodeIdVersionIdGetRaw(requestParameters, initOverrides) {
-        if (requestParameters['episodeId'] == null) {
-            throw new runtime.RequiredError('episodeId', 'Required parameter "episodeId" was null or undefined when calling getEpisodeVersionStoryCreatorEpisodesEpisodeIdVersionIdGet().');
-        }
-        if (requestParameters['versionId'] == null) {
-            throw new runtime.RequiredError('versionId', 'Required parameter "versionId" was null or undefined when calling getEpisodeVersionStoryCreatorEpisodesEpisodeIdVersionIdGet().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        const response = await this.request({
-            path: `/story-creator/episodes/{episode_id}/{version_id}`.replace(`{${"episode_id"}}`, encodeURIComponent(String(requestParameters['episodeId']))).replace(`{${"version_id"}}`, encodeURIComponent(String(requestParameters['versionId']))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.StoryCreatorEpisodeWithStoryAndPanelsResponseFromJSON)(jsonValue));
-    }
-    /**
-     * Get Episode Version
-     */
-    async getEpisodeVersionStoryCreatorEpisodesEpisodeIdVersionIdGet(requestParameters, initOverrides) {
-        const response = await this.getEpisodeVersionStoryCreatorEpisodesEpisodeIdVersionIdGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**

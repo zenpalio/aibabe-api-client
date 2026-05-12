@@ -38,12 +38,11 @@ export interface GenerateAvatarStoryCreatorStoriesStoryIdActorAvatarPostRequest 
     storyId: string;
     storyCreatorGenerateAvatarRequest: StoryCreatorGenerateAvatarRequest;
 }
-export interface GetEpisodeStoryCreatorEpisodesEpisodeIdGetRequest {
+export interface GetCurrentEpisodeVersionStoryCreatorEpisodesEpisodeIdCurrentGetRequest {
     episodeId: string;
 }
-export interface GetEpisodeVersionStoryCreatorEpisodesEpisodeIdVersionIdGetRequest {
+export interface GetEpisodeStoryCreatorEpisodesEpisodeIdGetRequest {
     episodeId: string;
-    versionId: string;
 }
 export interface ImportActorStoryCreatorStoriesStoryIdActorImportPostRequest {
     storyId: string;
@@ -161,6 +160,14 @@ export declare class StoryCreatorApi extends runtime.BaseAPI {
      */
     generateAvatarStoryCreatorStoriesStoryIdActorAvatarPost(requestParameters: GenerateAvatarStoryCreatorStoriesStoryIdActorAvatarPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PostImagenResponse>;
     /**
+     * Get Current Episode Version
+     */
+    getCurrentEpisodeVersionStoryCreatorEpisodesEpisodeIdCurrentGetRaw(requestParameters: GetCurrentEpisodeVersionStoryCreatorEpisodesEpisodeIdCurrentGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StoryCreatorEpisodeWithStoryAndPanelsResponse>>;
+    /**
+     * Get Current Episode Version
+     */
+    getCurrentEpisodeVersionStoryCreatorEpisodesEpisodeIdCurrentGet(requestParameters: GetCurrentEpisodeVersionStoryCreatorEpisodesEpisodeIdCurrentGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StoryCreatorEpisodeWithStoryAndPanelsResponse>;
+    /**
      * Get Episode
      */
     getEpisodeStoryCreatorEpisodesEpisodeIdGetRaw(requestParameters: GetEpisodeStoryCreatorEpisodesEpisodeIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StoryCreatorEpisodeWithStoryAndPanelsResponse>>;
@@ -168,14 +175,6 @@ export declare class StoryCreatorApi extends runtime.BaseAPI {
      * Get Episode
      */
     getEpisodeStoryCreatorEpisodesEpisodeIdGet(requestParameters: GetEpisodeStoryCreatorEpisodesEpisodeIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StoryCreatorEpisodeWithStoryAndPanelsResponse>;
-    /**
-     * Get Episode Version
-     */
-    getEpisodeVersionStoryCreatorEpisodesEpisodeIdVersionIdGetRaw(requestParameters: GetEpisodeVersionStoryCreatorEpisodesEpisodeIdVersionIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StoryCreatorEpisodeWithStoryAndPanelsResponse>>;
-    /**
-     * Get Episode Version
-     */
-    getEpisodeVersionStoryCreatorEpisodesEpisodeIdVersionIdGet(requestParameters: GetEpisodeVersionStoryCreatorEpisodesEpisodeIdVersionIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StoryCreatorEpisodeWithStoryAndPanelsResponse>;
     /**
      * Import Actor
      */

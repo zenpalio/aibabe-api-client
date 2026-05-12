@@ -51,6 +51,12 @@ export interface StoryCreatorEpisode {
     episodeId: string;
     /**
      *
+     * @type {boolean}
+     * @memberof StoryCreatorEpisode
+     */
+    newerVersionExists: boolean | null;
+    /**
+     *
      * @type {EpisodeVisibility}
      * @memberof StoryCreatorEpisode
      */
