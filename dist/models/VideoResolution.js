@@ -24,9 +24,9 @@ exports.VideoResolutionToJSONTyped = VideoResolutionToJSONTyped;
  * @export
  */
 exports.VideoResolution = {
-    _480P: '480P',
-    _720P: '720P',
-    _1080P: '1080P'
+    P480: 'P480',
+    P720: 'P720',
+    P1080: 'P1080'
 };
 function instanceOfVideoResolution(value) {
     for (const key in exports.VideoResolution) {

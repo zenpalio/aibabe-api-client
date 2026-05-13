@@ -63,6 +63,7 @@ __exportStar(require("./EpisodeVisibility"), exports);
 __exportStar(require("./Ethnicity"), exports);
 __exportStar(require("./ExceptionCode"), exports);
 __exportStar(require("./ExploreSearchRequest"), exports);
+__exportStar(require("./ExtendVideoFromVideoPayload"), exports);
 __exportStar(require("./ExtendVideoPayload"), exports);
 __exportStar(require("./EyeColor"), exports);
 __exportStar(require("./FantasyRace"), exports);

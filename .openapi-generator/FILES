@@ -71,6 +71,7 @@ src/models/EpisodeVisibility.ts
 src/models/Ethnicity.ts
 src/models/ExceptionCode.ts
 src/models/ExploreSearchRequest.ts
+src/models/ExtendVideoFromVideoPayload.ts
 src/models/ExtendVideoPayload.ts
 src/models/EyeColor.ts
 src/models/FantasyRace.ts

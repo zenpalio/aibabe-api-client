@@ -45,6 +45,7 @@ export * from './EpisodeVisibility';
 export * from './Ethnicity';
 export * from './ExceptionCode';
 export * from './ExploreSearchRequest';
+export * from './ExtendVideoFromVideoPayload';
 export * from './ExtendVideoPayload';
 export * from './EyeColor';
 export * from './FantasyRace';

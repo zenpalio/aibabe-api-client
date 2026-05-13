@@ -15,6 +15,7 @@
 
 import * as runtime from '../runtime';
 import type {
+  ExtendVideoFromVideoPayload,
   ExtendVideoPayload,
   GetVideoGenerationTagsResponse,
   HTTPValidationError,
@@ -28,6 +29,8 @@ import type {
   WanImageToVideoResponse,
 } from '../models/index';
 import {
+    ExtendVideoFromVideoPayloadFromJSON,
+    ExtendVideoFromVideoPayloadToJSON,
     ExtendVideoPayloadFromJSON,
     ExtendVideoPayloadToJSON,
     GetVideoGenerationTagsResponseFromJSON,
@@ -79,6 +82,10 @@ export interface ExtendCallbackVideoExtendCallbackGenerationIdPostRequest {
     errorMessage?: string | null;
 }
 
+export interface ExtendFromVideoVideoExtendFromVideoPostRequest {
+    extendVideoFromVideoPayload: ExtendVideoFromVideoPayload;
+}
+
 export interface ExtendVideoVideoVideoIdExtendPostRequest {
     videoId: string;
     extendVideoPayload: ExtendVideoPayload;
@@ -99,10 +106,12 @@ export interface GenerateVideoVideoPostRequest {
 export interface GenerateWanVideoDirectVideoWanGeneratePostRequest {
     image: Blob;
     prompt: string;
+    audio?: Blob | null;
     negativePrompt?: string | null;
+    provider?: GenerateWanVideoDirectVideoWanGeneratePostProviderEnum;
+    modelName?: string | null;
     resolution?: VideoResolution;
     duration?: number;
-    promptExtend?: boolean;
     seed?: number | null;
 }
 
@@ -410,6 +419,46 @@ export class VideoApi extends runtime.BaseAPI {
     }
 
     /**
+     * Extend From Video
+     */
+    async extendFromVideoVideoExtendFromVideoPostRaw(requestParameters: ExtendFromVideoVideoExtendFromVideoPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
+        if (requestParameters['extendVideoFromVideoPayload'] == null) {
+            throw new runtime.RequiredError(
+                'extendVideoFromVideoPayload',
+                'Required parameter "extendVideoFromVideoPayload" was null or undefined when calling extendFromVideoVideoExtendFromVideoPost().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        const response = await this.request({
+            path: `/video/extend-from-video`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: ExtendVideoFromVideoPayloadToJSON(requestParameters['extendVideoFromVideoPayload']),
+        }, initOverrides);
+
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse<any>(response);
+        } else {
+            return new runtime.TextApiResponse(response) as any;
+        }
+    }
+
+    /**
+     * Extend From Video
+     */
+    async extendFromVideoVideoExtendFromVideoPost(requestParameters: ExtendFromVideoVideoExtendFromVideoPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
+        const response = await this.extendFromVideoVideoExtendFromVideoPostRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Extend Video
      */
     async extendVideoVideoVideoIdExtendPostRaw(requestParameters: ExtendVideoVideoVideoIdExtendPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
@@ -604,6 +653,8 @@ export class VideoApi extends runtime.BaseAPI {
         let useForm = false;
         // use FormData to transmit files using content-type "multipart/form-data"
         useForm = canConsumeForm;
+        // use FormData to transmit files using content-type "multipart/form-data"
+        useForm = canConsumeForm;
         if (useForm) {
             formParams = new FormData();
         } else {
@@ -614,6 +665,10 @@ export class VideoApi extends runtime.BaseAPI {
             formParams.append('image', requestParameters['image'] as any);
         }
 
+        if (requestParameters['audio'] != null) {
+            formParams.append('audio', requestParameters['audio'] as any);
+        }
+
         if (requestParameters['prompt'] != null) {
             formParams.append('prompt', requestParameters['prompt'] as any);
         }
@@ -622,16 +677,20 @@ export class VideoApi extends runtime.BaseAPI {
             formParams.append('negative_prompt', requestParameters['negativePrompt'] as any);
         }
 
+        if (requestParameters['provider'] != null) {
+            formParams.append('provider', requestParameters['provider'] as any);
+        }
+
+        if (requestParameters['modelName'] != null) {
+            formParams.append('model_name', requestParameters['modelName'] as any);
+        }
+
         if (requestParameters['resolution'] != null) {
             formParams.append('resolution', requestParameters['resolution'] as any);
         }
 
         if (requestParameters['duration'] != null) {
             formParams.append('duration', requestParameters['duration'] as any);
-        }
-
-        if (requestParameters['promptExtend'] != null) {
-            formParams.append('prompt_extend', requestParameters['promptExtend'] as any);
         }
 
         if (requestParameters['seed'] != null) {
@@ -782,3 +841,12 @@ export const ExtendCallbackVideoExtendCallbackGenerationIdPostStatusEnum = {
     Failed: 'failed'
 } as const;
 export type ExtendCallbackVideoExtendCallbackGenerationIdPostStatusEnum = typeof ExtendCallbackVideoExtendCallbackGenerationIdPostStatusEnum[keyof typeof ExtendCallbackVideoExtendCallbackGenerationIdPostStatusEnum];
+/**
+ * @export
+ */
+export const GenerateWanVideoDirectVideoWanGeneratePostProviderEnum = {
+    Mulerouter: 'mulerouter',
+    Wan: 'wan',
+    Kling: 'kling'
+} as const;
+export type GenerateWanVideoDirectVideoWanGeneratePostProviderEnum = typeof GenerateWanVideoDirectVideoWanGeneratePostProviderEnum[keyof typeof GenerateWanVideoDirectVideoWanGeneratePostProviderEnum];

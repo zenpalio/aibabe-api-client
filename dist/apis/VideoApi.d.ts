@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ExtendVideoPayload, GetVideoGenerationTagsResponse, ImageToVideoFromChatPayload, ImageToVideoRecommendationPayload, ImageToVideoRequest, LastVideoFrameResponse, MuleRouterWanTaskResponse, VideoFromChatResponse, VideoResolution, WanImageToVideoResponse } from '../models/index';
+import type { ExtendVideoFromVideoPayload, ExtendVideoPayload, GetVideoGenerationTagsResponse, ImageToVideoFromChatPayload, ImageToVideoRecommendationPayload, ImageToVideoRequest, LastVideoFrameResponse, MuleRouterWanTaskResponse, VideoFromChatResponse, VideoResolution, WanImageToVideoResponse } from '../models/index';
 export interface AttachmentVideoVideoIdAttachmentGetRequest {
     videoId: string;
     videoName: string;
@@ -33,6 +33,9 @@ export interface ExtendCallbackVideoExtendCallbackGenerationIdPostRequest {
     status: ExtendCallbackVideoExtendCallbackGenerationIdPostStatusEnum;
     errorMessage?: string | null;
 }
+export interface ExtendFromVideoVideoExtendFromVideoPostRequest {
+    extendVideoFromVideoPayload: ExtendVideoFromVideoPayload;
+}
 export interface ExtendVideoVideoVideoIdExtendPostRequest {
     videoId: string;
     extendVideoPayload: ExtendVideoPayload;
@@ -49,10 +52,12 @@ export interface GenerateVideoVideoPostRequest {
 export interface GenerateWanVideoDirectVideoWanGeneratePostRequest {
     image: Blob;
     prompt: string;
+    audio?: Blob | null;
     negativePrompt?: string | null;
+    provider?: GenerateWanVideoDirectVideoWanGeneratePostProviderEnum;
+    modelName?: string | null;
     resolution?: VideoResolution;
     duration?: number;
-    promptExtend?: boolean;
     seed?: number | null;
 }
 export interface GenerationTagsVideoVideoIdTagsGetRequest {
@@ -108,6 +113,14 @@ export declare class VideoApi extends runtime.BaseAPI {
      * Extend Callback
      */
     extendCallbackVideoExtendCallbackGenerationIdPost(requestParameters: ExtendCallbackVideoExtendCallbackGenerationIdPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
+    /**
+     * Extend From Video
+     */
+    extendFromVideoVideoExtendFromVideoPostRaw(requestParameters: ExtendFromVideoVideoExtendFromVideoPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
+    /**
+     * Extend From Video
+     */
+    extendFromVideoVideoExtendFromVideoPost(requestParameters: ExtendFromVideoVideoExtendFromVideoPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
     /**
      * Extend Video
      */
@@ -197,4 +210,13 @@ export declare const ExtendCallbackVideoExtendCallbackGenerationIdPostStatusEnum
     readonly Failed: "failed";
 };
 export type ExtendCallbackVideoExtendCallbackGenerationIdPostStatusEnum = typeof ExtendCallbackVideoExtendCallbackGenerationIdPostStatusEnum[keyof typeof ExtendCallbackVideoExtendCallbackGenerationIdPostStatusEnum];
+/**
+ * @export
+ */
+export declare const GenerateWanVideoDirectVideoWanGeneratePostProviderEnum: {
+    readonly Mulerouter: "mulerouter";
+    readonly Wan: "wan";
+    readonly Kling: "kling";
+};
+export type GenerateWanVideoDirectVideoWanGeneratePostProviderEnum = typeof GenerateWanVideoDirectVideoWanGeneratePostProviderEnum[keyof typeof GenerateWanVideoDirectVideoWanGeneratePostProviderEnum];
 //# sourceMappingURL=VideoApi.d.ts.map

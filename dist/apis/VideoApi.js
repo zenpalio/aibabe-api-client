@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ExtendCallbackVideoExtendCallbackGenerationIdPostStatusEnum = exports.ChatCallbackVideoCallbackChatGenerationIdPostStatusEnum = exports.CallbackVideoCallbackGenerationIdPostStatusEnum = exports.VideoApi = void 0;
+exports.GenerateWanVideoDirectVideoWanGeneratePostProviderEnum = exports.ExtendCallbackVideoExtendCallbackGenerationIdPostStatusEnum = exports.ChatCallbackVideoCallbackChatGenerationIdPostStatusEnum = exports.CallbackVideoCallbackGenerationIdPostStatusEnum = exports.VideoApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -274,6 +274,37 @@ class VideoApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * Extend From Video
+     */
+    async extendFromVideoVideoExtendFromVideoPostRaw(requestParameters, initOverrides) {
+        if (requestParameters['extendVideoFromVideoPayload'] == null) {
+            throw new runtime.RequiredError('extendVideoFromVideoPayload', 'Required parameter "extendVideoFromVideoPayload" was null or undefined when calling extendFromVideoVideoExtendFromVideoPost().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        const response = await this.request({
+            path: `/video/extend-from-video`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.ExtendVideoFromVideoPayloadToJSON)(requestParameters['extendVideoFromVideoPayload']),
+        }, initOverrides);
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse(response);
+        }
+        else {
+            return new runtime.TextApiResponse(response);
+        }
+    }
+    /**
+     * Extend From Video
+     */
+    async extendFromVideoVideoExtendFromVideoPost(requestParameters, initOverrides) {
+        const response = await this.extendFromVideoVideoExtendFromVideoPostRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * Extend Video
      */
     async extendVideoVideoVideoIdExtendPostRaw(requestParameters, initOverrides) {
@@ -416,6 +447,8 @@ class VideoApi extends runtime.BaseAPI {
         let useForm = false;
         // use FormData to transmit files using content-type "multipart/form-data"
         useForm = canConsumeForm;
+        // use FormData to transmit files using content-type "multipart/form-data"
+        useForm = canConsumeForm;
         if (useForm) {
             formParams = new FormData();
         }
@@ -425,20 +458,26 @@ class VideoApi extends runtime.BaseAPI {
         if (requestParameters['image'] != null) {
             formParams.append('image', requestParameters['image']);
         }
+        if (requestParameters['audio'] != null) {
+            formParams.append('audio', requestParameters['audio']);
+        }
         if (requestParameters['prompt'] != null) {
             formParams.append('prompt', requestParameters['prompt']);
         }
         if (requestParameters['negativePrompt'] != null) {
             formParams.append('negative_prompt', requestParameters['negativePrompt']);
         }
+        if (requestParameters['provider'] != null) {
+            formParams.append('provider', requestParameters['provider']);
+        }
+        if (requestParameters['modelName'] != null) {
+            formParams.append('model_name', requestParameters['modelName']);
+        }
         if (requestParameters['resolution'] != null) {
             formParams.append('resolution', requestParameters['resolution']);
         }
         if (requestParameters['duration'] != null) {
             formParams.append('duration', requestParameters['duration']);
-        }
-        if (requestParameters['promptExtend'] != null) {
-            formParams.append('prompt_extend', requestParameters['promptExtend']);
         }
         if (requestParameters['seed'] != null) {
             formParams.append('seed', requestParameters['seed']);
@@ -553,5 +592,13 @@ exports.ChatCallbackVideoCallbackChatGenerationIdPostStatusEnum = {
 exports.ExtendCallbackVideoExtendCallbackGenerationIdPostStatusEnum = {
     Finished: 'finished',
     Failed: 'failed'
+};
+/**
+ * @export
+ */
+exports.GenerateWanVideoDirectVideoWanGeneratePostProviderEnum = {
+    Mulerouter: 'mulerouter',
+    Wan: 'wan',
+    Kling: 'kling'
 };
 //# sourceMappingURL=VideoApi.js.map
