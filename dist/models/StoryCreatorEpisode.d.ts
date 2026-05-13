@@ -54,7 +54,7 @@ export interface StoryCreatorEpisode {
      * @type {boolean}
      * @memberof StoryCreatorEpisode
      */
-    newerVersionExists: boolean | null;
+    newerVersionExists?: boolean | null;
     /**
      *
      * @type {EpisodeVisibility}

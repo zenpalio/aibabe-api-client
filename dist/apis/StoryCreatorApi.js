@@ -315,6 +315,30 @@ class StoryCreatorApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * Get Story
+     */
+    async getStoryStoryCreatorStoriesStoryIdGetRaw(requestParameters, initOverrides) {
+        if (requestParameters['storyId'] == null) {
+            throw new runtime.RequiredError('storyId', 'Required parameter "storyId" was null or undefined when calling getStoryStoryCreatorStoriesStoryIdGet().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        const response = await this.request({
+            path: `/story-creator/stories/{story_id}`.replace(`{${"story_id"}}`, encodeURIComponent(String(requestParameters['storyId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.StoryCreatorStoryWithEpisodesResponseFromJSON)(jsonValue));
+    }
+    /**
+     * Get Story
+     */
+    async getStoryStoryCreatorStoriesStoryIdGet(requestParameters, initOverrides) {
+        const response = await this.getStoryStoryCreatorStoriesStoryIdGetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * Import Actor
      */
     async importActorStoryCreatorStoriesStoryIdActorImportPostRaw(requestParameters, initOverrides) {

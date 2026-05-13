@@ -36,6 +36,7 @@ import type {
   StoryCreatorSaveEpisodeRequest,
   StoryCreatorStoryListResponse,
   StoryCreatorStoryResponse,
+  StoryCreatorStoryWithEpisodesResponse,
   StoryCreatorUpdateActorRequest,
   StoryCreatorUpdateEpisodeRequest,
   StoryCreatorUpdateEpisodeVisibilityRequest,
@@ -84,6 +85,8 @@ import {
     StoryCreatorStoryListResponseToJSON,
     StoryCreatorStoryResponseFromJSON,
     StoryCreatorStoryResponseToJSON,
+    StoryCreatorStoryWithEpisodesResponseFromJSON,
+    StoryCreatorStoryWithEpisodesResponseToJSON,
     StoryCreatorUpdateActorRequestFromJSON,
     StoryCreatorUpdateActorRequestToJSON,
     StoryCreatorUpdateEpisodeRequestFromJSON,
@@ -135,6 +138,10 @@ export interface GetCurrentEpisodeVersionStoryCreatorEpisodesEpisodeIdCurrentGet
 
 export interface GetEpisodeStoryCreatorEpisodesEpisodeIdGetRequest {
     episodeId: string;
+}
+
+export interface GetStoryStoryCreatorStoriesStoryIdGetRequest {
+    storyId: string;
 }
 
 export interface ImportActorStoryCreatorStoriesStoryIdActorImportPostRequest {
@@ -562,6 +569,39 @@ export class StoryCreatorApi extends runtime.BaseAPI {
      */
     async getEpisodeStoryCreatorEpisodesEpisodeIdGet(requestParameters: GetEpisodeStoryCreatorEpisodesEpisodeIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StoryCreatorEpisodeWithStoryAndPanelsResponse> {
         const response = await this.getEpisodeStoryCreatorEpisodesEpisodeIdGetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Get Story
+     */
+    async getStoryStoryCreatorStoriesStoryIdGetRaw(requestParameters: GetStoryStoryCreatorStoriesStoryIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StoryCreatorStoryWithEpisodesResponse>> {
+        if (requestParameters['storyId'] == null) {
+            throw new runtime.RequiredError(
+                'storyId',
+                'Required parameter "storyId" was null or undefined when calling getStoryStoryCreatorStoriesStoryIdGet().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/story-creator/stories/{story_id}`.replace(`{${"story_id"}}`, encodeURIComponent(String(requestParameters['storyId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => StoryCreatorStoryWithEpisodesResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Get Story
+     */
+    async getStoryStoryCreatorStoriesStoryIdGet(requestParameters: GetStoryStoryCreatorStoriesStoryIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StoryCreatorStoryWithEpisodesResponse> {
+        const response = await this.getStoryStoryCreatorStoriesStoryIdGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

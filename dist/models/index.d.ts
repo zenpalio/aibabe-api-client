@@ -231,6 +231,8 @@ export * from './StoryCreatorSaveEpisodeRequest';
 export * from './StoryCreatorStory';
 export * from './StoryCreatorStoryListResponse';
 export * from './StoryCreatorStoryResponse';
+export * from './StoryCreatorStoryWithEpisodes';
+export * from './StoryCreatorStoryWithEpisodesResponse';
 export * from './StoryCreatorUpdateActorRequest';
 export * from './StoryCreatorUpdateEpisodeRequest';
 export * from './StoryCreatorUpdateEpisodeVisibilityRequest';

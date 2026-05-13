@@ -249,6 +249,8 @@ __exportStar(require("./StoryCreatorSaveEpisodeRequest"), exports);
 __exportStar(require("./StoryCreatorStory"), exports);
 __exportStar(require("./StoryCreatorStoryListResponse"), exports);
 __exportStar(require("./StoryCreatorStoryResponse"), exports);
+__exportStar(require("./StoryCreatorStoryWithEpisodes"), exports);
+__exportStar(require("./StoryCreatorStoryWithEpisodesResponse"), exports);
 __exportStar(require("./StoryCreatorUpdateActorRequest"), exports);
 __exportStar(require("./StoryCreatorUpdateEpisodeRequest"), exports);
 __exportStar(require("./StoryCreatorUpdateEpisodeVisibilityRequest"), exports);

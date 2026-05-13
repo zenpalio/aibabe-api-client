@@ -47,6 +47,12 @@ export interface StoryCreatorStory {
     coverImage?: string | null;
     /**
      * 
+     * @type {boolean}
+     * @memberof StoryCreatorStory
+     */
+    newerVersionExists?: boolean | null;
+    /**
+     * 
      * @type {string}
      * @memberof StoryCreatorStory
      */
@@ -96,6 +102,7 @@ export function StoryCreatorStoryFromJSONTyped(json: any, ignoreDiscriminator: b
         'title': json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
+        'newerVersionExists': json['newer_version_exists'] == null ? undefined : json['newer_version_exists'],
         'id': json['id'],
         'ownerId': json['owner_id'],
         'rating': json['rating'] == null ? undefined : json['rating'],
@@ -117,6 +124,7 @@ export function StoryCreatorStoryFromJSONTyped(json: any, ignoreDiscriminator: b
         'title': value['title'],
         'description': value['description'],
         'cover_image': value['coverImage'],
+        'newer_version_exists': value['newerVersionExists'],
         'id': value['id'],
         'owner_id': value['ownerId'],
         'rating': value['rating'],

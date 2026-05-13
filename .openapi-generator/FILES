@@ -257,6 +257,8 @@ src/models/StoryCreatorSaveEpisodeRequest.ts
 src/models/StoryCreatorStory.ts
 src/models/StoryCreatorStoryListResponse.ts
 src/models/StoryCreatorStoryResponse.ts
+src/models/StoryCreatorStoryWithEpisodes.ts
+src/models/StoryCreatorStoryWithEpisodesResponse.ts
 src/models/StoryCreatorUpdateActorRequest.ts
 src/models/StoryCreatorUpdateEpisodeRequest.ts
 src/models/StoryCreatorUpdateEpisodeVisibilityRequest.ts

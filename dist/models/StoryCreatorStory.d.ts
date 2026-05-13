@@ -36,6 +36,12 @@ export interface StoryCreatorStory {
     coverImage?: string | null;
     /**
      *
+     * @type {boolean}
+     * @memberof StoryCreatorStory
+     */
+    newerVersionExists?: boolean | null;
+    /**
+     *
      * @type {string}
      * @memberof StoryCreatorStory
      */

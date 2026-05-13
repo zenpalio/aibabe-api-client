@@ -30,8 +30,6 @@ function instanceOfStoryCreatorEpisode(value) {
         return false;
     if (!('episodeId' in value) || value['episodeId'] === undefined)
         return false;
-    if (!('newerVersionExists' in value) || value['newerVersionExists'] === undefined)
-        return false;
     if (!('visibility' in value) || value['visibility'] === undefined)
         return false;
     if (!('episodeIndex' in value) || value['episodeIndex'] === undefined)
@@ -53,7 +51,7 @@ function StoryCreatorEpisodeFromJSONTyped(json, ignoreDiscriminator) {
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
         'lockAfter': json['lock_after'] == null ? undefined : json['lock_after'],
         'episodeId': json['episode_id'],
-        'newerVersionExists': json['newer_version_exists'],
+        'newerVersionExists': json['newer_version_exists'] == null ? undefined : json['newer_version_exists'],
         'visibility': (0, EpisodeVisibility_1.EpisodeVisibilityFromJSON)(json['visibility']),
         'episodeIndex': json['episode_index'],
         'panelsCount': json['panels_count'],
