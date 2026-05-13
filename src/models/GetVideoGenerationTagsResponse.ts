@@ -83,7 +83,7 @@ export function GetVideoGenerationTagsResponseFromJSONTyped(json: any, ignoreDis
         
         'tags': json['tags'],
         'downloadUrl': json['download_url'],
-        'chatbotName': json['chatbotName'],
+        'chatbotName': json['chatbot_name'],
         'originalImageId': json['original_image_id'],
         'loras': ((json['loras'] as Array<any>).map(VideoLoraNameFromJSON)),
     };
@@ -102,7 +102,7 @@ export function GetVideoGenerationTagsResponseFromJSONTyped(json: any, ignoreDis
         
         'tags': value['tags'],
         'download_url': value['downloadUrl'],
-        'chatbotName': value['chatbotName'],
+        'chatbot_name': value['chatbotName'],
         'original_image_id': value['originalImageId'],
         'loras': ((value['loras'] as Array<any>).map(VideoLoraNameToJSON)),
     };

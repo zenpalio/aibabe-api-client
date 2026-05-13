@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { SharedContentType } from './SharedContentType';
+import type { ContentType } from './ContentType';
 import {
-    SharedContentTypeFromJSON,
-    SharedContentTypeFromJSONTyped,
-    SharedContentTypeToJSON,
-    SharedContentTypeToJSONTyped,
-} from './SharedContentType';
+    ContentTypeFromJSON,
+    ContentTypeFromJSONTyped,
+    ContentTypeToJSON,
+    ContentTypeToJSONTyped,
+} from './ContentType';
 
 /**
  * 
@@ -29,10 +29,10 @@ import {
 export interface PostShareGetTagsRequest {
     /**
      * 
-     * @type {SharedContentType}
+     * @type {ContentType}
      * @memberof PostShareGetTagsRequest
      */
-    sharableContentType: SharedContentType;
+    sharableContentType: ContentType;
 }
 
 
@@ -55,7 +55,7 @@ export function PostShareGetTagsRequestFromJSONTyped(json: any, ignoreDiscrimina
     }
     return {
         
-        'sharableContentType': SharedContentTypeFromJSON(json['sharable_content_type']),
+        'sharableContentType': ContentTypeFromJSON(json['sharable_content_type']),
     };
 }
 
@@ -70,7 +70,7 @@ export function PostShareGetTagsRequestFromJSONTyped(json: any, ignoreDiscrimina
 
     return {
         
-        'sharable_content_type': SharedContentTypeToJSON(value['sharableContentType']),
+        'sharable_content_type': ContentTypeToJSON(value['sharableContentType']),
     };
 }
 

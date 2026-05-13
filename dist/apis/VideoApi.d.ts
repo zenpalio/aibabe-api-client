@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ExtendVideoPayload, GetVideoGenerationTagsResponse, ImageToVideoFromChatPayload, ImageToVideoPayload, ImageToVideoRecommendationPayload, LastVideoFrameResponse, VideoFromChatResponse } from '../models/index';
+import type { ExtendVideoPayload, GetVideoGenerationTagsResponse, ImageToVideoFromChatPayload, ImageToVideoRecommendationPayload, ImageToVideoRequest, LastVideoFrameResponse, MuleRouterWanTaskResponse, VideoFromChatResponse, VideoResolution, WanImageToVideoResponse } from '../models/index';
 export interface AttachmentVideoVideoIdAttachmentGetRequest {
     videoId: string;
     videoName: string;
@@ -44,10 +44,22 @@ export interface GenerateVideoFromChatVideoChatPostRequest {
     imageToVideoFromChatPayload: ImageToVideoFromChatPayload;
 }
 export interface GenerateVideoVideoPostRequest {
-    imageToVideoPayload: ImageToVideoPayload;
+    imageToVideoRequest: ImageToVideoRequest;
+}
+export interface GenerateWanVideoDirectVideoWanGeneratePostRequest {
+    image: Blob;
+    prompt: string;
+    negativePrompt?: string | null;
+    resolution?: VideoResolution;
+    duration?: number;
+    promptExtend?: boolean;
+    seed?: number | null;
 }
 export interface GenerationTagsVideoVideoIdTagsGetRequest {
     videoId: string;
+}
+export interface GetWanTaskStatusVideoWanTaskTaskIdGetRequest {
+    taskId: string;
 }
 export interface VideoLastFrameVideoVideoIdLastFrameGetRequest {
     videoId: string;
@@ -129,6 +141,14 @@ export declare class VideoApi extends runtime.BaseAPI {
      */
     generateVideoVideoPost(requestParameters: GenerateVideoVideoPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
     /**
+     * Generate Wan Video Direct
+     */
+    generateWanVideoDirectVideoWanGeneratePostRaw(requestParameters: GenerateWanVideoDirectVideoWanGeneratePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<WanImageToVideoResponse>>;
+    /**
+     * Generate Wan Video Direct
+     */
+    generateWanVideoDirectVideoWanGeneratePost(requestParameters: GenerateWanVideoDirectVideoWanGeneratePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<WanImageToVideoResponse>;
+    /**
      * Generation Tags
      */
     generationTagsVideoVideoIdTagsGetRaw(requestParameters: GenerationTagsVideoVideoIdTagsGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetVideoGenerationTagsResponse>>;
@@ -136,6 +156,14 @@ export declare class VideoApi extends runtime.BaseAPI {
      * Generation Tags
      */
     generationTagsVideoVideoIdTagsGet(requestParameters: GenerationTagsVideoVideoIdTagsGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetVideoGenerationTagsResponse>;
+    /**
+     * Get Wan Task Status
+     */
+    getWanTaskStatusVideoWanTaskTaskIdGetRaw(requestParameters: GetWanTaskStatusVideoWanTaskTaskIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MuleRouterWanTaskResponse>>;
+    /**
+     * Get Wan Task Status
+     */
+    getWanTaskStatusVideoWanTaskTaskIdGet(requestParameters: GetWanTaskStatusVideoWanTaskTaskIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MuleRouterWanTaskResponse>;
     /**
      * Video Last Frame
      */

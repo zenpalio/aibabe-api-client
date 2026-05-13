@@ -76,10 +76,10 @@ export interface GetGalleryResponseItemsInner {
     id: string;
     /**
      * 
-     * @type {Array<string>}
+     * @type {string}
      * @memberof GetGalleryResponseItemsInner
      */
-    urls: Array<string>;
+    url: string;
     /**
      * 
      * @type {Date}
@@ -98,12 +98,6 @@ export interface GetGalleryResponseItemsInner {
      * @memberof GetGalleryResponseItemsInner
      */
     postDetails?: PostDetails;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof GetGalleryResponseItemsInner
-     */
-    imageIds: Array<string>;
     /**
      * 
      * @type {string}
@@ -140,6 +134,12 @@ export interface GetGalleryResponseItemsInner {
      * @memberof GetGalleryResponseItemsInner
      */
     originalImageId: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetGalleryResponseItemsInner
+     */
+    originalImageUrl: string;
 }
 
 
@@ -159,16 +159,16 @@ export type GetGalleryResponseItemsInnerTypeEnum = typeof GetGalleryResponseItem
 export function instanceOfGetGalleryResponseItemsInner(value: object): value is GetGalleryResponseItemsInner {
     if (!('type' in value) || value['type'] === undefined) return false;
     if (!('id' in value) || value['id'] === undefined) return false;
-    if (!('urls' in value) || value['urls'] === undefined) return false;
+    if (!('url' in value) || value['url'] === undefined) return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
     if (!('chatbot' in value) || value['chatbot'] === undefined) return false;
-    if (!('imageIds' in value) || value['imageIds'] === undefined) return false;
     if (!('eta' in value) || value['eta'] === undefined) return false;
     if (!('status' in value) || value['status'] === undefined) return false;
     if (!('generationId' in value) || value['generationId'] === undefined) return false;
     if (!('seenByUser' in value) || value['seenByUser'] === undefined) return false;
     if (!('artStyle' in value) || value['artStyle'] === undefined) return false;
     if (!('originalImageId' in value) || value['originalImageId'] === undefined) return false;
+    if (!('originalImageUrl' in value) || value['originalImageUrl'] === undefined) return false;
     return true;
 }
 
@@ -184,17 +184,17 @@ export function GetGalleryResponseItemsInnerFromJSONTyped(json: any, ignoreDiscr
         
         'type': json['type'],
         'id': json['id'],
-        'urls': json['urls'],
+        'url': json['url'],
         'createdAt': (new Date(json['created_at'])),
         'chatbot': ChatbotPreviewFromJSON(json['chatbot']),
         'postDetails': json['post_details'] == null ? undefined : PostDetailsFromJSON(json['post_details']),
-        'imageIds': json['image_ids'],
         'eta': json['eta'],
         'status': VideoGenerationStatusFromJSON(json['status']),
         'generationId': json['generation_id'],
         'seenByUser': json['seen_by_user'],
         'artStyle': ArtStyleFromJSON(json['art_style']),
         'originalImageId': json['original_image_id'],
+        'originalImageUrl': json['original_image_url'],
     };
 }
 
@@ -211,17 +211,17 @@ export function GetGalleryResponseItemsInnerFromJSONTyped(json: any, ignoreDiscr
         
         'type': value['type'],
         'id': value['id'],
-        'urls': value['urls'],
+        'url': value['url'],
         'created_at': ((value['createdAt']).toISOString()),
         'chatbot': ChatbotPreviewToJSON(value['chatbot']),
         'post_details': PostDetailsToJSON(value['postDetails']),
-        'image_ids': value['imageIds'],
         'eta': value['eta'],
         'status': VideoGenerationStatusToJSON(value['status']),
         'generation_id': value['generationId'],
         'seen_by_user': value['seenByUser'],
         'art_style': ArtStyleToJSON(value['artStyle']),
         'original_image_id': value['originalImageId'],
+        'original_image_url': value['originalImageUrl'],
     };
 }
 
