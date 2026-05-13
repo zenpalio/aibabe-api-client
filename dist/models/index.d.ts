@@ -53,6 +53,7 @@ export * from './FeatureFlagName';
 export * from './FollowNotification';
 export * from './FurryVisualType';
 export * from './GalleryItem';
+export * from './GalleryStory';
 export * from './GeneratedAudioGenerationType';
 export * from './GeneratedAudioItem';
 export * from './GeneratedAudioStatus';

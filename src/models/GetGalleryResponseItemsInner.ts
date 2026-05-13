@@ -27,6 +27,13 @@ import {
     ChatbotPreviewToJSON,
     ChatbotPreviewToJSONTyped,
 } from './ChatbotPreview';
+import type { GalleryStory } from './GalleryStory';
+import {
+    GalleryStoryFromJSON,
+    GalleryStoryFromJSONTyped,
+    GalleryStoryToJSON,
+    GalleryStoryToJSONTyped,
+} from './GalleryStory';
 import type { PostDetails } from './PostDetails';
 import {
     PostDetailsFromJSON,
@@ -140,6 +147,30 @@ export interface GetGalleryResponseItemsInner {
      * @memberof GetGalleryResponseItemsInner
      */
     originalImageUrl: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetGalleryResponseItemsInner
+     */
+    ownerId: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetGalleryResponseItemsInner
+     */
+    title: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetGalleryResponseItemsInner
+     */
+    description?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetGalleryResponseItemsInner
+     */
+    coverImage?: string;
 }
 
 
@@ -148,7 +179,8 @@ export interface GetGalleryResponseItemsInner {
  */
 export const GetGalleryResponseItemsInnerTypeEnum = {
     GeneratedImages: 'generatedImages',
-    GeneratedVideos: 'generatedVideos'
+    GeneratedVideos: 'generatedVideos',
+    Stories: 'stories'
 } as const;
 export type GetGalleryResponseItemsInnerTypeEnum = typeof GetGalleryResponseItemsInnerTypeEnum[keyof typeof GetGalleryResponseItemsInnerTypeEnum];
 
@@ -169,6 +201,8 @@ export function instanceOfGetGalleryResponseItemsInner(value: object): value is 
     if (!('artStyle' in value) || value['artStyle'] === undefined) return false;
     if (!('originalImageId' in value) || value['originalImageId'] === undefined) return false;
     if (!('originalImageUrl' in value) || value['originalImageUrl'] === undefined) return false;
+    if (!('ownerId' in value) || value['ownerId'] === undefined) return false;
+    if (!('title' in value) || value['title'] === undefined) return false;
     return true;
 }
 
@@ -195,6 +229,10 @@ export function GetGalleryResponseItemsInnerFromJSONTyped(json: any, ignoreDiscr
         'artStyle': ArtStyleFromJSON(json['art_style']),
         'originalImageId': json['original_image_id'],
         'originalImageUrl': json['original_image_url'],
+        'ownerId': json['owner_id'],
+        'title': json['title'],
+        'description': json['description'] == null ? undefined : json['description'],
+        'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
     };
 }
 
@@ -222,6 +260,10 @@ export function GetGalleryResponseItemsInnerFromJSONTyped(json: any, ignoreDiscr
         'art_style': ArtStyleToJSON(value['artStyle']),
         'original_image_id': value['originalImageId'],
         'original_image_url': value['originalImageUrl'],
+        'owner_id': value['ownerId'],
+        'title': value['title'],
+        'description': value['description'],
+        'cover_image': value['coverImage'],
     };
 }
 

@@ -97,6 +97,30 @@ export interface GetGalleryResponseItemsInner {
      * @memberof GetGalleryResponseItemsInner
      */
     originalImageUrl: string;
+    /**
+     *
+     * @type {string}
+     * @memberof GetGalleryResponseItemsInner
+     */
+    ownerId: string;
+    /**
+     *
+     * @type {string}
+     * @memberof GetGalleryResponseItemsInner
+     */
+    title: string;
+    /**
+     *
+     * @type {string}
+     * @memberof GetGalleryResponseItemsInner
+     */
+    description?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof GetGalleryResponseItemsInner
+     */
+    coverImage?: string;
 }
 /**
  * @export
@@ -104,6 +128,7 @@ export interface GetGalleryResponseItemsInner {
 export declare const GetGalleryResponseItemsInnerTypeEnum: {
     readonly GeneratedImages: "generatedImages";
     readonly GeneratedVideos: "generatedVideos";
+    readonly Stories: "stories";
 };
 export type GetGalleryResponseItemsInnerTypeEnum = typeof GetGalleryResponseItemsInnerTypeEnum[keyof typeof GetGalleryResponseItemsInnerTypeEnum];
 /**

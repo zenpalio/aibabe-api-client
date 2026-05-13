@@ -71,6 +71,7 @@ __exportStar(require("./FeatureFlagName"), exports);
 __exportStar(require("./FollowNotification"), exports);
 __exportStar(require("./FurryVisualType"), exports);
 __exportStar(require("./GalleryItem"), exports);
+__exportStar(require("./GalleryStory"), exports);
 __exportStar(require("./GeneratedAudioGenerationType"), exports);
 __exportStar(require("./GeneratedAudioItem"), exports);
 __exportStar(require("./GeneratedAudioStatus"), exports);

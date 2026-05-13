@@ -28,7 +28,8 @@ const VideoGenerationStatus_1 = require("./VideoGenerationStatus");
  */
 exports.GetGalleryResponseItemsInnerTypeEnum = {
     GeneratedImages: 'generatedImages',
-    GeneratedVideos: 'generatedVideos'
+    GeneratedVideos: 'generatedVideos',
+    Stories: 'stories'
 };
 /**
  * Check if a given object implements the GetGalleryResponseItemsInner interface.
@@ -58,6 +59,10 @@ function instanceOfGetGalleryResponseItemsInner(value) {
         return false;
     if (!('originalImageUrl' in value) || value['originalImageUrl'] === undefined)
         return false;
+    if (!('ownerId' in value) || value['ownerId'] === undefined)
+        return false;
+    if (!('title' in value) || value['title'] === undefined)
+        return false;
     return true;
 }
 function GetGalleryResponseItemsInnerFromJSON(json) {
@@ -81,6 +86,10 @@ function GetGalleryResponseItemsInnerFromJSONTyped(json, ignoreDiscriminator) {
         'artStyle': (0, ArtStyle_1.ArtStyleFromJSON)(json['art_style']),
         'originalImageId': json['original_image_id'],
         'originalImageUrl': json['original_image_url'],
+        'ownerId': json['owner_id'],
+        'title': json['title'],
+        'description': json['description'] == null ? undefined : json['description'],
+        'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
     };
 }
 function GetGalleryResponseItemsInnerToJSON(json) {
@@ -104,6 +113,10 @@ function GetGalleryResponseItemsInnerToJSONTyped(value, ignoreDiscriminator = fa
         'art_style': (0, ArtStyle_1.ArtStyleToJSON)(value['artStyle']),
         'original_image_id': value['originalImageId'],
         'original_image_url': value['originalImageUrl'],
+        'owner_id': value['ownerId'],
+        'title': value['title'],
+        'description': value['description'],
+        'cover_image': value['coverImage'],
     };
 }
 //# sourceMappingURL=GetGalleryResponseItemsInner.js.map
