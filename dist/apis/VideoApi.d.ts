@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ExtendVideoFromVideoPayload, ExtendVideoPayload, GetVideoGenerationTagsResponse, ImageToVideoFromChatPayload, ImageToVideoRecommendationPayload, ImageToVideoRequest, LastVideoFrameResponse, MuleRouterWanTaskResponse, VideoFromChatResponse, VideoResolution, WanImageToVideoResponse } from '../models/index';
+import type { ExtendVideoFromVideoPayload, ExtendVideoPayload, GetVideoGenerationTagsResponse, ImageToVideoFromChatPayload, ImageToVideoRecommendationPayload, ImageToVideoRequest, LastVideoFrameResponse, ResponseGetWanTaskStatusVideoWanTaskTaskIdGet, VideoFromChatResponse, VideoResolution, WanExtendVideoCompletionPayload, WanImageToVideoResponse } from '../models/index';
 export interface AttachmentVideoVideoIdAttachmentGetRequest {
     videoId: string;
     videoName: string;
@@ -24,6 +24,9 @@ export interface ChatCallbackVideoCallbackChatGenerationIdPostRequest {
     generationId: string;
     status: ChatCallbackVideoCallbackChatGenerationIdPostStatusEnum;
     errorMessage?: string | null;
+}
+export interface CompleteWanExtendVideoVideoWanExtendCompletePostRequest {
+    wanExtendVideoCompletionPayload: WanExtendVideoCompletionPayload;
 }
 export interface DeleteVideoVideoVideoIdDeleteRequest {
     videoId: string;
@@ -65,6 +68,7 @@ export interface GenerationTagsVideoVideoIdTagsGetRequest {
 }
 export interface GetWanTaskStatusVideoWanTaskTaskIdGetRequest {
     taskId: string;
+    provider?: GetWanTaskStatusVideoWanTaskTaskIdGetProviderEnum;
 }
 export interface VideoLastFrameVideoVideoIdLastFrameGetRequest {
     videoId: string;
@@ -97,6 +101,14 @@ export declare class VideoApi extends runtime.BaseAPI {
      * Chat Callback
      */
     chatCallbackVideoCallbackChatGenerationIdPost(requestParameters: ChatCallbackVideoCallbackChatGenerationIdPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
+    /**
+     * Complete Wan Extend Video
+     */
+    completeWanExtendVideoVideoWanExtendCompletePostRaw(requestParameters: CompleteWanExtendVideoVideoWanExtendCompletePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
+    /**
+     * Complete Wan Extend Video
+     */
+    completeWanExtendVideoVideoWanExtendCompletePost(requestParameters: CompleteWanExtendVideoVideoWanExtendCompletePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
     /**
      * Delete Video
      */
@@ -172,11 +184,11 @@ export declare class VideoApi extends runtime.BaseAPI {
     /**
      * Get Wan Task Status
      */
-    getWanTaskStatusVideoWanTaskTaskIdGetRaw(requestParameters: GetWanTaskStatusVideoWanTaskTaskIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<MuleRouterWanTaskResponse>>;
+    getWanTaskStatusVideoWanTaskTaskIdGetRaw(requestParameters: GetWanTaskStatusVideoWanTaskTaskIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ResponseGetWanTaskStatusVideoWanTaskTaskIdGet>>;
     /**
      * Get Wan Task Status
      */
-    getWanTaskStatusVideoWanTaskTaskIdGet(requestParameters: GetWanTaskStatusVideoWanTaskTaskIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<MuleRouterWanTaskResponse>;
+    getWanTaskStatusVideoWanTaskTaskIdGet(requestParameters: GetWanTaskStatusVideoWanTaskTaskIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ResponseGetWanTaskStatusVideoWanTaskTaskIdGet>;
     /**
      * Video Last Frame
      */
@@ -219,4 +231,12 @@ export declare const GenerateWanVideoDirectVideoWanGeneratePostProviderEnum: {
     readonly Kling: "kling";
 };
 export type GenerateWanVideoDirectVideoWanGeneratePostProviderEnum = typeof GenerateWanVideoDirectVideoWanGeneratePostProviderEnum[keyof typeof GenerateWanVideoDirectVideoWanGeneratePostProviderEnum];
+/**
+ * @export
+ */
+export declare const GetWanTaskStatusVideoWanTaskTaskIdGetProviderEnum: {
+    readonly Mulerouter: "mulerouter";
+    readonly Wancloud: "wancloud";
+};
+export type GetWanTaskStatusVideoWanTaskTaskIdGetProviderEnum = typeof GetWanTaskStatusVideoWanTaskTaskIdGetProviderEnum[keyof typeof GetWanTaskStatusVideoWanTaskTaskIdGetProviderEnum];
 //# sourceMappingURL=VideoApi.d.ts.map

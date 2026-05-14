@@ -195,6 +195,7 @@ export * from './RedeemGiftCodeRequest';
 export * from './RedeemGiftCodeResponse';
 export * from './RelationshipStatus';
 export * from './RemainingFreeUsesResponse';
+export * from './ResponseGetWanTaskStatusVideoWanTaskTaskIdGet';
 export * from './ReviewCharacterFieldStatus';
 export * from './RoleplayType';
 export * from './SeduceDifficulty';
@@ -275,5 +276,8 @@ export * from './VideoPresetCategory';
 export * from './VideoResolution';
 export * from './VisualType';
 export * from './WallPost';
+export * from './WanExtendVideoCompletionPayload';
 export * from './WanImageToVideoResponse';
+export * from './WanTaskOutput';
+export * from './WanTaskResponse';
 //# sourceMappingURL=index.d.ts.map

@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GenerateWanVideoDirectVideoWanGeneratePostProviderEnum = exports.ExtendCallbackVideoExtendCallbackGenerationIdPostStatusEnum = exports.ChatCallbackVideoCallbackChatGenerationIdPostStatusEnum = exports.CallbackVideoCallbackGenerationIdPostStatusEnum = exports.VideoApi = void 0;
+exports.GetWanTaskStatusVideoWanTaskTaskIdGetProviderEnum = exports.GenerateWanVideoDirectVideoWanGeneratePostProviderEnum = exports.ExtendCallbackVideoExtendCallbackGenerationIdPostStatusEnum = exports.ChatCallbackVideoCallbackChatGenerationIdPostStatusEnum = exports.CallbackVideoCallbackGenerationIdPostStatusEnum = exports.VideoApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -190,6 +190,37 @@ class VideoApi extends runtime.BaseAPI {
      */
     async chatCallbackVideoCallbackChatGenerationIdPost(requestParameters, initOverrides) {
         const response = await this.chatCallbackVideoCallbackChatGenerationIdPostRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * Complete Wan Extend Video
+     */
+    async completeWanExtendVideoVideoWanExtendCompletePostRaw(requestParameters, initOverrides) {
+        if (requestParameters['wanExtendVideoCompletionPayload'] == null) {
+            throw new runtime.RequiredError('wanExtendVideoCompletionPayload', 'Required parameter "wanExtendVideoCompletionPayload" was null or undefined when calling completeWanExtendVideoVideoWanExtendCompletePost().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        const response = await this.request({
+            path: `/video/wan/extend/complete`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.WanExtendVideoCompletionPayloadToJSON)(requestParameters['wanExtendVideoCompletionPayload']),
+        }, initOverrides);
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse(response);
+        }
+        else {
+            return new runtime.TextApiResponse(response);
+        }
+    }
+    /**
+     * Complete Wan Extend Video
+     */
+    async completeWanExtendVideoVideoWanExtendCompletePost(requestParameters, initOverrides) {
+        const response = await this.completeWanExtendVideoVideoWanExtendCompletePostRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -530,6 +561,9 @@ class VideoApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('taskId', 'Required parameter "taskId" was null or undefined when calling getWanTaskStatusVideoWanTaskTaskIdGet().');
         }
         const queryParameters = {};
+        if (requestParameters['provider'] != null) {
+            queryParameters['provider'] = requestParameters['provider'];
+        }
         const headerParameters = {};
         const response = await this.request({
             path: `/video/wan/task/{task_id}`.replace(`{${"task_id"}}`, encodeURIComponent(String(requestParameters['taskId']))),
@@ -537,7 +571,7 @@ class VideoApi extends runtime.BaseAPI {
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.MuleRouterWanTaskResponseFromJSON)(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.ResponseGetWanTaskStatusVideoWanTaskTaskIdGetFromJSON)(jsonValue));
     }
     /**
      * Get Wan Task Status
@@ -600,5 +634,12 @@ exports.GenerateWanVideoDirectVideoWanGeneratePostProviderEnum = {
     Mulerouter: 'mulerouter',
     Wan: 'wan',
     Kling: 'kling'
+};
+/**
+ * @export
+ */
+exports.GetWanTaskStatusVideoWanTaskTaskIdGetProviderEnum = {
+    Mulerouter: 'mulerouter',
+    Wancloud: 'wancloud'
 };
 //# sourceMappingURL=VideoApi.js.map

@@ -213,6 +213,7 @@ __exportStar(require("./RedeemGiftCodeRequest"), exports);
 __exportStar(require("./RedeemGiftCodeResponse"), exports);
 __exportStar(require("./RelationshipStatus"), exports);
 __exportStar(require("./RemainingFreeUsesResponse"), exports);
+__exportStar(require("./ResponseGetWanTaskStatusVideoWanTaskTaskIdGet"), exports);
 __exportStar(require("./ReviewCharacterFieldStatus"), exports);
 __exportStar(require("./RoleplayType"), exports);
 __exportStar(require("./SeduceDifficulty"), exports);
@@ -293,5 +294,8 @@ __exportStar(require("./VideoPresetCategory"), exports);
 __exportStar(require("./VideoResolution"), exports);
 __exportStar(require("./VisualType"), exports);
 __exportStar(require("./WallPost"), exports);
+__exportStar(require("./WanExtendVideoCompletionPayload"), exports);
 __exportStar(require("./WanImageToVideoResponse"), exports);
+__exportStar(require("./WanTaskOutput"), exports);
+__exportStar(require("./WanTaskResponse"), exports);
 //# sourceMappingURL=index.js.map
