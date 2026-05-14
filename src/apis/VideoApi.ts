@@ -15,7 +15,6 @@
 
 import * as runtime from '../runtime';
 import type {
-  ExtendVideoFromVideoPayload,
   ExtendVideoPayload,
   GetVideoGenerationTagsResponse,
   HTTPValidationError,
@@ -24,14 +23,13 @@ import type {
   ImageToVideoRequest,
   LastVideoFrameResponse,
   ResponseGetWanTaskStatusVideoWanTaskTaskIdGet,
+  VideoConfigResponse,
   VideoFromChatResponse,
   VideoResolution,
   WanExtendVideoCompletionPayload,
   WanImageToVideoResponse,
 } from '../models/index';
 import {
-    ExtendVideoFromVideoPayloadFromJSON,
-    ExtendVideoFromVideoPayloadToJSON,
     ExtendVideoPayloadFromJSON,
     ExtendVideoPayloadToJSON,
     GetVideoGenerationTagsResponseFromJSON,
@@ -48,6 +46,8 @@ import {
     LastVideoFrameResponseToJSON,
     ResponseGetWanTaskStatusVideoWanTaskTaskIdGetFromJSON,
     ResponseGetWanTaskStatusVideoWanTaskTaskIdGetToJSON,
+    VideoConfigResponseFromJSON,
+    VideoConfigResponseToJSON,
     VideoFromChatResponseFromJSON,
     VideoFromChatResponseToJSON,
     VideoResolutionFromJSON,
@@ -89,12 +89,7 @@ export interface ExtendCallbackVideoExtendCallbackGenerationIdPostRequest {
     errorMessage?: string | null;
 }
 
-export interface ExtendFromVideoVideoExtendFromVideoPostRequest {
-    extendVideoFromVideoPayload: ExtendVideoFromVideoPayload;
-}
-
-export interface ExtendVideoVideoVideoIdExtendPostRequest {
-    videoId: string;
+export interface ExtendVideoVideoExtendPostRequest {
     extendVideoPayload: ExtendVideoPayload;
 }
 
@@ -112,14 +107,15 @@ export interface GenerateVideoVideoPostRequest {
 
 export interface GenerateWanVideoDirectVideoWanGeneratePostRequest {
     image: Blob;
+    audio: Blob;
     prompt: string;
-    audio?: Blob | null;
     negativePrompt?: string | null;
     provider?: GenerateWanVideoDirectVideoWanGeneratePostProviderEnum;
     modelName?: string | null;
     resolution?: VideoResolution;
     duration?: number;
     seed?: number | null;
+    audioGeneration?: boolean;
 }
 
 export interface GenerationTagsVideoVideoIdTagsGetRequest {
@@ -467,60 +463,13 @@ export class VideoApi extends runtime.BaseAPI {
     }
 
     /**
-     * Extend From Video
-     */
-    async extendFromVideoVideoExtendFromVideoPostRaw(requestParameters: ExtendFromVideoVideoExtendFromVideoPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
-        if (requestParameters['extendVideoFromVideoPayload'] == null) {
-            throw new runtime.RequiredError(
-                'extendVideoFromVideoPayload',
-                'Required parameter "extendVideoFromVideoPayload" was null or undefined when calling extendFromVideoVideoExtendFromVideoPost().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        const response = await this.request({
-            path: `/video/extend-from-video`,
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: ExtendVideoFromVideoPayloadToJSON(requestParameters['extendVideoFromVideoPayload']),
-        }, initOverrides);
-
-        if (this.isJsonMime(response.headers.get('content-type'))) {
-            return new runtime.JSONApiResponse<any>(response);
-        } else {
-            return new runtime.TextApiResponse(response) as any;
-        }
-    }
-
-    /**
-     * Extend From Video
-     */
-    async extendFromVideoVideoExtendFromVideoPost(requestParameters: ExtendFromVideoVideoExtendFromVideoPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
-        const response = await this.extendFromVideoVideoExtendFromVideoPostRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
      * Extend Video
      */
-    async extendVideoVideoVideoIdExtendPostRaw(requestParameters: ExtendVideoVideoVideoIdExtendPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
-        if (requestParameters['videoId'] == null) {
-            throw new runtime.RequiredError(
-                'videoId',
-                'Required parameter "videoId" was null or undefined when calling extendVideoVideoVideoIdExtendPost().'
-            );
-        }
-
+    async extendVideoVideoExtendPostRaw(requestParameters: ExtendVideoVideoExtendPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
         if (requestParameters['extendVideoPayload'] == null) {
             throw new runtime.RequiredError(
                 'extendVideoPayload',
-                'Required parameter "extendVideoPayload" was null or undefined when calling extendVideoVideoVideoIdExtendPost().'
+                'Required parameter "extendVideoPayload" was null or undefined when calling extendVideoVideoExtendPost().'
             );
         }
 
@@ -531,7 +480,7 @@ export class VideoApi extends runtime.BaseAPI {
         headerParameters['Content-Type'] = 'application/json';
 
         const response = await this.request({
-            path: `/video/{video_id}/extend`.replace(`{${"video_id"}}`, encodeURIComponent(String(requestParameters['videoId']))),
+            path: `/video/extend`,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -548,8 +497,8 @@ export class VideoApi extends runtime.BaseAPI {
     /**
      * Extend Video
      */
-    async extendVideoVideoVideoIdExtendPost(requestParameters: ExtendVideoVideoVideoIdExtendPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
-        const response = await this.extendVideoVideoVideoIdExtendPostRaw(requestParameters, initOverrides);
+    async extendVideoVideoExtendPost(requestParameters: ExtendVideoVideoExtendPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
+        const response = await this.extendVideoVideoExtendPostRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -680,6 +629,13 @@ export class VideoApi extends runtime.BaseAPI {
             );
         }
 
+        if (requestParameters['audio'] == null) {
+            throw new runtime.RequiredError(
+                'audio',
+                'Required parameter "audio" was null or undefined when calling generateWanVideoDirectVideoWanGeneratePost().'
+            );
+        }
+
         if (requestParameters['prompt'] == null) {
             throw new runtime.RequiredError(
                 'prompt',
@@ -745,6 +701,10 @@ export class VideoApi extends runtime.BaseAPI {
             formParams.append('seed', requestParameters['seed'] as any);
         }
 
+        if (requestParameters['audioGeneration'] != null) {
+            formParams.append('audio_generation', requestParameters['audioGeneration'] as any);
+        }
+
         const response = await this.request({
             path: `/video/wan/generate`,
             method: 'POST',
@@ -794,6 +754,32 @@ export class VideoApi extends runtime.BaseAPI {
      */
     async generationTagsVideoVideoIdTagsGet(requestParameters: GenerationTagsVideoVideoIdTagsGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetVideoGenerationTagsResponse> {
         const response = await this.generationTagsVideoVideoIdTagsGetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Get Video Config
+     */
+    async getVideoConfigVideoConfigGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<VideoConfigResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/video/config`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => VideoConfigResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Get Video Config
+     */
+    async getVideoConfigVideoConfigGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<VideoConfigResponse> {
+        const response = await this.getVideoConfigVideoConfigGetRaw(initOverrides);
         return await response.value();
     }
 

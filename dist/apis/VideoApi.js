@@ -305,51 +305,17 @@ class VideoApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * Extend From Video
-     */
-    async extendFromVideoVideoExtendFromVideoPostRaw(requestParameters, initOverrides) {
-        if (requestParameters['extendVideoFromVideoPayload'] == null) {
-            throw new runtime.RequiredError('extendVideoFromVideoPayload', 'Required parameter "extendVideoFromVideoPayload" was null or undefined when calling extendFromVideoVideoExtendFromVideoPost().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        headerParameters['Content-Type'] = 'application/json';
-        const response = await this.request({
-            path: `/video/extend-from-video`,
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: (0, index_1.ExtendVideoFromVideoPayloadToJSON)(requestParameters['extendVideoFromVideoPayload']),
-        }, initOverrides);
-        if (this.isJsonMime(response.headers.get('content-type'))) {
-            return new runtime.JSONApiResponse(response);
-        }
-        else {
-            return new runtime.TextApiResponse(response);
-        }
-    }
-    /**
-     * Extend From Video
-     */
-    async extendFromVideoVideoExtendFromVideoPost(requestParameters, initOverrides) {
-        const response = await this.extendFromVideoVideoExtendFromVideoPostRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
      * Extend Video
      */
-    async extendVideoVideoVideoIdExtendPostRaw(requestParameters, initOverrides) {
-        if (requestParameters['videoId'] == null) {
-            throw new runtime.RequiredError('videoId', 'Required parameter "videoId" was null or undefined when calling extendVideoVideoVideoIdExtendPost().');
-        }
+    async extendVideoVideoExtendPostRaw(requestParameters, initOverrides) {
         if (requestParameters['extendVideoPayload'] == null) {
-            throw new runtime.RequiredError('extendVideoPayload', 'Required parameter "extendVideoPayload" was null or undefined when calling extendVideoVideoVideoIdExtendPost().');
+            throw new runtime.RequiredError('extendVideoPayload', 'Required parameter "extendVideoPayload" was null or undefined when calling extendVideoVideoExtendPost().');
         }
         const queryParameters = {};
         const headerParameters = {};
         headerParameters['Content-Type'] = 'application/json';
         const response = await this.request({
-            path: `/video/{video_id}/extend`.replace(`{${"video_id"}}`, encodeURIComponent(String(requestParameters['videoId']))),
+            path: `/video/extend`,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -365,8 +331,8 @@ class VideoApi extends runtime.BaseAPI {
     /**
      * Extend Video
      */
-    async extendVideoVideoVideoIdExtendPost(requestParameters, initOverrides) {
-        const response = await this.extendVideoVideoVideoIdExtendPostRaw(requestParameters, initOverrides);
+    async extendVideoVideoExtendPost(requestParameters, initOverrides) {
+        const response = await this.extendVideoVideoExtendPostRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -464,6 +430,9 @@ class VideoApi extends runtime.BaseAPI {
         if (requestParameters['image'] == null) {
             throw new runtime.RequiredError('image', 'Required parameter "image" was null or undefined when calling generateWanVideoDirectVideoWanGeneratePost().');
         }
+        if (requestParameters['audio'] == null) {
+            throw new runtime.RequiredError('audio', 'Required parameter "audio" was null or undefined when calling generateWanVideoDirectVideoWanGeneratePost().');
+        }
         if (requestParameters['prompt'] == null) {
             throw new runtime.RequiredError('prompt', 'Required parameter "prompt" was null or undefined when calling generateWanVideoDirectVideoWanGeneratePost().');
         }
@@ -513,6 +482,9 @@ class VideoApi extends runtime.BaseAPI {
         if (requestParameters['seed'] != null) {
             formParams.append('seed', requestParameters['seed']);
         }
+        if (requestParameters['audioGeneration'] != null) {
+            formParams.append('audio_generation', requestParameters['audioGeneration']);
+        }
         const response = await this.request({
             path: `/video/wan/generate`,
             method: 'POST',
@@ -551,6 +523,27 @@ class VideoApi extends runtime.BaseAPI {
      */
     async generationTagsVideoVideoIdTagsGet(requestParameters, initOverrides) {
         const response = await this.generationTagsVideoVideoIdTagsGetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * Get Video Config
+     */
+    async getVideoConfigVideoConfigGetRaw(initOverrides) {
+        const queryParameters = {};
+        const headerParameters = {};
+        const response = await this.request({
+            path: `/video/config`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.VideoConfigResponseFromJSON)(jsonValue));
+    }
+    /**
+     * Get Video Config
+     */
+    async getVideoConfigVideoConfigGet(initOverrides) {
+        const response = await this.getVideoConfigVideoConfigGetRaw(initOverrides);
         return await response.value();
     }
     /**

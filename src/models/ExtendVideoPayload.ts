@@ -20,6 +20,20 @@ import {
     VideoLoraNameToJSON,
     VideoLoraNameToJSONTyped,
 } from './VideoLoraName';
+import type { ImageToVideoModel } from './ImageToVideoModel';
+import {
+    ImageToVideoModelFromJSON,
+    ImageToVideoModelFromJSONTyped,
+    ImageToVideoModelToJSON,
+    ImageToVideoModelToJSONTyped,
+} from './ImageToVideoModel';
+import type { VideoResolution } from './VideoResolution';
+import {
+    VideoResolutionFromJSON,
+    VideoResolutionFromJSONTyped,
+    VideoResolutionToJSON,
+    VideoResolutionToJSONTyped,
+} from './VideoResolution';
 
 /**
  * 
@@ -27,6 +41,18 @@ import {
  * @interface ExtendVideoPayload
  */
 export interface ExtendVideoPayload {
+    /**
+     * 
+     * @type {string}
+     * @memberof ExtendVideoPayload
+     */
+    videoId: string;
+    /**
+     * 
+     * @type {ImageToVideoModel}
+     * @memberof ExtendVideoPayload
+     */
+    model: ImageToVideoModel;
     /**
      * 
      * @type {string}
@@ -62,19 +88,58 @@ export interface ExtendVideoPayload {
      * @type {Array<VideoLoraName>}
      * @memberof ExtendVideoPayload
      */
-    loras: Array<VideoLoraName>;
+    loras?: Array<VideoLoraName>;
+    /**
+     * 
+     * @type {VideoResolution}
+     * @memberof ExtendVideoPayload
+     */
+    resolution?: VideoResolution | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ExtendVideoPayload
+     */
+    negativePrompt?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ExtendVideoPayload
+     */
+    watermark?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ExtendVideoPayload
+     */
+    promptExtend?: boolean;
+    /**
+     * 
+     * @type {number}
+     * @memberof ExtendVideoPayload
+     */
+    seed?: number | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ExtendVideoPayload
+     */
+    audioGeneration?: boolean;
 }
+
+
 
 /**
  * Check if a given object implements the ExtendVideoPayload interface.
  */
 export function instanceOfExtendVideoPayload(value: object): value is ExtendVideoPayload {
+    if (!('videoId' in value) || value['videoId'] === undefined) return false;
+    if (!('model' in value) || value['model'] === undefined) return false;
     if (!('clientId' in value) || value['clientId'] === undefined) return false;
     if (!('requestId' in value) || value['requestId'] === undefined) return false;
     if (!('chatbotId' in value) || value['chatbotId'] === undefined) return false;
     if (!('duration' in value) || value['duration'] === undefined) return false;
     if (!('prompt' in value) || value['prompt'] === undefined) return false;
-    if (!('loras' in value) || value['loras'] === undefined) return false;
     return true;
 }
 
@@ -88,12 +153,20 @@ export function ExtendVideoPayloadFromJSONTyped(json: any, ignoreDiscriminator: 
     }
     return {
         
+        'videoId': json['video_id'],
+        'model': ImageToVideoModelFromJSON(json['model']),
         'clientId': json['client_id'],
         'requestId': json['request_id'],
         'chatbotId': json['chatbot_id'],
         'duration': json['duration'],
         'prompt': json['prompt'],
-        'loras': ((json['loras'] as Array<any>).map(VideoLoraNameFromJSON)),
+        'loras': json['loras'] == null ? undefined : ((json['loras'] as Array<any>).map(VideoLoraNameFromJSON)),
+        'resolution': json['resolution'] == null ? undefined : VideoResolutionFromJSON(json['resolution']),
+        'negativePrompt': json['negative_prompt'] == null ? undefined : json['negative_prompt'],
+        'watermark': json['watermark'] == null ? undefined : json['watermark'],
+        'promptExtend': json['prompt_extend'] == null ? undefined : json['prompt_extend'],
+        'seed': json['seed'] == null ? undefined : json['seed'],
+        'audioGeneration': json['audio_generation'] == null ? undefined : json['audio_generation'],
     };
 }
 
@@ -108,12 +181,20 @@ export function ExtendVideoPayloadFromJSONTyped(json: any, ignoreDiscriminator: 
 
     return {
         
+        'video_id': value['videoId'],
+        'model': ImageToVideoModelToJSON(value['model']),
         'client_id': value['clientId'],
         'request_id': value['requestId'],
         'chatbot_id': value['chatbotId'],
         'duration': value['duration'],
         'prompt': value['prompt'],
-        'loras': ((value['loras'] as Array<any>).map(VideoLoraNameToJSON)),
+        'loras': value['loras'] == null ? undefined : ((value['loras'] as Array<any>).map(VideoLoraNameToJSON)),
+        'resolution': VideoResolutionToJSON(value['resolution']),
+        'negative_prompt': value['negativePrompt'],
+        'watermark': value['watermark'],
+        'prompt_extend': value['promptExtend'],
+        'seed': value['seed'],
+        'audio_generation': value['audioGeneration'],
     };
 }
 

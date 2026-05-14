@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ExtendVideoFromVideoPayload, ExtendVideoPayload, GetVideoGenerationTagsResponse, ImageToVideoFromChatPayload, ImageToVideoRecommendationPayload, ImageToVideoRequest, LastVideoFrameResponse, ResponseGetWanTaskStatusVideoWanTaskTaskIdGet, VideoFromChatResponse, VideoResolution, WanExtendVideoCompletionPayload, WanImageToVideoResponse } from '../models/index';
+import type { ExtendVideoPayload, GetVideoGenerationTagsResponse, ImageToVideoFromChatPayload, ImageToVideoRecommendationPayload, ImageToVideoRequest, LastVideoFrameResponse, ResponseGetWanTaskStatusVideoWanTaskTaskIdGet, VideoConfigResponse, VideoFromChatResponse, VideoResolution, WanExtendVideoCompletionPayload, WanImageToVideoResponse } from '../models/index';
 export interface AttachmentVideoVideoIdAttachmentGetRequest {
     videoId: string;
     videoName: string;
@@ -36,11 +36,7 @@ export interface ExtendCallbackVideoExtendCallbackGenerationIdPostRequest {
     status: ExtendCallbackVideoExtendCallbackGenerationIdPostStatusEnum;
     errorMessage?: string | null;
 }
-export interface ExtendFromVideoVideoExtendFromVideoPostRequest {
-    extendVideoFromVideoPayload: ExtendVideoFromVideoPayload;
-}
-export interface ExtendVideoVideoVideoIdExtendPostRequest {
-    videoId: string;
+export interface ExtendVideoVideoExtendPostRequest {
     extendVideoPayload: ExtendVideoPayload;
 }
 export interface GenerateVideoDescriptionVideoRecommendationPostRequest {
@@ -54,14 +50,15 @@ export interface GenerateVideoVideoPostRequest {
 }
 export interface GenerateWanVideoDirectVideoWanGeneratePostRequest {
     image: Blob;
+    audio: Blob;
     prompt: string;
-    audio?: Blob | null;
     negativePrompt?: string | null;
     provider?: GenerateWanVideoDirectVideoWanGeneratePostProviderEnum;
     modelName?: string | null;
     resolution?: VideoResolution;
     duration?: number;
     seed?: number | null;
+    audioGeneration?: boolean;
 }
 export interface GenerationTagsVideoVideoIdTagsGetRequest {
     videoId: string;
@@ -126,21 +123,13 @@ export declare class VideoApi extends runtime.BaseAPI {
      */
     extendCallbackVideoExtendCallbackGenerationIdPost(requestParameters: ExtendCallbackVideoExtendCallbackGenerationIdPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
     /**
-     * Extend From Video
+     * Extend Video
      */
-    extendFromVideoVideoExtendFromVideoPostRaw(requestParameters: ExtendFromVideoVideoExtendFromVideoPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
-    /**
-     * Extend From Video
-     */
-    extendFromVideoVideoExtendFromVideoPost(requestParameters: ExtendFromVideoVideoExtendFromVideoPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
+    extendVideoVideoExtendPostRaw(requestParameters: ExtendVideoVideoExtendPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
     /**
      * Extend Video
      */
-    extendVideoVideoVideoIdExtendPostRaw(requestParameters: ExtendVideoVideoVideoIdExtendPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
-    /**
-     * Extend Video
-     */
-    extendVideoVideoVideoIdExtendPost(requestParameters: ExtendVideoVideoVideoIdExtendPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
+    extendVideoVideoExtendPost(requestParameters: ExtendVideoVideoExtendPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
     /**
      * Generate Video Description
      */
@@ -181,6 +170,14 @@ export declare class VideoApi extends runtime.BaseAPI {
      * Generation Tags
      */
     generationTagsVideoVideoIdTagsGet(requestParameters: GenerationTagsVideoVideoIdTagsGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetVideoGenerationTagsResponse>;
+    /**
+     * Get Video Config
+     */
+    getVideoConfigVideoConfigGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<VideoConfigResponse>>;
+    /**
+     * Get Video Config
+     */
+    getVideoConfigVideoConfigGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<VideoConfigResponse>;
     /**
      * Get Wan Task Status
      */

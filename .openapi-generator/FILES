@@ -71,7 +71,6 @@ src/models/EpisodeVisibility.ts
 src/models/Ethnicity.ts
 src/models/ExceptionCode.ts
 src/models/ExploreSearchRequest.ts
-src/models/ExtendVideoFromVideoPayload.ts
 src/models/ExtendVideoPayload.ts
 src/models/EyeColor.ts
 src/models/FantasyRace.ts
@@ -292,12 +291,15 @@ src/models/UserStoryProgressType.ts
 src/models/ValidationError.ts
 src/models/ValidationErrorLocInner.ts
 src/models/Value.ts
+src/models/VideoConfigResponse.ts
 src/models/VideoContent.ts
+src/models/VideoDurationConfig.ts
 src/models/VideoFromChatResponse.ts
 src/models/VideoGenerationStatus.ts
 src/models/VideoLoraName.ts
 src/models/VideoMod.ts
 src/models/VideoModCategory.ts
+src/models/VideoModelConfig.ts
 src/models/VideoPreset.ts
 src/models/VideoPresetCategory.ts
 src/models/VideoResolution.ts

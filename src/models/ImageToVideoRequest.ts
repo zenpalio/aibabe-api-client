@@ -119,6 +119,12 @@ export interface ImageToVideoRequest {
      * @memberof ImageToVideoRequest
      */
     seed?: number | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ImageToVideoRequest
+     */
+    audioGeneration?: boolean;
 }
 
 
@@ -161,6 +167,7 @@ export function ImageToVideoRequestFromJSONTyped(json: any, ignoreDiscriminator:
         'watermark': json['watermark'] == null ? undefined : json['watermark'],
         'promptExtend': json['prompt_extend'] == null ? undefined : json['prompt_extend'],
         'seed': json['seed'] == null ? undefined : json['seed'],
+        'audioGeneration': json['audio_generation'] == null ? undefined : json['audio_generation'],
     };
 }
 
@@ -188,6 +195,7 @@ export function ImageToVideoRequestFromJSONTyped(json: any, ignoreDiscriminator:
         'watermark': value['watermark'],
         'prompt_extend': value['promptExtend'],
         'seed': value['seed'],
+        'audio_generation': value['audioGeneration'],
     };
 }
 
