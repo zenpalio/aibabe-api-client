@@ -50,8 +50,8 @@ export interface GenerateVideoVideoPostRequest {
 }
 export interface GenerateWanVideoDirectVideoWanGeneratePostRequest {
     image: Blob;
-    audio: Blob;
     prompt: string;
+    audio?: Blob | null;
     negativePrompt?: string | null;
     provider?: GenerateWanVideoDirectVideoWanGeneratePostProviderEnum;
     modelName?: string | null;

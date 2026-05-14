@@ -430,9 +430,6 @@ class VideoApi extends runtime.BaseAPI {
         if (requestParameters['image'] == null) {
             throw new runtime.RequiredError('image', 'Required parameter "image" was null or undefined when calling generateWanVideoDirectVideoWanGeneratePost().');
         }
-        if (requestParameters['audio'] == null) {
-            throw new runtime.RequiredError('audio', 'Required parameter "audio" was null or undefined when calling generateWanVideoDirectVideoWanGeneratePost().');
-        }
         if (requestParameters['prompt'] == null) {
             throw new runtime.RequiredError('prompt', 'Required parameter "prompt" was null or undefined when calling generateWanVideoDirectVideoWanGeneratePost().');
         }

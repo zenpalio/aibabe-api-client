@@ -107,8 +107,8 @@ export interface GenerateVideoVideoPostRequest {
 
 export interface GenerateWanVideoDirectVideoWanGeneratePostRequest {
     image: Blob;
-    audio: Blob;
     prompt: string;
+    audio?: Blob | null;
     negativePrompt?: string | null;
     provider?: GenerateWanVideoDirectVideoWanGeneratePostProviderEnum;
     modelName?: string | null;
@@ -626,13 +626,6 @@ export class VideoApi extends runtime.BaseAPI {
             throw new runtime.RequiredError(
                 'image',
                 'Required parameter "image" was null or undefined when calling generateWanVideoDirectVideoWanGeneratePost().'
-            );
-        }
-
-        if (requestParameters['audio'] == null) {
-            throw new runtime.RequiredError(
-                'audio',
-                'Required parameter "audio" was null or undefined when calling generateWanVideoDirectVideoWanGeneratePost().'
             );
         }
 
