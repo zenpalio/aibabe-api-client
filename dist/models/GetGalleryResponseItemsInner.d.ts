@@ -12,6 +12,7 @@
 import type { ArtStyle } from './ArtStyle';
 import type { ChatbotPreview } from './ChatbotPreview';
 import type { PostDetails } from './PostDetails';
+import type { StoryVisibility } from './StoryVisibility';
 import type { VideoGenerationStatus } from './VideoGenerationStatus';
 /**
  *
@@ -121,6 +122,24 @@ export interface GetGalleryResponseItemsInner {
      * @memberof GetGalleryResponseItemsInner
      */
     coverImage?: string;
+    /**
+     *
+     * @type {StoryVisibility}
+     * @memberof GetGalleryResponseItemsInner
+     */
+    visibility: StoryVisibility;
+    /**
+     *
+     * @type {number}
+     * @memberof GetGalleryResponseItemsInner
+     */
+    publicEpisodesCount: number;
+    /**
+     *
+     * @type {number}
+     * @memberof GetGalleryResponseItemsInner
+     */
+    publicPanelsCount: number;
 }
 /**
  * @export

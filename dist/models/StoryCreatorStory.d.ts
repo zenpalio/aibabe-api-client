@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { StoryVisibility } from './StoryVisibility';
 import type { UserStoryProgressType } from './UserStoryProgressType';
 /**
  *
@@ -36,12 +37,6 @@ export interface StoryCreatorStory {
     coverImage?: string | null;
     /**
      *
-     * @type {boolean}
-     * @memberof StoryCreatorStory
-     */
-    newerVersionExists?: boolean | null;
-    /**
-     *
      * @type {string}
      * @memberof StoryCreatorStory
      */
@@ -64,6 +59,30 @@ export interface StoryCreatorStory {
      * @memberof StoryCreatorStory
      */
     progress?: UserStoryProgressType | null;
+    /**
+     *
+     * @type {boolean}
+     * @memberof StoryCreatorStory
+     */
+    newerVersionExists?: boolean | null;
+    /**
+     *
+     * @type {StoryVisibility}
+     * @memberof StoryCreatorStory
+     */
+    visibility: StoryVisibility;
+    /**
+     *
+     * @type {number}
+     * @memberof StoryCreatorStory
+     */
+    publicEpisodesCount: number;
+    /**
+     *
+     * @type {number}
+     * @memberof StoryCreatorStory
+     */
+    publicPanelsCount: number;
 }
 /**
  * Check if a given object implements the StoryCreatorStory interface.

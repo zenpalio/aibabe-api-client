@@ -13,6 +13,14 @@
  */
 
 import { mapValues } from '../runtime';
+import type { StoryVisibility } from './StoryVisibility';
+import {
+    StoryVisibilityFromJSON,
+    StoryVisibilityFromJSONTyped,
+    StoryVisibilityToJSON,
+    StoryVisibilityToJSONTyped,
+} from './StoryVisibility';
+
 /**
  * 
  * @export
@@ -61,6 +69,24 @@ export interface GalleryStory {
      * @memberof GalleryStory
      */
     createdAt: Date;
+    /**
+     * 
+     * @type {StoryVisibility}
+     * @memberof GalleryStory
+     */
+    visibility: StoryVisibility;
+    /**
+     * 
+     * @type {number}
+     * @memberof GalleryStory
+     */
+    publicEpisodesCount: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GalleryStory
+     */
+    publicPanelsCount: number;
 }
 
 
@@ -82,6 +108,9 @@ export function instanceOfGalleryStory(value: object): value is GalleryStory {
     if (!('ownerId' in value) || value['ownerId'] === undefined) return false;
     if (!('title' in value) || value['title'] === undefined) return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
+    if (!('visibility' in value) || value['visibility'] === undefined) return false;
+    if (!('publicEpisodesCount' in value) || value['publicEpisodesCount'] === undefined) return false;
+    if (!('publicPanelsCount' in value) || value['publicPanelsCount'] === undefined) return false;
     return true;
 }
 
@@ -102,6 +131,9 @@ export function GalleryStoryFromJSONTyped(json: any, ignoreDiscriminator: boolea
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
         'createdAt': (new Date(json['created_at'])),
+        'visibility': StoryVisibilityFromJSON(json['visibility']),
+        'publicEpisodesCount': json['public_episodes_count'],
+        'publicPanelsCount': json['public_panels_count'],
     };
 }
 
@@ -123,6 +155,9 @@ export function GalleryStoryFromJSONTyped(json: any, ignoreDiscriminator: boolea
         'description': value['description'],
         'cover_image': value['coverImage'],
         'created_at': ((value['createdAt']).toISOString()),
+        'visibility': StoryVisibilityToJSON(value['visibility']),
+        'public_episodes_count': value['publicEpisodesCount'],
+        'public_panels_count': value['publicPanelsCount'],
     };
 }
 

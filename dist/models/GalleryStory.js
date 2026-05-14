@@ -19,6 +19,7 @@ exports.GalleryStoryFromJSON = GalleryStoryFromJSON;
 exports.GalleryStoryFromJSONTyped = GalleryStoryFromJSONTyped;
 exports.GalleryStoryToJSON = GalleryStoryToJSON;
 exports.GalleryStoryToJSONTyped = GalleryStoryToJSONTyped;
+const StoryVisibility_1 = require("./StoryVisibility");
 /**
  * @export
  */
@@ -39,6 +40,12 @@ function instanceOfGalleryStory(value) {
         return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined)
         return false;
+    if (!('visibility' in value) || value['visibility'] === undefined)
+        return false;
+    if (!('publicEpisodesCount' in value) || value['publicEpisodesCount'] === undefined)
+        return false;
+    if (!('publicPanelsCount' in value) || value['publicPanelsCount'] === undefined)
+        return false;
     return true;
 }
 function GalleryStoryFromJSON(json) {
@@ -56,6 +63,9 @@ function GalleryStoryFromJSONTyped(json, ignoreDiscriminator) {
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
         'createdAt': (new Date(json['created_at'])),
+        'visibility': (0, StoryVisibility_1.StoryVisibilityFromJSON)(json['visibility']),
+        'publicEpisodesCount': json['public_episodes_count'],
+        'publicPanelsCount': json['public_panels_count'],
     };
 }
 function GalleryStoryToJSON(json) {
@@ -73,6 +83,9 @@ function GalleryStoryToJSONTyped(value, ignoreDiscriminator = false) {
         'description': value['description'],
         'cover_image': value['coverImage'],
         'created_at': ((value['createdAt']).toISOString()),
+        'visibility': (0, StoryVisibility_1.StoryVisibilityToJSON)(value['visibility']),
+        'public_episodes_count': value['publicEpisodesCount'],
+        'public_panels_count': value['publicPanelsCount'],
     };
 }
 //# sourceMappingURL=GalleryStory.js.map

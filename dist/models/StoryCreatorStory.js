@@ -18,6 +18,7 @@ exports.StoryCreatorStoryFromJSON = StoryCreatorStoryFromJSON;
 exports.StoryCreatorStoryFromJSONTyped = StoryCreatorStoryFromJSONTyped;
 exports.StoryCreatorStoryToJSON = StoryCreatorStoryToJSON;
 exports.StoryCreatorStoryToJSONTyped = StoryCreatorStoryToJSONTyped;
+const StoryVisibility_1 = require("./StoryVisibility");
 const UserStoryProgressType_1 = require("./UserStoryProgressType");
 /**
  * Check if a given object implements the StoryCreatorStory interface.
@@ -28,6 +29,12 @@ function instanceOfStoryCreatorStory(value) {
     if (!('id' in value) || value['id'] === undefined)
         return false;
     if (!('ownerId' in value) || value['ownerId'] === undefined)
+        return false;
+    if (!('visibility' in value) || value['visibility'] === undefined)
+        return false;
+    if (!('publicEpisodesCount' in value) || value['publicEpisodesCount'] === undefined)
+        return false;
+    if (!('publicPanelsCount' in value) || value['publicPanelsCount'] === undefined)
         return false;
     return true;
 }
@@ -42,11 +49,14 @@ function StoryCreatorStoryFromJSONTyped(json, ignoreDiscriminator) {
         'title': json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
-        'newerVersionExists': json['newer_version_exists'] == null ? undefined : json['newer_version_exists'],
         'id': json['id'],
         'ownerId': json['owner_id'],
         'rating': json['rating'] == null ? undefined : json['rating'],
         'progress': json['progress'] == null ? undefined : (0, UserStoryProgressType_1.UserStoryProgressTypeFromJSON)(json['progress']),
+        'newerVersionExists': json['newer_version_exists'] == null ? undefined : json['newer_version_exists'],
+        'visibility': (0, StoryVisibility_1.StoryVisibilityFromJSON)(json['visibility']),
+        'publicEpisodesCount': json['public_episodes_count'],
+        'publicPanelsCount': json['public_panels_count'],
     };
 }
 function StoryCreatorStoryToJSON(json) {
@@ -60,11 +70,14 @@ function StoryCreatorStoryToJSONTyped(value, ignoreDiscriminator = false) {
         'title': value['title'],
         'description': value['description'],
         'cover_image': value['coverImage'],
-        'newer_version_exists': value['newerVersionExists'],
         'id': value['id'],
         'owner_id': value['ownerId'],
         'rating': value['rating'],
         'progress': (0, UserStoryProgressType_1.UserStoryProgressTypeToJSON)(value['progress']),
+        'newer_version_exists': value['newerVersionExists'],
+        'visibility': (0, StoryVisibility_1.StoryVisibilityToJSON)(value['visibility']),
+        'public_episodes_count': value['publicEpisodesCount'],
+        'public_panels_count': value['publicPanelsCount'],
     };
 }
 //# sourceMappingURL=StoryCreatorStory.js.map

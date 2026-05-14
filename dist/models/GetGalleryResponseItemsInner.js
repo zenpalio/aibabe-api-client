@@ -22,6 +22,7 @@ exports.GetGalleryResponseItemsInnerToJSONTyped = GetGalleryResponseItemsInnerTo
 const ArtStyle_1 = require("./ArtStyle");
 const ChatbotPreview_1 = require("./ChatbotPreview");
 const PostDetails_1 = require("./PostDetails");
+const StoryVisibility_1 = require("./StoryVisibility");
 const VideoGenerationStatus_1 = require("./VideoGenerationStatus");
 /**
  * @export
@@ -63,6 +64,12 @@ function instanceOfGetGalleryResponseItemsInner(value) {
         return false;
     if (!('title' in value) || value['title'] === undefined)
         return false;
+    if (!('visibility' in value) || value['visibility'] === undefined)
+        return false;
+    if (!('publicEpisodesCount' in value) || value['publicEpisodesCount'] === undefined)
+        return false;
+    if (!('publicPanelsCount' in value) || value['publicPanelsCount'] === undefined)
+        return false;
     return true;
 }
 function GetGalleryResponseItemsInnerFromJSON(json) {
@@ -90,6 +97,9 @@ function GetGalleryResponseItemsInnerFromJSONTyped(json, ignoreDiscriminator) {
         'title': json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
+        'visibility': (0, StoryVisibility_1.StoryVisibilityFromJSON)(json['visibility']),
+        'publicEpisodesCount': json['public_episodes_count'],
+        'publicPanelsCount': json['public_panels_count'],
     };
 }
 function GetGalleryResponseItemsInnerToJSON(json) {
@@ -117,6 +127,9 @@ function GetGalleryResponseItemsInnerToJSONTyped(value, ignoreDiscriminator = fa
         'title': value['title'],
         'description': value['description'],
         'cover_image': value['coverImage'],
+        'visibility': (0, StoryVisibility_1.StoryVisibilityToJSON)(value['visibility']),
+        'public_episodes_count': value['publicEpisodesCount'],
+        'public_panels_count': value['publicPanelsCount'],
     };
 }
 //# sourceMappingURL=GetGalleryResponseItemsInner.js.map

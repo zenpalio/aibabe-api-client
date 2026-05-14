@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { StoryVisibility } from './StoryVisibility';
 /**
  *
  * @export
@@ -57,6 +58,24 @@ export interface GalleryStory {
      * @memberof GalleryStory
      */
     createdAt: Date;
+    /**
+     *
+     * @type {StoryVisibility}
+     * @memberof GalleryStory
+     */
+    visibility: StoryVisibility;
+    /**
+     *
+     * @type {number}
+     * @memberof GalleryStory
+     */
+    publicEpisodesCount: number;
+    /**
+     *
+     * @type {number}
+     * @memberof GalleryStory
+     */
+    publicPanelsCount: number;
 }
 /**
  * @export

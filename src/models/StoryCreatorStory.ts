@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { StoryVisibility } from './StoryVisibility';
+import {
+    StoryVisibilityFromJSON,
+    StoryVisibilityFromJSONTyped,
+    StoryVisibilityToJSON,
+    StoryVisibilityToJSONTyped,
+} from './StoryVisibility';
 import type { UserStoryProgressType } from './UserStoryProgressType';
 import {
     UserStoryProgressTypeFromJSON,
@@ -47,12 +54,6 @@ export interface StoryCreatorStory {
     coverImage?: string | null;
     /**
      * 
-     * @type {boolean}
-     * @memberof StoryCreatorStory
-     */
-    newerVersionExists?: boolean | null;
-    /**
-     * 
      * @type {string}
      * @memberof StoryCreatorStory
      */
@@ -75,6 +76,30 @@ export interface StoryCreatorStory {
      * @memberof StoryCreatorStory
      */
     progress?: UserStoryProgressType | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof StoryCreatorStory
+     */
+    newerVersionExists?: boolean | null;
+    /**
+     * 
+     * @type {StoryVisibility}
+     * @memberof StoryCreatorStory
+     */
+    visibility: StoryVisibility;
+    /**
+     * 
+     * @type {number}
+     * @memberof StoryCreatorStory
+     */
+    publicEpisodesCount: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof StoryCreatorStory
+     */
+    publicPanelsCount: number;
 }
 
 
@@ -86,6 +111,9 @@ export function instanceOfStoryCreatorStory(value: object): value is StoryCreato
     if (!('title' in value) || value['title'] === undefined) return false;
     if (!('id' in value) || value['id'] === undefined) return false;
     if (!('ownerId' in value) || value['ownerId'] === undefined) return false;
+    if (!('visibility' in value) || value['visibility'] === undefined) return false;
+    if (!('publicEpisodesCount' in value) || value['publicEpisodesCount'] === undefined) return false;
+    if (!('publicPanelsCount' in value) || value['publicPanelsCount'] === undefined) return false;
     return true;
 }
 
@@ -102,11 +130,14 @@ export function StoryCreatorStoryFromJSONTyped(json: any, ignoreDiscriminator: b
         'title': json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
-        'newerVersionExists': json['newer_version_exists'] == null ? undefined : json['newer_version_exists'],
         'id': json['id'],
         'ownerId': json['owner_id'],
         'rating': json['rating'] == null ? undefined : json['rating'],
         'progress': json['progress'] == null ? undefined : UserStoryProgressTypeFromJSON(json['progress']),
+        'newerVersionExists': json['newer_version_exists'] == null ? undefined : json['newer_version_exists'],
+        'visibility': StoryVisibilityFromJSON(json['visibility']),
+        'publicEpisodesCount': json['public_episodes_count'],
+        'publicPanelsCount': json['public_panels_count'],
     };
 }
 
@@ -124,11 +155,14 @@ export function StoryCreatorStoryFromJSONTyped(json: any, ignoreDiscriminator: b
         'title': value['title'],
         'description': value['description'],
         'cover_image': value['coverImage'],
-        'newer_version_exists': value['newerVersionExists'],
         'id': value['id'],
         'owner_id': value['ownerId'],
         'rating': value['rating'],
         'progress': UserStoryProgressTypeToJSON(value['progress']),
+        'newer_version_exists': value['newerVersionExists'],
+        'visibility': StoryVisibilityToJSON(value['visibility']),
+        'public_episodes_count': value['publicEpisodesCount'],
+        'public_panels_count': value['publicPanelsCount'],
     };
 }
 

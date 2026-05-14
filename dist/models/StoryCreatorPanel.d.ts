@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { ActorRole } from './ActorRole';
 import type { EpisodePanelType } from './EpisodePanelType';
 /**
  *
@@ -69,7 +70,25 @@ export interface StoryCreatorPanel {
      * @type {string}
      * @memberof StoryCreatorPanel
      */
-    messageActorId?: string | null;
+    actorId?: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof StoryCreatorPanel
+     */
+    actorDisplayName?: string | null;
+    /**
+     *
+     * @type {ActorRole}
+     * @memberof StoryCreatorPanel
+     */
+    actorRole?: ActorRole | null;
+    /**
+     *
+     * @type {string}
+     * @memberof StoryCreatorPanel
+     */
+    actorAvatar?: string | null;
     /**
      *
      * @type {string}

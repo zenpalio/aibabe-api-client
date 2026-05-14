@@ -45,6 +45,18 @@ export interface StoryPreview {
      * @memberof StoryPreview
      */
     coverImage?: string | null;
+    /**
+     *
+     * @type {number}
+     * @memberof StoryPreview
+     */
+    publicEpisodesCount: number;
+    /**
+     *
+     * @type {number}
+     * @memberof StoryPreview
+     */
+    publicPanelsCount: number;
 }
 /**
  * Check if a given object implements the StoryPreview interface.

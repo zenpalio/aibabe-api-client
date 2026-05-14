@@ -259,6 +259,7 @@ __exportStar(require("./StoryCreatorUpdateEpisodeRequest"), exports);
 __exportStar(require("./StoryCreatorUpdateEpisodeVisibilityRequest"), exports);
 __exportStar(require("./StoryCreatorUpdateStoryRequest"), exports);
 __exportStar(require("./StoryPreview"), exports);
+__exportStar(require("./StoryVisibility"), exports);
 __exportStar(require("./Subscription"), exports);
 __exportStar(require("./SubscriptionModel"), exports);
 __exportStar(require("./SubscriptionPrice"), exports);

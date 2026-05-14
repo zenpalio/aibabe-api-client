@@ -48,6 +48,13 @@ import {
     GeneratedImagesToJSON,
     GeneratedImagesToJSONTyped,
 } from './GeneratedImages';
+import type { StoryVisibility } from './StoryVisibility';
+import {
+    StoryVisibilityFromJSON,
+    StoryVisibilityFromJSONTyped,
+    StoryVisibilityToJSON,
+    StoryVisibilityToJSONTyped,
+} from './StoryVisibility';
 import type { VideoGenerationStatus } from './VideoGenerationStatus';
 import {
     VideoGenerationStatusFromJSON,
@@ -171,6 +178,24 @@ export interface GetGalleryResponseItemsInner {
      * @memberof GetGalleryResponseItemsInner
      */
     coverImage?: string;
+    /**
+     * 
+     * @type {StoryVisibility}
+     * @memberof GetGalleryResponseItemsInner
+     */
+    visibility: StoryVisibility;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetGalleryResponseItemsInner
+     */
+    publicEpisodesCount: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetGalleryResponseItemsInner
+     */
+    publicPanelsCount: number;
 }
 
 
@@ -203,6 +228,9 @@ export function instanceOfGetGalleryResponseItemsInner(value: object): value is 
     if (!('originalImageUrl' in value) || value['originalImageUrl'] === undefined) return false;
     if (!('ownerId' in value) || value['ownerId'] === undefined) return false;
     if (!('title' in value) || value['title'] === undefined) return false;
+    if (!('visibility' in value) || value['visibility'] === undefined) return false;
+    if (!('publicEpisodesCount' in value) || value['publicEpisodesCount'] === undefined) return false;
+    if (!('publicPanelsCount' in value) || value['publicPanelsCount'] === undefined) return false;
     return true;
 }
 
@@ -233,6 +261,9 @@ export function GetGalleryResponseItemsInnerFromJSONTyped(json: any, ignoreDiscr
         'title': json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
+        'visibility': StoryVisibilityFromJSON(json['visibility']),
+        'publicEpisodesCount': json['public_episodes_count'],
+        'publicPanelsCount': json['public_panels_count'],
     };
 }
 
@@ -264,6 +295,9 @@ export function GetGalleryResponseItemsInnerFromJSONTyped(json: any, ignoreDiscr
         'title': value['title'],
         'description': value['description'],
         'cover_image': value['coverImage'],
+        'visibility': StoryVisibilityToJSON(value['visibility']),
+        'public_episodes_count': value['publicEpisodesCount'],
+        'public_panels_count': value['publicPanelsCount'],
     };
 }
 

@@ -243,6 +243,7 @@ export * from './StoryCreatorUpdateEpisodeRequest';
 export * from './StoryCreatorUpdateEpisodeVisibilityRequest';
 export * from './StoryCreatorUpdateStoryRequest';
 export * from './StoryPreview';
+export * from './StoryVisibility';
 export * from './Subscription';
 export * from './SubscriptionModel';
 export * from './SubscriptionPrice';

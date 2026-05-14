@@ -267,6 +267,7 @@ src/models/StoryCreatorUpdateEpisodeRequest.ts
 src/models/StoryCreatorUpdateEpisodeVisibilityRequest.ts
 src/models/StoryCreatorUpdateStoryRequest.ts
 src/models/StoryPreview.ts
+src/models/StoryVisibility.ts
 src/models/Subscription.ts
 src/models/SubscriptionModel.ts
 src/models/SubscriptionPrice.ts
