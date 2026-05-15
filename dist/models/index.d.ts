@@ -281,6 +281,7 @@ export * from './VideoResolution';
 export * from './VisualType';
 export * from './WallPost';
 export * from './WanExtendVideoCompletionPayload';
+export * from './WanImageToVideoCompletionPayload';
 export * from './WanImageToVideoResponse';
 export * from './WanTaskOutput';
 export * from './WanTaskResponse';

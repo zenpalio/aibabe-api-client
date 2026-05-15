@@ -16,43 +16,43 @@ import { mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface WanExtendVideoCompletionPayload
+ * @interface WanImageToVideoCompletionPayload
  */
-export interface WanExtendVideoCompletionPayload {
+export interface WanImageToVideoCompletionPayload {
     /**
      * 
      * @type {string}
-     * @memberof WanExtendVideoCompletionPayload
+     * @memberof WanImageToVideoCompletionPayload
      */
     videoId: string;
     /**
      * 
      * @type {string}
-     * @memberof WanExtendVideoCompletionPayload
+     * @memberof WanImageToVideoCompletionPayload
      */
     videoUrl: string;
     /**
      * 
      * @type {boolean}
-     * @memberof WanExtendVideoCompletionPayload
+     * @memberof WanImageToVideoCompletionPayload
      */
     audioGeneration?: boolean;
 }
 
 /**
- * Check if a given object implements the WanExtendVideoCompletionPayload interface.
+ * Check if a given object implements the WanImageToVideoCompletionPayload interface.
  */
-export function instanceOfWanExtendVideoCompletionPayload(value: object): value is WanExtendVideoCompletionPayload {
+export function instanceOfWanImageToVideoCompletionPayload(value: object): value is WanImageToVideoCompletionPayload {
     if (!('videoId' in value) || value['videoId'] === undefined) return false;
     if (!('videoUrl' in value) || value['videoUrl'] === undefined) return false;
     return true;
 }
 
-export function WanExtendVideoCompletionPayloadFromJSON(json: any): WanExtendVideoCompletionPayload {
-    return WanExtendVideoCompletionPayloadFromJSONTyped(json, false);
+export function WanImageToVideoCompletionPayloadFromJSON(json: any): WanImageToVideoCompletionPayload {
+    return WanImageToVideoCompletionPayloadFromJSONTyped(json, false);
 }
 
-export function WanExtendVideoCompletionPayloadFromJSONTyped(json: any, ignoreDiscriminator: boolean): WanExtendVideoCompletionPayload {
+export function WanImageToVideoCompletionPayloadFromJSONTyped(json: any, ignoreDiscriminator: boolean): WanImageToVideoCompletionPayload {
     if (json == null) {
         return json;
     }
@@ -64,11 +64,11 @@ export function WanExtendVideoCompletionPayloadFromJSONTyped(json: any, ignoreDi
     };
 }
 
-  export function WanExtendVideoCompletionPayloadToJSON(json: any): WanExtendVideoCompletionPayload {
-      return WanExtendVideoCompletionPayloadToJSONTyped(json, false);
+  export function WanImageToVideoCompletionPayloadToJSON(json: any): WanImageToVideoCompletionPayload {
+      return WanImageToVideoCompletionPayloadToJSONTyped(json, false);
   }
 
-  export function WanExtendVideoCompletionPayloadToJSONTyped(value?: WanExtendVideoCompletionPayload | null, ignoreDiscriminator: boolean = false): any {
+  export function WanImageToVideoCompletionPayloadToJSONTyped(value?: WanImageToVideoCompletionPayload | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

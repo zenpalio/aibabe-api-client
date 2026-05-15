@@ -307,6 +307,7 @@ src/models/VideoResolution.ts
 src/models/VisualType.ts
 src/models/WallPost.ts
 src/models/WanExtendVideoCompletionPayload.ts
+src/models/WanImageToVideoCompletionPayload.ts
 src/models/WanImageToVideoResponse.ts
 src/models/WanTaskOutput.ts
 src/models/WanTaskResponse.ts

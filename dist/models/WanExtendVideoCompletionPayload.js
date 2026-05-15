@@ -38,6 +38,7 @@ function WanExtendVideoCompletionPayloadFromJSONTyped(json, ignoreDiscriminator)
     return {
         'videoId': json['video_id'],
         'videoUrl': json['video_url'],
+        'audioGeneration': json['audio_generation'] == null ? undefined : json['audio_generation'],
     };
 }
 function WanExtendVideoCompletionPayloadToJSON(json) {
@@ -50,6 +51,7 @@ function WanExtendVideoCompletionPayloadToJSONTyped(value, ignoreDiscriminator =
     return {
         'video_id': value['videoId'],
         'video_url': value['videoUrl'],
+        'audio_generation': value['audioGeneration'],
     };
 }
 //# sourceMappingURL=WanExtendVideoCompletionPayload.js.map

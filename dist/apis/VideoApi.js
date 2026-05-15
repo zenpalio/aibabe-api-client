@@ -224,6 +224,37 @@ class VideoApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * Complete Wan Video
+     */
+    async completeWanVideoVideoWanCompletePostRaw(requestParameters, initOverrides) {
+        if (requestParameters['wanImageToVideoCompletionPayload'] == null) {
+            throw new runtime.RequiredError('wanImageToVideoCompletionPayload', 'Required parameter "wanImageToVideoCompletionPayload" was null or undefined when calling completeWanVideoVideoWanCompletePost().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        const response = await this.request({
+            path: `/video/wan/complete`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.WanImageToVideoCompletionPayloadToJSON)(requestParameters['wanImageToVideoCompletionPayload']),
+        }, initOverrides);
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse(response);
+        }
+        else {
+            return new runtime.TextApiResponse(response);
+        }
+    }
+    /**
+     * Complete Wan Video
+     */
+    async completeWanVideoVideoWanCompletePost(requestParameters, initOverrides) {
+        const response = await this.completeWanVideoVideoWanCompletePostRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * Delete Video
      */
     async deleteVideoVideoVideoIdDeleteRaw(requestParameters, initOverrides) {

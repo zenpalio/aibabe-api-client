@@ -299,6 +299,7 @@ __exportStar(require("./VideoResolution"), exports);
 __exportStar(require("./VisualType"), exports);
 __exportStar(require("./WallPost"), exports);
 __exportStar(require("./WanExtendVideoCompletionPayload"), exports);
+__exportStar(require("./WanImageToVideoCompletionPayload"), exports);
 __exportStar(require("./WanImageToVideoResponse"), exports);
 __exportStar(require("./WanTaskOutput"), exports);
 __exportStar(require("./WanTaskResponse"), exports);
