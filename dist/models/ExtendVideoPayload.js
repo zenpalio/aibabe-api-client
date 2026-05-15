@@ -19,10 +19,16 @@ exports.ExtendVideoPayloadFromJSONTyped = ExtendVideoPayloadFromJSONTyped;
 exports.ExtendVideoPayloadToJSON = ExtendVideoPayloadToJSON;
 exports.ExtendVideoPayloadToJSONTyped = ExtendVideoPayloadToJSONTyped;
 const VideoLoraName_1 = require("./VideoLoraName");
+const ImageToVideoModel_1 = require("./ImageToVideoModel");
+const VideoResolution_1 = require("./VideoResolution");
 /**
  * Check if a given object implements the ExtendVideoPayload interface.
  */
 function instanceOfExtendVideoPayload(value) {
+    if (!('videoId' in value) || value['videoId'] === undefined)
+        return false;
+    if (!('model' in value) || value['model'] === undefined)
+        return false;
     if (!('clientId' in value) || value['clientId'] === undefined)
         return false;
     if (!('requestId' in value) || value['requestId'] === undefined)
@@ -33,7 +39,7 @@ function instanceOfExtendVideoPayload(value) {
         return false;
     if (!('prompt' in value) || value['prompt'] === undefined)
         return false;
-    if (!('loras' in value) || value['loras'] === undefined)
+    if (!('resolution' in value) || value['resolution'] === undefined)
         return false;
     return true;
 }
@@ -45,12 +51,20 @@ function ExtendVideoPayloadFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'videoId': json['video_id'],
+        'model': (0, ImageToVideoModel_1.ImageToVideoModelFromJSON)(json['model']),
         'clientId': json['client_id'],
         'requestId': json['request_id'],
         'chatbotId': json['chatbot_id'],
         'duration': json['duration'],
         'prompt': json['prompt'],
-        'loras': (json['loras'].map(VideoLoraName_1.VideoLoraNameFromJSON)),
+        'loras': json['loras'] == null ? undefined : (json['loras'].map(VideoLoraName_1.VideoLoraNameFromJSON)),
+        'resolution': (0, VideoResolution_1.VideoResolutionFromJSON)(json['resolution']),
+        'negativePrompt': json['negative_prompt'] == null ? undefined : json['negative_prompt'],
+        'watermark': json['watermark'] == null ? undefined : json['watermark'],
+        'promptExtend': json['prompt_extend'] == null ? undefined : json['prompt_extend'],
+        'seed': json['seed'] == null ? undefined : json['seed'],
+        'audioGeneration': json['audio_generation'] == null ? undefined : json['audio_generation'],
     };
 }
 function ExtendVideoPayloadToJSON(json) {
@@ -61,12 +75,20 @@ function ExtendVideoPayloadToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'video_id': value['videoId'],
+        'model': (0, ImageToVideoModel_1.ImageToVideoModelToJSON)(value['model']),
         'client_id': value['clientId'],
         'request_id': value['requestId'],
         'chatbot_id': value['chatbotId'],
         'duration': value['duration'],
         'prompt': value['prompt'],
-        'loras': (value['loras'].map(VideoLoraName_1.VideoLoraNameToJSON)),
+        'loras': value['loras'] == null ? undefined : (value['loras'].map(VideoLoraName_1.VideoLoraNameToJSON)),
+        'resolution': (0, VideoResolution_1.VideoResolutionToJSON)(value['resolution']),
+        'negative_prompt': value['negativePrompt'],
+        'watermark': value['watermark'],
+        'prompt_extend': value['promptExtend'],
+        'seed': value['seed'],
+        'audio_generation': value['audioGeneration'],
     };
 }
 //# sourceMappingURL=ExtendVideoPayload.js.map

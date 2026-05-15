@@ -45,8 +45,10 @@ function ExploreSearchRequestFromJSONTyped(json, ignoreDiscriminator) {
         'dateFilter': json['date_filter'] == null ? undefined : (0, DateRangeFilter_1.DateRangeFilterFromJSON)(json['date_filter']),
         'ownerFilter': json['owner_filter'] == null ? undefined : (0, OwnerFilter_1.OwnerFilterFromJSON)(json['owner_filter']),
         'chatbotId': json['chatbot_id'] == null ? undefined : json['chatbot_id'],
+        'storyId': json['story_id'] == null ? undefined : json['story_id'],
         'postType': json['post_type'] == null ? undefined : (0, PostType_1.PostTypeFromJSON)(json['post_type']),
         'creatorUserId': json['creator_user_id'] == null ? undefined : json['creator_user_id'],
+        'scene': json['scene'] == null ? undefined : json['scene'],
     };
 }
 function ExploreSearchRequestToJSON(json) {
@@ -65,8 +67,10 @@ function ExploreSearchRequestToJSONTyped(value, ignoreDiscriminator = false) {
         'date_filter': (0, DateRangeFilter_1.DateRangeFilterToJSON)(value['dateFilter']),
         'owner_filter': (0, OwnerFilter_1.OwnerFilterToJSON)(value['ownerFilter']),
         'chatbot_id': value['chatbotId'],
+        'story_id': value['storyId'],
         'post_type': (0, PostType_1.PostTypeToJSON)(value['postType']),
         'creator_user_id': value['creatorUserId'],
+        'scene': value['scene'],
     };
 }
 //# sourceMappingURL=ExploreSearchRequest.js.map
