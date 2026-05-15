@@ -64,6 +64,12 @@ export interface VideoModelConfig {
      * @memberof VideoModelConfig
      */
     lastFrameSupported: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof VideoModelConfig
+     */
+    modsAvailable: boolean;
 }
 
 
@@ -77,6 +83,7 @@ export function instanceOfVideoModelConfig(value: object): value is VideoModelCo
     if (!('qualities' in value) || value['qualities'] === undefined) return false;
     if (!('audioGenerationAvailable' in value) || value['audioGenerationAvailable'] === undefined) return false;
     if (!('lastFrameSupported' in value) || value['lastFrameSupported'] === undefined) return false;
+    if (!('modsAvailable' in value) || value['modsAvailable'] === undefined) return false;
     return true;
 }
 
@@ -95,6 +102,7 @@ export function VideoModelConfigFromJSONTyped(json: any, ignoreDiscriminator: bo
         'qualities': (mapValues(json['qualities'], VideoQualityConfigFromJSON)),
         'audioGenerationAvailable': json['audio_generation_available'],
         'lastFrameSupported': json['last_frame_supported'],
+        'modsAvailable': json['mods_available'],
     };
 }
 
@@ -114,6 +122,7 @@ export function VideoModelConfigFromJSONTyped(json: any, ignoreDiscriminator: bo
         'qualities': (mapValues(value['qualities'], VideoQualityConfigToJSON)),
         'audio_generation_available': value['audioGenerationAvailable'],
         'last_frame_supported': value['lastFrameSupported'],
+        'mods_available': value['modsAvailable'],
     };
 }
 

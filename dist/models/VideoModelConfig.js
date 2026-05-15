@@ -35,6 +35,8 @@ function instanceOfVideoModelConfig(value) {
         return false;
     if (!('lastFrameSupported' in value) || value['lastFrameSupported'] === undefined)
         return false;
+    if (!('modsAvailable' in value) || value['modsAvailable'] === undefined)
+        return false;
     return true;
 }
 function VideoModelConfigFromJSON(json) {
@@ -50,6 +52,7 @@ function VideoModelConfigFromJSONTyped(json, ignoreDiscriminator) {
         'qualities': ((0, runtime_1.mapValues)(json['qualities'], VideoQualityConfig_1.VideoQualityConfigFromJSON)),
         'audioGenerationAvailable': json['audio_generation_available'],
         'lastFrameSupported': json['last_frame_supported'],
+        'modsAvailable': json['mods_available'],
     };
 }
 function VideoModelConfigToJSON(json) {
@@ -65,6 +68,7 @@ function VideoModelConfigToJSONTyped(value, ignoreDiscriminator = false) {
         'qualities': ((0, runtime_1.mapValues)(value['qualities'], VideoQualityConfig_1.VideoQualityConfigToJSON)),
         'audio_generation_available': value['audioGenerationAvailable'],
         'last_frame_supported': value['lastFrameSupported'],
+        'mods_available': value['modsAvailable'],
     };
 }
 //# sourceMappingURL=VideoModelConfig.js.map

@@ -49,6 +49,12 @@ export interface VideoModelConfig {
      * @memberof VideoModelConfig
      */
     lastFrameSupported: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof VideoModelConfig
+     */
+    modsAvailable: boolean;
 }
 /**
  * Check if a given object implements the VideoModelConfig interface.
