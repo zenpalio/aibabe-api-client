@@ -18,8 +18,9 @@ exports.StoryCreatorStoryFromJSON = StoryCreatorStoryFromJSON;
 exports.StoryCreatorStoryFromJSONTyped = StoryCreatorStoryFromJSONTyped;
 exports.StoryCreatorStoryToJSON = StoryCreatorStoryToJSON;
 exports.StoryCreatorStoryToJSONTyped = StoryCreatorStoryToJSONTyped;
+const StoryCounts_1 = require("./StoryCounts");
 const StoryVisibility_1 = require("./StoryVisibility");
-const UserStoryProgressType_1 = require("./UserStoryProgressType");
+const UserEpisodeProgressType_1 = require("./UserEpisodeProgressType");
 /**
  * Check if a given object implements the StoryCreatorStory interface.
  */
@@ -32,9 +33,7 @@ function instanceOfStoryCreatorStory(value) {
         return false;
     if (!('visibility' in value) || value['visibility'] === undefined)
         return false;
-    if (!('publicEpisodesCount' in value) || value['publicEpisodesCount'] === undefined)
-        return false;
-    if (!('publicPanelsCount' in value) || value['publicPanelsCount'] === undefined)
+    if (!('counts' in value) || value['counts'] === undefined)
         return false;
     return true;
 }
@@ -52,11 +51,10 @@ function StoryCreatorStoryFromJSONTyped(json, ignoreDiscriminator) {
         'id': json['id'],
         'ownerId': json['owner_id'],
         'rating': json['rating'] == null ? undefined : json['rating'],
-        'progress': json['progress'] == null ? undefined : (0, UserStoryProgressType_1.UserStoryProgressTypeFromJSON)(json['progress']),
+        'progress': json['progress'] == null ? undefined : (0, UserEpisodeProgressType_1.UserEpisodeProgressTypeFromJSON)(json['progress']),
         'newerVersionExists': json['newer_version_exists'] == null ? undefined : json['newer_version_exists'],
         'visibility': (0, StoryVisibility_1.StoryVisibilityFromJSON)(json['visibility']),
-        'publicEpisodesCount': json['public_episodes_count'],
-        'publicPanelsCount': json['public_panels_count'],
+        'counts': (0, StoryCounts_1.StoryCountsFromJSON)(json['counts']),
     };
 }
 function StoryCreatorStoryToJSON(json) {
@@ -73,11 +71,10 @@ function StoryCreatorStoryToJSONTyped(value, ignoreDiscriminator = false) {
         'id': value['id'],
         'owner_id': value['ownerId'],
         'rating': value['rating'],
-        'progress': (0, UserStoryProgressType_1.UserStoryProgressTypeToJSON)(value['progress']),
+        'progress': (0, UserEpisodeProgressType_1.UserEpisodeProgressTypeToJSON)(value['progress']),
         'newer_version_exists': value['newerVersionExists'],
         'visibility': (0, StoryVisibility_1.StoryVisibilityToJSON)(value['visibility']),
-        'public_episodes_count': value['publicEpisodesCount'],
-        'public_panels_count': value['publicPanelsCount'],
+        'counts': (0, StoryCounts_1.StoryCountsToJSON)(value['counts']),
     };
 }
 //# sourceMappingURL=StoryCreatorStory.js.map

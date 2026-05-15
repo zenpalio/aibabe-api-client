@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { StoryCounts } from './StoryCounts';
+import {
+    StoryCountsFromJSON,
+    StoryCountsFromJSONTyped,
+    StoryCountsToJSON,
+    StoryCountsToJSONTyped,
+} from './StoryCounts';
 import type { StoryVisibility } from './StoryVisibility';
 import {
     StoryVisibilityFromJSON,
@@ -20,13 +27,13 @@ import {
     StoryVisibilityToJSON,
     StoryVisibilityToJSONTyped,
 } from './StoryVisibility';
-import type { UserStoryProgressType } from './UserStoryProgressType';
+import type { UserEpisodeProgressType } from './UserEpisodeProgressType';
 import {
-    UserStoryProgressTypeFromJSON,
-    UserStoryProgressTypeFromJSONTyped,
-    UserStoryProgressTypeToJSON,
-    UserStoryProgressTypeToJSONTyped,
-} from './UserStoryProgressType';
+    UserEpisodeProgressTypeFromJSON,
+    UserEpisodeProgressTypeFromJSONTyped,
+    UserEpisodeProgressTypeToJSON,
+    UserEpisodeProgressTypeToJSONTyped,
+} from './UserEpisodeProgressType';
 
 /**
  * 
@@ -72,10 +79,10 @@ export interface StoryCreatorStory {
     rating?: number | null;
     /**
      * 
-     * @type {UserStoryProgressType}
+     * @type {UserEpisodeProgressType}
      * @memberof StoryCreatorStory
      */
-    progress?: UserStoryProgressType | null;
+    progress?: UserEpisodeProgressType | null;
     /**
      * 
      * @type {boolean}
@@ -90,16 +97,10 @@ export interface StoryCreatorStory {
     visibility: StoryVisibility;
     /**
      * 
-     * @type {number}
+     * @type {StoryCounts}
      * @memberof StoryCreatorStory
      */
-    publicEpisodesCount: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof StoryCreatorStory
-     */
-    publicPanelsCount: number;
+    counts: StoryCounts;
 }
 
 
@@ -112,8 +113,7 @@ export function instanceOfStoryCreatorStory(value: object): value is StoryCreato
     if (!('id' in value) || value['id'] === undefined) return false;
     if (!('ownerId' in value) || value['ownerId'] === undefined) return false;
     if (!('visibility' in value) || value['visibility'] === undefined) return false;
-    if (!('publicEpisodesCount' in value) || value['publicEpisodesCount'] === undefined) return false;
-    if (!('publicPanelsCount' in value) || value['publicPanelsCount'] === undefined) return false;
+    if (!('counts' in value) || value['counts'] === undefined) return false;
     return true;
 }
 
@@ -133,11 +133,10 @@ export function StoryCreatorStoryFromJSONTyped(json: any, ignoreDiscriminator: b
         'id': json['id'],
         'ownerId': json['owner_id'],
         'rating': json['rating'] == null ? undefined : json['rating'],
-        'progress': json['progress'] == null ? undefined : UserStoryProgressTypeFromJSON(json['progress']),
+        'progress': json['progress'] == null ? undefined : UserEpisodeProgressTypeFromJSON(json['progress']),
         'newerVersionExists': json['newer_version_exists'] == null ? undefined : json['newer_version_exists'],
         'visibility': StoryVisibilityFromJSON(json['visibility']),
-        'publicEpisodesCount': json['public_episodes_count'],
-        'publicPanelsCount': json['public_panels_count'],
+        'counts': StoryCountsFromJSON(json['counts']),
     };
 }
 
@@ -158,11 +157,10 @@ export function StoryCreatorStoryFromJSONTyped(json: any, ignoreDiscriminator: b
         'id': value['id'],
         'owner_id': value['ownerId'],
         'rating': value['rating'],
-        'progress': UserStoryProgressTypeToJSON(value['progress']),
+        'progress': UserEpisodeProgressTypeToJSON(value['progress']),
         'newer_version_exists': value['newerVersionExists'],
         'visibility': StoryVisibilityToJSON(value['visibility']),
-        'public_episodes_count': value['publicEpisodesCount'],
-        'public_panels_count': value['publicPanelsCount'],
+        'counts': StoryCountsToJSON(value['counts']),
     };
 }
 

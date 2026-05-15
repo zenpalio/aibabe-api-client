@@ -9,9 +9,10 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { StoryCounts } from './StoryCounts';
 import type { StoryVisibility } from './StoryVisibility';
+import type { UserEpisodeProgressType } from './UserEpisodeProgressType';
 import type { StoryCreatorEpisode } from './StoryCreatorEpisode';
-import type { UserStoryProgressType } from './UserStoryProgressType';
 /**
  *
  * @export
@@ -56,10 +57,10 @@ export interface StoryCreatorStoryWithEpisodes {
     rating?: number | null;
     /**
      *
-     * @type {UserStoryProgressType}
+     * @type {UserEpisodeProgressType}
      * @memberof StoryCreatorStoryWithEpisodes
      */
-    progress?: UserStoryProgressType | null;
+    progress?: UserEpisodeProgressType | null;
     /**
      *
      * @type {boolean}
@@ -74,16 +75,10 @@ export interface StoryCreatorStoryWithEpisodes {
     visibility: StoryVisibility;
     /**
      *
-     * @type {number}
+     * @type {StoryCounts}
      * @memberof StoryCreatorStoryWithEpisodes
      */
-    publicEpisodesCount: number;
-    /**
-     *
-     * @type {number}
-     * @memberof StoryCreatorStoryWithEpisodes
-     */
-    publicPanelsCount: number;
+    counts: StoryCounts;
     /**
      *
      * @type {Array<StoryCreatorEpisode>}

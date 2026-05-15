@@ -418,8 +418,14 @@ class StoryCreatorApi extends runtime.BaseAPI {
     /**
      * List Stories
      */
-    async listStoriesStoryCreatorStoriesGetRaw(initOverrides) {
+    async listStoriesStoryCreatorStoriesGetRaw(requestParameters, initOverrides) {
         const queryParameters = {};
+        if (requestParameters['limit'] != null) {
+            queryParameters['limit'] = requestParameters['limit'];
+        }
+        if (requestParameters['offset'] != null) {
+            queryParameters['offset'] = requestParameters['offset'];
+        }
         const headerParameters = {};
         const response = await this.request({
             path: `/story-creator/stories`,
@@ -432,8 +438,8 @@ class StoryCreatorApi extends runtime.BaseAPI {
     /**
      * List Stories
      */
-    async listStoriesStoryCreatorStoriesGet(initOverrides) {
-        const response = await this.listStoriesStoryCreatorStoriesGetRaw(initOverrides);
+    async listStoriesStoryCreatorStoriesGet(requestParameters = {}, initOverrides) {
+        const response = await this.listStoriesStoryCreatorStoriesGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**

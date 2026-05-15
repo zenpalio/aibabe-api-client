@@ -57,6 +57,10 @@ export interface ListActorsStoryCreatorStoriesStoryIdActorsGetRequest {
 export interface ListEpisodesStoryCreatorStoriesStoryIdEpisodesGetRequest {
     storyId: string;
 }
+export interface ListStoriesStoryCreatorStoriesGetRequest {
+    limit?: number;
+    offset?: number;
+}
 export interface LockEpisodeStoryCreatorEpisodesEpisodeIdLockPatchRequest {
     episodeId: string;
     storyCreatorLockEpisodeRequest: StoryCreatorLockEpisodeRequest;
@@ -213,11 +217,11 @@ export declare class StoryCreatorApi extends runtime.BaseAPI {
     /**
      * List Stories
      */
-    listStoriesStoryCreatorStoriesGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StoryCreatorStoryListResponse>>;
+    listStoriesStoryCreatorStoriesGetRaw(requestParameters: ListStoriesStoryCreatorStoriesGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StoryCreatorStoryListResponse>>;
     /**
      * List Stories
      */
-    listStoriesStoryCreatorStoriesGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StoryCreatorStoryListResponse>;
+    listStoriesStoryCreatorStoriesGet(requestParameters?: ListStoriesStoryCreatorStoriesGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StoryCreatorStoryListResponse>;
     /**
      * Lock Episode
      */

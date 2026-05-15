@@ -70,6 +70,7 @@ src/models/DeleteBulkMemoryRequest.ts
 src/models/DeleteUserRequest.ts
 src/models/DetailedWallPost.ts
 src/models/DonationNotification.ts
+src/models/EpisodeCounts.ts
 src/models/EpisodePanelType.ts
 src/models/EpisodePaymentType.ts
 src/models/EpisodeVisibility.ts
@@ -241,6 +242,7 @@ src/models/SpecialAddonOffer.ts
 src/models/SpecialFeatures.ts
 src/models/SpecialSubscriptionOffer.ts
 src/models/Status.ts
+src/models/StoryCounts.ts
 src/models/StoryCreatorActor.ts
 src/models/StoryCreatorActorListResponse.ts
 src/models/StoryCreatorActorResponse.ts
@@ -291,11 +293,11 @@ src/models/TextToSpeechResponse.ts
 src/models/TokenReconciliationResponse.ts
 src/models/Type.ts
 src/models/UserClaimType.ts
+src/models/UserEpisodeProgressType.ts
 src/models/UserInfoResponse.ts
 src/models/UserPreferenceModel.ts
 src/models/UserPreferences.ts
 src/models/UserRole.ts
-src/models/UserStoryProgressType.ts
 src/models/ValidationError.ts
 src/models/ValidationErrorLocInner.ts
 src/models/Value.ts
