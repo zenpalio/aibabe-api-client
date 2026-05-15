@@ -20,20 +20,13 @@ import {
     ImageToVideoModelToJSON,
     ImageToVideoModelToJSONTyped,
 } from './ImageToVideoModel';
-import type { VideoResolution } from './VideoResolution';
+import type { VideoQualityConfig } from './VideoQualityConfig';
 import {
-    VideoResolutionFromJSON,
-    VideoResolutionFromJSONTyped,
-    VideoResolutionToJSON,
-    VideoResolutionToJSONTyped,
-} from './VideoResolution';
-import type { VideoDurationConfig } from './VideoDurationConfig';
-import {
-    VideoDurationConfigFromJSON,
-    VideoDurationConfigFromJSONTyped,
-    VideoDurationConfigToJSON,
-    VideoDurationConfigToJSONTyped,
-} from './VideoDurationConfig';
+    VideoQualityConfigFromJSON,
+    VideoQualityConfigFromJSONTyped,
+    VideoQualityConfigToJSON,
+    VideoQualityConfigToJSONTyped,
+} from './VideoQualityConfig';
 
 /**
  * 
@@ -49,10 +42,16 @@ export interface VideoModelConfig {
     model: ImageToVideoModel;
     /**
      * 
-     * @type {Array<VideoDurationConfig>}
+     * @type {string}
      * @memberof VideoModelConfig
      */
-    durations: Array<VideoDurationConfig>;
+    displayName: string;
+    /**
+     * 
+     * @type {{ [key: string]: VideoQualityConfig; }}
+     * @memberof VideoModelConfig
+     */
+    qualities: { [key: string]: VideoQualityConfig; };
     /**
      * 
      * @type {boolean}
@@ -67,10 +66,10 @@ export interface VideoModelConfig {
     lastFrameSupported: boolean;
     /**
      * 
-     * @type {Array<VideoResolution>}
+     * @type {boolean}
      * @memberof VideoModelConfig
      */
-    supportedQuality: Array<VideoResolution>;
+    modsAvailable: boolean;
 }
 
 
@@ -80,10 +79,11 @@ export interface VideoModelConfig {
  */
 export function instanceOfVideoModelConfig(value: object): value is VideoModelConfig {
     if (!('model' in value) || value['model'] === undefined) return false;
-    if (!('durations' in value) || value['durations'] === undefined) return false;
+    if (!('displayName' in value) || value['displayName'] === undefined) return false;
+    if (!('qualities' in value) || value['qualities'] === undefined) return false;
     if (!('audioGenerationAvailable' in value) || value['audioGenerationAvailable'] === undefined) return false;
     if (!('lastFrameSupported' in value) || value['lastFrameSupported'] === undefined) return false;
-    if (!('supportedQuality' in value) || value['supportedQuality'] === undefined) return false;
+    if (!('modsAvailable' in value) || value['modsAvailable'] === undefined) return false;
     return true;
 }
 
@@ -98,10 +98,11 @@ export function VideoModelConfigFromJSONTyped(json: any, ignoreDiscriminator: bo
     return {
         
         'model': ImageToVideoModelFromJSON(json['model']),
-        'durations': ((json['durations'] as Array<any>).map(VideoDurationConfigFromJSON)),
+        'displayName': json['display_name'],
+        'qualities': (mapValues(json['qualities'], VideoQualityConfigFromJSON)),
         'audioGenerationAvailable': json['audio_generation_available'],
         'lastFrameSupported': json['last_frame_supported'],
-        'supportedQuality': ((json['supported_quality'] as Array<any>).map(VideoResolutionFromJSON)),
+        'modsAvailable': json['mods_available'],
     };
 }
 
@@ -117,10 +118,11 @@ export function VideoModelConfigFromJSONTyped(json: any, ignoreDiscriminator: bo
     return {
         
         'model': ImageToVideoModelToJSON(value['model']),
-        'durations': ((value['durations'] as Array<any>).map(VideoDurationConfigToJSON)),
+        'display_name': value['displayName'],
+        'qualities': (mapValues(value['qualities'], VideoQualityConfigToJSON)),
         'audio_generation_available': value['audioGenerationAvailable'],
         'last_frame_supported': value['lastFrameSupported'],
-        'supported_quality': ((value['supportedQuality'] as Array<any>).map(VideoResolutionToJSON)),
+        'mods_available': value['modsAvailable'],
     };
 }
 

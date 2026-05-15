@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ExtendVideoPayload, GetVideoGenerationTagsResponse, ImageToVideoFromChatPayload, ImageToVideoRecommendationPayload, ImageToVideoRequest, LastVideoFrameResponse, ResponseGetWanTaskStatusVideoWanTaskTaskIdGet, VideoConfigResponse, VideoFromChatResponse, VideoResolution, WanExtendVideoCompletionPayload, WanImageToVideoResponse } from '../models/index';
+import type { ExtendVideoPayload, GetVideoGenerationTagsResponse, ImageToVideoFromChatPayload, ImageToVideoRecommendationPayload, ImageToVideoRequest, LastVideoFrameResponse, ResponseGetWanTaskStatusVideoWanTaskTaskIdGet, VideoConfigResponse, VideoFromChatResponse, VideoResolution, WanExtendVideoCompletionPayload, WanImageToVideoCompletionPayload, WanImageToVideoResponse } from '../models/index';
 export interface AttachmentVideoVideoIdAttachmentGetRequest {
     videoId: string;
     videoName: string;
@@ -27,6 +27,9 @@ export interface ChatCallbackVideoCallbackChatGenerationIdPostRequest {
 }
 export interface CompleteWanExtendVideoVideoWanExtendCompletePostRequest {
     wanExtendVideoCompletionPayload: WanExtendVideoCompletionPayload;
+}
+export interface CompleteWanVideoVideoWanCompletePostRequest {
+    wanImageToVideoCompletionPayload: WanImageToVideoCompletionPayload;
 }
 export interface DeleteVideoVideoVideoIdDeleteRequest {
     videoId: string;
@@ -106,6 +109,14 @@ export declare class VideoApi extends runtime.BaseAPI {
      * Complete Wan Extend Video
      */
     completeWanExtendVideoVideoWanExtendCompletePost(requestParameters: CompleteWanExtendVideoVideoWanExtendCompletePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
+    /**
+     * Complete Wan Video
+     */
+    completeWanVideoVideoWanCompletePostRaw(requestParameters: CompleteWanVideoVideoWanCompletePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
+    /**
+     * Complete Wan Video
+     */
+    completeWanVideoVideoWanCompletePost(requestParameters: CompleteWanVideoVideoWanCompletePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
     /**
      * Delete Video
      */

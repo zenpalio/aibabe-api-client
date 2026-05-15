@@ -20,42 +20,6 @@ export interface StoryCounts {
      * @type {number}
      * @memberof StoryCounts
      */
-    episodesTotal?: number | null;
-    /**
-     *
-     * @type {number}
-     * @memberof StoryCounts
-     */
-    episodesPublic?: number | null;
-    /**
-     *
-     * @type {number}
-     * @memberof StoryCounts
-     */
-    episodesFree?: number | null;
-    /**
-     *
-     * @type {number}
-     * @memberof StoryCounts
-     */
-    episodesGated?: number | null;
-    /**
-     *
-     * @type {number}
-     * @memberof StoryCounts
-     */
-    episodesPurchased?: number | null;
-    /**
-     *
-     * @type {number}
-     * @memberof StoryCounts
-     */
-    episodesLocked?: number | null;
-    /**
-     *
-     * @type {number}
-     * @memberof StoryCounts
-     */
     panelsTotal?: number | null;
     /**
      *
@@ -87,6 +51,42 @@ export interface StoryCounts {
      * @memberof StoryCounts
      */
     panelsLocked?: number | null;
+    /**
+     *
+     * @type {number}
+     * @memberof StoryCounts
+     */
+    episodesTotal?: number | null;
+    /**
+     *
+     * @type {number}
+     * @memberof StoryCounts
+     */
+    episodesPublic?: number | null;
+    /**
+     *
+     * @type {number}
+     * @memberof StoryCounts
+     */
+    episodesFree?: number | null;
+    /**
+     *
+     * @type {number}
+     * @memberof StoryCounts
+     */
+    episodesGated?: number | null;
+    /**
+     *
+     * @type {number}
+     * @memberof StoryCounts
+     */
+    episodesPurchased?: number | null;
+    /**
+     *
+     * @type {number}
+     * @memberof StoryCounts
+     */
+    episodesLocked?: number | null;
 }
 /**
  * Check if a given object implements the StoryCounts interface.

@@ -31,6 +31,12 @@ export interface WanExtendVideoCompletionPayload {
      * @memberof WanExtendVideoCompletionPayload
      */
     videoUrl: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof WanExtendVideoCompletionPayload
+     */
+    audioGeneration?: boolean;
 }
 
 /**
@@ -54,6 +60,7 @@ export function WanExtendVideoCompletionPayloadFromJSONTyped(json: any, ignoreDi
         
         'videoId': json['video_id'],
         'videoUrl': json['video_url'],
+        'audioGeneration': json['audio_generation'] == null ? undefined : json['audio_generation'],
     };
 }
 
@@ -70,6 +77,7 @@ export function WanExtendVideoCompletionPayloadFromJSONTyped(json: any, ignoreDi
         
         'video_id': value['videoId'],
         'video_url': value['videoUrl'],
+        'audio_generation': value['audioGeneration'],
     };
 }
 

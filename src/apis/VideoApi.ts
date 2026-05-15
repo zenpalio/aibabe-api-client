@@ -27,6 +27,7 @@ import type {
   VideoFromChatResponse,
   VideoResolution,
   WanExtendVideoCompletionPayload,
+  WanImageToVideoCompletionPayload,
   WanImageToVideoResponse,
 } from '../models/index';
 import {
@@ -54,6 +55,8 @@ import {
     VideoResolutionToJSON,
     WanExtendVideoCompletionPayloadFromJSON,
     WanExtendVideoCompletionPayloadToJSON,
+    WanImageToVideoCompletionPayloadFromJSON,
+    WanImageToVideoCompletionPayloadToJSON,
     WanImageToVideoResponseFromJSON,
     WanImageToVideoResponseToJSON,
 } from '../models/index';
@@ -77,6 +80,10 @@ export interface ChatCallbackVideoCallbackChatGenerationIdPostRequest {
 
 export interface CompleteWanExtendVideoVideoWanExtendCompletePostRequest {
     wanExtendVideoCompletionPayload: WanExtendVideoCompletionPayload;
+}
+
+export interface CompleteWanVideoVideoWanCompletePostRequest {
+    wanImageToVideoCompletionPayload: WanImageToVideoCompletionPayload;
 }
 
 export interface DeleteVideoVideoVideoIdDeleteRequest {
@@ -355,6 +362,46 @@ export class VideoApi extends runtime.BaseAPI {
      */
     async completeWanExtendVideoVideoWanExtendCompletePost(requestParameters: CompleteWanExtendVideoVideoWanExtendCompletePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
         const response = await this.completeWanExtendVideoVideoWanExtendCompletePostRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Complete Wan Video
+     */
+    async completeWanVideoVideoWanCompletePostRaw(requestParameters: CompleteWanVideoVideoWanCompletePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
+        if (requestParameters['wanImageToVideoCompletionPayload'] == null) {
+            throw new runtime.RequiredError(
+                'wanImageToVideoCompletionPayload',
+                'Required parameter "wanImageToVideoCompletionPayload" was null or undefined when calling completeWanVideoVideoWanCompletePost().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        const response = await this.request({
+            path: `/video/wan/complete`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: WanImageToVideoCompletionPayloadToJSON(requestParameters['wanImageToVideoCompletionPayload']),
+        }, initOverrides);
+
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse<any>(response);
+        } else {
+            return new runtime.TextApiResponse(response) as any;
+        }
+    }
+
+    /**
+     * Complete Wan Video
+     */
+    async completeWanVideoVideoWanCompletePost(requestParameters: CompleteWanVideoVideoWanCompletePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
+        const response = await this.completeWanVideoVideoWanCompletePostRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

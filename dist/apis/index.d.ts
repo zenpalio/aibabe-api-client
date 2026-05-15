@@ -1,4 +1,5 @@
 export * from './AdminApi';
+export * from './AssistantChatApi';
 export * from './AuthenticationApi';
 export * from './ChatApi';
 export * from './ChatbotApi';

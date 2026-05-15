@@ -27,6 +27,13 @@ import {
     StoryVisibilityToJSON,
     StoryVisibilityToJSONTyped,
 } from './StoryVisibility';
+import type { UserEpisodeProgressType } from './UserEpisodeProgressType';
+import {
+    UserEpisodeProgressTypeFromJSON,
+    UserEpisodeProgressTypeFromJSONTyped,
+    UserEpisodeProgressTypeToJSON,
+    UserEpisodeProgressTypeToJSONTyped,
+} from './UserEpisodeProgressType';
 import type { StoryCreatorEpisode } from './StoryCreatorEpisode';
 import {
     StoryCreatorEpisodeFromJSON,
@@ -34,13 +41,6 @@ import {
     StoryCreatorEpisodeToJSON,
     StoryCreatorEpisodeToJSONTyped,
 } from './StoryCreatorEpisode';
-import type { UserStoryProgressType } from './UserStoryProgressType';
-import {
-    UserStoryProgressTypeFromJSON,
-    UserStoryProgressTypeFromJSONTyped,
-    UserStoryProgressTypeToJSON,
-    UserStoryProgressTypeToJSONTyped,
-} from './UserStoryProgressType';
 
 /**
  * 
@@ -86,10 +86,10 @@ export interface StoryCreatorStoryWithEpisodes {
     rating?: number | null;
     /**
      * 
-     * @type {UserStoryProgressType}
+     * @type {UserEpisodeProgressType}
      * @memberof StoryCreatorStoryWithEpisodes
      */
-    progress?: UserStoryProgressType | null;
+    progress?: UserEpisodeProgressType | null;
     /**
      * 
      * @type {boolean}
@@ -147,7 +147,7 @@ export function StoryCreatorStoryWithEpisodesFromJSONTyped(json: any, ignoreDisc
         'id': json['id'],
         'ownerId': json['owner_id'],
         'rating': json['rating'] == null ? undefined : json['rating'],
-        'progress': json['progress'] == null ? undefined : UserStoryProgressTypeFromJSON(json['progress']),
+        'progress': json['progress'] == null ? undefined : UserEpisodeProgressTypeFromJSON(json['progress']),
         'newerVersionExists': json['newer_version_exists'] == null ? undefined : json['newer_version_exists'],
         'visibility': StoryVisibilityFromJSON(json['visibility']),
         'counts': StoryCountsFromJSON(json['counts']),
@@ -172,7 +172,7 @@ export function StoryCreatorStoryWithEpisodesFromJSONTyped(json: any, ignoreDisc
         'id': value['id'],
         'owner_id': value['ownerId'],
         'rating': value['rating'],
-        'progress': UserStoryProgressTypeToJSON(value['progress']),
+        'progress': UserEpisodeProgressTypeToJSON(value['progress']),
         'newer_version_exists': value['newerVersionExists'],
         'visibility': StoryVisibilityToJSON(value['visibility']),
         'counts': StoryCountsToJSON(value['counts']),

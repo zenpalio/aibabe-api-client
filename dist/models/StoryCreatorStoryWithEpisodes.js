@@ -20,8 +20,8 @@ exports.StoryCreatorStoryWithEpisodesToJSON = StoryCreatorStoryWithEpisodesToJSO
 exports.StoryCreatorStoryWithEpisodesToJSONTyped = StoryCreatorStoryWithEpisodesToJSONTyped;
 const StoryCounts_1 = require("./StoryCounts");
 const StoryVisibility_1 = require("./StoryVisibility");
+const UserEpisodeProgressType_1 = require("./UserEpisodeProgressType");
 const StoryCreatorEpisode_1 = require("./StoryCreatorEpisode");
-const UserStoryProgressType_1 = require("./UserStoryProgressType");
 /**
  * Check if a given object implements the StoryCreatorStoryWithEpisodes interface.
  */
@@ -54,7 +54,7 @@ function StoryCreatorStoryWithEpisodesFromJSONTyped(json, ignoreDiscriminator) {
         'id': json['id'],
         'ownerId': json['owner_id'],
         'rating': json['rating'] == null ? undefined : json['rating'],
-        'progress': json['progress'] == null ? undefined : (0, UserStoryProgressType_1.UserStoryProgressTypeFromJSON)(json['progress']),
+        'progress': json['progress'] == null ? undefined : (0, UserEpisodeProgressType_1.UserEpisodeProgressTypeFromJSON)(json['progress']),
         'newerVersionExists': json['newer_version_exists'] == null ? undefined : json['newer_version_exists'],
         'visibility': (0, StoryVisibility_1.StoryVisibilityFromJSON)(json['visibility']),
         'counts': (0, StoryCounts_1.StoryCountsFromJSON)(json['counts']),
@@ -75,7 +75,7 @@ function StoryCreatorStoryWithEpisodesToJSONTyped(value, ignoreDiscriminator = f
         'id': value['id'],
         'owner_id': value['ownerId'],
         'rating': value['rating'],
-        'progress': (0, UserStoryProgressType_1.UserStoryProgressTypeToJSON)(value['progress']),
+        'progress': (0, UserEpisodeProgressType_1.UserEpisodeProgressTypeToJSON)(value['progress']),
         'newer_version_exists': value['newerVersionExists'],
         'visibility': (0, StoryVisibility_1.StoryVisibilityToJSON)(value['visibility']),
         'counts': (0, StoryCounts_1.StoryCountsToJSON)(value['counts']),

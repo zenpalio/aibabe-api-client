@@ -27,13 +27,13 @@ import {
     StoryVisibilityToJSON,
     StoryVisibilityToJSONTyped,
 } from './StoryVisibility';
-import type { UserStoryProgressType } from './UserStoryProgressType';
+import type { UserEpisodeProgressType } from './UserEpisodeProgressType';
 import {
-    UserStoryProgressTypeFromJSON,
-    UserStoryProgressTypeFromJSONTyped,
-    UserStoryProgressTypeToJSON,
-    UserStoryProgressTypeToJSONTyped,
-} from './UserStoryProgressType';
+    UserEpisodeProgressTypeFromJSON,
+    UserEpisodeProgressTypeFromJSONTyped,
+    UserEpisodeProgressTypeToJSON,
+    UserEpisodeProgressTypeToJSONTyped,
+} from './UserEpisodeProgressType';
 
 /**
  * 
@@ -79,10 +79,10 @@ export interface StoryCreatorStory {
     rating?: number | null;
     /**
      * 
-     * @type {UserStoryProgressType}
+     * @type {UserEpisodeProgressType}
      * @memberof StoryCreatorStory
      */
-    progress?: UserStoryProgressType | null;
+    progress?: UserEpisodeProgressType | null;
     /**
      * 
      * @type {boolean}
@@ -133,7 +133,7 @@ export function StoryCreatorStoryFromJSONTyped(json: any, ignoreDiscriminator: b
         'id': json['id'],
         'ownerId': json['owner_id'],
         'rating': json['rating'] == null ? undefined : json['rating'],
-        'progress': json['progress'] == null ? undefined : UserStoryProgressTypeFromJSON(json['progress']),
+        'progress': json['progress'] == null ? undefined : UserEpisodeProgressTypeFromJSON(json['progress']),
         'newerVersionExists': json['newer_version_exists'] == null ? undefined : json['newer_version_exists'],
         'visibility': StoryVisibilityFromJSON(json['visibility']),
         'counts': StoryCountsFromJSON(json['counts']),
@@ -157,7 +157,7 @@ export function StoryCreatorStoryFromJSONTyped(json: any, ignoreDiscriminator: b
         'id': value['id'],
         'owner_id': value['ownerId'],
         'rating': value['rating'],
-        'progress': UserStoryProgressTypeToJSON(value['progress']),
+        'progress': UserEpisodeProgressTypeToJSON(value['progress']),
         'newer_version_exists': value['newerVersionExists'],
         'visibility': StoryVisibilityToJSON(value['visibility']),
         'counts': StoryCountsToJSON(value['counts']),

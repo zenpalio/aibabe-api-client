@@ -4,6 +4,7 @@
 README.md
 package.json
 src/apis/AdminApi.ts
+src/apis/AssistantChatApi.ts
 src/apis/AuthenticationApi.ts
 src/apis/ChatApi.ts
 src/apis/ChatbotApi.ts
@@ -29,6 +30,9 @@ src/models/ActorRole.ts
 src/models/AddonPrice.ts
 src/models/AnimeLora.ts
 src/models/ArtStyle.ts
+src/models/AssistantChatMessageDetail.ts
+src/models/AssistantChatResponse.ts
+src/models/AssistantChatSessionDetail.ts
 src/models/AvatarLooks.ts
 src/models/AvatarLooksV2.ts
 src/models/AvatarOptionalField.ts
@@ -60,11 +64,13 @@ src/models/ContentType.ts
 src/models/ConversationListItem.ts
 src/models/ConversationMessageFeedback.ts
 src/models/ConversationSettings.ts
+src/models/CreateAssistantChatSessionRequest.ts
 src/models/DateRangeFilter.ts
 src/models/DeleteBulkMemoryRequest.ts
 src/models/DeleteUserRequest.ts
 src/models/DetailedWallPost.ts
 src/models/DonationNotification.ts
+src/models/EpisodeCounts.ts
 src/models/EpisodePanelType.ts
 src/models/EpisodePaymentType.ts
 src/models/EpisodeVisibility.ts
@@ -85,6 +91,7 @@ src/models/GeneratedAudioStatus.ts
 src/models/GeneratedImages.ts
 src/models/GeneratedVideos.ts
 src/models/GetAboutChatbotResponse.ts
+src/models/GetAssistantChatMessagesResponse.ts
 src/models/GetChatbotListResponse.ts
 src/models/GetChatbotResponse.ts
 src/models/GetClaimablesResponse.ts
@@ -136,6 +143,7 @@ src/models/LLM.ts
 src/models/Language.ts
 src/models/LastVideoFrameResponse.ts
 src/models/LikePostNotification.ts
+src/models/ListAssistantChatSessionsResponse.ts
 src/models/ListChatbotItem.ts
 src/models/ListConversationsResponse.ts
 src/models/LoraName.ts
@@ -171,6 +179,7 @@ src/models/PostAdvancedChatbotPublishPayload.ts
 src/models/PostAdvancedChatbotPublishResponse.ts
 src/models/PostAdvancedIdentityPayload.ts
 src/models/PostAdvancedPersonalityPayload.ts
+src/models/PostAssistantChatMessageRequest.ts
 src/models/PostCategoryValues.ts
 src/models/PostChatRequest.ts
 src/models/PostCheckoutResponse.ts
@@ -284,11 +293,11 @@ src/models/TextToSpeechResponse.ts
 src/models/TokenReconciliationResponse.ts
 src/models/Type.ts
 src/models/UserClaimType.ts
+src/models/UserEpisodeProgressType.ts
 src/models/UserInfoResponse.ts
 src/models/UserPreferenceModel.ts
 src/models/UserPreferences.ts
 src/models/UserRole.ts
-src/models/UserStoryProgressType.ts
 src/models/ValidationError.ts
 src/models/ValidationErrorLocInner.ts
 src/models/Value.ts
@@ -303,10 +312,12 @@ src/models/VideoModCategory.ts
 src/models/VideoModelConfig.ts
 src/models/VideoPreset.ts
 src/models/VideoPresetCategory.ts
+src/models/VideoQualityConfig.ts
 src/models/VideoResolution.ts
 src/models/VisualType.ts
 src/models/WallPost.ts
 src/models/WanExtendVideoCompletionPayload.ts
+src/models/WanImageToVideoCompletionPayload.ts
 src/models/WanImageToVideoResponse.ts
 src/models/WanTaskOutput.ts
 src/models/WanTaskResponse.ts

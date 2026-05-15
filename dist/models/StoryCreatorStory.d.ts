@@ -11,7 +11,7 @@
  */
 import type { StoryCounts } from './StoryCounts';
 import type { StoryVisibility } from './StoryVisibility';
-import type { UserStoryProgressType } from './UserStoryProgressType';
+import type { UserEpisodeProgressType } from './UserEpisodeProgressType';
 /**
  *
  * @export
@@ -56,10 +56,10 @@ export interface StoryCreatorStory {
     rating?: number | null;
     /**
      *
-     * @type {UserStoryProgressType}
+     * @type {UserEpisodeProgressType}
      * @memberof StoryCreatorStory
      */
-    progress?: UserStoryProgressType | null;
+    progress?: UserEpisodeProgressType | null;
     /**
      *
      * @type {boolean}

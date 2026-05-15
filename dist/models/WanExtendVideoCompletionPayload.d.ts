@@ -27,6 +27,12 @@ export interface WanExtendVideoCompletionPayload {
      * @memberof WanExtendVideoCompletionPayload
      */
     videoUrl: string;
+    /**
+     *
+     * @type {boolean}
+     * @memberof WanExtendVideoCompletionPayload
+     */
+    audioGeneration?: boolean;
 }
 /**
  * Check if a given object implements the WanExtendVideoCompletionPayload interface.

@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { UserEpisodeProgressType } from './UserEpisodeProgressType';
+import {
+    UserEpisodeProgressTypeFromJSON,
+    UserEpisodeProgressTypeFromJSONTyped,
+    UserEpisodeProgressTypeToJSON,
+    UserEpisodeProgressTypeToJSONTyped,
+} from './UserEpisodeProgressType';
 import type { StoryCreatorEpisodePrice } from './StoryCreatorEpisodePrice';
 import {
     StoryCreatorEpisodePriceFromJSON,
@@ -20,6 +27,13 @@ import {
     StoryCreatorEpisodePriceToJSON,
     StoryCreatorEpisodePriceToJSONTyped,
 } from './StoryCreatorEpisodePrice';
+import type { EpisodeCounts } from './EpisodeCounts';
+import {
+    EpisodeCountsFromJSON,
+    EpisodeCountsFromJSONTyped,
+    EpisodeCountsToJSON,
+    EpisodeCountsToJSONTyped,
+} from './EpisodeCounts';
 import type { EpisodeVisibility } from './EpisodeVisibility';
 import {
     EpisodeVisibilityFromJSON,
@@ -27,13 +41,6 @@ import {
     EpisodeVisibilityToJSON,
     EpisodeVisibilityToJSONTyped,
 } from './EpisodeVisibility';
-import type { UserStoryProgressType } from './UserStoryProgressType';
-import {
-    UserStoryProgressTypeFromJSON,
-    UserStoryProgressTypeFromJSONTyped,
-    UserStoryProgressTypeToJSON,
-    UserStoryProgressTypeToJSONTyped,
-} from './UserStoryProgressType';
 import type { AccessType } from './AccessType';
 import {
     AccessTypeFromJSON,
@@ -116,16 +123,22 @@ export interface StoryCreatorEpisode {
     accessType?: AccessType | null;
     /**
      * 
-     * @type {UserStoryProgressType}
+     * @type {UserEpisodeProgressType}
      * @memberof StoryCreatorEpisode
      */
-    progress?: UserStoryProgressType | null;
+    progress?: UserEpisodeProgressType | null;
     /**
      * 
      * @type {Array<StoryCreatorEpisodePrice>}
      * @memberof StoryCreatorEpisode
      */
     prices?: Array<StoryCreatorEpisodePrice> | null;
+    /**
+     * 
+     * @type {EpisodeCounts}
+     * @memberof StoryCreatorEpisode
+     */
+    counts: EpisodeCounts;
 }
 
 
@@ -139,6 +152,7 @@ export function instanceOfStoryCreatorEpisode(value: object): value is StoryCrea
     if (!('visibility' in value) || value['visibility'] === undefined) return false;
     if (!('episodeIndex' in value) || value['episodeIndex'] === undefined) return false;
     if (!('panelsCount' in value) || value['panelsCount'] === undefined) return false;
+    if (!('counts' in value) || value['counts'] === undefined) return false;
     return true;
 }
 
@@ -163,8 +177,9 @@ export function StoryCreatorEpisodeFromJSONTyped(json: any, ignoreDiscriminator:
         'panelsCount': json['panels_count'],
         'rating': json['rating'] == null ? undefined : json['rating'],
         'accessType': json['access_type'] == null ? undefined : AccessTypeFromJSON(json['access_type']),
-        'progress': json['progress'] == null ? undefined : UserStoryProgressTypeFromJSON(json['progress']),
+        'progress': json['progress'] == null ? undefined : UserEpisodeProgressTypeFromJSON(json['progress']),
         'prices': json['prices'] == null ? undefined : ((json['prices'] as Array<any>).map(StoryCreatorEpisodePriceFromJSON)),
+        'counts': EpisodeCountsFromJSON(json['counts']),
     };
 }
 
@@ -190,8 +205,9 @@ export function StoryCreatorEpisodeFromJSONTyped(json: any, ignoreDiscriminator:
         'panels_count': value['panelsCount'],
         'rating': value['rating'],
         'access_type': AccessTypeToJSON(value['accessType']),
-        'progress': UserStoryProgressTypeToJSON(value['progress']),
+        'progress': UserEpisodeProgressTypeToJSON(value['progress']),
         'prices': value['prices'] == null ? undefined : ((value['prices'] as Array<any>).map(StoryCreatorEpisodePriceToJSON)),
+        'counts': EpisodeCountsToJSON(value['counts']),
     };
 }
 

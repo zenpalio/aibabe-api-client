@@ -32,18 +32,18 @@ function StoryCountsFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
-        'episodesTotal': json['episodes_total'] == null ? undefined : json['episodes_total'],
-        'episodesPublic': json['episodes_public'] == null ? undefined : json['episodes_public'],
-        'episodesFree': json['episodes_free'] == null ? undefined : json['episodes_free'],
-        'episodesGated': json['episodes_gated'] == null ? undefined : json['episodes_gated'],
-        'episodesPurchased': json['episodes_purchased'] == null ? undefined : json['episodes_purchased'],
-        'episodesLocked': json['episodes_locked'] == null ? undefined : json['episodes_locked'],
         'panelsTotal': json['panels_total'] == null ? undefined : json['panels_total'],
         'panelsPublic': json['panels_public'] == null ? undefined : json['panels_public'],
         'panelsFree': json['panels_free'] == null ? undefined : json['panels_free'],
         'panelsGated': json['panels_gated'] == null ? undefined : json['panels_gated'],
         'panelsPurchased': json['panels_purchased'] == null ? undefined : json['panels_purchased'],
         'panelsLocked': json['panels_locked'] == null ? undefined : json['panels_locked'],
+        'episodesTotal': json['episodes_total'] == null ? undefined : json['episodes_total'],
+        'episodesPublic': json['episodes_public'] == null ? undefined : json['episodes_public'],
+        'episodesFree': json['episodes_free'] == null ? undefined : json['episodes_free'],
+        'episodesGated': json['episodes_gated'] == null ? undefined : json['episodes_gated'],
+        'episodesPurchased': json['episodes_purchased'] == null ? undefined : json['episodes_purchased'],
+        'episodesLocked': json['episodes_locked'] == null ? undefined : json['episodes_locked'],
     };
 }
 function StoryCountsToJSON(json) {
@@ -54,18 +54,18 @@ function StoryCountsToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
-        'episodes_total': value['episodesTotal'],
-        'episodes_public': value['episodesPublic'],
-        'episodes_free': value['episodesFree'],
-        'episodes_gated': value['episodesGated'],
-        'episodes_purchased': value['episodesPurchased'],
-        'episodes_locked': value['episodesLocked'],
         'panels_total': value['panelsTotal'],
         'panels_public': value['panelsPublic'],
         'panels_free': value['panelsFree'],
         'panels_gated': value['panelsGated'],
         'panels_purchased': value['panelsPurchased'],
         'panels_locked': value['panelsLocked'],
+        'episodes_total': value['episodesTotal'],
+        'episodes_public': value['episodesPublic'],
+        'episodes_free': value['episodesFree'],
+        'episodes_gated': value['episodesGated'],
+        'episodes_purchased': value['episodesPurchased'],
+        'episodes_locked': value['episodesLocked'],
     };
 }
 //# sourceMappingURL=StoryCounts.js.map

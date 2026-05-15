@@ -71,7 +71,7 @@ export interface ExtendVideoPayload {
      * @type {VideoResolution}
      * @memberof ExtendVideoPayload
      */
-    resolution?: VideoResolution | null;
+    resolution: VideoResolution;
     /**
      *
      * @type {string}

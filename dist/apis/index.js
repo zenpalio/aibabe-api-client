@@ -17,6 +17,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /* tslint:disable */
 /* eslint-disable */
 __exportStar(require("./AdminApi"), exports);
+__exportStar(require("./AssistantChatApi"), exports);
 __exportStar(require("./AuthenticationApi"), exports);
 __exportStar(require("./ChatApi"), exports);
 __exportStar(require("./ChatbotApi"), exports);
