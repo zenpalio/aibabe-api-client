@@ -60,6 +60,7 @@ export const ExceptionCode = {
     ConversationUpdateNonOwnedForbidden: 'conversation_update_non_owned_forbidden',
     ConversationResetNonOwnedForbidden: 'conversation_reset_non_owned_forbidden',
     ConversationMemoryNotFound: 'conversation_memory_not_found',
+    AssistantChatSessionNotFound: 'assistant_chat_session_not_found',
     MessageNotFound: 'message_not_found',
     PinnedMemoryNotFound: 'pinned_memory_not_found',
     AboutUserTooLong: 'about_user_too_long',

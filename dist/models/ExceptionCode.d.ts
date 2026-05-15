@@ -56,6 +56,7 @@ export declare const ExceptionCode: {
     readonly ConversationUpdateNonOwnedForbidden: "conversation_update_non_owned_forbidden";
     readonly ConversationResetNonOwnedForbidden: "conversation_reset_non_owned_forbidden";
     readonly ConversationMemoryNotFound: "conversation_memory_not_found";
+    readonly AssistantChatSessionNotFound: "assistant_chat_session_not_found";
     readonly MessageNotFound: "message_not_found";
     readonly PinnedMemoryNotFound: "pinned_memory_not_found";
     readonly AboutUserTooLong: "about_user_too_long";
