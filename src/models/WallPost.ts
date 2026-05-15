@@ -27,13 +27,13 @@ import {
     VideoContentToJSON,
     VideoContentToJSONTyped,
 } from './VideoContent';
-import type { SharedContentType } from './SharedContentType';
+import type { ContentType } from './ContentType';
 import {
-    SharedContentTypeFromJSON,
-    SharedContentTypeFromJSONTyped,
-    SharedContentTypeToJSON,
-    SharedContentTypeToJSONTyped,
-} from './SharedContentType';
+    ContentTypeFromJSON,
+    ContentTypeFromJSONTyped,
+    ContentTypeToJSON,
+    ContentTypeToJSONTyped,
+} from './ContentType';
 import type { ImageContent } from './ImageContent';
 import {
     ImageContentFromJSON,
@@ -41,6 +41,13 @@ import {
     ImageContentToJSON,
     ImageContentToJSONTyped,
 } from './ImageContent';
+import type { StoryPreview } from './StoryPreview';
+import {
+    StoryPreviewFromJSON,
+    StoryPreviewFromJSONTyped,
+    StoryPreviewToJSON,
+    StoryPreviewToJSONTyped,
+} from './StoryPreview';
 
 /**
  * 
@@ -68,16 +75,22 @@ export interface WallPost {
     chatbot: ChatbotPreview | null;
     /**
      * 
-     * @type {Array<ImageContent>}
+     * @type {StoryPreview}
      * @memberof WallPost
      */
-    pictures: Array<ImageContent>;
+    story: StoryPreview | null;
     /**
      * 
-     * @type {Array<VideoContent>}
+     * @type {ImageContent}
      * @memberof WallPost
      */
-    videos: Array<VideoContent>;
+    picture: ImageContent | null;
+    /**
+     * 
+     * @type {VideoContent}
+     * @memberof WallPost
+     */
+    video: VideoContent | null;
     /**
      * 
      * @type {number}
@@ -116,10 +129,10 @@ export interface WallPost {
     liked: boolean;
     /**
      * 
-     * @type {SharedContentType}
+     * @type {ContentType}
      * @memberof WallPost
      */
-    type: SharedContentType;
+    type: ContentType;
 }
 
 
@@ -131,8 +144,9 @@ export function instanceOfWallPost(value: object): value is WallPost {
     if (!('id' in value) || value['id'] === undefined) return false;
     if (!('creatorId' in value) || value['creatorId'] === undefined) return false;
     if (!('chatbot' in value) || value['chatbot'] === undefined) return false;
-    if (!('pictures' in value) || value['pictures'] === undefined) return false;
-    if (!('videos' in value) || value['videos'] === undefined) return false;
+    if (!('story' in value) || value['story'] === undefined) return false;
+    if (!('picture' in value) || value['picture'] === undefined) return false;
+    if (!('video' in value) || value['video'] === undefined) return false;
     if (!('likes' in value) || value['likes'] === undefined) return false;
     if (!('messageCount' in value) || value['messageCount'] === undefined) return false;
     if (!('description' in value) || value['description'] === undefined) return false;
@@ -156,15 +170,16 @@ export function WallPostFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
         'id': json['id'],
         'creatorId': json['creator_id'],
         'chatbot': ChatbotPreviewFromJSON(json['chatbot']),
-        'pictures': ((json['pictures'] as Array<any>).map(ImageContentFromJSON)),
-        'videos': ((json['videos'] as Array<any>).map(VideoContentFromJSON)),
+        'story': StoryPreviewFromJSON(json['story']),
+        'picture': ImageContentFromJSON(json['picture']),
+        'video': VideoContentFromJSON(json['video']),
         'likes': json['likes'],
         'messageCount': json['message_count'],
         'description': json['description'],
         'createdAt': (new Date(json['created_at'])),
         'updatedAt': (new Date(json['updated_at'])),
         'liked': json['liked'],
-        'type': SharedContentTypeFromJSON(json['type']),
+        'type': ContentTypeFromJSON(json['type']),
     };
 }
 
@@ -182,15 +197,16 @@ export function WallPostFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
         'id': value['id'],
         'creator_id': value['creatorId'],
         'chatbot': ChatbotPreviewToJSON(value['chatbot']),
-        'pictures': ((value['pictures'] as Array<any>).map(ImageContentToJSON)),
-        'videos': ((value['videos'] as Array<any>).map(VideoContentToJSON)),
+        'story': StoryPreviewToJSON(value['story']),
+        'picture': ImageContentToJSON(value['picture']),
+        'video': VideoContentToJSON(value['video']),
         'likes': value['likes'],
         'message_count': value['messageCount'],
         'description': value['description'],
         'created_at': ((value['createdAt']).toISOString()),
         'updated_at': ((value['updatedAt']).toISOString()),
         'liked': value['liked'],
-        'type': SharedContentTypeToJSON(value['type']),
+        'type': ContentTypeToJSON(value['type']),
     };
 }
 

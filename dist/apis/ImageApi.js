@@ -222,34 +222,6 @@ class ImageApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * Restart Servers
-     */
-    async restartServersImagenRestartAllPostRaw(requestParameters, initOverrides) {
-        const queryParameters = {};
-        const headerParameters = {};
-        headerParameters['Content-Type'] = 'application/json';
-        const response = await this.request({
-            path: `/imagen/restart-all`,
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: (0, index_1.PostRestartServersRequestToJSON)(requestParameters['postRestartServersRequest']),
-        }, initOverrides);
-        if (this.isJsonMime(response.headers.get('content-type'))) {
-            return new runtime.JSONApiResponse(response);
-        }
-        else {
-            return new runtime.TextApiResponse(response);
-        }
-    }
-    /**
-     * Restart Servers
-     */
-    async restartServersImagenRestartAllPost(requestParameters = {}, initOverrides) {
-        const response = await this.restartServersImagenRestartAllPostRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
      * User Generate Image
      */
     async userGenerateImageImagenGenerateChatbotIdPostRaw(requestParameters, initOverrides) {

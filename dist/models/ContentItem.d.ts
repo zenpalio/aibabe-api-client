@@ -9,7 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { SharedContentType } from './SharedContentType';
+import type { ContentType } from './ContentType';
 /**
  *
  * @export
@@ -24,10 +24,10 @@ export interface ContentItem {
     contentId: string;
     /**
      *
-     * @type {SharedContentType}
+     * @type {ContentType}
      * @memberof ContentItem
      */
-    contentType: SharedContentType;
+    contentType: ContentType;
 }
 /**
  * Check if a given object implements the ContentItem interface.

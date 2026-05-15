@@ -27,6 +27,13 @@ import {
     ChatbotPreviewToJSON,
     ChatbotPreviewToJSONTyped,
 } from './ChatbotPreview';
+import type { GalleryStory } from './GalleryStory';
+import {
+    GalleryStoryFromJSON,
+    GalleryStoryFromJSONTyped,
+    GalleryStoryToJSON,
+    GalleryStoryToJSONTyped,
+} from './GalleryStory';
 import type { PostDetails } from './PostDetails';
 import {
     PostDetailsFromJSON,
@@ -41,6 +48,13 @@ import {
     GeneratedImagesToJSON,
     GeneratedImagesToJSONTyped,
 } from './GeneratedImages';
+import type { StoryVisibility } from './StoryVisibility';
+import {
+    StoryVisibilityFromJSON,
+    StoryVisibilityFromJSONTyped,
+    StoryVisibilityToJSON,
+    StoryVisibilityToJSONTyped,
+} from './StoryVisibility';
 import type { VideoGenerationStatus } from './VideoGenerationStatus';
 import {
     VideoGenerationStatusFromJSON,
@@ -76,10 +90,10 @@ export interface GetGalleryResponseItemsInner {
     id: string;
     /**
      * 
-     * @type {Array<string>}
+     * @type {string}
      * @memberof GetGalleryResponseItemsInner
      */
-    urls: Array<string>;
+    url: string;
     /**
      * 
      * @type {Date}
@@ -98,12 +112,6 @@ export interface GetGalleryResponseItemsInner {
      * @memberof GetGalleryResponseItemsInner
      */
     postDetails?: PostDetails;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof GetGalleryResponseItemsInner
-     */
-    imageIds: Array<string>;
     /**
      * 
      * @type {string}
@@ -140,6 +148,54 @@ export interface GetGalleryResponseItemsInner {
      * @memberof GetGalleryResponseItemsInner
      */
     originalImageId: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetGalleryResponseItemsInner
+     */
+    originalImageUrl: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetGalleryResponseItemsInner
+     */
+    ownerId: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetGalleryResponseItemsInner
+     */
+    title: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetGalleryResponseItemsInner
+     */
+    description?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetGalleryResponseItemsInner
+     */
+    coverImage?: string;
+    /**
+     * 
+     * @type {StoryVisibility}
+     * @memberof GetGalleryResponseItemsInner
+     */
+    visibility: StoryVisibility;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetGalleryResponseItemsInner
+     */
+    publicEpisodesCount: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetGalleryResponseItemsInner
+     */
+    publicPanelsCount: number;
 }
 
 
@@ -148,7 +204,8 @@ export interface GetGalleryResponseItemsInner {
  */
 export const GetGalleryResponseItemsInnerTypeEnum = {
     GeneratedImages: 'generatedImages',
-    GeneratedVideos: 'generatedVideos'
+    GeneratedVideos: 'generatedVideos',
+    Stories: 'stories'
 } as const;
 export type GetGalleryResponseItemsInnerTypeEnum = typeof GetGalleryResponseItemsInnerTypeEnum[keyof typeof GetGalleryResponseItemsInnerTypeEnum];
 
@@ -159,16 +216,21 @@ export type GetGalleryResponseItemsInnerTypeEnum = typeof GetGalleryResponseItem
 export function instanceOfGetGalleryResponseItemsInner(value: object): value is GetGalleryResponseItemsInner {
     if (!('type' in value) || value['type'] === undefined) return false;
     if (!('id' in value) || value['id'] === undefined) return false;
-    if (!('urls' in value) || value['urls'] === undefined) return false;
+    if (!('url' in value) || value['url'] === undefined) return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
     if (!('chatbot' in value) || value['chatbot'] === undefined) return false;
-    if (!('imageIds' in value) || value['imageIds'] === undefined) return false;
     if (!('eta' in value) || value['eta'] === undefined) return false;
     if (!('status' in value) || value['status'] === undefined) return false;
     if (!('generationId' in value) || value['generationId'] === undefined) return false;
     if (!('seenByUser' in value) || value['seenByUser'] === undefined) return false;
     if (!('artStyle' in value) || value['artStyle'] === undefined) return false;
     if (!('originalImageId' in value) || value['originalImageId'] === undefined) return false;
+    if (!('originalImageUrl' in value) || value['originalImageUrl'] === undefined) return false;
+    if (!('ownerId' in value) || value['ownerId'] === undefined) return false;
+    if (!('title' in value) || value['title'] === undefined) return false;
+    if (!('visibility' in value) || value['visibility'] === undefined) return false;
+    if (!('publicEpisodesCount' in value) || value['publicEpisodesCount'] === undefined) return false;
+    if (!('publicPanelsCount' in value) || value['publicPanelsCount'] === undefined) return false;
     return true;
 }
 
@@ -184,17 +246,24 @@ export function GetGalleryResponseItemsInnerFromJSONTyped(json: any, ignoreDiscr
         
         'type': json['type'],
         'id': json['id'],
-        'urls': json['urls'],
+        'url': json['url'],
         'createdAt': (new Date(json['created_at'])),
         'chatbot': ChatbotPreviewFromJSON(json['chatbot']),
         'postDetails': json['post_details'] == null ? undefined : PostDetailsFromJSON(json['post_details']),
-        'imageIds': json['image_ids'],
         'eta': json['eta'],
         'status': VideoGenerationStatusFromJSON(json['status']),
         'generationId': json['generation_id'],
         'seenByUser': json['seen_by_user'],
         'artStyle': ArtStyleFromJSON(json['art_style']),
         'originalImageId': json['original_image_id'],
+        'originalImageUrl': json['original_image_url'],
+        'ownerId': json['owner_id'],
+        'title': json['title'],
+        'description': json['description'] == null ? undefined : json['description'],
+        'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
+        'visibility': StoryVisibilityFromJSON(json['visibility']),
+        'publicEpisodesCount': json['public_episodes_count'],
+        'publicPanelsCount': json['public_panels_count'],
     };
 }
 
@@ -211,17 +280,24 @@ export function GetGalleryResponseItemsInnerFromJSONTyped(json: any, ignoreDiscr
         
         'type': value['type'],
         'id': value['id'],
-        'urls': value['urls'],
+        'url': value['url'],
         'created_at': ((value['createdAt']).toISOString()),
         'chatbot': ChatbotPreviewToJSON(value['chatbot']),
         'post_details': PostDetailsToJSON(value['postDetails']),
-        'image_ids': value['imageIds'],
         'eta': value['eta'],
         'status': VideoGenerationStatusToJSON(value['status']),
         'generation_id': value['generationId'],
         'seen_by_user': value['seenByUser'],
         'art_style': ArtStyleToJSON(value['artStyle']),
         'original_image_id': value['originalImageId'],
+        'original_image_url': value['originalImageUrl'],
+        'owner_id': value['ownerId'],
+        'title': value['title'],
+        'description': value['description'],
+        'cover_image': value['coverImage'],
+        'visibility': StoryVisibilityToJSON(value['visibility']),
+        'public_episodes_count': value['publicEpisodesCount'],
+        'public_panels_count': value['publicPanelsCount'],
     };
 }
 
