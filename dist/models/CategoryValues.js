@@ -41,6 +41,7 @@ function CategoryValuesFromJSONTyped(json, ignoreDiscriminator) {
         'bodyType': json['body_type'] == null ? undefined : json['body_type'],
         'roleplayType': json['roleplay_type'] == null ? undefined : json['roleplay_type'],
         'characterType': json['character_type'] == null ? undefined : json['character_type'],
+        'genre': json['genre'] == null ? undefined : json['genre'],
     };
 }
 function CategoryValuesToJSON(json) {
@@ -60,6 +61,7 @@ function CategoryValuesToJSONTyped(value, ignoreDiscriminator = false) {
         'body_type': value['bodyType'],
         'roleplay_type': value['roleplayType'],
         'character_type': value['characterType'],
+        'genre': value['genre'],
     };
 }
 //# sourceMappingURL=CategoryValues.js.map
