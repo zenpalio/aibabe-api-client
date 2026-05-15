@@ -73,6 +73,12 @@ export interface CategoryValues {
      * @memberof CategoryValues
      */
     characterType?: Array<string> | null;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof CategoryValues
+     */
+    genre?: Array<string> | null;
 }
 
 /**
@@ -101,6 +107,7 @@ export function CategoryValuesFromJSONTyped(json: any, ignoreDiscriminator: bool
         'bodyType': json['body_type'] == null ? undefined : json['body_type'],
         'roleplayType': json['roleplay_type'] == null ? undefined : json['roleplay_type'],
         'characterType': json['character_type'] == null ? undefined : json['character_type'],
+        'genre': json['genre'] == null ? undefined : json['genre'],
     };
 }
 
@@ -124,6 +131,7 @@ export function CategoryValuesFromJSONTyped(json: any, ignoreDiscriminator: bool
         'body_type': value['bodyType'],
         'roleplay_type': value['roleplayType'],
         'character_type': value['characterType'],
+        'genre': value['genre'],
     };
 }
 
