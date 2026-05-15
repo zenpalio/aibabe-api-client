@@ -14,9 +14,8 @@
  * @export
  */
 export declare const ImageToVideoModel: {
-    readonly Wan22I2V: "WAN_22_I2V";
-    readonly Wan27I2V: "WAN_27_I2V";
-    readonly Seedance20I2V: "SEEDANCE_20_I2V";
+    readonly _22I2V: "WAN_22_I2V";
+    readonly _27I2V: "WAN_27_I2V";
 };
 export type ImageToVideoModel = typeof ImageToVideoModel[keyof typeof ImageToVideoModel];
 export declare function instanceOfImageToVideoModel(value: any): boolean;

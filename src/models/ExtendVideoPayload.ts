@@ -94,7 +94,7 @@ export interface ExtendVideoPayload {
      * @type {VideoResolution}
      * @memberof ExtendVideoPayload
      */
-    resolution?: VideoResolution | null;
+    resolution: VideoResolution;
     /**
      * 
      * @type {string}
@@ -140,6 +140,7 @@ export function instanceOfExtendVideoPayload(value: object): value is ExtendVide
     if (!('chatbotId' in value) || value['chatbotId'] === undefined) return false;
     if (!('duration' in value) || value['duration'] === undefined) return false;
     if (!('prompt' in value) || value['prompt'] === undefined) return false;
+    if (!('resolution' in value) || value['resolution'] === undefined) return false;
     return true;
 }
 
@@ -161,7 +162,7 @@ export function ExtendVideoPayloadFromJSONTyped(json: any, ignoreDiscriminator: 
         'duration': json['duration'],
         'prompt': json['prompt'],
         'loras': json['loras'] == null ? undefined : ((json['loras'] as Array<any>).map(VideoLoraNameFromJSON)),
-        'resolution': json['resolution'] == null ? undefined : VideoResolutionFromJSON(json['resolution']),
+        'resolution': VideoResolutionFromJSON(json['resolution']),
         'negativePrompt': json['negative_prompt'] == null ? undefined : json['negative_prompt'],
         'watermark': json['watermark'] == null ? undefined : json['watermark'],
         'promptExtend': json['prompt_extend'] == null ? undefined : json['prompt_extend'],

@@ -10,8 +10,7 @@
  * Do not edit the class manually.
  */
 import type { ImageToVideoModel } from './ImageToVideoModel';
-import type { VideoResolution } from './VideoResolution';
-import type { VideoDurationConfig } from './VideoDurationConfig';
+import type { VideoQualityConfig } from './VideoQualityConfig';
 /**
  *
  * @export
@@ -26,10 +25,18 @@ export interface VideoModelConfig {
     model: ImageToVideoModel;
     /**
      *
-     * @type {Array<VideoDurationConfig>}
+     * @type {string}
      * @memberof VideoModelConfig
      */
-    durations: Array<VideoDurationConfig>;
+    displayName: string;
+    /**
+     *
+     * @type {{ [key: string]: VideoQualityConfig; }}
+     * @memberof VideoModelConfig
+     */
+    qualities: {
+        [key: string]: VideoQualityConfig;
+    };
     /**
      *
      * @type {boolean}
@@ -42,12 +49,6 @@ export interface VideoModelConfig {
      * @memberof VideoModelConfig
      */
     lastFrameSupported: boolean;
-    /**
-     *
-     * @type {Array<VideoResolution>}
-     * @memberof VideoModelConfig
-     */
-    supportedQuality: Array<VideoResolution>;
 }
 /**
  * Check if a given object implements the VideoModelConfig interface.

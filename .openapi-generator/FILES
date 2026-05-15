@@ -302,6 +302,7 @@ src/models/VideoModCategory.ts
 src/models/VideoModelConfig.ts
 src/models/VideoPreset.ts
 src/models/VideoPresetCategory.ts
+src/models/VideoQualityConfig.ts
 src/models/VideoResolution.ts
 src/models/VisualType.ts
 src/models/WallPost.ts

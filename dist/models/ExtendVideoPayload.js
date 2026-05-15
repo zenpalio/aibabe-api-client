@@ -39,6 +39,8 @@ function instanceOfExtendVideoPayload(value) {
         return false;
     if (!('prompt' in value) || value['prompt'] === undefined)
         return false;
+    if (!('resolution' in value) || value['resolution'] === undefined)
+        return false;
     return true;
 }
 function ExtendVideoPayloadFromJSON(json) {
@@ -57,7 +59,7 @@ function ExtendVideoPayloadFromJSONTyped(json, ignoreDiscriminator) {
         'duration': json['duration'],
         'prompt': json['prompt'],
         'loras': json['loras'] == null ? undefined : (json['loras'].map(VideoLoraName_1.VideoLoraNameFromJSON)),
-        'resolution': json['resolution'] == null ? undefined : (0, VideoResolution_1.VideoResolutionFromJSON)(json['resolution']),
+        'resolution': (0, VideoResolution_1.VideoResolutionFromJSON)(json['resolution']),
         'negativePrompt': json['negative_prompt'] == null ? undefined : json['negative_prompt'],
         'watermark': json['watermark'] == null ? undefined : json['watermark'],
         'promptExtend': json['prompt_extend'] == null ? undefined : json['prompt_extend'],

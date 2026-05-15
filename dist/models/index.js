@@ -294,6 +294,7 @@ __exportStar(require("./VideoModCategory"), exports);
 __exportStar(require("./VideoModelConfig"), exports);
 __exportStar(require("./VideoPreset"), exports);
 __exportStar(require("./VideoPresetCategory"), exports);
+__exportStar(require("./VideoQualityConfig"), exports);
 __exportStar(require("./VideoResolution"), exports);
 __exportStar(require("./VisualType"), exports);
 __exportStar(require("./WallPost"), exports);

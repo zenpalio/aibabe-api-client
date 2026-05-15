@@ -276,6 +276,7 @@ export * from './VideoModCategory';
 export * from './VideoModelConfig';
 export * from './VideoPreset';
 export * from './VideoPresetCategory';
+export * from './VideoQualityConfig';
 export * from './VideoResolution';
 export * from './VisualType';
 export * from './WallPost';

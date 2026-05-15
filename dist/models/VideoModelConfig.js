@@ -18,22 +18,22 @@ exports.VideoModelConfigFromJSON = VideoModelConfigFromJSON;
 exports.VideoModelConfigFromJSONTyped = VideoModelConfigFromJSONTyped;
 exports.VideoModelConfigToJSON = VideoModelConfigToJSON;
 exports.VideoModelConfigToJSONTyped = VideoModelConfigToJSONTyped;
+const runtime_1 = require("../runtime");
 const ImageToVideoModel_1 = require("./ImageToVideoModel");
-const VideoResolution_1 = require("./VideoResolution");
-const VideoDurationConfig_1 = require("./VideoDurationConfig");
+const VideoQualityConfig_1 = require("./VideoQualityConfig");
 /**
  * Check if a given object implements the VideoModelConfig interface.
  */
 function instanceOfVideoModelConfig(value) {
     if (!('model' in value) || value['model'] === undefined)
         return false;
-    if (!('durations' in value) || value['durations'] === undefined)
+    if (!('displayName' in value) || value['displayName'] === undefined)
+        return false;
+    if (!('qualities' in value) || value['qualities'] === undefined)
         return false;
     if (!('audioGenerationAvailable' in value) || value['audioGenerationAvailable'] === undefined)
         return false;
     if (!('lastFrameSupported' in value) || value['lastFrameSupported'] === undefined)
-        return false;
-    if (!('supportedQuality' in value) || value['supportedQuality'] === undefined)
         return false;
     return true;
 }
@@ -46,10 +46,10 @@ function VideoModelConfigFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'model': (0, ImageToVideoModel_1.ImageToVideoModelFromJSON)(json['model']),
-        'durations': (json['durations'].map(VideoDurationConfig_1.VideoDurationConfigFromJSON)),
+        'displayName': json['display_name'],
+        'qualities': ((0, runtime_1.mapValues)(json['qualities'], VideoQualityConfig_1.VideoQualityConfigFromJSON)),
         'audioGenerationAvailable': json['audio_generation_available'],
         'lastFrameSupported': json['last_frame_supported'],
-        'supportedQuality': (json['supported_quality'].map(VideoResolution_1.VideoResolutionFromJSON)),
     };
 }
 function VideoModelConfigToJSON(json) {
@@ -61,10 +61,10 @@ function VideoModelConfigToJSONTyped(value, ignoreDiscriminator = false) {
     }
     return {
         'model': (0, ImageToVideoModel_1.ImageToVideoModelToJSON)(value['model']),
-        'durations': (value['durations'].map(VideoDurationConfig_1.VideoDurationConfigToJSON)),
+        'display_name': value['displayName'],
+        'qualities': ((0, runtime_1.mapValues)(value['qualities'], VideoQualityConfig_1.VideoQualityConfigToJSON)),
         'audio_generation_available': value['audioGenerationAvailable'],
         'last_frame_supported': value['lastFrameSupported'],
-        'supported_quality': (value['supportedQuality'].map(VideoResolution_1.VideoResolutionToJSON)),
     };
 }
 //# sourceMappingURL=VideoModelConfig.js.map
