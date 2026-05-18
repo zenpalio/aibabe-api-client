@@ -13,6 +13,28 @@
  */
 
 import { mapValues } from '../runtime';
+import type { PublicUserPreviewWithFollow } from './PublicUserPreviewWithFollow';
+import {
+    PublicUserPreviewWithFollowFromJSON,
+    PublicUserPreviewWithFollowFromJSONTyped,
+    PublicUserPreviewWithFollowToJSON,
+    PublicUserPreviewWithFollowToJSONTyped,
+} from './PublicUserPreviewWithFollow';
+import type { StoryCounts } from './StoryCounts';
+import {
+    StoryCountsFromJSON,
+    StoryCountsFromJSONTyped,
+    StoryCountsToJSON,
+    StoryCountsToJSONTyped,
+} from './StoryCounts';
+import type { UserEpisodeProgressType } from './UserEpisodeProgressType';
+import {
+    UserEpisodeProgressTypeFromJSON,
+    UserEpisodeProgressTypeFromJSONTyped,
+    UserEpisodeProgressTypeToJSON,
+    UserEpisodeProgressTypeToJSONTyped,
+} from './UserEpisodeProgressType';
+
 /**
  * 
  * @export
@@ -51,17 +73,25 @@ export interface StoryPreview {
     coverImage?: string | null;
     /**
      * 
-     * @type {number}
+     * @type {PublicUserPreviewWithFollow}
      * @memberof StoryPreview
      */
-    publicEpisodesCount: number;
+    creator?: PublicUserPreviewWithFollow | null;
     /**
      * 
-     * @type {number}
+     * @type {StoryCounts}
      * @memberof StoryPreview
      */
-    publicPanelsCount: number;
+    counts: StoryCounts;
+    /**
+     * 
+     * @type {UserEpisodeProgressType}
+     * @memberof StoryPreview
+     */
+    progress?: UserEpisodeProgressType | null;
 }
+
+
 
 /**
  * Check if a given object implements the StoryPreview interface.
@@ -70,8 +100,7 @@ export function instanceOfStoryPreview(value: object): value is StoryPreview {
     if (!('id' in value) || value['id'] === undefined) return false;
     if (!('ownerId' in value) || value['ownerId'] === undefined) return false;
     if (!('title' in value) || value['title'] === undefined) return false;
-    if (!('publicEpisodesCount' in value) || value['publicEpisodesCount'] === undefined) return false;
-    if (!('publicPanelsCount' in value) || value['publicPanelsCount'] === undefined) return false;
+    if (!('counts' in value) || value['counts'] === undefined) return false;
     return true;
 }
 
@@ -90,8 +119,9 @@ export function StoryPreviewFromJSONTyped(json: any, ignoreDiscriminator: boolea
         'title': json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
-        'publicEpisodesCount': json['public_episodes_count'],
-        'publicPanelsCount': json['public_panels_count'],
+        'creator': json['creator'] == null ? undefined : PublicUserPreviewWithFollowFromJSON(json['creator']),
+        'counts': StoryCountsFromJSON(json['counts']),
+        'progress': json['progress'] == null ? undefined : UserEpisodeProgressTypeFromJSON(json['progress']),
     };
 }
 
@@ -111,8 +141,9 @@ export function StoryPreviewFromJSONTyped(json: any, ignoreDiscriminator: boolea
         'title': value['title'],
         'description': value['description'],
         'cover_image': value['coverImage'],
-        'public_episodes_count': value['publicEpisodesCount'],
-        'public_panels_count': value['publicPanelsCount'],
+        'creator': PublicUserPreviewWithFollowToJSON(value['creator']),
+        'counts': StoryCountsToJSON(value['counts']),
+        'progress': UserEpisodeProgressTypeToJSON(value['progress']),
     };
 }
 

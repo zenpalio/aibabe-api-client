@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { StoryCounts } from './StoryCounts';
+import {
+    StoryCountsFromJSON,
+    StoryCountsFromJSONTyped,
+    StoryCountsToJSON,
+    StoryCountsToJSONTyped,
+} from './StoryCounts';
 import type { ArtStyle } from './ArtStyle';
 import {
     ArtStyleFromJSON,
@@ -186,16 +193,10 @@ export interface GetGalleryResponseItemsInner {
     visibility: StoryVisibility;
     /**
      * 
-     * @type {number}
+     * @type {StoryCounts}
      * @memberof GetGalleryResponseItemsInner
      */
-    publicEpisodesCount: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof GetGalleryResponseItemsInner
-     */
-    publicPanelsCount: number;
+    counts: StoryCounts;
 }
 
 
@@ -229,8 +230,7 @@ export function instanceOfGetGalleryResponseItemsInner(value: object): value is 
     if (!('ownerId' in value) || value['ownerId'] === undefined) return false;
     if (!('title' in value) || value['title'] === undefined) return false;
     if (!('visibility' in value) || value['visibility'] === undefined) return false;
-    if (!('publicEpisodesCount' in value) || value['publicEpisodesCount'] === undefined) return false;
-    if (!('publicPanelsCount' in value) || value['publicPanelsCount'] === undefined) return false;
+    if (!('counts' in value) || value['counts'] === undefined) return false;
     return true;
 }
 
@@ -262,8 +262,7 @@ export function GetGalleryResponseItemsInnerFromJSONTyped(json: any, ignoreDiscr
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
         'visibility': StoryVisibilityFromJSON(json['visibility']),
-        'publicEpisodesCount': json['public_episodes_count'],
-        'publicPanelsCount': json['public_panels_count'],
+        'counts': StoryCountsFromJSON(json['counts']),
     };
 }
 
@@ -296,8 +295,7 @@ export function GetGalleryResponseItemsInnerFromJSONTyped(json: any, ignoreDiscr
         'description': value['description'],
         'cover_image': value['coverImage'],
         'visibility': StoryVisibilityToJSON(value['visibility']),
-        'public_episodes_count': value['publicEpisodesCount'],
-        'public_panels_count': value['publicPanelsCount'],
+        'counts': StoryCountsToJSON(value['counts']),
     };
 }
 

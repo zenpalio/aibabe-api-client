@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { StoryCounts } from './StoryCounts';
 import type { ArtStyle } from './ArtStyle';
 import type { ChatbotPreview } from './ChatbotPreview';
 import type { PostDetails } from './PostDetails';
@@ -130,16 +131,10 @@ export interface GetGalleryResponseItemsInner {
     visibility: StoryVisibility;
     /**
      *
-     * @type {number}
+     * @type {StoryCounts}
      * @memberof GetGalleryResponseItemsInner
      */
-    publicEpisodesCount: number;
-    /**
-     *
-     * @type {number}
-     * @memberof GetGalleryResponseItemsInner
-     */
-    publicPanelsCount: number;
+    counts: StoryCounts;
 }
 /**
  * @export

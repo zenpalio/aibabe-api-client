@@ -18,6 +18,9 @@ exports.StoryPreviewFromJSON = StoryPreviewFromJSON;
 exports.StoryPreviewFromJSONTyped = StoryPreviewFromJSONTyped;
 exports.StoryPreviewToJSON = StoryPreviewToJSON;
 exports.StoryPreviewToJSONTyped = StoryPreviewToJSONTyped;
+const PublicUserPreviewWithFollow_1 = require("./PublicUserPreviewWithFollow");
+const StoryCounts_1 = require("./StoryCounts");
+const UserEpisodeProgressType_1 = require("./UserEpisodeProgressType");
 /**
  * Check if a given object implements the StoryPreview interface.
  */
@@ -28,9 +31,7 @@ function instanceOfStoryPreview(value) {
         return false;
     if (!('title' in value) || value['title'] === undefined)
         return false;
-    if (!('publicEpisodesCount' in value) || value['publicEpisodesCount'] === undefined)
-        return false;
-    if (!('publicPanelsCount' in value) || value['publicPanelsCount'] === undefined)
+    if (!('counts' in value) || value['counts'] === undefined)
         return false;
     return true;
 }
@@ -47,8 +48,9 @@ function StoryPreviewFromJSONTyped(json, ignoreDiscriminator) {
         'title': json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
-        'publicEpisodesCount': json['public_episodes_count'],
-        'publicPanelsCount': json['public_panels_count'],
+        'creator': json['creator'] == null ? undefined : (0, PublicUserPreviewWithFollow_1.PublicUserPreviewWithFollowFromJSON)(json['creator']),
+        'counts': (0, StoryCounts_1.StoryCountsFromJSON)(json['counts']),
+        'progress': json['progress'] == null ? undefined : (0, UserEpisodeProgressType_1.UserEpisodeProgressTypeFromJSON)(json['progress']),
     };
 }
 function StoryPreviewToJSON(json) {
@@ -64,8 +66,9 @@ function StoryPreviewToJSONTyped(value, ignoreDiscriminator = false) {
         'title': value['title'],
         'description': value['description'],
         'cover_image': value['coverImage'],
-        'public_episodes_count': value['publicEpisodesCount'],
-        'public_panels_count': value['publicPanelsCount'],
+        'creator': (0, PublicUserPreviewWithFollow_1.PublicUserPreviewWithFollowToJSON)(value['creator']),
+        'counts': (0, StoryCounts_1.StoryCountsToJSON)(value['counts']),
+        'progress': (0, UserEpisodeProgressType_1.UserEpisodeProgressTypeToJSON)(value['progress']),
     };
 }
 //# sourceMappingURL=StoryPreview.js.map

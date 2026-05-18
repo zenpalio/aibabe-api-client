@@ -9,6 +9,9 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { PublicUserPreviewWithFollow } from './PublicUserPreviewWithFollow';
+import type { StoryCounts } from './StoryCounts';
+import type { UserEpisodeProgressType } from './UserEpisodeProgressType';
 /**
  *
  * @export
@@ -47,16 +50,22 @@ export interface StoryPreview {
     coverImage?: string | null;
     /**
      *
-     * @type {number}
+     * @type {PublicUserPreviewWithFollow}
      * @memberof StoryPreview
      */
-    publicEpisodesCount: number;
+    creator?: PublicUserPreviewWithFollow | null;
     /**
      *
-     * @type {number}
+     * @type {StoryCounts}
      * @memberof StoryPreview
      */
-    publicPanelsCount: number;
+    counts: StoryCounts;
+    /**
+     *
+     * @type {UserEpisodeProgressType}
+     * @memberof StoryPreview
+     */
+    progress?: UserEpisodeProgressType | null;
 }
 /**
  * Check if a given object implements the StoryPreview interface.
