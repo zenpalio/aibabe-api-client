@@ -106,6 +106,32 @@ class AssistantChatApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * Get Assistant Prompt
+     */
+    async getAssistantPromptAssistantChatAssistantPromptGetRaw(initOverrides) {
+        const queryParameters = {};
+        const headerParameters = {};
+        const response = await this.request({
+            path: `/assistant-chat/assistant-prompt`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse(response);
+        }
+        else {
+            return new runtime.TextApiResponse(response);
+        }
+    }
+    /**
+     * Get Assistant Prompt
+     */
+    async getAssistantPromptAssistantChatAssistantPromptGet(initOverrides) {
+        const response = await this.getAssistantPromptAssistantChatAssistantPromptGetRaw(initOverrides);
+        return await response.value();
+    }
+    /**
      * Get Messages
      */
     async getMessagesAssistantChatSessionsSessionIdMessagesGetRaw(requestParameters, initOverrides) {
@@ -189,6 +215,52 @@ class AssistantChatApi extends runtime.BaseAPI {
      */
     async postMessageAssistantChatSessionsSessionIdMessagesPost(requestParameters, initOverrides) {
         const response = await this.postMessageAssistantChatSessionsSessionIdMessagesPostRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * Update Assistant Prompt
+     */
+    async updateAssistantPromptAssistantChatAssistantPromptPatchRaw(requestParameters, initOverrides) {
+        if (requestParameters['prompt'] == null) {
+            throw new runtime.RequiredError('prompt', 'Required parameter "prompt" was null or undefined when calling updateAssistantPromptAssistantChatAssistantPromptPatch().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        const consumes = [
+            { contentType: 'application/x-www-form-urlencoded' },
+        ];
+        // @ts-ignore: canConsumeForm may be unused
+        const canConsumeForm = runtime.canConsumeForm(consumes);
+        let formParams;
+        let useForm = false;
+        if (useForm) {
+            formParams = new FormData();
+        }
+        else {
+            formParams = new URLSearchParams();
+        }
+        if (requestParameters['prompt'] != null) {
+            formParams.append('prompt', requestParameters['prompt']);
+        }
+        const response = await this.request({
+            path: `/assistant-chat/assistant-prompt`,
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: formParams,
+        }, initOverrides);
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse(response);
+        }
+        else {
+            return new runtime.TextApiResponse(response);
+        }
+    }
+    /**
+     * Update Assistant Prompt
+     */
+    async updateAssistantPromptAssistantChatAssistantPromptPatch(requestParameters, initOverrides) {
+        const response = await this.updateAssistantPromptAssistantChatAssistantPromptPatchRaw(requestParameters, initOverrides);
         return await response.value();
     }
 }

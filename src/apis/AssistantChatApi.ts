@@ -64,6 +64,10 @@ export interface PostMessageAssistantChatSessionsSessionIdMessagesPostRequest {
     postAssistantChatMessageRequest: PostAssistantChatMessageRequest;
 }
 
+export interface UpdateAssistantPromptAssistantChatAssistantPromptPatchRequest {
+    prompt: string;
+}
+
 /**
  * 
  */
@@ -132,6 +136,36 @@ export class AssistantChatApi extends runtime.BaseAPI {
      */
     async deleteSessionAssistantChatSessionsSessionIdDelete(requestParameters: DeleteSessionAssistantChatSessionsSessionIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
         const response = await this.deleteSessionAssistantChatSessionsSessionIdDeleteRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Get Assistant Prompt
+     */
+    async getAssistantPromptAssistantChatAssistantPromptGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/assistant-chat/assistant-prompt`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse<string>(response);
+        } else {
+            return new runtime.TextApiResponse(response) as any;
+        }
+    }
+
+    /**
+     * Get Assistant Prompt
+     */
+    async getAssistantPromptAssistantChatAssistantPromptGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> {
+        const response = await this.getAssistantPromptAssistantChatAssistantPromptGetRaw(initOverrides);
         return await response.value();
     }
 
@@ -250,6 +284,62 @@ export class AssistantChatApi extends runtime.BaseAPI {
      */
     async postMessageAssistantChatSessionsSessionIdMessagesPost(requestParameters: PostMessageAssistantChatSessionsSessionIdMessagesPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AssistantChatResponse> {
         const response = await this.postMessageAssistantChatSessionsSessionIdMessagesPostRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Update Assistant Prompt
+     */
+    async updateAssistantPromptAssistantChatAssistantPromptPatchRaw(requestParameters: UpdateAssistantPromptAssistantChatAssistantPromptPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
+        if (requestParameters['prompt'] == null) {
+            throw new runtime.RequiredError(
+                'prompt',
+                'Required parameter "prompt" was null or undefined when calling updateAssistantPromptAssistantChatAssistantPromptPatch().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const consumes: runtime.Consume[] = [
+            { contentType: 'application/x-www-form-urlencoded' },
+        ];
+        // @ts-ignore: canConsumeForm may be unused
+        const canConsumeForm = runtime.canConsumeForm(consumes);
+
+        let formParams: { append(param: string, value: any): any };
+        let useForm = false;
+        if (useForm) {
+            formParams = new FormData();
+        } else {
+            formParams = new URLSearchParams();
+        }
+
+        if (requestParameters['prompt'] != null) {
+            formParams.append('prompt', requestParameters['prompt'] as any);
+        }
+
+        const response = await this.request({
+            path: `/assistant-chat/assistant-prompt`,
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: formParams,
+        }, initOverrides);
+
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse<any>(response);
+        } else {
+            return new runtime.TextApiResponse(response) as any;
+        }
+    }
+
+    /**
+     * Update Assistant Prompt
+     */
+    async updateAssistantPromptAssistantChatAssistantPromptPatch(requestParameters: UpdateAssistantPromptAssistantChatAssistantPromptPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
+        const response = await this.updateAssistantPromptAssistantChatAssistantPromptPatchRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

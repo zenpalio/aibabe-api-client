@@ -16,13 +16,11 @@
 import * as runtime from '../runtime';
 import type {
   ChatReponse,
-  GetAssistantPromptResponse,
   GetConversationMessagesResponse,
   GetConversationResponse,
   GetImageModerationPromptResponse,
   HTTPValidationError,
   ListConversationsResponse,
-  PatchAssistantPromptRequest,
   PatchChatMessageRequest,
   PatchImageModerationPromptRequest,
   PostChatRequest,
@@ -31,8 +29,6 @@ import type {
 import {
     ChatReponseFromJSON,
     ChatReponseToJSON,
-    GetAssistantPromptResponseFromJSON,
-    GetAssistantPromptResponseToJSON,
     GetConversationMessagesResponseFromJSON,
     GetConversationMessagesResponseToJSON,
     GetConversationResponseFromJSON,
@@ -43,8 +39,6 @@ import {
     HTTPValidationErrorToJSON,
     ListConversationsResponseFromJSON,
     ListConversationsResponseToJSON,
-    PatchAssistantPromptRequestFromJSON,
-    PatchAssistantPromptRequestToJSON,
     PatchChatMessageRequestFromJSON,
     PatchChatMessageRequestToJSON,
     PatchImageModerationPromptRequestFromJSON,
@@ -101,10 +95,6 @@ export interface RegenerateChatChatbotIdMessageMessageIdRegeneratePostRequest {
 
 export interface ResetConversationChatConversationConversationIdResetPostRequest {
     conversationId: string;
-}
-
-export interface UpdateAssistantPromptChatAssistantPromptPatchRequest {
-    patchAssistantPromptRequest: PatchAssistantPromptRequest;
 }
 
 export interface UpdateConversationSettingsChatConversationConversationIdSettingsPatchRequest {
@@ -421,32 +411,6 @@ export class ChatApi extends runtime.BaseAPI {
     }
 
     /**
-     * Get Assistant Prompt
-     */
-    async getAssistantPromptChatAssistantPromptGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetAssistantPromptResponse>> {
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/chat/assistant-prompt`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => GetAssistantPromptResponseFromJSON(jsonValue));
-    }
-
-    /**
-     * Get Assistant Prompt
-     */
-    async getAssistantPromptChatAssistantPromptGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetAssistantPromptResponse> {
-        const response = await this.getAssistantPromptChatAssistantPromptGetRaw(initOverrides);
-        return await response.value();
-    }
-
-    /**
      * Get Image Moderation Prompt
      */
     async getImageModerationPromptChatImageModerationPromptGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetImageModerationPromptResponse>> {
@@ -556,46 +520,6 @@ export class ChatApi extends runtime.BaseAPI {
      */
     async resetConversationChatConversationConversationIdResetPost(requestParameters: ResetConversationChatConversationConversationIdResetPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
         const response = await this.resetConversationChatConversationConversationIdResetPostRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * Update Assistant Prompt
-     */
-    async updateAssistantPromptChatAssistantPromptPatchRaw(requestParameters: UpdateAssistantPromptChatAssistantPromptPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
-        if (requestParameters['patchAssistantPromptRequest'] == null) {
-            throw new runtime.RequiredError(
-                'patchAssistantPromptRequest',
-                'Required parameter "patchAssistantPromptRequest" was null or undefined when calling updateAssistantPromptChatAssistantPromptPatch().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        const response = await this.request({
-            path: `/chat/assistant-prompt`,
-            method: 'PATCH',
-            headers: headerParameters,
-            query: queryParameters,
-            body: PatchAssistantPromptRequestToJSON(requestParameters['patchAssistantPromptRequest']),
-        }, initOverrides);
-
-        if (this.isJsonMime(response.headers.get('content-type'))) {
-            return new runtime.JSONApiResponse<any>(response);
-        } else {
-            return new runtime.TextApiResponse(response) as any;
-        }
-    }
-
-    /**
-     * Update Assistant Prompt
-     */
-    async updateAssistantPromptChatAssistantPromptPatch(requestParameters: UpdateAssistantPromptChatAssistantPromptPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
-        const response = await this.updateAssistantPromptChatAssistantPromptPatchRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

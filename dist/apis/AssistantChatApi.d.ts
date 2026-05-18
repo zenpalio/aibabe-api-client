@@ -30,6 +30,9 @@ export interface PostMessageAssistantChatSessionsSessionIdMessagesPostRequest {
     sessionId: string;
     postAssistantChatMessageRequest: PostAssistantChatMessageRequest;
 }
+export interface UpdateAssistantPromptAssistantChatAssistantPromptPatchRequest {
+    prompt: string;
+}
 /**
  *
  */
@@ -50,6 +53,14 @@ export declare class AssistantChatApi extends runtime.BaseAPI {
      * Delete Session
      */
     deleteSessionAssistantChatSessionsSessionIdDelete(requestParameters: DeleteSessionAssistantChatSessionsSessionIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
+    /**
+     * Get Assistant Prompt
+     */
+    getAssistantPromptAssistantChatAssistantPromptGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>>;
+    /**
+     * Get Assistant Prompt
+     */
+    getAssistantPromptAssistantChatAssistantPromptGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string>;
     /**
      * Get Messages
      */
@@ -74,5 +85,13 @@ export declare class AssistantChatApi extends runtime.BaseAPI {
      * Post Message
      */
     postMessageAssistantChatSessionsSessionIdMessagesPost(requestParameters: PostMessageAssistantChatSessionsSessionIdMessagesPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AssistantChatResponse>;
+    /**
+     * Update Assistant Prompt
+     */
+    updateAssistantPromptAssistantChatAssistantPromptPatchRaw(requestParameters: UpdateAssistantPromptAssistantChatAssistantPromptPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
+    /**
+     * Update Assistant Prompt
+     */
+    updateAssistantPromptAssistantChatAssistantPromptPatch(requestParameters: UpdateAssistantPromptAssistantChatAssistantPromptPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
 }
 //# sourceMappingURL=AssistantChatApi.d.ts.map
