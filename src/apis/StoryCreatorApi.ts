@@ -157,6 +157,11 @@ export interface ListEpisodesStoryCreatorStoriesStoryIdEpisodesGetRequest {
     storyId: string;
 }
 
+export interface ListStoriesStoryCreatorStoriesGetRequest {
+    limit?: number;
+    offset?: number;
+}
+
 export interface LockEpisodeStoryCreatorEpisodesEpisodeIdLockPatchRequest {
     episodeId: string;
     storyCreatorLockEpisodeRequest: StoryCreatorLockEpisodeRequest;
@@ -717,8 +722,16 @@ export class StoryCreatorApi extends runtime.BaseAPI {
     /**
      * List Stories
      */
-    async listStoriesStoryCreatorStoriesGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StoryCreatorStoryListResponse>> {
+    async listStoriesStoryCreatorStoriesGetRaw(requestParameters: ListStoriesStoryCreatorStoriesGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StoryCreatorStoryListResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters['limit'] != null) {
+            queryParameters['limit'] = requestParameters['limit'];
+        }
+
+        if (requestParameters['offset'] != null) {
+            queryParameters['offset'] = requestParameters['offset'];
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -735,8 +748,8 @@ export class StoryCreatorApi extends runtime.BaseAPI {
     /**
      * List Stories
      */
-    async listStoriesStoryCreatorStoriesGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StoryCreatorStoryListResponse> {
-        const response = await this.listStoriesStoryCreatorStoriesGetRaw(initOverrides);
+    async listStoriesStoryCreatorStoriesGet(requestParameters: ListStoriesStoryCreatorStoriesGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StoryCreatorStoryListResponse> {
+        const response = await this.listStoriesStoryCreatorStoriesGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

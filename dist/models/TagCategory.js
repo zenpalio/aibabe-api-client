@@ -37,7 +37,8 @@ exports.TagCategory = {
     Lora: 'lora',
     Style: 'style',
     RoleplayType: 'roleplay_type',
-    CharacterType: 'character_type'
+    CharacterType: 'character_type',
+    Genre: 'genre'
 };
 function instanceOfTagCategory(value) {
     for (const key in exports.TagCategory) {

@@ -18,9 +18,10 @@ exports.StoryCreatorEpisodeFromJSON = StoryCreatorEpisodeFromJSON;
 exports.StoryCreatorEpisodeFromJSONTyped = StoryCreatorEpisodeFromJSONTyped;
 exports.StoryCreatorEpisodeToJSON = StoryCreatorEpisodeToJSON;
 exports.StoryCreatorEpisodeToJSONTyped = StoryCreatorEpisodeToJSONTyped;
+const UserEpisodeProgressType_1 = require("./UserEpisodeProgressType");
 const StoryCreatorEpisodePrice_1 = require("./StoryCreatorEpisodePrice");
+const EpisodeCounts_1 = require("./EpisodeCounts");
 const EpisodeVisibility_1 = require("./EpisodeVisibility");
-const UserStoryProgressType_1 = require("./UserStoryProgressType");
 const AccessType_1 = require("./AccessType");
 /**
  * Check if a given object implements the StoryCreatorEpisode interface.
@@ -35,6 +36,8 @@ function instanceOfStoryCreatorEpisode(value) {
     if (!('episodeIndex' in value) || value['episodeIndex'] === undefined)
         return false;
     if (!('panelsCount' in value) || value['panelsCount'] === undefined)
+        return false;
+    if (!('counts' in value) || value['counts'] === undefined)
         return false;
     return true;
 }
@@ -57,8 +60,9 @@ function StoryCreatorEpisodeFromJSONTyped(json, ignoreDiscriminator) {
         'panelsCount': json['panels_count'],
         'rating': json['rating'] == null ? undefined : json['rating'],
         'accessType': json['access_type'] == null ? undefined : (0, AccessType_1.AccessTypeFromJSON)(json['access_type']),
-        'progress': json['progress'] == null ? undefined : (0, UserStoryProgressType_1.UserStoryProgressTypeFromJSON)(json['progress']),
+        'progress': json['progress'] == null ? undefined : (0, UserEpisodeProgressType_1.UserEpisodeProgressTypeFromJSON)(json['progress']),
         'prices': json['prices'] == null ? undefined : (json['prices'].map(StoryCreatorEpisodePrice_1.StoryCreatorEpisodePriceFromJSON)),
+        'counts': (0, EpisodeCounts_1.EpisodeCountsFromJSON)(json['counts']),
     };
 }
 function StoryCreatorEpisodeToJSON(json) {
@@ -80,8 +84,9 @@ function StoryCreatorEpisodeToJSONTyped(value, ignoreDiscriminator = false) {
         'panels_count': value['panelsCount'],
         'rating': value['rating'],
         'access_type': (0, AccessType_1.AccessTypeToJSON)(value['accessType']),
-        'progress': (0, UserStoryProgressType_1.UserStoryProgressTypeToJSON)(value['progress']),
+        'progress': (0, UserEpisodeProgressType_1.UserEpisodeProgressTypeToJSON)(value['progress']),
         'prices': value['prices'] == null ? undefined : (value['prices'].map(StoryCreatorEpisodePrice_1.StoryCreatorEpisodePriceToJSON)),
+        'counts': (0, EpisodeCounts_1.EpisodeCountsToJSON)(value['counts']),
     };
 }
 //# sourceMappingURL=StoryCreatorEpisode.js.map
