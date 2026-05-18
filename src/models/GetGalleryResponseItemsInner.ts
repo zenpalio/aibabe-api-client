@@ -193,6 +193,12 @@ export interface GetGalleryResponseItemsInner {
     visibility: StoryVisibility;
     /**
      * 
+     * @type {number}
+     * @memberof GetGalleryResponseItemsInner
+     */
+    rating?: number;
+    /**
+     * 
      * @type {StoryCounts}
      * @memberof GetGalleryResponseItemsInner
      */
@@ -262,6 +268,7 @@ export function GetGalleryResponseItemsInnerFromJSONTyped(json: any, ignoreDiscr
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
         'visibility': StoryVisibilityFromJSON(json['visibility']),
+        'rating': json['rating'] == null ? undefined : json['rating'],
         'counts': StoryCountsFromJSON(json['counts']),
     };
 }
@@ -295,6 +302,7 @@ export function GetGalleryResponseItemsInnerFromJSONTyped(json: any, ignoreDiscr
         'description': value['description'],
         'cover_image': value['coverImage'],
         'visibility': StoryVisibilityToJSON(value['visibility']),
+        'rating': value['rating'],
         'counts': StoryCountsToJSON(value['counts']),
     };
 }

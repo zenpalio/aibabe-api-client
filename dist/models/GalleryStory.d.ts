@@ -67,6 +67,12 @@ export interface GalleryStory {
     visibility: StoryVisibility;
     /**
      *
+     * @type {number}
+     * @memberof GalleryStory
+     */
+    rating?: number | null;
+    /**
+     *
      * @type {StoryCounts}
      * @memberof GalleryStory
      */
