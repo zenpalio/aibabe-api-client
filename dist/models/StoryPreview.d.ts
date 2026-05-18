@@ -50,12 +50,6 @@ export interface StoryPreview {
     coverImage?: string | null;
     /**
      *
-     * @type {number}
-     * @memberof StoryPreview
-     */
-    rating?: number | null;
-    /**
-     *
      * @type {PublicUserPreviewWithFollow}
      * @memberof StoryPreview
      */

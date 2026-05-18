@@ -97,7 +97,6 @@ function GetGalleryResponseItemsInnerFromJSONTyped(json, ignoreDiscriminator) {
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
         'visibility': (0, StoryVisibility_1.StoryVisibilityFromJSON)(json['visibility']),
-        'rating': json['rating'] == null ? undefined : json['rating'],
         'counts': (0, StoryCounts_1.StoryCountsFromJSON)(json['counts']),
     };
 }
@@ -127,7 +126,6 @@ function GetGalleryResponseItemsInnerToJSONTyped(value, ignoreDiscriminator = fa
         'description': value['description'],
         'cover_image': value['coverImage'],
         'visibility': (0, StoryVisibility_1.StoryVisibilityToJSON)(value['visibility']),
-        'rating': value['rating'],
         'counts': (0, StoryCounts_1.StoryCountsToJSON)(value['counts']),
     };
 }

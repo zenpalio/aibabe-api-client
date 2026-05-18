@@ -92,6 +92,18 @@ export interface ExploreSearchRequest {
      * @memberof ExploreSearchRequest
      */
     scene?: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof ExploreSearchRequest
+     */
+    seenStories?: boolean | null;
+    /**
+     *
+     * @type {boolean}
+     * @memberof ExploreSearchRequest
+     */
+    unlockedStories?: boolean | null;
 }
 /**
  * Check if a given object implements the ExploreSearchRequest interface.

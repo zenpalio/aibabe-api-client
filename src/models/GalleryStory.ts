@@ -84,12 +84,6 @@ export interface GalleryStory {
     visibility: StoryVisibility;
     /**
      * 
-     * @type {number}
-     * @memberof GalleryStory
-     */
-    rating?: number | null;
-    /**
-     * 
      * @type {StoryCounts}
      * @memberof GalleryStory
      */
@@ -138,7 +132,6 @@ export function GalleryStoryFromJSONTyped(json: any, ignoreDiscriminator: boolea
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
         'createdAt': (new Date(json['created_at'])),
         'visibility': StoryVisibilityFromJSON(json['visibility']),
-        'rating': json['rating'] == null ? undefined : json['rating'],
         'counts': StoryCountsFromJSON(json['counts']),
     };
 }
@@ -162,7 +155,6 @@ export function GalleryStoryFromJSONTyped(json: any, ignoreDiscriminator: boolea
         'cover_image': value['coverImage'],
         'created_at': ((value['createdAt']).toISOString()),
         'visibility': StoryVisibilityToJSON(value['visibility']),
-        'rating': value['rating'],
         'counts': StoryCountsToJSON(value['counts']),
     };
 }

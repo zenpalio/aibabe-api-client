@@ -27,6 +27,8 @@ exports.SortFilter = {
     Trending: 'trending',
     Newest: 'newest',
     MostLiked: 'most_liked',
+    HighestRating: 'highest_rating',
+    MostViewed: 'most_viewed',
     MostMessages: 'most_messages',
     LatestMessage: 'latest_message'
 };
