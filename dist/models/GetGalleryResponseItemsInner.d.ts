@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { PublicUserPreviewWithFollow } from './PublicUserPreviewWithFollow';
 import type { StoryCounts } from './StoryCounts';
 import type { ArtStyle } from './ArtStyle';
 import type { ChatbotPreview } from './ChatbotPreview';
@@ -101,10 +102,10 @@ export interface GetGalleryResponseItemsInner {
     originalImageUrl: string;
     /**
      *
-     * @type {string}
+     * @type {PublicUserPreviewWithFollow}
      * @memberof GetGalleryResponseItemsInner
      */
-    ownerId: string;
+    owner?: PublicUserPreviewWithFollow;
     /**
      *
      * @type {string}

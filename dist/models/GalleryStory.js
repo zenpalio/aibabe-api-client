@@ -19,6 +19,7 @@ exports.GalleryStoryFromJSON = GalleryStoryFromJSON;
 exports.GalleryStoryFromJSONTyped = GalleryStoryFromJSONTyped;
 exports.GalleryStoryToJSON = GalleryStoryToJSON;
 exports.GalleryStoryToJSONTyped = GalleryStoryToJSONTyped;
+const PublicUserPreviewWithFollow_1 = require("./PublicUserPreviewWithFollow");
 const StoryCounts_1 = require("./StoryCounts");
 const StoryVisibility_1 = require("./StoryVisibility");
 /**
@@ -34,8 +35,6 @@ function instanceOfGalleryStory(value) {
     if (!('type' in value) || value['type'] === undefined)
         return false;
     if (!('id' in value) || value['id'] === undefined)
-        return false;
-    if (!('ownerId' in value) || value['ownerId'] === undefined)
         return false;
     if (!('title' in value) || value['title'] === undefined)
         return false;
@@ -57,7 +56,7 @@ function GalleryStoryFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'type': json['type'],
         'id': json['id'],
-        'ownerId': json['owner_id'],
+        'owner': json['owner'] == null ? undefined : (0, PublicUserPreviewWithFollow_1.PublicUserPreviewWithFollowFromJSON)(json['owner']),
         'title': json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
@@ -77,7 +76,7 @@ function GalleryStoryToJSONTyped(value, ignoreDiscriminator = false) {
     return {
         'type': value['type'],
         'id': value['id'],
-        'owner_id': value['ownerId'],
+        'owner': (0, PublicUserPreviewWithFollow_1.PublicUserPreviewWithFollowToJSON)(value['owner']),
         'title': value['title'],
         'description': value['description'],
         'cover_image': value['coverImage'],

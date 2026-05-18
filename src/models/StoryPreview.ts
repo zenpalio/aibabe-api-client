@@ -52,12 +52,6 @@ export interface StoryPreview {
      * @type {string}
      * @memberof StoryPreview
      */
-    ownerId: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof StoryPreview
-     */
     title: string | null;
     /**
      * 
@@ -82,7 +76,7 @@ export interface StoryPreview {
      * @type {PublicUserPreviewWithFollow}
      * @memberof StoryPreview
      */
-    creator?: PublicUserPreviewWithFollow | null;
+    owner?: PublicUserPreviewWithFollow | null;
     /**
      * 
      * @type {StoryCounts}
@@ -104,7 +98,6 @@ export interface StoryPreview {
  */
 export function instanceOfStoryPreview(value: object): value is StoryPreview {
     if (!('id' in value) || value['id'] === undefined) return false;
-    if (!('ownerId' in value) || value['ownerId'] === undefined) return false;
     if (!('title' in value) || value['title'] === undefined) return false;
     if (!('counts' in value) || value['counts'] === undefined) return false;
     return true;
@@ -121,12 +114,11 @@ export function StoryPreviewFromJSONTyped(json: any, ignoreDiscriminator: boolea
     return {
         
         'id': json['id'],
-        'ownerId': json['owner_id'],
         'title': json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
         'rating': json['rating'] == null ? undefined : json['rating'],
-        'creator': json['creator'] == null ? undefined : PublicUserPreviewWithFollowFromJSON(json['creator']),
+        'owner': json['owner'] == null ? undefined : PublicUserPreviewWithFollowFromJSON(json['owner']),
         'counts': StoryCountsFromJSON(json['counts']),
         'progress': json['progress'] == null ? undefined : UserEpisodeProgressTypeFromJSON(json['progress']),
     };
@@ -144,12 +136,11 @@ export function StoryPreviewFromJSONTyped(json: any, ignoreDiscriminator: boolea
     return {
         
         'id': value['id'],
-        'owner_id': value['ownerId'],
         'title': value['title'],
         'description': value['description'],
         'cover_image': value['coverImage'],
         'rating': value['rating'],
-        'creator': PublicUserPreviewWithFollowToJSON(value['creator']),
+        'owner': PublicUserPreviewWithFollowToJSON(value['owner']),
         'counts': StoryCountsToJSON(value['counts']),
         'progress': UserEpisodeProgressTypeToJSON(value['progress']),
     };

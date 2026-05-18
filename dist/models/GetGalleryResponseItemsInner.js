@@ -19,6 +19,7 @@ exports.GetGalleryResponseItemsInnerFromJSON = GetGalleryResponseItemsInnerFromJ
 exports.GetGalleryResponseItemsInnerFromJSONTyped = GetGalleryResponseItemsInnerFromJSONTyped;
 exports.GetGalleryResponseItemsInnerToJSON = GetGalleryResponseItemsInnerToJSON;
 exports.GetGalleryResponseItemsInnerToJSONTyped = GetGalleryResponseItemsInnerToJSONTyped;
+const PublicUserPreviewWithFollow_1 = require("./PublicUserPreviewWithFollow");
 const StoryCounts_1 = require("./StoryCounts");
 const ArtStyle_1 = require("./ArtStyle");
 const ChatbotPreview_1 = require("./ChatbotPreview");
@@ -61,8 +62,6 @@ function instanceOfGetGalleryResponseItemsInner(value) {
         return false;
     if (!('originalImageUrl' in value) || value['originalImageUrl'] === undefined)
         return false;
-    if (!('ownerId' in value) || value['ownerId'] === undefined)
-        return false;
     if (!('title' in value) || value['title'] === undefined)
         return false;
     if (!('visibility' in value) || value['visibility'] === undefined)
@@ -92,7 +91,7 @@ function GetGalleryResponseItemsInnerFromJSONTyped(json, ignoreDiscriminator) {
         'artStyle': (0, ArtStyle_1.ArtStyleFromJSON)(json['art_style']),
         'originalImageId': json['original_image_id'],
         'originalImageUrl': json['original_image_url'],
-        'ownerId': json['owner_id'],
+        'owner': json['owner'] == null ? undefined : (0, PublicUserPreviewWithFollow_1.PublicUserPreviewWithFollowFromJSON)(json['owner']),
         'title': json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
@@ -122,7 +121,7 @@ function GetGalleryResponseItemsInnerToJSONTyped(value, ignoreDiscriminator = fa
         'art_style': (0, ArtStyle_1.ArtStyleToJSON)(value['artStyle']),
         'original_image_id': value['originalImageId'],
         'original_image_url': value['originalImageUrl'],
-        'owner_id': value['ownerId'],
+        'owner': (0, PublicUserPreviewWithFollow_1.PublicUserPreviewWithFollowToJSON)(value['owner']),
         'title': value['title'],
         'description': value['description'],
         'cover_image': value['coverImage'],

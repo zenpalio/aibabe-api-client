@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { PublicUserPreviewWithFollow } from './PublicUserPreviewWithFollow';
 import type { StoryCounts } from './StoryCounts';
 import type { StoryVisibility } from './StoryVisibility';
 import type { UserEpisodeProgressType } from './UserEpisodeProgressType';
@@ -44,10 +45,10 @@ export interface StoryCreatorStory {
     id: string;
     /**
      *
-     * @type {string}
+     * @type {PublicUserPreviewWithFollow}
      * @memberof StoryCreatorStory
      */
-    ownerId: string;
+    owner: PublicUserPreviewWithFollow;
     /**
      *
      * @type {number}

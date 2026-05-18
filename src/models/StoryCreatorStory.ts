@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { PublicUserPreviewWithFollow } from './PublicUserPreviewWithFollow';
+import {
+    PublicUserPreviewWithFollowFromJSON,
+    PublicUserPreviewWithFollowFromJSONTyped,
+    PublicUserPreviewWithFollowToJSON,
+    PublicUserPreviewWithFollowToJSONTyped,
+} from './PublicUserPreviewWithFollow';
 import type { StoryCounts } from './StoryCounts';
 import {
     StoryCountsFromJSON,
@@ -67,10 +74,10 @@ export interface StoryCreatorStory {
     id: string;
     /**
      * 
-     * @type {string}
+     * @type {PublicUserPreviewWithFollow}
      * @memberof StoryCreatorStory
      */
-    ownerId: string;
+    owner: PublicUserPreviewWithFollow;
     /**
      * 
      * @type {number}
@@ -110,7 +117,7 @@ export interface StoryCreatorStory {
  */
 export function instanceOfStoryCreatorStory(value: object): value is StoryCreatorStory {
     if (!('id' in value) || value['id'] === undefined) return false;
-    if (!('ownerId' in value) || value['ownerId'] === undefined) return false;
+    if (!('owner' in value) || value['owner'] === undefined) return false;
     if (!('visibility' in value) || value['visibility'] === undefined) return false;
     if (!('counts' in value) || value['counts'] === undefined) return false;
     return true;
@@ -130,7 +137,7 @@ export function StoryCreatorStoryFromJSONTyped(json: any, ignoreDiscriminator: b
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
         'id': json['id'],
-        'ownerId': json['owner_id'],
+        'owner': PublicUserPreviewWithFollowFromJSON(json['owner']),
         'rating': json['rating'] == null ? undefined : json['rating'],
         'progress': json['progress'] == null ? undefined : UserEpisodeProgressTypeFromJSON(json['progress']),
         'newerVersionExists': json['newer_version_exists'] == null ? undefined : json['newer_version_exists'],
@@ -154,7 +161,7 @@ export function StoryCreatorStoryFromJSONTyped(json: any, ignoreDiscriminator: b
         'description': value['description'],
         'cover_image': value['coverImage'],
         'id': value['id'],
-        'owner_id': value['ownerId'],
+        'owner': PublicUserPreviewWithFollowToJSON(value['owner']),
         'rating': value['rating'],
         'progress': UserEpisodeProgressTypeToJSON(value['progress']),
         'newer_version_exists': value['newerVersionExists'],

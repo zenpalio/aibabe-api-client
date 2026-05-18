@@ -29,12 +29,6 @@ export interface StoryPreview {
      * @type {string}
      * @memberof StoryPreview
      */
-    ownerId: string;
-    /**
-     *
-     * @type {string}
-     * @memberof StoryPreview
-     */
     title: string | null;
     /**
      *
@@ -59,7 +53,7 @@ export interface StoryPreview {
      * @type {PublicUserPreviewWithFollow}
      * @memberof StoryPreview
      */
-    creator?: PublicUserPreviewWithFollow | null;
+    owner?: PublicUserPreviewWithFollow | null;
     /**
      *
      * @type {StoryCounts}

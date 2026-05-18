@@ -27,8 +27,6 @@ const UserEpisodeProgressType_1 = require("./UserEpisodeProgressType");
 function instanceOfStoryPreview(value) {
     if (!('id' in value) || value['id'] === undefined)
         return false;
-    if (!('ownerId' in value) || value['ownerId'] === undefined)
-        return false;
     if (!('title' in value) || value['title'] === undefined)
         return false;
     if (!('counts' in value) || value['counts'] === undefined)
@@ -44,12 +42,11 @@ function StoryPreviewFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'id': json['id'],
-        'ownerId': json['owner_id'],
         'title': json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
         'rating': json['rating'] == null ? undefined : json['rating'],
-        'creator': json['creator'] == null ? undefined : (0, PublicUserPreviewWithFollow_1.PublicUserPreviewWithFollowFromJSON)(json['creator']),
+        'owner': json['owner'] == null ? undefined : (0, PublicUserPreviewWithFollow_1.PublicUserPreviewWithFollowFromJSON)(json['owner']),
         'counts': (0, StoryCounts_1.StoryCountsFromJSON)(json['counts']),
         'progress': json['progress'] == null ? undefined : (0, UserEpisodeProgressType_1.UserEpisodeProgressTypeFromJSON)(json['progress']),
     };
@@ -63,12 +60,11 @@ function StoryPreviewToJSONTyped(value, ignoreDiscriminator = false) {
     }
     return {
         'id': value['id'],
-        'owner_id': value['ownerId'],
         'title': value['title'],
         'description': value['description'],
         'cover_image': value['coverImage'],
         'rating': value['rating'],
-        'creator': (0, PublicUserPreviewWithFollow_1.PublicUserPreviewWithFollowToJSON)(value['creator']),
+        'owner': (0, PublicUserPreviewWithFollow_1.PublicUserPreviewWithFollowToJSON)(value['owner']),
         'counts': (0, StoryCounts_1.StoryCountsToJSON)(value['counts']),
         'progress': (0, UserEpisodeProgressType_1.UserEpisodeProgressTypeToJSON)(value['progress']),
     };

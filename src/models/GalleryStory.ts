@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { PublicUserPreviewWithFollow } from './PublicUserPreviewWithFollow';
+import {
+    PublicUserPreviewWithFollowFromJSON,
+    PublicUserPreviewWithFollowFromJSONTyped,
+    PublicUserPreviewWithFollowToJSON,
+    PublicUserPreviewWithFollowToJSONTyped,
+} from './PublicUserPreviewWithFollow';
 import type { StoryCounts } from './StoryCounts';
 import {
     StoryCountsFromJSON,
@@ -48,10 +55,10 @@ export interface GalleryStory {
     id: string;
     /**
      * 
-     * @type {string}
+     * @type {PublicUserPreviewWithFollow}
      * @memberof GalleryStory
      */
-    ownerId: string;
+    owner?: PublicUserPreviewWithFollow | null;
     /**
      * 
      * @type {string}
@@ -112,7 +119,6 @@ export type GalleryStoryTypeEnum = typeof GalleryStoryTypeEnum[keyof typeof Gall
 export function instanceOfGalleryStory(value: object): value is GalleryStory {
     if (!('type' in value) || value['type'] === undefined) return false;
     if (!('id' in value) || value['id'] === undefined) return false;
-    if (!('ownerId' in value) || value['ownerId'] === undefined) return false;
     if (!('title' in value) || value['title'] === undefined) return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
     if (!('visibility' in value) || value['visibility'] === undefined) return false;
@@ -132,7 +138,7 @@ export function GalleryStoryFromJSONTyped(json: any, ignoreDiscriminator: boolea
         
         'type': json['type'],
         'id': json['id'],
-        'ownerId': json['owner_id'],
+        'owner': json['owner'] == null ? undefined : PublicUserPreviewWithFollowFromJSON(json['owner']),
         'title': json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
@@ -156,7 +162,7 @@ export function GalleryStoryFromJSONTyped(json: any, ignoreDiscriminator: boolea
         
         'type': value['type'],
         'id': value['id'],
-        'owner_id': value['ownerId'],
+        'owner': PublicUserPreviewWithFollowToJSON(value['owner']),
         'title': value['title'],
         'description': value['description'],
         'cover_image': value['coverImage'],

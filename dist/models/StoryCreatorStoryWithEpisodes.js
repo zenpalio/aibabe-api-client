@@ -18,6 +18,7 @@ exports.StoryCreatorStoryWithEpisodesFromJSON = StoryCreatorStoryWithEpisodesFro
 exports.StoryCreatorStoryWithEpisodesFromJSONTyped = StoryCreatorStoryWithEpisodesFromJSONTyped;
 exports.StoryCreatorStoryWithEpisodesToJSON = StoryCreatorStoryWithEpisodesToJSON;
 exports.StoryCreatorStoryWithEpisodesToJSONTyped = StoryCreatorStoryWithEpisodesToJSONTyped;
+const PublicUserPreviewWithFollow_1 = require("./PublicUserPreviewWithFollow");
 const StoryCounts_1 = require("./StoryCounts");
 const StoryVisibility_1 = require("./StoryVisibility");
 const UserEpisodeProgressType_1 = require("./UserEpisodeProgressType");
@@ -28,7 +29,7 @@ const StoryCreatorEpisode_1 = require("./StoryCreatorEpisode");
 function instanceOfStoryCreatorStoryWithEpisodes(value) {
     if (!('id' in value) || value['id'] === undefined)
         return false;
-    if (!('ownerId' in value) || value['ownerId'] === undefined)
+    if (!('owner' in value) || value['owner'] === undefined)
         return false;
     if (!('visibility' in value) || value['visibility'] === undefined)
         return false;
@@ -50,7 +51,7 @@ function StoryCreatorStoryWithEpisodesFromJSONTyped(json, ignoreDiscriminator) {
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
         'id': json['id'],
-        'ownerId': json['owner_id'],
+        'owner': (0, PublicUserPreviewWithFollow_1.PublicUserPreviewWithFollowFromJSON)(json['owner']),
         'rating': json['rating'] == null ? undefined : json['rating'],
         'progress': json['progress'] == null ? undefined : (0, UserEpisodeProgressType_1.UserEpisodeProgressTypeFromJSON)(json['progress']),
         'newerVersionExists': json['newer_version_exists'] == null ? undefined : json['newer_version_exists'],
@@ -71,7 +72,7 @@ function StoryCreatorStoryWithEpisodesToJSONTyped(value, ignoreDiscriminator = f
         'description': value['description'],
         'cover_image': value['coverImage'],
         'id': value['id'],
-        'owner_id': value['ownerId'],
+        'owner': (0, PublicUserPreviewWithFollow_1.PublicUserPreviewWithFollowToJSON)(value['owner']),
         'rating': value['rating'],
         'progress': (0, UserEpisodeProgressType_1.UserEpisodeProgressTypeToJSON)(value['progress']),
         'newer_version_exists': value['newerVersionExists'],

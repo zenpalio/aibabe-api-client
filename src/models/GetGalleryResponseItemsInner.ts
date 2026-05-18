@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { PublicUserPreviewWithFollow } from './PublicUserPreviewWithFollow';
+import {
+    PublicUserPreviewWithFollowFromJSON,
+    PublicUserPreviewWithFollowFromJSONTyped,
+    PublicUserPreviewWithFollowToJSON,
+    PublicUserPreviewWithFollowToJSONTyped,
+} from './PublicUserPreviewWithFollow';
 import type { StoryCounts } from './StoryCounts';
 import {
     StoryCountsFromJSON,
@@ -163,10 +170,10 @@ export interface GetGalleryResponseItemsInner {
     originalImageUrl: string;
     /**
      * 
-     * @type {string}
+     * @type {PublicUserPreviewWithFollow}
      * @memberof GetGalleryResponseItemsInner
      */
-    ownerId: string;
+    owner?: PublicUserPreviewWithFollow;
     /**
      * 
      * @type {string}
@@ -233,7 +240,6 @@ export function instanceOfGetGalleryResponseItemsInner(value: object): value is 
     if (!('artStyle' in value) || value['artStyle'] === undefined) return false;
     if (!('originalImageId' in value) || value['originalImageId'] === undefined) return false;
     if (!('originalImageUrl' in value) || value['originalImageUrl'] === undefined) return false;
-    if (!('ownerId' in value) || value['ownerId'] === undefined) return false;
     if (!('title' in value) || value['title'] === undefined) return false;
     if (!('visibility' in value) || value['visibility'] === undefined) return false;
     if (!('counts' in value) || value['counts'] === undefined) return false;
@@ -263,7 +269,7 @@ export function GetGalleryResponseItemsInnerFromJSONTyped(json: any, ignoreDiscr
         'artStyle': ArtStyleFromJSON(json['art_style']),
         'originalImageId': json['original_image_id'],
         'originalImageUrl': json['original_image_url'],
-        'ownerId': json['owner_id'],
+        'owner': json['owner'] == null ? undefined : PublicUserPreviewWithFollowFromJSON(json['owner']),
         'title': json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
@@ -297,7 +303,7 @@ export function GetGalleryResponseItemsInnerFromJSONTyped(json: any, ignoreDiscr
         'art_style': ArtStyleToJSON(value['artStyle']),
         'original_image_id': value['originalImageId'],
         'original_image_url': value['originalImageUrl'],
-        'owner_id': value['ownerId'],
+        'owner': PublicUserPreviewWithFollowToJSON(value['owner']),
         'title': value['title'],
         'description': value['description'],
         'cover_image': value['coverImage'],
