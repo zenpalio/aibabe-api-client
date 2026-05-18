@@ -91,6 +91,7 @@ src/models/GeneratedImages.ts
 src/models/GeneratedVideos.ts
 src/models/GetAboutChatbotResponse.ts
 src/models/GetAssistantChatMessagesResponse.ts
+src/models/GetAssistantPromptResponse.ts
 src/models/GetChatbotListResponse.ts
 src/models/GetChatbotResponse.ts
 src/models/GetClaimablesResponse.ts
@@ -161,6 +162,7 @@ src/models/NotificationType.ts
 src/models/OAuthProvider.ts
 src/models/Occupation.ts
 src/models/OwnerFilter.ts
+src/models/PatchAssistantPromptRequest.ts
 src/models/PatchChatMessageRequest.ts
 src/models/PatchCustomChatbotRequest.ts
 src/models/PatchImageModerationPromptRequest.ts
