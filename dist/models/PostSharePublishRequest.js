@@ -18,7 +18,7 @@ exports.PostSharePublishRequestFromJSON = PostSharePublishRequestFromJSON;
 exports.PostSharePublishRequestFromJSONTyped = PostSharePublishRequestFromJSONTyped;
 exports.PostSharePublishRequestToJSON = PostSharePublishRequestToJSON;
 exports.PostSharePublishRequestToJSONTyped = PostSharePublishRequestToJSONTyped;
-const SharedContentType_1 = require("./SharedContentType");
+const ContentType_1 = require("./ContentType");
 const CategoryValues_1 = require("./CategoryValues");
 /**
  * Check if a given object implements the PostSharePublishRequest interface.
@@ -38,7 +38,7 @@ function PostSharePublishRequestFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
-        'sharableContentType': (0, SharedContentType_1.SharedContentTypeFromJSON)(json['sharable_content_type']),
+        'sharableContentType': (0, ContentType_1.ContentTypeFromJSON)(json['sharable_content_type']),
         'tags': (0, CategoryValues_1.CategoryValuesFromJSON)(json['tags']),
     };
 }
@@ -50,7 +50,7 @@ function PostSharePublishRequestToJSONTyped(value, ignoreDiscriminator = false) 
         return value;
     }
     return {
-        'sharable_content_type': (0, SharedContentType_1.SharedContentTypeToJSON)(value['sharableContentType']),
+        'sharable_content_type': (0, ContentType_1.ContentTypeToJSON)(value['sharableContentType']),
         'tags': (0, CategoryValues_1.CategoryValuesToJSON)(value['tags']),
     };
 }

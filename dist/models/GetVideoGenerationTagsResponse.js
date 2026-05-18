@@ -45,7 +45,7 @@ function GetVideoGenerationTagsResponseFromJSONTyped(json, ignoreDiscriminator) 
     return {
         'tags': json['tags'],
         'downloadUrl': json['download_url'],
-        'chatbotName': json['chatbotName'],
+        'chatbotName': json['chatbot_name'],
         'originalImageId': json['original_image_id'],
         'loras': (json['loras'].map(VideoLoraName_1.VideoLoraNameFromJSON)),
     };
@@ -60,7 +60,7 @@ function GetVideoGenerationTagsResponseToJSONTyped(value, ignoreDiscriminator = 
     return {
         'tags': value['tags'],
         'download_url': value['downloadUrl'],
-        'chatbotName': value['chatbotName'],
+        'chatbot_name': value['chatbotName'],
         'original_image_id': value['originalImageId'],
         'loras': (value['loras'].map(VideoLoraName_1.VideoLoraNameToJSON)),
     };

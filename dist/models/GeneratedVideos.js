@@ -37,7 +37,7 @@ function instanceOfGeneratedVideos(value) {
         return false;
     if (!('id' in value) || value['id'] === undefined)
         return false;
-    if (!('urls' in value) || value['urls'] === undefined)
+    if (!('url' in value) || value['url'] === undefined)
         return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined)
         return false;
@@ -53,6 +53,8 @@ function instanceOfGeneratedVideos(value) {
         return false;
     if (!('originalImageId' in value) || value['originalImageId'] === undefined)
         return false;
+    if (!('originalImageUrl' in value) || value['originalImageUrl'] === undefined)
+        return false;
     return true;
 }
 function GeneratedVideosFromJSON(json) {
@@ -65,7 +67,7 @@ function GeneratedVideosFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'type': json['type'],
         'id': json['id'],
-        'urls': json['urls'],
+        'url': json['url'],
         'createdAt': (new Date(json['created_at'])),
         'chatbot': (0, ChatbotPreview_1.ChatbotPreviewFromJSON)(json['chatbot']),
         'postDetails': json['post_details'] == null ? undefined : (0, PostDetails_1.PostDetailsFromJSON)(json['post_details']),
@@ -74,6 +76,7 @@ function GeneratedVideosFromJSONTyped(json, ignoreDiscriminator) {
         'generationId': json['generation_id'],
         'seenByUser': json['seen_by_user'],
         'originalImageId': json['original_image_id'],
+        'originalImageUrl': json['original_image_url'],
     };
 }
 function GeneratedVideosToJSON(json) {
@@ -86,7 +89,7 @@ function GeneratedVideosToJSONTyped(value, ignoreDiscriminator = false) {
     return {
         'type': value['type'],
         'id': value['id'],
-        'urls': value['urls'],
+        'url': value['url'],
         'created_at': ((value['createdAt']).toISOString()),
         'chatbot': (0, ChatbotPreview_1.ChatbotPreviewToJSON)(value['chatbot']),
         'post_details': (0, PostDetails_1.PostDetailsToJSON)(value['postDetails']),
@@ -95,6 +98,7 @@ function GeneratedVideosToJSONTyped(value, ignoreDiscriminator = false) {
         'generation_id': value['generationId'],
         'seen_by_user': value['seenByUser'],
         'original_image_id': value['originalImageId'],
+        'original_image_url': value['originalImageUrl'],
     };
 }
 //# sourceMappingURL=GeneratedVideos.js.map

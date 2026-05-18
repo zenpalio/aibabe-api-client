@@ -9,9 +9,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { StoryCounts } from './StoryCounts';
 import type { ArtStyle } from './ArtStyle';
 import type { ChatbotPreview } from './ChatbotPreview';
 import type { PostDetails } from './PostDetails';
+import type { StoryVisibility } from './StoryVisibility';
 import type { VideoGenerationStatus } from './VideoGenerationStatus';
 /**
  *
@@ -33,10 +35,10 @@ export interface GetGalleryResponseItemsInner {
     id: string;
     /**
      *
-     * @type {Array<string>}
+     * @type {string}
      * @memberof GetGalleryResponseItemsInner
      */
-    urls: Array<string>;
+    url: string;
     /**
      *
      * @type {Date}
@@ -55,12 +57,6 @@ export interface GetGalleryResponseItemsInner {
      * @memberof GetGalleryResponseItemsInner
      */
     postDetails?: PostDetails;
-    /**
-     *
-     * @type {Array<string>}
-     * @memberof GetGalleryResponseItemsInner
-     */
-    imageIds: Array<string>;
     /**
      *
      * @type {string}
@@ -97,6 +93,48 @@ export interface GetGalleryResponseItemsInner {
      * @memberof GetGalleryResponseItemsInner
      */
     originalImageId: string;
+    /**
+     *
+     * @type {string}
+     * @memberof GetGalleryResponseItemsInner
+     */
+    originalImageUrl: string;
+    /**
+     *
+     * @type {string}
+     * @memberof GetGalleryResponseItemsInner
+     */
+    ownerId: string;
+    /**
+     *
+     * @type {string}
+     * @memberof GetGalleryResponseItemsInner
+     */
+    title: string;
+    /**
+     *
+     * @type {string}
+     * @memberof GetGalleryResponseItemsInner
+     */
+    description?: string;
+    /**
+     *
+     * @type {string}
+     * @memberof GetGalleryResponseItemsInner
+     */
+    coverImage?: string;
+    /**
+     *
+     * @type {StoryVisibility}
+     * @memberof GetGalleryResponseItemsInner
+     */
+    visibility: StoryVisibility;
+    /**
+     *
+     * @type {StoryCounts}
+     * @memberof GetGalleryResponseItemsInner
+     */
+    counts: StoryCounts;
 }
 /**
  * @export
@@ -104,6 +142,7 @@ export interface GetGalleryResponseItemsInner {
 export declare const GetGalleryResponseItemsInnerTypeEnum: {
     readonly GeneratedImages: "generatedImages";
     readonly GeneratedVideos: "generatedVideos";
+    readonly Stories: "stories";
 };
 export type GetGalleryResponseItemsInnerTypeEnum = typeof GetGalleryResponseItemsInnerTypeEnum[keyof typeof GetGalleryResponseItemsInnerTypeEnum];
 /**
