@@ -24,7 +24,7 @@ export interface StoryCreatorCreateEpisodeRequest {
      * @type {string}
      * @memberof StoryCreatorCreateEpisodeRequest
      */
-    title: string;
+    title?: string | null;
     /**
      * 
      * @type {string}
@@ -49,7 +49,6 @@ export interface StoryCreatorCreateEpisodeRequest {
  * Check if a given object implements the StoryCreatorCreateEpisodeRequest interface.
  */
 export function instanceOfStoryCreatorCreateEpisodeRequest(value: object): value is StoryCreatorCreateEpisodeRequest {
-    if (!('title' in value) || value['title'] === undefined) return false;
     return true;
 }
 
@@ -63,7 +62,7 @@ export function StoryCreatorCreateEpisodeRequestFromJSONTyped(json: any, ignoreD
     }
     return {
         
-        'title': json['title'],
+        'title': json['title'] == null ? undefined : json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
         'lockAfter': json['lock_after'] == null ? undefined : json['lock_after'],

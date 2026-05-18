@@ -26,8 +26,6 @@ const StoryCreatorEpisode_1 = require("./StoryCreatorEpisode");
  * Check if a given object implements the StoryCreatorStoryWithEpisodes interface.
  */
 function instanceOfStoryCreatorStoryWithEpisodes(value) {
-    if (!('title' in value) || value['title'] === undefined)
-        return false;
     if (!('id' in value) || value['id'] === undefined)
         return false;
     if (!('ownerId' in value) || value['ownerId'] === undefined)
@@ -48,7 +46,7 @@ function StoryCreatorStoryWithEpisodesFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
-        'title': json['title'],
+        'title': json['title'] == null ? undefined : json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
         'id': json['id'],

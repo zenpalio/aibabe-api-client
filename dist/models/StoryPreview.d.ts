@@ -35,7 +35,7 @@ export interface StoryPreview {
      * @type {string}
      * @memberof StoryPreview
      */
-    title: string;
+    title: string | null;
     /**
      *
      * @type {string}
@@ -48,6 +48,12 @@ export interface StoryPreview {
      * @memberof StoryPreview
      */
     coverImage?: string | null;
+    /**
+     *
+     * @type {number}
+     * @memberof StoryPreview
+     */
+    rating?: number | null;
     /**
      *
      * @type {PublicUserPreviewWithFollow}

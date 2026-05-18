@@ -131,6 +131,12 @@ export interface GetGalleryResponseItemsInner {
     visibility: StoryVisibility;
     /**
      *
+     * @type {number}
+     * @memberof GetGalleryResponseItemsInner
+     */
+    rating?: number;
+    /**
+     *
      * @type {StoryCounts}
      * @memberof GetGalleryResponseItemsInner
      */

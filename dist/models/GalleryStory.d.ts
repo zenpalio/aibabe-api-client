@@ -40,7 +40,7 @@ export interface GalleryStory {
      * @type {string}
      * @memberof GalleryStory
      */
-    title: string;
+    title: string | null;
     /**
      *
      * @type {string}
@@ -65,6 +65,12 @@ export interface GalleryStory {
      * @memberof GalleryStory
      */
     visibility: StoryVisibility;
+    /**
+     *
+     * @type {number}
+     * @memberof GalleryStory
+     */
+    rating?: number | null;
     /**
      *
      * @type {StoryCounts}

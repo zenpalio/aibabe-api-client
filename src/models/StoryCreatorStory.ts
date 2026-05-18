@@ -46,7 +46,7 @@ export interface StoryCreatorStory {
      * @type {string}
      * @memberof StoryCreatorStory
      */
-    title: string;
+    title?: string | null;
     /**
      * 
      * @type {string}
@@ -109,7 +109,6 @@ export interface StoryCreatorStory {
  * Check if a given object implements the StoryCreatorStory interface.
  */
 export function instanceOfStoryCreatorStory(value: object): value is StoryCreatorStory {
-    if (!('title' in value) || value['title'] === undefined) return false;
     if (!('id' in value) || value['id'] === undefined) return false;
     if (!('ownerId' in value) || value['ownerId'] === undefined) return false;
     if (!('visibility' in value) || value['visibility'] === undefined) return false;
@@ -127,7 +126,7 @@ export function StoryCreatorStoryFromJSONTyped(json: any, ignoreDiscriminator: b
     }
     return {
         
-        'title': json['title'],
+        'title': json['title'] == null ? undefined : json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
         'id': json['id'],

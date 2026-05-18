@@ -32,7 +32,7 @@ export interface StoryCreatorSaveEpisodeRequest {
      * @type {string}
      * @memberof StoryCreatorSaveEpisodeRequest
      */
-    title: string;
+    title?: string | null;
     /**
      * 
      * @type {string}
@@ -63,7 +63,6 @@ export interface StoryCreatorSaveEpisodeRequest {
  * Check if a given object implements the StoryCreatorSaveEpisodeRequest interface.
  */
 export function instanceOfStoryCreatorSaveEpisodeRequest(value: object): value is StoryCreatorSaveEpisodeRequest {
-    if (!('title' in value) || value['title'] === undefined) return false;
     if (!('panels' in value) || value['panels'] === undefined) return false;
     return true;
 }
@@ -78,7 +77,7 @@ export function StoryCreatorSaveEpisodeRequestFromJSONTyped(json: any, ignoreDis
     }
     return {
         
-        'title': json['title'],
+        'title': json['title'] == null ? undefined : json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
         'lockAfter': json['lock_after'] == null ? undefined : json['lock_after'],

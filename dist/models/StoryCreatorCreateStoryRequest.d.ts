@@ -21,7 +21,7 @@ export interface StoryCreatorCreateStoryRequest {
      * @type {string}
      * @memberof StoryCreatorCreateStoryRequest
      */
-    title: string;
+    title?: string | null;
     /**
      *
      * @type {string}
@@ -52,12 +52,6 @@ export interface StoryCreatorCreateStoryRequest {
      * @memberof StoryCreatorCreateStoryRequest
      */
     mainCharacterDisplayName: string;
-    /**
-     *
-     * @type {string}
-     * @memberof StoryCreatorCreateStoryRequest
-     */
-    userDisplayName?: string;
 }
 /**
  * Check if a given object implements the StoryCreatorCreateStoryRequest interface.

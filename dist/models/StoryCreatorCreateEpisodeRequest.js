@@ -22,8 +22,6 @@ exports.StoryCreatorCreateEpisodeRequestToJSONTyped = StoryCreatorCreateEpisodeR
  * Check if a given object implements the StoryCreatorCreateEpisodeRequest interface.
  */
 function instanceOfStoryCreatorCreateEpisodeRequest(value) {
-    if (!('title' in value) || value['title'] === undefined)
-        return false;
     return true;
 }
 function StoryCreatorCreateEpisodeRequestFromJSON(json) {
@@ -34,7 +32,7 @@ function StoryCreatorCreateEpisodeRequestFromJSONTyped(json, ignoreDiscriminator
         return json;
     }
     return {
-        'title': json['title'],
+        'title': json['title'] == null ? undefined : json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
         'lockAfter': json['lock_after'] == null ? undefined : json['lock_after'],

@@ -21,7 +21,7 @@ export interface StoryCreatorSaveEpisodeRequest {
      * @type {string}
      * @memberof StoryCreatorSaveEpisodeRequest
      */
-    title: string;
+    title?: string | null;
     /**
      *
      * @type {string}

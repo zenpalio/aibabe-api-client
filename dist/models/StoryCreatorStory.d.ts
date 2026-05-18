@@ -23,7 +23,7 @@ export interface StoryCreatorStory {
      * @type {string}
      * @memberof StoryCreatorStory
      */
-    title: string;
+    title?: string | null;
     /**
      *
      * @type {string}

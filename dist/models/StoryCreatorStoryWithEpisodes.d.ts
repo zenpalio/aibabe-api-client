@@ -24,7 +24,7 @@ export interface StoryCreatorStoryWithEpisodes {
      * @type {string}
      * @memberof StoryCreatorStoryWithEpisodes
      */
-    title: string;
+    title?: string | null;
     /**
      *
      * @type {string}

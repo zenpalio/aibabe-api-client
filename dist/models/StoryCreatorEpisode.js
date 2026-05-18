@@ -27,8 +27,6 @@ const AccessType_1 = require("./AccessType");
  * Check if a given object implements the StoryCreatorEpisode interface.
  */
 function instanceOfStoryCreatorEpisode(value) {
-    if (!('title' in value) || value['title'] === undefined)
-        return false;
     if (!('episodeId' in value) || value['episodeId'] === undefined)
         return false;
     if (!('visibility' in value) || value['visibility'] === undefined)
@@ -49,7 +47,7 @@ function StoryCreatorEpisodeFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
-        'title': json['title'],
+        'title': json['title'] == null ? undefined : json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
         'lockAfter': json['lock_after'] == null ? undefined : json['lock_after'],

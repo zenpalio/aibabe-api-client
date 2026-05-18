@@ -23,8 +23,6 @@ const StoryCreatorEpisodeBase_1 = require("./StoryCreatorEpisodeBase");
  * Check if a given object implements the StoryCreatorCreateStoryRequest interface.
  */
 function instanceOfStoryCreatorCreateStoryRequest(value) {
-    if (!('title' in value) || value['title'] === undefined)
-        return false;
     if (!('firstEpisode' in value) || value['firstEpisode'] === undefined)
         return false;
     if (!('mainCharacterChatbotId' in value) || value['mainCharacterChatbotId'] === undefined)
@@ -41,13 +39,12 @@ function StoryCreatorCreateStoryRequestFromJSONTyped(json, ignoreDiscriminator) 
         return json;
     }
     return {
-        'title': json['title'],
+        'title': json['title'] == null ? undefined : json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
         'firstEpisode': (0, StoryCreatorEpisodeBase_1.StoryCreatorEpisodeBaseFromJSON)(json['first_episode']),
         'mainCharacterChatbotId': json['main_character_chatbot_id'],
         'mainCharacterDisplayName': json['main_character_display_name'],
-        'userDisplayName': json['user_display_name'] == null ? undefined : json['user_display_name'],
     };
 }
 function StoryCreatorCreateStoryRequestToJSON(json) {
@@ -64,7 +61,6 @@ function StoryCreatorCreateStoryRequestToJSONTyped(value, ignoreDiscriminator = 
         'first_episode': (0, StoryCreatorEpisodeBase_1.StoryCreatorEpisodeBaseToJSON)(value['firstEpisode']),
         'main_character_chatbot_id': value['mainCharacterChatbotId'],
         'main_character_display_name': value['mainCharacterDisplayName'],
-        'user_display_name': value['userDisplayName'],
     };
 }
 //# sourceMappingURL=StoryCreatorCreateStoryRequest.js.map
