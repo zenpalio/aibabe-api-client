@@ -266,6 +266,27 @@ class ChatApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * Get Assistant Prompt
+     */
+    async getAssistantPromptChatAssistantPromptGetRaw(initOverrides) {
+        const queryParameters = {};
+        const headerParameters = {};
+        const response = await this.request({
+            path: `/chat/assistant-prompt`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetAssistantPromptResponseFromJSON)(jsonValue));
+    }
+    /**
+     * Get Assistant Prompt
+     */
+    async getAssistantPromptChatAssistantPromptGet(initOverrides) {
+        const response = await this.getAssistantPromptChatAssistantPromptGetRaw(initOverrides);
+        return await response.value();
+    }
+    /**
      * Get Image Moderation Prompt
      */
     async getImageModerationPromptChatImageModerationPromptGetRaw(initOverrides) {
@@ -345,6 +366,37 @@ class ChatApi extends runtime.BaseAPI {
      */
     async resetConversationChatConversationConversationIdResetPost(requestParameters, initOverrides) {
         const response = await this.resetConversationChatConversationConversationIdResetPostRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * Update Assistant Prompt
+     */
+    async updateAssistantPromptChatAssistantPromptPatchRaw(requestParameters, initOverrides) {
+        if (requestParameters['patchAssistantPromptRequest'] == null) {
+            throw new runtime.RequiredError('patchAssistantPromptRequest', 'Required parameter "patchAssistantPromptRequest" was null or undefined when calling updateAssistantPromptChatAssistantPromptPatch().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        const response = await this.request({
+            path: `/chat/assistant-prompt`,
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.PatchAssistantPromptRequestToJSON)(requestParameters['patchAssistantPromptRequest']),
+        }, initOverrides);
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse(response);
+        }
+        else {
+            return new runtime.TextApiResponse(response);
+        }
+    }
+    /**
+     * Update Assistant Prompt
+     */
+    async updateAssistantPromptChatAssistantPromptPatch(requestParameters, initOverrides) {
+        const response = await this.updateAssistantPromptChatAssistantPromptPatchRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**

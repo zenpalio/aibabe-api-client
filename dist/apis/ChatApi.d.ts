@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { ChatReponse, GetConversationMessagesResponse, GetConversationResponse, GetImageModerationPromptResponse, ListConversationsResponse, PatchChatMessageRequest, PatchImageModerationPromptRequest, PostChatRequest, PostConversationSettingsRequest } from '../models/index';
+import type { ChatReponse, GetAssistantPromptResponse, GetConversationMessagesResponse, GetConversationResponse, GetImageModerationPromptResponse, ListConversationsResponse, PatchAssistantPromptRequest, PatchChatMessageRequest, PatchImageModerationPromptRequest, PostChatRequest, PostConversationSettingsRequest } from '../models/index';
 export interface ChatChatChatbotIdPostRequest {
     chatbotId: string;
     postChatRequest: PostChatRequest;
@@ -49,6 +49,9 @@ export interface RegenerateChatChatbotIdMessageMessageIdRegeneratePostRequest {
 }
 export interface ResetConversationChatConversationConversationIdResetPostRequest {
     conversationId: string;
+}
+export interface UpdateAssistantPromptChatAssistantPromptPatchRequest {
+    patchAssistantPromptRequest: PatchAssistantPromptRequest;
 }
 export interface UpdateConversationSettingsChatConversationConversationIdSettingsPatchRequest {
     conversationId: string;
@@ -122,6 +125,14 @@ export declare class ChatApi extends runtime.BaseAPI {
      */
     generateImageOnMessageChatChatbotIdMessageRequestIdImagePost(requestParameters: GenerateImageOnMessageChatChatbotIdMessageRequestIdImagePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ChatReponse>;
     /**
+     * Get Assistant Prompt
+     */
+    getAssistantPromptChatAssistantPromptGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetAssistantPromptResponse>>;
+    /**
+     * Get Assistant Prompt
+     */
+    getAssistantPromptChatAssistantPromptGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetAssistantPromptResponse>;
+    /**
      * Get Image Moderation Prompt
      */
     getImageModerationPromptChatImageModerationPromptGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetImageModerationPromptResponse>>;
@@ -145,6 +156,14 @@ export declare class ChatApi extends runtime.BaseAPI {
      * Reset Conversation
      */
     resetConversationChatConversationConversationIdResetPost(requestParameters: ResetConversationChatConversationConversationIdResetPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
+    /**
+     * Update Assistant Prompt
+     */
+    updateAssistantPromptChatAssistantPromptPatchRaw(requestParameters: UpdateAssistantPromptChatAssistantPromptPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
+    /**
+     * Update Assistant Prompt
+     */
+    updateAssistantPromptChatAssistantPromptPatch(requestParameters: UpdateAssistantPromptChatAssistantPromptPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
     /**
      * Update Conversation Settings
      */
