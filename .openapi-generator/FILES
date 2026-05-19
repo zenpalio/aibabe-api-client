@@ -74,6 +74,7 @@ src/models/DonationNotification.ts
 src/models/EpisodeCounts.ts
 src/models/EpisodePanelType.ts
 src/models/EpisodePaymentType.ts
+src/models/EpisodeUnlockNotification.ts
 src/models/EpisodeVisibility.ts
 src/models/Ethnicity.ts
 src/models/ExceptionCode.ts

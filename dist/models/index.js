@@ -65,6 +65,7 @@ __exportStar(require("./DonationNotification"), exports);
 __exportStar(require("./EpisodeCounts"), exports);
 __exportStar(require("./EpisodePanelType"), exports);
 __exportStar(require("./EpisodePaymentType"), exports);
+__exportStar(require("./EpisodeUnlockNotification"), exports);
 __exportStar(require("./EpisodeVisibility"), exports);
 __exportStar(require("./Ethnicity"), exports);
 __exportStar(require("./ExceptionCode"), exports);

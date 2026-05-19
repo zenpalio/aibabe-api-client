@@ -14,6 +14,7 @@ import type { NotificationResponse } from '../models/index';
 export interface ClearNotificationsNotificationClearPatchRequest {
     postId?: string | null;
     donationId?: string | null;
+    episodeId?: string | null;
 }
 export interface GetNotificationsNotificationGetRequest {
     paginationToken?: string | null;

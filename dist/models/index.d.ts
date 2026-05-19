@@ -47,6 +47,7 @@ export * from './DonationNotification';
 export * from './EpisodeCounts';
 export * from './EpisodePanelType';
 export * from './EpisodePaymentType';
+export * from './EpisodeUnlockNotification';
 export * from './EpisodeVisibility';
 export * from './Ethnicity';
 export * from './ExceptionCode';

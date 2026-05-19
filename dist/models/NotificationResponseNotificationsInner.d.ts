@@ -85,6 +85,18 @@ export interface NotificationResponseNotificationsInner {
      * @memberof NotificationResponseNotificationsInner
      */
     message: string;
+    /**
+     *
+     * @type {string}
+     * @memberof NotificationResponseNotificationsInner
+     */
+    episodeId: string;
+    /**
+     *
+     * @type {string}
+     * @memberof NotificationResponseNotificationsInner
+     */
+    coverImage: string;
 }
 /**
  * Check if a given object implements the NotificationResponseNotificationsInner interface.
