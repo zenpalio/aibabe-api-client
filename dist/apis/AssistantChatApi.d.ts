@@ -14,6 +14,10 @@ import type { AssistantChatResponse, AssistantChatSessionDetail, CreateAssistant
 export interface CreateSessionAssistantChatSessionsPostRequest {
     createAssistantChatSessionRequest?: CreateAssistantChatSessionRequest;
 }
+export interface DeleteMessageAssistantChatSessionsSessionIdMessagesMessageIdDeleteRequest {
+    sessionId: string;
+    messageId: string;
+}
 export interface DeleteSessionAssistantChatSessionsSessionIdDeleteRequest {
     sessionId: string;
 }
@@ -45,6 +49,14 @@ export declare class AssistantChatApi extends runtime.BaseAPI {
      * Create Session
      */
     createSessionAssistantChatSessionsPost(requestParameters?: CreateSessionAssistantChatSessionsPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AssistantChatSessionDetail>;
+    /**
+     * Delete Message
+     */
+    deleteMessageAssistantChatSessionsSessionIdMessagesMessageIdDeleteRaw(requestParameters: DeleteMessageAssistantChatSessionsSessionIdMessagesMessageIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
+    /**
+     * Delete Message
+     */
+    deleteMessageAssistantChatSessionsSessionIdMessagesMessageIdDelete(requestParameters: DeleteMessageAssistantChatSessionsSessionIdMessagesMessageIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
     /**
      * Delete Session
      */

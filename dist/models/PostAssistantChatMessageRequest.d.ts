@@ -36,6 +36,12 @@ export interface PostAssistantChatMessageRequest {
     query: string;
     /**
      *
+     * @type {string}
+     * @memberof PostAssistantChatMessageRequest
+     */
+    episodeId?: string | null;
+    /**
+     *
      * @type {boolean}
      * @memberof PostAssistantChatMessageRequest
      */

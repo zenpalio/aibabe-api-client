@@ -47,6 +47,12 @@ export interface PostAssistantChatMessageRequest {
     query: string;
     /**
      * 
+     * @type {string}
+     * @memberof PostAssistantChatMessageRequest
+     */
+    episodeId?: string | null;
+    /**
+     * 
      * @type {boolean}
      * @memberof PostAssistantChatMessageRequest
      */
@@ -84,6 +90,7 @@ export function PostAssistantChatMessageRequestFromJSONTyped(json: any, ignoreDi
         'clientId': json['client_id'],
         'requestId': json['request_id'],
         'query': json['query'],
+        'episodeId': json['episode_id'] == null ? undefined : json['episode_id'],
         'debug': json['debug'] == null ? undefined : json['debug'],
         'route': json['route'] == null ? undefined : AssistantChatRouteFromJSON(json['route']),
     };
@@ -103,6 +110,7 @@ export function PostAssistantChatMessageRequestFromJSONTyped(json: any, ignoreDi
         'client_id': value['clientId'],
         'request_id': value['requestId'],
         'query': value['query'],
+        'episode_id': value['episodeId'],
         'debug': value['debug'],
         'route': AssistantChatRouteToJSON(value['route']),
     };

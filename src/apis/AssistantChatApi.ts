@@ -44,6 +44,11 @@ export interface CreateSessionAssistantChatSessionsPostRequest {
     createAssistantChatSessionRequest?: CreateAssistantChatSessionRequest;
 }
 
+export interface DeleteMessageAssistantChatSessionsSessionIdMessagesMessageIdDeleteRequest {
+    sessionId: string;
+    messageId: string;
+}
+
 export interface DeleteSessionAssistantChatSessionsSessionIdDeleteRequest {
     sessionId: string;
 }
@@ -99,6 +104,50 @@ export class AssistantChatApi extends runtime.BaseAPI {
      */
     async createSessionAssistantChatSessionsPost(requestParameters: CreateSessionAssistantChatSessionsPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AssistantChatSessionDetail> {
         const response = await this.createSessionAssistantChatSessionsPostRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Delete Message
+     */
+    async deleteMessageAssistantChatSessionsSessionIdMessagesMessageIdDeleteRaw(requestParameters: DeleteMessageAssistantChatSessionsSessionIdMessagesMessageIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
+        if (requestParameters['sessionId'] == null) {
+            throw new runtime.RequiredError(
+                'sessionId',
+                'Required parameter "sessionId" was null or undefined when calling deleteMessageAssistantChatSessionsSessionIdMessagesMessageIdDelete().'
+            );
+        }
+
+        if (requestParameters['messageId'] == null) {
+            throw new runtime.RequiredError(
+                'messageId',
+                'Required parameter "messageId" was null or undefined when calling deleteMessageAssistantChatSessionsSessionIdMessagesMessageIdDelete().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/assistant-chat/sessions/{session_id}/messages/{message_id}`.replace(`{${"session_id"}}`, encodeURIComponent(String(requestParameters['sessionId']))).replace(`{${"message_id"}}`, encodeURIComponent(String(requestParameters['messageId']))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse<any>(response);
+        } else {
+            return new runtime.TextApiResponse(response) as any;
+        }
+    }
+
+    /**
+     * Delete Message
+     */
+    async deleteMessageAssistantChatSessionsSessionIdMessagesMessageIdDelete(requestParameters: DeleteMessageAssistantChatSessionsSessionIdMessagesMessageIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
+        const response = await this.deleteMessageAssistantChatSessionsSessionIdMessagesMessageIdDeleteRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

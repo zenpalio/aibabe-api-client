@@ -77,6 +77,38 @@ class AssistantChatApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * Delete Message
+     */
+    async deleteMessageAssistantChatSessionsSessionIdMessagesMessageIdDeleteRaw(requestParameters, initOverrides) {
+        if (requestParameters['sessionId'] == null) {
+            throw new runtime.RequiredError('sessionId', 'Required parameter "sessionId" was null or undefined when calling deleteMessageAssistantChatSessionsSessionIdMessagesMessageIdDelete().');
+        }
+        if (requestParameters['messageId'] == null) {
+            throw new runtime.RequiredError('messageId', 'Required parameter "messageId" was null or undefined when calling deleteMessageAssistantChatSessionsSessionIdMessagesMessageIdDelete().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        const response = await this.request({
+            path: `/assistant-chat/sessions/{session_id}/messages/{message_id}`.replace(`{${"session_id"}}`, encodeURIComponent(String(requestParameters['sessionId']))).replace(`{${"message_id"}}`, encodeURIComponent(String(requestParameters['messageId']))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse(response);
+        }
+        else {
+            return new runtime.TextApiResponse(response);
+        }
+    }
+    /**
+     * Delete Message
+     */
+    async deleteMessageAssistantChatSessionsSessionIdMessagesMessageIdDelete(requestParameters, initOverrides) {
+        const response = await this.deleteMessageAssistantChatSessionsSessionIdMessagesMessageIdDeleteRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * Delete Session
      */
     async deleteSessionAssistantChatSessionsSessionIdDeleteRaw(requestParameters, initOverrides) {

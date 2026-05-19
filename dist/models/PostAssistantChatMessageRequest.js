@@ -42,6 +42,7 @@ function PostAssistantChatMessageRequestFromJSONTyped(json, ignoreDiscriminator)
         'clientId': json['client_id'],
         'requestId': json['request_id'],
         'query': json['query'],
+        'episodeId': json['episode_id'] == null ? undefined : json['episode_id'],
         'debug': json['debug'] == null ? undefined : json['debug'],
         'route': json['route'] == null ? undefined : (0, AssistantChatRoute_1.AssistantChatRouteFromJSON)(json['route']),
     };
@@ -57,6 +58,7 @@ function PostAssistantChatMessageRequestToJSONTyped(value, ignoreDiscriminator =
         'client_id': value['clientId'],
         'request_id': value['requestId'],
         'query': value['query'],
+        'episode_id': value['episodeId'],
         'debug': value['debug'],
         'route': (0, AssistantChatRoute_1.AssistantChatRouteToJSON)(value['route']),
     };
