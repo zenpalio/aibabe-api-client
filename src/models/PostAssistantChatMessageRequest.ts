@@ -50,6 +50,12 @@ export interface PostAssistantChatMessageRequest {
      * @type {string}
      * @memberof PostAssistantChatMessageRequest
      */
+    pagePath: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PostAssistantChatMessageRequest
+     */
     episodeId?: string | null;
     /**
      * 
@@ -74,6 +80,7 @@ export function instanceOfPostAssistantChatMessageRequest(value: object): value 
     if (!('clientId' in value) || value['clientId'] === undefined) return false;
     if (!('requestId' in value) || value['requestId'] === undefined) return false;
     if (!('query' in value) || value['query'] === undefined) return false;
+    if (!('pagePath' in value) || value['pagePath'] === undefined) return false;
     return true;
 }
 
@@ -90,6 +97,7 @@ export function PostAssistantChatMessageRequestFromJSONTyped(json: any, ignoreDi
         'clientId': json['client_id'],
         'requestId': json['request_id'],
         'query': json['query'],
+        'pagePath': json['page_path'],
         'episodeId': json['episode_id'] == null ? undefined : json['episode_id'],
         'debug': json['debug'] == null ? undefined : json['debug'],
         'route': json['route'] == null ? undefined : AssistantChatRouteFromJSON(json['route']),
@@ -110,6 +118,7 @@ export function PostAssistantChatMessageRequestFromJSONTyped(json: any, ignoreDi
         'client_id': value['clientId'],
         'request_id': value['requestId'],
         'query': value['query'],
+        'page_path': value['pagePath'],
         'episode_id': value['episodeId'],
         'debug': value['debug'],
         'route': AssistantChatRouteToJSON(value['route']),

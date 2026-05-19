@@ -39,6 +39,12 @@ export interface PostAssistantChatMessageRequest {
      * @type {string}
      * @memberof PostAssistantChatMessageRequest
      */
+    pagePath: string;
+    /**
+     *
+     * @type {string}
+     * @memberof PostAssistantChatMessageRequest
+     */
     episodeId?: string | null;
     /**
      *
