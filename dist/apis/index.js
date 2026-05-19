@@ -17,6 +17,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /* tslint:disable */
 /* eslint-disable */
 __exportStar(require("./AdminApi"), exports);
+__exportStar(require("./AssistantChatApi"), exports);
 __exportStar(require("./AuthenticationApi"), exports);
 __exportStar(require("./ChatApi"), exports);
 __exportStar(require("./ChatbotApi"), exports);
@@ -28,6 +29,7 @@ __exportStar(require("./MemoryApi"), exports);
 __exportStar(require("./NotificationApi"), exports);
 __exportStar(require("./PostApi"), exports);
 __exportStar(require("./ServerApi"), exports);
+__exportStar(require("./StoryCreatorApi"), exports);
 __exportStar(require("./SubscriptionsApi"), exports);
 __exportStar(require("./UserApi"), exports);
 __exportStar(require("./UtilitiesApi"), exports);

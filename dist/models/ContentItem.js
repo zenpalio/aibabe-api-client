@@ -18,7 +18,7 @@ exports.ContentItemFromJSON = ContentItemFromJSON;
 exports.ContentItemFromJSONTyped = ContentItemFromJSONTyped;
 exports.ContentItemToJSON = ContentItemToJSON;
 exports.ContentItemToJSONTyped = ContentItemToJSONTyped;
-const SharedContentType_1 = require("./SharedContentType");
+const ContentType_1 = require("./ContentType");
 /**
  * Check if a given object implements the ContentItem interface.
  */
@@ -38,7 +38,7 @@ function ContentItemFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'contentId': json['content_id'],
-        'contentType': (0, SharedContentType_1.SharedContentTypeFromJSON)(json['content_type']),
+        'contentType': (0, ContentType_1.ContentTypeFromJSON)(json['content_type']),
     };
 }
 function ContentItemToJSON(json) {
@@ -50,7 +50,7 @@ function ContentItemToJSONTyped(value, ignoreDiscriminator = false) {
     }
     return {
         'content_id': value['contentId'],
-        'content_type': (0, SharedContentType_1.SharedContentTypeToJSON)(value['contentType']),
+        'content_type': (0, ContentType_1.ContentTypeToJSON)(value['contentType']),
     };
 }
 //# sourceMappingURL=ContentItem.js.map

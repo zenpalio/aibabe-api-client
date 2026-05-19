@@ -48,6 +48,7 @@ var __importStar = (this && this.__importStar) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.VoiceApi = void 0;
 const runtime = __importStar(require("../runtime"));
+const index_1 = require("../models/index");
 /**
  *
  */
@@ -130,6 +131,58 @@ class VoiceApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * Generate Sound Effects
+     */
+    async generateSoundEffectsVoiceSfxPostRaw(requestParameters, initOverrides) {
+        if (requestParameters['soundEffectsRequest'] == null) {
+            throw new runtime.RequiredError('soundEffectsRequest', 'Required parameter "soundEffectsRequest" was null or undefined when calling generateSoundEffectsVoiceSfxPost().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        const response = await this.request({
+            path: `/voice/sfx`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.SoundEffectsRequestToJSON)(requestParameters['soundEffectsRequest']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SoundEffectResponseFromJSON)(jsonValue));
+    }
+    /**
+     * Generate Sound Effects
+     */
+    async generateSoundEffectsVoiceSfxPost(requestParameters, initOverrides) {
+        const response = await this.generateSoundEffectsVoiceSfxPostRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * Generate Text To Speech
+     */
+    async generateTextToSpeechVoiceTextToSpeechPostRaw(requestParameters, initOverrides) {
+        if (requestParameters['textToSpeechRequest'] == null) {
+            throw new runtime.RequiredError('textToSpeechRequest', 'Required parameter "textToSpeechRequest" was null or undefined when calling generateTextToSpeechVoiceTextToSpeechPost().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        const response = await this.request({
+            path: `/voice/text-to-speech`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.TextToSpeechRequestToJSON)(requestParameters['textToSpeechRequest']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.TextToSpeechResponseFromJSON)(jsonValue));
+    }
+    /**
+     * Generate Text To Speech
+     */
+    async generateTextToSpeechVoiceTextToSpeechPost(requestParameters, initOverrides) {
+        const response = await this.generateTextToSpeechVoiceTextToSpeechPostRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * Generate Voice Chat
      */
     async generateVoiceChatVoiceMessageMessageIdPostRaw(requestParameters, initOverrides) {
@@ -156,6 +209,57 @@ class VoiceApi extends runtime.BaseAPI {
      */
     async generateVoiceChatVoiceMessageMessageIdPost(requestParameters, initOverrides) {
         const response = await this.generateVoiceChatVoiceMessageMessageIdPostRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * Get Audio
+     */
+    async getAudioVoiceDetailsAudioIdGetRaw(requestParameters, initOverrides) {
+        if (requestParameters['audioId'] == null) {
+            throw new runtime.RequiredError('audioId', 'Required parameter "audioId" was null or undefined when calling getAudioVoiceDetailsAudioIdGet().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        const response = await this.request({
+            path: `/voice/details/{audio_id}`.replace(`{${"audio_id"}}`, encodeURIComponent(String(requestParameters['audioId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GeneratedAudioItemFromJSON)(jsonValue));
+    }
+    /**
+     * Get Audio
+     */
+    async getAudioVoiceDetailsAudioIdGet(requestParameters, initOverrides) {
+        const response = await this.getAudioVoiceDetailsAudioIdGetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * List Audio
+     */
+    async listAudioVoiceListGetRaw(requestParameters, initOverrides) {
+        const queryParameters = {};
+        if (requestParameters['paginationToken'] != null) {
+            queryParameters['pagination_token'] = requestParameters['paginationToken'];
+        }
+        if (requestParameters['limit'] != null) {
+            queryParameters['limit'] = requestParameters['limit'];
+        }
+        const headerParameters = {};
+        const response = await this.request({
+            path: `/voice/list`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetGeneratedAudioResponseFromJSON)(jsonValue));
+    }
+    /**
+     * List Audio
+     */
+    async listAudioVoiceListGet(requestParameters = {}, initOverrides) {
+        const response = await this.listAudioVoiceListGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
