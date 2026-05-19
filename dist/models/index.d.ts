@@ -5,6 +5,7 @@ export * from './AnimeLora';
 export * from './ArtStyle';
 export * from './AssistantChatMessageDetail';
 export * from './AssistantChatResponse';
+export * from './AssistantChatRoute';
 export * from './AssistantChatSessionDetail';
 export * from './AvatarLooks';
 export * from './AvatarLooksV2';

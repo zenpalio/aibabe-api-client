@@ -27,6 +27,8 @@ function instanceOfStoryCreatorCreateActorRequest(value) {
         return false;
     if (!('role' in value) || value['role'] === undefined)
         return false;
+    if (!('imageTags' in value) || value['imageTags'] === undefined)
+        return false;
     return true;
 }
 function StoryCreatorCreateActorRequestFromJSON(json) {
@@ -40,6 +42,7 @@ function StoryCreatorCreateActorRequestFromJSONTyped(json, ignoreDiscriminator) 
         'displayName': json['display_name'],
         'role': (0, ActorRole_1.ActorRoleFromJSON)(json['role']),
         'avatar': json['avatar'] == null ? undefined : json['avatar'],
+        'imageTags': json['image_tags'],
         'referenceAudioId': json['reference_audio_id'] == null ? undefined : json['reference_audio_id'],
     };
 }
@@ -54,6 +57,7 @@ function StoryCreatorCreateActorRequestToJSONTyped(value, ignoreDiscriminator = 
         'display_name': value['displayName'],
         'role': (0, ActorRole_1.ActorRoleToJSON)(value['role']),
         'avatar': value['avatar'],
+        'image_tags': value['imageTags'],
         'reference_audio_id': value['referenceAudioId'],
     };
 }

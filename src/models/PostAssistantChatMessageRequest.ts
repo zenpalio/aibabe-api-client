@@ -13,6 +13,14 @@
  */
 
 import { mapValues } from '../runtime';
+import type { AssistantChatRoute } from './AssistantChatRoute';
+import {
+    AssistantChatRouteFromJSON,
+    AssistantChatRouteFromJSONTyped,
+    AssistantChatRouteToJSON,
+    AssistantChatRouteToJSONTyped,
+} from './AssistantChatRoute';
+
 /**
  * 
  * @export
@@ -43,7 +51,15 @@ export interface PostAssistantChatMessageRequest {
      * @memberof PostAssistantChatMessageRequest
      */
     debug?: boolean | null;
+    /**
+     * Assistant chat backend route
+     * @type {AssistantChatRoute}
+     * @memberof PostAssistantChatMessageRequest
+     */
+    route?: AssistantChatRoute;
 }
+
+
 
 /**
  * Check if a given object implements the PostAssistantChatMessageRequest interface.
@@ -69,6 +85,7 @@ export function PostAssistantChatMessageRequestFromJSONTyped(json: any, ignoreDi
         'requestId': json['request_id'],
         'query': json['query'],
         'debug': json['debug'] == null ? undefined : json['debug'],
+        'route': json['route'] == null ? undefined : AssistantChatRouteFromJSON(json['route']),
     };
 }
 
@@ -87,6 +104,7 @@ export function PostAssistantChatMessageRequestFromJSONTyped(json: any, ignoreDi
         'request_id': value['requestId'],
         'query': value['query'],
         'debug': value['debug'],
+        'route': AssistantChatRouteToJSON(value['route']),
     };
 }
 

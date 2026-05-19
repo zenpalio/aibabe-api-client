@@ -50,6 +50,12 @@ export interface StoryCreatorCreateActorRequest {
      * @type {string}
      * @memberof StoryCreatorCreateActorRequest
      */
+    imageTags: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof StoryCreatorCreateActorRequest
+     */
     referenceAudioId?: string | null;
 }
 
@@ -61,6 +67,7 @@ export interface StoryCreatorCreateActorRequest {
 export function instanceOfStoryCreatorCreateActorRequest(value: object): value is StoryCreatorCreateActorRequest {
     if (!('displayName' in value) || value['displayName'] === undefined) return false;
     if (!('role' in value) || value['role'] === undefined) return false;
+    if (!('imageTags' in value) || value['imageTags'] === undefined) return false;
     return true;
 }
 
@@ -77,6 +84,7 @@ export function StoryCreatorCreateActorRequestFromJSONTyped(json: any, ignoreDis
         'displayName': json['display_name'],
         'role': ActorRoleFromJSON(json['role']),
         'avatar': json['avatar'] == null ? undefined : json['avatar'],
+        'imageTags': json['image_tags'],
         'referenceAudioId': json['reference_audio_id'] == null ? undefined : json['reference_audio_id'],
     };
 }
@@ -95,6 +103,7 @@ export function StoryCreatorCreateActorRequestFromJSONTyped(json: any, ignoreDis
         'display_name': value['displayName'],
         'role': ActorRoleToJSON(value['role']),
         'avatar': value['avatar'],
+        'image_tags': value['imageTags'],
         'reference_audio_id': value['referenceAudioId'],
     };
 }

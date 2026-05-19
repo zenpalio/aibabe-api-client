@@ -23,6 +23,7 @@ __exportStar(require("./AnimeLora"), exports);
 __exportStar(require("./ArtStyle"), exports);
 __exportStar(require("./AssistantChatMessageDetail"), exports);
 __exportStar(require("./AssistantChatResponse"), exports);
+__exportStar(require("./AssistantChatRoute"), exports);
 __exportStar(require("./AssistantChatSessionDetail"), exports);
 __exportStar(require("./AvatarLooks"), exports);
 __exportStar(require("./AvatarLooksV2"), exports);

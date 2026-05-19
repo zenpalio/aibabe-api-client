@@ -36,6 +36,12 @@ export interface StoryCreatorUpdateActorRequest {
      * @type {string}
      * @memberof StoryCreatorUpdateActorRequest
      */
+    imageTags?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof StoryCreatorUpdateActorRequest
+     */
     referenceAudioId?: string | null;
 }
 
@@ -58,6 +64,7 @@ export function StoryCreatorUpdateActorRequestFromJSONTyped(json: any, ignoreDis
         
         'displayName': json['display_name'] == null ? undefined : json['display_name'],
         'avatar': json['avatar'] == null ? undefined : json['avatar'],
+        'imageTags': json['image_tags'] == null ? undefined : json['image_tags'],
         'referenceAudioId': json['reference_audio_id'] == null ? undefined : json['reference_audio_id'],
     };
 }
@@ -75,6 +82,7 @@ export function StoryCreatorUpdateActorRequestFromJSONTyped(json: any, ignoreDis
         
         'display_name': value['displayName'],
         'avatar': value['avatar'],
+        'image_tags': value['imageTags'],
         'reference_audio_id': value['referenceAudioId'],
     };
 }

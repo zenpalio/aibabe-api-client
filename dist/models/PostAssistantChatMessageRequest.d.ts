@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { AssistantChatRoute } from './AssistantChatRoute';
 /**
  *
  * @export
@@ -39,6 +40,12 @@ export interface PostAssistantChatMessageRequest {
      * @memberof PostAssistantChatMessageRequest
      */
     debug?: boolean | null;
+    /**
+     * Assistant chat backend route
+     * @type {AssistantChatRoute}
+     * @memberof PostAssistantChatMessageRequest
+     */
+    route?: AssistantChatRoute;
 }
 /**
  * Check if a given object implements the PostAssistantChatMessageRequest interface.

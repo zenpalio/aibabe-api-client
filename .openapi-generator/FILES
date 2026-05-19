@@ -32,6 +32,7 @@ src/models/AnimeLora.ts
 src/models/ArtStyle.ts
 src/models/AssistantChatMessageDetail.ts
 src/models/AssistantChatResponse.ts
+src/models/AssistantChatRoute.ts
 src/models/AssistantChatSessionDetail.ts
 src/models/AvatarLooks.ts
 src/models/AvatarLooksV2.ts

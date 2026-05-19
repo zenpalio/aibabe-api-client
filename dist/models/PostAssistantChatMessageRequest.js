@@ -18,6 +18,7 @@ exports.PostAssistantChatMessageRequestFromJSON = PostAssistantChatMessageReques
 exports.PostAssistantChatMessageRequestFromJSONTyped = PostAssistantChatMessageRequestFromJSONTyped;
 exports.PostAssistantChatMessageRequestToJSON = PostAssistantChatMessageRequestToJSON;
 exports.PostAssistantChatMessageRequestToJSONTyped = PostAssistantChatMessageRequestToJSONTyped;
+const AssistantChatRoute_1 = require("./AssistantChatRoute");
 /**
  * Check if a given object implements the PostAssistantChatMessageRequest interface.
  */
@@ -42,6 +43,7 @@ function PostAssistantChatMessageRequestFromJSONTyped(json, ignoreDiscriminator)
         'requestId': json['request_id'],
         'query': json['query'],
         'debug': json['debug'] == null ? undefined : json['debug'],
+        'route': json['route'] == null ? undefined : (0, AssistantChatRoute_1.AssistantChatRouteFromJSON)(json['route']),
     };
 }
 function PostAssistantChatMessageRequestToJSON(json) {
@@ -56,6 +58,7 @@ function PostAssistantChatMessageRequestToJSONTyped(value, ignoreDiscriminator =
         'request_id': value['requestId'],
         'query': value['query'],
         'debug': value['debug'],
+        'route': (0, AssistantChatRoute_1.AssistantChatRouteToJSON)(value['route']),
     };
 }
 //# sourceMappingURL=PostAssistantChatMessageRequest.js.map
