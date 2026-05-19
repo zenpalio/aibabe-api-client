@@ -34,6 +34,13 @@ import {
     UserEpisodeProgressTypeToJSON,
     UserEpisodeProgressTypeToJSONTyped,
 } from './UserEpisodeProgressType';
+import type { StoryRating } from './StoryRating';
+import {
+    StoryRatingFromJSON,
+    StoryRatingFromJSONTyped,
+    StoryRatingToJSON,
+    StoryRatingToJSONTyped,
+} from './StoryRating';
 
 /**
  * 
@@ -67,10 +74,10 @@ export interface StoryPreview {
     coverImage?: string | null;
     /**
      * 
-     * @type {number}
+     * @type {StoryRating}
      * @memberof StoryPreview
      */
-    rating?: number | null;
+    rating?: StoryRating | null;
     /**
      * 
      * @type {PublicUserPreviewWithFollow}
@@ -117,7 +124,7 @@ export function StoryPreviewFromJSONTyped(json: any, ignoreDiscriminator: boolea
         'title': json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
-        'rating': json['rating'] == null ? undefined : json['rating'],
+        'rating': json['rating'] == null ? undefined : StoryRatingFromJSON(json['rating']),
         'owner': json['owner'] == null ? undefined : PublicUserPreviewWithFollowFromJSON(json['owner']),
         'counts': StoryCountsFromJSON(json['counts']),
         'progress': json['progress'] == null ? undefined : UserEpisodeProgressTypeFromJSON(json['progress']),
@@ -139,7 +146,7 @@ export function StoryPreviewFromJSONTyped(json: any, ignoreDiscriminator: boolea
         'title': value['title'],
         'description': value['description'],
         'cover_image': value['coverImage'],
-        'rating': value['rating'],
+        'rating': StoryRatingToJSON(value['rating']),
         'owner': PublicUserPreviewWithFollowToJSON(value['owner']),
         'counts': StoryCountsToJSON(value['counts']),
         'progress': UserEpisodeProgressTypeToJSON(value['progress']),

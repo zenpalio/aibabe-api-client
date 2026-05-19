@@ -22,6 +22,7 @@ const UserEpisodeProgressType_1 = require("./UserEpisodeProgressType");
 const StoryCreatorEpisodePrice_1 = require("./StoryCreatorEpisodePrice");
 const EpisodeCounts_1 = require("./EpisodeCounts");
 const EpisodeVisibility_1 = require("./EpisodeVisibility");
+const EpisodeRating_1 = require("./EpisodeRating");
 const AccessType_1 = require("./AccessType");
 /**
  * Check if a given object implements the StoryCreatorEpisode interface.
@@ -56,7 +57,7 @@ function StoryCreatorEpisodeFromJSONTyped(json, ignoreDiscriminator) {
         'visibility': (0, EpisodeVisibility_1.EpisodeVisibilityFromJSON)(json['visibility']),
         'episodeIndex': json['episode_index'],
         'panelsCount': json['panels_count'],
-        'rating': json['rating'] == null ? undefined : json['rating'],
+        'rating': json['rating'] == null ? undefined : (0, EpisodeRating_1.EpisodeRatingFromJSON)(json['rating']),
         'accessType': json['access_type'] == null ? undefined : (0, AccessType_1.AccessTypeFromJSON)(json['access_type']),
         'progress': json['progress'] == null ? undefined : (0, UserEpisodeProgressType_1.UserEpisodeProgressTypeFromJSON)(json['progress']),
         'prices': json['prices'] == null ? undefined : (json['prices'].map(StoryCreatorEpisodePrice_1.StoryCreatorEpisodePriceFromJSON)),
@@ -80,7 +81,7 @@ function StoryCreatorEpisodeToJSONTyped(value, ignoreDiscriminator = false) {
         'visibility': (0, EpisodeVisibility_1.EpisodeVisibilityToJSON)(value['visibility']),
         'episode_index': value['episodeIndex'],
         'panels_count': value['panelsCount'],
-        'rating': value['rating'],
+        'rating': (0, EpisodeRating_1.EpisodeRatingToJSON)(value['rating']),
         'access_type': (0, AccessType_1.AccessTypeToJSON)(value['accessType']),
         'progress': (0, UserEpisodeProgressType_1.UserEpisodeProgressTypeToJSON)(value['progress']),
         'prices': value['prices'] == null ? undefined : (value['prices'].map(StoryCreatorEpisodePrice_1.StoryCreatorEpisodePriceToJSON)),

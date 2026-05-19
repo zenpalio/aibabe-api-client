@@ -69,6 +69,13 @@ import {
     StoryVisibilityToJSON,
     StoryVisibilityToJSONTyped,
 } from './StoryVisibility';
+import type { StoryRating } from './StoryRating';
+import {
+    StoryRatingFromJSON,
+    StoryRatingFromJSONTyped,
+    StoryRatingToJSON,
+    StoryRatingToJSONTyped,
+} from './StoryRating';
 import type { VideoGenerationStatus } from './VideoGenerationStatus';
 import {
     VideoGenerationStatusFromJSON,
@@ -200,10 +207,10 @@ export interface GetGalleryResponseItemsInner {
     visibility: StoryVisibility;
     /**
      * 
-     * @type {number}
+     * @type {StoryRating}
      * @memberof GetGalleryResponseItemsInner
      */
-    rating?: number;
+    rating?: StoryRating;
     /**
      * 
      * @type {StoryCounts}
@@ -274,7 +281,7 @@ export function GetGalleryResponseItemsInnerFromJSONTyped(json: any, ignoreDiscr
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
         'visibility': StoryVisibilityFromJSON(json['visibility']),
-        'rating': json['rating'] == null ? undefined : json['rating'],
+        'rating': json['rating'] == null ? undefined : StoryRatingFromJSON(json['rating']),
         'counts': StoryCountsFromJSON(json['counts']),
     };
 }
@@ -308,7 +315,7 @@ export function GetGalleryResponseItemsInnerFromJSONTyped(json: any, ignoreDiscr
         'description': value['description'],
         'cover_image': value['coverImage'],
         'visibility': StoryVisibilityToJSON(value['visibility']),
-        'rating': value['rating'],
+        'rating': StoryRatingToJSON(value['rating']),
         'counts': StoryCountsToJSON(value['counts']),
     };
 }

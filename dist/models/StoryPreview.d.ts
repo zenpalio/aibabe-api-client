@@ -12,6 +12,7 @@
 import type { PublicUserPreviewWithFollow } from './PublicUserPreviewWithFollow';
 import type { StoryCounts } from './StoryCounts';
 import type { UserEpisodeProgressType } from './UserEpisodeProgressType';
+import type { StoryRating } from './StoryRating';
 /**
  *
  * @export
@@ -44,10 +45,10 @@ export interface StoryPreview {
     coverImage?: string | null;
     /**
      *
-     * @type {number}
+     * @type {StoryRating}
      * @memberof StoryPreview
      */
-    rating?: number | null;
+    rating?: StoryRating | null;
     /**
      *
      * @type {PublicUserPreviewWithFollow}

@@ -41,6 +41,13 @@ import {
     UserEpisodeProgressTypeToJSON,
     UserEpisodeProgressTypeToJSONTyped,
 } from './UserEpisodeProgressType';
+import type { StoryRating } from './StoryRating';
+import {
+    StoryRatingFromJSON,
+    StoryRatingFromJSONTyped,
+    StoryRatingToJSON,
+    StoryRatingToJSONTyped,
+} from './StoryRating';
 import type { StoryCreatorEpisode } from './StoryCreatorEpisode';
 import {
     StoryCreatorEpisodeFromJSON,
@@ -87,10 +94,10 @@ export interface StoryCreatorStoryWithEpisodes {
     owner: PublicUserPreviewWithFollow;
     /**
      * 
-     * @type {number}
+     * @type {StoryRating}
      * @memberof StoryCreatorStoryWithEpisodes
      */
-    rating?: number | null;
+    rating?: StoryRating | null;
     /**
      * 
      * @type {UserEpisodeProgressType}
@@ -152,7 +159,7 @@ export function StoryCreatorStoryWithEpisodesFromJSONTyped(json: any, ignoreDisc
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
         'id': json['id'],
         'owner': PublicUserPreviewWithFollowFromJSON(json['owner']),
-        'rating': json['rating'] == null ? undefined : json['rating'],
+        'rating': json['rating'] == null ? undefined : StoryRatingFromJSON(json['rating']),
         'progress': json['progress'] == null ? undefined : UserEpisodeProgressTypeFromJSON(json['progress']),
         'newerVersionExists': json['newer_version_exists'] == null ? undefined : json['newer_version_exists'],
         'visibility': StoryVisibilityFromJSON(json['visibility']),
@@ -177,7 +184,7 @@ export function StoryCreatorStoryWithEpisodesFromJSONTyped(json: any, ignoreDisc
         'cover_image': value['coverImage'],
         'id': value['id'],
         'owner': PublicUserPreviewWithFollowToJSON(value['owner']),
-        'rating': value['rating'],
+        'rating': StoryRatingToJSON(value['rating']),
         'progress': UserEpisodeProgressTypeToJSON(value['progress']),
         'newer_version_exists': value['newerVersionExists'],
         'visibility': StoryVisibilityToJSON(value['visibility']),

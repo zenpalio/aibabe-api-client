@@ -22,6 +22,7 @@ exports.GalleryStoryToJSONTyped = GalleryStoryToJSONTyped;
 const PublicUserPreviewWithFollow_1 = require("./PublicUserPreviewWithFollow");
 const StoryCounts_1 = require("./StoryCounts");
 const StoryVisibility_1 = require("./StoryVisibility");
+const StoryRating_1 = require("./StoryRating");
 /**
  * @export
  */
@@ -62,7 +63,7 @@ function GalleryStoryFromJSONTyped(json, ignoreDiscriminator) {
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
         'createdAt': (new Date(json['created_at'])),
         'visibility': (0, StoryVisibility_1.StoryVisibilityFromJSON)(json['visibility']),
-        'rating': json['rating'] == null ? undefined : json['rating'],
+        'rating': json['rating'] == null ? undefined : (0, StoryRating_1.StoryRatingFromJSON)(json['rating']),
         'counts': (0, StoryCounts_1.StoryCountsFromJSON)(json['counts']),
     };
 }
@@ -82,7 +83,7 @@ function GalleryStoryToJSONTyped(value, ignoreDiscriminator = false) {
         'cover_image': value['coverImage'],
         'created_at': ((value['createdAt']).toISOString()),
         'visibility': (0, StoryVisibility_1.StoryVisibilityToJSON)(value['visibility']),
-        'rating': value['rating'],
+        'rating': (0, StoryRating_1.StoryRatingToJSON)(value['rating']),
         'counts': (0, StoryCounts_1.StoryCountsToJSON)(value['counts']),
     };
 }

@@ -74,6 +74,7 @@ src/models/DonationNotification.ts
 src/models/EpisodeCounts.ts
 src/models/EpisodePanelType.ts
 src/models/EpisodePaymentType.ts
+src/models/EpisodeRating.ts
 src/models/EpisodeUnlockNotification.ts
 src/models/EpisodeVisibility.ts
 src/models/Ethnicity.ts
@@ -279,6 +280,7 @@ src/models/StoryCreatorUpdateEpisodeRequest.ts
 src/models/StoryCreatorUpdateEpisodeVisibilityRequest.ts
 src/models/StoryCreatorUpdateStoryRequest.ts
 src/models/StoryPreview.ts
+src/models/StoryRating.ts
 src/models/StoryVisibility.ts
 src/models/Subscription.ts
 src/models/SubscriptionModel.ts

@@ -41,6 +41,13 @@ import {
     EpisodeVisibilityToJSON,
     EpisodeVisibilityToJSONTyped,
 } from './EpisodeVisibility';
+import type { EpisodeRating } from './EpisodeRating';
+import {
+    EpisodeRatingFromJSON,
+    EpisodeRatingFromJSONTyped,
+    EpisodeRatingToJSON,
+    EpisodeRatingToJSONTyped,
+} from './EpisodeRating';
 import type { AccessType } from './AccessType';
 import {
     AccessTypeFromJSON,
@@ -111,10 +118,10 @@ export interface StoryCreatorEpisode {
     panelsCount: number;
     /**
      * 
-     * @type {number}
+     * @type {EpisodeRating}
      * @memberof StoryCreatorEpisode
      */
-    rating?: number | null;
+    rating?: EpisodeRating | null;
     /**
      * 
      * @type {AccessType}
@@ -174,7 +181,7 @@ export function StoryCreatorEpisodeFromJSONTyped(json: any, ignoreDiscriminator:
         'visibility': EpisodeVisibilityFromJSON(json['visibility']),
         'episodeIndex': json['episode_index'],
         'panelsCount': json['panels_count'],
-        'rating': json['rating'] == null ? undefined : json['rating'],
+        'rating': json['rating'] == null ? undefined : EpisodeRatingFromJSON(json['rating']),
         'accessType': json['access_type'] == null ? undefined : AccessTypeFromJSON(json['access_type']),
         'progress': json['progress'] == null ? undefined : UserEpisodeProgressTypeFromJSON(json['progress']),
         'prices': json['prices'] == null ? undefined : ((json['prices'] as Array<any>).map(StoryCreatorEpisodePriceFromJSON)),
@@ -202,7 +209,7 @@ export function StoryCreatorEpisodeFromJSONTyped(json: any, ignoreDiscriminator:
         'visibility': EpisodeVisibilityToJSON(value['visibility']),
         'episode_index': value['episodeIndex'],
         'panels_count': value['panelsCount'],
-        'rating': value['rating'],
+        'rating': EpisodeRatingToJSON(value['rating']),
         'access_type': AccessTypeToJSON(value['accessType']),
         'progress': UserEpisodeProgressTypeToJSON(value['progress']),
         'prices': value['prices'] == null ? undefined : ((value['prices'] as Array<any>).map(StoryCreatorEpisodePriceToJSON)),

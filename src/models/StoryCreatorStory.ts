@@ -41,6 +41,13 @@ import {
     UserEpisodeProgressTypeToJSON,
     UserEpisodeProgressTypeToJSONTyped,
 } from './UserEpisodeProgressType';
+import type { StoryRating } from './StoryRating';
+import {
+    StoryRatingFromJSON,
+    StoryRatingFromJSONTyped,
+    StoryRatingToJSON,
+    StoryRatingToJSONTyped,
+} from './StoryRating';
 
 /**
  * 
@@ -80,10 +87,10 @@ export interface StoryCreatorStory {
     owner: PublicUserPreviewWithFollow;
     /**
      * 
-     * @type {number}
+     * @type {StoryRating}
      * @memberof StoryCreatorStory
      */
-    rating?: number | null;
+    rating?: StoryRating | null;
     /**
      * 
      * @type {UserEpisodeProgressType}
@@ -138,7 +145,7 @@ export function StoryCreatorStoryFromJSONTyped(json: any, ignoreDiscriminator: b
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
         'id': json['id'],
         'owner': PublicUserPreviewWithFollowFromJSON(json['owner']),
-        'rating': json['rating'] == null ? undefined : json['rating'],
+        'rating': json['rating'] == null ? undefined : StoryRatingFromJSON(json['rating']),
         'progress': json['progress'] == null ? undefined : UserEpisodeProgressTypeFromJSON(json['progress']),
         'newerVersionExists': json['newer_version_exists'] == null ? undefined : json['newer_version_exists'],
         'visibility': StoryVisibilityFromJSON(json['visibility']),
@@ -162,7 +169,7 @@ export function StoryCreatorStoryFromJSONTyped(json: any, ignoreDiscriminator: b
         'cover_image': value['coverImage'],
         'id': value['id'],
         'owner': PublicUserPreviewWithFollowToJSON(value['owner']),
-        'rating': value['rating'],
+        'rating': StoryRatingToJSON(value['rating']),
         'progress': UserEpisodeProgressTypeToJSON(value['progress']),
         'newer_version_exists': value['newerVersionExists'],
         'visibility': StoryVisibilityToJSON(value['visibility']),

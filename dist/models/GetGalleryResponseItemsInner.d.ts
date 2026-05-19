@@ -15,6 +15,7 @@ import type { ArtStyle } from './ArtStyle';
 import type { ChatbotPreview } from './ChatbotPreview';
 import type { PostDetails } from './PostDetails';
 import type { StoryVisibility } from './StoryVisibility';
+import type { StoryRating } from './StoryRating';
 import type { VideoGenerationStatus } from './VideoGenerationStatus';
 /**
  *
@@ -132,10 +133,10 @@ export interface GetGalleryResponseItemsInner {
     visibility: StoryVisibility;
     /**
      *
-     * @type {number}
+     * @type {StoryRating}
      * @memberof GetGalleryResponseItemsInner
      */
-    rating?: number;
+    rating?: StoryRating;
     /**
      *
      * @type {StoryCounts}

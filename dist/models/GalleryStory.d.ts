@@ -12,6 +12,7 @@
 import type { PublicUserPreviewWithFollow } from './PublicUserPreviewWithFollow';
 import type { StoryCounts } from './StoryCounts';
 import type { StoryVisibility } from './StoryVisibility';
+import type { StoryRating } from './StoryRating';
 /**
  *
  * @export
@@ -68,10 +69,10 @@ export interface GalleryStory {
     visibility: StoryVisibility;
     /**
      *
-     * @type {number}
+     * @type {StoryRating}
      * @memberof GalleryStory
      */
-    rating?: number | null;
+    rating?: StoryRating | null;
     /**
      *
      * @type {StoryCounts}

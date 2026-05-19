@@ -25,6 +25,7 @@ const ArtStyle_1 = require("./ArtStyle");
 const ChatbotPreview_1 = require("./ChatbotPreview");
 const PostDetails_1 = require("./PostDetails");
 const StoryVisibility_1 = require("./StoryVisibility");
+const StoryRating_1 = require("./StoryRating");
 const VideoGenerationStatus_1 = require("./VideoGenerationStatus");
 /**
  * @export
@@ -96,7 +97,7 @@ function GetGalleryResponseItemsInnerFromJSONTyped(json, ignoreDiscriminator) {
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
         'visibility': (0, StoryVisibility_1.StoryVisibilityFromJSON)(json['visibility']),
-        'rating': json['rating'] == null ? undefined : json['rating'],
+        'rating': json['rating'] == null ? undefined : (0, StoryRating_1.StoryRatingFromJSON)(json['rating']),
         'counts': (0, StoryCounts_1.StoryCountsFromJSON)(json['counts']),
     };
 }
@@ -126,7 +127,7 @@ function GetGalleryResponseItemsInnerToJSONTyped(value, ignoreDiscriminator = fa
         'description': value['description'],
         'cover_image': value['coverImage'],
         'visibility': (0, StoryVisibility_1.StoryVisibilityToJSON)(value['visibility']),
-        'rating': value['rating'],
+        'rating': (0, StoryRating_1.StoryRatingToJSON)(value['rating']),
         'counts': (0, StoryCounts_1.StoryCountsToJSON)(value['counts']),
     };
 }

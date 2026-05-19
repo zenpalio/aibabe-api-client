@@ -13,6 +13,7 @@ import type { PublicUserPreviewWithFollow } from './PublicUserPreviewWithFollow'
 import type { StoryCounts } from './StoryCounts';
 import type { StoryVisibility } from './StoryVisibility';
 import type { UserEpisodeProgressType } from './UserEpisodeProgressType';
+import type { StoryRating } from './StoryRating';
 import type { StoryCreatorEpisode } from './StoryCreatorEpisode';
 /**
  *
@@ -52,10 +53,10 @@ export interface StoryCreatorStoryWithEpisodes {
     owner: PublicUserPreviewWithFollow;
     /**
      *
-     * @type {number}
+     * @type {StoryRating}
      * @memberof StoryCreatorStoryWithEpisodes
      */
-    rating?: number | null;
+    rating?: StoryRating | null;
     /**
      *
      * @type {UserEpisodeProgressType}

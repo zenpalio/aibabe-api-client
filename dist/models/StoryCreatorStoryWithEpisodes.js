@@ -22,6 +22,7 @@ const PublicUserPreviewWithFollow_1 = require("./PublicUserPreviewWithFollow");
 const StoryCounts_1 = require("./StoryCounts");
 const StoryVisibility_1 = require("./StoryVisibility");
 const UserEpisodeProgressType_1 = require("./UserEpisodeProgressType");
+const StoryRating_1 = require("./StoryRating");
 const StoryCreatorEpisode_1 = require("./StoryCreatorEpisode");
 /**
  * Check if a given object implements the StoryCreatorStoryWithEpisodes interface.
@@ -52,7 +53,7 @@ function StoryCreatorStoryWithEpisodesFromJSONTyped(json, ignoreDiscriminator) {
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
         'id': json['id'],
         'owner': (0, PublicUserPreviewWithFollow_1.PublicUserPreviewWithFollowFromJSON)(json['owner']),
-        'rating': json['rating'] == null ? undefined : json['rating'],
+        'rating': json['rating'] == null ? undefined : (0, StoryRating_1.StoryRatingFromJSON)(json['rating']),
         'progress': json['progress'] == null ? undefined : (0, UserEpisodeProgressType_1.UserEpisodeProgressTypeFromJSON)(json['progress']),
         'newerVersionExists': json['newer_version_exists'] == null ? undefined : json['newer_version_exists'],
         'visibility': (0, StoryVisibility_1.StoryVisibilityFromJSON)(json['visibility']),
@@ -73,7 +74,7 @@ function StoryCreatorStoryWithEpisodesToJSONTyped(value, ignoreDiscriminator = f
         'cover_image': value['coverImage'],
         'id': value['id'],
         'owner': (0, PublicUserPreviewWithFollow_1.PublicUserPreviewWithFollowToJSON)(value['owner']),
-        'rating': value['rating'],
+        'rating': (0, StoryRating_1.StoryRatingToJSON)(value['rating']),
         'progress': (0, UserEpisodeProgressType_1.UserEpisodeProgressTypeToJSON)(value['progress']),
         'newer_version_exists': value['newerVersionExists'],
         'visibility': (0, StoryVisibility_1.StoryVisibilityToJSON)(value['visibility']),
