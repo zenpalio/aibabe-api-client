@@ -21,7 +21,8 @@ export const NotificationType = {
     LikePost: 'like_post',
     Donation: 'donation',
     Follow: 'follow',
-    EpisodeUnlock: 'episode_unlock'
+    EpisodeUnlock: 'episode_unlock',
+    NewEpisode: 'new_episode'
 } as const;
 export type NotificationType = typeof NotificationType[keyof typeof NotificationType];
 

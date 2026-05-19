@@ -48,6 +48,13 @@ import {
     PostTypeToJSON,
     PostTypeToJSONTyped,
 } from './PostType';
+import type { NewEpisodeNotification } from './NewEpisodeNotification';
+import {
+    NewEpisodeNotificationFromJSON,
+    NewEpisodeNotificationFromJSONTyped,
+    NewEpisodeNotificationToJSON,
+    NewEpisodeNotificationToJSONTyped,
+} from './NewEpisodeNotification';
 import type { NotificationType } from './NotificationType';
 import {
     NotificationTypeFromJSON,

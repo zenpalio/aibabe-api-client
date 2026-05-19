@@ -158,6 +158,7 @@ src/models/ModelName.ts
 src/models/MuleRouterWanTaskError.ts
 src/models/MuleRouterWanTaskInfo.ts
 src/models/MuleRouterWanTaskResponse.ts
+src/models/NewEpisodeNotification.ts
 src/models/NotificationResponse.ts
 src/models/NotificationResponseNotificationsInner.ts
 src/models/NotificationType.ts

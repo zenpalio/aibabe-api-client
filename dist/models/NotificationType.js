@@ -27,7 +27,8 @@ exports.NotificationType = {
     LikePost: 'like_post',
     Donation: 'donation',
     Follow: 'follow',
-    EpisodeUnlock: 'episode_unlock'
+    EpisodeUnlock: 'episode_unlock',
+    NewEpisode: 'new_episode'
 };
 function instanceOfNotificationType(value) {
     for (const key in exports.NotificationType) {
