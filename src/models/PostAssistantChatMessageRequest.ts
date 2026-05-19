@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { EpisodeContent } from './EpisodeContent';
+import {
+    EpisodeContentFromJSON,
+    EpisodeContentFromJSONTyped,
+    EpisodeContentToJSON,
+    EpisodeContentToJSONTyped,
+} from './EpisodeContent';
 import type { AssistantChatRoute } from './AssistantChatRoute';
 import {
     AssistantChatRouteFromJSON,
@@ -59,6 +66,12 @@ export interface PostAssistantChatMessageRequest {
     episodeId?: string | null;
     /**
      * 
+     * @type {Array<EpisodeContent>}
+     * @memberof PostAssistantChatMessageRequest
+     */
+    episodeContent?: Array<EpisodeContent> | null;
+    /**
+     * 
      * @type {boolean}
      * @memberof PostAssistantChatMessageRequest
      */
@@ -99,6 +112,7 @@ export function PostAssistantChatMessageRequestFromJSONTyped(json: any, ignoreDi
         'query': json['query'],
         'pagePath': json['page_path'],
         'episodeId': json['episode_id'] == null ? undefined : json['episode_id'],
+        'episodeContent': json['episode_content'] == null ? undefined : ((json['episode_content'] as Array<any>).map(EpisodeContentFromJSON)),
         'debug': json['debug'] == null ? undefined : json['debug'],
         'route': json['route'] == null ? undefined : AssistantChatRouteFromJSON(json['route']),
     };
@@ -120,6 +134,7 @@ export function PostAssistantChatMessageRequestFromJSONTyped(json: any, ignoreDi
         'query': value['query'],
         'page_path': value['pagePath'],
         'episode_id': value['episodeId'],
+        'episode_content': value['episodeContent'] == null ? undefined : ((value['episodeContent'] as Array<any>).map(EpisodeContentToJSON)),
         'debug': value['debug'],
         'route': AssistantChatRouteToJSON(value['route']),
     };

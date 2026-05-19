@@ -46,6 +46,7 @@ export * from './DeleteBulkMemoryRequest';
 export * from './DeleteUserRequest';
 export * from './DetailedWallPost';
 export * from './DonationNotification';
+export * from './EpisodeContent';
 export * from './EpisodeCounts';
 export * from './EpisodePanelType';
 export * from './EpisodePaymentType';

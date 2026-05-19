@@ -62,6 +62,7 @@ __exportStar(require("./DeleteBulkMemoryRequest"), exports);
 __exportStar(require("./DeleteUserRequest"), exports);
 __exportStar(require("./DetailedWallPost"), exports);
 __exportStar(require("./DonationNotification"), exports);
+__exportStar(require("./EpisodeContent"), exports);
 __exportStar(require("./EpisodeCounts"), exports);
 __exportStar(require("./EpisodePanelType"), exports);
 __exportStar(require("./EpisodePaymentType"), exports);

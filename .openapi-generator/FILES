@@ -71,6 +71,7 @@ src/models/DeleteBulkMemoryRequest.ts
 src/models/DeleteUserRequest.ts
 src/models/DetailedWallPost.ts
 src/models/DonationNotification.ts
+src/models/EpisodeContent.ts
 src/models/EpisodeCounts.ts
 src/models/EpisodePanelType.ts
 src/models/EpisodePaymentType.ts

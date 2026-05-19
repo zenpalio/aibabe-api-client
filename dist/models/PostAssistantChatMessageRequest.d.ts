@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { EpisodeContent } from './EpisodeContent';
 import type { AssistantChatRoute } from './AssistantChatRoute';
 /**
  *
@@ -46,6 +47,12 @@ export interface PostAssistantChatMessageRequest {
      * @memberof PostAssistantChatMessageRequest
      */
     episodeId?: string | null;
+    /**
+     *
+     * @type {Array<EpisodeContent>}
+     * @memberof PostAssistantChatMessageRequest
+     */
+    episodeContent?: Array<EpisodeContent> | null;
     /**
      *
      * @type {boolean}
