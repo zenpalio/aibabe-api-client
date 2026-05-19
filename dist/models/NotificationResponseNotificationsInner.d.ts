@@ -96,6 +96,12 @@ export interface NotificationResponseNotificationsInner {
      * @type {string}
      * @memberof NotificationResponseNotificationsInner
      */
+    episodeTitle: string;
+    /**
+     *
+     * @type {string}
+     * @memberof NotificationResponseNotificationsInner
+     */
     coverImage: string;
 }
 /**

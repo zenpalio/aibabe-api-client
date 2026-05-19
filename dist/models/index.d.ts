@@ -131,6 +131,7 @@ export * from './ModelName';
 export * from './MuleRouterWanTaskError';
 export * from './MuleRouterWanTaskInfo';
 export * from './MuleRouterWanTaskResponse';
+export * from './NewEpisodeNotification';
 export * from './NotificationResponse';
 export * from './NotificationResponseNotificationsInner';
 export * from './NotificationType';

@@ -46,6 +46,8 @@ function instanceOfNotificationResponseNotificationsInner(value) {
         return false;
     if (!('episodeId' in value) || value['episodeId'] === undefined)
         return false;
+    if (!('episodeTitle' in value) || value['episodeTitle'] === undefined)
+        return false;
     if (!('coverImage' in value) || value['coverImage'] === undefined)
         return false;
     return true;
@@ -70,6 +72,7 @@ function NotificationResponseNotificationsInnerFromJSONTyped(json, ignoreDiscrim
         'tokens': json['tokens'],
         'message': json['message'],
         'episodeId': json['episode_id'],
+        'episodeTitle': json['episode_title'],
         'coverImage': json['cover_image'],
     };
 }
@@ -93,6 +96,7 @@ function NotificationResponseNotificationsInnerToJSONTyped(value, ignoreDiscrimi
         'tokens': value['tokens'],
         'message': value['message'],
         'episode_id': value['episodeId'],
+        'episode_title': value['episodeTitle'],
         'cover_image': value['coverImage'],
     };
 }

@@ -52,6 +52,12 @@ export interface EpisodeUnlockNotification {
      * @type {string}
      * @memberof EpisodeUnlockNotification
      */
+    episodeTitle: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof EpisodeUnlockNotification
+     */
     coverImage: string | null;
 }
 /**

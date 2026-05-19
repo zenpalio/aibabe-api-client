@@ -13,17 +13,17 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.instanceOfEpisodeUnlockNotification = instanceOfEpisodeUnlockNotification;
-exports.EpisodeUnlockNotificationFromJSON = EpisodeUnlockNotificationFromJSON;
-exports.EpisodeUnlockNotificationFromJSONTyped = EpisodeUnlockNotificationFromJSONTyped;
-exports.EpisodeUnlockNotificationToJSON = EpisodeUnlockNotificationToJSON;
-exports.EpisodeUnlockNotificationToJSONTyped = EpisodeUnlockNotificationToJSONTyped;
+exports.instanceOfNewEpisodeNotification = instanceOfNewEpisodeNotification;
+exports.NewEpisodeNotificationFromJSON = NewEpisodeNotificationFromJSON;
+exports.NewEpisodeNotificationFromJSONTyped = NewEpisodeNotificationFromJSONTyped;
+exports.NewEpisodeNotificationToJSON = NewEpisodeNotificationToJSON;
+exports.NewEpisodeNotificationToJSONTyped = NewEpisodeNotificationToJSONTyped;
 const PublicUserPreview_1 = require("./PublicUserPreview");
 const NotificationType_1 = require("./NotificationType");
 /**
- * Check if a given object implements the EpisodeUnlockNotification interface.
+ * Check if a given object implements the NewEpisodeNotification interface.
  */
-function instanceOfEpisodeUnlockNotification(value) {
+function instanceOfNewEpisodeNotification(value) {
     if (!('isRead' in value) || value['isRead'] === undefined)
         return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined)
@@ -36,10 +36,10 @@ function instanceOfEpisodeUnlockNotification(value) {
         return false;
     return true;
 }
-function EpisodeUnlockNotificationFromJSON(json) {
-    return EpisodeUnlockNotificationFromJSONTyped(json, false);
+function NewEpisodeNotificationFromJSON(json) {
+    return NewEpisodeNotificationFromJSONTyped(json, false);
 }
-function EpisodeUnlockNotificationFromJSONTyped(json, ignoreDiscriminator) {
+function NewEpisodeNotificationFromJSONTyped(json, ignoreDiscriminator) {
     if (json == null) {
         return json;
     }
@@ -53,10 +53,10 @@ function EpisodeUnlockNotificationFromJSONTyped(json, ignoreDiscriminator) {
         'coverImage': json['cover_image'],
     };
 }
-function EpisodeUnlockNotificationToJSON(json) {
-    return EpisodeUnlockNotificationToJSONTyped(json, false);
+function NewEpisodeNotificationToJSON(json) {
+    return NewEpisodeNotificationToJSONTyped(json, false);
 }
-function EpisodeUnlockNotificationToJSONTyped(value, ignoreDiscriminator = false) {
+function NewEpisodeNotificationToJSONTyped(value, ignoreDiscriminator = false) {
     if (value == null) {
         return value;
     }
@@ -70,4 +70,4 @@ function EpisodeUnlockNotificationToJSONTyped(value, ignoreDiscriminator = false
         'cover_image': value['coverImage'],
     };
 }
-//# sourceMappingURL=EpisodeUnlockNotification.js.map
+//# sourceMappingURL=NewEpisodeNotification.js.map

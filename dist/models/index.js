@@ -149,6 +149,7 @@ __exportStar(require("./ModelName"), exports);
 __exportStar(require("./MuleRouterWanTaskError"), exports);
 __exportStar(require("./MuleRouterWanTaskInfo"), exports);
 __exportStar(require("./MuleRouterWanTaskResponse"), exports);
+__exportStar(require("./NewEpisodeNotification"), exports);
 __exportStar(require("./NotificationResponse"), exports);
 __exportStar(require("./NotificationResponseNotificationsInner"), exports);
 __exportStar(require("./NotificationType"), exports);

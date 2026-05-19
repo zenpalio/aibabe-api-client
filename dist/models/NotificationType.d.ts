@@ -18,6 +18,7 @@ export declare const NotificationType: {
     readonly Donation: "donation";
     readonly Follow: "follow";
     readonly EpisodeUnlock: "episode_unlock";
+    readonly NewEpisode: "new_episode";
 };
 export type NotificationType = typeof NotificationType[keyof typeof NotificationType];
 export declare function instanceOfNotificationType(value: any): boolean;

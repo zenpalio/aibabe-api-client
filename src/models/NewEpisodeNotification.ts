@@ -31,49 +31,49 @@ import {
 /**
  * 
  * @export
- * @interface EpisodeUnlockNotification
+ * @interface NewEpisodeNotification
  */
-export interface EpisodeUnlockNotification {
+export interface NewEpisodeNotification {
     /**
      * 
      * @type {NotificationType}
-     * @memberof EpisodeUnlockNotification
+     * @memberof NewEpisodeNotification
      */
     notificationType?: NotificationType;
     /**
      * 
      * @type {boolean}
-     * @memberof EpisodeUnlockNotification
+     * @memberof NewEpisodeNotification
      */
     isRead: boolean;
     /**
      * 
      * @type {Date}
-     * @memberof EpisodeUnlockNotification
+     * @memberof NewEpisodeNotification
      */
     createdAt: Date;
     /**
      * 
      * @type {PublicUserPreview}
-     * @memberof EpisodeUnlockNotification
+     * @memberof NewEpisodeNotification
      */
     sender?: PublicUserPreview | null;
     /**
      * 
      * @type {string}
-     * @memberof EpisodeUnlockNotification
+     * @memberof NewEpisodeNotification
      */
     episodeId: string;
     /**
      * 
      * @type {string}
-     * @memberof EpisodeUnlockNotification
+     * @memberof NewEpisodeNotification
      */
     episodeTitle: string | null;
     /**
      * 
      * @type {string}
-     * @memberof EpisodeUnlockNotification
+     * @memberof NewEpisodeNotification
      */
     coverImage: string | null;
 }
@@ -81,9 +81,9 @@ export interface EpisodeUnlockNotification {
 
 
 /**
- * Check if a given object implements the EpisodeUnlockNotification interface.
+ * Check if a given object implements the NewEpisodeNotification interface.
  */
-export function instanceOfEpisodeUnlockNotification(value: object): value is EpisodeUnlockNotification {
+export function instanceOfNewEpisodeNotification(value: object): value is NewEpisodeNotification {
     if (!('isRead' in value) || value['isRead'] === undefined) return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
     if (!('episodeId' in value) || value['episodeId'] === undefined) return false;
@@ -92,11 +92,11 @@ export function instanceOfEpisodeUnlockNotification(value: object): value is Epi
     return true;
 }
 
-export function EpisodeUnlockNotificationFromJSON(json: any): EpisodeUnlockNotification {
-    return EpisodeUnlockNotificationFromJSONTyped(json, false);
+export function NewEpisodeNotificationFromJSON(json: any): NewEpisodeNotification {
+    return NewEpisodeNotificationFromJSONTyped(json, false);
 }
 
-export function EpisodeUnlockNotificationFromJSONTyped(json: any, ignoreDiscriminator: boolean): EpisodeUnlockNotification {
+export function NewEpisodeNotificationFromJSONTyped(json: any, ignoreDiscriminator: boolean): NewEpisodeNotification {
     if (json == null) {
         return json;
     }
@@ -112,11 +112,11 @@ export function EpisodeUnlockNotificationFromJSONTyped(json: any, ignoreDiscrimi
     };
 }
 
-  export function EpisodeUnlockNotificationToJSON(json: any): EpisodeUnlockNotification {
-      return EpisodeUnlockNotificationToJSONTyped(json, false);
+  export function NewEpisodeNotificationToJSON(json: any): NewEpisodeNotification {
+      return NewEpisodeNotificationToJSONTyped(json, false);
   }
 
-  export function EpisodeUnlockNotificationToJSONTyped(value?: EpisodeUnlockNotification | null, ignoreDiscriminator: boolean = false): any {
+  export function NewEpisodeNotificationToJSONTyped(value?: NewEpisodeNotification | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
