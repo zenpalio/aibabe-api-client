@@ -21,7 +21,13 @@ export interface StoryCreatorStoryMedia {
      * @type {Array<StoryCreatorEpisodeMedia>}
      * @memberof StoryCreatorStoryMedia
      */
-    episodePictures: Array<StoryCreatorEpisodeMedia>;
+    episodes: Array<StoryCreatorEpisodeMedia>;
+    /**
+     *
+     * @type {Array<string>}
+     * @memberof StoryCreatorStoryMedia
+     */
+    actorsAvatars: Array<string>;
 }
 /**
  * Check if a given object implements the StoryCreatorStoryMedia interface.

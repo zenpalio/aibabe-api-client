@@ -23,7 +23,9 @@ const StoryCreatorEpisodeMedia_1 = require("./StoryCreatorEpisodeMedia");
  * Check if a given object implements the StoryCreatorStoryMedia interface.
  */
 function instanceOfStoryCreatorStoryMedia(value) {
-    if (!('episodePictures' in value) || value['episodePictures'] === undefined)
+    if (!('episodes' in value) || value['episodes'] === undefined)
+        return false;
+    if (!('actorsAvatars' in value) || value['actorsAvatars'] === undefined)
         return false;
     return true;
 }
@@ -35,7 +37,8 @@ function StoryCreatorStoryMediaFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
-        'episodePictures': (json['episode_pictures'].map(StoryCreatorEpisodeMedia_1.StoryCreatorEpisodeMediaFromJSON)),
+        'episodes': (json['episodes'].map(StoryCreatorEpisodeMedia_1.StoryCreatorEpisodeMediaFromJSON)),
+        'actorsAvatars': json['actors_avatars'],
     };
 }
 function StoryCreatorStoryMediaToJSON(json) {
@@ -46,7 +49,8 @@ function StoryCreatorStoryMediaToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
-        'episode_pictures': (value['episodePictures'].map(StoryCreatorEpisodeMedia_1.StoryCreatorEpisodeMediaToJSON)),
+        'episodes': (value['episodes'].map(StoryCreatorEpisodeMedia_1.StoryCreatorEpisodeMediaToJSON)),
+        'actors_avatars': value['actorsAvatars'],
     };
 }
 //# sourceMappingURL=StoryCreatorStoryMedia.js.map

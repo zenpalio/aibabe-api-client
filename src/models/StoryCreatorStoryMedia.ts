@@ -32,14 +32,21 @@ export interface StoryCreatorStoryMedia {
      * @type {Array<StoryCreatorEpisodeMedia>}
      * @memberof StoryCreatorStoryMedia
      */
-    episodePictures: Array<StoryCreatorEpisodeMedia>;
+    episodes: Array<StoryCreatorEpisodeMedia>;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof StoryCreatorStoryMedia
+     */
+    actorsAvatars: Array<string>;
 }
 
 /**
  * Check if a given object implements the StoryCreatorStoryMedia interface.
  */
 export function instanceOfStoryCreatorStoryMedia(value: object): value is StoryCreatorStoryMedia {
-    if (!('episodePictures' in value) || value['episodePictures'] === undefined) return false;
+    if (!('episodes' in value) || value['episodes'] === undefined) return false;
+    if (!('actorsAvatars' in value) || value['actorsAvatars'] === undefined) return false;
     return true;
 }
 
@@ -53,7 +60,8 @@ export function StoryCreatorStoryMediaFromJSONTyped(json: any, ignoreDiscriminat
     }
     return {
         
-        'episodePictures': ((json['episode_pictures'] as Array<any>).map(StoryCreatorEpisodeMediaFromJSON)),
+        'episodes': ((json['episodes'] as Array<any>).map(StoryCreatorEpisodeMediaFromJSON)),
+        'actorsAvatars': json['actors_avatars'],
     };
 }
 
@@ -68,7 +76,8 @@ export function StoryCreatorStoryMediaFromJSONTyped(json: any, ignoreDiscriminat
 
     return {
         
-        'episode_pictures': ((value['episodePictures'] as Array<any>).map(StoryCreatorEpisodeMediaToJSON)),
+        'episodes': ((value['episodes'] as Array<any>).map(StoryCreatorEpisodeMediaToJSON)),
+        'actors_avatars': value['actorsAvatars'],
     };
 }
 
