@@ -45,6 +45,12 @@ export interface StoryPreview {
     coverImage?: string | null;
     /**
      *
+     * @type {string}
+     * @memberof StoryPreview
+     */
+    firstEpisodeCoverImage?: string | null;
+    /**
+     *
      * @type {StoryRating}
      * @memberof StoryPreview
      */

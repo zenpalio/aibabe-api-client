@@ -74,6 +74,12 @@ export interface StoryPreview {
     coverImage?: string | null;
     /**
      * 
+     * @type {string}
+     * @memberof StoryPreview
+     */
+    firstEpisodeCoverImage?: string | null;
+    /**
+     * 
      * @type {StoryRating}
      * @memberof StoryPreview
      */
@@ -124,6 +130,7 @@ export function StoryPreviewFromJSONTyped(json: any, ignoreDiscriminator: boolea
         'title': json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
+        'firstEpisodeCoverImage': json['first_episode_cover_image'] == null ? undefined : json['first_episode_cover_image'],
         'rating': json['rating'] == null ? undefined : StoryRatingFromJSON(json['rating']),
         'owner': json['owner'] == null ? undefined : PublicUserPreviewWithFollowFromJSON(json['owner']),
         'counts': StoryCountsFromJSON(json['counts']),
@@ -146,6 +153,7 @@ export function StoryPreviewFromJSONTyped(json: any, ignoreDiscriminator: boolea
         'title': value['title'],
         'description': value['description'],
         'cover_image': value['coverImage'],
+        'first_episode_cover_image': value['firstEpisodeCoverImage'],
         'rating': StoryRatingToJSON(value['rating']),
         'owner': PublicUserPreviewWithFollowToJSON(value['owner']),
         'counts': StoryCountsToJSON(value['counts']),
