@@ -31,6 +31,12 @@ export interface TextToSpeechRequest {
      * @memberof TextToSpeechRequest
      */
     referenceAudioId: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof TextToSpeechRequest
+     */
+    temperature?: number;
 }
 
 /**
@@ -54,6 +60,7 @@ export function TextToSpeechRequestFromJSONTyped(json: any, ignoreDiscriminator:
         
         'content': json['content'],
         'referenceAudioId': json['reference_audio_id'],
+        'temperature': json['temperature'] == null ? undefined : json['temperature'],
     };
 }
 
@@ -70,6 +77,7 @@ export function TextToSpeechRequestFromJSONTyped(json: any, ignoreDiscriminator:
         
         'content': value['content'],
         'reference_audio_id': value['referenceAudioId'],
+        'temperature': value['temperature'],
     };
 }
 

@@ -285,6 +285,8 @@ __exportStar(require("./TagImageLora"), exports);
 __exportStar(require("./TagModel"), exports);
 __exportStar(require("./TagVideoLora"), exports);
 __exportStar(require("./TagsExploreTypesGet200ResponseInner"), exports);
+__exportStar(require("./TextToSpeechEnhanceRequest"), exports);
+__exportStar(require("./TextToSpeechEnhanceResponse"), exports);
 __exportStar(require("./TextToSpeechRequest"), exports);
 __exportStar(require("./TextToSpeechResponse"), exports);
 __exportStar(require("./TokenReconciliationResponse"), exports);

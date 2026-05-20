@@ -38,6 +38,7 @@ function TextToSpeechRequestFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'content': json['content'],
         'referenceAudioId': json['reference_audio_id'],
+        'temperature': json['temperature'] == null ? undefined : json['temperature'],
     };
 }
 function TextToSpeechRequestToJSON(json) {
@@ -50,6 +51,7 @@ function TextToSpeechRequestToJSONTyped(value, ignoreDiscriminator = false) {
     return {
         'content': value['content'],
         'reference_audio_id': value['referenceAudioId'],
+        'temperature': value['temperature'],
     };
 }
 //# sourceMappingURL=TextToSpeechRequest.js.map

@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { GeneratedAudioItem, GetGeneratedAudioResponse, Language, SoundEffectResponse, SoundEffectsRequest, TextToSpeechRequest, TextToSpeechResponse } from '../models/index';
+import type { GeneratedAudioItem, GetGeneratedAudioResponse, Language, SoundEffectResponse, SoundEffectsRequest, TextToSpeechEnhanceRequest, TextToSpeechEnhanceResponse, TextToSpeechRequest, TextToSpeechResponse } from '../models/index';
 export interface CreateReferenceVoiceReferencesPostRequest {
     name: string;
     audio: Blob;
@@ -18,6 +18,9 @@ export interface CreateReferenceVoiceReferencesPostRequest {
     referenceText: string;
     locale: Language;
     description?: string;
+}
+export interface EnhanceTextToSpeechVoiceEnhancePostRequest {
+    textToSpeechEnhanceRequest: TextToSpeechEnhanceRequest;
 }
 export interface GenerateSoundEffectsVoiceSfxPostRequest {
     soundEffectsRequest: SoundEffectsRequest;
@@ -51,6 +54,14 @@ export declare class VoiceApi extends runtime.BaseAPI {
      * Create Reference
      */
     createReferenceVoiceReferencesPost(requestParameters: CreateReferenceVoiceReferencesPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
+    /**
+     * Enhance Text To Speech
+     */
+    enhanceTextToSpeechVoiceEnhancePostRaw(requestParameters: EnhanceTextToSpeechVoiceEnhancePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TextToSpeechEnhanceResponse>>;
+    /**
+     * Enhance Text To Speech
+     */
+    enhanceTextToSpeechVoiceEnhancePost(requestParameters: EnhanceTextToSpeechVoiceEnhancePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TextToSpeechEnhanceResponse>;
     /**
      * Generate Sound Effects
      */

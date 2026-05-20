@@ -131,6 +131,32 @@ class VoiceApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * Enhance Text To Speech
+     */
+    async enhanceTextToSpeechVoiceEnhancePostRaw(requestParameters, initOverrides) {
+        if (requestParameters['textToSpeechEnhanceRequest'] == null) {
+            throw new runtime.RequiredError('textToSpeechEnhanceRequest', 'Required parameter "textToSpeechEnhanceRequest" was null or undefined when calling enhanceTextToSpeechVoiceEnhancePost().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        const response = await this.request({
+            path: `/voice/enhance`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.TextToSpeechEnhanceRequestToJSON)(requestParameters['textToSpeechEnhanceRequest']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.TextToSpeechEnhanceResponseFromJSON)(jsonValue));
+    }
+    /**
+     * Enhance Text To Speech
+     */
+    async enhanceTextToSpeechVoiceEnhancePost(requestParameters, initOverrides) {
+        const response = await this.enhanceTextToSpeechVoiceEnhancePostRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * Generate Sound Effects
      */
     async generateSoundEffectsVoiceSfxPostRaw(requestParameters, initOverrides) {

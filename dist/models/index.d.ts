@@ -267,6 +267,8 @@ export * from './TagImageLora';
 export * from './TagModel';
 export * from './TagVideoLora';
 export * from './TagsExploreTypesGet200ResponseInner';
+export * from './TextToSpeechEnhanceRequest';
+export * from './TextToSpeechEnhanceResponse';
 export * from './TextToSpeechRequest';
 export * from './TextToSpeechResponse';
 export * from './TokenReconciliationResponse';

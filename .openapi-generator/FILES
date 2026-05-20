@@ -294,6 +294,8 @@ src/models/TagImageLora.ts
 src/models/TagModel.ts
 src/models/TagVideoLora.ts
 src/models/TagsExploreTypesGet200ResponseInner.ts
+src/models/TextToSpeechEnhanceRequest.ts
+src/models/TextToSpeechEnhanceResponse.ts
 src/models/TextToSpeechRequest.ts
 src/models/TextToSpeechResponse.ts
 src/models/TokenReconciliationResponse.ts
