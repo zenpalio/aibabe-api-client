@@ -21,6 +21,9 @@ export interface DeleteMessageAssistantChatSessionsSessionIdMessagesMessageIdDel
 export interface DeleteSessionAssistantChatSessionsSessionIdDeleteRequest {
     sessionId: string;
 }
+export interface GetAssistantPromptAssistantChatAssistantPromptGetRequest {
+    promptName?: GetAssistantPromptAssistantChatAssistantPromptGetPromptNameEnum;
+}
 export interface GetMessagesAssistantChatSessionsSessionIdMessagesGetRequest {
     sessionId: string;
     paginationToken?: string | null;
@@ -36,6 +39,7 @@ export interface PostMessageAssistantChatSessionsSessionIdMessagesPostRequest {
 }
 export interface UpdateAssistantPromptAssistantChatAssistantPromptPatchRequest {
     prompt: string;
+    promptName?: UpdateAssistantPromptAssistantChatAssistantPromptPatchPromptNameEnum;
 }
 /**
  *
@@ -68,11 +72,11 @@ export declare class AssistantChatApi extends runtime.BaseAPI {
     /**
      * Get Assistant Prompt
      */
-    getAssistantPromptAssistantChatAssistantPromptGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>>;
+    getAssistantPromptAssistantChatAssistantPromptGetRaw(requestParameters: GetAssistantPromptAssistantChatAssistantPromptGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>>;
     /**
      * Get Assistant Prompt
      */
-    getAssistantPromptAssistantChatAssistantPromptGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string>;
+    getAssistantPromptAssistantChatAssistantPromptGet(requestParameters?: GetAssistantPromptAssistantChatAssistantPromptGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string>;
     /**
      * Get Messages
      */
@@ -106,4 +110,26 @@ export declare class AssistantChatApi extends runtime.BaseAPI {
      */
     updateAssistantPromptAssistantChatAssistantPromptPatch(requestParameters: UpdateAssistantPromptAssistantChatAssistantPromptPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
 }
+/**
+ * @export
+ */
+export declare const GetAssistantPromptAssistantChatAssistantPromptGetPromptNameEnum: {
+    readonly Prompt: "assistant_prompt";
+    readonly StoryCreatorPrompt: "assistant_story_creator_prompt";
+    readonly ImageGeneratorPrompt: "assistant_image_generator_prompt";
+    readonly VideoGeneratorPrompt: "assistant_video_generator_prompt";
+    readonly CharacterBuilderPrompt: "assistant_character_builder_prompt";
+};
+export type GetAssistantPromptAssistantChatAssistantPromptGetPromptNameEnum = typeof GetAssistantPromptAssistantChatAssistantPromptGetPromptNameEnum[keyof typeof GetAssistantPromptAssistantChatAssistantPromptGetPromptNameEnum];
+/**
+ * @export
+ */
+export declare const UpdateAssistantPromptAssistantChatAssistantPromptPatchPromptNameEnum: {
+    readonly Prompt: "assistant_prompt";
+    readonly StoryCreatorPrompt: "assistant_story_creator_prompt";
+    readonly ImageGeneratorPrompt: "assistant_image_generator_prompt";
+    readonly VideoGeneratorPrompt: "assistant_video_generator_prompt";
+    readonly CharacterBuilderPrompt: "assistant_character_builder_prompt";
+};
+export type UpdateAssistantPromptAssistantChatAssistantPromptPatchPromptNameEnum = typeof UpdateAssistantPromptAssistantChatAssistantPromptPatchPromptNameEnum[keyof typeof UpdateAssistantPromptAssistantChatAssistantPromptPatchPromptNameEnum];
 //# sourceMappingURL=AssistantChatApi.d.ts.map

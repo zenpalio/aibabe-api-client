@@ -53,6 +53,10 @@ export interface DeleteSessionAssistantChatSessionsSessionIdDeleteRequest {
     sessionId: string;
 }
 
+export interface GetAssistantPromptAssistantChatAssistantPromptGetRequest {
+    promptName?: GetAssistantPromptAssistantChatAssistantPromptGetPromptNameEnum;
+}
+
 export interface GetMessagesAssistantChatSessionsSessionIdMessagesGetRequest {
     sessionId: string;
     paginationToken?: string | null;
@@ -71,6 +75,7 @@ export interface PostMessageAssistantChatSessionsSessionIdMessagesPostRequest {
 
 export interface UpdateAssistantPromptAssistantChatAssistantPromptPatchRequest {
     prompt: string;
+    promptName?: UpdateAssistantPromptAssistantChatAssistantPromptPatchPromptNameEnum;
 }
 
 /**
@@ -191,8 +196,12 @@ export class AssistantChatApi extends runtime.BaseAPI {
     /**
      * Get Assistant Prompt
      */
-    async getAssistantPromptAssistantChatAssistantPromptGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>> {
+    async getAssistantPromptAssistantChatAssistantPromptGetRaw(requestParameters: GetAssistantPromptAssistantChatAssistantPromptGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>> {
         const queryParameters: any = {};
+
+        if (requestParameters['promptName'] != null) {
+            queryParameters['prompt_name'] = requestParameters['promptName'];
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -213,8 +222,8 @@ export class AssistantChatApi extends runtime.BaseAPI {
     /**
      * Get Assistant Prompt
      */
-    async getAssistantPromptAssistantChatAssistantPromptGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> {
-        const response = await this.getAssistantPromptAssistantChatAssistantPromptGetRaw(initOverrides);
+    async getAssistantPromptAssistantChatAssistantPromptGet(requestParameters: GetAssistantPromptAssistantChatAssistantPromptGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> {
+        const response = await this.getAssistantPromptAssistantChatAssistantPromptGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -369,6 +378,10 @@ export class AssistantChatApi extends runtime.BaseAPI {
             formParams.append('prompt', requestParameters['prompt'] as any);
         }
 
+        if (requestParameters['promptName'] != null) {
+            formParams.append('prompt_name', requestParameters['promptName'] as any);
+        }
+
         const response = await this.request({
             path: `/assistant-chat/assistant-prompt`,
             method: 'PATCH',
@@ -393,3 +406,26 @@ export class AssistantChatApi extends runtime.BaseAPI {
     }
 
 }
+
+/**
+ * @export
+ */
+export const GetAssistantPromptAssistantChatAssistantPromptGetPromptNameEnum = {
+    Prompt: 'assistant_prompt',
+    StoryCreatorPrompt: 'assistant_story_creator_prompt',
+    ImageGeneratorPrompt: 'assistant_image_generator_prompt',
+    VideoGeneratorPrompt: 'assistant_video_generator_prompt',
+    CharacterBuilderPrompt: 'assistant_character_builder_prompt'
+} as const;
+export type GetAssistantPromptAssistantChatAssistantPromptGetPromptNameEnum = typeof GetAssistantPromptAssistantChatAssistantPromptGetPromptNameEnum[keyof typeof GetAssistantPromptAssistantChatAssistantPromptGetPromptNameEnum];
+/**
+ * @export
+ */
+export const UpdateAssistantPromptAssistantChatAssistantPromptPatchPromptNameEnum = {
+    Prompt: 'assistant_prompt',
+    StoryCreatorPrompt: 'assistant_story_creator_prompt',
+    ImageGeneratorPrompt: 'assistant_image_generator_prompt',
+    VideoGeneratorPrompt: 'assistant_video_generator_prompt',
+    CharacterBuilderPrompt: 'assistant_character_builder_prompt'
+} as const;
+export type UpdateAssistantPromptAssistantChatAssistantPromptPatchPromptNameEnum = typeof UpdateAssistantPromptAssistantChatAssistantPromptPatchPromptNameEnum[keyof typeof UpdateAssistantPromptAssistantChatAssistantPromptPatchPromptNameEnum];

@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AssistantChatApi = void 0;
+exports.UpdateAssistantPromptAssistantChatAssistantPromptPatchPromptNameEnum = exports.GetAssistantPromptAssistantChatAssistantPromptGetPromptNameEnum = exports.AssistantChatApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -140,8 +140,11 @@ class AssistantChatApi extends runtime.BaseAPI {
     /**
      * Get Assistant Prompt
      */
-    async getAssistantPromptAssistantChatAssistantPromptGetRaw(initOverrides) {
+    async getAssistantPromptAssistantChatAssistantPromptGetRaw(requestParameters, initOverrides) {
         const queryParameters = {};
+        if (requestParameters['promptName'] != null) {
+            queryParameters['prompt_name'] = requestParameters['promptName'];
+        }
         const headerParameters = {};
         const response = await this.request({
             path: `/assistant-chat/assistant-prompt`,
@@ -159,8 +162,8 @@ class AssistantChatApi extends runtime.BaseAPI {
     /**
      * Get Assistant Prompt
      */
-    async getAssistantPromptAssistantChatAssistantPromptGet(initOverrides) {
-        const response = await this.getAssistantPromptAssistantChatAssistantPromptGetRaw(initOverrides);
+    async getAssistantPromptAssistantChatAssistantPromptGet(requestParameters = {}, initOverrides) {
+        const response = await this.getAssistantPromptAssistantChatAssistantPromptGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -274,6 +277,9 @@ class AssistantChatApi extends runtime.BaseAPI {
         if (requestParameters['prompt'] != null) {
             formParams.append('prompt', requestParameters['prompt']);
         }
+        if (requestParameters['promptName'] != null) {
+            formParams.append('prompt_name', requestParameters['promptName']);
+        }
         const response = await this.request({
             path: `/assistant-chat/assistant-prompt`,
             method: 'PATCH',
@@ -297,4 +303,24 @@ class AssistantChatApi extends runtime.BaseAPI {
     }
 }
 exports.AssistantChatApi = AssistantChatApi;
+/**
+ * @export
+ */
+exports.GetAssistantPromptAssistantChatAssistantPromptGetPromptNameEnum = {
+    Prompt: 'assistant_prompt',
+    StoryCreatorPrompt: 'assistant_story_creator_prompt',
+    ImageGeneratorPrompt: 'assistant_image_generator_prompt',
+    VideoGeneratorPrompt: 'assistant_video_generator_prompt',
+    CharacterBuilderPrompt: 'assistant_character_builder_prompt'
+};
+/**
+ * @export
+ */
+exports.UpdateAssistantPromptAssistantChatAssistantPromptPatchPromptNameEnum = {
+    Prompt: 'assistant_prompt',
+    StoryCreatorPrompt: 'assistant_story_creator_prompt',
+    ImageGeneratorPrompt: 'assistant_image_generator_prompt',
+    VideoGeneratorPrompt: 'assistant_video_generator_prompt',
+    CharacterBuilderPrompt: 'assistant_character_builder_prompt'
+};
 //# sourceMappingURL=AssistantChatApi.js.map
