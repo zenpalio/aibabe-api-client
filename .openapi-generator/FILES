@@ -258,6 +258,7 @@ src/models/StoryCreatorCreateStoryResponse.ts
 src/models/StoryCreatorEpisode.ts
 src/models/StoryCreatorEpisodeBase.ts
 src/models/StoryCreatorEpisodeListResponse.ts
+src/models/StoryCreatorEpisodeMedia.ts
 src/models/StoryCreatorEpisodePrice.ts
 src/models/StoryCreatorEpisodeResponse.ts
 src/models/StoryCreatorEpisodeWithPanelsResponse.ts
@@ -272,7 +273,7 @@ src/models/StoryCreatorRateEpisodeRequest.ts
 src/models/StoryCreatorSaveEpisodePanel.ts
 src/models/StoryCreatorSaveEpisodeRequest.ts
 src/models/StoryCreatorStory.ts
-src/models/StoryCreatorStoryListResponse.ts
+src/models/StoryCreatorStoryMedia.ts
 src/models/StoryCreatorStoryResponse.ts
 src/models/StoryCreatorStoryWithEpisodes.ts
 src/models/StoryCreatorStoryWithEpisodesResponse.ts
