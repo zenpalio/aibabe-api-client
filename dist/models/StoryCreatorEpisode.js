@@ -38,6 +38,8 @@ function instanceOfStoryCreatorEpisode(value) {
         return false;
     if (!('counts' in value) || value['counts'] === undefined)
         return false;
+    if (!('lastSaved' in value) || value['lastSaved'] === undefined)
+        return false;
     return true;
 }
 function StoryCreatorEpisodeFromJSON(json) {
@@ -62,6 +64,7 @@ function StoryCreatorEpisodeFromJSONTyped(json, ignoreDiscriminator) {
         'progress': json['progress'] == null ? undefined : (0, UserEpisodeProgressType_1.UserEpisodeProgressTypeFromJSON)(json['progress']),
         'prices': json['prices'] == null ? undefined : (json['prices'].map(StoryCreatorEpisodePrice_1.StoryCreatorEpisodePriceFromJSON)),
         'counts': (0, EpisodeCounts_1.EpisodeCountsFromJSON)(json['counts']),
+        'lastSaved': (new Date(json['last_saved'])),
     };
 }
 function StoryCreatorEpisodeToJSON(json) {
@@ -86,6 +89,7 @@ function StoryCreatorEpisodeToJSONTyped(value, ignoreDiscriminator = false) {
         'progress': (0, UserEpisodeProgressType_1.UserEpisodeProgressTypeToJSON)(value['progress']),
         'prices': value['prices'] == null ? undefined : (value['prices'].map(StoryCreatorEpisodePrice_1.StoryCreatorEpisodePriceToJSON)),
         'counts': (0, EpisodeCounts_1.EpisodeCountsToJSON)(value['counts']),
+        'last_saved': ((value['lastSaved']).toISOString()),
     };
 }
 //# sourceMappingURL=StoryCreatorEpisode.js.map

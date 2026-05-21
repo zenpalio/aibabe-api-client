@@ -105,6 +105,12 @@ export interface StoryCreatorEpisode {
      * @memberof StoryCreatorEpisode
      */
     counts: EpisodeCounts;
+    /**
+     *
+     * @type {Date}
+     * @memberof StoryCreatorEpisode
+     */
+    lastSaved: Date;
 }
 /**
  * Check if a given object implements the StoryCreatorEpisode interface.

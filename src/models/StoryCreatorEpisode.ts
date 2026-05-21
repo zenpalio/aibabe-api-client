@@ -146,6 +146,12 @@ export interface StoryCreatorEpisode {
      * @memberof StoryCreatorEpisode
      */
     counts: EpisodeCounts;
+    /**
+     * 
+     * @type {Date}
+     * @memberof StoryCreatorEpisode
+     */
+    lastSaved: Date;
 }
 
 
@@ -159,6 +165,7 @@ export function instanceOfStoryCreatorEpisode(value: object): value is StoryCrea
     if (!('episodeIndex' in value) || value['episodeIndex'] === undefined) return false;
     if (!('panelsCount' in value) || value['panelsCount'] === undefined) return false;
     if (!('counts' in value) || value['counts'] === undefined) return false;
+    if (!('lastSaved' in value) || value['lastSaved'] === undefined) return false;
     return true;
 }
 
@@ -186,6 +193,7 @@ export function StoryCreatorEpisodeFromJSONTyped(json: any, ignoreDiscriminator:
         'progress': json['progress'] == null ? undefined : UserEpisodeProgressTypeFromJSON(json['progress']),
         'prices': json['prices'] == null ? undefined : ((json['prices'] as Array<any>).map(StoryCreatorEpisodePriceFromJSON)),
         'counts': EpisodeCountsFromJSON(json['counts']),
+        'lastSaved': (new Date(json['last_saved'])),
     };
 }
 
@@ -214,6 +222,7 @@ export function StoryCreatorEpisodeFromJSONTyped(json: any, ignoreDiscriminator:
         'progress': UserEpisodeProgressTypeToJSON(value['progress']),
         'prices': value['prices'] == null ? undefined : ((value['prices'] as Array<any>).map(StoryCreatorEpisodePriceToJSON)),
         'counts': EpisodeCountsToJSON(value['counts']),
+        'last_saved': ((value['lastSaved']).toISOString()),
     };
 }
 
