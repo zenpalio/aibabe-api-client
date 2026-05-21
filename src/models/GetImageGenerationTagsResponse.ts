@@ -92,7 +92,7 @@ export function GetImageGenerationTagsResponseFromJSONTyped(json: any, ignoreDis
         
         'tags': json['tags'],
         'downloadUrl': json['download_url'],
-        'chatbotName': json['chatbotName'],
+        'chatbotName': json['chatbot_name'],
         'loras': ((json['loras'] as Array<any>).map(LoraNameFromJSON)),
         'artStyle': ArtStyleFromJSON(json['art_style']),
     };
@@ -111,7 +111,7 @@ export function GetImageGenerationTagsResponseFromJSONTyped(json: any, ignoreDis
         
         'tags': value['tags'],
         'download_url': value['downloadUrl'],
-        'chatbotName': value['chatbotName'],
+        'chatbot_name': value['chatbotName'],
         'loras': ((value['loras'] as Array<any>).map(LoraNameToJSON)),
         'art_style': ArtStyleToJSON(value['artStyle']),
     };

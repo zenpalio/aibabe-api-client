@@ -13,6 +13,20 @@
  */
 
 import { mapValues } from '../runtime';
+import type { PublicUserPreviewWithFollow } from './PublicUserPreviewWithFollow';
+import {
+    PublicUserPreviewWithFollowFromJSON,
+    PublicUserPreviewWithFollowFromJSONTyped,
+    PublicUserPreviewWithFollowToJSON,
+    PublicUserPreviewWithFollowToJSONTyped,
+} from './PublicUserPreviewWithFollow';
+import type { StoryCounts } from './StoryCounts';
+import {
+    StoryCountsFromJSON,
+    StoryCountsFromJSONTyped,
+    StoryCountsToJSON,
+    StoryCountsToJSONTyped,
+} from './StoryCounts';
 import type { ArtStyle } from './ArtStyle';
 import {
     ArtStyleFromJSON,
@@ -27,6 +41,13 @@ import {
     ChatbotPreviewToJSON,
     ChatbotPreviewToJSONTyped,
 } from './ChatbotPreview';
+import type { GalleryStory } from './GalleryStory';
+import {
+    GalleryStoryFromJSON,
+    GalleryStoryFromJSONTyped,
+    GalleryStoryToJSON,
+    GalleryStoryToJSONTyped,
+} from './GalleryStory';
 import type { PostDetails } from './PostDetails';
 import {
     PostDetailsFromJSON,
@@ -41,6 +62,20 @@ import {
     GeneratedImagesToJSON,
     GeneratedImagesToJSONTyped,
 } from './GeneratedImages';
+import type { StoryVisibility } from './StoryVisibility';
+import {
+    StoryVisibilityFromJSON,
+    StoryVisibilityFromJSONTyped,
+    StoryVisibilityToJSON,
+    StoryVisibilityToJSONTyped,
+} from './StoryVisibility';
+import type { StoryRating } from './StoryRating';
+import {
+    StoryRatingFromJSON,
+    StoryRatingFromJSONTyped,
+    StoryRatingToJSON,
+    StoryRatingToJSONTyped,
+} from './StoryRating';
 import type { VideoGenerationStatus } from './VideoGenerationStatus';
 import {
     VideoGenerationStatusFromJSON,
@@ -76,10 +111,10 @@ export interface GetGalleryResponseItemsInner {
     id: string;
     /**
      * 
-     * @type {Array<string>}
+     * @type {string}
      * @memberof GetGalleryResponseItemsInner
      */
-    urls: Array<string>;
+    url: string;
     /**
      * 
      * @type {Date}
@@ -98,12 +133,6 @@ export interface GetGalleryResponseItemsInner {
      * @memberof GetGalleryResponseItemsInner
      */
     postDetails?: PostDetails;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof GetGalleryResponseItemsInner
-     */
-    imageIds: Array<string>;
     /**
      * 
      * @type {string}
@@ -140,6 +169,54 @@ export interface GetGalleryResponseItemsInner {
      * @memberof GetGalleryResponseItemsInner
      */
     originalImageId: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetGalleryResponseItemsInner
+     */
+    originalImageUrl: string;
+    /**
+     * 
+     * @type {PublicUserPreviewWithFollow}
+     * @memberof GetGalleryResponseItemsInner
+     */
+    owner?: PublicUserPreviewWithFollow;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetGalleryResponseItemsInner
+     */
+    title: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetGalleryResponseItemsInner
+     */
+    description?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetGalleryResponseItemsInner
+     */
+    coverImage?: string;
+    /**
+     * 
+     * @type {StoryVisibility}
+     * @memberof GetGalleryResponseItemsInner
+     */
+    visibility: StoryVisibility;
+    /**
+     * 
+     * @type {StoryRating}
+     * @memberof GetGalleryResponseItemsInner
+     */
+    rating?: StoryRating;
+    /**
+     * 
+     * @type {StoryCounts}
+     * @memberof GetGalleryResponseItemsInner
+     */
+    counts: StoryCounts;
 }
 
 
@@ -148,7 +225,8 @@ export interface GetGalleryResponseItemsInner {
  */
 export const GetGalleryResponseItemsInnerTypeEnum = {
     GeneratedImages: 'generatedImages',
-    GeneratedVideos: 'generatedVideos'
+    GeneratedVideos: 'generatedVideos',
+    Stories: 'stories'
 } as const;
 export type GetGalleryResponseItemsInnerTypeEnum = typeof GetGalleryResponseItemsInnerTypeEnum[keyof typeof GetGalleryResponseItemsInnerTypeEnum];
 
@@ -159,16 +237,19 @@ export type GetGalleryResponseItemsInnerTypeEnum = typeof GetGalleryResponseItem
 export function instanceOfGetGalleryResponseItemsInner(value: object): value is GetGalleryResponseItemsInner {
     if (!('type' in value) || value['type'] === undefined) return false;
     if (!('id' in value) || value['id'] === undefined) return false;
-    if (!('urls' in value) || value['urls'] === undefined) return false;
+    if (!('url' in value) || value['url'] === undefined) return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
     if (!('chatbot' in value) || value['chatbot'] === undefined) return false;
-    if (!('imageIds' in value) || value['imageIds'] === undefined) return false;
     if (!('eta' in value) || value['eta'] === undefined) return false;
     if (!('status' in value) || value['status'] === undefined) return false;
     if (!('generationId' in value) || value['generationId'] === undefined) return false;
     if (!('seenByUser' in value) || value['seenByUser'] === undefined) return false;
     if (!('artStyle' in value) || value['artStyle'] === undefined) return false;
     if (!('originalImageId' in value) || value['originalImageId'] === undefined) return false;
+    if (!('originalImageUrl' in value) || value['originalImageUrl'] === undefined) return false;
+    if (!('title' in value) || value['title'] === undefined) return false;
+    if (!('visibility' in value) || value['visibility'] === undefined) return false;
+    if (!('counts' in value) || value['counts'] === undefined) return false;
     return true;
 }
 
@@ -184,17 +265,24 @@ export function GetGalleryResponseItemsInnerFromJSONTyped(json: any, ignoreDiscr
         
         'type': json['type'],
         'id': json['id'],
-        'urls': json['urls'],
+        'url': json['url'],
         'createdAt': (new Date(json['created_at'])),
         'chatbot': ChatbotPreviewFromJSON(json['chatbot']),
         'postDetails': json['post_details'] == null ? undefined : PostDetailsFromJSON(json['post_details']),
-        'imageIds': json['image_ids'],
         'eta': json['eta'],
         'status': VideoGenerationStatusFromJSON(json['status']),
         'generationId': json['generation_id'],
         'seenByUser': json['seen_by_user'],
         'artStyle': ArtStyleFromJSON(json['art_style']),
         'originalImageId': json['original_image_id'],
+        'originalImageUrl': json['original_image_url'],
+        'owner': json['owner'] == null ? undefined : PublicUserPreviewWithFollowFromJSON(json['owner']),
+        'title': json['title'],
+        'description': json['description'] == null ? undefined : json['description'],
+        'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
+        'visibility': StoryVisibilityFromJSON(json['visibility']),
+        'rating': json['rating'] == null ? undefined : StoryRatingFromJSON(json['rating']),
+        'counts': StoryCountsFromJSON(json['counts']),
     };
 }
 
@@ -211,17 +299,24 @@ export function GetGalleryResponseItemsInnerFromJSONTyped(json: any, ignoreDiscr
         
         'type': value['type'],
         'id': value['id'],
-        'urls': value['urls'],
+        'url': value['url'],
         'created_at': ((value['createdAt']).toISOString()),
         'chatbot': ChatbotPreviewToJSON(value['chatbot']),
         'post_details': PostDetailsToJSON(value['postDetails']),
-        'image_ids': value['imageIds'],
         'eta': value['eta'],
         'status': VideoGenerationStatusToJSON(value['status']),
         'generation_id': value['generationId'],
         'seen_by_user': value['seenByUser'],
         'art_style': ArtStyleToJSON(value['artStyle']),
         'original_image_id': value['originalImageId'],
+        'original_image_url': value['originalImageUrl'],
+        'owner': PublicUserPreviewWithFollowToJSON(value['owner']),
+        'title': value['title'],
+        'description': value['description'],
+        'cover_image': value['coverImage'],
+        'visibility': StoryVisibilityToJSON(value['visibility']),
+        'rating': StoryRatingToJSON(value['rating']),
+        'counts': StoryCountsToJSON(value['counts']),
     };
 }
 

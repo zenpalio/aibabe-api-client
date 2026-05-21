@@ -34,6 +34,13 @@ import {
     FollowNotificationToJSON,
     FollowNotificationToJSONTyped,
 } from './FollowNotification';
+import type { EpisodeUnlockNotification } from './EpisodeUnlockNotification';
+import {
+    EpisodeUnlockNotificationFromJSON,
+    EpisodeUnlockNotificationFromJSONTyped,
+    EpisodeUnlockNotificationToJSON,
+    EpisodeUnlockNotificationToJSONTyped,
+} from './EpisodeUnlockNotification';
 import type { PostType } from './PostType';
 import {
     PostTypeFromJSON,
@@ -41,6 +48,13 @@ import {
     PostTypeToJSON,
     PostTypeToJSONTyped,
 } from './PostType';
+import type { NewEpisodeNotification } from './NewEpisodeNotification';
+import {
+    NewEpisodeNotificationFromJSON,
+    NewEpisodeNotificationFromJSONTyped,
+    NewEpisodeNotificationToJSON,
+    NewEpisodeNotificationToJSONTyped,
+} from './NewEpisodeNotification';
 import type { NotificationType } from './NotificationType';
 import {
     NotificationTypeFromJSON,
@@ -135,6 +149,24 @@ export interface NotificationResponseNotificationsInner {
      * @memberof NotificationResponseNotificationsInner
      */
     message: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof NotificationResponseNotificationsInner
+     */
+    episodeId: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof NotificationResponseNotificationsInner
+     */
+    episodeTitle: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof NotificationResponseNotificationsInner
+     */
+    coverImage: string;
 }
 
 
@@ -152,6 +184,9 @@ export function instanceOfNotificationResponseNotificationsInner(value: object):
     if (!('donationId' in value) || value['donationId'] === undefined) return false;
     if (!('tokens' in value) || value['tokens'] === undefined) return false;
     if (!('message' in value) || value['message'] === undefined) return false;
+    if (!('episodeId' in value) || value['episodeId'] === undefined) return false;
+    if (!('episodeTitle' in value) || value['episodeTitle'] === undefined) return false;
+    if (!('coverImage' in value) || value['coverImage'] === undefined) return false;
     return true;
 }
 
@@ -176,6 +211,9 @@ export function NotificationResponseNotificationsInnerFromJSONTyped(json: any, i
         'donationId': json['donation_id'],
         'tokens': json['tokens'],
         'message': json['message'],
+        'episodeId': json['episode_id'],
+        'episodeTitle': json['episode_title'],
+        'coverImage': json['cover_image'],
     };
 }
 
@@ -201,6 +239,9 @@ export function NotificationResponseNotificationsInnerFromJSONTyped(json: any, i
         'donation_id': value['donationId'],
         'tokens': value['tokens'],
         'message': value['message'],
+        'episode_id': value['episodeId'],
+        'episode_title': value['episodeTitle'],
+        'cover_image': value['coverImage'],
     };
 }
 

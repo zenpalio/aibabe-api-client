@@ -10,12 +10,26 @@
  * Do not edit the class manually.
  */
 import type { VideoLoraName } from './VideoLoraName';
+import type { ImageToVideoModel } from './ImageToVideoModel';
+import type { VideoResolution } from './VideoResolution';
 /**
  *
  * @export
  * @interface ExtendVideoPayload
  */
 export interface ExtendVideoPayload {
+    /**
+     *
+     * @type {string}
+     * @memberof ExtendVideoPayload
+     */
+    videoId: string;
+    /**
+     *
+     * @type {ImageToVideoModel}
+     * @memberof ExtendVideoPayload
+     */
+    model: ImageToVideoModel;
     /**
      *
      * @type {string}
@@ -51,7 +65,43 @@ export interface ExtendVideoPayload {
      * @type {Array<VideoLoraName>}
      * @memberof ExtendVideoPayload
      */
-    loras: Array<VideoLoraName>;
+    loras?: Array<VideoLoraName>;
+    /**
+     *
+     * @type {VideoResolution}
+     * @memberof ExtendVideoPayload
+     */
+    resolution: VideoResolution;
+    /**
+     *
+     * @type {string}
+     * @memberof ExtendVideoPayload
+     */
+    negativePrompt?: string | null;
+    /**
+     *
+     * @type {boolean}
+     * @memberof ExtendVideoPayload
+     */
+    watermark?: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof ExtendVideoPayload
+     */
+    promptExtend?: boolean;
+    /**
+     *
+     * @type {number}
+     * @memberof ExtendVideoPayload
+     */
+    seed?: number | null;
+    /**
+     *
+     * @type {boolean}
+     * @memberof ExtendVideoPayload
+     */
+    audioGeneration?: boolean;
 }
 /**
  * Check if a given object implements the ExtendVideoPayload interface.

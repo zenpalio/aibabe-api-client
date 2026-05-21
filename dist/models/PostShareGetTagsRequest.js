@@ -18,7 +18,7 @@ exports.PostShareGetTagsRequestFromJSON = PostShareGetTagsRequestFromJSON;
 exports.PostShareGetTagsRequestFromJSONTyped = PostShareGetTagsRequestFromJSONTyped;
 exports.PostShareGetTagsRequestToJSON = PostShareGetTagsRequestToJSON;
 exports.PostShareGetTagsRequestToJSONTyped = PostShareGetTagsRequestToJSONTyped;
-const SharedContentType_1 = require("./SharedContentType");
+const ContentType_1 = require("./ContentType");
 /**
  * Check if a given object implements the PostShareGetTagsRequest interface.
  */
@@ -35,7 +35,7 @@ function PostShareGetTagsRequestFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
-        'sharableContentType': (0, SharedContentType_1.SharedContentTypeFromJSON)(json['sharable_content_type']),
+        'sharableContentType': (0, ContentType_1.ContentTypeFromJSON)(json['sharable_content_type']),
     };
 }
 function PostShareGetTagsRequestToJSON(json) {
@@ -46,7 +46,7 @@ function PostShareGetTagsRequestToJSONTyped(value, ignoreDiscriminator = false) 
         return value;
     }
     return {
-        'sharable_content_type': (0, SharedContentType_1.SharedContentTypeToJSON)(value['sharableContentType']),
+        'sharable_content_type': (0, ContentType_1.ContentTypeToJSON)(value['sharableContentType']),
     };
 }
 //# sourceMappingURL=PostShareGetTagsRequest.js.map

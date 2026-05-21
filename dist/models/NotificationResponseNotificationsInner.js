@@ -44,6 +44,12 @@ function instanceOfNotificationResponseNotificationsInner(value) {
         return false;
     if (!('message' in value) || value['message'] === undefined)
         return false;
+    if (!('episodeId' in value) || value['episodeId'] === undefined)
+        return false;
+    if (!('episodeTitle' in value) || value['episodeTitle'] === undefined)
+        return false;
+    if (!('coverImage' in value) || value['coverImage'] === undefined)
+        return false;
     return true;
 }
 function NotificationResponseNotificationsInnerFromJSON(json) {
@@ -65,6 +71,9 @@ function NotificationResponseNotificationsInnerFromJSONTyped(json, ignoreDiscrim
         'donationId': json['donation_id'],
         'tokens': json['tokens'],
         'message': json['message'],
+        'episodeId': json['episode_id'],
+        'episodeTitle': json['episode_title'],
+        'coverImage': json['cover_image'],
     };
 }
 function NotificationResponseNotificationsInnerToJSON(json) {
@@ -86,6 +95,9 @@ function NotificationResponseNotificationsInnerToJSONTyped(value, ignoreDiscrimi
         'donation_id': value['donationId'],
         'tokens': value['tokens'],
         'message': value['message'],
+        'episode_id': value['episodeId'],
+        'episode_title': value['episodeTitle'],
+        'cover_image': value['coverImage'],
     };
 }
 //# sourceMappingURL=NotificationResponseNotificationsInner.js.map
