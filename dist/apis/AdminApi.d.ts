@@ -10,13 +10,16 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { GetQualityControlImage, GetQualityControlRequest, GiftCodeType, UserInfoResponse } from '../models/index';
+import type { AdminCreateBadgeRequest, AdminUpdateBadgeRequest, BadgeModel, GetQualityControlImage, GetQualityControlRequest, GiftCodeType, UserInfoResponse } from '../models/index';
 export interface AddTokensAdminAddTokensPutRequest {
     email: string;
     tokens: number;
 }
 export interface AdminDeleteAdminUserEmailDeleteRequest {
     email: string;
+}
+export interface CreateBadgeAdminBadgesPostRequest {
+    adminCreateBadgeRequest: AdminCreateBadgeRequest;
 }
 export interface GenerateCodesAdminGiftCodesGeneratePostRequest {
     count: number;
@@ -30,6 +33,10 @@ export interface GetTokenBalanceAdminTokenBalanceEmailGetRequest {
 }
 export interface ImpersonateAdminImpersonateEmailPostRequest {
     email: string;
+}
+export interface UpdateBadgeAdminBadgesBadgeIdPatchRequest {
+    badgeId: string;
+    adminUpdateBadgeRequest: AdminUpdateBadgeRequest;
 }
 /**
  *
@@ -51,6 +58,14 @@ export declare class AdminApi extends runtime.BaseAPI {
      * Admin Delete
      */
     adminDeleteAdminUserEmailDelete(requestParameters: AdminDeleteAdminUserEmailDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
+    /**
+     * Create Badge
+     */
+    createBadgeAdminBadgesPostRaw(requestParameters: CreateBadgeAdminBadgesPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<BadgeModel>>;
+    /**
+     * Create Badge
+     */
+    createBadgeAdminBadgesPost(requestParameters: CreateBadgeAdminBadgesPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<BadgeModel>;
     /**
      * Generate Codes
      */
@@ -84,6 +99,14 @@ export declare class AdminApi extends runtime.BaseAPI {
      */
     impersonateAdminImpersonateEmailPost(requestParameters: ImpersonateAdminImpersonateEmailPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UserInfoResponse>;
     /**
+     * List Badges
+     */
+    listBadgesAdminBadgesGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<BadgeModel>>>;
+    /**
+     * List Badges
+     */
+    listBadgesAdminBadgesGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<BadgeModel>>;
+    /**
      * Reset User Claimables
      */
     resetUserClaimablesAdminUserResetClaimablesPostRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
@@ -91,5 +114,13 @@ export declare class AdminApi extends runtime.BaseAPI {
      * Reset User Claimables
      */
     resetUserClaimablesAdminUserResetClaimablesPost(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
+    /**
+     * Update Badge
+     */
+    updateBadgeAdminBadgesBadgeIdPatchRaw(requestParameters: UpdateBadgeAdminBadgesBadgeIdPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
+    /**
+     * Update Badge
+     */
+    updateBadgeAdminBadgesBadgeIdPatch(requestParameters: UpdateBadgeAdminBadgesBadgeIdPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
 }
 //# sourceMappingURL=AdminApi.d.ts.map

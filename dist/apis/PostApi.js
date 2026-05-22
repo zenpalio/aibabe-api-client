@@ -97,6 +97,9 @@ class PostApi extends runtime.BaseAPI {
         if (requestParameters['likesCount'] != null) {
             queryParameters['likes_count'] = requestParameters['likesCount'];
         }
+        if (requestParameters['awardAura'] != null) {
+            queryParameters['award_aura'] = requestParameters['awardAura'];
+        }
         const headerParameters = {};
         const response = await this.request({
             path: `/post/like/boost/{post_id}`.replace(`{${"post_id"}}`, encodeURIComponent(String(requestParameters['postId']))),
@@ -136,6 +139,9 @@ class PostApi extends runtime.BaseAPI {
         }
         if (requestParameters['boostAlreadyBoosted'] != null) {
             queryParameters['boost_already_boosted'] = requestParameters['boostAlreadyBoosted'];
+        }
+        if (requestParameters['awardAura'] != null) {
+            queryParameters['award_aura'] = requestParameters['awardAura'];
         }
         const headerParameters = {};
         const response = await this.request({

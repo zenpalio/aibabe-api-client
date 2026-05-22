@@ -1,6 +1,7 @@
 export * from './AdminApi';
 export * from './AssistantChatApi';
 export * from './AuthenticationApi';
+export * from './BadgesApi';
 export * from './ChatApi';
 export * from './ChatbotApi';
 export * from './ExploreApi';

@@ -136,7 +136,8 @@ export const ExceptionCode = {
     EpisodeAndVersionMismatch: 'episode_and_version_mismatch',
     EpisodeNotFound: 'episode_not_found',
     PurchasedEpisodeAndVersionMismatch: 'purchased_episode_and_version_mismatch',
-    PurchasedEpisodeVersionNotFound: 'purchased_episode_version_not_found'
+    PurchasedEpisodeVersionNotFound: 'purchased_episode_version_not_found',
+    NotificationNotCreated: 'notification_not_created'
 } as const;
 export type ExceptionCode = typeof ExceptionCode[keyof typeof ExceptionCode];
 

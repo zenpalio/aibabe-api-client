@@ -17,12 +17,14 @@ export interface BlacklistPostPostBlacklistPostIdPatchRequest {
 export interface BoostPostPostLikeBoostPostIdPostRequest {
     postId: string;
     likesCount: number;
+    awardAura?: boolean;
 }
 export interface BoostTrendingPostsPostLikeBoostPostRequest {
     likesPerPost?: number;
     likesThreshold?: number;
     ageHoursThreshold?: number;
     boostAlreadyBoosted?: boolean;
+    awardAura?: boolean;
 }
 export interface CategoriesPostCategoriesGetRequest {
     postType?: PostType | null;

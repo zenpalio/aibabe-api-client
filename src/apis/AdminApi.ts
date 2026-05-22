@@ -15,6 +15,9 @@
 
 import * as runtime from '../runtime';
 import type {
+  AdminCreateBadgeRequest,
+  AdminUpdateBadgeRequest,
+  BadgeModel,
   GetQualityControlImage,
   GetQualityControlRequest,
   GiftCodeType,
@@ -22,6 +25,12 @@ import type {
   UserInfoResponse,
 } from '../models/index';
 import {
+    AdminCreateBadgeRequestFromJSON,
+    AdminCreateBadgeRequestToJSON,
+    AdminUpdateBadgeRequestFromJSON,
+    AdminUpdateBadgeRequestToJSON,
+    BadgeModelFromJSON,
+    BadgeModelToJSON,
     GetQualityControlImageFromJSON,
     GetQualityControlImageToJSON,
     GetQualityControlRequestFromJSON,
@@ -43,6 +52,10 @@ export interface AdminDeleteAdminUserEmailDeleteRequest {
     email: string;
 }
 
+export interface CreateBadgeAdminBadgesPostRequest {
+    adminCreateBadgeRequest: AdminCreateBadgeRequest;
+}
+
 export interface GenerateCodesAdminGiftCodesGeneratePostRequest {
     count: number;
     codeType: GiftCodeType;
@@ -58,6 +71,11 @@ export interface GetTokenBalanceAdminTokenBalanceEmailGetRequest {
 
 export interface ImpersonateAdminImpersonateEmailPostRequest {
     email: string;
+}
+
+export interface UpdateBadgeAdminBadgesBadgeIdPatchRequest {
+    badgeId: string;
+    adminUpdateBadgeRequest: AdminUpdateBadgeRequest;
 }
 
 /**
@@ -166,6 +184,42 @@ export class AdminApi extends runtime.BaseAPI {
      */
     async adminDeleteAdminUserEmailDelete(requestParameters: AdminDeleteAdminUserEmailDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
         const response = await this.adminDeleteAdminUserEmailDeleteRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Create Badge
+     */
+    async createBadgeAdminBadgesPostRaw(requestParameters: CreateBadgeAdminBadgesPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<BadgeModel>> {
+        if (requestParameters['adminCreateBadgeRequest'] == null) {
+            throw new runtime.RequiredError(
+                'adminCreateBadgeRequest',
+                'Required parameter "adminCreateBadgeRequest" was null or undefined when calling createBadgeAdminBadgesPost().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        const response = await this.request({
+            path: `/admin/badges`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: AdminCreateBadgeRequestToJSON(requestParameters['adminCreateBadgeRequest']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => BadgeModelFromJSON(jsonValue));
+    }
+
+    /**
+     * Create Badge
+     */
+    async createBadgeAdminBadgesPost(requestParameters: CreateBadgeAdminBadgesPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<BadgeModel> {
+        const response = await this.createBadgeAdminBadgesPostRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -343,6 +397,32 @@ export class AdminApi extends runtime.BaseAPI {
     }
 
     /**
+     * List Badges
+     */
+    async listBadgesAdminBadgesGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<BadgeModel>>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/admin/badges`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(BadgeModelFromJSON));
+    }
+
+    /**
+     * List Badges
+     */
+    async listBadgesAdminBadgesGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<BadgeModel>> {
+        const response = await this.listBadgesAdminBadgesGetRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Reset User Claimables
      */
     async resetUserClaimablesAdminUserResetClaimablesPostRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
@@ -369,6 +449,53 @@ export class AdminApi extends runtime.BaseAPI {
      */
     async resetUserClaimablesAdminUserResetClaimablesPost(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
         const response = await this.resetUserClaimablesAdminUserResetClaimablesPostRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Update Badge
+     */
+    async updateBadgeAdminBadgesBadgeIdPatchRaw(requestParameters: UpdateBadgeAdminBadgesBadgeIdPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
+        if (requestParameters['badgeId'] == null) {
+            throw new runtime.RequiredError(
+                'badgeId',
+                'Required parameter "badgeId" was null or undefined when calling updateBadgeAdminBadgesBadgeIdPatch().'
+            );
+        }
+
+        if (requestParameters['adminUpdateBadgeRequest'] == null) {
+            throw new runtime.RequiredError(
+                'adminUpdateBadgeRequest',
+                'Required parameter "adminUpdateBadgeRequest" was null or undefined when calling updateBadgeAdminBadgesBadgeIdPatch().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        const response = await this.request({
+            path: `/admin/badges/{badge_id}`.replace(`{${"badge_id"}}`, encodeURIComponent(String(requestParameters['badgeId']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: AdminUpdateBadgeRequestToJSON(requestParameters['adminUpdateBadgeRequest']),
+        }, initOverrides);
+
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse<any>(response);
+        } else {
+            return new runtime.TextApiResponse(response) as any;
+        }
+    }
+
+    /**
+     * Update Badge
+     */
+    async updateBadgeAdminBadgesBadgeIdPatch(requestParameters: UpdateBadgeAdminBadgesBadgeIdPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
+        const response = await this.updateBadgeAdminBadgesBadgeIdPatchRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

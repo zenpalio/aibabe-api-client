@@ -19,6 +19,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./AdminApi"), exports);
 __exportStar(require("./AssistantChatApi"), exports);
 __exportStar(require("./AuthenticationApi"), exports);
+__exportStar(require("./BadgesApi"), exports);
 __exportStar(require("./ChatApi"), exports);
 __exportStar(require("./ChatbotApi"), exports);
 __exportStar(require("./ExploreApi"), exports);

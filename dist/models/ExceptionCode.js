@@ -142,7 +142,8 @@ exports.ExceptionCode = {
     EpisodeAndVersionMismatch: 'episode_and_version_mismatch',
     EpisodeNotFound: 'episode_not_found',
     PurchasedEpisodeAndVersionMismatch: 'purchased_episode_and_version_mismatch',
-    PurchasedEpisodeVersionNotFound: 'purchased_episode_version_not_found'
+    PurchasedEpisodeVersionNotFound: 'purchased_episode_version_not_found',
+    NotificationNotCreated: 'notification_not_created'
 };
 function instanceOfExceptionCode(value) {
     for (const key in exports.ExceptionCode) {
