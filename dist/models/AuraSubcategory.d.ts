@@ -17,9 +17,7 @@ export declare const AuraSubcategory: {
     readonly Characters: "characters";
     readonly Socials: "socials";
     readonly Messaging: "messaging";
-    readonly Images: "images";
-    readonly Videos: "videos";
-    readonly Stories: "stories";
+    readonly Content: "content";
 };
 export type AuraSubcategory = typeof AuraSubcategory[keyof typeof AuraSubcategory];
 export declare function instanceOfAuraSubcategory(value: any): boolean;

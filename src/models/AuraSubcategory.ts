@@ -21,9 +21,7 @@ export const AuraSubcategory = {
     Characters: 'characters',
     Socials: 'socials',
     Messaging: 'messaging',
-    Images: 'images',
-    Videos: 'videos',
-    Stories: 'stories'
+    Content: 'content'
 } as const;
 export type AuraSubcategory = typeof AuraSubcategory[keyof typeof AuraSubcategory];
 

@@ -27,9 +27,7 @@ exports.AuraSubcategory = {
     Characters: 'characters',
     Socials: 'socials',
     Messaging: 'messaging',
-    Images: 'images',
-    Videos: 'videos',
-    Stories: 'stories'
+    Content: 'content'
 };
 function instanceOfAuraSubcategory(value) {
     for (const key in exports.AuraSubcategory) {
