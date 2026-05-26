@@ -27,12 +27,6 @@ export interface AdminCreateBadgeRequest {
     name: string;
     /**
      *
-     * @type {ScoreCategory}
-     * @memberof AdminCreateBadgeRequest
-     */
-    category: ScoreCategory;
-    /**
-     *
      * @type {string}
      * @memberof AdminCreateBadgeRequest
      */
@@ -43,6 +37,12 @@ export interface AdminCreateBadgeRequest {
      * @memberof AdminCreateBadgeRequest
      */
     iconUrl?: string | null;
+    /**
+     *
+     * @type {ScoreCategory}
+     * @memberof AdminCreateBadgeRequest
+     */
+    category: ScoreCategory;
     /**
      *
      * @type {AuraSubcategory}

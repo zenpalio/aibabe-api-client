@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import type { UserBadge } from './UserBadge';
+import type { UserScore } from './UserScore';
 /**
  *
  * @export
@@ -22,6 +23,12 @@ export interface UserBadgeListResponse {
      * @memberof UserBadgeListResponse
      */
     badges: Array<UserBadge>;
+    /**
+     *
+     * @type {Array<UserScore>}
+     * @memberof UserBadgeListResponse
+     */
+    scores: Array<UserScore>;
 }
 /**
  * Check if a given object implements the UserBadgeListResponse interface.

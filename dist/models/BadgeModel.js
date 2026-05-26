@@ -18,9 +18,6 @@ exports.BadgeModelFromJSON = BadgeModelFromJSON;
 exports.BadgeModelFromJSONTyped = BadgeModelFromJSONTyped;
 exports.BadgeModelToJSON = BadgeModelToJSON;
 exports.BadgeModelToJSONTyped = BadgeModelToJSONTyped;
-const BadgeTimePeriod_1 = require("./BadgeTimePeriod");
-const ContentType_1 = require("./ContentType");
-const ScoreCategory_1 = require("./ScoreCategory");
 /**
  * Check if a given object implements the BadgeModel interface.
  */
@@ -45,10 +42,10 @@ function BadgeModelFromJSONTyped(json, ignoreDiscriminator) {
         'name': json['name'],
         'description': json['description'] == null ? undefined : json['description'],
         'iconUrl': json['icon_url'] == null ? undefined : json['icon_url'],
-        'category': (0, ScoreCategory_1.ScoreCategoryFromJSON)(json['category']),
-        'subcategoryRaw': json['subcategory_raw'] == null ? undefined : json['subcategory_raw'],
-        'contentType': json['content_type'] == null ? undefined : (0, ContentType_1.ContentTypeFromJSON)(json['content_type']),
-        'timePeriod': json['time_period'] == null ? undefined : (0, BadgeTimePeriod_1.BadgeTimePeriodFromJSON)(json['time_period']),
+        'category': json['category_'],
+        'subcategory': json['subcategory_'] == null ? undefined : json['subcategory_'],
+        'contentType': json['content_type_'] == null ? undefined : json['content_type_'],
+        'timePeriod': json['time_period_'] == null ? undefined : json['time_period_'],
         'requiredRank': json['required_rank'] == null ? undefined : json['required_rank'],
         'scoreThreshold': json['score_threshold'] == null ? undefined : json['score_threshold'],
         'tokenPrice': json['token_price'] == null ? undefined : json['token_price'],
@@ -71,10 +68,10 @@ function BadgeModelToJSONTyped(value, ignoreDiscriminator = false) {
         'name': value['name'],
         'description': value['description'],
         'icon_url': value['iconUrl'],
-        'category': (0, ScoreCategory_1.ScoreCategoryToJSON)(value['category']),
-        'subcategory_raw': value['subcategoryRaw'],
-        'content_type': (0, ContentType_1.ContentTypeToJSON)(value['contentType']),
-        'time_period': (0, BadgeTimePeriod_1.BadgeTimePeriodToJSON)(value['timePeriod']),
+        'category_': value['category'],
+        'subcategory_': value['subcategory'],
+        'content_type_': value['contentType'],
+        'time_period_': value['timePeriod'],
         'required_rank': value['requiredRank'],
         'score_threshold': value['scoreThreshold'],
         'token_price': value['tokenPrice'],

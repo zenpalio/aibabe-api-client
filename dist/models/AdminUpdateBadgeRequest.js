@@ -18,6 +18,10 @@ exports.AdminUpdateBadgeRequestFromJSON = AdminUpdateBadgeRequestFromJSON;
 exports.AdminUpdateBadgeRequestFromJSONTyped = AdminUpdateBadgeRequestFromJSONTyped;
 exports.AdminUpdateBadgeRequestToJSON = AdminUpdateBadgeRequestToJSON;
 exports.AdminUpdateBadgeRequestToJSONTyped = AdminUpdateBadgeRequestToJSONTyped;
+const BadgeTimePeriod_1 = require("./BadgeTimePeriod");
+const ContentType_1 = require("./ContentType");
+const ScoreCategory_1 = require("./ScoreCategory");
+const AuraSubcategory_1 = require("./AuraSubcategory");
 /**
  * Check if a given object implements the AdminUpdateBadgeRequest interface.
  */
@@ -35,6 +39,10 @@ function AdminUpdateBadgeRequestFromJSONTyped(json, ignoreDiscriminator) {
         'name': json['name'] == null ? undefined : json['name'],
         'description': json['description'] == null ? undefined : json['description'],
         'iconUrl': json['icon_url'] == null ? undefined : json['icon_url'],
+        'category': json['category'] == null ? undefined : (0, ScoreCategory_1.ScoreCategoryFromJSON)(json['category']),
+        'subcategory': json['subcategory'] == null ? undefined : (0, AuraSubcategory_1.AuraSubcategoryFromJSON)(json['subcategory']),
+        'contentType': json['content_type'] == null ? undefined : (0, ContentType_1.ContentTypeFromJSON)(json['content_type']),
+        'timePeriod': json['time_period'] == null ? undefined : (0, BadgeTimePeriod_1.BadgeTimePeriodFromJSON)(json['time_period']),
         'requiredRank': json['required_rank'] == null ? undefined : json['required_rank'],
         'scoreThreshold': json['score_threshold'] == null ? undefined : json['score_threshold'],
         'tokenPrice': json['token_price'] == null ? undefined : json['token_price'],
@@ -54,6 +62,10 @@ function AdminUpdateBadgeRequestToJSONTyped(value, ignoreDiscriminator = false) 
         'name': value['name'],
         'description': value['description'],
         'icon_url': value['iconUrl'],
+        'category': (0, ScoreCategory_1.ScoreCategoryToJSON)(value['category']),
+        'subcategory': (0, AuraSubcategory_1.AuraSubcategoryToJSON)(value['subcategory']),
+        'content_type': (0, ContentType_1.ContentTypeToJSON)(value['contentType']),
+        'time_period': (0, BadgeTimePeriod_1.BadgeTimePeriodToJSON)(value['timePeriod']),
         'required_rank': value['requiredRank'],
         'score_threshold': value['scoreThreshold'],
         'token_price': value['tokenPrice'],

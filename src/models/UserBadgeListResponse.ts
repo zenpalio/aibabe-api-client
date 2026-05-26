@@ -20,6 +20,13 @@ import {
     UserBadgeToJSON,
     UserBadgeToJSONTyped,
 } from './UserBadge';
+import type { UserScore } from './UserScore';
+import {
+    UserScoreFromJSON,
+    UserScoreFromJSONTyped,
+    UserScoreToJSON,
+    UserScoreToJSONTyped,
+} from './UserScore';
 
 /**
  * 
@@ -33,6 +40,12 @@ export interface UserBadgeListResponse {
      * @memberof UserBadgeListResponse
      */
     badges: Array<UserBadge>;
+    /**
+     * 
+     * @type {Array<UserScore>}
+     * @memberof UserBadgeListResponse
+     */
+    scores: Array<UserScore>;
 }
 
 /**
@@ -40,6 +53,7 @@ export interface UserBadgeListResponse {
  */
 export function instanceOfUserBadgeListResponse(value: object): value is UserBadgeListResponse {
     if (!('badges' in value) || value['badges'] === undefined) return false;
+    if (!('scores' in value) || value['scores'] === undefined) return false;
     return true;
 }
 
@@ -54,6 +68,7 @@ export function UserBadgeListResponseFromJSONTyped(json: any, ignoreDiscriminato
     return {
         
         'badges': ((json['badges'] as Array<any>).map(UserBadgeFromJSON)),
+        'scores': ((json['scores'] as Array<any>).map(UserScoreFromJSON)),
     };
 }
 
@@ -69,6 +84,7 @@ export function UserBadgeListResponseFromJSONTyped(json: any, ignoreDiscriminato
     return {
         
         'badges': ((value['badges'] as Array<any>).map(UserBadgeToJSON)),
+        'scores': ((value['scores'] as Array<any>).map(UserScoreToJSON)),
     };
 }
 

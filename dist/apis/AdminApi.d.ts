@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AdminCreateBadgeRequest, AdminUpdateBadgeRequest, BadgeModel, GetQualityControlImage, GetQualityControlRequest, GiftCodeType, UserInfoResponse } from '../models/index';
+import type { AdminBadgeResponse, AdminCreateBadgeRequest, AdminUpdateBadgeRequest, GetQualityControlImage, GetQualityControlRequest, GiftCodeType, UserInfoResponse } from '../models/index';
 export interface AddTokensAdminAddTokensPutRequest {
     email: string;
     tokens: number;
@@ -61,11 +61,11 @@ export declare class AdminApi extends runtime.BaseAPI {
     /**
      * Create Badge
      */
-    createBadgeAdminBadgesPostRaw(requestParameters: CreateBadgeAdminBadgesPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<BadgeModel>>;
+    createBadgeAdminBadgesPostRaw(requestParameters: CreateBadgeAdminBadgesPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AdminBadgeResponse>>;
     /**
      * Create Badge
      */
-    createBadgeAdminBadgesPost(requestParameters: CreateBadgeAdminBadgesPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<BadgeModel>;
+    createBadgeAdminBadgesPost(requestParameters: CreateBadgeAdminBadgesPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AdminBadgeResponse>;
     /**
      * Generate Codes
      */
@@ -101,11 +101,11 @@ export declare class AdminApi extends runtime.BaseAPI {
     /**
      * List Badges
      */
-    listBadgesAdminBadgesGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<BadgeModel>>>;
+    listBadgesAdminBadgesGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<AdminBadgeResponse>>>;
     /**
      * List Badges
      */
-    listBadgesAdminBadgesGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<BadgeModel>>;
+    listBadgesAdminBadgesGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AdminBadgeResponse>>;
     /**
      * Reset User Claimables
      */

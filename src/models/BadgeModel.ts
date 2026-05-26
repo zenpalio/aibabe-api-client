@@ -13,28 +13,6 @@
  */
 
 import { mapValues } from '../runtime';
-import type { BadgeTimePeriod } from './BadgeTimePeriod';
-import {
-    BadgeTimePeriodFromJSON,
-    BadgeTimePeriodFromJSONTyped,
-    BadgeTimePeriodToJSON,
-    BadgeTimePeriodToJSONTyped,
-} from './BadgeTimePeriod';
-import type { ContentType } from './ContentType';
-import {
-    ContentTypeFromJSON,
-    ContentTypeFromJSONTyped,
-    ContentTypeToJSON,
-    ContentTypeToJSONTyped,
-} from './ContentType';
-import type { ScoreCategory } from './ScoreCategory';
-import {
-    ScoreCategoryFromJSON,
-    ScoreCategoryFromJSONTyped,
-    ScoreCategoryToJSON,
-    ScoreCategoryToJSONTyped,
-} from './ScoreCategory';
-
 /**
  * 
  * @export
@@ -79,28 +57,28 @@ export interface BadgeModel {
     iconUrl?: string | null;
     /**
      * 
-     * @type {ScoreCategory}
+     * @type {string}
      * @memberof BadgeModel
      */
-    category: ScoreCategory;
+    category: string;
     /**
      * 
      * @type {string}
      * @memberof BadgeModel
      */
-    subcategoryRaw?: string | null;
+    subcategory?: string | null;
     /**
      * 
-     * @type {ContentType}
+     * @type {string}
      * @memberof BadgeModel
      */
-    contentType?: ContentType | null;
+    contentType?: string | null;
     /**
      * 
-     * @type {BadgeTimePeriod}
+     * @type {string}
      * @memberof BadgeModel
      */
-    timePeriod?: BadgeTimePeriod;
+    timePeriod?: string;
     /**
      * 
      * @type {number}
@@ -139,8 +117,6 @@ export interface BadgeModel {
     visible?: boolean;
 }
 
-
-
 /**
  * Check if a given object implements the BadgeModel interface.
  */
@@ -166,10 +142,10 @@ export function BadgeModelFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'name': json['name'],
         'description': json['description'] == null ? undefined : json['description'],
         'iconUrl': json['icon_url'] == null ? undefined : json['icon_url'],
-        'category': ScoreCategoryFromJSON(json['category']),
-        'subcategoryRaw': json['subcategory_raw'] == null ? undefined : json['subcategory_raw'],
-        'contentType': json['content_type'] == null ? undefined : ContentTypeFromJSON(json['content_type']),
-        'timePeriod': json['time_period'] == null ? undefined : BadgeTimePeriodFromJSON(json['time_period']),
+        'category': json['category_'],
+        'subcategory': json['subcategory_'] == null ? undefined : json['subcategory_'],
+        'contentType': json['content_type_'] == null ? undefined : json['content_type_'],
+        'timePeriod': json['time_period_'] == null ? undefined : json['time_period_'],
         'requiredRank': json['required_rank'] == null ? undefined : json['required_rank'],
         'scoreThreshold': json['score_threshold'] == null ? undefined : json['score_threshold'],
         'tokenPrice': json['token_price'] == null ? undefined : json['token_price'],
@@ -196,10 +172,10 @@ export function BadgeModelFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'name': value['name'],
         'description': value['description'],
         'icon_url': value['iconUrl'],
-        'category': ScoreCategoryToJSON(value['category']),
-        'subcategory_raw': value['subcategoryRaw'],
-        'content_type': ContentTypeToJSON(value['contentType']),
-        'time_period': BadgeTimePeriodToJSON(value['timePeriod']),
+        'category_': value['category'],
+        'subcategory_': value['subcategory'],
+        'content_type_': value['contentType'],
+        'time_period_': value['timePeriod'],
         'required_rank': value['requiredRank'],
         'score_threshold': value['scoreThreshold'],
         'token_price': value['tokenPrice'],

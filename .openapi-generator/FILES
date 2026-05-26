@@ -29,6 +29,7 @@ src/index.ts
 src/models/AccessType.ts
 src/models/ActorRole.ts
 src/models/AddonPrice.ts
+src/models/AdminBadgeResponse.ts
 src/models/AdminCreateBadgeRequest.ts
 src/models/AdminUpdateBadgeRequest.ts
 src/models/AnimeLora.ts
@@ -319,6 +320,7 @@ src/models/UserInfoResponse.ts
 src/models/UserPreferenceModel.ts
 src/models/UserPreferences.ts
 src/models/UserRole.ts
+src/models/UserScore.ts
 src/models/ValidationError.ts
 src/models/ValidationErrorLocInner.ts
 src/models/Value.ts

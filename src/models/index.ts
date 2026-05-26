@@ -3,6 +3,7 @@
 export * from './AccessType';
 export * from './ActorRole';
 export * from './AddonPrice';
+export * from './AdminBadgeResponse';
 export * from './AdminCreateBadgeRequest';
 export * from './AdminUpdateBadgeRequest';
 export * from './AnimeLora';
@@ -293,6 +294,7 @@ export * from './UserInfoResponse';
 export * from './UserPreferenceModel';
 export * from './UserPreferences';
 export * from './UserRole';
+export * from './UserScore';
 export * from './ValidationError';
 export * from './ValidationErrorLocInner';
 export * from './Value';

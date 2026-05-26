@@ -45,135 +45,168 @@ import {
 /**
  * 
  * @export
- * @interface AdminUpdateBadgeRequest
+ * @interface AdminBadgeResponse
  */
-export interface AdminUpdateBadgeRequest {
+export interface AdminBadgeResponse {
     /**
      * 
      * @type {string}
-     * @memberof AdminUpdateBadgeRequest
+     * @memberof AdminBadgeResponse
      */
-    name?: string | null;
+    id: string;
+    /**
+     * 
+     * @type {Date}
+     * @memberof AdminBadgeResponse
+     */
+    createdAt: Date;
+    /**
+     * 
+     * @type {Date}
+     * @memberof AdminBadgeResponse
+     */
+    updatedAt: Date;
     /**
      * 
      * @type {string}
-     * @memberof AdminUpdateBadgeRequest
+     * @memberof AdminBadgeResponse
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AdminBadgeResponse
      */
     description?: string | null;
     /**
      * 
      * @type {string}
-     * @memberof AdminUpdateBadgeRequest
+     * @memberof AdminBadgeResponse
      */
     iconUrl?: string | null;
     /**
      * 
      * @type {ScoreCategory}
-     * @memberof AdminUpdateBadgeRequest
+     * @memberof AdminBadgeResponse
      */
-    category?: ScoreCategory | null;
+    category: ScoreCategory;
     /**
      * 
      * @type {AuraSubcategory}
-     * @memberof AdminUpdateBadgeRequest
+     * @memberof AdminBadgeResponse
      */
     subcategory?: AuraSubcategory | null;
     /**
      * 
      * @type {ContentType}
-     * @memberof AdminUpdateBadgeRequest
+     * @memberof AdminBadgeResponse
      */
     contentType?: ContentType | null;
     /**
      * 
      * @type {BadgeTimePeriod}
-     * @memberof AdminUpdateBadgeRequest
+     * @memberof AdminBadgeResponse
      */
-    timePeriod?: BadgeTimePeriod | null;
+    timePeriod: BadgeTimePeriod;
     /**
      * 
      * @type {number}
-     * @memberof AdminUpdateBadgeRequest
+     * @memberof AdminBadgeResponse
      */
     requiredRank?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof AdminUpdateBadgeRequest
+     * @memberof AdminBadgeResponse
      */
     scoreThreshold?: number | null;
     /**
      * 
      * @type {number}
-     * @memberof AdminUpdateBadgeRequest
+     * @memberof AdminBadgeResponse
      */
     tokenPrice?: number | null;
     /**
      * 
      * @type {boolean}
-     * @memberof AdminUpdateBadgeRequest
+     * @memberof AdminBadgeResponse
      */
-    claimable?: boolean | null;
+    claimable: boolean;
     /**
      * 
      * @type {boolean}
-     * @memberof AdminUpdateBadgeRequest
+     * @memberof AdminBadgeResponse
      */
-    usable?: boolean | null;
+    usable: boolean;
     /**
      * 
      * @type {boolean}
-     * @memberof AdminUpdateBadgeRequest
+     * @memberof AdminBadgeResponse
      */
-    visible?: boolean | null;
+    visible: boolean;
 }
 
 
 
 /**
- * Check if a given object implements the AdminUpdateBadgeRequest interface.
+ * Check if a given object implements the AdminBadgeResponse interface.
  */
-export function instanceOfAdminUpdateBadgeRequest(value: object): value is AdminUpdateBadgeRequest {
+export function instanceOfAdminBadgeResponse(value: object): value is AdminBadgeResponse {
+    if (!('id' in value) || value['id'] === undefined) return false;
+    if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
+    if (!('updatedAt' in value) || value['updatedAt'] === undefined) return false;
+    if (!('name' in value) || value['name'] === undefined) return false;
+    if (!('category' in value) || value['category'] === undefined) return false;
+    if (!('timePeriod' in value) || value['timePeriod'] === undefined) return false;
+    if (!('claimable' in value) || value['claimable'] === undefined) return false;
+    if (!('usable' in value) || value['usable'] === undefined) return false;
+    if (!('visible' in value) || value['visible'] === undefined) return false;
     return true;
 }
 
-export function AdminUpdateBadgeRequestFromJSON(json: any): AdminUpdateBadgeRequest {
-    return AdminUpdateBadgeRequestFromJSONTyped(json, false);
+export function AdminBadgeResponseFromJSON(json: any): AdminBadgeResponse {
+    return AdminBadgeResponseFromJSONTyped(json, false);
 }
 
-export function AdminUpdateBadgeRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): AdminUpdateBadgeRequest {
+export function AdminBadgeResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): AdminBadgeResponse {
     if (json == null) {
         return json;
     }
     return {
         
-        'name': json['name'] == null ? undefined : json['name'],
+        'id': json['id'],
+        'createdAt': (new Date(json['created_at'])),
+        'updatedAt': (new Date(json['updated_at'])),
+        'name': json['name'],
         'description': json['description'] == null ? undefined : json['description'],
         'iconUrl': json['icon_url'] == null ? undefined : json['icon_url'],
-        'category': json['category'] == null ? undefined : ScoreCategoryFromJSON(json['category']),
+        'category': ScoreCategoryFromJSON(json['category']),
         'subcategory': json['subcategory'] == null ? undefined : AuraSubcategoryFromJSON(json['subcategory']),
         'contentType': json['content_type'] == null ? undefined : ContentTypeFromJSON(json['content_type']),
-        'timePeriod': json['time_period'] == null ? undefined : BadgeTimePeriodFromJSON(json['time_period']),
+        'timePeriod': BadgeTimePeriodFromJSON(json['time_period']),
         'requiredRank': json['required_rank'] == null ? undefined : json['required_rank'],
         'scoreThreshold': json['score_threshold'] == null ? undefined : json['score_threshold'],
         'tokenPrice': json['token_price'] == null ? undefined : json['token_price'],
-        'claimable': json['claimable'] == null ? undefined : json['claimable'],
-        'usable': json['usable'] == null ? undefined : json['usable'],
-        'visible': json['visible'] == null ? undefined : json['visible'],
+        'claimable': json['claimable'],
+        'usable': json['usable'],
+        'visible': json['visible'],
     };
 }
 
-  export function AdminUpdateBadgeRequestToJSON(json: any): AdminUpdateBadgeRequest {
-      return AdminUpdateBadgeRequestToJSONTyped(json, false);
+  export function AdminBadgeResponseToJSON(json: any): AdminBadgeResponse {
+      return AdminBadgeResponseToJSONTyped(json, false);
   }
 
-  export function AdminUpdateBadgeRequestToJSONTyped(value?: AdminUpdateBadgeRequest | null, ignoreDiscriminator: boolean = false): any {
+  export function AdminBadgeResponseToJSONTyped(value?: AdminBadgeResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
 
     return {
         
+        'id': value['id'],
+        'created_at': ((value['createdAt']).toISOString()),
+        'updated_at': ((value['updatedAt']).toISOString()),
         'name': value['name'],
         'description': value['description'],
         'icon_url': value['iconUrl'],

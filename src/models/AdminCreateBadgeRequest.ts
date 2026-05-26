@@ -56,12 +56,6 @@ export interface AdminCreateBadgeRequest {
     name: string;
     /**
      * 
-     * @type {ScoreCategory}
-     * @memberof AdminCreateBadgeRequest
-     */
-    category: ScoreCategory;
-    /**
-     * 
      * @type {string}
      * @memberof AdminCreateBadgeRequest
      */
@@ -72,6 +66,12 @@ export interface AdminCreateBadgeRequest {
      * @memberof AdminCreateBadgeRequest
      */
     iconUrl?: string | null;
+    /**
+     * 
+     * @type {ScoreCategory}
+     * @memberof AdminCreateBadgeRequest
+     */
+    category: ScoreCategory;
     /**
      * 
      * @type {AuraSubcategory}
@@ -150,9 +150,9 @@ export function AdminCreateBadgeRequestFromJSONTyped(json: any, ignoreDiscrimina
     return {
         
         'name': json['name'],
-        'category': ScoreCategoryFromJSON(json['category']),
         'description': json['description'] == null ? undefined : json['description'],
         'iconUrl': json['icon_url'] == null ? undefined : json['icon_url'],
+        'category': ScoreCategoryFromJSON(json['category']),
         'subcategory': json['subcategory'] == null ? undefined : AuraSubcategoryFromJSON(json['subcategory']),
         'contentType': json['content_type'] == null ? undefined : ContentTypeFromJSON(json['content_type']),
         'timePeriod': json['time_period'] == null ? undefined : BadgeTimePeriodFromJSON(json['time_period']),
@@ -177,9 +177,9 @@ export function AdminCreateBadgeRequestFromJSONTyped(json: any, ignoreDiscrimina
     return {
         
         'name': value['name'],
-        'category': ScoreCategoryToJSON(value['category']),
         'description': value['description'],
         'icon_url': value['iconUrl'],
+        'category': ScoreCategoryToJSON(value['category']),
         'subcategory': AuraSubcategoryToJSON(value['subcategory']),
         'content_type': ContentTypeToJSON(value['contentType']),
         'time_period': BadgeTimePeriodToJSON(value['timePeriod']),

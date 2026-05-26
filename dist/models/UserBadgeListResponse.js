@@ -19,11 +19,14 @@ exports.UserBadgeListResponseFromJSONTyped = UserBadgeListResponseFromJSONTyped;
 exports.UserBadgeListResponseToJSON = UserBadgeListResponseToJSON;
 exports.UserBadgeListResponseToJSONTyped = UserBadgeListResponseToJSONTyped;
 const UserBadge_1 = require("./UserBadge");
+const UserScore_1 = require("./UserScore");
 /**
  * Check if a given object implements the UserBadgeListResponse interface.
  */
 function instanceOfUserBadgeListResponse(value) {
     if (!('badges' in value) || value['badges'] === undefined)
+        return false;
+    if (!('scores' in value) || value['scores'] === undefined)
         return false;
     return true;
 }
@@ -36,6 +39,7 @@ function UserBadgeListResponseFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'badges': (json['badges'].map(UserBadge_1.UserBadgeFromJSON)),
+        'scores': (json['scores'].map(UserScore_1.UserScoreFromJSON)),
     };
 }
 function UserBadgeListResponseToJSON(json) {
@@ -47,6 +51,7 @@ function UserBadgeListResponseToJSONTyped(value, ignoreDiscriminator = false) {
     }
     return {
         'badges': (value['badges'].map(UserBadge_1.UserBadgeToJSON)),
+        'scores': (value['scores'].map(UserScore_1.UserScoreToJSON)),
     };
 }
 //# sourceMappingURL=UserBadgeListResponse.js.map

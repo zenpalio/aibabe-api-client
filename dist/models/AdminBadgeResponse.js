@@ -13,56 +13,76 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.instanceOfAdminCreateBadgeRequest = instanceOfAdminCreateBadgeRequest;
-exports.AdminCreateBadgeRequestFromJSON = AdminCreateBadgeRequestFromJSON;
-exports.AdminCreateBadgeRequestFromJSONTyped = AdminCreateBadgeRequestFromJSONTyped;
-exports.AdminCreateBadgeRequestToJSON = AdminCreateBadgeRequestToJSON;
-exports.AdminCreateBadgeRequestToJSONTyped = AdminCreateBadgeRequestToJSONTyped;
+exports.instanceOfAdminBadgeResponse = instanceOfAdminBadgeResponse;
+exports.AdminBadgeResponseFromJSON = AdminBadgeResponseFromJSON;
+exports.AdminBadgeResponseFromJSONTyped = AdminBadgeResponseFromJSONTyped;
+exports.AdminBadgeResponseToJSON = AdminBadgeResponseToJSON;
+exports.AdminBadgeResponseToJSONTyped = AdminBadgeResponseToJSONTyped;
 const BadgeTimePeriod_1 = require("./BadgeTimePeriod");
 const ContentType_1 = require("./ContentType");
 const ScoreCategory_1 = require("./ScoreCategory");
 const AuraSubcategory_1 = require("./AuraSubcategory");
 /**
- * Check if a given object implements the AdminCreateBadgeRequest interface.
+ * Check if a given object implements the AdminBadgeResponse interface.
  */
-function instanceOfAdminCreateBadgeRequest(value) {
+function instanceOfAdminBadgeResponse(value) {
+    if (!('id' in value) || value['id'] === undefined)
+        return false;
+    if (!('createdAt' in value) || value['createdAt'] === undefined)
+        return false;
+    if (!('updatedAt' in value) || value['updatedAt'] === undefined)
+        return false;
     if (!('name' in value) || value['name'] === undefined)
         return false;
     if (!('category' in value) || value['category'] === undefined)
         return false;
+    if (!('timePeriod' in value) || value['timePeriod'] === undefined)
+        return false;
+    if (!('claimable' in value) || value['claimable'] === undefined)
+        return false;
+    if (!('usable' in value) || value['usable'] === undefined)
+        return false;
+    if (!('visible' in value) || value['visible'] === undefined)
+        return false;
     return true;
 }
-function AdminCreateBadgeRequestFromJSON(json) {
-    return AdminCreateBadgeRequestFromJSONTyped(json, false);
+function AdminBadgeResponseFromJSON(json) {
+    return AdminBadgeResponseFromJSONTyped(json, false);
 }
-function AdminCreateBadgeRequestFromJSONTyped(json, ignoreDiscriminator) {
+function AdminBadgeResponseFromJSONTyped(json, ignoreDiscriminator) {
     if (json == null) {
         return json;
     }
     return {
+        'id': json['id'],
+        'createdAt': (new Date(json['created_at'])),
+        'updatedAt': (new Date(json['updated_at'])),
         'name': json['name'],
         'description': json['description'] == null ? undefined : json['description'],
         'iconUrl': json['icon_url'] == null ? undefined : json['icon_url'],
         'category': (0, ScoreCategory_1.ScoreCategoryFromJSON)(json['category']),
         'subcategory': json['subcategory'] == null ? undefined : (0, AuraSubcategory_1.AuraSubcategoryFromJSON)(json['subcategory']),
         'contentType': json['content_type'] == null ? undefined : (0, ContentType_1.ContentTypeFromJSON)(json['content_type']),
-        'timePeriod': json['time_period'] == null ? undefined : (0, BadgeTimePeriod_1.BadgeTimePeriodFromJSON)(json['time_period']),
+        'timePeriod': (0, BadgeTimePeriod_1.BadgeTimePeriodFromJSON)(json['time_period']),
         'requiredRank': json['required_rank'] == null ? undefined : json['required_rank'],
         'scoreThreshold': json['score_threshold'] == null ? undefined : json['score_threshold'],
         'tokenPrice': json['token_price'] == null ? undefined : json['token_price'],
-        'claimable': json['claimable'] == null ? undefined : json['claimable'],
-        'usable': json['usable'] == null ? undefined : json['usable'],
-        'visible': json['visible'] == null ? undefined : json['visible'],
+        'claimable': json['claimable'],
+        'usable': json['usable'],
+        'visible': json['visible'],
     };
 }
-function AdminCreateBadgeRequestToJSON(json) {
-    return AdminCreateBadgeRequestToJSONTyped(json, false);
+function AdminBadgeResponseToJSON(json) {
+    return AdminBadgeResponseToJSONTyped(json, false);
 }
-function AdminCreateBadgeRequestToJSONTyped(value, ignoreDiscriminator = false) {
+function AdminBadgeResponseToJSONTyped(value, ignoreDiscriminator = false) {
     if (value == null) {
         return value;
     }
     return {
+        'id': value['id'],
+        'created_at': ((value['createdAt']).toISOString()),
+        'updated_at': ((value['updatedAt']).toISOString()),
         'name': value['name'],
         'description': value['description'],
         'icon_url': value['iconUrl'],
@@ -78,4 +98,4 @@ function AdminCreateBadgeRequestToJSONTyped(value, ignoreDiscriminator = false) 
         'visible': value['visible'],
     };
 }
-//# sourceMappingURL=AdminCreateBadgeRequest.js.map
+//# sourceMappingURL=AdminBadgeResponse.js.map

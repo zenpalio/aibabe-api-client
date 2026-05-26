@@ -9,6 +9,10 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { BadgeTimePeriod } from './BadgeTimePeriod';
+import type { ContentType } from './ContentType';
+import type { ScoreCategory } from './ScoreCategory';
+import type { AuraSubcategory } from './AuraSubcategory';
 /**
  *
  * @export
@@ -33,6 +37,30 @@ export interface AdminUpdateBadgeRequest {
      * @memberof AdminUpdateBadgeRequest
      */
     iconUrl?: string | null;
+    /**
+     *
+     * @type {ScoreCategory}
+     * @memberof AdminUpdateBadgeRequest
+     */
+    category?: ScoreCategory | null;
+    /**
+     *
+     * @type {AuraSubcategory}
+     * @memberof AdminUpdateBadgeRequest
+     */
+    subcategory?: AuraSubcategory | null;
+    /**
+     *
+     * @type {ContentType}
+     * @memberof AdminUpdateBadgeRequest
+     */
+    contentType?: ContentType | null;
+    /**
+     *
+     * @type {BadgeTimePeriod}
+     * @memberof AdminUpdateBadgeRequest
+     */
+    timePeriod?: BadgeTimePeriod | null;
     /**
      *
      * @type {number}

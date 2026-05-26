@@ -9,9 +9,6 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { BadgeTimePeriod } from './BadgeTimePeriod';
-import type { ContentType } from './ContentType';
-import type { ScoreCategory } from './ScoreCategory';
 /**
  *
  * @export
@@ -56,28 +53,28 @@ export interface BadgeModel {
     iconUrl?: string | null;
     /**
      *
-     * @type {ScoreCategory}
+     * @type {string}
      * @memberof BadgeModel
      */
-    category: ScoreCategory;
+    category: string;
     /**
      *
      * @type {string}
      * @memberof BadgeModel
      */
-    subcategoryRaw?: string | null;
+    subcategory?: string | null;
     /**
      *
-     * @type {ContentType}
+     * @type {string}
      * @memberof BadgeModel
      */
-    contentType?: ContentType | null;
+    contentType?: string | null;
     /**
      *
-     * @type {BadgeTimePeriod}
+     * @type {string}
      * @memberof BadgeModel
      */
-    timePeriod?: BadgeTimePeriod;
+    timePeriod?: string;
     /**
      *
      * @type {number}
