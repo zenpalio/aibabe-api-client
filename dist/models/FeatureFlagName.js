@@ -26,7 +26,8 @@ exports.FeatureFlagNameToJSONTyped = FeatureFlagNameToJSONTyped;
 exports.FeatureFlagName = {
     GrokModeration: 'GROK_MODERATION',
     MarketingBanners: 'MARKETING_BANNERS',
-    Qwen3: 'QWEN3'
+    Qwen3: 'QWEN3',
+    Rapyd: 'RAPYD'
 };
 function instanceOfFeatureFlagName(value) {
     for (const key in exports.FeatureFlagName) {

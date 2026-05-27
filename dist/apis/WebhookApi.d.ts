@@ -19,6 +19,14 @@ export interface VastaiStatusWebhookWebhookInstanceStatusPostRequest {
  */
 export declare class WebhookApi extends runtime.BaseAPI {
     /**
+     * Rapyd
+     */
+    rapydWebhookRapydPostRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
+    /**
+     * Rapyd
+     */
+    rapydWebhookRapydPost(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
+    /**
      * Truevo
      */
     truevoWebhookTruevoPostRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;

@@ -280,6 +280,70 @@ class SubscriptionsApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * Rapyd Callback Declined
+     */
+    async rapydCallbackDeclinedSubscriptionRapydCallbackDeclinedGetRaw(requestParameters, initOverrides) {
+        const queryParameters = {};
+        if (requestParameters['txnRef'] != null) {
+            queryParameters['txnRef'] = requestParameters['txnRef'];
+        }
+        if (requestParameters['merchantReferenceId'] != null) {
+            queryParameters['merchant_reference_id'] = requestParameters['merchantReferenceId'];
+        }
+        const headerParameters = {};
+        const response = await this.request({
+            path: `/subscription/rapyd/callback/declined`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse(response);
+        }
+        else {
+            return new runtime.TextApiResponse(response);
+        }
+    }
+    /**
+     * Rapyd Callback Declined
+     */
+    async rapydCallbackDeclinedSubscriptionRapydCallbackDeclinedGet(requestParameters = {}, initOverrides) {
+        const response = await this.rapydCallbackDeclinedSubscriptionRapydCallbackDeclinedGetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * Rapyd Callback Success
+     */
+    async rapydCallbackSuccessSubscriptionRapydCallbackSuccessGetRaw(requestParameters, initOverrides) {
+        const queryParameters = {};
+        if (requestParameters['txnRef'] != null) {
+            queryParameters['txnRef'] = requestParameters['txnRef'];
+        }
+        if (requestParameters['merchantReferenceId'] != null) {
+            queryParameters['merchant_reference_id'] = requestParameters['merchantReferenceId'];
+        }
+        const headerParameters = {};
+        const response = await this.request({
+            path: `/subscription/rapyd/callback/success`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse(response);
+        }
+        else {
+            return new runtime.TextApiResponse(response);
+        }
+    }
+    /**
+     * Rapyd Callback Success
+     */
+    async rapydCallbackSuccessSubscriptionRapydCallbackSuccessGet(requestParameters = {}, initOverrides) {
+        const response = await this.rapydCallbackSuccessSubscriptionRapydCallbackSuccessGetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * Reconcile Billing
      */
     async reconcileBillingSubscriptionReconcileBillingPostRaw(requestParameters, initOverrides) {

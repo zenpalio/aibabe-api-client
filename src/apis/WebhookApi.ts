@@ -35,6 +35,36 @@ export interface VastaiStatusWebhookWebhookInstanceStatusPostRequest {
 export class WebhookApi extends runtime.BaseAPI {
 
     /**
+     * Rapyd
+     */
+    async rapydWebhookRapydPostRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/webhook/rapyd`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse<any>(response);
+        } else {
+            return new runtime.TextApiResponse(response) as any;
+        }
+    }
+
+    /**
+     * Rapyd
+     */
+    async rapydWebhookRapydPost(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
+        const response = await this.rapydWebhookRapydPostRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Truevo
      */
     async truevoWebhookTruevoPostRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {

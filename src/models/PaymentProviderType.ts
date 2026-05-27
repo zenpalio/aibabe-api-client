@@ -21,7 +21,8 @@ export const PaymentProviderType = {
     Unicorn: 'unicorn',
     Corpay: 'corpay',
     Patreon: 'patreon',
-    Truevo: 'truevo'
+    Truevo: 'truevo',
+    Rapyd: 'rapyd'
 } as const;
 export type PaymentProviderType = typeof PaymentProviderType[keyof typeof PaymentProviderType];
 
