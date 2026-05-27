@@ -4,8 +4,6 @@ export * from './AccessType';
 export * from './ActorRole';
 export * from './AddonPrice';
 export * from './AdminBadgeResponse';
-export * from './AdminCreateBadgeRequest';
-export * from './AdminUpdateBadgeRequest';
 export * from './AnimeLora';
 export * from './ArtStyle';
 export * from './AssistantChatMessageDetail';

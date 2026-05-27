@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AdminBadgeResponse, AdminCreateBadgeRequest, AdminUpdateBadgeRequest, GetQualityControlImage, GetQualityControlRequest, GiftCodeType, UserInfoResponse } from '../models/index';
+import type { AdminBadgeResponse, AuraSubcategory, BadgeTimePeriod, ContentType, GetQualityControlImage, GetQualityControlRequest, GiftCodeType, ScoreCategory, UserInfoResponse } from '../models/index';
 export interface AddTokensAdminAddTokensPutRequest {
     email: string;
     tokens: number;
@@ -19,7 +19,19 @@ export interface AdminDeleteAdminUserEmailDeleteRequest {
     email: string;
 }
 export interface CreateBadgeAdminBadgesPostRequest {
-    adminCreateBadgeRequest: AdminCreateBadgeRequest;
+    name: string;
+    category: ScoreCategory;
+    image?: Blob | null;
+    description?: string | null;
+    subcategory?: AuraSubcategory | null;
+    contentType?: ContentType | null;
+    timePeriod?: BadgeTimePeriod;
+    requiredRank?: number | null;
+    scoreThreshold?: number | null;
+    tokenPrice?: number | null;
+    claimable?: boolean;
+    usable?: boolean;
+    visible?: boolean;
 }
 export interface GenerateCodesAdminGiftCodesGeneratePostRequest {
     count: number;
@@ -36,7 +48,19 @@ export interface ImpersonateAdminImpersonateEmailPostRequest {
 }
 export interface UpdateBadgeAdminBadgesBadgeIdPatchRequest {
     badgeId: string;
-    adminUpdateBadgeRequest: AdminUpdateBadgeRequest;
+    image?: Blob | null;
+    name?: string | null;
+    description?: string | null;
+    category?: ScoreCategory | null;
+    subcategory?: AuraSubcategory | null;
+    contentType?: ContentType | null;
+    timePeriod?: BadgeTimePeriod | null;
+    requiredRank?: number | null;
+    scoreThreshold?: number | null;
+    tokenPrice?: number | null;
+    claimable?: boolean | null;
+    usable?: boolean | null;
+    visible?: boolean | null;
 }
 /**
  *

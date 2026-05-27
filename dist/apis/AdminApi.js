@@ -138,18 +138,74 @@ class AdminApi extends runtime.BaseAPI {
      * Create Badge
      */
     async createBadgeAdminBadgesPostRaw(requestParameters, initOverrides) {
-        if (requestParameters['adminCreateBadgeRequest'] == null) {
-            throw new runtime.RequiredError('adminCreateBadgeRequest', 'Required parameter "adminCreateBadgeRequest" was null or undefined when calling createBadgeAdminBadgesPost().');
+        if (requestParameters['name'] == null) {
+            throw new runtime.RequiredError('name', 'Required parameter "name" was null or undefined when calling createBadgeAdminBadgesPost().');
+        }
+        if (requestParameters['category'] == null) {
+            throw new runtime.RequiredError('category', 'Required parameter "category" was null or undefined when calling createBadgeAdminBadgesPost().');
         }
         const queryParameters = {};
         const headerParameters = {};
-        headerParameters['Content-Type'] = 'application/json';
+        const consumes = [
+            { contentType: 'multipart/form-data' },
+        ];
+        // @ts-ignore: canConsumeForm may be unused
+        const canConsumeForm = runtime.canConsumeForm(consumes);
+        let formParams;
+        let useForm = false;
+        // use FormData to transmit files using content-type "multipart/form-data"
+        useForm = canConsumeForm;
+        if (useForm) {
+            formParams = new FormData();
+        }
+        else {
+            formParams = new URLSearchParams();
+        }
+        if (requestParameters['image'] != null) {
+            formParams.append('image', requestParameters['image']);
+        }
+        if (requestParameters['name'] != null) {
+            formParams.append('name', requestParameters['name']);
+        }
+        if (requestParameters['category'] != null) {
+            formParams.append('category', requestParameters['category']);
+        }
+        if (requestParameters['description'] != null) {
+            formParams.append('description', requestParameters['description']);
+        }
+        if (requestParameters['subcategory'] != null) {
+            formParams.append('subcategory', requestParameters['subcategory']);
+        }
+        if (requestParameters['contentType'] != null) {
+            formParams.append('content_type', requestParameters['contentType']);
+        }
+        if (requestParameters['timePeriod'] != null) {
+            formParams.append('time_period', requestParameters['timePeriod']);
+        }
+        if (requestParameters['requiredRank'] != null) {
+            formParams.append('required_rank', requestParameters['requiredRank']);
+        }
+        if (requestParameters['scoreThreshold'] != null) {
+            formParams.append('score_threshold', requestParameters['scoreThreshold']);
+        }
+        if (requestParameters['tokenPrice'] != null) {
+            formParams.append('token_price', requestParameters['tokenPrice']);
+        }
+        if (requestParameters['claimable'] != null) {
+            formParams.append('claimable', requestParameters['claimable']);
+        }
+        if (requestParameters['usable'] != null) {
+            formParams.append('usable', requestParameters['usable']);
+        }
+        if (requestParameters['visible'] != null) {
+            formParams.append('visible', requestParameters['visible']);
+        }
         const response = await this.request({
             path: `/admin/badges`,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: (0, index_1.AdminCreateBadgeRequestToJSON)(requestParameters['adminCreateBadgeRequest']),
+            body: formParams,
         }, initOverrides);
         return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.AdminBadgeResponseFromJSON)(jsonValue));
     }
@@ -345,18 +401,68 @@ class AdminApi extends runtime.BaseAPI {
         if (requestParameters['badgeId'] == null) {
             throw new runtime.RequiredError('badgeId', 'Required parameter "badgeId" was null or undefined when calling updateBadgeAdminBadgesBadgeIdPatch().');
         }
-        if (requestParameters['adminUpdateBadgeRequest'] == null) {
-            throw new runtime.RequiredError('adminUpdateBadgeRequest', 'Required parameter "adminUpdateBadgeRequest" was null or undefined when calling updateBadgeAdminBadgesBadgeIdPatch().');
-        }
         const queryParameters = {};
         const headerParameters = {};
-        headerParameters['Content-Type'] = 'application/json';
+        const consumes = [
+            { contentType: 'multipart/form-data' },
+        ];
+        // @ts-ignore: canConsumeForm may be unused
+        const canConsumeForm = runtime.canConsumeForm(consumes);
+        let formParams;
+        let useForm = false;
+        // use FormData to transmit files using content-type "multipart/form-data"
+        useForm = canConsumeForm;
+        if (useForm) {
+            formParams = new FormData();
+        }
+        else {
+            formParams = new URLSearchParams();
+        }
+        if (requestParameters['image'] != null) {
+            formParams.append('image', requestParameters['image']);
+        }
+        if (requestParameters['name'] != null) {
+            formParams.append('name', requestParameters['name']);
+        }
+        if (requestParameters['description'] != null) {
+            formParams.append('description', requestParameters['description']);
+        }
+        if (requestParameters['category'] != null) {
+            formParams.append('category', requestParameters['category']);
+        }
+        if (requestParameters['subcategory'] != null) {
+            formParams.append('subcategory', requestParameters['subcategory']);
+        }
+        if (requestParameters['contentType'] != null) {
+            formParams.append('content_type', requestParameters['contentType']);
+        }
+        if (requestParameters['timePeriod'] != null) {
+            formParams.append('time_period', requestParameters['timePeriod']);
+        }
+        if (requestParameters['requiredRank'] != null) {
+            formParams.append('required_rank', requestParameters['requiredRank']);
+        }
+        if (requestParameters['scoreThreshold'] != null) {
+            formParams.append('score_threshold', requestParameters['scoreThreshold']);
+        }
+        if (requestParameters['tokenPrice'] != null) {
+            formParams.append('token_price', requestParameters['tokenPrice']);
+        }
+        if (requestParameters['claimable'] != null) {
+            formParams.append('claimable', requestParameters['claimable']);
+        }
+        if (requestParameters['usable'] != null) {
+            formParams.append('usable', requestParameters['usable']);
+        }
+        if (requestParameters['visible'] != null) {
+            formParams.append('visible', requestParameters['visible']);
+        }
         const response = await this.request({
             path: `/admin/badges/{badge_id}`.replace(`{${"badge_id"}}`, encodeURIComponent(String(requestParameters['badgeId']))),
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
-            body: (0, index_1.AdminUpdateBadgeRequestToJSON)(requestParameters['adminUpdateBadgeRequest']),
+            body: formParams,
         }, initOverrides);
         if (this.isJsonMime(response.headers.get('content-type'))) {
             return new runtime.JSONApiResponse(response);

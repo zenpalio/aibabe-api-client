@@ -20,8 +20,6 @@ __exportStar(require("./AccessType"), exports);
 __exportStar(require("./ActorRole"), exports);
 __exportStar(require("./AddonPrice"), exports);
 __exportStar(require("./AdminBadgeResponse"), exports);
-__exportStar(require("./AdminCreateBadgeRequest"), exports);
-__exportStar(require("./AdminUpdateBadgeRequest"), exports);
 __exportStar(require("./AnimeLora"), exports);
 __exportStar(require("./ArtStyle"), exports);
 __exportStar(require("./AssistantChatMessageDetail"), exports);

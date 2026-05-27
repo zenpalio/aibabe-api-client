@@ -30,8 +30,6 @@ src/models/AccessType.ts
 src/models/ActorRole.ts
 src/models/AddonPrice.ts
 src/models/AdminBadgeResponse.ts
-src/models/AdminCreateBadgeRequest.ts
-src/models/AdminUpdateBadgeRequest.ts
 src/models/AnimeLora.ts
 src/models/ArtStyle.ts
 src/models/AssistantChatMessageDetail.ts
