@@ -50,12 +50,6 @@ export interface BadgeModel {
      * @type {string}
      * @memberof BadgeModel
      */
-    iconUrl?: string | null;
-    /**
-     *
-     * @type {string}
-     * @memberof BadgeModel
-     */
     category: string;
     /**
      *

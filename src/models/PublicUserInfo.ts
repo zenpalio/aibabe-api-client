@@ -42,7 +42,7 @@ export interface PublicUserInfo {
      * @type {string}
      * @memberof PublicUserInfo
      */
-    selectedBadgeUrl: string | null;
+    selectedBadgeName: string | null;
     /**
      * 
      * @type {string}
@@ -94,7 +94,7 @@ export function instanceOfPublicUserInfo(value: object): value is PublicUserInfo
     if (!('userId' in value) || value['userId'] === undefined) return false;
     if (!('publicUsername' in value) || value['publicUsername'] === undefined) return false;
     if (!('avatarUrl' in value) || value['avatarUrl'] === undefined) return false;
-    if (!('selectedBadgeUrl' in value) || value['selectedBadgeUrl'] === undefined) return false;
+    if (!('selectedBadgeName' in value) || value['selectedBadgeName'] === undefined) return false;
     if (!('following' in value) || value['following'] === undefined) return false;
     if (!('followers' in value) || value['followers'] === undefined) return false;
     if (!('videos' in value) || value['videos'] === undefined) return false;
@@ -117,7 +117,7 @@ export function PublicUserInfoFromJSONTyped(json: any, ignoreDiscriminator: bool
         'userId': json['user_id'],
         'publicUsername': json['public_username'],
         'avatarUrl': json['avatar_url'],
-        'selectedBadgeUrl': json['selected_badge_url'],
+        'selectedBadgeName': json['selected_badge_name'],
         'bio': json['bio'] == null ? undefined : json['bio'],
         'following': json['following'],
         'followers': json['followers'],
@@ -142,7 +142,7 @@ export function PublicUserInfoFromJSONTyped(json: any, ignoreDiscriminator: bool
         'user_id': value['userId'],
         'public_username': value['publicUsername'],
         'avatar_url': value['avatarUrl'],
-        'selected_badge_url': value['selectedBadgeUrl'],
+        'selected_badge_name': value['selectedBadgeName'],
         'bio': value['bio'],
         'following': value['following'],
         'followers': value['followers'],

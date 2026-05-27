@@ -42,7 +42,7 @@ export interface PublicUserPreview {
      * @type {string}
      * @memberof PublicUserPreview
      */
-    selectedBadgeUrl: string | null;
+    selectedBadgeName: string | null;
 }
 
 /**
@@ -52,7 +52,7 @@ export function instanceOfPublicUserPreview(value: object): value is PublicUserP
     if (!('userId' in value) || value['userId'] === undefined) return false;
     if (!('publicUsername' in value) || value['publicUsername'] === undefined) return false;
     if (!('avatarUrl' in value) || value['avatarUrl'] === undefined) return false;
-    if (!('selectedBadgeUrl' in value) || value['selectedBadgeUrl'] === undefined) return false;
+    if (!('selectedBadgeName' in value) || value['selectedBadgeName'] === undefined) return false;
     return true;
 }
 
@@ -69,7 +69,7 @@ export function PublicUserPreviewFromJSONTyped(json: any, ignoreDiscriminator: b
         'userId': json['user_id'],
         'publicUsername': json['public_username'],
         'avatarUrl': json['avatar_url'],
-        'selectedBadgeUrl': json['selected_badge_url'],
+        'selectedBadgeName': json['selected_badge_name'],
     };
 }
 
@@ -87,7 +87,7 @@ export function PublicUserPreviewFromJSONTyped(json: any, ignoreDiscriminator: b
         'user_id': value['userId'],
         'public_username': value['publicUsername'],
         'avatar_url': value['avatarUrl'],
-        'selected_badge_url': value['selectedBadgeUrl'],
+        'selected_badge_name': value['selectedBadgeName'],
     };
 }
 

@@ -38,7 +38,7 @@ export interface PublicUserInfo {
      * @type {string}
      * @memberof PublicUserInfo
      */
-    selectedBadgeUrl: string | null;
+    selectedBadgeName: string | null;
     /**
      *
      * @type {string}

@@ -51,12 +51,6 @@ export interface AdminBadgeResponse {
     description?: string | null;
     /**
      *
-     * @type {string}
-     * @memberof AdminBadgeResponse
-     */
-    iconUrl?: string | null;
-    /**
-     *
      * @type {ScoreCategory}
      * @memberof AdminBadgeResponse
      */

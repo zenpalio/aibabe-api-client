@@ -38,7 +38,7 @@ export interface PublicUserPreviewWithFollow {
      * @type {string}
      * @memberof PublicUserPreviewWithFollow
      */
-    selectedBadgeUrl: string | null;
+    selectedBadgeName: string | null;
     /**
      *
      * @type {boolean}

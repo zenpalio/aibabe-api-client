@@ -33,12 +33,6 @@ export interface AdminCreateBadgeRequest {
     description?: string | null;
     /**
      *
-     * @type {string}
-     * @memberof AdminCreateBadgeRequest
-     */
-    iconUrl?: string | null;
-    /**
-     *
      * @type {ScoreCategory}
      * @memberof AdminCreateBadgeRequest
      */

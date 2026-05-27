@@ -62,12 +62,6 @@ export interface AdminCreateBadgeRequest {
     description?: string | null;
     /**
      * 
-     * @type {string}
-     * @memberof AdminCreateBadgeRequest
-     */
-    iconUrl?: string | null;
-    /**
-     * 
      * @type {ScoreCategory}
      * @memberof AdminCreateBadgeRequest
      */
@@ -151,7 +145,6 @@ export function AdminCreateBadgeRequestFromJSONTyped(json: any, ignoreDiscrimina
         
         'name': json['name'],
         'description': json['description'] == null ? undefined : json['description'],
-        'iconUrl': json['icon_url'] == null ? undefined : json['icon_url'],
         'category': ScoreCategoryFromJSON(json['category']),
         'subcategory': json['subcategory'] == null ? undefined : AuraSubcategoryFromJSON(json['subcategory']),
         'contentType': json['content_type'] == null ? undefined : ContentTypeFromJSON(json['content_type']),
@@ -178,7 +171,6 @@ export function AdminCreateBadgeRequestFromJSONTyped(json: any, ignoreDiscrimina
         
         'name': value['name'],
         'description': value['description'],
-        'icon_url': value['iconUrl'],
         'category': ScoreCategoryToJSON(value['category']),
         'subcategory': AuraSubcategoryToJSON(value['subcategory']),
         'content_type': ContentTypeToJSON(value['contentType']),

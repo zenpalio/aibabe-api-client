@@ -54,12 +54,6 @@ export interface BadgeModel {
      * @type {string}
      * @memberof BadgeModel
      */
-    iconUrl?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof BadgeModel
-     */
     category: string;
     /**
      * 
@@ -141,7 +135,6 @@ export function BadgeModelFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'id': json['id'] == null ? undefined : json['id'],
         'name': json['name'],
         'description': json['description'] == null ? undefined : json['description'],
-        'iconUrl': json['icon_url'] == null ? undefined : json['icon_url'],
         'category': json['category_'],
         'subcategory': json['subcategory_'] == null ? undefined : json['subcategory_'],
         'contentType': json['content_type_'] == null ? undefined : json['content_type_'],
@@ -171,7 +164,6 @@ export function BadgeModelFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'id': value['id'],
         'name': value['name'],
         'description': value['description'],
-        'icon_url': value['iconUrl'],
         'category_': value['category'],
         'subcategory_': value['subcategory'],
         'content_type_': value['contentType'],

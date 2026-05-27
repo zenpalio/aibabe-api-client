@@ -38,7 +38,7 @@ export interface PublicUserPreview {
      * @type {string}
      * @memberof PublicUserPreview
      */
-    selectedBadgeUrl: string | null;
+    selectedBadgeName: string | null;
 }
 /**
  * Check if a given object implements the PublicUserPreview interface.
