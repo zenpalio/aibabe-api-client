@@ -32,7 +32,13 @@ export interface PublicUserInfo {
      * @type {string}
      * @memberof PublicUserInfo
      */
-    avatarUrl?: string | null;
+    avatarUrl: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof PublicUserInfo
+     */
+    selectedBadgeUrl: string | null;
     /**
      *
      * @type {string}

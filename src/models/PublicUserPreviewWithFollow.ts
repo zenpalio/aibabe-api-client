@@ -36,7 +36,13 @@ export interface PublicUserPreviewWithFollow {
      * @type {string}
      * @memberof PublicUserPreviewWithFollow
      */
-    avatarUrl?: string | null;
+    avatarUrl: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof PublicUserPreviewWithFollow
+     */
+    selectedBadgeUrl: string | null;
     /**
      * 
      * @type {boolean}
@@ -51,6 +57,8 @@ export interface PublicUserPreviewWithFollow {
 export function instanceOfPublicUserPreviewWithFollow(value: object): value is PublicUserPreviewWithFollow {
     if (!('userId' in value) || value['userId'] === undefined) return false;
     if (!('publicUsername' in value) || value['publicUsername'] === undefined) return false;
+    if (!('avatarUrl' in value) || value['avatarUrl'] === undefined) return false;
+    if (!('selectedBadgeUrl' in value) || value['selectedBadgeUrl'] === undefined) return false;
     if (!('followed' in value) || value['followed'] === undefined) return false;
     return true;
 }
@@ -67,7 +75,8 @@ export function PublicUserPreviewWithFollowFromJSONTyped(json: any, ignoreDiscri
         
         'userId': json['user_id'],
         'publicUsername': json['public_username'],
-        'avatarUrl': json['avatar_url'] == null ? undefined : json['avatar_url'],
+        'avatarUrl': json['avatar_url'],
+        'selectedBadgeUrl': json['selected_badge_url'],
         'followed': json['followed'],
     };
 }
@@ -86,6 +95,7 @@ export function PublicUserPreviewWithFollowFromJSONTyped(json: any, ignoreDiscri
         'user_id': value['userId'],
         'public_username': value['publicUsername'],
         'avatar_url': value['avatarUrl'],
+        'selected_badge_url': value['selectedBadgeUrl'],
         'followed': value['followed'],
     };
 }

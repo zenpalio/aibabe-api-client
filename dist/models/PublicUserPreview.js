@@ -26,6 +26,10 @@ function instanceOfPublicUserPreview(value) {
         return false;
     if (!('publicUsername' in value) || value['publicUsername'] === undefined)
         return false;
+    if (!('avatarUrl' in value) || value['avatarUrl'] === undefined)
+        return false;
+    if (!('selectedBadgeUrl' in value) || value['selectedBadgeUrl'] === undefined)
+        return false;
     return true;
 }
 function PublicUserPreviewFromJSON(json) {
@@ -38,7 +42,8 @@ function PublicUserPreviewFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'userId': json['user_id'],
         'publicUsername': json['public_username'],
-        'avatarUrl': json['avatar_url'] == null ? undefined : json['avatar_url'],
+        'avatarUrl': json['avatar_url'],
+        'selectedBadgeUrl': json['selected_badge_url'],
     };
 }
 function PublicUserPreviewToJSON(json) {
@@ -52,6 +57,7 @@ function PublicUserPreviewToJSONTyped(value, ignoreDiscriminator = false) {
         'user_id': value['userId'],
         'public_username': value['publicUsername'],
         'avatar_url': value['avatarUrl'],
+        'selected_badge_url': value['selectedBadgeUrl'],
     };
 }
 //# sourceMappingURL=PublicUserPreview.js.map
