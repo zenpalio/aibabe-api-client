@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { GetQualityControlImage, GetQualityControlRequest, GiftCodeType, UserInfoResponse } from '../models/index';
+import type { GetQualityControlImage, GetQualityControlRequest, GiftCodeType, SetUserFeatureFlagsRequest, SetUserFeatureFlagsResponse, UserInfoResponse } from '../models/index';
 export interface AddTokensAdminAddTokensPutRequest {
     email: string;
     tokens: number;
@@ -30,6 +30,9 @@ export interface GetTokenBalanceAdminTokenBalanceEmailGetRequest {
 }
 export interface ImpersonateAdminImpersonateEmailPostRequest {
     email: string;
+}
+export interface SetUserFeatureFlagsAdminUserFeatureFlagsPutRequest {
+    setUserFeatureFlagsRequest: SetUserFeatureFlagsRequest;
 }
 /**
  *
@@ -91,5 +94,13 @@ export declare class AdminApi extends runtime.BaseAPI {
      * Reset User Claimables
      */
     resetUserClaimablesAdminUserResetClaimablesPost(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
+    /**
+     * Set User Feature Flags
+     */
+    setUserFeatureFlagsAdminUserFeatureFlagsPutRaw(requestParameters: SetUserFeatureFlagsAdminUserFeatureFlagsPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SetUserFeatureFlagsResponse>>;
+    /**
+     * Set User Feature Flags
+     */
+    setUserFeatureFlagsAdminUserFeatureFlagsPut(requestParameters: SetUserFeatureFlagsAdminUserFeatureFlagsPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SetUserFeatureFlagsResponse>;
 }
 //# sourceMappingURL=AdminApi.d.ts.map

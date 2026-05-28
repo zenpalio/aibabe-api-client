@@ -241,6 +241,8 @@ src/models/RoleplayType.ts
 src/models/SeduceDifficulty.ts
 src/models/SendCustomMemoracekRequest.ts
 src/models/SendMemoracekRequest.ts
+src/models/SetUserFeatureFlagsRequest.ts
+src/models/SetUserFeatureFlagsResponse.ts
 src/models/SortFilter.ts
 src/models/SoundEffectResponse.ts
 src/models/SoundEffectsRequest.ts
