@@ -13,6 +13,7 @@ src/apis/ExploreApi.ts
 src/apis/GalleryApi.ts
 src/apis/HeartbeatApi.ts
 src/apis/ImageApi.ts
+src/apis/LeaderboardsApi.ts
 src/apis/MemoryApi.ts
 src/apis/NotificationApi.ts
 src/apis/PostApi.ts
@@ -51,6 +52,7 @@ src/models/BreastSize.ts
 src/models/BulkDeleteContentRequest.ts
 src/models/ButtSize.ts
 src/models/CancelSubscriptionRequest.ts
+src/models/Category.ts
 src/models/CategoryValues.ts
 src/models/CharacterAboutPageReview.ts
 src/models/CharacterAvatarReview.ts
@@ -119,6 +121,8 @@ src/models/GetIdentityChatbotResponse.ts
 src/models/GetImageGenerationTagsResponse.ts
 src/models/GetImageModerationPromptResponse.ts
 src/models/GetInstancesDBVastAiListResponse.ts
+src/models/GetLeaderboardRequest.ts
+src/models/GetLeaderboardResponse.ts
 src/models/GetLorasResponse.ts
 src/models/GetMemoryResponse.ts
 src/models/GetPersonalityChatbotResponse.ts
@@ -152,6 +156,7 @@ src/models/InstanceTypeUrlResponse.ts
 src/models/LLM.ts
 src/models/Language.ts
 src/models/LastVideoFrameResponse.ts
+src/models/LeaderboardEntry.ts
 src/models/LikePostNotification.ts
 src/models/ListAssistantChatSessionsResponse.ts
 src/models/ListChatbotItem.ts

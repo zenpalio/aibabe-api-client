@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AdminBadgeResponse, AuraSubcategory, BadgeTimePeriod, ContentType, GetQualityControlImage, GetQualityControlRequest, GiftCodeType, ScoreCategory, UserInfoResponse } from '../models/index';
+import type { AdminBadgeResponse, AuraSubcategory, BadgeTimePeriod, Category, ContentType, GetQualityControlImage, GetQualityControlRequest, GiftCodeType, UserInfoResponse } from '../models/index';
 export interface AddTokensAdminAddTokensPutRequest {
     email: string;
     tokens: number;
@@ -20,7 +20,7 @@ export interface AdminDeleteAdminUserEmailDeleteRequest {
 }
 export interface CreateBadgeAdminBadgesPostRequest {
     name: string;
-    category: ScoreCategory;
+    category: Category;
     image?: Blob;
     description?: string | null;
     subcategory?: AuraSubcategory | null;
@@ -51,7 +51,7 @@ export interface UpdateBadgeAdminBadgesBadgeIdPatchRequest {
     image?: Blob | null;
     name?: string | null;
     description?: string | null;
-    category?: ScoreCategory | null;
+    category?: Category | null;
     subcategory?: AuraSubcategory | null;
     contentType?: ContentType | null;
     timePeriod?: BadgeTimePeriod | null;

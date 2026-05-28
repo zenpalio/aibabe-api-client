@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { Category } from './Category';
+import {
+    CategoryFromJSON,
+    CategoryFromJSONTyped,
+    CategoryToJSON,
+    CategoryToJSONTyped,
+} from './Category';
 import type { BadgeTimePeriod } from './BadgeTimePeriod';
 import {
     BadgeTimePeriodFromJSON,
@@ -27,13 +34,6 @@ import {
     ContentTypeToJSON,
     ContentTypeToJSONTyped,
 } from './ContentType';
-import type { ScoreCategory } from './ScoreCategory';
-import {
-    ScoreCategoryFromJSON,
-    ScoreCategoryFromJSONTyped,
-    ScoreCategoryToJSON,
-    ScoreCategoryToJSONTyped,
-} from './ScoreCategory';
 import type { AuraSubcategory } from './AuraSubcategory';
 import {
     AuraSubcategoryFromJSON,
@@ -80,10 +80,10 @@ export interface AdminBadgeResponse {
     description?: string | null;
     /**
      * 
-     * @type {ScoreCategory}
+     * @type {Category}
      * @memberof AdminBadgeResponse
      */
-    category: ScoreCategory;
+    category: Category;
     /**
      * 
      * @type {AuraSubcategory}
@@ -173,7 +173,7 @@ export function AdminBadgeResponseFromJSONTyped(json: any, ignoreDiscriminator: 
         'updatedAt': (new Date(json['updated_at'])),
         'name': json['name'],
         'description': json['description'] == null ? undefined : json['description'],
-        'category': ScoreCategoryFromJSON(json['category']),
+        'category': CategoryFromJSON(json['category']),
         'subcategory': json['subcategory'] == null ? undefined : AuraSubcategoryFromJSON(json['subcategory']),
         'contentType': json['content_type'] == null ? undefined : ContentTypeFromJSON(json['content_type']),
         'timePeriod': BadgeTimePeriodFromJSON(json['time_period']),
@@ -202,7 +202,7 @@ export function AdminBadgeResponseFromJSONTyped(json: any, ignoreDiscriminator: 
         'updated_at': ((value['updatedAt']).toISOString()),
         'name': value['name'],
         'description': value['description'],
-        'category': ScoreCategoryToJSON(value['category']),
+        'category': CategoryToJSON(value['category']),
         'subcategory': AuraSubcategoryToJSON(value['subcategory']),
         'content_type': ContentTypeToJSON(value['contentType']),
         'time_period': BadgeTimePeriodToJSON(value['timePeriod']),

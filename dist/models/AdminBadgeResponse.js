@@ -18,9 +18,9 @@ exports.AdminBadgeResponseFromJSON = AdminBadgeResponseFromJSON;
 exports.AdminBadgeResponseFromJSONTyped = AdminBadgeResponseFromJSONTyped;
 exports.AdminBadgeResponseToJSON = AdminBadgeResponseToJSON;
 exports.AdminBadgeResponseToJSONTyped = AdminBadgeResponseToJSONTyped;
+const Category_1 = require("./Category");
 const BadgeTimePeriod_1 = require("./BadgeTimePeriod");
 const ContentType_1 = require("./ContentType");
-const ScoreCategory_1 = require("./ScoreCategory");
 const AuraSubcategory_1 = require("./AuraSubcategory");
 /**
  * Check if a given object implements the AdminBadgeResponse interface.
@@ -59,7 +59,7 @@ function AdminBadgeResponseFromJSONTyped(json, ignoreDiscriminator) {
         'updatedAt': (new Date(json['updated_at'])),
         'name': json['name'],
         'description': json['description'] == null ? undefined : json['description'],
-        'category': (0, ScoreCategory_1.ScoreCategoryFromJSON)(json['category']),
+        'category': (0, Category_1.CategoryFromJSON)(json['category']),
         'subcategory': json['subcategory'] == null ? undefined : (0, AuraSubcategory_1.AuraSubcategoryFromJSON)(json['subcategory']),
         'contentType': json['content_type'] == null ? undefined : (0, ContentType_1.ContentTypeFromJSON)(json['content_type']),
         'timePeriod': (0, BadgeTimePeriod_1.BadgeTimePeriodFromJSON)(json['time_period']),
@@ -84,7 +84,7 @@ function AdminBadgeResponseToJSONTyped(value, ignoreDiscriminator = false) {
         'updated_at': ((value['updatedAt']).toISOString()),
         'name': value['name'],
         'description': value['description'],
-        'category': (0, ScoreCategory_1.ScoreCategoryToJSON)(value['category']),
+        'category': (0, Category_1.CategoryToJSON)(value['category']),
         'subcategory': (0, AuraSubcategory_1.AuraSubcategoryToJSON)(value['subcategory']),
         'content_type': (0, ContentType_1.ContentTypeToJSON)(value['contentType']),
         'time_period': (0, BadgeTimePeriod_1.BadgeTimePeriodToJSON)(value['timePeriod']),

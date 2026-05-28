@@ -18,8 +18,8 @@ exports.ScoreTypeFromJSON = ScoreTypeFromJSON;
 exports.ScoreTypeFromJSONTyped = ScoreTypeFromJSONTyped;
 exports.ScoreTypeToJSON = ScoreTypeToJSON;
 exports.ScoreTypeToJSONTyped = ScoreTypeToJSONTyped;
+const Category_1 = require("./Category");
 const ContentType_1 = require("./ContentType");
-const ScoreCategory_1 = require("./ScoreCategory");
 const AuraSubcategory_1 = require("./AuraSubcategory");
 /**
  * Check if a given object implements the ScoreType interface.
@@ -37,7 +37,7 @@ function ScoreTypeFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
-        'category': (0, ScoreCategory_1.ScoreCategoryFromJSON)(json['category']),
+        'category': (0, Category_1.CategoryFromJSON)(json['category']),
         'subcategory': json['subcategory'] == null ? undefined : (0, AuraSubcategory_1.AuraSubcategoryFromJSON)(json['subcategory']),
         'contentType': json['content_type'] == null ? undefined : (0, ContentType_1.ContentTypeFromJSON)(json['content_type']),
     };
@@ -50,7 +50,7 @@ function ScoreTypeToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
-        'category': (0, ScoreCategory_1.ScoreCategoryToJSON)(value['category']),
+        'category': (0, Category_1.CategoryToJSON)(value['category']),
         'subcategory': (0, AuraSubcategory_1.AuraSubcategoryToJSON)(value['subcategory']),
         'content_type': (0, ContentType_1.ContentTypeToJSON)(value['contentType']),
     };

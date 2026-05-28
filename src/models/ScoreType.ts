@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { Category } from './Category';
+import {
+    CategoryFromJSON,
+    CategoryFromJSONTyped,
+    CategoryToJSON,
+    CategoryToJSONTyped,
+} from './Category';
 import type { ContentType } from './ContentType';
 import {
     ContentTypeFromJSON,
@@ -20,13 +27,6 @@ import {
     ContentTypeToJSON,
     ContentTypeToJSONTyped,
 } from './ContentType';
-import type { ScoreCategory } from './ScoreCategory';
-import {
-    ScoreCategoryFromJSON,
-    ScoreCategoryFromJSONTyped,
-    ScoreCategoryToJSON,
-    ScoreCategoryToJSONTyped,
-} from './ScoreCategory';
 import type { AuraSubcategory } from './AuraSubcategory';
 import {
     AuraSubcategoryFromJSON,
@@ -43,10 +43,10 @@ import {
 export interface ScoreType {
     /**
      * 
-     * @type {ScoreCategory}
+     * @type {Category}
      * @memberof ScoreType
      */
-    category: ScoreCategory;
+    category: Category;
     /**
      * 
      * @type {AuraSubcategory}
@@ -81,7 +81,7 @@ export function ScoreTypeFromJSONTyped(json: any, ignoreDiscriminator: boolean):
     }
     return {
         
-        'category': ScoreCategoryFromJSON(json['category']),
+        'category': CategoryFromJSON(json['category']),
         'subcategory': json['subcategory'] == null ? undefined : AuraSubcategoryFromJSON(json['subcategory']),
         'contentType': json['content_type'] == null ? undefined : ContentTypeFromJSON(json['content_type']),
     };
@@ -98,7 +98,7 @@ export function ScoreTypeFromJSONTyped(json: any, ignoreDiscriminator: boolean):
 
     return {
         
-        'category': ScoreCategoryToJSON(value['category']),
+        'category': CategoryToJSON(value['category']),
         'subcategory': AuraSubcategoryToJSON(value['subcategory']),
         'content_type': ContentTypeToJSON(value['contentType']),
     };

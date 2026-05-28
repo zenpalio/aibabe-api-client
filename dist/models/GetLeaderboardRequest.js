@@ -13,49 +13,49 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.instanceOfTimedScoreType = instanceOfTimedScoreType;
-exports.TimedScoreTypeFromJSON = TimedScoreTypeFromJSON;
-exports.TimedScoreTypeFromJSONTyped = TimedScoreTypeFromJSONTyped;
-exports.TimedScoreTypeToJSON = TimedScoreTypeToJSON;
-exports.TimedScoreTypeToJSONTyped = TimedScoreTypeToJSONTyped;
-const Category_1 = require("./Category");
+exports.instanceOfGetLeaderboardRequest = instanceOfGetLeaderboardRequest;
+exports.GetLeaderboardRequestFromJSON = GetLeaderboardRequestFromJSON;
+exports.GetLeaderboardRequestFromJSONTyped = GetLeaderboardRequestFromJSONTyped;
+exports.GetLeaderboardRequestToJSON = GetLeaderboardRequestToJSON;
+exports.GetLeaderboardRequestToJSONTyped = GetLeaderboardRequestToJSONTyped;
 const BadgeTimePeriod_1 = require("./BadgeTimePeriod");
 const ContentType_1 = require("./ContentType");
+const ScoreCategory_1 = require("./ScoreCategory");
 const AuraSubcategory_1 = require("./AuraSubcategory");
 /**
- * Check if a given object implements the TimedScoreType interface.
+ * Check if a given object implements the GetLeaderboardRequest interface.
  */
-function instanceOfTimedScoreType(value) {
+function instanceOfGetLeaderboardRequest(value) {
     if (!('category' in value) || value['category'] === undefined)
         return false;
     return true;
 }
-function TimedScoreTypeFromJSON(json) {
-    return TimedScoreTypeFromJSONTyped(json, false);
+function GetLeaderboardRequestFromJSON(json) {
+    return GetLeaderboardRequestFromJSONTyped(json, false);
 }
-function TimedScoreTypeFromJSONTyped(json, ignoreDiscriminator) {
+function GetLeaderboardRequestFromJSONTyped(json, ignoreDiscriminator) {
     if (json == null) {
         return json;
     }
     return {
-        'category': (0, Category_1.CategoryFromJSON)(json['category']),
+        'category': (0, ScoreCategory_1.ScoreCategoryFromJSON)(json['category']),
         'subcategory': json['subcategory'] == null ? undefined : (0, AuraSubcategory_1.AuraSubcategoryFromJSON)(json['subcategory']),
         'contentType': json['content_type'] == null ? undefined : (0, ContentType_1.ContentTypeFromJSON)(json['content_type']),
         'timePeriod': json['time_period'] == null ? undefined : (0, BadgeTimePeriod_1.BadgeTimePeriodFromJSON)(json['time_period']),
     };
 }
-function TimedScoreTypeToJSON(json) {
-    return TimedScoreTypeToJSONTyped(json, false);
+function GetLeaderboardRequestToJSON(json) {
+    return GetLeaderboardRequestToJSONTyped(json, false);
 }
-function TimedScoreTypeToJSONTyped(value, ignoreDiscriminator = false) {
+function GetLeaderboardRequestToJSONTyped(value, ignoreDiscriminator = false) {
     if (value == null) {
         return value;
     }
     return {
-        'category': (0, Category_1.CategoryToJSON)(value['category']),
+        'category': (0, ScoreCategory_1.ScoreCategoryToJSON)(value['category']),
         'subcategory': (0, AuraSubcategory_1.AuraSubcategoryToJSON)(value['subcategory']),
         'content_type': (0, ContentType_1.ContentTypeToJSON)(value['contentType']),
         'time_period': (0, BadgeTimePeriod_1.BadgeTimePeriodToJSON)(value['timePeriod']),
     };
 }
-//# sourceMappingURL=TimedScoreType.js.map
+//# sourceMappingURL=GetLeaderboardRequest.js.map

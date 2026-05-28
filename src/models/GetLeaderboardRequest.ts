@@ -13,13 +13,6 @@
  */
 
 import { mapValues } from '../runtime';
-import type { Category } from './Category';
-import {
-    CategoryFromJSON,
-    CategoryFromJSONTyped,
-    CategoryToJSON,
-    CategoryToJSONTyped,
-} from './Category';
 import type { BadgeTimePeriod } from './BadgeTimePeriod';
 import {
     BadgeTimePeriodFromJSON,
@@ -34,6 +27,13 @@ import {
     ContentTypeToJSON,
     ContentTypeToJSONTyped,
 } from './ContentType';
+import type { ScoreCategory } from './ScoreCategory';
+import {
+    ScoreCategoryFromJSON,
+    ScoreCategoryFromJSONTyped,
+    ScoreCategoryToJSON,
+    ScoreCategoryToJSONTyped,
+} from './ScoreCategory';
 import type { AuraSubcategory } from './AuraSubcategory';
 import {
     AuraSubcategoryFromJSON,
@@ -45,31 +45,31 @@ import {
 /**
  * 
  * @export
- * @interface TimedScoreType
+ * @interface GetLeaderboardRequest
  */
-export interface TimedScoreType {
+export interface GetLeaderboardRequest {
     /**
      * 
-     * @type {Category}
-     * @memberof TimedScoreType
+     * @type {ScoreCategory}
+     * @memberof GetLeaderboardRequest
      */
-    category: Category;
+    category: ScoreCategory;
     /**
      * 
      * @type {AuraSubcategory}
-     * @memberof TimedScoreType
+     * @memberof GetLeaderboardRequest
      */
     subcategory?: AuraSubcategory | null;
     /**
      * 
      * @type {ContentType}
-     * @memberof TimedScoreType
+     * @memberof GetLeaderboardRequest
      */
     contentType?: ContentType | null;
     /**
      * 
      * @type {BadgeTimePeriod}
-     * @memberof TimedScoreType
+     * @memberof GetLeaderboardRequest
      */
     timePeriod?: BadgeTimePeriod | null;
 }
@@ -77,42 +77,42 @@ export interface TimedScoreType {
 
 
 /**
- * Check if a given object implements the TimedScoreType interface.
+ * Check if a given object implements the GetLeaderboardRequest interface.
  */
-export function instanceOfTimedScoreType(value: object): value is TimedScoreType {
+export function instanceOfGetLeaderboardRequest(value: object): value is GetLeaderboardRequest {
     if (!('category' in value) || value['category'] === undefined) return false;
     return true;
 }
 
-export function TimedScoreTypeFromJSON(json: any): TimedScoreType {
-    return TimedScoreTypeFromJSONTyped(json, false);
+export function GetLeaderboardRequestFromJSON(json: any): GetLeaderboardRequest {
+    return GetLeaderboardRequestFromJSONTyped(json, false);
 }
 
-export function TimedScoreTypeFromJSONTyped(json: any, ignoreDiscriminator: boolean): TimedScoreType {
+export function GetLeaderboardRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): GetLeaderboardRequest {
     if (json == null) {
         return json;
     }
     return {
         
-        'category': CategoryFromJSON(json['category']),
+        'category': ScoreCategoryFromJSON(json['category']),
         'subcategory': json['subcategory'] == null ? undefined : AuraSubcategoryFromJSON(json['subcategory']),
         'contentType': json['content_type'] == null ? undefined : ContentTypeFromJSON(json['content_type']),
         'timePeriod': json['time_period'] == null ? undefined : BadgeTimePeriodFromJSON(json['time_period']),
     };
 }
 
-  export function TimedScoreTypeToJSON(json: any): TimedScoreType {
-      return TimedScoreTypeToJSONTyped(json, false);
+  export function GetLeaderboardRequestToJSON(json: any): GetLeaderboardRequest {
+      return GetLeaderboardRequestToJSONTyped(json, false);
   }
 
-  export function TimedScoreTypeToJSONTyped(value?: TimedScoreType | null, ignoreDiscriminator: boolean = false): any {
+  export function GetLeaderboardRequestToJSONTyped(value?: GetLeaderboardRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
 
     return {
         
-        'category': CategoryToJSON(value['category']),
+        'category': ScoreCategoryToJSON(value['category']),
         'subcategory': AuraSubcategoryToJSON(value['subcategory']),
         'content_type': ContentTypeToJSON(value['contentType']),
         'time_period': BadgeTimePeriodToJSON(value['timePeriod']),

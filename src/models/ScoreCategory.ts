@@ -20,9 +20,7 @@
 export const ScoreCategory = {
     Aura: 'aura',
     Likes: 'likes',
-    Followers: 'followers',
-    Activity: 'activity',
-    Shop: 'shop'
+    Followers: 'followers'
 } as const;
 export type ScoreCategory = typeof ScoreCategory[keyof typeof ScoreCategory];
 

@@ -17,8 +17,6 @@ export declare const ScoreCategory: {
     readonly Aura: "aura";
     readonly Likes: "likes";
     readonly Followers: "followers";
-    readonly Activity: "activity";
-    readonly Shop: "shop";
 };
 export type ScoreCategory = typeof ScoreCategory[keyof typeof ScoreCategory];
 export declare function instanceOfScoreCategory(value: any): boolean;

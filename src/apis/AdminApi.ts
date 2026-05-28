@@ -18,12 +18,12 @@ import type {
   AdminBadgeResponse,
   AuraSubcategory,
   BadgeTimePeriod,
+  Category,
   ContentType,
   GetQualityControlImage,
   GetQualityControlRequest,
   GiftCodeType,
   HTTPValidationError,
-  ScoreCategory,
   UserInfoResponse,
 } from '../models/index';
 import {
@@ -33,6 +33,8 @@ import {
     AuraSubcategoryToJSON,
     BadgeTimePeriodFromJSON,
     BadgeTimePeriodToJSON,
+    CategoryFromJSON,
+    CategoryToJSON,
     ContentTypeFromJSON,
     ContentTypeToJSON,
     GetQualityControlImageFromJSON,
@@ -43,8 +45,6 @@ import {
     GiftCodeTypeToJSON,
     HTTPValidationErrorFromJSON,
     HTTPValidationErrorToJSON,
-    ScoreCategoryFromJSON,
-    ScoreCategoryToJSON,
     UserInfoResponseFromJSON,
     UserInfoResponseToJSON,
 } from '../models/index';
@@ -60,7 +60,7 @@ export interface AdminDeleteAdminUserEmailDeleteRequest {
 
 export interface CreateBadgeAdminBadgesPostRequest {
     name: string;
-    category: ScoreCategory;
+    category: Category;
     image?: Blob;
     description?: string | null;
     subcategory?: AuraSubcategory | null;
@@ -96,7 +96,7 @@ export interface UpdateBadgeAdminBadgesBadgeIdPatchRequest {
     image?: Blob | null;
     name?: string | null;
     description?: string | null;
-    category?: ScoreCategory | null;
+    category?: Category | null;
     subcategory?: AuraSubcategory | null;
     contentType?: ContentType | null;
     timePeriod?: BadgeTimePeriod | null;

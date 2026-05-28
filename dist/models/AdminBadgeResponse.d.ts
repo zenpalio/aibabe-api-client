@@ -9,9 +9,9 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { Category } from './Category';
 import type { BadgeTimePeriod } from './BadgeTimePeriod';
 import type { ContentType } from './ContentType';
-import type { ScoreCategory } from './ScoreCategory';
 import type { AuraSubcategory } from './AuraSubcategory';
 /**
  *
@@ -51,10 +51,10 @@ export interface AdminBadgeResponse {
     description?: string | null;
     /**
      *
-     * @type {ScoreCategory}
+     * @type {Category}
      * @memberof AdminBadgeResponse
      */
-    category: ScoreCategory;
+    category: Category;
     /**
      *
      * @type {AuraSubcategory}

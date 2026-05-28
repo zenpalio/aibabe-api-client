@@ -9,9 +9,9 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { Category } from './Category';
 import type { BadgeTimePeriod } from './BadgeTimePeriod';
 import type { ContentType } from './ContentType';
-import type { ScoreCategory } from './ScoreCategory';
 import type { AuraSubcategory } from './AuraSubcategory';
 /**
  *
@@ -21,10 +21,10 @@ import type { AuraSubcategory } from './AuraSubcategory';
 export interface TimedScoreType {
     /**
      *
-     * @type {ScoreCategory}
+     * @type {Category}
      * @memberof TimedScoreType
      */
-    category: ScoreCategory;
+    category: Category;
     /**
      *
      * @type {AuraSubcategory}
