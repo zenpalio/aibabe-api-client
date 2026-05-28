@@ -20,8 +20,7 @@
 export const BadgeTimePeriod = {
     Week: 'week',
     Month: 'month',
-    Year: 'year',
-    AllTime: 'all_time'
+    Year: 'year'
 } as const;
 export type BadgeTimePeriod = typeof BadgeTimePeriod[keyof typeof BadgeTimePeriod];
 

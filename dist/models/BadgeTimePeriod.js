@@ -26,8 +26,7 @@ exports.BadgeTimePeriodToJSONTyped = BadgeTimePeriodToJSONTyped;
 exports.BadgeTimePeriod = {
     Week: 'week',
     Month: 'month',
-    Year: 'year',
-    AllTime: 'all_time'
+    Year: 'year'
 };
 function instanceOfBadgeTimePeriod(value) {
     for (const key in exports.BadgeTimePeriod) {

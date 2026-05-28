@@ -61,11 +61,11 @@ export interface AdminDeleteAdminUserEmailDeleteRequest {
 export interface CreateBadgeAdminBadgesPostRequest {
     name: string;
     category: ScoreCategory;
-    image?: Blob | null;
+    image?: Blob;
     description?: string | null;
     subcategory?: AuraSubcategory | null;
     contentType?: ContentType | null;
-    timePeriod?: BadgeTimePeriod;
+    timePeriod?: BadgeTimePeriod | null;
     requiredRank?: number | null;
     scoreThreshold?: number | null;
     tokenPrice?: number | null;

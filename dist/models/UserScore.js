@@ -18,26 +18,15 @@ exports.UserScoreFromJSON = UserScoreFromJSON;
 exports.UserScoreFromJSONTyped = UserScoreFromJSONTyped;
 exports.UserScoreToJSON = UserScoreToJSON;
 exports.UserScoreToJSONTyped = UserScoreToJSONTyped;
-const ContentType_1 = require("./ContentType");
-const ScoreCategory_1 = require("./ScoreCategory");
-const AuraSubcategory_1 = require("./AuraSubcategory");
+const ScoreTimePeriods_1 = require("./ScoreTimePeriods");
+const ScoreType_1 = require("./ScoreType");
 /**
  * Check if a given object implements the UserScore interface.
  */
 function instanceOfUserScore(value) {
-    if (!('category' in value) || value['category'] === undefined)
+    if (!('scoreType' in value) || value['scoreType'] === undefined)
         return false;
-    if (!('subcategory' in value) || value['subcategory'] === undefined)
-        return false;
-    if (!('contentType' in value) || value['contentType'] === undefined)
-        return false;
-    if (!('weekScore' in value) || value['weekScore'] === undefined)
-        return false;
-    if (!('monthScore' in value) || value['monthScore'] === undefined)
-        return false;
-    if (!('yearScore' in value) || value['yearScore'] === undefined)
-        return false;
-    if (!('totalScore' in value) || value['totalScore'] === undefined)
+    if (!('timePeriods' in value) || value['timePeriods'] === undefined)
         return false;
     return true;
 }
@@ -49,13 +38,8 @@ function UserScoreFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
-        'category': (0, ScoreCategory_1.ScoreCategoryFromJSON)(json['category']),
-        'subcategory': (0, AuraSubcategory_1.AuraSubcategoryFromJSON)(json['subcategory']),
-        'contentType': (0, ContentType_1.ContentTypeFromJSON)(json['content_type']),
-        'weekScore': json['week_score'],
-        'monthScore': json['month_score'],
-        'yearScore': json['year_score'],
-        'totalScore': json['total_score'],
+        'scoreType': (0, ScoreType_1.ScoreTypeFromJSON)(json['score_type']),
+        'timePeriods': (0, ScoreTimePeriods_1.ScoreTimePeriodsFromJSON)(json['time_periods']),
     };
 }
 function UserScoreToJSON(json) {
@@ -66,13 +50,8 @@ function UserScoreToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
-        'category': (0, ScoreCategory_1.ScoreCategoryToJSON)(value['category']),
-        'subcategory': (0, AuraSubcategory_1.AuraSubcategoryToJSON)(value['subcategory']),
-        'content_type': (0, ContentType_1.ContentTypeToJSON)(value['contentType']),
-        'week_score': value['weekScore'],
-        'month_score': value['monthScore'],
-        'year_score': value['yearScore'],
-        'total_score': value['totalScore'],
+        'score_type': (0, ScoreType_1.ScoreTypeToJSON)(value['scoreType']),
+        'time_periods': (0, ScoreTimePeriods_1.ScoreTimePeriodsToJSON)(value['timePeriods']),
     };
 }
 //# sourceMappingURL=UserScore.js.map

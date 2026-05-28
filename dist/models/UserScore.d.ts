@@ -9,9 +9,8 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { ContentType } from './ContentType';
-import type { ScoreCategory } from './ScoreCategory';
-import type { AuraSubcategory } from './AuraSubcategory';
+import type { ScoreTimePeriods } from './ScoreTimePeriods';
+import type { ScoreType } from './ScoreType';
 /**
  *
  * @export
@@ -20,46 +19,16 @@ import type { AuraSubcategory } from './AuraSubcategory';
 export interface UserScore {
     /**
      *
-     * @type {ScoreCategory}
+     * @type {ScoreType}
      * @memberof UserScore
      */
-    category: ScoreCategory;
+    scoreType: ScoreType;
     /**
      *
-     * @type {AuraSubcategory}
+     * @type {ScoreTimePeriods}
      * @memberof UserScore
      */
-    subcategory: AuraSubcategory | null;
-    /**
-     *
-     * @type {ContentType}
-     * @memberof UserScore
-     */
-    contentType: ContentType | null;
-    /**
-     *
-     * @type {number}
-     * @memberof UserScore
-     */
-    weekScore: number;
-    /**
-     *
-     * @type {number}
-     * @memberof UserScore
-     */
-    monthScore: number;
-    /**
-     *
-     * @type {number}
-     * @memberof UserScore
-     */
-    yearScore: number;
-    /**
-     *
-     * @type {number}
-     * @memberof UserScore
-     */
-    totalScore: number;
+    timePeriods: ScoreTimePeriods;
 }
 /**
  * Check if a given object implements the UserScore interface.

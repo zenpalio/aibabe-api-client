@@ -18,6 +18,7 @@ export declare const UserBadgeStatus: {
     readonly ClaimableRequirementsReached: "claimable_requirements_reached";
     readonly ClaimableRequirementsNotReached: "claimable_requirements_not_reached";
     readonly NotClaimable: "not_claimable";
+    readonly Selected: "selected";
 };
 export type UserBadgeStatus = typeof UserBadgeStatus[keyof typeof UserBadgeStatus];
 export declare function instanceOfUserBadgeStatus(value: any): boolean;

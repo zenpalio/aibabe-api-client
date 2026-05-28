@@ -27,7 +27,8 @@ exports.UserBadgeStatus = {
     Claimed: 'claimed',
     ClaimableRequirementsReached: 'claimable_requirements_reached',
     ClaimableRequirementsNotReached: 'claimable_requirements_not_reached',
-    NotClaimable: 'not_claimable'
+    NotClaimable: 'not_claimable',
+    Selected: 'selected'
 };
 function instanceOfUserBadgeStatus(value) {
     for (const key in exports.UserBadgeStatus) {

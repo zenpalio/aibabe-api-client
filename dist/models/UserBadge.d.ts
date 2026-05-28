@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import type { UserBadgeStatus } from './UserBadgeStatus';
-import type { BadgeModel } from './BadgeModel';
+import type { TimedScoreType } from './TimedScoreType';
 /**
  *
  * @export
@@ -19,34 +19,46 @@ import type { BadgeModel } from './BadgeModel';
 export interface UserBadge {
     /**
      *
-     * @type {BadgeModel}
+     * @type {string}
      * @memberof UserBadge
      */
-    badge: BadgeModel;
+    name: string;
+    /**
+     *
+     * @type {string}
+     * @memberof UserBadge
+     */
+    description: string | null;
+    /**
+     *
+     * @type {TimedScoreType}
+     * @memberof UserBadge
+     */
+    scoreType: TimedScoreType;
+    /**
+     *
+     * @type {number}
+     * @memberof UserBadge
+     */
+    requiredRank: number | null;
+    /**
+     *
+     * @type {number}
+     * @memberof UserBadge
+     */
+    scoreThreshold: number | null;
+    /**
+     *
+     * @type {number}
+     * @memberof UserBadge
+     */
+    tokenPrice: number | null;
     /**
      *
      * @type {UserBadgeStatus}
      * @memberof UserBadge
      */
     status: UserBadgeStatus;
-    /**
-     *
-     * @type {boolean}
-     * @memberof UserBadge
-     */
-    claimed: boolean;
-    /**
-     *
-     * @type {boolean}
-     * @memberof UserBadge
-     */
-    claimable: boolean;
-    /**
-     *
-     * @type {boolean}
-     * @memberof UserBadge
-     */
-    requirementsReached: boolean;
 }
 /**
  * Check if a given object implements the UserBadge interface.

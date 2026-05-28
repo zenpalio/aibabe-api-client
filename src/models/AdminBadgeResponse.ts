@@ -101,7 +101,7 @@ export interface AdminBadgeResponse {
      * @type {BadgeTimePeriod}
      * @memberof AdminBadgeResponse
      */
-    timePeriod: BadgeTimePeriod;
+    timePeriod: BadgeTimePeriod | null;
     /**
      * 
      * @type {number}

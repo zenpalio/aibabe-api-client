@@ -19,20 +19,24 @@ exports.UserBadgeFromJSONTyped = UserBadgeFromJSONTyped;
 exports.UserBadgeToJSON = UserBadgeToJSON;
 exports.UserBadgeToJSONTyped = UserBadgeToJSONTyped;
 const UserBadgeStatus_1 = require("./UserBadgeStatus");
-const BadgeModel_1 = require("./BadgeModel");
+const TimedScoreType_1 = require("./TimedScoreType");
 /**
  * Check if a given object implements the UserBadge interface.
  */
 function instanceOfUserBadge(value) {
-    if (!('badge' in value) || value['badge'] === undefined)
+    if (!('name' in value) || value['name'] === undefined)
+        return false;
+    if (!('description' in value) || value['description'] === undefined)
+        return false;
+    if (!('scoreType' in value) || value['scoreType'] === undefined)
+        return false;
+    if (!('requiredRank' in value) || value['requiredRank'] === undefined)
+        return false;
+    if (!('scoreThreshold' in value) || value['scoreThreshold'] === undefined)
+        return false;
+    if (!('tokenPrice' in value) || value['tokenPrice'] === undefined)
         return false;
     if (!('status' in value) || value['status'] === undefined)
-        return false;
-    if (!('claimed' in value) || value['claimed'] === undefined)
-        return false;
-    if (!('claimable' in value) || value['claimable'] === undefined)
-        return false;
-    if (!('requirementsReached' in value) || value['requirementsReached'] === undefined)
         return false;
     return true;
 }
@@ -44,11 +48,13 @@ function UserBadgeFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
-        'badge': (0, BadgeModel_1.BadgeModelFromJSON)(json['badge']),
+        'name': json['name'],
+        'description': json['description'],
+        'scoreType': (0, TimedScoreType_1.TimedScoreTypeFromJSON)(json['score_type']),
+        'requiredRank': json['required_rank'],
+        'scoreThreshold': json['score_threshold'],
+        'tokenPrice': json['token_price'],
         'status': (0, UserBadgeStatus_1.UserBadgeStatusFromJSON)(json['status']),
-        'claimed': json['claimed'],
-        'claimable': json['claimable'],
-        'requirementsReached': json['requirements_reached'],
     };
 }
 function UserBadgeToJSON(json) {
@@ -59,11 +65,13 @@ function UserBadgeToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
-        'badge': (0, BadgeModel_1.BadgeModelToJSON)(value['badge']),
+        'name': value['name'],
+        'description': value['description'],
+        'score_type': (0, TimedScoreType_1.TimedScoreTypeToJSON)(value['scoreType']),
+        'required_rank': value['requiredRank'],
+        'score_threshold': value['scoreThreshold'],
+        'token_price': value['tokenPrice'],
         'status': (0, UserBadgeStatus_1.UserBadgeStatusToJSON)(value['status']),
-        'claimed': value['claimed'],
-        'claimable': value['claimable'],
-        'requirements_reached': value['requirementsReached'],
     };
 }
 //# sourceMappingURL=UserBadge.js.map

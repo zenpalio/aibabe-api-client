@@ -17,7 +17,6 @@ export declare const BadgeTimePeriod: {
     readonly Week: "week";
     readonly Month: "month";
     readonly Year: "year";
-    readonly AllTime: "all_time";
 };
 export type BadgeTimePeriod = typeof BadgeTimePeriod[keyof typeof BadgeTimePeriod];
 export declare function instanceOfBadgeTimePeriod(value: any): boolean;

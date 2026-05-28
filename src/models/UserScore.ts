@@ -13,27 +13,20 @@
  */
 
 import { mapValues } from '../runtime';
-import type { ContentType } from './ContentType';
+import type { ScoreTimePeriods } from './ScoreTimePeriods';
 import {
-    ContentTypeFromJSON,
-    ContentTypeFromJSONTyped,
-    ContentTypeToJSON,
-    ContentTypeToJSONTyped,
-} from './ContentType';
-import type { ScoreCategory } from './ScoreCategory';
+    ScoreTimePeriodsFromJSON,
+    ScoreTimePeriodsFromJSONTyped,
+    ScoreTimePeriodsToJSON,
+    ScoreTimePeriodsToJSONTyped,
+} from './ScoreTimePeriods';
+import type { ScoreType } from './ScoreType';
 import {
-    ScoreCategoryFromJSON,
-    ScoreCategoryFromJSONTyped,
-    ScoreCategoryToJSON,
-    ScoreCategoryToJSONTyped,
-} from './ScoreCategory';
-import type { AuraSubcategory } from './AuraSubcategory';
-import {
-    AuraSubcategoryFromJSON,
-    AuraSubcategoryFromJSONTyped,
-    AuraSubcategoryToJSON,
-    AuraSubcategoryToJSONTyped,
-} from './AuraSubcategory';
+    ScoreTypeFromJSON,
+    ScoreTypeFromJSONTyped,
+    ScoreTypeToJSON,
+    ScoreTypeToJSONTyped,
+} from './ScoreType';
 
 /**
  * 
@@ -43,61 +36,24 @@ import {
 export interface UserScore {
     /**
      * 
-     * @type {ScoreCategory}
+     * @type {ScoreType}
      * @memberof UserScore
      */
-    category: ScoreCategory;
+    scoreType: ScoreType;
     /**
      * 
-     * @type {AuraSubcategory}
+     * @type {ScoreTimePeriods}
      * @memberof UserScore
      */
-    subcategory: AuraSubcategory | null;
-    /**
-     * 
-     * @type {ContentType}
-     * @memberof UserScore
-     */
-    contentType: ContentType | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof UserScore
-     */
-    weekScore: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof UserScore
-     */
-    monthScore: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof UserScore
-     */
-    yearScore: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof UserScore
-     */
-    totalScore: number;
+    timePeriods: ScoreTimePeriods;
 }
-
-
 
 /**
  * Check if a given object implements the UserScore interface.
  */
 export function instanceOfUserScore(value: object): value is UserScore {
-    if (!('category' in value) || value['category'] === undefined) return false;
-    if (!('subcategory' in value) || value['subcategory'] === undefined) return false;
-    if (!('contentType' in value) || value['contentType'] === undefined) return false;
-    if (!('weekScore' in value) || value['weekScore'] === undefined) return false;
-    if (!('monthScore' in value) || value['monthScore'] === undefined) return false;
-    if (!('yearScore' in value) || value['yearScore'] === undefined) return false;
-    if (!('totalScore' in value) || value['totalScore'] === undefined) return false;
+    if (!('scoreType' in value) || value['scoreType'] === undefined) return false;
+    if (!('timePeriods' in value) || value['timePeriods'] === undefined) return false;
     return true;
 }
 
@@ -111,13 +67,8 @@ export function UserScoreFromJSONTyped(json: any, ignoreDiscriminator: boolean):
     }
     return {
         
-        'category': ScoreCategoryFromJSON(json['category']),
-        'subcategory': AuraSubcategoryFromJSON(json['subcategory']),
-        'contentType': ContentTypeFromJSON(json['content_type']),
-        'weekScore': json['week_score'],
-        'monthScore': json['month_score'],
-        'yearScore': json['year_score'],
-        'totalScore': json['total_score'],
+        'scoreType': ScoreTypeFromJSON(json['score_type']),
+        'timePeriods': ScoreTimePeriodsFromJSON(json['time_periods']),
     };
 }
 
@@ -132,13 +83,8 @@ export function UserScoreFromJSONTyped(json: any, ignoreDiscriminator: boolean):
 
     return {
         
-        'category': ScoreCategoryToJSON(value['category']),
-        'subcategory': AuraSubcategoryToJSON(value['subcategory']),
-        'content_type': ContentTypeToJSON(value['contentType']),
-        'week_score': value['weekScore'],
-        'month_score': value['monthScore'],
-        'year_score': value['yearScore'],
-        'total_score': value['totalScore'],
+        'score_type': ScoreTypeToJSON(value['scoreType']),
+        'time_periods': ScoreTimePeriodsToJSON(value['timePeriods']),
     };
 }
 

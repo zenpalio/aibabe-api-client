@@ -20,13 +20,13 @@ import {
     UserBadgeStatusToJSON,
     UserBadgeStatusToJSONTyped,
 } from './UserBadgeStatus';
-import type { BadgeModel } from './BadgeModel';
+import type { TimedScoreType } from './TimedScoreType';
 import {
-    BadgeModelFromJSON,
-    BadgeModelFromJSONTyped,
-    BadgeModelToJSON,
-    BadgeModelToJSONTyped,
-} from './BadgeModel';
+    TimedScoreTypeFromJSON,
+    TimedScoreTypeFromJSONTyped,
+    TimedScoreTypeToJSON,
+    TimedScoreTypeToJSONTyped,
+} from './TimedScoreType';
 
 /**
  * 
@@ -36,34 +36,46 @@ import {
 export interface UserBadge {
     /**
      * 
-     * @type {BadgeModel}
+     * @type {string}
      * @memberof UserBadge
      */
-    badge: BadgeModel;
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserBadge
+     */
+    description: string | null;
+    /**
+     * 
+     * @type {TimedScoreType}
+     * @memberof UserBadge
+     */
+    scoreType: TimedScoreType;
+    /**
+     * 
+     * @type {number}
+     * @memberof UserBadge
+     */
+    requiredRank: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof UserBadge
+     */
+    scoreThreshold: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof UserBadge
+     */
+    tokenPrice: number | null;
     /**
      * 
      * @type {UserBadgeStatus}
      * @memberof UserBadge
      */
     status: UserBadgeStatus;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof UserBadge
-     */
-    claimed: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof UserBadge
-     */
-    claimable: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof UserBadge
-     */
-    requirementsReached: boolean;
 }
 
 
@@ -72,11 +84,13 @@ export interface UserBadge {
  * Check if a given object implements the UserBadge interface.
  */
 export function instanceOfUserBadge(value: object): value is UserBadge {
-    if (!('badge' in value) || value['badge'] === undefined) return false;
+    if (!('name' in value) || value['name'] === undefined) return false;
+    if (!('description' in value) || value['description'] === undefined) return false;
+    if (!('scoreType' in value) || value['scoreType'] === undefined) return false;
+    if (!('requiredRank' in value) || value['requiredRank'] === undefined) return false;
+    if (!('scoreThreshold' in value) || value['scoreThreshold'] === undefined) return false;
+    if (!('tokenPrice' in value) || value['tokenPrice'] === undefined) return false;
     if (!('status' in value) || value['status'] === undefined) return false;
-    if (!('claimed' in value) || value['claimed'] === undefined) return false;
-    if (!('claimable' in value) || value['claimable'] === undefined) return false;
-    if (!('requirementsReached' in value) || value['requirementsReached'] === undefined) return false;
     return true;
 }
 
@@ -90,11 +104,13 @@ export function UserBadgeFromJSONTyped(json: any, ignoreDiscriminator: boolean):
     }
     return {
         
-        'badge': BadgeModelFromJSON(json['badge']),
+        'name': json['name'],
+        'description': json['description'],
+        'scoreType': TimedScoreTypeFromJSON(json['score_type']),
+        'requiredRank': json['required_rank'],
+        'scoreThreshold': json['score_threshold'],
+        'tokenPrice': json['token_price'],
         'status': UserBadgeStatusFromJSON(json['status']),
-        'claimed': json['claimed'],
-        'claimable': json['claimable'],
-        'requirementsReached': json['requirements_reached'],
     };
 }
 
@@ -109,11 +125,13 @@ export function UserBadgeFromJSONTyped(json: any, ignoreDiscriminator: boolean):
 
     return {
         
-        'badge': BadgeModelToJSON(value['badge']),
+        'name': value['name'],
+        'description': value['description'],
+        'score_type': TimedScoreTypeToJSON(value['scoreType']),
+        'required_rank': value['requiredRank'],
+        'score_threshold': value['scoreThreshold'],
+        'token_price': value['tokenPrice'],
         'status': UserBadgeStatusToJSON(value['status']),
-        'claimed': value['claimed'],
-        'claimable': value['claimable'],
-        'requirements_reached': value['requirementsReached'],
     };
 }
 

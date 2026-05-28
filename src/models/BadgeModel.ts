@@ -72,7 +72,7 @@ export interface BadgeModel {
      * @type {string}
      * @memberof BadgeModel
      */
-    timePeriod?: string;
+    timePeriod?: string | null;
     /**
      * 
      * @type {number}

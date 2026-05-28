@@ -21,7 +21,8 @@ export const UserBadgeStatus = {
     Claimed: 'claimed',
     ClaimableRequirementsReached: 'claimable_requirements_reached',
     ClaimableRequirementsNotReached: 'claimable_requirements_not_reached',
-    NotClaimable: 'not_claimable'
+    NotClaimable: 'not_claimable',
+    Selected: 'selected'
 } as const;
 export type UserBadgeStatus = typeof UserBadgeStatus[keyof typeof UserBadgeStatus];
 

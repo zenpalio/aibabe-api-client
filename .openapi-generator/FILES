@@ -245,6 +245,8 @@ src/models/ResponseGetWanTaskStatusVideoWanTaskTaskIdGet.ts
 src/models/ReviewCharacterFieldStatus.ts
 src/models/RoleplayType.ts
 src/models/ScoreCategory.ts
+src/models/ScoreTimePeriods.ts
+src/models/ScoreType.ts
 src/models/SeduceDifficulty.ts
 src/models/SendCustomMemoracekRequest.ts
 src/models/SendMemoracekRequest.ts
@@ -307,6 +309,7 @@ src/models/TextToSpeechEnhanceRequest.ts
 src/models/TextToSpeechEnhanceResponse.ts
 src/models/TextToSpeechRequest.ts
 src/models/TextToSpeechResponse.ts
+src/models/TimedScoreType.ts
 src/models/TokenReconciliationResponse.ts
 src/models/Type.ts
 src/models/UserBadge.ts

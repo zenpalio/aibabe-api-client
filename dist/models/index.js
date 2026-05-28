@@ -235,6 +235,8 @@ __exportStar(require("./ResponseGetWanTaskStatusVideoWanTaskTaskIdGet"), exports
 __exportStar(require("./ReviewCharacterFieldStatus"), exports);
 __exportStar(require("./RoleplayType"), exports);
 __exportStar(require("./ScoreCategory"), exports);
+__exportStar(require("./ScoreTimePeriods"), exports);
+__exportStar(require("./ScoreType"), exports);
 __exportStar(require("./SeduceDifficulty"), exports);
 __exportStar(require("./SendCustomMemoracekRequest"), exports);
 __exportStar(require("./SendMemoracekRequest"), exports);
@@ -297,6 +299,7 @@ __exportStar(require("./TextToSpeechEnhanceRequest"), exports);
 __exportStar(require("./TextToSpeechEnhanceResponse"), exports);
 __exportStar(require("./TextToSpeechRequest"), exports);
 __exportStar(require("./TextToSpeechResponse"), exports);
+__exportStar(require("./TimedScoreType"), exports);
 __exportStar(require("./TokenReconciliationResponse"), exports);
 __exportStar(require("./Type"), exports);
 __exportStar(require("./UserBadge"), exports);
