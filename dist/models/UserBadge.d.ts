@@ -22,6 +22,18 @@ export interface UserBadge {
      * @type {string}
      * @memberof UserBadge
      */
+    id: string;
+    /**
+     *
+     * @type {string}
+     * @memberof UserBadge
+     */
+    code: string;
+    /**
+     *
+     * @type {string}
+     * @memberof UserBadge
+     */
     name: string;
     /**
      *

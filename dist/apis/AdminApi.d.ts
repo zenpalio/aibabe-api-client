@@ -19,6 +19,7 @@ export interface AdminDeleteAdminUserEmailDeleteRequest {
     email: string;
 }
 export interface CreateBadgeAdminBadgesPostRequest {
+    code: string;
     name: string;
     category: Category;
     image?: Blob;
@@ -48,7 +49,7 @@ export interface ImpersonateAdminImpersonateEmailPostRequest {
 }
 export interface UpdateBadgeAdminBadgesBadgeIdPatchRequest {
     badgeId: string;
-    image?: Blob | null;
+    image?: Blob;
     name?: string | null;
     description?: string | null;
     category?: Category | null;

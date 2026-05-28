@@ -38,6 +38,12 @@ export interface BadgeModel {
      * @type {string}
      * @memberof BadgeModel
      */
+    code: string;
+    /**
+     *
+     * @type {string}
+     * @memberof BadgeModel
+     */
     name: string;
     /**
      *

@@ -17,6 +17,7 @@ export * from './AvatarOptionalField';
 export * from './AvatarRequiredField';
 export * from './BadgeModel';
 export * from './BadgeNotification';
+export * from './BadgePreview';
 export * from './BadgeTimePeriod';
 export * from './BillingPeriod';
 export * from './BillingReconciliationResponse';

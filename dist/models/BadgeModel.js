@@ -22,6 +22,8 @@ exports.BadgeModelToJSONTyped = BadgeModelToJSONTyped;
  * Check if a given object implements the BadgeModel interface.
  */
 function instanceOfBadgeModel(value) {
+    if (!('code' in value) || value['code'] === undefined)
+        return false;
     if (!('name' in value) || value['name'] === undefined)
         return false;
     if (!('category' in value) || value['category'] === undefined)
@@ -39,6 +41,7 @@ function BadgeModelFromJSONTyped(json, ignoreDiscriminator) {
         'createdAt': json['created_at'] == null ? undefined : (new Date(json['created_at'])),
         'updatedAt': json['updated_at'] == null ? undefined : (new Date(json['updated_at'])),
         'id': json['id'] == null ? undefined : json['id'],
+        'code': json['code'],
         'name': json['name'],
         'description': json['description'] == null ? undefined : json['description'],
         'category': json['category_'],
@@ -64,6 +67,7 @@ function BadgeModelToJSONTyped(value, ignoreDiscriminator = false) {
         'created_at': value['createdAt'] == null ? undefined : ((value['createdAt']).toISOString()),
         'updated_at': value['updatedAt'] == null ? undefined : ((value['updatedAt']).toISOString()),
         'id': value['id'],
+        'code': value['code'],
         'name': value['name'],
         'description': value['description'],
         'category_': value['category'],

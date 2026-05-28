@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { BadgePreview } from './BadgePreview';
 /**
  *
  * @export
@@ -35,10 +36,10 @@ export interface PublicUserPreview {
     avatarUrl: string | null;
     /**
      *
-     * @type {string}
+     * @type {BadgePreview}
      * @memberof PublicUserPreview
      */
-    selectedBadgeName: string | null;
+    selectedBadge: BadgePreview | null;
 }
 /**
  * Check if a given object implements the PublicUserPreview interface.

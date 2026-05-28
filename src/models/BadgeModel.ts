@@ -42,6 +42,12 @@ export interface BadgeModel {
      * @type {string}
      * @memberof BadgeModel
      */
+    code: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BadgeModel
+     */
     name: string;
     /**
      * 
@@ -115,6 +121,7 @@ export interface BadgeModel {
  * Check if a given object implements the BadgeModel interface.
  */
 export function instanceOfBadgeModel(value: object): value is BadgeModel {
+    if (!('code' in value) || value['code'] === undefined) return false;
     if (!('name' in value) || value['name'] === undefined) return false;
     if (!('category' in value) || value['category'] === undefined) return false;
     return true;
@@ -133,6 +140,7 @@ export function BadgeModelFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'createdAt': json['created_at'] == null ? undefined : (new Date(json['created_at'])),
         'updatedAt': json['updated_at'] == null ? undefined : (new Date(json['updated_at'])),
         'id': json['id'] == null ? undefined : json['id'],
+        'code': json['code'],
         'name': json['name'],
         'description': json['description'] == null ? undefined : json['description'],
         'category': json['category_'],
@@ -162,6 +170,7 @@ export function BadgeModelFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'created_at': value['createdAt'] == null ? undefined : ((value['createdAt']).toISOString()),
         'updated_at': value['updatedAt'] == null ? undefined : ((value['updatedAt']).toISOString()),
         'id': value['id'],
+        'code': value['code'],
         'name': value['name'],
         'description': value['description'],
         'category_': value['category'],

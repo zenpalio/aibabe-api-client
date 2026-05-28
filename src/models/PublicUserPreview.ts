@@ -13,6 +13,14 @@
  */
 
 import { mapValues } from '../runtime';
+import type { BadgePreview } from './BadgePreview';
+import {
+    BadgePreviewFromJSON,
+    BadgePreviewFromJSONTyped,
+    BadgePreviewToJSON,
+    BadgePreviewToJSONTyped,
+} from './BadgePreview';
+
 /**
  * 
  * @export
@@ -39,10 +47,10 @@ export interface PublicUserPreview {
     avatarUrl: string | null;
     /**
      * 
-     * @type {string}
+     * @type {BadgePreview}
      * @memberof PublicUserPreview
      */
-    selectedBadgeName: string | null;
+    selectedBadge: BadgePreview | null;
 }
 
 /**
@@ -52,7 +60,7 @@ export function instanceOfPublicUserPreview(value: object): value is PublicUserP
     if (!('userId' in value) || value['userId'] === undefined) return false;
     if (!('publicUsername' in value) || value['publicUsername'] === undefined) return false;
     if (!('avatarUrl' in value) || value['avatarUrl'] === undefined) return false;
-    if (!('selectedBadgeName' in value) || value['selectedBadgeName'] === undefined) return false;
+    if (!('selectedBadge' in value) || value['selectedBadge'] === undefined) return false;
     return true;
 }
 
@@ -69,7 +77,7 @@ export function PublicUserPreviewFromJSONTyped(json: any, ignoreDiscriminator: b
         'userId': json['user_id'],
         'publicUsername': json['public_username'],
         'avatarUrl': json['avatar_url'],
-        'selectedBadgeName': json['selected_badge_name'],
+        'selectedBadge': BadgePreviewFromJSON(json['selected_badge']),
     };
 }
 
@@ -87,7 +95,7 @@ export function PublicUserPreviewFromJSONTyped(json: any, ignoreDiscriminator: b
         'user_id': value['userId'],
         'public_username': value['publicUsername'],
         'avatar_url': value['avatarUrl'],
-        'selected_badge_name': value['selectedBadgeName'],
+        'selected_badge': BadgePreviewToJSON(value['selectedBadge']),
     };
 }
 

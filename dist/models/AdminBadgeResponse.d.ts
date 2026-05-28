@@ -42,6 +42,12 @@ export interface AdminBadgeResponse {
      * @type {string}
      * @memberof AdminBadgeResponse
      */
+    code: string;
+    /**
+     *
+     * @type {string}
+     * @memberof AdminBadgeResponse
+     */
     name: string;
     /**
      *

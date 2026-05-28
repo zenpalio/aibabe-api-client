@@ -18,6 +18,7 @@ exports.PublicUserInfoFromJSON = PublicUserInfoFromJSON;
 exports.PublicUserInfoFromJSONTyped = PublicUserInfoFromJSONTyped;
 exports.PublicUserInfoToJSON = PublicUserInfoToJSON;
 exports.PublicUserInfoToJSONTyped = PublicUserInfoToJSONTyped;
+const BadgePreview_1 = require("./BadgePreview");
 /**
  * Check if a given object implements the PublicUserInfo interface.
  */
@@ -28,7 +29,7 @@ function instanceOfPublicUserInfo(value) {
         return false;
     if (!('avatarUrl' in value) || value['avatarUrl'] === undefined)
         return false;
-    if (!('selectedBadgeName' in value) || value['selectedBadgeName'] === undefined)
+    if (!('selectedBadge' in value) || value['selectedBadge'] === undefined)
         return false;
     if (!('following' in value) || value['following'] === undefined)
         return false;
@@ -55,7 +56,7 @@ function PublicUserInfoFromJSONTyped(json, ignoreDiscriminator) {
         'userId': json['user_id'],
         'publicUsername': json['public_username'],
         'avatarUrl': json['avatar_url'],
-        'selectedBadgeName': json['selected_badge_name'],
+        'selectedBadge': (0, BadgePreview_1.BadgePreviewFromJSON)(json['selected_badge']),
         'bio': json['bio'] == null ? undefined : json['bio'],
         'following': json['following'],
         'followers': json['followers'],
@@ -76,7 +77,7 @@ function PublicUserInfoToJSONTyped(value, ignoreDiscriminator = false) {
         'user_id': value['userId'],
         'public_username': value['publicUsername'],
         'avatar_url': value['avatarUrl'],
-        'selected_badge_name': value['selectedBadgeName'],
+        'selected_badge': (0, BadgePreview_1.BadgePreviewToJSON)(value['selectedBadge']),
         'bio': value['bio'],
         'following': value['following'],
         'followers': value['followers'],

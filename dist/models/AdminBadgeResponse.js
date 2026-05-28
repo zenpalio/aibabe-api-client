@@ -32,6 +32,8 @@ function instanceOfAdminBadgeResponse(value) {
         return false;
     if (!('updatedAt' in value) || value['updatedAt'] === undefined)
         return false;
+    if (!('code' in value) || value['code'] === undefined)
+        return false;
     if (!('name' in value) || value['name'] === undefined)
         return false;
     if (!('category' in value) || value['category'] === undefined)
@@ -57,6 +59,7 @@ function AdminBadgeResponseFromJSONTyped(json, ignoreDiscriminator) {
         'id': json['id'],
         'createdAt': (new Date(json['created_at'])),
         'updatedAt': (new Date(json['updated_at'])),
+        'code': json['code'],
         'name': json['name'],
         'description': json['description'] == null ? undefined : json['description'],
         'category': (0, Category_1.CategoryFromJSON)(json['category']),
@@ -82,6 +85,7 @@ function AdminBadgeResponseToJSONTyped(value, ignoreDiscriminator = false) {
         'id': value['id'],
         'created_at': ((value['createdAt']).toISOString()),
         'updated_at': ((value['updatedAt']).toISOString()),
+        'code': value['code'],
         'name': value['name'],
         'description': value['description'],
         'category': (0, Category_1.CategoryToJSON)(value['category']),

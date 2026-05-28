@@ -13,6 +13,14 @@
  */
 
 import { mapValues } from '../runtime';
+import type { BadgePreview } from './BadgePreview';
+import {
+    BadgePreviewFromJSON,
+    BadgePreviewFromJSONTyped,
+    BadgePreviewToJSON,
+    BadgePreviewToJSONTyped,
+} from './BadgePreview';
+
 /**
  * 
  * @export
@@ -39,10 +47,10 @@ export interface PublicUserInfo {
     avatarUrl: string | null;
     /**
      * 
-     * @type {string}
+     * @type {BadgePreview}
      * @memberof PublicUserInfo
      */
-    selectedBadgeName: string | null;
+    selectedBadge: BadgePreview | null;
     /**
      * 
      * @type {string}
@@ -94,7 +102,7 @@ export function instanceOfPublicUserInfo(value: object): value is PublicUserInfo
     if (!('userId' in value) || value['userId'] === undefined) return false;
     if (!('publicUsername' in value) || value['publicUsername'] === undefined) return false;
     if (!('avatarUrl' in value) || value['avatarUrl'] === undefined) return false;
-    if (!('selectedBadgeName' in value) || value['selectedBadgeName'] === undefined) return false;
+    if (!('selectedBadge' in value) || value['selectedBadge'] === undefined) return false;
     if (!('following' in value) || value['following'] === undefined) return false;
     if (!('followers' in value) || value['followers'] === undefined) return false;
     if (!('videos' in value) || value['videos'] === undefined) return false;
@@ -117,7 +125,7 @@ export function PublicUserInfoFromJSONTyped(json: any, ignoreDiscriminator: bool
         'userId': json['user_id'],
         'publicUsername': json['public_username'],
         'avatarUrl': json['avatar_url'],
-        'selectedBadgeName': json['selected_badge_name'],
+        'selectedBadge': BadgePreviewFromJSON(json['selected_badge']),
         'bio': json['bio'] == null ? undefined : json['bio'],
         'following': json['following'],
         'followers': json['followers'],
@@ -142,7 +150,7 @@ export function PublicUserInfoFromJSONTyped(json: any, ignoreDiscriminator: bool
         'user_id': value['userId'],
         'public_username': value['publicUsername'],
         'avatar_url': value['avatarUrl'],
-        'selected_badge_name': value['selectedBadgeName'],
+        'selected_badge': BadgePreviewToJSON(value['selectedBadge']),
         'bio': value['bio'],
         'following': value['following'],
         'followers': value['followers'],

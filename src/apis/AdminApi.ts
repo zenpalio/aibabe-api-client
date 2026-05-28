@@ -59,6 +59,7 @@ export interface AdminDeleteAdminUserEmailDeleteRequest {
 }
 
 export interface CreateBadgeAdminBadgesPostRequest {
+    code: string;
     name: string;
     category: Category;
     image?: Blob;
@@ -93,7 +94,7 @@ export interface ImpersonateAdminImpersonateEmailPostRequest {
 
 export interface UpdateBadgeAdminBadgesBadgeIdPatchRequest {
     badgeId: string;
-    image?: Blob | null;
+    image?: Blob;
     name?: string | null;
     description?: string | null;
     category?: Category | null;
@@ -221,6 +222,13 @@ export class AdminApi extends runtime.BaseAPI {
      * Create Badge
      */
     async createBadgeAdminBadgesPostRaw(requestParameters: CreateBadgeAdminBadgesPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AdminBadgeResponse>> {
+        if (requestParameters['code'] == null) {
+            throw new runtime.RequiredError(
+                'code',
+                'Required parameter "code" was null or undefined when calling createBadgeAdminBadgesPost().'
+            );
+        }
+
         if (requestParameters['name'] == null) {
             throw new runtime.RequiredError(
                 'name',
@@ -257,6 +265,10 @@ export class AdminApi extends runtime.BaseAPI {
 
         if (requestParameters['image'] != null) {
             formParams.append('image', requestParameters['image'] as any);
+        }
+
+        if (requestParameters['code'] != null) {
+            formParams.append('code', requestParameters['code'] as any);
         }
 
         if (requestParameters['name'] != null) {

@@ -13,6 +13,14 @@
  */
 
 import { mapValues } from '../runtime';
+import type { BadgePreview } from './BadgePreview';
+import {
+    BadgePreviewFromJSON,
+    BadgePreviewFromJSONTyped,
+    BadgePreviewToJSON,
+    BadgePreviewToJSONTyped,
+} from './BadgePreview';
+
 /**
  * 
  * @export
@@ -39,10 +47,10 @@ export interface PublicUserPreviewWithFollow {
     avatarUrl: string | null;
     /**
      * 
-     * @type {string}
+     * @type {BadgePreview}
      * @memberof PublicUserPreviewWithFollow
      */
-    selectedBadgeName: string | null;
+    selectedBadge: BadgePreview | null;
     /**
      * 
      * @type {boolean}
@@ -58,7 +66,7 @@ export function instanceOfPublicUserPreviewWithFollow(value: object): value is P
     if (!('userId' in value) || value['userId'] === undefined) return false;
     if (!('publicUsername' in value) || value['publicUsername'] === undefined) return false;
     if (!('avatarUrl' in value) || value['avatarUrl'] === undefined) return false;
-    if (!('selectedBadgeName' in value) || value['selectedBadgeName'] === undefined) return false;
+    if (!('selectedBadge' in value) || value['selectedBadge'] === undefined) return false;
     if (!('followed' in value) || value['followed'] === undefined) return false;
     return true;
 }
@@ -76,7 +84,7 @@ export function PublicUserPreviewWithFollowFromJSONTyped(json: any, ignoreDiscri
         'userId': json['user_id'],
         'publicUsername': json['public_username'],
         'avatarUrl': json['avatar_url'],
-        'selectedBadgeName': json['selected_badge_name'],
+        'selectedBadge': BadgePreviewFromJSON(json['selected_badge']),
         'followed': json['followed'],
     };
 }
@@ -95,7 +103,7 @@ export function PublicUserPreviewWithFollowFromJSONTyped(json: any, ignoreDiscri
         'user_id': value['userId'],
         'public_username': value['publicUsername'],
         'avatar_url': value['avatarUrl'],
-        'selected_badge_name': value['selectedBadgeName'],
+        'selected_badge': BadgePreviewToJSON(value['selectedBadge']),
         'followed': value['followed'],
     };
 }

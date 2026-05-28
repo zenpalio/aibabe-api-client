@@ -138,6 +138,9 @@ class AdminApi extends runtime.BaseAPI {
      * Create Badge
      */
     async createBadgeAdminBadgesPostRaw(requestParameters, initOverrides) {
+        if (requestParameters['code'] == null) {
+            throw new runtime.RequiredError('code', 'Required parameter "code" was null or undefined when calling createBadgeAdminBadgesPost().');
+        }
         if (requestParameters['name'] == null) {
             throw new runtime.RequiredError('name', 'Required parameter "name" was null or undefined when calling createBadgeAdminBadgesPost().');
         }
@@ -163,6 +166,9 @@ class AdminApi extends runtime.BaseAPI {
         }
         if (requestParameters['image'] != null) {
             formParams.append('image', requestParameters['image']);
+        }
+        if (requestParameters['code'] != null) {
+            formParams.append('code', requestParameters['code']);
         }
         if (requestParameters['name'] != null) {
             formParams.append('name', requestParameters['name']);

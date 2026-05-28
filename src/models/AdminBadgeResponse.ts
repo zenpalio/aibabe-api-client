@@ -71,6 +71,12 @@ export interface AdminBadgeResponse {
      * @type {string}
      * @memberof AdminBadgeResponse
      */
+    code: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AdminBadgeResponse
+     */
     name: string;
     /**
      * 
@@ -149,6 +155,7 @@ export function instanceOfAdminBadgeResponse(value: object): value is AdminBadge
     if (!('id' in value) || value['id'] === undefined) return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
     if (!('updatedAt' in value) || value['updatedAt'] === undefined) return false;
+    if (!('code' in value) || value['code'] === undefined) return false;
     if (!('name' in value) || value['name'] === undefined) return false;
     if (!('category' in value) || value['category'] === undefined) return false;
     if (!('timePeriod' in value) || value['timePeriod'] === undefined) return false;
@@ -171,6 +178,7 @@ export function AdminBadgeResponseFromJSONTyped(json: any, ignoreDiscriminator: 
         'id': json['id'],
         'createdAt': (new Date(json['created_at'])),
         'updatedAt': (new Date(json['updated_at'])),
+        'code': json['code'],
         'name': json['name'],
         'description': json['description'] == null ? undefined : json['description'],
         'category': CategoryFromJSON(json['category']),
@@ -200,6 +208,7 @@ export function AdminBadgeResponseFromJSONTyped(json: any, ignoreDiscriminator: 
         'id': value['id'],
         'created_at': ((value['createdAt']).toISOString()),
         'updated_at': ((value['updatedAt']).toISOString()),
+        'code': value['code'],
         'name': value['name'],
         'description': value['description'],
         'category': CategoryToJSON(value['category']),

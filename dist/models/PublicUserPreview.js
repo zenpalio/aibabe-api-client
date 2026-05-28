@@ -18,6 +18,7 @@ exports.PublicUserPreviewFromJSON = PublicUserPreviewFromJSON;
 exports.PublicUserPreviewFromJSONTyped = PublicUserPreviewFromJSONTyped;
 exports.PublicUserPreviewToJSON = PublicUserPreviewToJSON;
 exports.PublicUserPreviewToJSONTyped = PublicUserPreviewToJSONTyped;
+const BadgePreview_1 = require("./BadgePreview");
 /**
  * Check if a given object implements the PublicUserPreview interface.
  */
@@ -28,7 +29,7 @@ function instanceOfPublicUserPreview(value) {
         return false;
     if (!('avatarUrl' in value) || value['avatarUrl'] === undefined)
         return false;
-    if (!('selectedBadgeName' in value) || value['selectedBadgeName'] === undefined)
+    if (!('selectedBadge' in value) || value['selectedBadge'] === undefined)
         return false;
     return true;
 }
@@ -43,7 +44,7 @@ function PublicUserPreviewFromJSONTyped(json, ignoreDiscriminator) {
         'userId': json['user_id'],
         'publicUsername': json['public_username'],
         'avatarUrl': json['avatar_url'],
-        'selectedBadgeName': json['selected_badge_name'],
+        'selectedBadge': (0, BadgePreview_1.BadgePreviewFromJSON)(json['selected_badge']),
     };
 }
 function PublicUserPreviewToJSON(json) {
@@ -57,7 +58,7 @@ function PublicUserPreviewToJSONTyped(value, ignoreDiscriminator = false) {
         'user_id': value['userId'],
         'public_username': value['publicUsername'],
         'avatar_url': value['avatarUrl'],
-        'selected_badge_name': value['selectedBadgeName'],
+        'selected_badge': (0, BadgePreview_1.BadgePreviewToJSON)(value['selectedBadge']),
     };
 }
 //# sourceMappingURL=PublicUserPreview.js.map

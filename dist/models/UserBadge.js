@@ -24,6 +24,10 @@ const TimedScoreType_1 = require("./TimedScoreType");
  * Check if a given object implements the UserBadge interface.
  */
 function instanceOfUserBadge(value) {
+    if (!('id' in value) || value['id'] === undefined)
+        return false;
+    if (!('code' in value) || value['code'] === undefined)
+        return false;
     if (!('name' in value) || value['name'] === undefined)
         return false;
     if (!('description' in value) || value['description'] === undefined)
@@ -48,6 +52,8 @@ function UserBadgeFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
+        'id': json['id'],
+        'code': json['code'],
         'name': json['name'],
         'description': json['description'],
         'scoreType': (0, TimedScoreType_1.TimedScoreTypeFromJSON)(json['score_type']),
@@ -65,6 +71,8 @@ function UserBadgeToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
+        'id': value['id'],
+        'code': value['code'],
         'name': value['name'],
         'description': value['description'],
         'score_type': (0, TimedScoreType_1.TimedScoreTypeToJSON)(value['scoreType']),

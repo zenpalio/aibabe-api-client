@@ -39,6 +39,18 @@ export interface UserBadge {
      * @type {string}
      * @memberof UserBadge
      */
+    id: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserBadge
+     */
+    code: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserBadge
+     */
     name: string;
     /**
      * 
@@ -84,6 +96,8 @@ export interface UserBadge {
  * Check if a given object implements the UserBadge interface.
  */
 export function instanceOfUserBadge(value: object): value is UserBadge {
+    if (!('id' in value) || value['id'] === undefined) return false;
+    if (!('code' in value) || value['code'] === undefined) return false;
     if (!('name' in value) || value['name'] === undefined) return false;
     if (!('description' in value) || value['description'] === undefined) return false;
     if (!('scoreType' in value) || value['scoreType'] === undefined) return false;
@@ -104,6 +118,8 @@ export function UserBadgeFromJSONTyped(json: any, ignoreDiscriminator: boolean):
     }
     return {
         
+        'id': json['id'],
+        'code': json['code'],
         'name': json['name'],
         'description': json['description'],
         'scoreType': TimedScoreTypeFromJSON(json['score_type']),
@@ -125,6 +141,8 @@ export function UserBadgeFromJSONTyped(json: any, ignoreDiscriminator: boolean):
 
     return {
         
+        'id': value['id'],
+        'code': value['code'],
         'name': value['name'],
         'description': value['description'],
         'score_type': TimedScoreTypeToJSON(value['scoreType']),

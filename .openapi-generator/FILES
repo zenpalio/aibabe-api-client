@@ -44,6 +44,7 @@ src/models/AvatarOptionalField.ts
 src/models/AvatarRequiredField.ts
 src/models/BadgeModel.ts
 src/models/BadgeNotification.ts
+src/models/BadgePreview.ts
 src/models/BadgeTimePeriod.ts
 src/models/BillingPeriod.ts
 src/models/BillingReconciliationResponse.ts

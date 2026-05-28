@@ -33,6 +33,7 @@ __exportStar(require("./AvatarOptionalField"), exports);
 __exportStar(require("./AvatarRequiredField"), exports);
 __exportStar(require("./BadgeModel"), exports);
 __exportStar(require("./BadgeNotification"), exports);
+__exportStar(require("./BadgePreview"), exports);
 __exportStar(require("./BadgeTimePeriod"), exports);
 __exportStar(require("./BillingPeriod"), exports);
 __exportStar(require("./BillingReconciliationResponse"), exports);
