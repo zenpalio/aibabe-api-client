@@ -67,6 +67,12 @@ export interface UserBadge {
     tokenPrice: number | null;
     /**
      *
+     * @type {number}
+     * @memberof UserBadge
+     */
+    tokenAward: number | null;
+    /**
+     *
      * @type {UserBadgeStatus}
      * @memberof UserBadge
      */

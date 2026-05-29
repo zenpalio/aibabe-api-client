@@ -84,6 +84,12 @@ export interface UserBadge {
     tokenPrice: number | null;
     /**
      * 
+     * @type {number}
+     * @memberof UserBadge
+     */
+    tokenAward: number | null;
+    /**
+     * 
      * @type {UserBadgeStatus}
      * @memberof UserBadge
      */
@@ -104,6 +110,7 @@ export function instanceOfUserBadge(value: object): value is UserBadge {
     if (!('requiredRank' in value) || value['requiredRank'] === undefined) return false;
     if (!('scoreThreshold' in value) || value['scoreThreshold'] === undefined) return false;
     if (!('tokenPrice' in value) || value['tokenPrice'] === undefined) return false;
+    if (!('tokenAward' in value) || value['tokenAward'] === undefined) return false;
     if (!('status' in value) || value['status'] === undefined) return false;
     return true;
 }
@@ -126,6 +133,7 @@ export function UserBadgeFromJSONTyped(json: any, ignoreDiscriminator: boolean):
         'requiredRank': json['required_rank'],
         'scoreThreshold': json['score_threshold'],
         'tokenPrice': json['token_price'],
+        'tokenAward': json['token_award'],
         'status': UserBadgeStatusFromJSON(json['status']),
     };
 }
@@ -149,6 +157,7 @@ export function UserBadgeFromJSONTyped(json: any, ignoreDiscriminator: boolean):
         'required_rank': value['requiredRank'],
         'score_threshold': value['scoreThreshold'],
         'token_price': value['tokenPrice'],
+        'token_award': value['tokenAward'],
         'status': UserBadgeStatusToJSON(value['status']),
     };
 }

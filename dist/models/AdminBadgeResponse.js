@@ -40,6 +40,8 @@ function instanceOfAdminBadgeResponse(value) {
         return false;
     if (!('timePeriod' in value) || value['timePeriod'] === undefined)
         return false;
+    if (!('tokenAward' in value) || value['tokenAward'] === undefined)
+        return false;
     if (!('claimable' in value) || value['claimable'] === undefined)
         return false;
     if (!('usable' in value) || value['usable'] === undefined)
@@ -69,6 +71,7 @@ function AdminBadgeResponseFromJSONTyped(json, ignoreDiscriminator) {
         'requiredRank': json['required_rank'] == null ? undefined : json['required_rank'],
         'scoreThreshold': json['score_threshold'] == null ? undefined : json['score_threshold'],
         'tokenPrice': json['token_price'] == null ? undefined : json['token_price'],
+        'tokenAward': json['token_award'],
         'claimable': json['claimable'],
         'usable': json['usable'],
         'visible': json['visible'],
@@ -95,6 +98,7 @@ function AdminBadgeResponseToJSONTyped(value, ignoreDiscriminator = false) {
         'required_rank': value['requiredRank'],
         'score_threshold': value['scoreThreshold'],
         'token_price': value['tokenPrice'],
+        'token_award': value['tokenAward'],
         'claimable': value['claimable'],
         'usable': value['usable'],
         'visible': value['visible'],

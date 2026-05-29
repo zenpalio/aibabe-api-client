@@ -40,6 +40,8 @@ function instanceOfUserBadge(value) {
         return false;
     if (!('tokenPrice' in value) || value['tokenPrice'] === undefined)
         return false;
+    if (!('tokenAward' in value) || value['tokenAward'] === undefined)
+        return false;
     if (!('status' in value) || value['status'] === undefined)
         return false;
     return true;
@@ -60,6 +62,7 @@ function UserBadgeFromJSONTyped(json, ignoreDiscriminator) {
         'requiredRank': json['required_rank'],
         'scoreThreshold': json['score_threshold'],
         'tokenPrice': json['token_price'],
+        'tokenAward': json['token_award'],
         'status': (0, UserBadgeStatus_1.UserBadgeStatusFromJSON)(json['status']),
     };
 }
@@ -79,6 +82,7 @@ function UserBadgeToJSONTyped(value, ignoreDiscriminator = false) {
         'required_rank': value['requiredRank'],
         'score_threshold': value['scoreThreshold'],
         'token_price': value['tokenPrice'],
+        'token_award': value['tokenAward'],
         'status': (0, UserBadgeStatus_1.UserBadgeStatusToJSON)(value['status']),
     };
 }

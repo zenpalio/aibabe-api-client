@@ -99,6 +99,12 @@ export interface AdminBadgeResponse {
     tokenPrice?: number | null;
     /**
      *
+     * @type {number}
+     * @memberof AdminBadgeResponse
+     */
+    tokenAward: number | null;
+    /**
+     *
      * @type {boolean}
      * @memberof AdminBadgeResponse
      */

@@ -128,6 +128,12 @@ export interface AdminBadgeResponse {
     tokenPrice?: number | null;
     /**
      * 
+     * @type {number}
+     * @memberof AdminBadgeResponse
+     */
+    tokenAward: number | null;
+    /**
+     * 
      * @type {boolean}
      * @memberof AdminBadgeResponse
      */
@@ -159,6 +165,7 @@ export function instanceOfAdminBadgeResponse(value: object): value is AdminBadge
     if (!('name' in value) || value['name'] === undefined) return false;
     if (!('category' in value) || value['category'] === undefined) return false;
     if (!('timePeriod' in value) || value['timePeriod'] === undefined) return false;
+    if (!('tokenAward' in value) || value['tokenAward'] === undefined) return false;
     if (!('claimable' in value) || value['claimable'] === undefined) return false;
     if (!('usable' in value) || value['usable'] === undefined) return false;
     if (!('visible' in value) || value['visible'] === undefined) return false;
@@ -188,6 +195,7 @@ export function AdminBadgeResponseFromJSONTyped(json: any, ignoreDiscriminator: 
         'requiredRank': json['required_rank'] == null ? undefined : json['required_rank'],
         'scoreThreshold': json['score_threshold'] == null ? undefined : json['score_threshold'],
         'tokenPrice': json['token_price'] == null ? undefined : json['token_price'],
+        'tokenAward': json['token_award'],
         'claimable': json['claimable'],
         'usable': json['usable'],
         'visible': json['visible'],
@@ -218,6 +226,7 @@ export function AdminBadgeResponseFromJSONTyped(json: any, ignoreDiscriminator: 
         'required_rank': value['requiredRank'],
         'score_threshold': value['scoreThreshold'],
         'token_price': value['tokenPrice'],
+        'token_award': value['tokenAward'],
         'claimable': value['claimable'],
         'usable': value['usable'],
         'visible': value['visible'],
