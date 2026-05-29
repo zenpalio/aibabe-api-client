@@ -99,6 +99,12 @@ export interface BadgeModel {
     tokenPrice?: number | null;
     /**
      * 
+     * @type {number}
+     * @memberof BadgeModel
+     */
+    tokenAward?: number | null;
+    /**
+     * 
      * @type {boolean}
      * @memberof BadgeModel
      */
@@ -150,6 +156,7 @@ export function BadgeModelFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'requiredRank': json['required_rank'] == null ? undefined : json['required_rank'],
         'scoreThreshold': json['score_threshold'] == null ? undefined : json['score_threshold'],
         'tokenPrice': json['token_price'] == null ? undefined : json['token_price'],
+        'tokenAward': json['token_award'] == null ? undefined : json['token_award'],
         'claimable': json['claimable'] == null ? undefined : json['claimable'],
         'usable': json['usable'] == null ? undefined : json['usable'],
         'visible': json['visible'] == null ? undefined : json['visible'],
@@ -180,6 +187,7 @@ export function BadgeModelFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'required_rank': value['requiredRank'],
         'score_threshold': value['scoreThreshold'],
         'token_price': value['tokenPrice'],
+        'token_award': value['tokenAward'],
         'claimable': value['claimable'],
         'usable': value['usable'],
         'visible': value['visible'],

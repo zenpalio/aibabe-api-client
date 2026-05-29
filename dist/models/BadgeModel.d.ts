@@ -95,6 +95,12 @@ export interface BadgeModel {
     tokenPrice?: number | null;
     /**
      *
+     * @type {number}
+     * @memberof BadgeModel
+     */
+    tokenAward?: number | null;
+    /**
+     *
      * @type {boolean}
      * @memberof BadgeModel
      */

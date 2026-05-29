@@ -30,6 +30,7 @@ export interface CreateBadgeAdminBadgesPostRequest {
     requiredRank?: number | null;
     scoreThreshold?: number | null;
     tokenPrice?: number | null;
+    tokenAward?: number | null;
     claimable?: boolean;
     usable?: boolean;
     visible?: boolean;
@@ -59,6 +60,7 @@ export interface UpdateBadgeAdminBadgesBadgeIdPatchRequest {
     requiredRank?: number | null;
     scoreThreshold?: number | null;
     tokenPrice?: number | null;
+    tokenAward?: number | null;
     claimable?: boolean | null;
     usable?: boolean | null;
     visible?: boolean | null;

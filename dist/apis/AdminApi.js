@@ -197,6 +197,9 @@ class AdminApi extends runtime.BaseAPI {
         if (requestParameters['tokenPrice'] != null) {
             formParams.append('token_price', requestParameters['tokenPrice']);
         }
+        if (requestParameters['tokenAward'] != null) {
+            formParams.append('token_award', requestParameters['tokenAward']);
+        }
         if (requestParameters['claimable'] != null) {
             formParams.append('claimable', requestParameters['claimable']);
         }
@@ -453,6 +456,9 @@ class AdminApi extends runtime.BaseAPI {
         }
         if (requestParameters['tokenPrice'] != null) {
             formParams.append('token_price', requestParameters['tokenPrice']);
+        }
+        if (requestParameters['tokenAward'] != null) {
+            formParams.append('token_award', requestParameters['tokenAward']);
         }
         if (requestParameters['claimable'] != null) {
             formParams.append('claimable', requestParameters['claimable']);

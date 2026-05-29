@@ -70,6 +70,7 @@ export interface CreateBadgeAdminBadgesPostRequest {
     requiredRank?: number | null;
     scoreThreshold?: number | null;
     tokenPrice?: number | null;
+    tokenAward?: number | null;
     claimable?: boolean;
     usable?: boolean;
     visible?: boolean;
@@ -104,6 +105,7 @@ export interface UpdateBadgeAdminBadgesBadgeIdPatchRequest {
     requiredRank?: number | null;
     scoreThreshold?: number | null;
     tokenPrice?: number | null;
+    tokenAward?: number | null;
     claimable?: boolean | null;
     usable?: boolean | null;
     visible?: boolean | null;
@@ -305,6 +307,10 @@ export class AdminApi extends runtime.BaseAPI {
 
         if (requestParameters['tokenPrice'] != null) {
             formParams.append('token_price', requestParameters['tokenPrice'] as any);
+        }
+
+        if (requestParameters['tokenAward'] != null) {
+            formParams.append('token_award', requestParameters['tokenAward'] as any);
         }
 
         if (requestParameters['claimable'] != null) {
@@ -636,6 +642,10 @@ export class AdminApi extends runtime.BaseAPI {
 
         if (requestParameters['tokenPrice'] != null) {
             formParams.append('token_price', requestParameters['tokenPrice'] as any);
+        }
+
+        if (requestParameters['tokenAward'] != null) {
+            formParams.append('token_award', requestParameters['tokenAward'] as any);
         }
 
         if (requestParameters['claimable'] != null) {
