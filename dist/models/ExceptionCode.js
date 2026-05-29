@@ -78,6 +78,7 @@ exports.ExceptionCode = {
     LimitsReached: 'limits_reached',
     ClaimInvalid: 'claim_invalid',
     ClaimablesNotFound: 'claimables_not_found',
+    BadgeCodeAlreadyExists: 'badge_code_already_exists',
     BadgeNotFound: 'badge_not_found',
     BadgeNotClaimable: 'badge_not_claimable',
     BadgeNotUsable: 'badge_not_usable',

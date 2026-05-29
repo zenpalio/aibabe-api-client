@@ -68,6 +68,7 @@ export declare const ExceptionCode: {
     readonly LimitsReached: "limits_reached";
     readonly ClaimInvalid: "claim_invalid";
     readonly ClaimablesNotFound: "claimables_not_found";
+    readonly BadgeCodeAlreadyExists: "badge_code_already_exists";
     readonly BadgeNotFound: "badge_not_found";
     readonly BadgeNotClaimable: "badge_not_claimable";
     readonly BadgeNotUsable: "badge_not_usable";

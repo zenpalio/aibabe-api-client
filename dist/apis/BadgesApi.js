@@ -89,7 +89,7 @@ class BadgesApi extends runtime.BaseAPI {
         const queryParameters = {};
         const headerParameters = {};
         const response = await this.request({
-            path: `/badges/`,
+            path: `/badges`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,

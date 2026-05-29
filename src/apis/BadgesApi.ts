@@ -84,7 +84,7 @@ export class BadgesApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         const response = await this.request({
-            path: `/badges/`,
+            path: `/badges`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
