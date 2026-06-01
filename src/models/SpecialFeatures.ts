@@ -29,7 +29,8 @@ export const SpecialFeatures = {
     HugeBreasts: 'huge_breasts',
     RedLipstick: 'red_lipstick',
     LongNails: 'long_nails',
-    PearlEarrings: 'pearl_earrings'
+    PearlEarrings: 'pearl_earrings',
+    Choker: 'choker'
 } as const;
 export type SpecialFeatures = typeof SpecialFeatures[keyof typeof SpecialFeatures];
 

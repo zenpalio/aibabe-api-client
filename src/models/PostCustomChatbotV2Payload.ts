@@ -148,7 +148,7 @@ export interface PostCustomChatbotV2Payload {
      * @type {string}
      * @memberof PostCustomChatbotV2Payload
      */
-    scenario: string;
+    scenario?: string;
     /**
      * 
      * @type {string}
@@ -180,7 +180,6 @@ export function instanceOfPostCustomChatbotV2Payload(value: object): value is Po
     if (!('artStyle' in value) || value['artStyle'] === undefined) return false;
     if (!('looks' in value) || value['looks'] === undefined) return false;
     if (!('difficulty' in value) || value['difficulty'] === undefined) return false;
-    if (!('scenario' in value) || value['scenario'] === undefined) return false;
     if (!('clientId' in value) || value['clientId'] === undefined) return false;
     return true;
 }
@@ -205,7 +204,7 @@ export function PostCustomChatbotV2PayloadFromJSONTyped(json: any, ignoreDiscrim
         'roleplayType': json['roleplay_type'] == null ? undefined : RoleplayTypeFromJSON(json['roleplay_type']),
         'looks': AvatarLooksV2FromJSON(json['looks']),
         'difficulty': SeduceDifficultyFromJSON(json['difficulty']),
-        'scenario': json['scenario'],
+        'scenario': json['scenario'] == null ? undefined : json['scenario'],
         'clientId': json['client_id'],
         'referenceAudioId': json['reference_audio_id'] == null ? undefined : json['reference_audio_id'],
         'userId': json['user_id'] == null ? undefined : json['user_id'],

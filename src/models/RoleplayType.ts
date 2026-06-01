@@ -42,7 +42,11 @@ export const RoleplayType = {
     BratTaming: 'brat_taming',
     GothGirl: 'goth_girl',
     Bully: 'bully',
-    Lesbian: 'lesbian'
+    Lesbian: 'lesbian',
+    FutaTrans: 'futa_trans',
+    Furry: 'furry',
+    Rpg: 'rpg',
+    Neighbor: 'neighbor'
 } as const;
 export type RoleplayType = typeof RoleplayType[keyof typeof RoleplayType];
 

@@ -39,6 +39,10 @@ export declare const RoleplayType: {
     readonly GothGirl: "goth_girl";
     readonly Bully: "bully";
     readonly Lesbian: "lesbian";
+    readonly FutaTrans: "futa_trans";
+    readonly Furry: "furry";
+    readonly Rpg: "rpg";
+    readonly Neighbor: "neighbor";
 };
 export type RoleplayType = typeof RoleplayType[keyof typeof RoleplayType];
 export declare function instanceOfRoleplayType(value: any): boolean;

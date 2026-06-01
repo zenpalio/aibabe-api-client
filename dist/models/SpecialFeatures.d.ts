@@ -26,6 +26,7 @@ export declare const SpecialFeatures: {
     readonly RedLipstick: "red_lipstick";
     readonly LongNails: "long_nails";
     readonly PearlEarrings: "pearl_earrings";
+    readonly Choker: "choker";
 };
 export type SpecialFeatures = typeof SpecialFeatures[keyof typeof SpecialFeatures];
 export declare function instanceOfSpecialFeatures(value: any): boolean;

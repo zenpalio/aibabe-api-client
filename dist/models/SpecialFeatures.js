@@ -35,7 +35,8 @@ exports.SpecialFeatures = {
     HugeBreasts: 'huge_breasts',
     RedLipstick: 'red_lipstick',
     LongNails: 'long_nails',
-    PearlEarrings: 'pearl_earrings'
+    PearlEarrings: 'pearl_earrings',
+    Choker: 'choker'
 };
 function instanceOfSpecialFeatures(value) {
     for (const key in exports.SpecialFeatures) {
