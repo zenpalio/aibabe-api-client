@@ -40,6 +40,12 @@ export interface GetAboutChatbotResponse {
      * @type {string}
      * @memberof GetAboutChatbotResponse
      */
+    sexualOrientation: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof GetAboutChatbotResponse
+     */
     story: string | null;
     /**
      *

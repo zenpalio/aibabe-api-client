@@ -70,6 +70,12 @@ export interface UserPreferenceModel {
      * @memberof UserPreferenceModel
      */
     llmName?: LLM | null;
+    /**
+     *
+     * @type {string}
+     * @memberof UserPreferenceModel
+     */
+    gender?: string | null;
 }
 /**
  * Check if a given object implements the UserPreferenceModel interface.

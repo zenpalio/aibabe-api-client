@@ -76,6 +76,13 @@ import {
     AvatarLooksV2ToJSON,
     AvatarLooksV2ToJSONTyped,
 } from './AvatarLooksV2';
+import type { SexualOrientation } from './SexualOrientation';
+import {
+    SexualOrientationFromJSON,
+    SexualOrientationFromJSONTyped,
+    SexualOrientationToJSON,
+    SexualOrientationToJSONTyped,
+} from './SexualOrientation';
 
 /**
  * 
@@ -101,6 +108,12 @@ export interface PostCustomChatbotV2Payload {
      * @memberof PostCustomChatbotV2Payload
      */
     artStyle: ArtStyle;
+    /**
+     * 
+     * @type {SexualOrientation}
+     * @memberof PostCustomChatbotV2Payload
+     */
+    sexualOrientation?: SexualOrientation | null;
     /**
      * 
      * @type {Ethnicity}
@@ -198,6 +211,7 @@ export function PostCustomChatbotV2PayloadFromJSONTyped(json: any, ignoreDiscrim
         'age': json['age'],
         'specialFeatures': ((json['special_features'] as Array<any>).map(SpecialFeaturesFromJSON)),
         'artStyle': ArtStyleFromJSON(json['art_style']),
+        'sexualOrientation': json['sexual_orientation'] == null ? undefined : SexualOrientationFromJSON(json['sexual_orientation']),
         'ethnicity': json['ethnicity'] == null ? undefined : EthnicityFromJSON(json['ethnicity']),
         'fantasyRace': json['fantasy_race'] == null ? undefined : FantasyRaceFromJSON(json['fantasy_race']),
         'visualType': json['visual_type'] == null ? undefined : VisualTypeFromJSON(json['visual_type']),
@@ -226,6 +240,7 @@ export function PostCustomChatbotV2PayloadFromJSONTyped(json: any, ignoreDiscrim
         'age': value['age'],
         'special_features': ((value['specialFeatures'] as Array<any>).map(SpecialFeaturesToJSON)),
         'art_style': ArtStyleToJSON(value['artStyle']),
+        'sexual_orientation': SexualOrientationToJSON(value['sexualOrientation']),
         'ethnicity': EthnicityToJSON(value['ethnicity']),
         'fantasy_race': FantasyRaceToJSON(value['fantasyRace']),
         'visual_type': VisualTypeToJSON(value['visualType']),

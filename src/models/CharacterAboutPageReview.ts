@@ -48,6 +48,12 @@ export interface CharacterAboutPageReview {
     gender?: AvatarRequiredField | null;
     /**
      * 
+     * @type {AvatarOptionalField}
+     * @memberof CharacterAboutPageReview
+     */
+    sexualOrientation?: AvatarOptionalField | null;
+    /**
+     * 
      * @type {AvatarRequiredField}
      * @memberof CharacterAboutPageReview
      */
@@ -91,6 +97,7 @@ export function CharacterAboutPageReviewFromJSONTyped(json: any, ignoreDiscrimin
         
         'characterName': json['character_name'] == null ? undefined : AvatarRequiredFieldFromJSON(json['character_name']),
         'gender': json['gender'] == null ? undefined : AvatarRequiredFieldFromJSON(json['gender']),
+        'sexualOrientation': json['sexual_orientation'] == null ? undefined : AvatarOptionalFieldFromJSON(json['sexual_orientation']),
         'bio': json['bio'] == null ? undefined : AvatarRequiredFieldFromJSON(json['bio']),
         'greetings': json['greetings'] == null ? undefined : AvatarRequiredFieldFromJSON(json['greetings']),
         'story': json['story'] == null ? undefined : AvatarRequiredFieldFromJSON(json['story']),
@@ -111,6 +118,7 @@ export function CharacterAboutPageReviewFromJSONTyped(json: any, ignoreDiscrimin
         
         'character_name': AvatarRequiredFieldToJSON(value['characterName']),
         'gender': AvatarRequiredFieldToJSON(value['gender']),
+        'sexual_orientation': AvatarOptionalFieldToJSON(value['sexualOrientation']),
         'bio': AvatarRequiredFieldToJSON(value['bio']),
         'greetings': AvatarRequiredFieldToJSON(value['greetings']),
         'story': AvatarRequiredFieldToJSON(value['story']),

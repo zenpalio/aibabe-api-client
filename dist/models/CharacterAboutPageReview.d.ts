@@ -31,6 +31,12 @@ export interface CharacterAboutPageReview {
     gender?: AvatarRequiredField | null;
     /**
      *
+     * @type {AvatarOptionalField}
+     * @memberof CharacterAboutPageReview
+     */
+    sexualOrientation?: AvatarOptionalField | null;
+    /**
+     *
      * @type {AvatarRequiredField}
      * @memberof CharacterAboutPageReview
      */

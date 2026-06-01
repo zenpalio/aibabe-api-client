@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { Gender1 } from './Gender1';
 /**
  *
  * @export
@@ -39,6 +40,12 @@ export interface UserPreferences {
      * @memberof UserPreferences
      */
     usernameUpdated?: boolean | null;
+    /**
+     *
+     * @type {Gender1}
+     * @memberof UserPreferences
+     */
+    gender?: Gender1 | null;
 }
 /**
  * Check if a given object implements the UserPreferences interface.

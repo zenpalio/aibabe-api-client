@@ -27,6 +27,7 @@ const RoleplayType_1 = require("./RoleplayType");
 const VisualType_1 = require("./VisualType");
 const SeduceDifficulty_1 = require("./SeduceDifficulty");
 const AvatarLooksV2_1 = require("./AvatarLooksV2");
+const SexualOrientation_1 = require("./SexualOrientation");
 /**
  * Check if a given object implements the PostCustomChatbotV2Payload interface.
  */
@@ -58,6 +59,7 @@ function PostCustomChatbotV2PayloadFromJSONTyped(json, ignoreDiscriminator) {
         'age': json['age'],
         'specialFeatures': (json['special_features'].map(SpecialFeatures_1.SpecialFeaturesFromJSON)),
         'artStyle': (0, ArtStyle_1.ArtStyleFromJSON)(json['art_style']),
+        'sexualOrientation': json['sexual_orientation'] == null ? undefined : (0, SexualOrientation_1.SexualOrientationFromJSON)(json['sexual_orientation']),
         'ethnicity': json['ethnicity'] == null ? undefined : (0, Ethnicity_1.EthnicityFromJSON)(json['ethnicity']),
         'fantasyRace': json['fantasy_race'] == null ? undefined : (0, FantasyRace_1.FantasyRaceFromJSON)(json['fantasy_race']),
         'visualType': json['visual_type'] == null ? undefined : (0, VisualType_1.VisualTypeFromJSON)(json['visual_type']),
@@ -82,6 +84,7 @@ function PostCustomChatbotV2PayloadToJSONTyped(value, ignoreDiscriminator = fals
         'age': value['age'],
         'special_features': (value['specialFeatures'].map(SpecialFeatures_1.SpecialFeaturesToJSON)),
         'art_style': (0, ArtStyle_1.ArtStyleToJSON)(value['artStyle']),
+        'sexual_orientation': (0, SexualOrientation_1.SexualOrientationToJSON)(value['sexualOrientation']),
         'ethnicity': (0, Ethnicity_1.EthnicityToJSON)(value['ethnicity']),
         'fantasy_race': (0, FantasyRace_1.FantasyRaceToJSON)(value['fantasyRace']),
         'visual_type': (0, VisualType_1.VisualTypeToJSON)(value['visualType']),

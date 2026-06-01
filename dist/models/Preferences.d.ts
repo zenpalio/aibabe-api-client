@@ -70,6 +70,12 @@ export interface Preferences {
      * @memberof Preferences
      */
     llmName?: LLM;
+    /**
+     *
+     * @type {string}
+     * @memberof Preferences
+     */
+    gender?: string;
 }
 /**
  * Check if a given object implements the Preferences interface.

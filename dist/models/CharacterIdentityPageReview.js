@@ -18,6 +18,7 @@ exports.CharacterIdentityPageReviewFromJSON = CharacterIdentityPageReviewFromJSO
 exports.CharacterIdentityPageReviewFromJSONTyped = CharacterIdentityPageReviewFromJSONTyped;
 exports.CharacterIdentityPageReviewToJSON = CharacterIdentityPageReviewToJSON;
 exports.CharacterIdentityPageReviewToJSONTyped = CharacterIdentityPageReviewToJSONTyped;
+const AvatarOptionalField_1 = require("./AvatarOptionalField");
 const AvatarRequiredField_1 = require("./AvatarRequiredField");
 /**
  * Check if a given object implements the CharacterIdentityPageReview interface.
@@ -35,6 +36,7 @@ function CharacterIdentityPageReviewFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'characterName': json['character_name'] == null ? undefined : (0, AvatarRequiredField_1.AvatarRequiredFieldFromJSON)(json['character_name']),
         'gender': json['gender'] == null ? undefined : (0, AvatarRequiredField_1.AvatarRequiredFieldFromJSON)(json['gender']),
+        'sexualOrientation': json['sexual_orientation'] == null ? undefined : (0, AvatarOptionalField_1.AvatarOptionalFieldFromJSON)(json['sexual_orientation']),
         'bio': json['bio'] == null ? undefined : (0, AvatarRequiredField_1.AvatarRequiredFieldFromJSON)(json['bio']),
         'greetings': json['greetings'] == null ? undefined : (0, AvatarRequiredField_1.AvatarRequiredFieldFromJSON)(json['greetings']),
     };
@@ -49,6 +51,7 @@ function CharacterIdentityPageReviewToJSONTyped(value, ignoreDiscriminator = fal
     return {
         'character_name': (0, AvatarRequiredField_1.AvatarRequiredFieldToJSON)(value['characterName']),
         'gender': (0, AvatarRequiredField_1.AvatarRequiredFieldToJSON)(value['gender']),
+        'sexual_orientation': (0, AvatarOptionalField_1.AvatarOptionalFieldToJSON)(value['sexualOrientation']),
         'bio': (0, AvatarRequiredField_1.AvatarRequiredFieldToJSON)(value['bio']),
         'greetings': (0, AvatarRequiredField_1.AvatarRequiredFieldToJSON)(value['greetings']),
     };
