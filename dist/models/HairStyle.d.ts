@@ -66,6 +66,7 @@ export declare const HairStyle: {
     readonly MegaTwinDrillstwintails: "mega twin drills,twintails";
     readonly MegaPonytail: "mega ponytail";
     readonly Big: "big";
+    readonly BobCut: "bob cut";
 };
 export type HairStyle = typeof HairStyle[keyof typeof HairStyle];
 export declare function instanceOfHairStyle(value: any): boolean;

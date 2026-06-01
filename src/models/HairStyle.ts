@@ -69,7 +69,8 @@ export const HairStyle = {
     PinterestMultiple: 'pinterest multiple',
     MegaTwinDrillstwintails: 'mega twin drills,twintails',
     MegaPonytail: 'mega ponytail',
-    Big: 'big'
+    Big: 'big',
+    BobCut: 'bob cut'
 } as const;
 export type HairStyle = typeof HairStyle[keyof typeof HairStyle];
 

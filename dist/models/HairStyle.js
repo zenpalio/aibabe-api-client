@@ -75,7 +75,8 @@ exports.HairStyle = {
     PinterestMultiple: 'pinterest multiple',
     MegaTwinDrillstwintails: 'mega twin drills,twintails',
     MegaPonytail: 'mega ponytail',
-    Big: 'big'
+    Big: 'big',
+    BobCut: 'bob cut'
 };
 function instanceOfHairStyle(value) {
     for (const key in exports.HairStyle) {
