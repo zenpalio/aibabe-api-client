@@ -54,6 +54,8 @@ function PostCustomChatbotV2PayloadFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'age': json['age'],
+        'name': json['name'] == null ? undefined : json['name'],
+        'gender': json['gender'] == null ? undefined : json['gender'],
         'specialFeatures': (json['special_features'].map(SpecialFeatures_1.SpecialFeaturesFromJSON)),
         'artStyle': (0, ArtStyle_1.ArtStyleFromJSON)(json['art_style']),
         'ethnicity': json['ethnicity'] == null ? undefined : (0, Ethnicity_1.EthnicityFromJSON)(json['ethnicity']),
@@ -78,6 +80,8 @@ function PostCustomChatbotV2PayloadToJSONTyped(value, ignoreDiscriminator = fals
     }
     return {
         'age': value['age'],
+        'name': value['name'],
+        'gender': value['gender'],
         'special_features': (value['specialFeatures'].map(SpecialFeatures_1.SpecialFeaturesToJSON)),
         'art_style': (0, ArtStyle_1.ArtStyleToJSON)(value['artStyle']),
         'ethnicity': (0, Ethnicity_1.EthnicityToJSON)(value['ethnicity']),

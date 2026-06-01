@@ -91,6 +91,18 @@ export interface PostCustomChatbotV2Payload {
     age: number;
     /**
      * 
+     * @type {string}
+     * @memberof PostCustomChatbotV2Payload
+     */
+    name?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof PostCustomChatbotV2Payload
+     */
+    gender?: string | null;
+    /**
+     * 
      * @type {Array<SpecialFeatures>}
      * @memberof PostCustomChatbotV2Payload
      */
@@ -195,6 +207,8 @@ export function PostCustomChatbotV2PayloadFromJSONTyped(json: any, ignoreDiscrim
     return {
         
         'age': json['age'],
+        'name': json['name'] == null ? undefined : json['name'],
+        'gender': json['gender'] == null ? undefined : json['gender'],
         'specialFeatures': ((json['special_features'] as Array<any>).map(SpecialFeaturesFromJSON)),
         'artStyle': ArtStyleFromJSON(json['art_style']),
         'ethnicity': json['ethnicity'] == null ? undefined : EthnicityFromJSON(json['ethnicity']),
@@ -223,6 +237,8 @@ export function PostCustomChatbotV2PayloadFromJSONTyped(json: any, ignoreDiscrim
     return {
         
         'age': value['age'],
+        'name': value['name'],
+        'gender': value['gender'],
         'special_features': ((value['specialFeatures'] as Array<any>).map(SpecialFeaturesToJSON)),
         'art_style': ArtStyleToJSON(value['artStyle']),
         'ethnicity': EthnicityToJSON(value['ethnicity']),

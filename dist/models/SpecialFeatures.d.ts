@@ -18,6 +18,10 @@ export declare const SpecialFeatures: {
     readonly PubicHair: "pubic_hair";
     readonly Piercing: "piercing";
     readonly Freckles: "freckles";
+    readonly Scar: "scar";
+    readonly Vascularity: "vascularity";
+    readonly MaleOnlyVascularity: "male-only vascularity";
+    readonly ChestHair: "chest_hair";
     readonly Pregnant: "pregnant";
     readonly Glasses: "glasses";
     readonly Futa: "futa";

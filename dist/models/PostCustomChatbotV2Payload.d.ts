@@ -32,6 +32,18 @@ export interface PostCustomChatbotV2Payload {
     age: number;
     /**
      *
+     * @type {string}
+     * @memberof PostCustomChatbotV2Payload
+     */
+    name?: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof PostCustomChatbotV2Payload
+     */
+    gender?: string | null;
+    /**
+     *
      * @type {Array<SpecialFeatures>}
      * @memberof PostCustomChatbotV2Payload
      */
