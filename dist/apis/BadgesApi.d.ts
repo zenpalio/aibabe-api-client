@@ -30,6 +30,14 @@ export declare class BadgesApi extends runtime.BaseAPI {
      */
     claimBadgeBadgesBadgeIdClaimPost(requestParameters: ClaimBadgeBadgesBadgeIdClaimPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
     /**
+     * Deselect Badge
+     */
+    deselectBadgeBadgesDeselectPostRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
+    /**
+     * Deselect Badge
+     */
+    deselectBadgeBadgesDeselectPost(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
+    /**
      * Get Badges
      */
     getBadgesBadgesGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UserBadgeListResponse>>;

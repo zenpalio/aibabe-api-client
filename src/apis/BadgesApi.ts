@@ -76,6 +76,36 @@ export class BadgesApi extends runtime.BaseAPI {
     }
 
     /**
+     * Deselect Badge
+     */
+    async deselectBadgeBadgesDeselectPostRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/badges/deselect`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse<any>(response);
+        } else {
+            return new runtime.TextApiResponse(response) as any;
+        }
+    }
+
+    /**
+     * Deselect Badge
+     */
+    async deselectBadgeBadgesDeselectPost(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
+        const response = await this.deselectBadgeBadgesDeselectPostRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Get Badges
      */
     async getBadgesBadgesGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UserBadgeListResponse>> {
