@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { AvatarOptionalField } from './AvatarOptionalField';
 import type { AvatarRequiredField } from './AvatarRequiredField';
 /**
  *
@@ -28,6 +29,12 @@ export interface CharacterIdentityPageReview {
      * @memberof CharacterIdentityPageReview
      */
     gender?: AvatarRequiredField | null;
+    /**
+     *
+     * @type {AvatarOptionalField}
+     * @memberof CharacterIdentityPageReview
+     */
+    sexualOrientation?: AvatarOptionalField | null;
     /**
      *
      * @type {AvatarRequiredField}

@@ -88,6 +88,12 @@ export interface Preferences {
      * @memberof Preferences
      */
     llmName?: LLM;
+    /**
+     * 
+     * @type {string}
+     * @memberof Preferences
+     */
+    gender?: string;
 }
 
 
@@ -119,6 +125,7 @@ export function PreferencesFromJSONTyped(json: any, ignoreDiscriminator: boolean
         'displayUnlockWarning': json['display_unlock_warning'] == null ? undefined : json['display_unlock_warning'],
         'usernameUpdated': json['username_updated'] == null ? undefined : json['username_updated'],
         'llmName': json['llm_name'] == null ? undefined : LLMFromJSON(json['llm_name']),
+        'gender': json['gender'] == null ? undefined : json['gender'],
     };
 }
 
@@ -142,6 +149,7 @@ export function PreferencesFromJSONTyped(json: any, ignoreDiscriminator: boolean
         'display_unlock_warning': value['displayUnlockWarning'],
         'username_updated': value['usernameUpdated'],
         'llm_name': LLMToJSON(value['llmName']),
+        'gender': value['gender'],
     };
 }
 

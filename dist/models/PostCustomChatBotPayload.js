@@ -27,6 +27,7 @@ const ModelName_1 = require("./ModelName");
 const AnimeLora_1 = require("./AnimeLora");
 const Hobby_1 = require("./Hobby");
 const Personality_1 = require("./Personality");
+const SexualOrientation_1 = require("./SexualOrientation");
 const RelationshipStatus_1 = require("./RelationshipStatus");
 /**
  * Check if a given object implements the PostCustomChatBotPayload interface.
@@ -62,6 +63,7 @@ function PostCustomChatBotPayloadFromJSONTyped(json, ignoreDiscriminator) {
         'personality': (0, Personality_1.PersonalityFromJSON)(json['personality']),
         'specialFeatures': (json['special_features'].map(SpecialFeatures_1.SpecialFeaturesFromJSON)),
         'relationshipStatus': (0, RelationshipStatus_1.RelationshipStatusFromJSON)(json['relationship_status']),
+        'sexualOrientation': json['sexual_orientation'] == null ? undefined : (0, SexualOrientation_1.SexualOrientationFromJSON)(json['sexual_orientation']),
         'animeLora': json['anime_lora'] == null ? undefined : (0, AnimeLora_1.AnimeLoraFromJSON)(json['anime_lora']),
         'ethnicity': json['ethnicity'] == null ? undefined : (0, Ethnicity_1.EthnicityFromJSON)(json['ethnicity']),
         'fantasyRace': json['fantasy_race'] == null ? undefined : (0, FantasyRace_1.FantasyRaceFromJSON)(json['fantasy_race']),
@@ -85,6 +87,7 @@ function PostCustomChatBotPayloadToJSONTyped(value, ignoreDiscriminator = false)
         'personality': (0, Personality_1.PersonalityToJSON)(value['personality']),
         'special_features': (value['specialFeatures'].map(SpecialFeatures_1.SpecialFeaturesToJSON)),
         'relationship_status': (0, RelationshipStatus_1.RelationshipStatusToJSON)(value['relationshipStatus']),
+        'sexual_orientation': (0, SexualOrientation_1.SexualOrientationToJSON)(value['sexualOrientation']),
         'anime_lora': (0, AnimeLora_1.AnimeLoraToJSON)(value['animeLora']),
         'ethnicity': (0, Ethnicity_1.EthnicityToJSON)(value['ethnicity']),
         'fantasy_race': (0, FantasyRace_1.FantasyRaceToJSON)(value['fantasyRace']),

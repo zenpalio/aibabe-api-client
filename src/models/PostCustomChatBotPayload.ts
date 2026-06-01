@@ -76,6 +76,13 @@ import {
     PersonalityToJSON,
     PersonalityToJSONTyped,
 } from './Personality';
+import type { SexualOrientation } from './SexualOrientation';
+import {
+    SexualOrientationFromJSON,
+    SexualOrientationFromJSONTyped,
+    SexualOrientationToJSON,
+    SexualOrientationToJSONTyped,
+} from './SexualOrientation';
 import type { RelationshipStatus } from './RelationshipStatus';
 import {
     RelationshipStatusFromJSON,
@@ -126,6 +133,12 @@ export interface PostCustomChatBotPayload {
      * @memberof PostCustomChatBotPayload
      */
     relationshipStatus: RelationshipStatus;
+    /**
+     * 
+     * @type {SexualOrientation}
+     * @memberof PostCustomChatBotPayload
+     */
+    sexualOrientation?: SexualOrientation | null;
     /**
      * 
      * @type {AnimeLora}
@@ -202,6 +215,7 @@ export function PostCustomChatBotPayloadFromJSONTyped(json: any, ignoreDiscrimin
         'personality': PersonalityFromJSON(json['personality']),
         'specialFeatures': ((json['special_features'] as Array<any>).map(SpecialFeaturesFromJSON)),
         'relationshipStatus': RelationshipStatusFromJSON(json['relationship_status']),
+        'sexualOrientation': json['sexual_orientation'] == null ? undefined : SexualOrientationFromJSON(json['sexual_orientation']),
         'animeLora': json['anime_lora'] == null ? undefined : AnimeLoraFromJSON(json['anime_lora']),
         'ethnicity': json['ethnicity'] == null ? undefined : EthnicityFromJSON(json['ethnicity']),
         'fantasyRace': json['fantasy_race'] == null ? undefined : FantasyRaceFromJSON(json['fantasy_race']),
@@ -229,6 +243,7 @@ export function PostCustomChatBotPayloadFromJSONTyped(json: any, ignoreDiscrimin
         'personality': PersonalityToJSON(value['personality']),
         'special_features': ((value['specialFeatures'] as Array<any>).map(SpecialFeaturesToJSON)),
         'relationship_status': RelationshipStatusToJSON(value['relationshipStatus']),
+        'sexual_orientation': SexualOrientationToJSON(value['sexualOrientation']),
         'anime_lora': AnimeLoraToJSON(value['animeLora']),
         'ethnicity': EthnicityToJSON(value['ethnicity']),
         'fantasy_race': FantasyRaceToJSON(value['fantasyRace']),

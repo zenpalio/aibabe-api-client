@@ -44,6 +44,7 @@ function UserPreferenceModelFromJSONTyped(json, ignoreDiscriminator) {
         'displayUnlockWarning': json['display_unlock_warning'] == null ? undefined : json['display_unlock_warning'],
         'usernameUpdated': json['username_updated'] == null ? undefined : json['username_updated'],
         'llmName': json['llm_name'] == null ? undefined : (0, LLM_1.LLMFromJSON)(json['llm_name']),
+        'gender': json['gender'] == null ? undefined : json['gender'],
     };
 }
 function UserPreferenceModelToJSON(json) {
@@ -63,6 +64,7 @@ function UserPreferenceModelToJSONTyped(value, ignoreDiscriminator = false) {
         'display_unlock_warning': value['displayUnlockWarning'],
         'username_updated': value['usernameUpdated'],
         'llm_name': (0, LLM_1.LLMToJSON)(value['llmName']),
+        'gender': value['gender'],
     };
 }
 //# sourceMappingURL=UserPreferenceModel.js.map
