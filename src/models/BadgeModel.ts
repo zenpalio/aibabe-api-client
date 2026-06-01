@@ -60,7 +60,13 @@ export interface BadgeModel {
      * @type {string}
      * @memberof BadgeModel
      */
-    category: string;
+    badgeCategory: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BadgeModel
+     */
+    scoreCategory?: string | null;
     /**
      * 
      * @type {string}
@@ -114,6 +120,12 @@ export interface BadgeModel {
      * @type {boolean}
      * @memberof BadgeModel
      */
+    manuallyProvided?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof BadgeModel
+     */
     usable?: boolean;
     /**
      * 
@@ -129,7 +141,7 @@ export interface BadgeModel {
 export function instanceOfBadgeModel(value: object): value is BadgeModel {
     if (!('code' in value) || value['code'] === undefined) return false;
     if (!('name' in value) || value['name'] === undefined) return false;
-    if (!('category' in value) || value['category'] === undefined) return false;
+    if (!('badgeCategory' in value) || value['badgeCategory'] === undefined) return false;
     return true;
 }
 
@@ -149,7 +161,8 @@ export function BadgeModelFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'code': json['code'],
         'name': json['name'],
         'description': json['description'] == null ? undefined : json['description'],
-        'category': json['category_'],
+        'badgeCategory': json['badge_category_'],
+        'scoreCategory': json['score_category_'] == null ? undefined : json['score_category_'],
         'subcategory': json['subcategory_'] == null ? undefined : json['subcategory_'],
         'contentType': json['content_type_'] == null ? undefined : json['content_type_'],
         'timePeriod': json['time_period_'] == null ? undefined : json['time_period_'],
@@ -158,6 +171,7 @@ export function BadgeModelFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'tokenPrice': json['token_price'] == null ? undefined : json['token_price'],
         'tokenAward': json['token_award'] == null ? undefined : json['token_award'],
         'claimable': json['claimable'] == null ? undefined : json['claimable'],
+        'manuallyProvided': json['manually_provided'] == null ? undefined : json['manually_provided'],
         'usable': json['usable'] == null ? undefined : json['usable'],
         'visible': json['visible'] == null ? undefined : json['visible'],
     };
@@ -180,7 +194,8 @@ export function BadgeModelFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'code': value['code'],
         'name': value['name'],
         'description': value['description'],
-        'category_': value['category'],
+        'badge_category_': value['badgeCategory'],
+        'score_category_': value['scoreCategory'],
         'subcategory_': value['subcategory'],
         'content_type_': value['contentType'],
         'time_period_': value['timePeriod'],
@@ -189,6 +204,7 @@ export function BadgeModelFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'token_price': value['tokenPrice'],
         'token_award': value['tokenAward'],
         'claimable': value['claimable'],
+        'manually_provided': value['manuallyProvided'],
         'usable': value['usable'],
         'visible': value['visible'],
     };

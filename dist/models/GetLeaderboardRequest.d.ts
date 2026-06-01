@@ -24,7 +24,7 @@ export interface GetLeaderboardRequest {
      * @type {ScoreCategory}
      * @memberof GetLeaderboardRequest
      */
-    category: ScoreCategory;
+    scoreCategory: ScoreCategory;
     /**
      *
      * @type {AuraSubcategory}

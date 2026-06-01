@@ -56,7 +56,13 @@ export interface BadgeModel {
      * @type {string}
      * @memberof BadgeModel
      */
-    category: string;
+    badgeCategory: string;
+    /**
+     *
+     * @type {string}
+     * @memberof BadgeModel
+     */
+    scoreCategory?: string | null;
     /**
      *
      * @type {string}
@@ -105,6 +111,12 @@ export interface BadgeModel {
      * @memberof BadgeModel
      */
     claimable?: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof BadgeModel
+     */
+    manuallyProvided?: boolean;
     /**
      *
      * @type {boolean}

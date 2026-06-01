@@ -26,7 +26,7 @@ function instanceOfBadgeModel(value) {
         return false;
     if (!('name' in value) || value['name'] === undefined)
         return false;
-    if (!('category' in value) || value['category'] === undefined)
+    if (!('badgeCategory' in value) || value['badgeCategory'] === undefined)
         return false;
     return true;
 }
@@ -44,7 +44,8 @@ function BadgeModelFromJSONTyped(json, ignoreDiscriminator) {
         'code': json['code'],
         'name': json['name'],
         'description': json['description'] == null ? undefined : json['description'],
-        'category': json['category_'],
+        'badgeCategory': json['badge_category_'],
+        'scoreCategory': json['score_category_'] == null ? undefined : json['score_category_'],
         'subcategory': json['subcategory_'] == null ? undefined : json['subcategory_'],
         'contentType': json['content_type_'] == null ? undefined : json['content_type_'],
         'timePeriod': json['time_period_'] == null ? undefined : json['time_period_'],
@@ -53,6 +54,7 @@ function BadgeModelFromJSONTyped(json, ignoreDiscriminator) {
         'tokenPrice': json['token_price'] == null ? undefined : json['token_price'],
         'tokenAward': json['token_award'] == null ? undefined : json['token_award'],
         'claimable': json['claimable'] == null ? undefined : json['claimable'],
+        'manuallyProvided': json['manually_provided'] == null ? undefined : json['manually_provided'],
         'usable': json['usable'] == null ? undefined : json['usable'],
         'visible': json['visible'] == null ? undefined : json['visible'],
     };
@@ -71,7 +73,8 @@ function BadgeModelToJSONTyped(value, ignoreDiscriminator = false) {
         'code': value['code'],
         'name': value['name'],
         'description': value['description'],
-        'category_': value['category'],
+        'badge_category_': value['badgeCategory'],
+        'score_category_': value['scoreCategory'],
         'subcategory_': value['subcategory'],
         'content_type_': value['contentType'],
         'time_period_': value['timePeriod'],
@@ -80,6 +83,7 @@ function BadgeModelToJSONTyped(value, ignoreDiscriminator = false) {
         'token_price': value['tokenPrice'],
         'token_award': value['tokenAward'],
         'claimable': value['claimable'],
+        'manually_provided': value['manuallyProvided'],
         'usable': value['usable'],
         'visible': value['visible'],
     };

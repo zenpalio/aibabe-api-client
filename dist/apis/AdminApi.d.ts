@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AdminBadgeResponse, AuraSubcategory, BadgeTimePeriod, Category, ContentType, GetQualityControlImage, GetQualityControlRequest, GiftCodeType, UserInfoResponse } from '../models/index';
+import type { AdminAwardBadgeRequest, AdminBadgeResponse, AuraSubcategory, BadgeCategory, BadgeTimePeriod, ContentType, GetQualityControlImage, GetQualityControlRequest, GiftCodeType, ScoreCategory, UserInfoResponse } from '../models/index';
 export interface AddTokensAdminAddTokensPutRequest {
     email: string;
     tokens: number;
@@ -21,9 +21,10 @@ export interface AdminDeleteAdminUserEmailDeleteRequest {
 export interface CreateBadgeAdminBadgesPostRequest {
     code: string;
     name: string;
-    category: Category;
+    badgeCategory: BadgeCategory;
     image?: Blob;
     description?: string | null;
+    scoreCategory?: ScoreCategory | null;
     subcategory?: AuraSubcategory | null;
     contentType?: ContentType | null;
     timePeriod?: BadgeTimePeriod | null;
@@ -32,6 +33,7 @@ export interface CreateBadgeAdminBadgesPostRequest {
     tokenPrice?: number | null;
     tokenAward?: number | null;
     claimable?: boolean;
+    manuallyProvided?: boolean;
     usable?: boolean;
     visible?: boolean;
 }
@@ -48,12 +50,16 @@ export interface GetTokenBalanceAdminTokenBalanceEmailGetRequest {
 export interface ImpersonateAdminImpersonateEmailPostRequest {
     email: string;
 }
+export interface ProvideAwardAdminBadgesAwardPostRequest {
+    adminAwardBadgeRequest: AdminAwardBadgeRequest;
+}
 export interface UpdateBadgeAdminBadgesBadgeIdPatchRequest {
     badgeId: string;
     image?: Blob;
     name?: string | null;
     description?: string | null;
-    category?: Category | null;
+    badgeCategory?: BadgeCategory | null;
+    scoreCategory?: ScoreCategory | null;
     subcategory?: AuraSubcategory | null;
     contentType?: ContentType | null;
     timePeriod?: BadgeTimePeriod | null;
@@ -62,6 +68,7 @@ export interface UpdateBadgeAdminBadgesBadgeIdPatchRequest {
     tokenPrice?: number | null;
     tokenAward?: number | null;
     claimable?: boolean | null;
+    manuallyProvided?: boolean | null;
     usable?: boolean | null;
     visible?: boolean | null;
 }
@@ -133,6 +140,14 @@ export declare class AdminApi extends runtime.BaseAPI {
      * List Badges
      */
     listBadgesAdminBadgesGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AdminBadgeResponse>>;
+    /**
+     * Provide Award
+     */
+    provideAwardAdminBadgesAwardPostRaw(requestParameters: ProvideAwardAdminBadgesAwardPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
+    /**
+     * Provide Award
+     */
+    provideAwardAdminBadgesAwardPost(requestParameters: ProvideAwardAdminBadgesAwardPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
     /**
      * Reset User Claimables
      */

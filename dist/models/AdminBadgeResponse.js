@@ -18,9 +18,10 @@ exports.AdminBadgeResponseFromJSON = AdminBadgeResponseFromJSON;
 exports.AdminBadgeResponseFromJSONTyped = AdminBadgeResponseFromJSONTyped;
 exports.AdminBadgeResponseToJSON = AdminBadgeResponseToJSON;
 exports.AdminBadgeResponseToJSONTyped = AdminBadgeResponseToJSONTyped;
-const Category_1 = require("./Category");
 const BadgeTimePeriod_1 = require("./BadgeTimePeriod");
 const ContentType_1 = require("./ContentType");
+const BadgeCategory_1 = require("./BadgeCategory");
+const ScoreCategory_1 = require("./ScoreCategory");
 const AuraSubcategory_1 = require("./AuraSubcategory");
 /**
  * Check if a given object implements the AdminBadgeResponse interface.
@@ -36,13 +37,15 @@ function instanceOfAdminBadgeResponse(value) {
         return false;
     if (!('name' in value) || value['name'] === undefined)
         return false;
-    if (!('category' in value) || value['category'] === undefined)
+    if (!('badgeCategory' in value) || value['badgeCategory'] === undefined)
         return false;
     if (!('timePeriod' in value) || value['timePeriod'] === undefined)
         return false;
     if (!('tokenAward' in value) || value['tokenAward'] === undefined)
         return false;
     if (!('claimable' in value) || value['claimable'] === undefined)
+        return false;
+    if (!('manuallyProvided' in value) || value['manuallyProvided'] === undefined)
         return false;
     if (!('usable' in value) || value['usable'] === undefined)
         return false;
@@ -64,7 +67,8 @@ function AdminBadgeResponseFromJSONTyped(json, ignoreDiscriminator) {
         'code': json['code'],
         'name': json['name'],
         'description': json['description'] == null ? undefined : json['description'],
-        'category': (0, Category_1.CategoryFromJSON)(json['category']),
+        'badgeCategory': (0, BadgeCategory_1.BadgeCategoryFromJSON)(json['badge_category']),
+        'scoreCategory': json['score_category'] == null ? undefined : (0, ScoreCategory_1.ScoreCategoryFromJSON)(json['score_category']),
         'subcategory': json['subcategory'] == null ? undefined : (0, AuraSubcategory_1.AuraSubcategoryFromJSON)(json['subcategory']),
         'contentType': json['content_type'] == null ? undefined : (0, ContentType_1.ContentTypeFromJSON)(json['content_type']),
         'timePeriod': (0, BadgeTimePeriod_1.BadgeTimePeriodFromJSON)(json['time_period']),
@@ -73,6 +77,7 @@ function AdminBadgeResponseFromJSONTyped(json, ignoreDiscriminator) {
         'tokenPrice': json['token_price'] == null ? undefined : json['token_price'],
         'tokenAward': json['token_award'],
         'claimable': json['claimable'],
+        'manuallyProvided': json['manually_provided'],
         'usable': json['usable'],
         'visible': json['visible'],
     };
@@ -91,7 +96,8 @@ function AdminBadgeResponseToJSONTyped(value, ignoreDiscriminator = false) {
         'code': value['code'],
         'name': value['name'],
         'description': value['description'],
-        'category': (0, Category_1.CategoryToJSON)(value['category']),
+        'badge_category': (0, BadgeCategory_1.BadgeCategoryToJSON)(value['badgeCategory']),
+        'score_category': (0, ScoreCategory_1.ScoreCategoryToJSON)(value['scoreCategory']),
         'subcategory': (0, AuraSubcategory_1.AuraSubcategoryToJSON)(value['subcategory']),
         'content_type': (0, ContentType_1.ContentTypeToJSON)(value['contentType']),
         'time_period': (0, BadgeTimePeriod_1.BadgeTimePeriodToJSON)(value['timePeriod']),
@@ -100,6 +106,7 @@ function AdminBadgeResponseToJSONTyped(value, ignoreDiscriminator = false) {
         'token_price': value['tokenPrice'],
         'token_award': value['tokenAward'],
         'claimable': value['claimable'],
+        'manually_provided': value['manuallyProvided'],
         'usable': value['usable'],
         'visible': value['visible'],
     };

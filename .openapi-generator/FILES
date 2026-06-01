@@ -30,6 +30,7 @@ src/index.ts
 src/models/AccessType.ts
 src/models/ActorRole.ts
 src/models/AddonPrice.ts
+src/models/AdminAwardBadgeRequest.ts
 src/models/AdminBadgeResponse.ts
 src/models/AnimeLora.ts
 src/models/ArtStyle.ts
@@ -42,6 +43,7 @@ src/models/AvatarLooks.ts
 src/models/AvatarLooksV2.ts
 src/models/AvatarOptionalField.ts
 src/models/AvatarRequiredField.ts
+src/models/BadgeCategory.ts
 src/models/BadgeModel.ts
 src/models/BadgeNotification.ts
 src/models/BadgePreview.ts
@@ -53,7 +55,6 @@ src/models/BreastSize.ts
 src/models/BulkDeleteContentRequest.ts
 src/models/ButtSize.ts
 src/models/CancelSubscriptionRequest.ts
-src/models/Category.ts
 src/models/CategoryValues.ts
 src/models/CharacterAboutPageReview.ts
 src/models/CharacterAvatarReview.ts
@@ -315,7 +316,7 @@ src/models/TextToSpeechEnhanceRequest.ts
 src/models/TextToSpeechEnhanceResponse.ts
 src/models/TextToSpeechRequest.ts
 src/models/TextToSpeechResponse.ts
-src/models/TimedScoreType.ts
+src/models/TimedBadgeType.ts
 src/models/TokenReconciliationResponse.ts
 src/models/Type.ts
 src/models/UserBadge.ts

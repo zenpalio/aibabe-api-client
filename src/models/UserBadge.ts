@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { TimedBadgeType } from './TimedBadgeType';
+import {
+    TimedBadgeTypeFromJSON,
+    TimedBadgeTypeFromJSONTyped,
+    TimedBadgeTypeToJSON,
+    TimedBadgeTypeToJSONTyped,
+} from './TimedBadgeType';
 import type { UserBadgeStatus } from './UserBadgeStatus';
 import {
     UserBadgeStatusFromJSON,
@@ -20,13 +27,6 @@ import {
     UserBadgeStatusToJSON,
     UserBadgeStatusToJSONTyped,
 } from './UserBadgeStatus';
-import type { TimedScoreType } from './TimedScoreType';
-import {
-    TimedScoreTypeFromJSON,
-    TimedScoreTypeFromJSONTyped,
-    TimedScoreTypeToJSON,
-    TimedScoreTypeToJSONTyped,
-} from './TimedScoreType';
 
 /**
  * 
@@ -60,10 +60,10 @@ export interface UserBadge {
     description: string | null;
     /**
      * 
-     * @type {TimedScoreType}
+     * @type {TimedBadgeType}
      * @memberof UserBadge
      */
-    scoreType: TimedScoreType;
+    badgeType: TimedBadgeType | null;
     /**
      * 
      * @type {number}
@@ -106,7 +106,7 @@ export function instanceOfUserBadge(value: object): value is UserBadge {
     if (!('code' in value) || value['code'] === undefined) return false;
     if (!('name' in value) || value['name'] === undefined) return false;
     if (!('description' in value) || value['description'] === undefined) return false;
-    if (!('scoreType' in value) || value['scoreType'] === undefined) return false;
+    if (!('badgeType' in value) || value['badgeType'] === undefined) return false;
     if (!('requiredRank' in value) || value['requiredRank'] === undefined) return false;
     if (!('scoreThreshold' in value) || value['scoreThreshold'] === undefined) return false;
     if (!('tokenPrice' in value) || value['tokenPrice'] === undefined) return false;
@@ -129,7 +129,7 @@ export function UserBadgeFromJSONTyped(json: any, ignoreDiscriminator: boolean):
         'code': json['code'],
         'name': json['name'],
         'description': json['description'],
-        'scoreType': TimedScoreTypeFromJSON(json['score_type']),
+        'badgeType': TimedBadgeTypeFromJSON(json['badge_type']),
         'requiredRank': json['required_rank'],
         'scoreThreshold': json['score_threshold'],
         'tokenPrice': json['token_price'],
@@ -153,7 +153,7 @@ export function UserBadgeFromJSONTyped(json: any, ignoreDiscriminator: boolean):
         'code': value['code'],
         'name': value['name'],
         'description': value['description'],
-        'score_type': TimedScoreTypeToJSON(value['scoreType']),
+        'badge_type': TimedBadgeTypeToJSON(value['badgeType']),
         'required_rank': value['requiredRank'],
         'score_threshold': value['scoreThreshold'],
         'token_price': value['tokenPrice'],

@@ -13,13 +13,6 @@
  */
 
 import { mapValues } from '../runtime';
-import type { Category } from './Category';
-import {
-    CategoryFromJSON,
-    CategoryFromJSONTyped,
-    CategoryToJSON,
-    CategoryToJSONTyped,
-} from './Category';
 import type { BadgeTimePeriod } from './BadgeTimePeriod';
 import {
     BadgeTimePeriodFromJSON,
@@ -34,6 +27,20 @@ import {
     ContentTypeToJSON,
     ContentTypeToJSONTyped,
 } from './ContentType';
+import type { BadgeCategory } from './BadgeCategory';
+import {
+    BadgeCategoryFromJSON,
+    BadgeCategoryFromJSONTyped,
+    BadgeCategoryToJSON,
+    BadgeCategoryToJSONTyped,
+} from './BadgeCategory';
+import type { ScoreCategory } from './ScoreCategory';
+import {
+    ScoreCategoryFromJSON,
+    ScoreCategoryFromJSONTyped,
+    ScoreCategoryToJSON,
+    ScoreCategoryToJSONTyped,
+} from './ScoreCategory';
 import type { AuraSubcategory } from './AuraSubcategory';
 import {
     AuraSubcategoryFromJSON,
@@ -86,10 +93,16 @@ export interface AdminBadgeResponse {
     description?: string | null;
     /**
      * 
-     * @type {Category}
+     * @type {BadgeCategory}
      * @memberof AdminBadgeResponse
      */
-    category: Category;
+    badgeCategory: BadgeCategory;
+    /**
+     * 
+     * @type {ScoreCategory}
+     * @memberof AdminBadgeResponse
+     */
+    scoreCategory?: ScoreCategory | null;
     /**
      * 
      * @type {AuraSubcategory}
@@ -143,6 +156,12 @@ export interface AdminBadgeResponse {
      * @type {boolean}
      * @memberof AdminBadgeResponse
      */
+    manuallyProvided: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof AdminBadgeResponse
+     */
     usable: boolean;
     /**
      * 
@@ -163,10 +182,11 @@ export function instanceOfAdminBadgeResponse(value: object): value is AdminBadge
     if (!('updatedAt' in value) || value['updatedAt'] === undefined) return false;
     if (!('code' in value) || value['code'] === undefined) return false;
     if (!('name' in value) || value['name'] === undefined) return false;
-    if (!('category' in value) || value['category'] === undefined) return false;
+    if (!('badgeCategory' in value) || value['badgeCategory'] === undefined) return false;
     if (!('timePeriod' in value) || value['timePeriod'] === undefined) return false;
     if (!('tokenAward' in value) || value['tokenAward'] === undefined) return false;
     if (!('claimable' in value) || value['claimable'] === undefined) return false;
+    if (!('manuallyProvided' in value) || value['manuallyProvided'] === undefined) return false;
     if (!('usable' in value) || value['usable'] === undefined) return false;
     if (!('visible' in value) || value['visible'] === undefined) return false;
     return true;
@@ -188,7 +208,8 @@ export function AdminBadgeResponseFromJSONTyped(json: any, ignoreDiscriminator: 
         'code': json['code'],
         'name': json['name'],
         'description': json['description'] == null ? undefined : json['description'],
-        'category': CategoryFromJSON(json['category']),
+        'badgeCategory': BadgeCategoryFromJSON(json['badge_category']),
+        'scoreCategory': json['score_category'] == null ? undefined : ScoreCategoryFromJSON(json['score_category']),
         'subcategory': json['subcategory'] == null ? undefined : AuraSubcategoryFromJSON(json['subcategory']),
         'contentType': json['content_type'] == null ? undefined : ContentTypeFromJSON(json['content_type']),
         'timePeriod': BadgeTimePeriodFromJSON(json['time_period']),
@@ -197,6 +218,7 @@ export function AdminBadgeResponseFromJSONTyped(json: any, ignoreDiscriminator: 
         'tokenPrice': json['token_price'] == null ? undefined : json['token_price'],
         'tokenAward': json['token_award'],
         'claimable': json['claimable'],
+        'manuallyProvided': json['manually_provided'],
         'usable': json['usable'],
         'visible': json['visible'],
     };
@@ -219,7 +241,8 @@ export function AdminBadgeResponseFromJSONTyped(json: any, ignoreDiscriminator: 
         'code': value['code'],
         'name': value['name'],
         'description': value['description'],
-        'category': CategoryToJSON(value['category']),
+        'badge_category': BadgeCategoryToJSON(value['badgeCategory']),
+        'score_category': ScoreCategoryToJSON(value['scoreCategory']),
         'subcategory': AuraSubcategoryToJSON(value['subcategory']),
         'content_type': ContentTypeToJSON(value['contentType']),
         'time_period': BadgeTimePeriodToJSON(value['timePeriod']),
@@ -228,6 +251,7 @@ export function AdminBadgeResponseFromJSONTyped(json: any, ignoreDiscriminator: 
         'token_price': value['tokenPrice'],
         'token_award': value['tokenAward'],
         'claimable': value['claimable'],
+        'manually_provided': value['manuallyProvided'],
         'usable': value['usable'],
         'visible': value['visible'],
     };

@@ -9,8 +9,8 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { Category } from './Category';
 import type { ContentType } from './ContentType';
+import type { ScoreCategory } from './ScoreCategory';
 import type { AuraSubcategory } from './AuraSubcategory';
 /**
  *
@@ -20,10 +20,10 @@ import type { AuraSubcategory } from './AuraSubcategory';
 export interface ScoreType {
     /**
      *
-     * @type {Category}
+     * @type {ScoreCategory}
      * @memberof ScoreType
      */
-    category: Category;
+    category: ScoreCategory;
     /**
      *
      * @type {AuraSubcategory}

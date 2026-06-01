@@ -144,8 +144,8 @@ class AdminApi extends runtime.BaseAPI {
         if (requestParameters['name'] == null) {
             throw new runtime.RequiredError('name', 'Required parameter "name" was null or undefined when calling createBadgeAdminBadgesPost().');
         }
-        if (requestParameters['category'] == null) {
-            throw new runtime.RequiredError('category', 'Required parameter "category" was null or undefined when calling createBadgeAdminBadgesPost().');
+        if (requestParameters['badgeCategory'] == null) {
+            throw new runtime.RequiredError('badgeCategory', 'Required parameter "badgeCategory" was null or undefined when calling createBadgeAdminBadgesPost().');
         }
         const queryParameters = {};
         const headerParameters = {};
@@ -173,11 +173,14 @@ class AdminApi extends runtime.BaseAPI {
         if (requestParameters['name'] != null) {
             formParams.append('name', requestParameters['name']);
         }
-        if (requestParameters['category'] != null) {
-            formParams.append('category', requestParameters['category']);
+        if (requestParameters['badgeCategory'] != null) {
+            formParams.append('badge_category', requestParameters['badgeCategory']);
         }
         if (requestParameters['description'] != null) {
             formParams.append('description', requestParameters['description']);
+        }
+        if (requestParameters['scoreCategory'] != null) {
+            formParams.append('score_category', requestParameters['scoreCategory']);
         }
         if (requestParameters['subcategory'] != null) {
             formParams.append('subcategory', requestParameters['subcategory']);
@@ -202,6 +205,9 @@ class AdminApi extends runtime.BaseAPI {
         }
         if (requestParameters['claimable'] != null) {
             formParams.append('claimable', requestParameters['claimable']);
+        }
+        if (requestParameters['manuallyProvided'] != null) {
+            formParams.append('manually_provided', requestParameters['manuallyProvided']);
         }
         if (requestParameters['usable'] != null) {
             formParams.append('usable', requestParameters['usable']);
@@ -378,6 +384,37 @@ class AdminApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * Provide Award
+     */
+    async provideAwardAdminBadgesAwardPostRaw(requestParameters, initOverrides) {
+        if (requestParameters['adminAwardBadgeRequest'] == null) {
+            throw new runtime.RequiredError('adminAwardBadgeRequest', 'Required parameter "adminAwardBadgeRequest" was null or undefined when calling provideAwardAdminBadgesAwardPost().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        const response = await this.request({
+            path: `/admin/badges/award`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.AdminAwardBadgeRequestToJSON)(requestParameters['adminAwardBadgeRequest']),
+        }, initOverrides);
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse(response);
+        }
+        else {
+            return new runtime.TextApiResponse(response);
+        }
+    }
+    /**
+     * Provide Award
+     */
+    async provideAwardAdminBadgesAwardPost(requestParameters, initOverrides) {
+        const response = await this.provideAwardAdminBadgesAwardPostRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * Reset User Claimables
      */
     async resetUserClaimablesAdminUserResetClaimablesPostRaw(initOverrides) {
@@ -436,8 +473,11 @@ class AdminApi extends runtime.BaseAPI {
         if (requestParameters['description'] != null) {
             formParams.append('description', requestParameters['description']);
         }
-        if (requestParameters['category'] != null) {
-            formParams.append('category', requestParameters['category']);
+        if (requestParameters['badgeCategory'] != null) {
+            formParams.append('badge_category', requestParameters['badgeCategory']);
+        }
+        if (requestParameters['scoreCategory'] != null) {
+            formParams.append('score_category', requestParameters['scoreCategory']);
         }
         if (requestParameters['subcategory'] != null) {
             formParams.append('subcategory', requestParameters['subcategory']);
@@ -462,6 +502,9 @@ class AdminApi extends runtime.BaseAPI {
         }
         if (requestParameters['claimable'] != null) {
             formParams.append('claimable', requestParameters['claimable']);
+        }
+        if (requestParameters['manuallyProvided'] != null) {
+            formParams.append('manually_provided', requestParameters['manuallyProvided']);
         }
         if (requestParameters['usable'] != null) {
             formParams.append('usable', requestParameters['usable']);

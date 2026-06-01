@@ -53,7 +53,7 @@ export interface GetLeaderboardRequest {
      * @type {ScoreCategory}
      * @memberof GetLeaderboardRequest
      */
-    category: ScoreCategory;
+    scoreCategory: ScoreCategory;
     /**
      * 
      * @type {AuraSubcategory}
@@ -80,7 +80,7 @@ export interface GetLeaderboardRequest {
  * Check if a given object implements the GetLeaderboardRequest interface.
  */
 export function instanceOfGetLeaderboardRequest(value: object): value is GetLeaderboardRequest {
-    if (!('category' in value) || value['category'] === undefined) return false;
+    if (!('scoreCategory' in value) || value['scoreCategory'] === undefined) return false;
     return true;
 }
 
@@ -94,7 +94,7 @@ export function GetLeaderboardRequestFromJSONTyped(json: any, ignoreDiscriminato
     }
     return {
         
-        'category': ScoreCategoryFromJSON(json['category']),
+        'scoreCategory': ScoreCategoryFromJSON(json['score_category']),
         'subcategory': json['subcategory'] == null ? undefined : AuraSubcategoryFromJSON(json['subcategory']),
         'contentType': json['content_type'] == null ? undefined : ContentTypeFromJSON(json['content_type']),
         'timePeriod': json['time_period'] == null ? undefined : BadgeTimePeriodFromJSON(json['time_period']),
@@ -112,7 +112,7 @@ export function GetLeaderboardRequestFromJSONTyped(json: any, ignoreDiscriminato
 
     return {
         
-        'category': ScoreCategoryToJSON(value['category']),
+        'score_category': ScoreCategoryToJSON(value['scoreCategory']),
         'subcategory': AuraSubcategoryToJSON(value['subcategory']),
         'content_type': ContentTypeToJSON(value['contentType']),
         'time_period': BadgeTimePeriodToJSON(value['timePeriod']),

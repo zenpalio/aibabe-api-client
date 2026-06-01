@@ -18,8 +18,8 @@ exports.UserBadgeFromJSON = UserBadgeFromJSON;
 exports.UserBadgeFromJSONTyped = UserBadgeFromJSONTyped;
 exports.UserBadgeToJSON = UserBadgeToJSON;
 exports.UserBadgeToJSONTyped = UserBadgeToJSONTyped;
+const TimedBadgeType_1 = require("./TimedBadgeType");
 const UserBadgeStatus_1 = require("./UserBadgeStatus");
-const TimedScoreType_1 = require("./TimedScoreType");
 /**
  * Check if a given object implements the UserBadge interface.
  */
@@ -32,7 +32,7 @@ function instanceOfUserBadge(value) {
         return false;
     if (!('description' in value) || value['description'] === undefined)
         return false;
-    if (!('scoreType' in value) || value['scoreType'] === undefined)
+    if (!('badgeType' in value) || value['badgeType'] === undefined)
         return false;
     if (!('requiredRank' in value) || value['requiredRank'] === undefined)
         return false;
@@ -58,7 +58,7 @@ function UserBadgeFromJSONTyped(json, ignoreDiscriminator) {
         'code': json['code'],
         'name': json['name'],
         'description': json['description'],
-        'scoreType': (0, TimedScoreType_1.TimedScoreTypeFromJSON)(json['score_type']),
+        'badgeType': (0, TimedBadgeType_1.TimedBadgeTypeFromJSON)(json['badge_type']),
         'requiredRank': json['required_rank'],
         'scoreThreshold': json['score_threshold'],
         'tokenPrice': json['token_price'],
@@ -78,7 +78,7 @@ function UserBadgeToJSONTyped(value, ignoreDiscriminator = false) {
         'code': value['code'],
         'name': value['name'],
         'description': value['description'],
-        'score_type': (0, TimedScoreType_1.TimedScoreTypeToJSON)(value['scoreType']),
+        'badge_type': (0, TimedBadgeType_1.TimedBadgeTypeToJSON)(value['badgeType']),
         'required_rank': value['requiredRank'],
         'score_threshold': value['scoreThreshold'],
         'token_price': value['tokenPrice'],

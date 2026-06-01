@@ -15,26 +15,30 @@
 
 import * as runtime from '../runtime';
 import type {
+  AdminAwardBadgeRequest,
   AdminBadgeResponse,
   AuraSubcategory,
+  BadgeCategory,
   BadgeTimePeriod,
-  Category,
   ContentType,
   GetQualityControlImage,
   GetQualityControlRequest,
   GiftCodeType,
   HTTPValidationError,
+  ScoreCategory,
   UserInfoResponse,
 } from '../models/index';
 import {
+    AdminAwardBadgeRequestFromJSON,
+    AdminAwardBadgeRequestToJSON,
     AdminBadgeResponseFromJSON,
     AdminBadgeResponseToJSON,
     AuraSubcategoryFromJSON,
     AuraSubcategoryToJSON,
+    BadgeCategoryFromJSON,
+    BadgeCategoryToJSON,
     BadgeTimePeriodFromJSON,
     BadgeTimePeriodToJSON,
-    CategoryFromJSON,
-    CategoryToJSON,
     ContentTypeFromJSON,
     ContentTypeToJSON,
     GetQualityControlImageFromJSON,
@@ -45,6 +49,8 @@ import {
     GiftCodeTypeToJSON,
     HTTPValidationErrorFromJSON,
     HTTPValidationErrorToJSON,
+    ScoreCategoryFromJSON,
+    ScoreCategoryToJSON,
     UserInfoResponseFromJSON,
     UserInfoResponseToJSON,
 } from '../models/index';
@@ -61,9 +67,10 @@ export interface AdminDeleteAdminUserEmailDeleteRequest {
 export interface CreateBadgeAdminBadgesPostRequest {
     code: string;
     name: string;
-    category: Category;
+    badgeCategory: BadgeCategory;
     image?: Blob;
     description?: string | null;
+    scoreCategory?: ScoreCategory | null;
     subcategory?: AuraSubcategory | null;
     contentType?: ContentType | null;
     timePeriod?: BadgeTimePeriod | null;
@@ -72,6 +79,7 @@ export interface CreateBadgeAdminBadgesPostRequest {
     tokenPrice?: number | null;
     tokenAward?: number | null;
     claimable?: boolean;
+    manuallyProvided?: boolean;
     usable?: boolean;
     visible?: boolean;
 }
@@ -93,12 +101,17 @@ export interface ImpersonateAdminImpersonateEmailPostRequest {
     email: string;
 }
 
+export interface ProvideAwardAdminBadgesAwardPostRequest {
+    adminAwardBadgeRequest: AdminAwardBadgeRequest;
+}
+
 export interface UpdateBadgeAdminBadgesBadgeIdPatchRequest {
     badgeId: string;
     image?: Blob;
     name?: string | null;
     description?: string | null;
-    category?: Category | null;
+    badgeCategory?: BadgeCategory | null;
+    scoreCategory?: ScoreCategory | null;
     subcategory?: AuraSubcategory | null;
     contentType?: ContentType | null;
     timePeriod?: BadgeTimePeriod | null;
@@ -107,6 +120,7 @@ export interface UpdateBadgeAdminBadgesBadgeIdPatchRequest {
     tokenPrice?: number | null;
     tokenAward?: number | null;
     claimable?: boolean | null;
+    manuallyProvided?: boolean | null;
     usable?: boolean | null;
     visible?: boolean | null;
 }
@@ -238,10 +252,10 @@ export class AdminApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['category'] == null) {
+        if (requestParameters['badgeCategory'] == null) {
             throw new runtime.RequiredError(
-                'category',
-                'Required parameter "category" was null or undefined when calling createBadgeAdminBadgesPost().'
+                'badgeCategory',
+                'Required parameter "badgeCategory" was null or undefined when calling createBadgeAdminBadgesPost().'
             );
         }
 
@@ -277,12 +291,16 @@ export class AdminApi extends runtime.BaseAPI {
             formParams.append('name', requestParameters['name'] as any);
         }
 
-        if (requestParameters['category'] != null) {
-            formParams.append('category', requestParameters['category'] as any);
+        if (requestParameters['badgeCategory'] != null) {
+            formParams.append('badge_category', requestParameters['badgeCategory'] as any);
         }
 
         if (requestParameters['description'] != null) {
             formParams.append('description', requestParameters['description'] as any);
+        }
+
+        if (requestParameters['scoreCategory'] != null) {
+            formParams.append('score_category', requestParameters['scoreCategory'] as any);
         }
 
         if (requestParameters['subcategory'] != null) {
@@ -315,6 +333,10 @@ export class AdminApi extends runtime.BaseAPI {
 
         if (requestParameters['claimable'] != null) {
             formParams.append('claimable', requestParameters['claimable'] as any);
+        }
+
+        if (requestParameters['manuallyProvided'] != null) {
+            formParams.append('manually_provided', requestParameters['manuallyProvided'] as any);
         }
 
         if (requestParameters['usable'] != null) {
@@ -544,6 +566,46 @@ export class AdminApi extends runtime.BaseAPI {
     }
 
     /**
+     * Provide Award
+     */
+    async provideAwardAdminBadgesAwardPostRaw(requestParameters: ProvideAwardAdminBadgesAwardPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
+        if (requestParameters['adminAwardBadgeRequest'] == null) {
+            throw new runtime.RequiredError(
+                'adminAwardBadgeRequest',
+                'Required parameter "adminAwardBadgeRequest" was null or undefined when calling provideAwardAdminBadgesAwardPost().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        const response = await this.request({
+            path: `/admin/badges/award`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: AdminAwardBadgeRequestToJSON(requestParameters['adminAwardBadgeRequest']),
+        }, initOverrides);
+
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse<any>(response);
+        } else {
+            return new runtime.TextApiResponse(response) as any;
+        }
+    }
+
+    /**
+     * Provide Award
+     */
+    async provideAwardAdminBadgesAwardPost(requestParameters: ProvideAwardAdminBadgesAwardPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
+        const response = await this.provideAwardAdminBadgesAwardPostRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Reset User Claimables
      */
     async resetUserClaimablesAdminUserResetClaimablesPostRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
@@ -616,8 +678,12 @@ export class AdminApi extends runtime.BaseAPI {
             formParams.append('description', requestParameters['description'] as any);
         }
 
-        if (requestParameters['category'] != null) {
-            formParams.append('category', requestParameters['category'] as any);
+        if (requestParameters['badgeCategory'] != null) {
+            formParams.append('badge_category', requestParameters['badgeCategory'] as any);
+        }
+
+        if (requestParameters['scoreCategory'] != null) {
+            formParams.append('score_category', requestParameters['scoreCategory'] as any);
         }
 
         if (requestParameters['subcategory'] != null) {
@@ -650,6 +716,10 @@ export class AdminApi extends runtime.BaseAPI {
 
         if (requestParameters['claimable'] != null) {
             formParams.append('claimable', requestParameters['claimable'] as any);
+        }
+
+        if (requestParameters['manuallyProvided'] != null) {
+            formParams.append('manually_provided', requestParameters['manuallyProvided'] as any);
         }
 
         if (requestParameters['usable'] != null) {

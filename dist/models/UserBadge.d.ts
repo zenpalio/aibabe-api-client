@@ -9,8 +9,8 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { TimedBadgeType } from './TimedBadgeType';
 import type { UserBadgeStatus } from './UserBadgeStatus';
-import type { TimedScoreType } from './TimedScoreType';
 /**
  *
  * @export
@@ -43,10 +43,10 @@ export interface UserBadge {
     description: string | null;
     /**
      *
-     * @type {TimedScoreType}
+     * @type {TimedBadgeType}
      * @memberof UserBadge
      */
-    scoreType: TimedScoreType;
+    badgeType: TimedBadgeType | null;
     /**
      *
      * @type {number}
