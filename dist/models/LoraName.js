@@ -130,6 +130,7 @@ exports.LoraName = {
     ShiirosStylesNiji: 'shiiros_styles_niji ',
     CommixStyleLoraPonyIllusFlux: 'commix_style_lora_pony_illus_flux',
     PonyPeoplesWorksV1V6: 'pony_peoples_works_v1_v6',
+    GayPornPony: 'gay_porn_pony',
     None: 'none'
 };
 function instanceOfLoraName(value) {

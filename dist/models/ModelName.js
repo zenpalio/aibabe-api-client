@@ -36,7 +36,8 @@ exports.ModelName = {
     IllustriousRealism: 'illustriousRealism',
     IllustriousDamn: 'illustriousDAMN',
     CyberRealisticPony: 'cyberRealisticPony',
-    PonyRealism: 'ponyRealism'
+    PonyRealism: 'ponyRealism',
+    ZitMoodysV12: 'zitMoodysV12'
 };
 function instanceOfModelName(value) {
     for (const key in exports.ModelName) {

@@ -28,22 +28,18 @@ src/index.ts
 src/models/AccessType.ts
 src/models/ActorRole.ts
 src/models/AddonPrice.ts
-src/models/AnimeLora.ts
 src/models/ArtStyle.ts
 src/models/AssistantChatMessageDetail.ts
 src/models/AssistantChatResponse.ts
 src/models/AssistantChatRoute.ts
 src/models/AssistantChatSessionDetail.ts
-src/models/AvatarLooks.ts
 src/models/AvatarLooksV2.ts
 src/models/AvatarOptionalField.ts
 src/models/AvatarRequiredField.ts
 src/models/BillingPeriod.ts
 src/models/BillingReconciliationResponse.ts
 src/models/BodyType.ts
-src/models/BreastSize.ts
 src/models/BulkDeleteContentRequest.ts
-src/models/ButtSize.ts
 src/models/CancelSubscriptionRequest.ts
 src/models/CategoryValues.ts
 src/models/CharacterAboutPageReview.ts
@@ -82,7 +78,6 @@ src/models/Ethnicity.ts
 src/models/ExceptionCode.ts
 src/models/ExploreSearchRequest.ts
 src/models/ExtendVideoPayload.ts
-src/models/EyeColor.ts
 src/models/FantasyRace.ts
 src/models/FeatureFlagName.ts
 src/models/FollowNotification.ts
@@ -125,8 +120,6 @@ src/models/GetVideoGenerationTagsResponse.ts
 src/models/GiftCodeType.ts
 src/models/HTTPValidationError.ts
 src/models/HairColor.ts
-src/models/HairStyle.ts
-src/models/Hobby.ts
 src/models/ImageContent.ts
 src/models/ImageGenerationSource.ts
 src/models/ImageGenerationStatus.ts
@@ -165,7 +158,6 @@ src/models/NotificationResponse.ts
 src/models/NotificationResponseNotificationsInner.ts
 src/models/NotificationType.ts
 src/models/OAuthProvider.ts
-src/models/Occupation.ts
 src/models/OwnerFilter.ts
 src/models/PatchChatMessageRequest.ts
 src/models/PatchCustomChatbotRequest.ts
@@ -173,7 +165,6 @@ src/models/PatchImageModerationPromptRequest.ts
 src/models/PatchPostTitleRequest.ts
 src/models/PatchUserRequest.ts
 src/models/PaymentProviderType.ts
-src/models/Personality.ts
 src/models/PingRequest.ts
 src/models/PostAcceptOfferRequest.ts
 src/models/PostAcceptOfferResponse.ts
@@ -192,7 +183,6 @@ src/models/PostCheckoutSessionRequest.ts
 src/models/PostClaimRequest.ts
 src/models/PostConversationSettingsRequest.ts
 src/models/PostCustomAboutPagePayload.ts
-src/models/PostCustomChatBotPayload.ts
 src/models/PostCustomChatbotResponse.ts
 src/models/PostCustomChatbotV2Payload.ts
 src/models/PostDetails.ts
@@ -233,7 +223,6 @@ src/models/PutPublicUserRequest.ts
 src/models/PutUsernameRequest.ts
 src/models/RedeemGiftCodeRequest.ts
 src/models/RedeemGiftCodeResponse.ts
-src/models/RelationshipStatus.ts
 src/models/RemainingFreeUsesResponse.ts
 src/models/ResponseGetWanTaskStatusVideoWanTaskTaskIdGet.ts
 src/models/ReviewCharacterFieldStatus.ts

@@ -120,6 +120,7 @@ export declare const LoraName: {
     readonly ShiirosStylesNiji: "shiiros_styles_niji ";
     readonly CommixStyleLoraPonyIllusFlux: "commix_style_lora_pony_illus_flux";
     readonly PonyPeoplesWorksV1V6: "pony_peoples_works_v1_v6";
+    readonly GayPornPony: "gay_porn_pony";
     readonly None: "none";
 };
 export type LoraName = typeof LoraName[keyof typeof LoraName];

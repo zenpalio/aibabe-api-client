@@ -10,13 +10,10 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { CharacterAboutPageReview, CharacterIdentityPageReview, CharacterPersonalityPageReview, ChatbotType, GetAboutChatbotResponse, GetChatbotListResponse, GetChatbotResponse, GetCustomChatbotResponse, GetIdentityChatbotResponse, GetPersonalityChatbotResponse, PatchCustomChatbotRequest, PostAdvancedCharacterBuilderSuggestionPayload, PostAdvancedCharacterBuilderSuggestionResponse, PostAdvancedChatbotProfilePicture, PostAdvancedChatbotPublishPayload, PostAdvancedChatbotPublishResponse, PostAdvancedIdentityPayload, PostAdvancedPersonalityPayload, PostCustomAboutPagePayload, PostCustomChatBotPayload, PostCustomChatbotResponse, PostCustomChatbotV2Payload, PostProfilePictureResponse, SortFilter } from '../models/index';
+import type { CharacterAboutPageReview, CharacterIdentityPageReview, CharacterPersonalityPageReview, ChatbotType, GetAboutChatbotResponse, GetChatbotListResponse, GetChatbotResponse, GetCustomChatbotResponse, GetIdentityChatbotResponse, GetPersonalityChatbotResponse, PatchCustomChatbotRequest, PostAdvancedCharacterBuilderSuggestionPayload, PostAdvancedCharacterBuilderSuggestionResponse, PostAdvancedChatbotProfilePicture, PostAdvancedChatbotPublishPayload, PostAdvancedChatbotPublishResponse, PostAdvancedIdentityPayload, PostAdvancedPersonalityPayload, PostCustomAboutPagePayload, PostCustomChatbotResponse, PostCustomChatbotV2Payload, PostProfilePictureResponse, SortFilter } from '../models/index';
 export interface AttachmentChatbotChatbotIdAttachmentGetRequest {
     chatbotId: string;
     imageName: string;
-}
-export interface CreateCustomChatbotChatbotCustomPostRequest {
-    postCustomChatBotPayload: PostCustomChatBotPayload;
 }
 export interface CreateCustomChatbotV2ChatbotCustomV2PostRequest {
     postCustomChatbotV2Payload: PostCustomChatbotV2Payload;
@@ -93,14 +90,6 @@ export declare class ChatbotApi extends runtime.BaseAPI {
      * Attachment
      */
     attachmentChatbotChatbotIdAttachmentGet(requestParameters: AttachmentChatbotChatbotIdAttachmentGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
-    /**
-     * Create Custom Chatbot
-     */
-    createCustomChatbotChatbotCustomPostRaw(requestParameters: CreateCustomChatbotChatbotCustomPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostCustomChatbotResponse>>;
-    /**
-     * Create Custom Chatbot
-     */
-    createCustomChatbotChatbotCustomPost(requestParameters: CreateCustomChatbotChatbotCustomPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PostCustomChatbotResponse>;
     /**
      * Create Custom Chatbot V2
      */

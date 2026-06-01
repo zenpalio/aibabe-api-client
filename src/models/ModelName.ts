@@ -30,7 +30,8 @@ export const ModelName = {
     IllustriousRealism: 'illustriousRealism',
     IllustriousDamn: 'illustriousDAMN',
     CyberRealisticPony: 'cyberRealisticPony',
-    PonyRealism: 'ponyRealism'
+    PonyRealism: 'ponyRealism',
+    ZitMoodysV12: 'zitMoodysV12'
 } as const;
 export type ModelName = typeof ModelName[keyof typeof ModelName];
 

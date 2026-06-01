@@ -89,32 +89,6 @@ class ChatbotApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
-     * Create Custom Chatbot
-     */
-    async createCustomChatbotChatbotCustomPostRaw(requestParameters, initOverrides) {
-        if (requestParameters['postCustomChatBotPayload'] == null) {
-            throw new runtime.RequiredError('postCustomChatBotPayload', 'Required parameter "postCustomChatBotPayload" was null or undefined when calling createCustomChatbotChatbotCustomPost().');
-        }
-        const queryParameters = {};
-        const headerParameters = {};
-        headerParameters['Content-Type'] = 'application/json';
-        const response = await this.request({
-            path: `/chatbot/custom`,
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: (0, index_1.PostCustomChatBotPayloadToJSON)(requestParameters['postCustomChatBotPayload']),
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.PostCustomChatbotResponseFromJSON)(jsonValue));
-    }
-    /**
-     * Create Custom Chatbot
-     */
-    async createCustomChatbotChatbotCustomPost(requestParameters, initOverrides) {
-        const response = await this.createCustomChatbotChatbotCustomPostRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
      * Create Custom Chatbot V2
      */
     async createCustomChatbotV2ChatbotCustomV2PostRaw(requestParameters, initOverrides) {
