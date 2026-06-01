@@ -18,7 +18,7 @@ exports.PostAdvancedChatbotProfilePictureFromJSON = PostAdvancedChatbotProfilePi
 exports.PostAdvancedChatbotProfilePictureFromJSONTyped = PostAdvancedChatbotProfilePictureFromJSONTyped;
 exports.PostAdvancedChatbotProfilePictureToJSON = PostAdvancedChatbotProfilePictureToJSON;
 exports.PostAdvancedChatbotProfilePictureToJSONTyped = PostAdvancedChatbotProfilePictureToJSONTyped;
-const ModelName_1 = require("./ModelName");
+const ArtStyle_1 = require("./ArtStyle");
 const LoraName_1 = require("./LoraName");
 /**
  * Check if a given object implements the PostAdvancedChatbotProfilePicture interface.
@@ -26,7 +26,7 @@ const LoraName_1 = require("./LoraName");
 function instanceOfPostAdvancedChatbotProfilePicture(value) {
     if (!('description' in value) || value['description'] === undefined)
         return false;
-    if (!('model' in value) || value['model'] === undefined)
+    if (!('artStyle' in value) || value['artStyle'] === undefined)
         return false;
     return true;
 }
@@ -39,7 +39,7 @@ function PostAdvancedChatbotProfilePictureFromJSONTyped(json, ignoreDiscriminato
     }
     return {
         'description': json['description'],
-        'model': (0, ModelName_1.ModelNameFromJSON)(json['model']),
+        'artStyle': (0, ArtStyle_1.ArtStyleFromJSON)(json['art_style']),
         'mods': json['mods'] == null ? undefined : (json['mods'].map(LoraName_1.LoraNameFromJSON)),
     };
 }
@@ -52,7 +52,7 @@ function PostAdvancedChatbotProfilePictureToJSONTyped(value, ignoreDiscriminator
     }
     return {
         'description': value['description'],
-        'model': (0, ModelName_1.ModelNameToJSON)(value['model']),
+        'art_style': (0, ArtStyle_1.ArtStyleToJSON)(value['artStyle']),
         'mods': value['mods'] == null ? undefined : (value['mods'].map(LoraName_1.LoraNameToJSON)),
     };
 }

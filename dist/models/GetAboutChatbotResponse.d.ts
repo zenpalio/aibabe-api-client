@@ -9,7 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { ModelName } from './ModelName';
+import type { ArtStyle } from './ArtStyle';
 import type { LoraName } from './LoraName';
 /**
  *
@@ -61,10 +61,10 @@ export interface GetAboutChatbotResponse {
     looksDescription: string | null;
     /**
      *
-     * @type {ModelName}
+     * @type {ArtStyle}
      * @memberof GetAboutChatbotResponse
      */
-    model: ModelName | null;
+    artStyle: ArtStyle | null;
     /**
      *
      * @type {Array<LoraName>}

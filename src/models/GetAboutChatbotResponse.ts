@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { ModelName } from './ModelName';
+import type { ArtStyle } from './ArtStyle';
 import {
-    ModelNameFromJSON,
-    ModelNameFromJSONTyped,
-    ModelNameToJSON,
-    ModelNameToJSONTyped,
-} from './ModelName';
+    ArtStyleFromJSON,
+    ArtStyleFromJSONTyped,
+    ArtStyleToJSON,
+    ArtStyleToJSONTyped,
+} from './ArtStyle';
 import type { LoraName } from './LoraName';
 import {
     LoraNameFromJSON,
@@ -78,10 +78,10 @@ export interface GetAboutChatbotResponse {
     looksDescription: string | null;
     /**
      * 
-     * @type {ModelName}
+     * @type {ArtStyle}
      * @memberof GetAboutChatbotResponse
      */
-    model: ModelName | null;
+    artStyle: ArtStyle | null;
     /**
      * 
      * @type {Array<LoraName>}
@@ -121,7 +121,7 @@ export function instanceOfGetAboutChatbotResponse(value: object): value is GetAb
     if (!('bio' in value) || value['bio'] === undefined) return false;
     if (!('exampleConversation' in value) || value['exampleConversation'] === undefined) return false;
     if (!('looksDescription' in value) || value['looksDescription'] === undefined) return false;
-    if (!('model' in value) || value['model'] === undefined) return false;
+    if (!('artStyle' in value) || value['artStyle'] === undefined) return false;
     if (!('loras' in value) || value['loras'] === undefined) return false;
     if (!('generationStated' in value) || value['generationStated'] === undefined) return false;
     if (!('profilePicture' in value) || value['profilePicture'] === undefined) return false;
@@ -146,7 +146,7 @@ export function GetAboutChatbotResponseFromJSONTyped(json: any, ignoreDiscrimina
         'bio': json['bio'],
         'exampleConversation': json['example_conversation'],
         'looksDescription': json['looks_description'],
-        'model': ModelNameFromJSON(json['model']),
+        'artStyle': ArtStyleFromJSON(json['art_style']),
         'loras': (json['loras'] == null ? null : (json['loras'] as Array<any>).map(LoraNameFromJSON)),
         'generationStated': json['generation_stated'],
         'profilePicture': json['profile_picture'],
@@ -172,7 +172,7 @@ export function GetAboutChatbotResponseFromJSONTyped(json: any, ignoreDiscrimina
         'bio': value['bio'],
         'example_conversation': value['exampleConversation'],
         'looks_description': value['looksDescription'],
-        'model': ModelNameToJSON(value['model']),
+        'art_style': ArtStyleToJSON(value['artStyle']),
         'loras': (value['loras'] == null ? null : (value['loras'] as Array<any>).map(LoraNameToJSON)),
         'generation_stated': value['generationStated'],
         'profile_picture': value['profilePicture'],

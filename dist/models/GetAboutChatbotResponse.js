@@ -18,7 +18,7 @@ exports.GetAboutChatbotResponseFromJSON = GetAboutChatbotResponseFromJSON;
 exports.GetAboutChatbotResponseFromJSONTyped = GetAboutChatbotResponseFromJSONTyped;
 exports.GetAboutChatbotResponseToJSON = GetAboutChatbotResponseToJSON;
 exports.GetAboutChatbotResponseToJSONTyped = GetAboutChatbotResponseToJSONTyped;
-const ModelName_1 = require("./ModelName");
+const ArtStyle_1 = require("./ArtStyle");
 const LoraName_1 = require("./LoraName");
 /**
  * Check if a given object implements the GetAboutChatbotResponse interface.
@@ -38,7 +38,7 @@ function instanceOfGetAboutChatbotResponse(value) {
         return false;
     if (!('looksDescription' in value) || value['looksDescription'] === undefined)
         return false;
-    if (!('model' in value) || value['model'] === undefined)
+    if (!('artStyle' in value) || value['artStyle'] === undefined)
         return false;
     if (!('loras' in value) || value['loras'] === undefined)
         return false;
@@ -65,7 +65,7 @@ function GetAboutChatbotResponseFromJSONTyped(json, ignoreDiscriminator) {
         'bio': json['bio'],
         'exampleConversation': json['example_conversation'],
         'looksDescription': json['looks_description'],
-        'model': (0, ModelName_1.ModelNameFromJSON)(json['model']),
+        'artStyle': (0, ArtStyle_1.ArtStyleFromJSON)(json['art_style']),
         'loras': (json['loras'] == null ? null : json['loras'].map(LoraName_1.LoraNameFromJSON)),
         'generationStated': json['generation_stated'],
         'profilePicture': json['profile_picture'],
@@ -87,7 +87,7 @@ function GetAboutChatbotResponseToJSONTyped(value, ignoreDiscriminator = false) 
         'bio': value['bio'],
         'example_conversation': value['exampleConversation'],
         'looks_description': value['looksDescription'],
-        'model': (0, ModelName_1.ModelNameToJSON)(value['model']),
+        'art_style': (0, ArtStyle_1.ArtStyleToJSON)(value['artStyle']),
         'loras': (value['loras'] == null ? null : value['loras'].map(LoraName_1.LoraNameToJSON)),
         'generation_stated': value['generationStated'],
         'profile_picture': value['profilePicture'],
