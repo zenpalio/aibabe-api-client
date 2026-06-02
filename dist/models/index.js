@@ -309,6 +309,7 @@ __exportStar(require("./TimedBadgeType"), exports);
 __exportStar(require("./TokenReconciliationResponse"), exports);
 __exportStar(require("./Type"), exports);
 __exportStar(require("./UserBadge"), exports);
+__exportStar(require("./UserBadgeClaimResponse"), exports);
 __exportStar(require("./UserBadgeListResponse"), exports);
 __exportStar(require("./UserBadgeStatus"), exports);
 __exportStar(require("./UserClaimType"), exports);

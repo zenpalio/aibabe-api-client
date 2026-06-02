@@ -68,12 +68,7 @@ class BadgesApi extends runtime.BaseAPI {
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
-        if (this.isJsonMime(response.headers.get('content-type'))) {
-            return new runtime.JSONApiResponse(response);
-        }
-        else {
-            return new runtime.TextApiResponse(response);
-        }
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.UserBadgeClaimResponseFromJSON)(jsonValue));
     }
     /**
      * Claim Badge

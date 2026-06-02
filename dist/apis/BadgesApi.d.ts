@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { UserBadgeListResponse } from '../models/index';
+import type { UserBadgeClaimResponse, UserBadgeListResponse } from '../models/index';
 export interface ClaimBadgeBadgesBadgeIdClaimPostRequest {
     badgeId: string;
 }
@@ -24,11 +24,11 @@ export declare class BadgesApi extends runtime.BaseAPI {
     /**
      * Claim Badge
      */
-    claimBadgeBadgesBadgeIdClaimPostRaw(requestParameters: ClaimBadgeBadgesBadgeIdClaimPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
+    claimBadgeBadgesBadgeIdClaimPostRaw(requestParameters: ClaimBadgeBadgesBadgeIdClaimPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UserBadgeClaimResponse>>;
     /**
      * Claim Badge
      */
-    claimBadgeBadgesBadgeIdClaimPost(requestParameters: ClaimBadgeBadgesBadgeIdClaimPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
+    claimBadgeBadgesBadgeIdClaimPost(requestParameters: ClaimBadgeBadgesBadgeIdClaimPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UserBadgeClaimResponse>;
     /**
      * Deselect Badge
      */

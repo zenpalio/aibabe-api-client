@@ -291,6 +291,7 @@ export * from './TimedBadgeType';
 export * from './TokenReconciliationResponse';
 export * from './Type';
 export * from './UserBadge';
+export * from './UserBadgeClaimResponse';
 export * from './UserBadgeListResponse';
 export * from './UserBadgeStatus';
 export * from './UserClaimType';

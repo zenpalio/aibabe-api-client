@@ -16,11 +16,14 @@
 import * as runtime from '../runtime';
 import type {
   HTTPValidationError,
+  UserBadgeClaimResponse,
   UserBadgeListResponse,
 } from '../models/index';
 import {
     HTTPValidationErrorFromJSON,
     HTTPValidationErrorToJSON,
+    UserBadgeClaimResponseFromJSON,
+    UserBadgeClaimResponseToJSON,
     UserBadgeListResponseFromJSON,
     UserBadgeListResponseToJSON,
 } from '../models/index';
@@ -41,7 +44,7 @@ export class BadgesApi extends runtime.BaseAPI {
     /**
      * Claim Badge
      */
-    async claimBadgeBadgesBadgeIdClaimPostRaw(requestParameters: ClaimBadgeBadgesBadgeIdClaimPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
+    async claimBadgeBadgesBadgeIdClaimPostRaw(requestParameters: ClaimBadgeBadgesBadgeIdClaimPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UserBadgeClaimResponse>> {
         if (requestParameters['badgeId'] == null) {
             throw new runtime.RequiredError(
                 'badgeId',
@@ -60,17 +63,13 @@ export class BadgesApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        if (this.isJsonMime(response.headers.get('content-type'))) {
-            return new runtime.JSONApiResponse<any>(response);
-        } else {
-            return new runtime.TextApiResponse(response) as any;
-        }
+        return new runtime.JSONApiResponse(response, (jsonValue) => UserBadgeClaimResponseFromJSON(jsonValue));
     }
 
     /**
      * Claim Badge
      */
-    async claimBadgeBadgesBadgeIdClaimPost(requestParameters: ClaimBadgeBadgesBadgeIdClaimPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
+    async claimBadgeBadgesBadgeIdClaimPost(requestParameters: ClaimBadgeBadgesBadgeIdClaimPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UserBadgeClaimResponse> {
         const response = await this.claimBadgeBadgesBadgeIdClaimPostRaw(requestParameters, initOverrides);
         return await response.value();
     }

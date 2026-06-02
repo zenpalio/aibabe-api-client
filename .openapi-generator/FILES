@@ -320,6 +320,7 @@ src/models/TimedBadgeType.ts
 src/models/TokenReconciliationResponse.ts
 src/models/Type.ts
 src/models/UserBadge.ts
+src/models/UserBadgeClaimResponse.ts
 src/models/UserBadgeListResponse.ts
 src/models/UserBadgeStatus.ts
 src/models/UserClaimType.ts
