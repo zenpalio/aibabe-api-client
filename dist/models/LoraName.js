@@ -131,6 +131,7 @@ exports.LoraName = {
     CommixStyleLoraPonyIllusFlux: 'commix_style_lora_pony_illus_flux',
     PonyPeoplesWorksV1V6: 'pony_peoples_works_v1_v6',
     GayPornPony: 'gay_porn_pony',
+    GayPornIllustrious: 'gay_porn_illustrious',
     None: 'none'
 };
 function instanceOfLoraName(value) {
