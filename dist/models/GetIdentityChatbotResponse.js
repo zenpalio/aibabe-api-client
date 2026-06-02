@@ -18,6 +18,8 @@ exports.GetIdentityChatbotResponseFromJSON = GetIdentityChatbotResponseFromJSON;
 exports.GetIdentityChatbotResponseFromJSONTyped = GetIdentityChatbotResponseFromJSONTyped;
 exports.GetIdentityChatbotResponseToJSON = GetIdentityChatbotResponseToJSON;
 exports.GetIdentityChatbotResponseToJSONTyped = GetIdentityChatbotResponseToJSONTyped;
+const Gender_1 = require("./Gender");
+const SexualOrientation_1 = require("./SexualOrientation");
 /**
  * Check if a given object implements the GetIdentityChatbotResponse interface.
  */
@@ -46,8 +48,8 @@ function GetIdentityChatbotResponseFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'userId': json['user_id'],
         'name': json['name'],
-        'gender': json['gender'],
-        'sexualOrientation': json['sexual_orientation'],
+        'gender': (0, Gender_1.GenderFromJSON)(json['gender']),
+        'sexualOrientation': (0, SexualOrientation_1.SexualOrientationFromJSON)(json['sexual_orientation']),
         'bio': json['bio'],
         'greetings': json['greetings'],
     };
@@ -62,8 +64,8 @@ function GetIdentityChatbotResponseToJSONTyped(value, ignoreDiscriminator = fals
     return {
         'user_id': value['userId'],
         'name': value['name'],
-        'gender': value['gender'],
-        'sexual_orientation': value['sexualOrientation'],
+        'gender': (0, Gender_1.GenderToJSON)(value['gender']),
+        'sexual_orientation': (0, SexualOrientation_1.SexualOrientationToJSON)(value['sexualOrientation']),
         'bio': value['bio'],
         'greetings': value['greetings'],
     };

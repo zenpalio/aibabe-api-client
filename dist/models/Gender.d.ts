@@ -14,9 +14,11 @@
  * @export
  */
 export declare const Gender: {
-    readonly Male: "male";
     readonly Female: "female";
-    readonly NonBinary: "non_binary";
+    readonly Male: "male";
+    readonly Transgender: "transgender";
+    readonly Futa: "futa";
+    readonly Other: "other";
 };
 export type Gender = typeof Gender[keyof typeof Gender];
 export declare function instanceOfGender(value: any): boolean;

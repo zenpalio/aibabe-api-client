@@ -24,9 +24,11 @@ exports.GenderToJSONTyped = GenderToJSONTyped;
  * @export
  */
 exports.Gender = {
-    Male: 'male',
     Female: 'female',
-    NonBinary: 'non_binary'
+    Male: 'male',
+    Transgender: 'transgender',
+    Futa: 'futa',
+    Other: 'other'
 };
 function instanceOfGender(value) {
     for (const key in exports.Gender) {

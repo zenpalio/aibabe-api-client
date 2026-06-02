@@ -19,7 +19,9 @@ exports.GetAboutChatbotResponseFromJSONTyped = GetAboutChatbotResponseFromJSONTy
 exports.GetAboutChatbotResponseToJSON = GetAboutChatbotResponseToJSON;
 exports.GetAboutChatbotResponseToJSONTyped = GetAboutChatbotResponseToJSONTyped;
 const ArtStyle_1 = require("./ArtStyle");
+const Gender_1 = require("./Gender");
 const LoraName_1 = require("./LoraName");
+const SexualOrientation_1 = require("./SexualOrientation");
 /**
  * Check if a given object implements the GetAboutChatbotResponse interface.
  */
@@ -62,8 +64,8 @@ function GetAboutChatbotResponseFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'userId': json['user_id'],
         'name': json['name'],
-        'gender': json['gender'],
-        'sexualOrientation': json['sexual_orientation'],
+        'gender': (0, Gender_1.GenderFromJSON)(json['gender']),
+        'sexualOrientation': (0, SexualOrientation_1.SexualOrientationFromJSON)(json['sexual_orientation']),
         'story': json['story'],
         'bio': json['bio'],
         'exampleConversation': json['example_conversation'],
@@ -85,8 +87,8 @@ function GetAboutChatbotResponseToJSONTyped(value, ignoreDiscriminator = false) 
     return {
         'user_id': value['userId'],
         'name': value['name'],
-        'gender': value['gender'],
-        'sexual_orientation': value['sexualOrientation'],
+        'gender': (0, Gender_1.GenderToJSON)(value['gender']),
+        'sexual_orientation': (0, SexualOrientation_1.SexualOrientationToJSON)(value['sexualOrientation']),
         'story': value['story'],
         'bio': value['bio'],
         'example_conversation': value['exampleConversation'],

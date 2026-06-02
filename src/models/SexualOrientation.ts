@@ -12,21 +12,27 @@
  * Do not edit the class manually.
  */
 
-import { mapValues } from '../runtime';
 
 /**
  * 
  * @export
- * @interface SexualOrientation
  */
-export interface SexualOrientation {
-}
+export const SexualOrientation = {
+    Hetero: 'hetero',
+    Gay: 'gay'
+} as const;
+export type SexualOrientation = typeof SexualOrientation[keyof typeof SexualOrientation];
 
-/**
- * Check if a given object implements the SexualOrientation interface.
- */
-export function instanceOfSexualOrientation(value: object): value is SexualOrientation {
-    return true;
+
+export function instanceOfSexualOrientation(value: any): boolean {
+    for (const key in SexualOrientation) {
+        if (Object.prototype.hasOwnProperty.call(SexualOrientation, key)) {
+            if (SexualOrientation[key as keyof typeof SexualOrientation] === value) {
+                return true;
+            }
+        }
+    }
+    return false;
 }
 
 export function SexualOrientationFromJSON(json: any): SexualOrientation {
@@ -34,14 +40,14 @@ export function SexualOrientationFromJSON(json: any): SexualOrientation {
 }
 
 export function SexualOrientationFromJSONTyped(json: any, ignoreDiscriminator: boolean): SexualOrientation {
-    return json;
+    return json as SexualOrientation;
 }
 
-  export function SexualOrientationToJSON(json: any): SexualOrientation {
-      return SexualOrientationToJSONTyped(json, false);
-  }
+export function SexualOrientationToJSON(value?: SexualOrientation | null): any {
+    return value as any;
+}
 
-  export function SexualOrientationToJSONTyped(value?: SexualOrientation | null, ignoreDiscriminator: boolean = false): any {
-    return value;
+export function SexualOrientationToJSONTyped(value: any, ignoreDiscriminator: boolean): SexualOrientation {
+    return value as SexualOrientation;
 }
 

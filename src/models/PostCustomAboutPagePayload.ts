@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { Gender } from './Gender';
+import {
+    GenderFromJSON,
+    GenderFromJSONTyped,
+    GenderToJSON,
+    GenderToJSONTyped,
+} from './Gender';
 import type { SexualOrientation } from './SexualOrientation';
 import {
     SexualOrientationFromJSON,
@@ -35,10 +42,10 @@ export interface PostCustomAboutPagePayload {
     name: string;
     /**
      * 
-     * @type {string}
+     * @type {Gender}
      * @memberof PostCustomAboutPagePayload
      */
-    gender?: string | null;
+    gender?: Gender | null;
     /**
      * 
      * @type {SexualOrientation}
@@ -71,6 +78,8 @@ export interface PostCustomAboutPagePayload {
     exampleConversation: string | null;
 }
 
+
+
 /**
  * Check if a given object implements the PostCustomAboutPagePayload interface.
  */
@@ -94,7 +103,7 @@ export function PostCustomAboutPagePayloadFromJSONTyped(json: any, ignoreDiscrim
     return {
         
         'name': json['name'],
-        'gender': json['gender'] == null ? undefined : json['gender'],
+        'gender': json['gender'] == null ? undefined : GenderFromJSON(json['gender']),
         'sexualOrientation': json['sexual_orientation'] == null ? undefined : SexualOrientationFromJSON(json['sexual_orientation']),
         'bio': json['bio'],
         'greetings': json['greetings'],
@@ -115,7 +124,7 @@ export function PostCustomAboutPagePayloadFromJSONTyped(json: any, ignoreDiscrim
     return {
         
         'name': value['name'],
-        'gender': value['gender'],
+        'gender': GenderToJSON(value['gender']),
         'sexual_orientation': SexualOrientationToJSON(value['sexualOrientation']),
         'bio': value['bio'],
         'greetings': value['greetings'],

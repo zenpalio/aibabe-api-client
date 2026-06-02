@@ -13,6 +13,21 @@
  */
 
 import { mapValues } from '../runtime';
+import type { Gender } from './Gender';
+import {
+    GenderFromJSON,
+    GenderFromJSONTyped,
+    GenderToJSON,
+    GenderToJSONTyped,
+} from './Gender';
+import type { SexualOrientation } from './SexualOrientation';
+import {
+    SexualOrientationFromJSON,
+    SexualOrientationFromJSONTyped,
+    SexualOrientationToJSON,
+    SexualOrientationToJSONTyped,
+} from './SexualOrientation';
+
 /**
  * 
  * @export
@@ -33,16 +48,16 @@ export interface GetIdentityChatbotResponse {
     name: string | null;
     /**
      * 
-     * @type {string}
+     * @type {Gender}
      * @memberof GetIdentityChatbotResponse
      */
-    gender: string | null;
+    gender: Gender | null;
     /**
      * 
-     * @type {string}
+     * @type {SexualOrientation}
      * @memberof GetIdentityChatbotResponse
      */
-    sexualOrientation: string | null;
+    sexualOrientation: SexualOrientation | null;
     /**
      * 
      * @type {string}
@@ -56,6 +71,8 @@ export interface GetIdentityChatbotResponse {
      */
     greetings: string | null;
 }
+
+
 
 /**
  * Check if a given object implements the GetIdentityChatbotResponse interface.
@@ -82,8 +99,8 @@ export function GetIdentityChatbotResponseFromJSONTyped(json: any, ignoreDiscrim
         
         'userId': json['user_id'],
         'name': json['name'],
-        'gender': json['gender'],
-        'sexualOrientation': json['sexual_orientation'],
+        'gender': GenderFromJSON(json['gender']),
+        'sexualOrientation': SexualOrientationFromJSON(json['sexual_orientation']),
         'bio': json['bio'],
         'greetings': json['greetings'],
     };
@@ -102,8 +119,8 @@ export function GetIdentityChatbotResponseFromJSONTyped(json: any, ignoreDiscrim
         
         'user_id': value['userId'],
         'name': value['name'],
-        'gender': value['gender'],
-        'sexual_orientation': value['sexualOrientation'],
+        'gender': GenderToJSON(value['gender']),
+        'sexual_orientation': SexualOrientationToJSON(value['sexualOrientation']),
         'bio': value['bio'],
         'greetings': value['greetings'],
     };

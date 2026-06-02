@@ -18,7 +18,7 @@ exports.UserPreferencesFromJSON = UserPreferencesFromJSON;
 exports.UserPreferencesFromJSONTyped = UserPreferencesFromJSONTyped;
 exports.UserPreferencesToJSON = UserPreferencesToJSON;
 exports.UserPreferencesToJSONTyped = UserPreferencesToJSONTyped;
-const Gender1_1 = require("./Gender1");
+const Gender_1 = require("./Gender");
 /**
  * Check if a given object implements the UserPreferences interface.
  */
@@ -37,7 +37,7 @@ function UserPreferencesFromJSONTyped(json, ignoreDiscriminator) {
         'displayAnime': json['display_anime'] == null ? undefined : json['display_anime'],
         'displayUnlockWarning': json['display_unlock_warning'] == null ? undefined : json['display_unlock_warning'],
         'usernameUpdated': json['username_updated'] == null ? undefined : json['username_updated'],
-        'gender': json['gender'] == null ? undefined : (0, Gender1_1.Gender1FromJSON)(json['gender']),
+        'gender': json['gender'] == null ? undefined : (0, Gender_1.GenderFromJSON)(json['gender']),
     };
 }
 function UserPreferencesToJSON(json) {
@@ -52,7 +52,7 @@ function UserPreferencesToJSONTyped(value, ignoreDiscriminator = false) {
         'display_anime': value['displayAnime'],
         'display_unlock_warning': value['displayUnlockWarning'],
         'username_updated': value['usernameUpdated'],
-        'gender': (0, Gender1_1.Gender1ToJSON)(value['gender']),
+        'gender': (0, Gender_1.GenderToJSON)(value['gender']),
     };
 }
 //# sourceMappingURL=UserPreferences.js.map

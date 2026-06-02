@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { Gender1 } from './Gender1';
+import type { Gender } from './Gender';
 import {
-    Gender1FromJSON,
-    Gender1FromJSONTyped,
-    Gender1ToJSON,
-    Gender1ToJSONTyped,
-} from './Gender1';
+    GenderFromJSON,
+    GenderFromJSONTyped,
+    GenderToJSON,
+    GenderToJSONTyped,
+} from './Gender';
 
 /**
  * 
@@ -53,11 +53,13 @@ export interface UserPreferences {
     usernameUpdated?: boolean | null;
     /**
      * 
-     * @type {Gender1}
+     * @type {Gender}
      * @memberof UserPreferences
      */
-    gender?: Gender1 | null;
+    gender?: Gender | null;
 }
+
+
 
 /**
  * Check if a given object implements the UserPreferences interface.
@@ -80,7 +82,7 @@ export function UserPreferencesFromJSONTyped(json: any, ignoreDiscriminator: boo
         'displayAnime': json['display_anime'] == null ? undefined : json['display_anime'],
         'displayUnlockWarning': json['display_unlock_warning'] == null ? undefined : json['display_unlock_warning'],
         'usernameUpdated': json['username_updated'] == null ? undefined : json['username_updated'],
-        'gender': json['gender'] == null ? undefined : Gender1FromJSON(json['gender']),
+        'gender': json['gender'] == null ? undefined : GenderFromJSON(json['gender']),
     };
 }
 
@@ -99,7 +101,7 @@ export function UserPreferencesFromJSONTyped(json: any, ignoreDiscriminator: boo
         'display_anime': value['displayAnime'],
         'display_unlock_warning': value['displayUnlockWarning'],
         'username_updated': value['usernameUpdated'],
-        'gender': Gender1ToJSON(value['gender']),
+        'gender': GenderToJSON(value['gender']),
     };
 }
 

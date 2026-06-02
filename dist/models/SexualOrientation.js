@@ -13,16 +13,29 @@
  * Do not edit the class manually.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.SexualOrientation = void 0;
 exports.instanceOfSexualOrientation = instanceOfSexualOrientation;
 exports.SexualOrientationFromJSON = SexualOrientationFromJSON;
 exports.SexualOrientationFromJSONTyped = SexualOrientationFromJSONTyped;
 exports.SexualOrientationToJSON = SexualOrientationToJSON;
 exports.SexualOrientationToJSONTyped = SexualOrientationToJSONTyped;
 /**
- * Check if a given object implements the SexualOrientation interface.
+ *
+ * @export
  */
+exports.SexualOrientation = {
+    Hetero: 'hetero',
+    Gay: 'gay'
+};
 function instanceOfSexualOrientation(value) {
-    return true;
+    for (const key in exports.SexualOrientation) {
+        if (Object.prototype.hasOwnProperty.call(exports.SexualOrientation, key)) {
+            if (exports.SexualOrientation[key] === value) {
+                return true;
+            }
+        }
+    }
+    return false;
 }
 function SexualOrientationFromJSON(json) {
     return SexualOrientationFromJSONTyped(json, false);
@@ -30,10 +43,10 @@ function SexualOrientationFromJSON(json) {
 function SexualOrientationFromJSONTyped(json, ignoreDiscriminator) {
     return json;
 }
-function SexualOrientationToJSON(json) {
-    return SexualOrientationToJSONTyped(json, false);
+function SexualOrientationToJSON(value) {
+    return value;
 }
-function SexualOrientationToJSONTyped(value, ignoreDiscriminator = false) {
+function SexualOrientationToJSONTyped(value, ignoreDiscriminator) {
     return value;
 }
 //# sourceMappingURL=SexualOrientation.js.map

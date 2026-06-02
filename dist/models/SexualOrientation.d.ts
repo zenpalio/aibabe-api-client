@@ -12,16 +12,15 @@
 /**
  *
  * @export
- * @interface SexualOrientation
  */
-export interface SexualOrientation {
-}
-/**
- * Check if a given object implements the SexualOrientation interface.
- */
-export declare function instanceOfSexualOrientation(value: object): value is SexualOrientation;
+export declare const SexualOrientation: {
+    readonly Hetero: "hetero";
+    readonly Gay: "gay";
+};
+export type SexualOrientation = typeof SexualOrientation[keyof typeof SexualOrientation];
+export declare function instanceOfSexualOrientation(value: any): boolean;
 export declare function SexualOrientationFromJSON(json: any): SexualOrientation;
 export declare function SexualOrientationFromJSONTyped(json: any, ignoreDiscriminator: boolean): SexualOrientation;
-export declare function SexualOrientationToJSON(json: any): SexualOrientation;
-export declare function SexualOrientationToJSONTyped(value?: SexualOrientation | null, ignoreDiscriminator?: boolean): any;
+export declare function SexualOrientationToJSON(value?: SexualOrientation | null): any;
+export declare function SexualOrientationToJSONTyped(value: any, ignoreDiscriminator: boolean): SexualOrientation;
 //# sourceMappingURL=SexualOrientation.d.ts.map

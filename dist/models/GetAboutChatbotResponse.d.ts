@@ -10,7 +10,9 @@
  * Do not edit the class manually.
  */
 import type { ArtStyle } from './ArtStyle';
+import type { Gender } from './Gender';
 import type { LoraName } from './LoraName';
+import type { SexualOrientation } from './SexualOrientation';
 /**
  *
  * @export
@@ -31,16 +33,16 @@ export interface GetAboutChatbotResponse {
     name: string | null;
     /**
      *
-     * @type {string}
+     * @type {Gender}
      * @memberof GetAboutChatbotResponse
      */
-    gender: string | null;
+    gender: Gender | null;
     /**
      *
-     * @type {string}
+     * @type {SexualOrientation}
      * @memberof GetAboutChatbotResponse
      */
-    sexualOrientation: string | null;
+    sexualOrientation: SexualOrientation | null;
     /**
      *
      * @type {string}

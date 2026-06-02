@@ -85,7 +85,6 @@ src/models/FurryVisualType.ts
 src/models/GalleryItem.ts
 src/models/GalleryStory.ts
 src/models/Gender.ts
-src/models/Gender1.ts
 src/models/GeneratedAudioGenerationType.ts
 src/models/GeneratedAudioItem.ts
 src/models/GeneratedAudioStatus.ts

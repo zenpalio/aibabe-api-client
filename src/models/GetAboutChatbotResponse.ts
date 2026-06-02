@@ -20,6 +20,13 @@ import {
     ArtStyleToJSON,
     ArtStyleToJSONTyped,
 } from './ArtStyle';
+import type { Gender } from './Gender';
+import {
+    GenderFromJSON,
+    GenderFromJSONTyped,
+    GenderToJSON,
+    GenderToJSONTyped,
+} from './Gender';
 import type { LoraName } from './LoraName';
 import {
     LoraNameFromJSON,
@@ -27,6 +34,13 @@ import {
     LoraNameToJSON,
     LoraNameToJSONTyped,
 } from './LoraName';
+import type { SexualOrientation } from './SexualOrientation';
+import {
+    SexualOrientationFromJSON,
+    SexualOrientationFromJSONTyped,
+    SexualOrientationToJSON,
+    SexualOrientationToJSONTyped,
+} from './SexualOrientation';
 
 /**
  * 
@@ -48,16 +62,16 @@ export interface GetAboutChatbotResponse {
     name: string | null;
     /**
      * 
-     * @type {string}
+     * @type {Gender}
      * @memberof GetAboutChatbotResponse
      */
-    gender: string | null;
+    gender: Gender | null;
     /**
      * 
-     * @type {string}
+     * @type {SexualOrientation}
      * @memberof GetAboutChatbotResponse
      */
-    sexualOrientation: string | null;
+    sexualOrientation: SexualOrientation | null;
     /**
      * 
      * @type {string}
@@ -148,8 +162,8 @@ export function GetAboutChatbotResponseFromJSONTyped(json: any, ignoreDiscrimina
         
         'userId': json['user_id'],
         'name': json['name'],
-        'gender': json['gender'],
-        'sexualOrientation': json['sexual_orientation'],
+        'gender': GenderFromJSON(json['gender']),
+        'sexualOrientation': SexualOrientationFromJSON(json['sexual_orientation']),
         'story': json['story'],
         'bio': json['bio'],
         'exampleConversation': json['example_conversation'],
@@ -175,8 +189,8 @@ export function GetAboutChatbotResponseFromJSONTyped(json: any, ignoreDiscrimina
         
         'user_id': value['userId'],
         'name': value['name'],
-        'gender': value['gender'],
-        'sexual_orientation': value['sexualOrientation'],
+        'gender': GenderToJSON(value['gender']),
+        'sexual_orientation': SexualOrientationToJSON(value['sexualOrientation']),
         'story': value['story'],
         'bio': value['bio'],
         'example_conversation': value['exampleConversation'],

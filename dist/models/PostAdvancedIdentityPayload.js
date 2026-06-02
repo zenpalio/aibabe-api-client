@@ -18,6 +18,7 @@ exports.PostAdvancedIdentityPayloadFromJSON = PostAdvancedIdentityPayloadFromJSO
 exports.PostAdvancedIdentityPayloadFromJSONTyped = PostAdvancedIdentityPayloadFromJSONTyped;
 exports.PostAdvancedIdentityPayloadToJSON = PostAdvancedIdentityPayloadToJSON;
 exports.PostAdvancedIdentityPayloadToJSONTyped = PostAdvancedIdentityPayloadToJSONTyped;
+const Gender_1 = require("./Gender");
 const SexualOrientation_1 = require("./SexualOrientation");
 /**
  * Check if a given object implements the PostAdvancedIdentityPayload interface.
@@ -44,7 +45,7 @@ function PostAdvancedIdentityPayloadFromJSONTyped(json, ignoreDiscriminator) {
         'name': json['name'],
         'bio': json['bio'],
         'greetings': json['greetings'],
-        'gender': json['gender'],
+        'gender': (0, Gender_1.GenderFromJSON)(json['gender']),
         'sexualOrientation': json['sexual_orientation'] == null ? undefined : (0, SexualOrientation_1.SexualOrientationFromJSON)(json['sexual_orientation']),
     };
 }
@@ -59,7 +60,7 @@ function PostAdvancedIdentityPayloadToJSONTyped(value, ignoreDiscriminator = fal
         'name': value['name'],
         'bio': value['bio'],
         'greetings': value['greetings'],
-        'gender': value['gender'],
+        'gender': (0, Gender_1.GenderToJSON)(value['gender']),
         'sexual_orientation': (0, SexualOrientation_1.SexualOrientationToJSON)(value['sexualOrientation']),
     };
 }
