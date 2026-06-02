@@ -55,7 +55,7 @@ export class LeaderboardsApi extends runtime.BaseAPI {
         headerParameters['Content-Type'] = 'application/json';
 
         const response = await this.request({
-            path: `/leaderboards/`,
+            path: `/leaderboards`,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
