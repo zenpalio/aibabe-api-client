@@ -18,6 +18,7 @@ exports.PreferencesFromJSON = PreferencesFromJSON;
 exports.PreferencesFromJSONTyped = PreferencesFromJSONTyped;
 exports.PreferencesToJSON = PreferencesToJSON;
 exports.PreferencesToJSONTyped = PreferencesToJSONTyped;
+const Gender_1 = require("./Gender");
 const LLM_1 = require("./LLM");
 /**
  * Check if a given object implements the Preferences interface.
@@ -44,7 +45,7 @@ function PreferencesFromJSONTyped(json, ignoreDiscriminator) {
         'displayUnlockWarning': json['display_unlock_warning'] == null ? undefined : json['display_unlock_warning'],
         'usernameUpdated': json['username_updated'] == null ? undefined : json['username_updated'],
         'llmName': json['llm_name'] == null ? undefined : (0, LLM_1.LLMFromJSON)(json['llm_name']),
-        'gender': json['gender'] == null ? undefined : json['gender'],
+        'gender': json['gender'] == null ? undefined : (0, Gender_1.GenderFromJSON)(json['gender']),
     };
 }
 function PreferencesToJSON(json) {
@@ -64,7 +65,7 @@ function PreferencesToJSONTyped(value, ignoreDiscriminator = false) {
         'display_unlock_warning': value['displayUnlockWarning'],
         'username_updated': value['usernameUpdated'],
         'llm_name': (0, LLM_1.LLMToJSON)(value['llmName']),
-        'gender': value['gender'],
+        'gender': (0, Gender_1.GenderToJSON)(value['gender']),
     };
 }
 //# sourceMappingURL=Preferences.js.map
