@@ -26,7 +26,8 @@ exports.ScoreCategoryToJSONTyped = ScoreCategoryToJSONTyped;
 exports.ScoreCategory = {
     Aura: 'aura',
     Likes: 'likes',
-    Followers: 'followers'
+    Followers: 'followers',
+    LoginCount: 'login_count'
 };
 function instanceOfScoreCategory(value) {
     for (const key in exports.ScoreCategory) {
