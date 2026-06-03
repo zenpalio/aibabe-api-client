@@ -82,6 +82,7 @@ exports.ExceptionCode = {
     BadgeNotFound: 'badge_not_found',
     BadgeNotClaimable: 'badge_not_claimable',
     BadgeNotManuallyProvided: 'badge_not_manually_provided',
+    BadgeMustBeManuallyProvided: 'badge_must_be_manually_provided',
     BadgeNotUsable: 'badge_not_usable',
     BadgeNotClaimed: 'badge_not_claimed',
     BadgeAlreadyClaimed: 'badge_already_claimed',

@@ -72,6 +72,7 @@ export declare const ExceptionCode: {
     readonly BadgeNotFound: "badge_not_found";
     readonly BadgeNotClaimable: "badge_not_claimable";
     readonly BadgeNotManuallyProvided: "badge_not_manually_provided";
+    readonly BadgeMustBeManuallyProvided: "badge_must_be_manually_provided";
     readonly BadgeNotUsable: "badge_not_usable";
     readonly BadgeNotClaimed: "badge_not_claimed";
     readonly BadgeAlreadyClaimed: "badge_already_claimed";
