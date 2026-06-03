@@ -22,6 +22,7 @@ export const NotificationType = {
     Donation: 'donation',
     Follow: 'follow',
     EpisodeUnlock: 'episode_unlock',
+    Badge: 'badge',
     NewEpisode: 'new_episode'
 } as const;
 export type NotificationType = typeof NotificationType[keyof typeof NotificationType];

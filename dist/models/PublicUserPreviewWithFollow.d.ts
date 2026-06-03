@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { BadgePreview } from './BadgePreview';
 /**
  *
  * @export
@@ -32,7 +33,13 @@ export interface PublicUserPreviewWithFollow {
      * @type {string}
      * @memberof PublicUserPreviewWithFollow
      */
-    avatarUrl?: string | null;
+    avatarUrl: string | null;
+    /**
+     *
+     * @type {BadgePreview}
+     * @memberof PublicUserPreviewWithFollow
+     */
+    selectedBadge: BadgePreview | null;
     /**
      *
      * @type {boolean}
