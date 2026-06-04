@@ -120,6 +120,7 @@ __exportStar(require("./GetPersonalityChatbotResponse"), exports);
 __exportStar(require("./GetPostsResponse"), exports);
 __exportStar(require("./GetPricesResponse"), exports);
 __exportStar(require("./GetPublicLatestUpdateResponse"), exports);
+__exportStar(require("./GetPublicUsersResponse"), exports);
 __exportStar(require("./GetQualityControlImage"), exports);
 __exportStar(require("./GetQualityControlRequest"), exports);
 __exportStar(require("./GetVideoGenerationTagsResponse"), exports);

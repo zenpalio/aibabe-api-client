@@ -131,6 +131,7 @@ src/models/GetPersonalityChatbotResponse.ts
 src/models/GetPostsResponse.ts
 src/models/GetPricesResponse.ts
 src/models/GetPublicLatestUpdateResponse.ts
+src/models/GetPublicUsersResponse.ts
 src/models/GetQualityControlImage.ts
 src/models/GetQualityControlRequest.ts
 src/models/GetVideoGenerationTagsResponse.ts

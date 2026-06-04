@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { DeleteUserRequest, GetClaimablesResponse, GetFollowedUsersResponse, GetPublicLatestUpdateResponse, PatchUserRequest, PostClaimRequest, PostDonateRequest, PostDonateResponse, PostFollowUserRequest, PostRatingRequest, PostRatingResponse, PostReportUserRequest, PostVerifyPublicUsernameRequest, PostVerifyPublicUsernameResponse, PublicUserInfo, PutPasswordRequest, PutPublicUserRequest, PutUsernameRequest, RemainingFreeUsesResponse } from '../models/index';
+import type { DeleteUserRequest, GetClaimablesResponse, GetFollowedUsersResponse, GetPublicLatestUpdateResponse, GetPublicUsersResponse, PatchUserRequest, PostClaimRequest, PostDonateRequest, PostDonateResponse, PostFollowUserRequest, PostRatingRequest, PostRatingResponse, PostReportUserRequest, PostVerifyPublicUsernameRequest, PostVerifyPublicUsernameResponse, PublicUserInfo, PutPasswordRequest, PutPublicUserRequest, PutUsernameRequest, RemainingFreeUsesResponse } from '../models/index';
 export interface ClaimUserClaimPostRequest {
     postClaimRequest: PostClaimRequest;
 }
@@ -22,6 +22,11 @@ export interface DonateUserDonatePostRequest {
 }
 export interface FollowUserUserFollowPostRequest {
     postFollowUserRequest: PostFollowUserRequest;
+}
+export interface GetPublicUserLikeUserPublicLikeGetRequest {
+    publicUsername?: string | null;
+    paginationToken?: string | null;
+    limit?: number;
 }
 export interface GetPublicUserUserPublicGetRequest {
     publicUsername?: string | null;
@@ -104,6 +109,14 @@ export declare class UserApi extends runtime.BaseAPI {
      * Get Followed Users
      */
     getFollowedUsersUserFollowedGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetFollowedUsersResponse>;
+    /**
+     * Get Public User Like
+     */
+    getPublicUserLikeUserPublicLikeGetRaw(requestParameters: GetPublicUserLikeUserPublicLikeGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetPublicUsersResponse>>;
+    /**
+     * Get Public User Like
+     */
+    getPublicUserLikeUserPublicLikeGet(requestParameters?: GetPublicUserLikeUserPublicLikeGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetPublicUsersResponse>;
     /**
      * Get Public User
      */
