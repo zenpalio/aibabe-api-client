@@ -102,6 +102,7 @@ export * from './GetPersonalityChatbotResponse';
 export * from './GetPostsResponse';
 export * from './GetPricesResponse';
 export * from './GetPublicLatestUpdateResponse';
+export * from './GetPublicUsersResponse';
 export * from './GetQualityControlImage';
 export * from './GetQualityControlRequest';
 export * from './GetVideoGenerationTagsResponse';
