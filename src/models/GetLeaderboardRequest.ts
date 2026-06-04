@@ -72,6 +72,12 @@ export interface GetLeaderboardRequest {
      * @memberof GetLeaderboardRequest
      */
     timePeriod?: BadgeTimePeriod | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetLeaderboardRequest
+     */
+    limit?: number;
 }
 
 
@@ -98,6 +104,7 @@ export function GetLeaderboardRequestFromJSONTyped(json: any, ignoreDiscriminato
         'subcategory': json['subcategory'] == null ? undefined : AuraSubcategoryFromJSON(json['subcategory']),
         'contentType': json['content_type'] == null ? undefined : ContentTypeFromJSON(json['content_type']),
         'timePeriod': json['time_period'] == null ? undefined : BadgeTimePeriodFromJSON(json['time_period']),
+        'limit': json['limit'] == null ? undefined : json['limit'],
     };
 }
 
@@ -116,6 +123,7 @@ export function GetLeaderboardRequestFromJSONTyped(json: any, ignoreDiscriminato
         'subcategory': AuraSubcategoryToJSON(value['subcategory']),
         'content_type': ContentTypeToJSON(value['contentType']),
         'time_period': BadgeTimePeriodToJSON(value['timePeriod']),
+        'limit': value['limit'],
     };
 }
 

@@ -42,6 +42,7 @@ function GetLeaderboardRequestFromJSONTyped(json, ignoreDiscriminator) {
         'subcategory': json['subcategory'] == null ? undefined : (0, AuraSubcategory_1.AuraSubcategoryFromJSON)(json['subcategory']),
         'contentType': json['content_type'] == null ? undefined : (0, ContentType_1.ContentTypeFromJSON)(json['content_type']),
         'timePeriod': json['time_period'] == null ? undefined : (0, BadgeTimePeriod_1.BadgeTimePeriodFromJSON)(json['time_period']),
+        'limit': json['limit'] == null ? undefined : json['limit'],
     };
 }
 function GetLeaderboardRequestToJSON(json) {
@@ -56,6 +57,7 @@ function GetLeaderboardRequestToJSONTyped(value, ignoreDiscriminator = false) {
         'subcategory': (0, AuraSubcategory_1.AuraSubcategoryToJSON)(value['subcategory']),
         'content_type': (0, ContentType_1.ContentTypeToJSON)(value['contentType']),
         'time_period': (0, BadgeTimePeriod_1.BadgeTimePeriodToJSON)(value['timePeriod']),
+        'limit': value['limit'],
     };
 }
 //# sourceMappingURL=GetLeaderboardRequest.js.map
