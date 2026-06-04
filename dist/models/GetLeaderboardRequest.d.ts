@@ -43,6 +43,12 @@ export interface GetLeaderboardRequest {
      * @memberof GetLeaderboardRequest
      */
     timePeriod?: BadgeTimePeriod | null;
+    /**
+     *
+     * @type {number}
+     * @memberof GetLeaderboardRequest
+     */
+    limit?: number;
 }
 /**
  * Check if a given object implements the GetLeaderboardRequest interface.
