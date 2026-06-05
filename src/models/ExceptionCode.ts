@@ -72,8 +72,11 @@ export const ExceptionCode = {
     LimitsReached: 'limits_reached',
     ClaimInvalid: 'claim_invalid',
     ClaimablesNotFound: 'claimables_not_found',
+    BadgeCodeAlreadyExists: 'badge_code_already_exists',
     BadgeNotFound: 'badge_not_found',
     BadgeNotClaimable: 'badge_not_claimable',
+    BadgeNotManuallyProvided: 'badge_not_manually_provided',
+    BadgeMustBeManuallyProvided: 'badge_must_be_manually_provided',
     BadgeNotUsable: 'badge_not_usable',
     BadgeNotClaimed: 'badge_not_claimed',
     BadgeAlreadyClaimed: 'badge_already_claimed',
@@ -136,7 +139,8 @@ export const ExceptionCode = {
     EpisodeAndVersionMismatch: 'episode_and_version_mismatch',
     EpisodeNotFound: 'episode_not_found',
     PurchasedEpisodeAndVersionMismatch: 'purchased_episode_and_version_mismatch',
-    PurchasedEpisodeVersionNotFound: 'purchased_episode_version_not_found'
+    PurchasedEpisodeVersionNotFound: 'purchased_episode_version_not_found',
+    NotificationNotCreated: 'notification_not_created'
 } as const;
 export type ExceptionCode = typeof ExceptionCode[keyof typeof ExceptionCode];
 
