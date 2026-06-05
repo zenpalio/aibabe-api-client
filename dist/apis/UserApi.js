@@ -215,6 +215,36 @@ class UserApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * Get Public User Like
+     */
+    async getPublicUserLikeUserPublicLikeGetRaw(requestParameters, initOverrides) {
+        const queryParameters = {};
+        if (requestParameters['publicUsername'] != null) {
+            queryParameters['public_username'] = requestParameters['publicUsername'];
+        }
+        if (requestParameters['paginationToken'] != null) {
+            queryParameters['pagination_token'] = requestParameters['paginationToken'];
+        }
+        if (requestParameters['limit'] != null) {
+            queryParameters['limit'] = requestParameters['limit'];
+        }
+        const headerParameters = {};
+        const response = await this.request({
+            path: `/user/public-like`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetPublicUsersResponseFromJSON)(jsonValue));
+    }
+    /**
+     * Get Public User Like
+     */
+    async getPublicUserLikeUserPublicLikeGet(requestParameters = {}, initOverrides) {
+        const response = await this.getPublicUserLikeUserPublicLikeGetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * Get Public User
      */
     async getPublicUserUserPublicGetRaw(requestParameters, initOverrides) {
