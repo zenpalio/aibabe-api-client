@@ -76,6 +76,12 @@ export interface ExploreSearchRequest {
     storyId?: string | null;
     /**
      *
+     * @type {string}
+     * @memberof ExploreSearchRequest
+     */
+    eventId?: string | null;
+    /**
+     *
      * @type {PostType}
      * @memberof ExploreSearchRequest
      */
@@ -104,6 +110,12 @@ export interface ExploreSearchRequest {
      * @memberof ExploreSearchRequest
      */
     unlockedStories?: boolean | null;
+    /**
+     *
+     * @type {boolean}
+     * @memberof ExploreSearchRequest
+     */
+    eventWinners?: boolean | null;
 }
 /**
  * Check if a given object implements the ExploreSearchRequest interface.

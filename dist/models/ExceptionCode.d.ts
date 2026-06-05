@@ -77,6 +77,17 @@ export declare const ExceptionCode: {
     readonly BadgeNotClaimed: "badge_not_claimed";
     readonly BadgeAlreadyClaimed: "badge_already_claimed";
     readonly BadgeRequirementNotMet: "badge_requirement_not_met";
+    readonly EventNotFound: "event_not_found";
+    readonly EventNotStarted: "event_not_started";
+    readonly EventNotPublishable: "event_not_publishable";
+    readonly EventApprovalAlreadyPending: "event_approval_already_pending";
+    readonly EventAlreadyEnded: "event_already_ended";
+    readonly EventRatingNotAllowedYet: "event_rating_not_allowed_yet";
+    readonly EventSubmissionsNotAlowed: "event_submissions_not_alowed";
+    readonly EventSubmissionLimitReached: "event_submission_limit_reached";
+    readonly EventSubmissionNotPrivate: "event_submission_not_private";
+    readonly EventInvalidContentType: "event_invalid_content_type";
+    readonly EventResultInvalidSubmission: "event_result_invalid_submission";
     readonly FormatNotSupported: "format_not_supported";
     readonly FileSizeExceeded: "file_size_exceeded";
     readonly FileUploadFailed: "file_upload_failed";
