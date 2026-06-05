@@ -37,6 +37,7 @@ export declare const ArtStyle: {
     readonly Anthrogay: "anthrogay";
     readonly Furrygay: "furrygay";
     readonly Rizz: "rizz";
+    readonly Grok: "grok";
 };
 export type ArtStyle = typeof ArtStyle[keyof typeof ArtStyle];
 export declare function instanceOfArtStyle(value: any): boolean;

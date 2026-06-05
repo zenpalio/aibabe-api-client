@@ -18,6 +18,7 @@ export declare const Gender: {
     readonly Male: "male";
     readonly Transgender: "transgender";
     readonly Futa: "futa";
+    readonly Furry: "furry";
     readonly Other: "other";
 };
 export type Gender = typeof Gender[keyof typeof Gender];

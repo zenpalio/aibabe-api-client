@@ -28,6 +28,7 @@ export declare const ModelName: {
     readonly CyberRealisticPony: "cyberRealisticPony";
     readonly PonyRealism: "ponyRealism";
     readonly ZitMoodysV12: "zitMoodysV12";
+    readonly GrokImagineImageQuality: "grok_imagine_image_quality";
 };
 export type ModelName = typeof ModelName[keyof typeof ModelName];
 export declare function instanceOfModelName(value: any): boolean;

@@ -22,6 +22,7 @@ export const Gender = {
     Male: 'male',
     Transgender: 'transgender',
     Futa: 'futa',
+    Furry: 'furry',
     Other: 'other'
 } as const;
 export type Gender = typeof Gender[keyof typeof Gender];

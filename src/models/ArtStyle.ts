@@ -40,7 +40,8 @@ export const ArtStyle = {
     Aphroditegay: 'aphroditegay',
     Anthrogay: 'anthrogay',
     Furrygay: 'furrygay',
-    Rizz: 'rizz'
+    Rizz: 'rizz',
+    Grok: 'grok'
 } as const;
 export type ArtStyle = typeof ArtStyle[keyof typeof ArtStyle];
 
