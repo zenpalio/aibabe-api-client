@@ -11,7 +11,7 @@
  */
 import type { ContentType } from './ContentType';
 import type { EventPriceType } from './EventPriceType';
-import type { EventStatus } from './EventStatus';
+import type { EffectiveEventStatus } from './EffectiveEventStatus';
 /**
  *
  * @export
@@ -92,10 +92,10 @@ export interface EventResponse {
     contentTypes: Array<ContentType> | null;
     /**
      *
-     * @type {EventStatus}
+     * @type {EffectiveEventStatus}
      * @memberof EventResponse
      */
-    status: EventStatus;
+    status: EffectiveEventStatus;
     /**
      *
      * @type {number}

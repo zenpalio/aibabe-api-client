@@ -48,6 +48,13 @@ import {
     ImageContentToJSON,
     ImageContentToJSONTyped,
 } from './ImageContent';
+import type { EventPreview } from './EventPreview';
+import {
+    EventPreviewFromJSON,
+    EventPreviewFromJSONTyped,
+    EventPreviewToJSON,
+    EventPreviewToJSONTyped,
+} from './EventPreview';
 import type { StoryPreview } from './StoryPreview';
 import {
     StoryPreviewFromJSON,
@@ -149,6 +156,12 @@ export interface DetailedWallPost {
     type: ContentType;
     /**
      * 
+     * @type {Array<EventPreview>}
+     * @memberof DetailedWallPost
+     */
+    eventPreviews: Array<EventPreview>;
+    /**
+     * 
      * @type {string}
      * @memberof DetailedWallPost
      */
@@ -186,6 +199,7 @@ export function instanceOfDetailedWallPost(value: object): value is DetailedWall
     if (!('updatedAt' in value) || value['updatedAt'] === undefined) return false;
     if (!('liked' in value) || value['liked'] === undefined) return false;
     if (!('type' in value) || value['type'] === undefined) return false;
+    if (!('eventPreviews' in value) || value['eventPreviews'] === undefined) return false;
     if (!('title' in value) || value['title'] === undefined) return false;
     if (!('tags' in value) || value['tags'] === undefined) return false;
     if (!('creator' in value) || value['creator'] === undefined) return false;
@@ -215,6 +229,7 @@ export function DetailedWallPostFromJSONTyped(json: any, ignoreDiscriminator: bo
         'updatedAt': (new Date(json['updated_at'])),
         'liked': json['liked'],
         'type': ContentTypeFromJSON(json['type']),
+        'eventPreviews': ((json['event_previews'] as Array<any>).map(EventPreviewFromJSON)),
         'title': json['title'],
         'tags': ((json['tags'] as Array<any>).map(TagModelFromJSON)),
         'creator': PublicUserPreviewWithFollowFromJSON(json['creator']),
@@ -245,6 +260,7 @@ export function DetailedWallPostFromJSONTyped(json: any, ignoreDiscriminator: bo
         'updated_at': ((value['updatedAt']).toISOString()),
         'liked': value['liked'],
         'type': ContentTypeToJSON(value['type']),
+        'event_previews': ((value['eventPreviews'] as Array<any>).map(EventPreviewToJSON)),
         'title': value['title'],
         'tags': ((value['tags'] as Array<any>).map(TagModelToJSON)),
         'creator': PublicUserPreviewWithFollowToJSON(value['creator']),

@@ -15,6 +15,7 @@
 
 import * as runtime from '../runtime';
 import type {
+  ContentTypes,
   EventListResponse,
   EventResponse,
   EventResults,
@@ -22,6 +23,8 @@ import type {
   HTTPValidationError,
 } from '../models/index';
 import {
+    ContentTypesFromJSON,
+    ContentTypesToJSON,
     EventListResponseFromJSON,
     EventListResponseToJSON,
     EventResponseFromJSON,
@@ -44,7 +47,7 @@ export interface CreateEventEventPostRequest {
     priceType?: string | null;
     pricePool?: number | null;
     priceId?: string | null;
-    contentTypes?: Array<string> | null;
+    contentTypes?: ContentTypes | null;
     maxSubmissionsPerUser?: number | null;
 }
 
@@ -73,7 +76,7 @@ export interface UpdateEventEventEventIdPatchRequest {
     priceType?: string | null;
     pricePool?: number | null;
     priceId?: string | null;
-    contentTypes?: Array<string> | null;
+    contentTypes?: ContentTypes | null;
     maxSubmissionsPerUser?: number | null;
 }
 
@@ -164,8 +167,8 @@ export class EventApi extends runtime.BaseAPI {
         }
 
         if (requestParameters['contentTypes'] != null) {
-            formParams.append('content_types', requestParameters['contentTypes']!.join(runtime.COLLECTION_FORMATS["csv"]));
-        }
+            formParams.append('content_types', new Blob([JSON.stringify(ContentTypesToJSON(requestParameters['contentTypes']))], { type: "application/json", }));
+                    }
 
         if (requestParameters['maxSubmissionsPerUser'] != null) {
             formParams.append('max_submissions_per_user', requestParameters['maxSubmissionsPerUser'] as any);
@@ -415,8 +418,8 @@ export class EventApi extends runtime.BaseAPI {
         }
 
         if (requestParameters['contentTypes'] != null) {
-            formParams.append('content_types', requestParameters['contentTypes']!.join(runtime.COLLECTION_FORMATS["csv"]));
-        }
+            formParams.append('content_types', new Blob([JSON.stringify(ContentTypesToJSON(requestParameters['contentTypes']))], { type: "application/json", }));
+                    }
 
         if (requestParameters['maxSubmissionsPerUser'] != null) {
             formParams.append('max_submissions_per_user', requestParameters['maxSubmissionsPerUser'] as any);

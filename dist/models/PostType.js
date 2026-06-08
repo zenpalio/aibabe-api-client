@@ -28,7 +28,6 @@ exports.PostType = {
     Video: 'video',
     Character: 'character',
     Story: 'story',
-    Event: 'event',
     Media: 'media',
     All: 'all'
 };

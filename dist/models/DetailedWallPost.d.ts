@@ -14,6 +14,7 @@ import type { ChatbotPreview } from './ChatbotPreview';
 import type { VideoContent } from './VideoContent';
 import type { ContentType } from './ContentType';
 import type { ImageContent } from './ImageContent';
+import type { EventPreview } from './EventPreview';
 import type { StoryPreview } from './StoryPreview';
 import type { TagModel } from './TagModel';
 /**
@@ -100,6 +101,12 @@ export interface DetailedWallPost {
      * @memberof DetailedWallPost
      */
     type: ContentType;
+    /**
+     *
+     * @type {Array<EventPreview>}
+     * @memberof DetailedWallPost
+     */
+    eventPreviews: Array<EventPreview>;
     /**
      *
      * @type {string}

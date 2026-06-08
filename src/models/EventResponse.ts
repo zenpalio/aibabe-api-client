@@ -27,13 +27,13 @@ import {
     EventPriceTypeToJSON,
     EventPriceTypeToJSONTyped,
 } from './EventPriceType';
-import type { EventStatus } from './EventStatus';
+import type { EffectiveEventStatus } from './EffectiveEventStatus';
 import {
-    EventStatusFromJSON,
-    EventStatusFromJSONTyped,
-    EventStatusToJSON,
-    EventStatusToJSONTyped,
-} from './EventStatus';
+    EffectiveEventStatusFromJSON,
+    EffectiveEventStatusFromJSONTyped,
+    EffectiveEventStatusToJSON,
+    EffectiveEventStatusToJSONTyped,
+} from './EffectiveEventStatus';
 
 /**
  * 
@@ -115,10 +115,10 @@ export interface EventResponse {
     contentTypes: Array<ContentType> | null;
     /**
      * 
-     * @type {EventStatus}
+     * @type {EffectiveEventStatus}
      * @memberof EventResponse
      */
-    status: EventStatus;
+    status: EffectiveEventStatus;
     /**
      * 
      * @type {number}
@@ -179,7 +179,7 @@ export function EventResponseFromJSONTyped(json: any, ignoreDiscriminator: boole
         'priceId': json['price_id'],
         'rules': json['rules'],
         'contentTypes': (json['content_types'] == null ? null : (json['content_types'] as Array<any>).map(ContentTypeFromJSON)),
-        'status': EventStatusFromJSON(json['status']),
+        'status': EffectiveEventStatusFromJSON(json['status']),
         'maxSubmissionsPerUser': json['max_submissions_per_user'],
         'submissionCount': json['submission_count'],
     };
@@ -208,7 +208,7 @@ export function EventResponseFromJSONTyped(json: any, ignoreDiscriminator: boole
         'price_id': value['priceId'],
         'rules': value['rules'],
         'content_types': (value['contentTypes'] == null ? null : (value['contentTypes'] as Array<any>).map(ContentTypeToJSON)),
-        'status': EventStatusToJSON(value['status']),
+        'status': EffectiveEventStatusToJSON(value['status']),
         'max_submissions_per_user': value['maxSubmissionsPerUser'],
         'submission_count': value['submissionCount'],
     };

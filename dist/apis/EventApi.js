@@ -111,7 +111,7 @@ class EventApi extends runtime.BaseAPI {
             formParams.append('price_id', requestParameters['priceId']);
         }
         if (requestParameters['contentTypes'] != null) {
-            formParams.append('content_types', requestParameters['contentTypes'].join(runtime.COLLECTION_FORMATS["csv"]));
+            formParams.append('content_types', new Blob([JSON.stringify((0, index_1.ContentTypesToJSON)(requestParameters['contentTypes']))], { type: "application/json", }));
         }
         if (requestParameters['maxSubmissionsPerUser'] != null) {
             formParams.append('max_submissions_per_user', requestParameters['maxSubmissionsPerUser']);
@@ -302,7 +302,7 @@ class EventApi extends runtime.BaseAPI {
             formParams.append('price_id', requestParameters['priceId']);
         }
         if (requestParameters['contentTypes'] != null) {
-            formParams.append('content_types', requestParameters['contentTypes'].join(runtime.COLLECTION_FORMATS["csv"]));
+            formParams.append('content_types', new Blob([JSON.stringify((0, index_1.ContentTypesToJSON)(requestParameters['contentTypes']))], { type: "application/json", }));
         }
         if (requestParameters['maxSubmissionsPerUser'] != null) {
             formParams.append('max_submissions_per_user', requestParameters['maxSubmissionsPerUser']);

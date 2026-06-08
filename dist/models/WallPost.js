@@ -22,6 +22,7 @@ const ChatbotPreview_1 = require("./ChatbotPreview");
 const VideoContent_1 = require("./VideoContent");
 const ContentType_1 = require("./ContentType");
 const ImageContent_1 = require("./ImageContent");
+const EventPreview_1 = require("./EventPreview");
 const StoryPreview_1 = require("./StoryPreview");
 /**
  * Check if a given object implements the WallPost interface.
@@ -53,6 +54,8 @@ function instanceOfWallPost(value) {
         return false;
     if (!('type' in value) || value['type'] === undefined)
         return false;
+    if (!('eventPreviews' in value) || value['eventPreviews'] === undefined)
+        return false;
     return true;
 }
 function WallPostFromJSON(json) {
@@ -76,6 +79,7 @@ function WallPostFromJSONTyped(json, ignoreDiscriminator) {
         'updatedAt': (new Date(json['updated_at'])),
         'liked': json['liked'],
         'type': (0, ContentType_1.ContentTypeFromJSON)(json['type']),
+        'eventPreviews': (json['event_previews'].map(EventPreview_1.EventPreviewFromJSON)),
     };
 }
 function WallPostToJSON(json) {
@@ -99,6 +103,7 @@ function WallPostToJSONTyped(value, ignoreDiscriminator = false) {
         'updated_at': ((value['updatedAt']).toISOString()),
         'liked': value['liked'],
         'type': (0, ContentType_1.ContentTypeToJSON)(value['type']),
+        'event_previews': (value['eventPreviews'].map(EventPreview_1.EventPreviewToJSON)),
     };
 }
 //# sourceMappingURL=WallPost.js.map

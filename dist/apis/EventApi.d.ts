@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { EventListResponse, EventResponse, EventResults, EventSubmissionRequest } from '../models/index';
+import type { ContentTypes, EventListResponse, EventResponse, EventResults, EventSubmissionRequest } from '../models/index';
 export interface CreateEventEventPostRequest {
     name: string;
     description: string;
@@ -21,7 +21,7 @@ export interface CreateEventEventPostRequest {
     priceType?: string | null;
     pricePool?: number | null;
     priceId?: string | null;
-    contentTypes?: Array<string> | null;
+    contentTypes?: ContentTypes | null;
     maxSubmissionsPerUser?: number | null;
 }
 export interface PublishEventEventEventIdPublishPostRequest {
@@ -46,7 +46,7 @@ export interface UpdateEventEventEventIdPatchRequest {
     priceType?: string | null;
     pricePool?: number | null;
     priceId?: string | null;
-    contentTypes?: Array<string> | null;
+    contentTypes?: ContentTypes | null;
     maxSubmissionsPerUser?: number | null;
 }
 /**

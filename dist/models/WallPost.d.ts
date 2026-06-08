@@ -13,6 +13,7 @@ import type { ChatbotPreview } from './ChatbotPreview';
 import type { VideoContent } from './VideoContent';
 import type { ContentType } from './ContentType';
 import type { ImageContent } from './ImageContent';
+import type { EventPreview } from './EventPreview';
 import type { StoryPreview } from './StoryPreview';
 /**
  *
@@ -98,6 +99,12 @@ export interface WallPost {
      * @memberof WallPost
      */
     type: ContentType;
+    /**
+     *
+     * @type {Array<EventPreview>}
+     * @memberof WallPost
+     */
+    eventPreviews: Array<EventPreview>;
 }
 /**
  * Check if a given object implements the WallPost interface.

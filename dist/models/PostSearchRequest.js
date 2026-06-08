@@ -45,6 +45,8 @@ function PostSearchRequestFromJSONTyped(json, ignoreDiscriminator) {
         'ownerFilters': json['owner_filters'] == null ? undefined : (json['owner_filters'].map(OwnerFilter_1.OwnerFilterFromJSON)),
         'chatbotId': json['chatbot_id'] == null ? undefined : json['chatbot_id'],
         'storyId': json['story_id'] == null ? undefined : json['story_id'],
+        'eventId': json['event_id'] == null ? undefined : json['event_id'],
+        'eventWinners': json['event_winners'] == null ? undefined : json['event_winners'],
     };
 }
 function PostSearchRequestToJSON(json) {
@@ -63,6 +65,8 @@ function PostSearchRequestToJSONTyped(value, ignoreDiscriminator = false) {
         'owner_filters': value['ownerFilters'] == null ? undefined : (value['ownerFilters'].map(OwnerFilter_1.OwnerFilterToJSON)),
         'chatbot_id': value['chatbotId'],
         'story_id': value['storyId'],
+        'event_id': value['eventId'],
+        'event_winners': value['eventWinners'],
     };
 }
 //# sourceMappingURL=PostSearchRequest.js.map

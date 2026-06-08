@@ -73,6 +73,7 @@ src/models/ChatbotType.ts
 src/models/ContentItem.ts
 src/models/ContentReportReason.ts
 src/models/ContentType.ts
+src/models/ContentTypes.ts
 src/models/ConversationListItem.ts
 src/models/ConversationMessageFeedback.ts
 src/models/ConversationSettings.ts
@@ -82,6 +83,7 @@ src/models/DeleteBulkMemoryRequest.ts
 src/models/DeleteUserRequest.ts
 src/models/DetailedWallPost.ts
 src/models/DonationNotification.ts
+src/models/EffectiveEventStatus.ts
 src/models/EpisodeContent.ts
 src/models/EpisodeCounts.ts
 src/models/EpisodePanelType.ts
@@ -91,12 +93,13 @@ src/models/EpisodeUnlockNotification.ts
 src/models/EpisodeVisibility.ts
 src/models/Ethnicity.ts
 src/models/EventListResponse.ts
+src/models/EventPreview.ts
 src/models/EventPriceType.ts
 src/models/EventResponse.ts
 src/models/EventResult.ts
 src/models/EventResultType.ts
 src/models/EventResults.ts
-src/models/EventStatus.ts
+src/models/EventSubmissionPreview.ts
 src/models/EventSubmissionRequest.ts
 src/models/ExceptionCode.ts
 src/models/ExploreSearchRequest.ts

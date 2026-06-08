@@ -20,7 +20,7 @@ exports.EventResponseToJSON = EventResponseToJSON;
 exports.EventResponseToJSONTyped = EventResponseToJSONTyped;
 const ContentType_1 = require("./ContentType");
 const EventPriceType_1 = require("./EventPriceType");
-const EventStatus_1 = require("./EventStatus");
+const EffectiveEventStatus_1 = require("./EffectiveEventStatus");
 /**
  * Check if a given object implements the EventResponse interface.
  */
@@ -77,7 +77,7 @@ function EventResponseFromJSONTyped(json, ignoreDiscriminator) {
         'priceId': json['price_id'],
         'rules': json['rules'],
         'contentTypes': (json['content_types'] == null ? null : json['content_types'].map(ContentType_1.ContentTypeFromJSON)),
-        'status': (0, EventStatus_1.EventStatusFromJSON)(json['status']),
+        'status': (0, EffectiveEventStatus_1.EffectiveEventStatusFromJSON)(json['status']),
         'maxSubmissionsPerUser': json['max_submissions_per_user'],
         'submissionCount': json['submission_count'],
     };
@@ -102,7 +102,7 @@ function EventResponseToJSONTyped(value, ignoreDiscriminator = false) {
         'price_id': value['priceId'],
         'rules': value['rules'],
         'content_types': (value['contentTypes'] == null ? null : value['contentTypes'].map(ContentType_1.ContentTypeToJSON)),
-        'status': (0, EventStatus_1.EventStatusToJSON)(value['status']),
+        'status': (0, EffectiveEventStatus_1.EffectiveEventStatusToJSON)(value['status']),
         'max_submissions_per_user': value['maxSubmissionsPerUser'],
         'submission_count': value['submissionCount'],
     };
