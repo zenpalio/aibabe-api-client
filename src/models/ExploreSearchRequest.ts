@@ -111,12 +111,6 @@ export interface ExploreSearchRequest {
     storyId?: string | null;
     /**
      * 
-     * @type {string}
-     * @memberof ExploreSearchRequest
-     */
-    eventId?: string | null;
-    /**
-     * 
      * @type {PostType}
      * @memberof ExploreSearchRequest
      */
@@ -145,6 +139,12 @@ export interface ExploreSearchRequest {
      * @memberof ExploreSearchRequest
      */
     unlockedStories?: boolean | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ExploreSearchRequest
+     */
+    eventId?: string | null;
     /**
      * 
      * @type {boolean}
@@ -181,12 +181,12 @@ export function ExploreSearchRequestFromJSONTyped(json: any, ignoreDiscriminator
         'ownerFilter': json['owner_filter'] == null ? undefined : OwnerFilterFromJSON(json['owner_filter']),
         'chatbotId': json['chatbot_id'] == null ? undefined : json['chatbot_id'],
         'storyId': json['story_id'] == null ? undefined : json['story_id'],
-        'eventId': json['event_id'] == null ? undefined : json['event_id'],
         'postType': json['post_type'] == null ? undefined : PostTypeFromJSON(json['post_type']),
         'creatorUserId': json['creator_user_id'] == null ? undefined : json['creator_user_id'],
         'scene': json['scene'] == null ? undefined : json['scene'],
         'seenStories': json['seen_stories'] == null ? undefined : json['seen_stories'],
         'unlockedStories': json['unlocked_stories'] == null ? undefined : json['unlocked_stories'],
+        'eventId': json['event_id'] == null ? undefined : json['event_id'],
         'eventWinners': json['event_winners'] == null ? undefined : json['event_winners'],
     };
 }
@@ -211,12 +211,12 @@ export function ExploreSearchRequestFromJSONTyped(json: any, ignoreDiscriminator
         'owner_filter': OwnerFilterToJSON(value['ownerFilter']),
         'chatbot_id': value['chatbotId'],
         'story_id': value['storyId'],
-        'event_id': value['eventId'],
         'post_type': PostTypeToJSON(value['postType']),
         'creator_user_id': value['creatorUserId'],
         'scene': value['scene'],
         'seen_stories': value['seenStories'],
         'unlocked_stories': value['unlockedStories'],
+        'event_id': value['eventId'],
         'event_winners': value['eventWinners'],
     };
 }

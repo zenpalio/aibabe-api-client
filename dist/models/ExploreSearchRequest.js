@@ -46,12 +46,12 @@ function ExploreSearchRequestFromJSONTyped(json, ignoreDiscriminator) {
         'ownerFilter': json['owner_filter'] == null ? undefined : (0, OwnerFilter_1.OwnerFilterFromJSON)(json['owner_filter']),
         'chatbotId': json['chatbot_id'] == null ? undefined : json['chatbot_id'],
         'storyId': json['story_id'] == null ? undefined : json['story_id'],
-        'eventId': json['event_id'] == null ? undefined : json['event_id'],
         'postType': json['post_type'] == null ? undefined : (0, PostType_1.PostTypeFromJSON)(json['post_type']),
         'creatorUserId': json['creator_user_id'] == null ? undefined : json['creator_user_id'],
         'scene': json['scene'] == null ? undefined : json['scene'],
         'seenStories': json['seen_stories'] == null ? undefined : json['seen_stories'],
         'unlockedStories': json['unlocked_stories'] == null ? undefined : json['unlocked_stories'],
+        'eventId': json['event_id'] == null ? undefined : json['event_id'],
         'eventWinners': json['event_winners'] == null ? undefined : json['event_winners'],
     };
 }
@@ -72,12 +72,12 @@ function ExploreSearchRequestToJSONTyped(value, ignoreDiscriminator = false) {
         'owner_filter': (0, OwnerFilter_1.OwnerFilterToJSON)(value['ownerFilter']),
         'chatbot_id': value['chatbotId'],
         'story_id': value['storyId'],
-        'event_id': value['eventId'],
         'post_type': (0, PostType_1.PostTypeToJSON)(value['postType']),
         'creator_user_id': value['creatorUserId'],
         'scene': value['scene'],
         'seen_stories': value['seenStories'],
         'unlocked_stories': value['unlockedStories'],
+        'event_id': value['eventId'],
         'event_winners': value['eventWinners'],
     };
 }
