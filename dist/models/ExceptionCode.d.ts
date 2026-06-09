@@ -84,9 +84,10 @@ export declare const ExceptionCode: {
     readonly EventApprovalAlreadyPending: "event_approval_already_pending";
     readonly EventAlreadyEnded: "event_already_ended";
     readonly EventRatingNotAllowedYet: "event_rating_not_allowed_yet";
-    readonly EventSubmissionsNotAlowed: "event_submissions_not_alowed";
+    readonly EventSubmissionsNotAllowed: "event_submissions_not_allowed";
     readonly EventSubmissionLimitReached: "event_submission_limit_reached";
     readonly EventInvalidContentType: "event_invalid_content_type";
+    readonly EventContentAlreadySubmited: "event_content_already_submited";
     readonly EventInvalidTime: "event_invalid_time";
     readonly EventResultInvalidSubmission: "event_result_invalid_submission";
     readonly EventWinnersWithoutEvent: "event_winners_without_event";

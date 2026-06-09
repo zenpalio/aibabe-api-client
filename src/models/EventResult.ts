@@ -32,7 +32,7 @@ export interface EventResult {
      * @type {string}
      * @memberof EventResult
      */
-    eventSubmissionId: string;
+    postId: string;
     /**
      * 
      * @type {EventResultType}
@@ -53,7 +53,7 @@ export interface EventResult {
  * Check if a given object implements the EventResult interface.
  */
 export function instanceOfEventResult(value: object): value is EventResult {
-    if (!('eventSubmissionId' in value) || value['eventSubmissionId'] === undefined) return false;
+    if (!('postId' in value) || value['postId'] === undefined) return false;
     if (!('resultType' in value) || value['resultType'] === undefined) return false;
     if (!('rank' in value) || value['rank'] === undefined) return false;
     return true;
@@ -69,7 +69,7 @@ export function EventResultFromJSONTyped(json: any, ignoreDiscriminator: boolean
     }
     return {
         
-        'eventSubmissionId': json['event_submission_id'],
+        'postId': json['post_id'],
         'resultType': EventResultTypeFromJSON(json['result_type']),
         'rank': json['rank'],
     };
@@ -86,7 +86,7 @@ export function EventResultFromJSONTyped(json: any, ignoreDiscriminator: boolean
 
     return {
         
-        'event_submission_id': value['eventSubmissionId'],
+        'post_id': value['postId'],
         'result_type': EventResultTypeToJSON(value['resultType']),
         'rank': value['rank'],
     };

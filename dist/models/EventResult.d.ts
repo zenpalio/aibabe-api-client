@@ -21,7 +21,7 @@ export interface EventResult {
      * @type {string}
      * @memberof EventResult
      */
-    eventSubmissionId: string;
+    postId: string;
     /**
      *
      * @type {EventResultType}

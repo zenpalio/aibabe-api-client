@@ -23,7 +23,7 @@ const EventResultType_1 = require("./EventResultType");
  * Check if a given object implements the EventResult interface.
  */
 function instanceOfEventResult(value) {
-    if (!('eventSubmissionId' in value) || value['eventSubmissionId'] === undefined)
+    if (!('postId' in value) || value['postId'] === undefined)
         return false;
     if (!('resultType' in value) || value['resultType'] === undefined)
         return false;
@@ -39,7 +39,7 @@ function EventResultFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
-        'eventSubmissionId': json['event_submission_id'],
+        'postId': json['post_id'],
         'resultType': (0, EventResultType_1.EventResultTypeFromJSON)(json['result_type']),
         'rank': json['rank'],
     };
@@ -52,7 +52,7 @@ function EventResultToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
-        'event_submission_id': value['eventSubmissionId'],
+        'post_id': value['postId'],
         'result_type': (0, EventResultType_1.EventResultTypeToJSON)(value['resultType']),
         'rank': value['rank'],
     };
