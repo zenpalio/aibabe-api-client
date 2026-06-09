@@ -28,6 +28,15 @@ export declare const MemoracekType: {
     readonly AttemptedRichHonic: "attempted_rich_honic";
     readonly RebilledHonic1month: "rebilled_honic_1month";
     readonly RebilledHonic3month: "rebilled_honic_3month";
+    readonly RapydPremiumSubscribed1month: "rapyd_premium_subscribed_1month";
+    readonly RapydPremiumSubscribed3month: "rapyd_premium_subscribed_3month";
+    readonly RapydUltraSubscribed1month: "rapyd_ultra_subscribed_1month";
+    readonly RapydUltraSubscribed3month: "rapyd_ultra_subscribed_3month";
+    readonly RapydAddon: "rapyd_addon";
+    readonly RapydPremiumRebilled1month: "rapyd_premium_rebilled_1month";
+    readonly RapydPremiumRebilled3month: "rapyd_premium_rebilled_3month";
+    readonly RapydUltraRebilled1month: "rapyd_ultra_rebilled_1month";
+    readonly RapydUltraRebilled3month: "rapyd_ultra_rebilled_3month";
 };
 export type MemoracekType = typeof MemoracekType[keyof typeof MemoracekType];
 export declare function instanceOfMemoracekType(value: any): boolean;
