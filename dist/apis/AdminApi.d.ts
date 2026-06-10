@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { AdminAwardBadgeRequest, AdminBadgeResponse, AuraSubcategory, BadgeCategory, BadgeTimePeriod, ContentType, GetQualityControlImage, GetQualityControlRequest, GiftCodeType, ScoreCategory, UserInfoResponse } from '../models/index';
+import type { AdminAwardBadgeRequest, AdminBadgeResponse, AuraSubcategory, BadgeCategory, BadgeTimePeriod, ContentType, GetQualityControlImage, GetQualityControlRequest, GiftCodeType, ScoreCategory, SetUserFeatureFlagsRequest, SetUserFeatureFlagsResponse, UserInfoResponse } from '../models/index';
 export interface AddTokensAdminAddTokensPutRequest {
     email: string;
     tokens: number;
@@ -52,6 +52,9 @@ export interface ImpersonateAdminImpersonateEmailPostRequest {
 }
 export interface ProvideAwardAdminBadgesAwardPostRequest {
     adminAwardBadgeRequest: AdminAwardBadgeRequest;
+}
+export interface SetUserFeatureFlagsAdminUserFeatureFlagsPutRequest {
+    setUserFeatureFlagsRequest: SetUserFeatureFlagsRequest;
 }
 export interface UpdateBadgeAdminBadgesBadgeIdPatchRequest {
     badgeId: string;
@@ -156,6 +159,14 @@ export declare class AdminApi extends runtime.BaseAPI {
      * Reset User Claimables
      */
     resetUserClaimablesAdminUserResetClaimablesPost(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
+    /**
+     * Set User Feature Flags
+     */
+    setUserFeatureFlagsAdminUserFeatureFlagsPutRaw(requestParameters: SetUserFeatureFlagsAdminUserFeatureFlagsPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SetUserFeatureFlagsResponse>>;
+    /**
+     * Set User Feature Flags
+     */
+    setUserFeatureFlagsAdminUserFeatureFlagsPut(requestParameters: SetUserFeatureFlagsAdminUserFeatureFlagsPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SetUserFeatureFlagsResponse>;
     /**
      * Update Badge
      */
