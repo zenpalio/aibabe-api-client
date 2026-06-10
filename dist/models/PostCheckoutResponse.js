@@ -18,6 +18,7 @@ exports.PostCheckoutResponseFromJSON = PostCheckoutResponseFromJSON;
 exports.PostCheckoutResponseFromJSONTyped = PostCheckoutResponseFromJSONTyped;
 exports.PostCheckoutResponseToJSON = PostCheckoutResponseToJSON;
 exports.PostCheckoutResponseToJSONTyped = PostCheckoutResponseToJSONTyped;
+const PaymentProviderType_1 = require("./PaymentProviderType");
 /**
  * Check if a given object implements the PostCheckoutResponse interface.
  */
@@ -38,6 +39,8 @@ function PostCheckoutResponseFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'action': json['action'],
         'data': json['data'],
+        'provider': json['provider'] == null ? undefined : (0, PaymentProviderType_1.PaymentProviderTypeFromJSON)(json['provider']),
+        'redirectUrl': json['redirect_url'] == null ? undefined : json['redirect_url'],
     };
 }
 function PostCheckoutResponseToJSON(json) {
@@ -50,6 +53,8 @@ function PostCheckoutResponseToJSONTyped(value, ignoreDiscriminator = false) {
     return {
         'action': value['action'],
         'data': value['data'],
+        'provider': (0, PaymentProviderType_1.PaymentProviderTypeToJSON)(value['provider']),
+        'redirect_url': value['redirectUrl'],
     };
 }
 //# sourceMappingURL=PostCheckoutResponse.js.map

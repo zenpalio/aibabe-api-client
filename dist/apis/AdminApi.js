@@ -441,6 +441,32 @@ class AdminApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * Set User Feature Flags
+     */
+    async setUserFeatureFlagsAdminUserFeatureFlagsPutRaw(requestParameters, initOverrides) {
+        if (requestParameters['setUserFeatureFlagsRequest'] == null) {
+            throw new runtime.RequiredError('setUserFeatureFlagsRequest', 'Required parameter "setUserFeatureFlagsRequest" was null or undefined when calling setUserFeatureFlagsAdminUserFeatureFlagsPut().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        const response = await this.request({
+            path: `/admin/user/feature-flags`,
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.SetUserFeatureFlagsRequestToJSON)(requestParameters['setUserFeatureFlagsRequest']),
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.SetUserFeatureFlagsResponseFromJSON)(jsonValue));
+    }
+    /**
+     * Set User Feature Flags
+     */
+    async setUserFeatureFlagsAdminUserFeatureFlagsPut(requestParameters, initOverrides) {
+        const response = await this.setUserFeatureFlagsAdminUserFeatureFlagsPutRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * Update Badge
      */
     async updateBadgeAdminBadgesBadgeIdPatchRaw(requestParameters, initOverrides) {
