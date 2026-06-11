@@ -36,6 +36,7 @@ src/models/AssistantChatSessionDetail.ts
 src/models/AvatarLooksV2.ts
 src/models/AvatarOptionalField.ts
 src/models/AvatarRequiredField.ts
+src/models/BeardStyle.ts
 src/models/BillingPeriod.ts
 src/models/BillingReconciliationResponse.ts
 src/models/BodyType.ts
@@ -121,6 +122,7 @@ src/models/GetVideoGenerationTagsResponse.ts
 src/models/GiftCodeType.ts
 src/models/HTTPValidationError.ts
 src/models/HairColor.ts
+src/models/HairStyle.ts
 src/models/ImageContent.ts
 src/models/ImageGenerationSource.ts
 src/models/ImageGenerationStatus.ts

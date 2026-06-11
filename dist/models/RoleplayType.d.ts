@@ -17,6 +17,10 @@ export declare const RoleplayType: {
     readonly FamilyTaboo: "family_taboo";
     readonly Schoolmate: "schoolmate";
     readonly Friend: "friend";
+    readonly FirstDate: "first_date";
+    readonly CoffeeShop: "coffee_shop";
+    readonly WorkplaceCrush: "workplace_crush";
+    readonly BestFriend: "best_friend";
     readonly Gf: "gf";
     readonly Cheating: "cheating";
     readonly Lingerie: "lingerie";
@@ -33,6 +37,13 @@ export declare const RoleplayType: {
     readonly PublicPlay: "public_play";
     readonly Coworker: "coworker";
     readonly Breeding: "breeding";
+    readonly TravelRomance: "travel_romance";
+    readonly GymBuddy: "gym_buddy";
+    readonly CozyNightIn: "cozy_night_in";
+    readonly CollegeDays: "college_days";
+    readonly OutdoorAdventure: "outdoor_adventure";
+    readonly HolidayGetaway: "holiday_getaway";
+    readonly LongDistance: "long_distance";
     readonly Humiliation: "humiliation";
     readonly FootFetish: "foot_fetish";
     readonly BratTaming: "brat_taming";

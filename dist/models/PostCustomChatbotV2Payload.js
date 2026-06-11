@@ -25,6 +25,7 @@ const ArtStyle_1 = require("./ArtStyle");
 const FurryVisualType_1 = require("./FurryVisualType");
 const RoleplayType_1 = require("./RoleplayType");
 const VisualType_1 = require("./VisualType");
+const Gender_1 = require("./Gender");
 const SeduceDifficulty_1 = require("./SeduceDifficulty");
 const AvatarLooksV2_1 = require("./AvatarLooksV2");
 const SexualOrientation_1 = require("./SexualOrientation");
@@ -33,6 +34,8 @@ const SexualOrientation_1 = require("./SexualOrientation");
  */
 function instanceOfPostCustomChatbotV2Payload(value) {
     if (!('age' in value) || value['age'] === undefined)
+        return false;
+    if (!('gender' in value) || value['gender'] === undefined)
         return false;
     if (!('specialFeatures' in value) || value['specialFeatures'] === undefined)
         return false;
@@ -57,6 +60,7 @@ function PostCustomChatbotV2PayloadFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'age': json['age'],
+        'gender': (0, Gender_1.GenderFromJSON)(json['gender']),
         'specialFeatures': (json['special_features'].map(SpecialFeatures_1.SpecialFeaturesFromJSON)),
         'artStyle': (0, ArtStyle_1.ArtStyleFromJSON)(json['art_style']),
         'sexualOrientation': json['sexual_orientation'] == null ? undefined : (0, SexualOrientation_1.SexualOrientationFromJSON)(json['sexual_orientation']),
@@ -69,6 +73,7 @@ function PostCustomChatbotV2PayloadFromJSONTyped(json, ignoreDiscriminator) {
         'difficulty': (0, SeduceDifficulty_1.SeduceDifficultyFromJSON)(json['difficulty']),
         'scenario': json['scenario'],
         'clientId': json['client_id'],
+        'name': json['name'] == null ? undefined : json['name'],
         'referenceAudioId': json['reference_audio_id'] == null ? undefined : json['reference_audio_id'],
         'userId': json['user_id'] == null ? undefined : json['user_id'],
     };
@@ -82,6 +87,7 @@ function PostCustomChatbotV2PayloadToJSONTyped(value, ignoreDiscriminator = fals
     }
     return {
         'age': value['age'],
+        'gender': (0, Gender_1.GenderToJSON)(value['gender']),
         'special_features': (value['specialFeatures'].map(SpecialFeatures_1.SpecialFeaturesToJSON)),
         'art_style': (0, ArtStyle_1.ArtStyleToJSON)(value['artStyle']),
         'sexual_orientation': (0, SexualOrientation_1.SexualOrientationToJSON)(value['sexualOrientation']),
@@ -94,6 +100,7 @@ function PostCustomChatbotV2PayloadToJSONTyped(value, ignoreDiscriminator = fals
         'difficulty': (0, SeduceDifficulty_1.SeduceDifficultyToJSON)(value['difficulty']),
         'scenario': value['scenario'],
         'client_id': value['clientId'],
+        'name': value['name'],
         'reference_audio_id': value['referenceAudioId'],
         'user_id': value['userId'],
     };

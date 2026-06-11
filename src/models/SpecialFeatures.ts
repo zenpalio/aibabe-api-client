@@ -19,11 +19,16 @@
  */
 export const SpecialFeatures = {
     Tattoos: 'tattoos',
+    Tattoo: 'tattoo',
     PubicHair: 'pubic_hair',
     Piercing: 'piercing',
+    Piercings: 'piercings',
     Freckles: 'freckles',
     Pregnant: 'pregnant',
     Glasses: 'glasses',
+    Vascularity: 'vascularity',
+    Scar: 'scar',
+    ChestHair: 'chest_hair',
     Futa: 'futa',
     Trans: 'trans',
     HugeBreasts: 'huge_breasts',

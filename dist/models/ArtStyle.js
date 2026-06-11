@@ -47,7 +47,8 @@ exports.ArtStyle = {
     Anthrogay: 'anthrogay',
     Furrygay: 'furrygay',
     Rizz: 'rizz',
-    Grok: 'grok'
+    Grok: 'grok',
+    Noirluxe: 'noirluxe'
 };
 function instanceOfArtStyle(value) {
     for (const key in exports.ArtStyle) {

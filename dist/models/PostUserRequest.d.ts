@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { Gender } from './Gender';
 /**
  *
  * @export
@@ -39,6 +40,12 @@ export interface PostUserRequest {
      * @memberof PostUserRequest
      */
     isDummy?: boolean | null;
+    /**
+     *
+     * @type {Gender}
+     * @memberof PostUserRequest
+     */
+    gender?: Gender | null;
 }
 /**
  * Check if a given object implements the PostUserRequest interface.

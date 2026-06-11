@@ -16,6 +16,7 @@ import type { ArtStyle } from './ArtStyle';
 import type { FurryVisualType } from './FurryVisualType';
 import type { RoleplayType } from './RoleplayType';
 import type { VisualType } from './VisualType';
+import type { Gender } from './Gender';
 import type { SeduceDifficulty } from './SeduceDifficulty';
 import type { AvatarLooksV2 } from './AvatarLooksV2';
 import type { SexualOrientation } from './SexualOrientation';
@@ -31,6 +32,12 @@ export interface PostCustomChatbotV2Payload {
      * @memberof PostCustomChatbotV2Payload
      */
     age: number;
+    /**
+     *
+     * @type {Gender}
+     * @memberof PostCustomChatbotV2Payload
+     */
+    gender: Gender;
     /**
      *
      * @type {Array<SpecialFeatures>}
@@ -103,6 +110,12 @@ export interface PostCustomChatbotV2Payload {
      * @memberof PostCustomChatbotV2Payload
      */
     clientId: string;
+    /**
+     *
+     * @type {string}
+     * @memberof PostCustomChatbotV2Payload
+     */
+    name?: string | null;
     /**
      *
      * @type {string}

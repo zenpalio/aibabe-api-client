@@ -38,7 +38,8 @@ exports.ModelName = {
     CyberRealisticPony: 'cyberRealisticPony',
     PonyRealism: 'ponyRealism',
     ZitMoodysV12: 'zitMoodysV12',
-    GrokImagineImageQuality: 'grok_imagine_image_quality'
+    GrokImagineImageQuality: 'grok_imagine_image_quality',
+    ChromaUnGloryHail: 'chromaUnGloryHail'
 };
 function instanceOfModelName(value) {
     for (const key in exports.ModelName) {

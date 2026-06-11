@@ -20,6 +20,7 @@
 export const SeduceDifficulty = {
     Easy: 'easy',
     Medium: 'medium',
+    Normal: 'normal',
     Hard: 'hard',
     Impossible: 'impossible'
 } as const;

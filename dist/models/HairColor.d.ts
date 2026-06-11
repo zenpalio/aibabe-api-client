@@ -16,20 +16,25 @@
 export declare const HairColor: {
     readonly Blonde: "blonde";
     readonly Brunette: "brunette";
+    readonly Redhead: "redhead";
     readonly Black: "black";
     readonly Pink: "pink";
     readonly DarkBrownHair: "Dark Brown Hair";
     readonly Blue: "blue";
+    readonly Navy: "navy";
     readonly Chestnut: "chestnut";
     readonly Ginger: "ginger";
     readonly DarkRed: "dark red";
     readonly LightBlue: "light blue";
     readonly DarkBlue: "dark blue";
+    readonly Purple: "purple";
     readonly DarkPurple: "dark purple";
     readonly Green: "green";
+    readonly Gray: "gray";
     readonly Grey: "grey";
     readonly White: "white";
     readonly TealWithPurpleHighlightHair: "teal with purple highlight hair";
+    readonly Rainbow: "rainbow";
     readonly RainbowColors: "rainbow colors";
     readonly BlondeHairWithPinkBalayage: "blonde hair with pink balayage";
     readonly PurpleHairWithPinkBalayage: "purple hair with pink balayage";

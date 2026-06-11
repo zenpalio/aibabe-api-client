@@ -29,6 +29,7 @@ exports.Ethnicity = {
     Caucasian: 'caucasian',
     Arab: 'arab',
     Latina: 'latina',
+    Hispanic: 'hispanic',
     Indian: 'indian',
     Furry: 'furry'
 };

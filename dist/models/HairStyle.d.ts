@@ -14,6 +14,17 @@
  * @export
  */
 export declare const HairStyle: {
+    readonly Buzz: "buzz";
+    readonly Fade: "fade";
+    readonly Crop: "crop";
+    readonly Slickback: "slickback";
+    readonly Manbun: "manbun";
+    readonly Longflow: "longflow";
+    readonly Wolfcut: "wolfcut";
+    readonly Shaggy: "shaggy";
+    readonly Sidepart: "sidepart";
+    readonly Mullet: "mullet";
+    readonly Quiff: "quiff";
     readonly Short: "short";
     readonly Braids: "braids";
     readonly Curly: "curly";
