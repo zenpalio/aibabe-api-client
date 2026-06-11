@@ -258,6 +258,8 @@ __exportStar(require("./ScoreType"), exports);
 __exportStar(require("./SeduceDifficulty"), exports);
 __exportStar(require("./SendCustomMemoracekRequest"), exports);
 __exportStar(require("./SendMemoracekRequest"), exports);
+__exportStar(require("./SetUserFeatureFlagsRequest"), exports);
+__exportStar(require("./SetUserFeatureFlagsResponse"), exports);
 __exportStar(require("./SortFilter"), exports);
 __exportStar(require("./SoundEffectResponse"), exports);
 __exportStar(require("./SoundEffectsRequest"), exports);

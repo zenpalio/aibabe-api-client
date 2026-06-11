@@ -242,6 +242,8 @@ export * from './ScoreType';
 export * from './SeduceDifficulty';
 export * from './SendCustomMemoracekRequest';
 export * from './SendMemoracekRequest';
+export * from './SetUserFeatureFlagsRequest';
+export * from './SetUserFeatureFlagsResponse';
 export * from './SortFilter';
 export * from './SoundEffectResponse';
 export * from './SoundEffectsRequest';
