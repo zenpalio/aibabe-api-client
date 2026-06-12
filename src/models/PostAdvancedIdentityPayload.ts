@@ -13,6 +13,21 @@
  */
 
 import { mapValues } from '../runtime';
+import type { Gender } from './Gender';
+import {
+    GenderFromJSON,
+    GenderFromJSONTyped,
+    GenderToJSON,
+    GenderToJSONTyped,
+} from './Gender';
+import type { SexualOrientation } from './SexualOrientation';
+import {
+    SexualOrientationFromJSON,
+    SexualOrientationFromJSONTyped,
+    SexualOrientationToJSON,
+    SexualOrientationToJSONTyped,
+} from './SexualOrientation';
+
 /**
  * 
  * @export
@@ -39,11 +54,19 @@ export interface PostAdvancedIdentityPayload {
     greetings: string;
     /**
      * 
-     * @type {string}
+     * @type {Gender}
      * @memberof PostAdvancedIdentityPayload
      */
-    gender: string;
+    gender: Gender;
+    /**
+     * 
+     * @type {SexualOrientation}
+     * @memberof PostAdvancedIdentityPayload
+     */
+    sexualOrientation?: SexualOrientation | null;
 }
+
+
 
 /**
  * Check if a given object implements the PostAdvancedIdentityPayload interface.
@@ -69,7 +92,8 @@ export function PostAdvancedIdentityPayloadFromJSONTyped(json: any, ignoreDiscri
         'name': json['name'],
         'bio': json['bio'],
         'greetings': json['greetings'],
-        'gender': json['gender'],
+        'gender': GenderFromJSON(json['gender']),
+        'sexualOrientation': json['sexual_orientation'] == null ? undefined : SexualOrientationFromJSON(json['sexual_orientation']),
     };
 }
 
@@ -87,7 +111,8 @@ export function PostAdvancedIdentityPayloadFromJSONTyped(json: any, ignoreDiscri
         'name': value['name'],
         'bio': value['bio'],
         'greetings': value['greetings'],
-        'gender': value['gender'],
+        'gender': GenderToJSON(value['gender']),
+        'sexual_orientation': SexualOrientationToJSON(value['sexualOrientation']),
     };
 }
 

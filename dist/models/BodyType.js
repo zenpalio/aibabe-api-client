@@ -25,7 +25,11 @@ exports.BodyTypeToJSONTyped = BodyTypeToJSONTyped;
  */
 exports.BodyType = {
     Slim: 'slim',
+    Fit: 'fit',
     Athletic: 'athletic',
+    Muscular: 'muscular',
+    Average: 'average',
+    Dadbod: 'dadbod',
     Voluptuous: 'voluptuous',
     Curvy: 'curvy'
 };

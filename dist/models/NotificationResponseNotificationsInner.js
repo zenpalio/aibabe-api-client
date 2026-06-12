@@ -21,7 +21,6 @@ exports.NotificationResponseNotificationsInnerToJSONTyped = NotificationResponse
 const PublicUserPreview_1 = require("./PublicUserPreview");
 const PostType_1 = require("./PostType");
 const NotificationType_1 = require("./NotificationType");
-const BadgeModel_1 = require("./BadgeModel");
 const WallPost_1 = require("./WallPost");
 /**
  * Check if a given object implements the NotificationResponseNotificationsInner interface.
@@ -51,8 +50,6 @@ function instanceOfNotificationResponseNotificationsInner(value) {
         return false;
     if (!('coverImage' in value) || value['coverImage'] === undefined)
         return false;
-    if (!('badge' in value) || value['badge'] === undefined)
-        return false;
     return true;
 }
 function NotificationResponseNotificationsInnerFromJSON(json) {
@@ -77,7 +74,6 @@ function NotificationResponseNotificationsInnerFromJSONTyped(json, ignoreDiscrim
         'episodeId': json['episode_id'],
         'episodeTitle': json['episode_title'],
         'coverImage': json['cover_image'],
-        'badge': (0, BadgeModel_1.BadgeModelFromJSON)(json['badge']),
     };
 }
 function NotificationResponseNotificationsInnerToJSON(json) {
@@ -102,7 +98,6 @@ function NotificationResponseNotificationsInnerToJSONTyped(value, ignoreDiscrimi
         'episode_id': value['episodeId'],
         'episode_title': value['episodeTitle'],
         'cover_image': value['coverImage'],
-        'badge': (0, BadgeModel_1.BadgeModelToJSON)(value['badge']),
     };
 }
 //# sourceMappingURL=NotificationResponseNotificationsInner.js.map

@@ -62,7 +62,6 @@ export interface BlacklistPostPostBlacklistPostIdPatchRequest {
 export interface BoostPostPostLikeBoostPostIdPostRequest {
     postId: string;
     likesCount: number;
-    awardAura?: boolean;
 }
 
 export interface BoostTrendingPostsPostLikeBoostPostRequest {
@@ -70,7 +69,6 @@ export interface BoostTrendingPostsPostLikeBoostPostRequest {
     likesThreshold?: number;
     ageHoursThreshold?: number;
     boostAlreadyBoosted?: boolean;
-    awardAura?: boolean;
 }
 
 export interface CategoriesPostCategoriesGetRequest {
@@ -186,10 +184,6 @@ export class PostApi extends runtime.BaseAPI {
             queryParameters['likes_count'] = requestParameters['likesCount'];
         }
 
-        if (requestParameters['awardAura'] != null) {
-            queryParameters['award_aura'] = requestParameters['awardAura'];
-        }
-
         const headerParameters: runtime.HTTPHeaders = {};
 
         const response = await this.request({
@@ -236,10 +230,6 @@ export class PostApi extends runtime.BaseAPI {
 
         if (requestParameters['boostAlreadyBoosted'] != null) {
             queryParameters['boost_already_boosted'] = requestParameters['boostAlreadyBoosted'];
-        }
-
-        if (requestParameters['awardAura'] != null) {
-            queryParameters['award_aura'] = requestParameters['awardAura'];
         }
 
         const headerParameters: runtime.HTTPHeaders = {};

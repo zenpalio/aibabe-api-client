@@ -48,13 +48,6 @@ import {
     PostTypeToJSON,
     PostTypeToJSONTyped,
 } from './PostType';
-import type { BadgeNotification } from './BadgeNotification';
-import {
-    BadgeNotificationFromJSON,
-    BadgeNotificationFromJSONTyped,
-    BadgeNotificationToJSON,
-    BadgeNotificationToJSONTyped,
-} from './BadgeNotification';
 import type { NewEpisodeNotification } from './NewEpisodeNotification';
 import {
     NewEpisodeNotificationFromJSON,
@@ -76,13 +69,6 @@ import {
     LikePostNotificationToJSON,
     LikePostNotificationToJSONTyped,
 } from './LikePostNotification';
-import type { BadgeModel } from './BadgeModel';
-import {
-    BadgeModelFromJSON,
-    BadgeModelFromJSONTyped,
-    BadgeModelToJSON,
-    BadgeModelToJSONTyped,
-} from './BadgeModel';
 import type { WallPost } from './WallPost';
 import {
     WallPostFromJSON,
@@ -181,12 +167,6 @@ export interface NotificationResponseNotificationsInner {
      * @memberof NotificationResponseNotificationsInner
      */
     coverImage: string;
-    /**
-     * 
-     * @type {BadgeModel}
-     * @memberof NotificationResponseNotificationsInner
-     */
-    badge: BadgeModel;
 }
 
 
@@ -207,7 +187,6 @@ export function instanceOfNotificationResponseNotificationsInner(value: object):
     if (!('episodeId' in value) || value['episodeId'] === undefined) return false;
     if (!('episodeTitle' in value) || value['episodeTitle'] === undefined) return false;
     if (!('coverImage' in value) || value['coverImage'] === undefined) return false;
-    if (!('badge' in value) || value['badge'] === undefined) return false;
     return true;
 }
 
@@ -235,7 +214,6 @@ export function NotificationResponseNotificationsInnerFromJSONTyped(json: any, i
         'episodeId': json['episode_id'],
         'episodeTitle': json['episode_title'],
         'coverImage': json['cover_image'],
-        'badge': BadgeModelFromJSON(json['badge']),
     };
 }
 
@@ -264,7 +242,6 @@ export function NotificationResponseNotificationsInnerFromJSONTyped(json: any, i
         'episode_id': value['episodeId'],
         'episode_title': value['episodeTitle'],
         'cover_image': value['coverImage'],
-        'badge': BadgeModelToJSON(value['badge']),
     };
 }
 

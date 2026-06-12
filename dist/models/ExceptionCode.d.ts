@@ -68,11 +68,8 @@ export declare const ExceptionCode: {
     readonly LimitsReached: "limits_reached";
     readonly ClaimInvalid: "claim_invalid";
     readonly ClaimablesNotFound: "claimables_not_found";
-    readonly BadgeCodeAlreadyExists: "badge_code_already_exists";
     readonly BadgeNotFound: "badge_not_found";
     readonly BadgeNotClaimable: "badge_not_claimable";
-    readonly BadgeNotManuallyProvided: "badge_not_manually_provided";
-    readonly BadgeMustBeManuallyProvided: "badge_must_be_manually_provided";
     readonly BadgeNotUsable: "badge_not_usable";
     readonly BadgeNotClaimed: "badge_not_claimed";
     readonly BadgeAlreadyClaimed: "badge_already_claimed";
@@ -106,6 +103,8 @@ export declare const ExceptionCode: {
     readonly PanelNotFound: "panel_not_found";
     readonly MissingOrderIndex: "missing_order_index";
     readonly StoryNotFoundOrNotAuthorized: "story_not_found_or_not_authorized";
+    readonly EpisodeNotFoundOrNotAuthorized: "episode_not_found_or_not_authorized";
+    readonly EpisodeIsFree: "episode_is_free";
     readonly InvalidIndices: "invalid_indices";
     readonly PanelDuplicate: "panel_duplicate";
     readonly ShareContentTypeUnsupported: "share_content_type_unsupported";
@@ -130,12 +129,10 @@ export declare const ExceptionCode: {
     readonly MarketingCampaignNotFound: "marketing_campaign_not_found";
     readonly MarketingCampaignNotAcceptable: "marketing_campaign_not_acceptable";
     readonly MarketingCampaignNoState: "marketing_campaign_no_state";
-    readonly EpisodeNotFoundOrNotAuthorized: "episode_not_found_or_not_authorized";
-    readonly EpisodeIsFree: "episode_is_free";
     readonly EpisodeAndVersionMismatch: "episode_and_version_mismatch";
+    readonly EpisodeNotFound: "episode_not_found";
     readonly PurchasedEpisodeAndVersionMismatch: "purchased_episode_and_version_mismatch";
     readonly PurchasedEpisodeVersionNotFound: "purchased_episode_version_not_found";
-    readonly NotificationNotCreated: "notification_not_created";
 };
 export type ExceptionCode = typeof ExceptionCode[keyof typeof ExceptionCode];
 export declare function instanceOfExceptionCode(value: any): boolean;

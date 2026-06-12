@@ -18,8 +18,10 @@ exports.GetAboutChatbotResponseFromJSON = GetAboutChatbotResponseFromJSON;
 exports.GetAboutChatbotResponseFromJSONTyped = GetAboutChatbotResponseFromJSONTyped;
 exports.GetAboutChatbotResponseToJSON = GetAboutChatbotResponseToJSON;
 exports.GetAboutChatbotResponseToJSONTyped = GetAboutChatbotResponseToJSONTyped;
-const ModelName_1 = require("./ModelName");
+const ArtStyle_1 = require("./ArtStyle");
+const Gender_1 = require("./Gender");
 const LoraName_1 = require("./LoraName");
+const SexualOrientation_1 = require("./SexualOrientation");
 /**
  * Check if a given object implements the GetAboutChatbotResponse interface.
  */
@@ -30,6 +32,8 @@ function instanceOfGetAboutChatbotResponse(value) {
         return false;
     if (!('gender' in value) || value['gender'] === undefined)
         return false;
+    if (!('sexualOrientation' in value) || value['sexualOrientation'] === undefined)
+        return false;
     if (!('story' in value) || value['story'] === undefined)
         return false;
     if (!('bio' in value) || value['bio'] === undefined)
@@ -38,7 +42,7 @@ function instanceOfGetAboutChatbotResponse(value) {
         return false;
     if (!('looksDescription' in value) || value['looksDescription'] === undefined)
         return false;
-    if (!('model' in value) || value['model'] === undefined)
+    if (!('artStyle' in value) || value['artStyle'] === undefined)
         return false;
     if (!('loras' in value) || value['loras'] === undefined)
         return false;
@@ -60,12 +64,13 @@ function GetAboutChatbotResponseFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'userId': json['user_id'],
         'name': json['name'],
-        'gender': json['gender'],
+        'gender': (0, Gender_1.GenderFromJSON)(json['gender']),
+        'sexualOrientation': (0, SexualOrientation_1.SexualOrientationFromJSON)(json['sexual_orientation']),
         'story': json['story'],
         'bio': json['bio'],
         'exampleConversation': json['example_conversation'],
         'looksDescription': json['looks_description'],
-        'model': (0, ModelName_1.ModelNameFromJSON)(json['model']),
+        'artStyle': (0, ArtStyle_1.ArtStyleFromJSON)(json['art_style']),
         'loras': (json['loras'] == null ? null : json['loras'].map(LoraName_1.LoraNameFromJSON)),
         'generationStated': json['generation_stated'],
         'profilePicture': json['profile_picture'],
@@ -82,12 +87,13 @@ function GetAboutChatbotResponseToJSONTyped(value, ignoreDiscriminator = false) 
     return {
         'user_id': value['userId'],
         'name': value['name'],
-        'gender': value['gender'],
+        'gender': (0, Gender_1.GenderToJSON)(value['gender']),
+        'sexual_orientation': (0, SexualOrientation_1.SexualOrientationToJSON)(value['sexualOrientation']),
         'story': value['story'],
         'bio': value['bio'],
         'example_conversation': value['exampleConversation'],
         'looks_description': value['looksDescription'],
-        'model': (0, ModelName_1.ModelNameToJSON)(value['model']),
+        'art_style': (0, ArtStyle_1.ArtStyleToJSON)(value['artStyle']),
         'loras': (value['loras'] == null ? null : value['loras'].map(LoraName_1.LoraNameToJSON)),
         'generation_stated': value['generationStated'],
         'profile_picture': value['profilePicture'],

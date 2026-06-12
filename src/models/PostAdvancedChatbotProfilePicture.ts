@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { ModelName } from './ModelName';
+import type { ArtStyle } from './ArtStyle';
 import {
-    ModelNameFromJSON,
-    ModelNameFromJSONTyped,
-    ModelNameToJSON,
-    ModelNameToJSONTyped,
-} from './ModelName';
+    ArtStyleFromJSON,
+    ArtStyleFromJSONTyped,
+    ArtStyleToJSON,
+    ArtStyleToJSONTyped,
+} from './ArtStyle';
 import type { LoraName } from './LoraName';
 import {
     LoraNameFromJSON,
@@ -42,10 +42,10 @@ export interface PostAdvancedChatbotProfilePicture {
     description: string;
     /**
      * 
-     * @type {ModelName}
+     * @type {ArtStyle}
      * @memberof PostAdvancedChatbotProfilePicture
      */
-    model: ModelName;
+    artStyle: ArtStyle;
     /**
      * 
      * @type {Array<LoraName>}
@@ -61,7 +61,7 @@ export interface PostAdvancedChatbotProfilePicture {
  */
 export function instanceOfPostAdvancedChatbotProfilePicture(value: object): value is PostAdvancedChatbotProfilePicture {
     if (!('description' in value) || value['description'] === undefined) return false;
-    if (!('model' in value) || value['model'] === undefined) return false;
+    if (!('artStyle' in value) || value['artStyle'] === undefined) return false;
     return true;
 }
 
@@ -76,7 +76,7 @@ export function PostAdvancedChatbotProfilePictureFromJSONTyped(json: any, ignore
     return {
         
         'description': json['description'],
-        'model': ModelNameFromJSON(json['model']),
+        'artStyle': ArtStyleFromJSON(json['art_style']),
         'mods': json['mods'] == null ? undefined : ((json['mods'] as Array<any>).map(LoraNameFromJSON)),
     };
 }
@@ -93,7 +93,7 @@ export function PostAdvancedChatbotProfilePictureFromJSONTyped(json: any, ignore
     return {
         
         'description': value['description'],
-        'model': ModelNameToJSON(value['model']),
+        'art_style': ArtStyleToJSON(value['artStyle']),
         'mods': value['mods'] == null ? undefined : ((value['mods'] as Array<any>).map(LoraNameToJSON)),
     };
 }

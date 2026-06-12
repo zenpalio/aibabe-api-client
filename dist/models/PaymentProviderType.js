@@ -27,8 +27,7 @@ exports.PaymentProviderType = {
     Unicorn: 'unicorn',
     Corpay: 'corpay',
     Patreon: 'patreon',
-    Truevo: 'truevo',
-    Rapyd: 'rapyd'
+    Truevo: 'truevo'
 };
 function instanceOfPaymentProviderType(value) {
     for (const key in exports.PaymentProviderType) {
