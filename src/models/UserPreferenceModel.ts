@@ -81,12 +81,6 @@ export interface UserPreferenceModel {
      * @memberof UserPreferenceModel
      */
     llmName?: LLM | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserPreferenceModel
-     */
-    gender?: string | null;
 }
 
 
@@ -118,7 +112,6 @@ export function UserPreferenceModelFromJSONTyped(json: any, ignoreDiscriminator:
         'displayUnlockWarning': json['display_unlock_warning'] == null ? undefined : json['display_unlock_warning'],
         'usernameUpdated': json['username_updated'] == null ? undefined : json['username_updated'],
         'llmName': json['llm_name'] == null ? undefined : LLMFromJSON(json['llm_name']),
-        'gender': json['gender'] == null ? undefined : json['gender'],
     };
 }
 
@@ -142,7 +135,6 @@ export function UserPreferenceModelFromJSONTyped(json: any, ignoreDiscriminator:
         'display_unlock_warning': value['displayUnlockWarning'],
         'username_updated': value['usernameUpdated'],
         'llm_name': LLMToJSON(value['llmName']),
-        'gender': value['gender'],
     };
 }
 

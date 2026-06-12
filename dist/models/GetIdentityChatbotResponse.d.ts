@@ -38,12 +38,6 @@ export interface GetIdentityChatbotResponse {
      * @type {string}
      * @memberof GetIdentityChatbotResponse
      */
-    sexualOrientation: string | null;
-    /**
-     *
-     * @type {string}
-     * @memberof GetIdentityChatbotResponse
-     */
     bio: string | null;
     /**
      *

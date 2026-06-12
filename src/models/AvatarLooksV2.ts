@@ -27,6 +27,13 @@ import {
     HairColorToJSON,
     HairColorToJSONTyped,
 } from './HairColor';
+import type { HairStyle } from './HairStyle';
+import {
+    HairStyleFromJSON,
+    HairStyleFromJSONTyped,
+    HairStyleToJSON,
+    HairStyleToJSONTyped,
+} from './HairStyle';
 
 /**
  * 
@@ -46,6 +53,12 @@ export interface AvatarLooksV2 {
      * @memberof AvatarLooksV2
      */
     hairColor: HairColor;
+    /**
+     * 
+     * @type {HairStyle}
+     * @memberof AvatarLooksV2
+     */
+    hairstyle?: HairStyle | null;
 }
 
 
@@ -71,6 +84,7 @@ export function AvatarLooksV2FromJSONTyped(json: any, ignoreDiscriminator: boole
         
         'bodyType': BodyTypeFromJSON(json['body_type']),
         'hairColor': HairColorFromJSON(json['hair_color']),
+        'hairstyle': json['hairstyle'] == null ? undefined : HairStyleFromJSON(json['hairstyle']),
     };
 }
 
@@ -87,6 +101,7 @@ export function AvatarLooksV2FromJSONTyped(json: any, ignoreDiscriminator: boole
         
         'body_type': BodyTypeToJSON(value['bodyType']),
         'hair_color': HairColorToJSON(value['hairColor']),
+        'hairstyle': HairStyleToJSON(value['hairstyle']),
     };
 }
 

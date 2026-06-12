@@ -18,7 +18,6 @@ import type { ModelName } from './ModelName';
 import type { AnimeLora } from './AnimeLora';
 import type { Hobby } from './Hobby';
 import type { Personality } from './Personality';
-import type { SexualOrientation } from './SexualOrientation';
 import type { RelationshipStatus } from './RelationshipStatus';
 /**
  *
@@ -62,12 +61,6 @@ export interface PostCustomChatBotPayload {
      * @memberof PostCustomChatBotPayload
      */
     relationshipStatus: RelationshipStatus;
-    /**
-     *
-     * @type {SexualOrientation}
-     * @memberof PostCustomChatBotPayload
-     */
-    sexualOrientation?: SexualOrientation | null;
     /**
      *
      * @type {AnimeLora}

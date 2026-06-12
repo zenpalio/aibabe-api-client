@@ -18,7 +18,6 @@ import type { RoleplayType } from './RoleplayType';
 import type { VisualType } from './VisualType';
 import type { SeduceDifficulty } from './SeduceDifficulty';
 import type { AvatarLooksV2 } from './AvatarLooksV2';
-import type { SexualOrientation } from './SexualOrientation';
 /**
  *
  * @export
@@ -33,6 +32,18 @@ export interface PostCustomChatbotV2Payload {
     age: number;
     /**
      *
+     * @type {string}
+     * @memberof PostCustomChatbotV2Payload
+     */
+    name?: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof PostCustomChatbotV2Payload
+     */
+    gender?: string | null;
+    /**
+     *
      * @type {Array<SpecialFeatures>}
      * @memberof PostCustomChatbotV2Payload
      */
@@ -43,12 +54,6 @@ export interface PostCustomChatbotV2Payload {
      * @memberof PostCustomChatbotV2Payload
      */
     artStyle: ArtStyle;
-    /**
-     *
-     * @type {SexualOrientation}
-     * @memberof PostCustomChatbotV2Payload
-     */
-    sexualOrientation?: SexualOrientation | null;
     /**
      *
      * @type {Ethnicity}
@@ -96,7 +101,7 @@ export interface PostCustomChatbotV2Payload {
      * @type {string}
      * @memberof PostCustomChatbotV2Payload
      */
-    scenario: string;
+    scenario?: string;
     /**
      *
      * @type {string}
