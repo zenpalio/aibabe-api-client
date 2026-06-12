@@ -13,7 +13,6 @@ import type { PublicUserPreviewWithFollow } from './PublicUserPreviewWithFollow'
 import type { ChatbotPreview } from './ChatbotPreview';
 import type { VideoContent } from './VideoContent';
 import type { ContentType } from './ContentType';
-import type { EventSubmissionPreview } from './EventSubmissionPreview';
 import type { ImageContent } from './ImageContent';
 import type { StoryPreview } from './StoryPreview';
 import type { TagModel } from './TagModel';
@@ -101,12 +100,6 @@ export interface DetailedWallPost {
      * @memberof DetailedWallPost
      */
     type: ContentType;
-    /**
-     *
-     * @type {Array<EventSubmissionPreview>}
-     * @memberof DetailedWallPost
-     */
-    eventSubmissionPreviews: Array<EventSubmissionPreview>;
     /**
      *
      * @type {string}
