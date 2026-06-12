@@ -19,10 +19,16 @@ import type {
   GetVideoGenerationTagsResponse,
   HTTPValidationError,
   ImageToVideoFromChatPayload,
-  ImageToVideoPayload,
   ImageToVideoRecommendationPayload,
+  ImageToVideoRequest,
   LastVideoFrameResponse,
+  ResponseGetWanTaskStatusVideoWanTaskTaskIdGet,
+  VideoConfigResponse,
   VideoFromChatResponse,
+  VideoResolution,
+  WanExtendVideoCompletionPayload,
+  WanImageToVideoCompletionPayload,
+  WanImageToVideoResponse,
 } from '../models/index';
 import {
     ExtendVideoPayloadFromJSON,
@@ -33,18 +39,30 @@ import {
     HTTPValidationErrorToJSON,
     ImageToVideoFromChatPayloadFromJSON,
     ImageToVideoFromChatPayloadToJSON,
-    ImageToVideoPayloadFromJSON,
-    ImageToVideoPayloadToJSON,
     ImageToVideoRecommendationPayloadFromJSON,
     ImageToVideoRecommendationPayloadToJSON,
+    ImageToVideoRequestFromJSON,
+    ImageToVideoRequestToJSON,
     LastVideoFrameResponseFromJSON,
     LastVideoFrameResponseToJSON,
+    ResponseGetWanTaskStatusVideoWanTaskTaskIdGetFromJSON,
+    ResponseGetWanTaskStatusVideoWanTaskTaskIdGetToJSON,
+    VideoConfigResponseFromJSON,
+    VideoConfigResponseToJSON,
     VideoFromChatResponseFromJSON,
     VideoFromChatResponseToJSON,
+    VideoResolutionFromJSON,
+    VideoResolutionToJSON,
+    WanExtendVideoCompletionPayloadFromJSON,
+    WanExtendVideoCompletionPayloadToJSON,
+    WanImageToVideoCompletionPayloadFromJSON,
+    WanImageToVideoCompletionPayloadToJSON,
+    WanImageToVideoResponseFromJSON,
+    WanImageToVideoResponseToJSON,
 } from '../models/index';
 
-export interface AttachmentVideoChatbotIdAttachmentGetRequest {
-    chatbotId: string;
+export interface AttachmentVideoVideoIdAttachmentGetRequest {
+    videoId: string;
     videoName: string;
 }
 
@@ -60,10 +78,16 @@ export interface ChatCallbackVideoCallbackChatGenerationIdPostRequest {
     errorMessage?: string | null;
 }
 
-export interface DeleteVideoVideoChatbotIdDeleteRequest {
-    chatbotId: string;
-    videoName?: string | null;
-    generationId?: string | null;
+export interface CompleteWanExtendVideoVideoWanExtendCompletePostRequest {
+    wanExtendVideoCompletionPayload: WanExtendVideoCompletionPayload;
+}
+
+export interface CompleteWanVideoVideoWanCompletePostRequest {
+    wanImageToVideoCompletionPayload: WanImageToVideoCompletionPayload;
+}
+
+export interface DeleteVideoVideoVideoIdDeleteRequest {
+    videoId: string;
 }
 
 export interface ExtendCallbackVideoExtendCallbackGenerationIdPostRequest {
@@ -72,8 +96,7 @@ export interface ExtendCallbackVideoExtendCallbackGenerationIdPostRequest {
     errorMessage?: string | null;
 }
 
-export interface ExtendVideoVideoVideoIdExtendPostRequest {
-    videoId: string;
+export interface ExtendVideoVideoExtendPostRequest {
     extendVideoPayload: ExtendVideoPayload;
 }
 
@@ -86,11 +109,29 @@ export interface GenerateVideoFromChatVideoChatPostRequest {
 }
 
 export interface GenerateVideoVideoPostRequest {
-    imageToVideoPayload: ImageToVideoPayload;
+    imageToVideoRequest: ImageToVideoRequest;
+}
+
+export interface GenerateWanVideoDirectVideoWanGeneratePostRequest {
+    image: Blob;
+    prompt: string;
+    audio?: Blob | null;
+    negativePrompt?: string | null;
+    provider?: GenerateWanVideoDirectVideoWanGeneratePostProviderEnum;
+    modelName?: string | null;
+    resolution?: VideoResolution;
+    duration?: number;
+    seed?: number | null;
+    audioGeneration?: boolean;
 }
 
 export interface GenerationTagsVideoVideoIdTagsGetRequest {
     videoId: string;
+}
+
+export interface GetWanTaskStatusVideoWanTaskTaskIdGetRequest {
+    taskId: string;
+    provider?: GetWanTaskStatusVideoWanTaskTaskIdGetProviderEnum;
 }
 
 export interface VideoLastFrameVideoVideoIdLastFrameGetRequest {
@@ -105,18 +146,18 @@ export class VideoApi extends runtime.BaseAPI {
     /**
      * Attachment
      */
-    async attachmentVideoChatbotIdAttachmentGetRaw(requestParameters: AttachmentVideoChatbotIdAttachmentGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
-        if (requestParameters['chatbotId'] == null) {
+    async attachmentVideoVideoIdAttachmentGetRaw(requestParameters: AttachmentVideoVideoIdAttachmentGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
+        if (requestParameters['videoId'] == null) {
             throw new runtime.RequiredError(
-                'chatbotId',
-                'Required parameter "chatbotId" was null or undefined when calling attachmentVideoChatbotIdAttachmentGet().'
+                'videoId',
+                'Required parameter "videoId" was null or undefined when calling attachmentVideoVideoIdAttachmentGet().'
             );
         }
 
         if (requestParameters['videoName'] == null) {
             throw new runtime.RequiredError(
                 'videoName',
-                'Required parameter "videoName" was null or undefined when calling attachmentVideoChatbotIdAttachmentGet().'
+                'Required parameter "videoName" was null or undefined when calling attachmentVideoVideoIdAttachmentGet().'
             );
         }
 
@@ -129,7 +170,7 @@ export class VideoApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         const response = await this.request({
-            path: `/video/{chatbot_id}/attachment`.replace(`{${"chatbot_id"}}`, encodeURIComponent(String(requestParameters['chatbotId']))),
+            path: `/video/{video_id}/attachment`.replace(`{${"video_id"}}`, encodeURIComponent(String(requestParameters['videoId']))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -145,8 +186,8 @@ export class VideoApi extends runtime.BaseAPI {
     /**
      * Attachment
      */
-    async attachmentVideoChatbotIdAttachmentGet(requestParameters: AttachmentVideoChatbotIdAttachmentGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
-        const response = await this.attachmentVideoChatbotIdAttachmentGetRaw(requestParameters, initOverrides);
+    async attachmentVideoVideoIdAttachmentGet(requestParameters: AttachmentVideoVideoIdAttachmentGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
+        const response = await this.attachmentVideoVideoIdAttachmentGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -285,30 +326,102 @@ export class VideoApi extends runtime.BaseAPI {
     }
 
     /**
-     * Delete Video
+     * Complete Wan Extend Video
      */
-    async deleteVideoVideoChatbotIdDeleteRaw(requestParameters: DeleteVideoVideoChatbotIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
-        if (requestParameters['chatbotId'] == null) {
+    async completeWanExtendVideoVideoWanExtendCompletePostRaw(requestParameters: CompleteWanExtendVideoVideoWanExtendCompletePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
+        if (requestParameters['wanExtendVideoCompletionPayload'] == null) {
             throw new runtime.RequiredError(
-                'chatbotId',
-                'Required parameter "chatbotId" was null or undefined when calling deleteVideoVideoChatbotIdDelete().'
+                'wanExtendVideoCompletionPayload',
+                'Required parameter "wanExtendVideoCompletionPayload" was null or undefined when calling completeWanExtendVideoVideoWanExtendCompletePost().'
             );
         }
 
         const queryParameters: any = {};
 
-        if (requestParameters['videoName'] != null) {
-            queryParameters['video_name'] = requestParameters['videoName'];
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        const response = await this.request({
+            path: `/video/wan/extend/complete`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: WanExtendVideoCompletionPayloadToJSON(requestParameters['wanExtendVideoCompletionPayload']),
+        }, initOverrides);
+
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse<any>(response);
+        } else {
+            return new runtime.TextApiResponse(response) as any;
+        }
+    }
+
+    /**
+     * Complete Wan Extend Video
+     */
+    async completeWanExtendVideoVideoWanExtendCompletePost(requestParameters: CompleteWanExtendVideoVideoWanExtendCompletePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
+        const response = await this.completeWanExtendVideoVideoWanExtendCompletePostRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Complete Wan Video
+     */
+    async completeWanVideoVideoWanCompletePostRaw(requestParameters: CompleteWanVideoVideoWanCompletePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
+        if (requestParameters['wanImageToVideoCompletionPayload'] == null) {
+            throw new runtime.RequiredError(
+                'wanImageToVideoCompletionPayload',
+                'Required parameter "wanImageToVideoCompletionPayload" was null or undefined when calling completeWanVideoVideoWanCompletePost().'
+            );
         }
 
-        if (requestParameters['generationId'] != null) {
-            queryParameters['generation_id'] = requestParameters['generationId'];
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        const response = await this.request({
+            path: `/video/wan/complete`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: WanImageToVideoCompletionPayloadToJSON(requestParameters['wanImageToVideoCompletionPayload']),
+        }, initOverrides);
+
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse<any>(response);
+        } else {
+            return new runtime.TextApiResponse(response) as any;
         }
+    }
+
+    /**
+     * Complete Wan Video
+     */
+    async completeWanVideoVideoWanCompletePost(requestParameters: CompleteWanVideoVideoWanCompletePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
+        const response = await this.completeWanVideoVideoWanCompletePostRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Delete Video
+     */
+    async deleteVideoVideoVideoIdDeleteRaw(requestParameters: DeleteVideoVideoVideoIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
+        if (requestParameters['videoId'] == null) {
+            throw new runtime.RequiredError(
+                'videoId',
+                'Required parameter "videoId" was null or undefined when calling deleteVideoVideoVideoIdDelete().'
+            );
+        }
+
+        const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
         const response = await this.request({
-            path: `/video/{chatbot_id}`.replace(`{${"chatbot_id"}}`, encodeURIComponent(String(requestParameters['chatbotId']))),
+            path: `/video/{video_id}`.replace(`{${"video_id"}}`, encodeURIComponent(String(requestParameters['videoId']))),
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
@@ -324,8 +437,8 @@ export class VideoApi extends runtime.BaseAPI {
     /**
      * Delete Video
      */
-    async deleteVideoVideoChatbotIdDelete(requestParameters: DeleteVideoVideoChatbotIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
-        const response = await this.deleteVideoVideoChatbotIdDeleteRaw(requestParameters, initOverrides);
+    async deleteVideoVideoVideoIdDelete(requestParameters: DeleteVideoVideoVideoIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
+        const response = await this.deleteVideoVideoVideoIdDeleteRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -399,18 +512,11 @@ export class VideoApi extends runtime.BaseAPI {
     /**
      * Extend Video
      */
-    async extendVideoVideoVideoIdExtendPostRaw(requestParameters: ExtendVideoVideoVideoIdExtendPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
-        if (requestParameters['videoId'] == null) {
-            throw new runtime.RequiredError(
-                'videoId',
-                'Required parameter "videoId" was null or undefined when calling extendVideoVideoVideoIdExtendPost().'
-            );
-        }
-
+    async extendVideoVideoExtendPostRaw(requestParameters: ExtendVideoVideoExtendPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
         if (requestParameters['extendVideoPayload'] == null) {
             throw new runtime.RequiredError(
                 'extendVideoPayload',
-                'Required parameter "extendVideoPayload" was null or undefined when calling extendVideoVideoVideoIdExtendPost().'
+                'Required parameter "extendVideoPayload" was null or undefined when calling extendVideoVideoExtendPost().'
             );
         }
 
@@ -421,7 +527,7 @@ export class VideoApi extends runtime.BaseAPI {
         headerParameters['Content-Type'] = 'application/json';
 
         const response = await this.request({
-            path: `/video/{video_id}/extend`.replace(`{${"video_id"}}`, encodeURIComponent(String(requestParameters['videoId']))),
+            path: `/video/extend`,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -438,8 +544,8 @@ export class VideoApi extends runtime.BaseAPI {
     /**
      * Extend Video
      */
-    async extendVideoVideoVideoIdExtendPost(requestParameters: ExtendVideoVideoVideoIdExtendPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
-        const response = await this.extendVideoVideoVideoIdExtendPostRaw(requestParameters, initOverrides);
+    async extendVideoVideoExtendPost(requestParameters: ExtendVideoVideoExtendPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
+        const response = await this.extendVideoVideoExtendPostRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -523,10 +629,10 @@ export class VideoApi extends runtime.BaseAPI {
      * Generate Video
      */
     async generateVideoVideoPostRaw(requestParameters: GenerateVideoVideoPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
-        if (requestParameters['imageToVideoPayload'] == null) {
+        if (requestParameters['imageToVideoRequest'] == null) {
             throw new runtime.RequiredError(
-                'imageToVideoPayload',
-                'Required parameter "imageToVideoPayload" was null or undefined when calling generateVideoVideoPost().'
+                'imageToVideoRequest',
+                'Required parameter "imageToVideoRequest" was null or undefined when calling generateVideoVideoPost().'
             );
         }
 
@@ -541,7 +647,7 @@ export class VideoApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: ImageToVideoPayloadToJSON(requestParameters['imageToVideoPayload']),
+            body: ImageToVideoRequestToJSON(requestParameters['imageToVideoRequest']),
         }, initOverrides);
 
         if (this.isJsonMime(response.headers.get('content-type'))) {
@@ -556,6 +662,105 @@ export class VideoApi extends runtime.BaseAPI {
      */
     async generateVideoVideoPost(requestParameters: GenerateVideoVideoPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
         const response = await this.generateVideoVideoPostRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Generate Wan Video Direct
+     */
+    async generateWanVideoDirectVideoWanGeneratePostRaw(requestParameters: GenerateWanVideoDirectVideoWanGeneratePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<WanImageToVideoResponse>> {
+        if (requestParameters['image'] == null) {
+            throw new runtime.RequiredError(
+                'image',
+                'Required parameter "image" was null or undefined when calling generateWanVideoDirectVideoWanGeneratePost().'
+            );
+        }
+
+        if (requestParameters['prompt'] == null) {
+            throw new runtime.RequiredError(
+                'prompt',
+                'Required parameter "prompt" was null or undefined when calling generateWanVideoDirectVideoWanGeneratePost().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const consumes: runtime.Consume[] = [
+            { contentType: 'multipart/form-data' },
+        ];
+        // @ts-ignore: canConsumeForm may be unused
+        const canConsumeForm = runtime.canConsumeForm(consumes);
+
+        let formParams: { append(param: string, value: any): any };
+        let useForm = false;
+        // use FormData to transmit files using content-type "multipart/form-data"
+        useForm = canConsumeForm;
+        // use FormData to transmit files using content-type "multipart/form-data"
+        useForm = canConsumeForm;
+        if (useForm) {
+            formParams = new FormData();
+        } else {
+            formParams = new URLSearchParams();
+        }
+
+        if (requestParameters['image'] != null) {
+            formParams.append('image', requestParameters['image'] as any);
+        }
+
+        if (requestParameters['audio'] != null) {
+            formParams.append('audio', requestParameters['audio'] as any);
+        }
+
+        if (requestParameters['prompt'] != null) {
+            formParams.append('prompt', requestParameters['prompt'] as any);
+        }
+
+        if (requestParameters['negativePrompt'] != null) {
+            formParams.append('negative_prompt', requestParameters['negativePrompt'] as any);
+        }
+
+        if (requestParameters['provider'] != null) {
+            formParams.append('provider', requestParameters['provider'] as any);
+        }
+
+        if (requestParameters['modelName'] != null) {
+            formParams.append('model_name', requestParameters['modelName'] as any);
+        }
+
+        if (requestParameters['resolution'] != null) {
+            formParams.append('resolution', requestParameters['resolution'] as any);
+        }
+
+        if (requestParameters['duration'] != null) {
+            formParams.append('duration', requestParameters['duration'] as any);
+        }
+
+        if (requestParameters['seed'] != null) {
+            formParams.append('seed', requestParameters['seed'] as any);
+        }
+
+        if (requestParameters['audioGeneration'] != null) {
+            formParams.append('audio_generation', requestParameters['audioGeneration'] as any);
+        }
+
+        const response = await this.request({
+            path: `/video/wan/generate`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: formParams,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => WanImageToVideoResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Generate Wan Video Direct
+     */
+    async generateWanVideoDirectVideoWanGeneratePost(requestParameters: GenerateWanVideoDirectVideoWanGeneratePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<WanImageToVideoResponse> {
+        const response = await this.generateWanVideoDirectVideoWanGeneratePostRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -589,6 +794,69 @@ export class VideoApi extends runtime.BaseAPI {
      */
     async generationTagsVideoVideoIdTagsGet(requestParameters: GenerationTagsVideoVideoIdTagsGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetVideoGenerationTagsResponse> {
         const response = await this.generationTagsVideoVideoIdTagsGetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Get Video Config
+     */
+    async getVideoConfigVideoConfigGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<VideoConfigResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/video/config`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => VideoConfigResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Get Video Config
+     */
+    async getVideoConfigVideoConfigGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<VideoConfigResponse> {
+        const response = await this.getVideoConfigVideoConfigGetRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Get Wan Task Status
+     */
+    async getWanTaskStatusVideoWanTaskTaskIdGetRaw(requestParameters: GetWanTaskStatusVideoWanTaskTaskIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ResponseGetWanTaskStatusVideoWanTaskTaskIdGet>> {
+        if (requestParameters['taskId'] == null) {
+            throw new runtime.RequiredError(
+                'taskId',
+                'Required parameter "taskId" was null or undefined when calling getWanTaskStatusVideoWanTaskTaskIdGet().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['provider'] != null) {
+            queryParameters['provider'] = requestParameters['provider'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/video/wan/task/{task_id}`.replace(`{${"task_id"}}`, encodeURIComponent(String(requestParameters['taskId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ResponseGetWanTaskStatusVideoWanTaskTaskIdGetFromJSON(jsonValue));
+    }
+
+    /**
+     * Get Wan Task Status
+     */
+    async getWanTaskStatusVideoWanTaskTaskIdGet(requestParameters: GetWanTaskStatusVideoWanTaskTaskIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ResponseGetWanTaskStatusVideoWanTaskTaskIdGet> {
+        const response = await this.getWanTaskStatusVideoWanTaskTaskIdGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -651,3 +919,20 @@ export const ExtendCallbackVideoExtendCallbackGenerationIdPostStatusEnum = {
     Failed: 'failed'
 } as const;
 export type ExtendCallbackVideoExtendCallbackGenerationIdPostStatusEnum = typeof ExtendCallbackVideoExtendCallbackGenerationIdPostStatusEnum[keyof typeof ExtendCallbackVideoExtendCallbackGenerationIdPostStatusEnum];
+/**
+ * @export
+ */
+export const GenerateWanVideoDirectVideoWanGeneratePostProviderEnum = {
+    Mulerouter: 'mulerouter',
+    Wan: 'wan',
+    Kling: 'kling'
+} as const;
+export type GenerateWanVideoDirectVideoWanGeneratePostProviderEnum = typeof GenerateWanVideoDirectVideoWanGeneratePostProviderEnum[keyof typeof GenerateWanVideoDirectVideoWanGeneratePostProviderEnum];
+/**
+ * @export
+ */
+export const GetWanTaskStatusVideoWanTaskTaskIdGetProviderEnum = {
+    Mulerouter: 'mulerouter',
+    Wancloud: 'wancloud'
+} as const;
+export type GetWanTaskStatusVideoWanTaskTaskIdGetProviderEnum = typeof GetWanTaskStatusVideoWanTaskTaskIdGetProviderEnum[keyof typeof GetWanTaskStatusVideoWanTaskTaskIdGetProviderEnum];

@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { ArtStyle } from './ArtStyle';
 import type { LoraName } from './LoraName';
 /**
  *
@@ -33,13 +34,19 @@ export interface GetImageGenerationTagsResponse {
      * @type {string}
      * @memberof GetImageGenerationTagsResponse
      */
-    chatbotName: string;
+    chatbotName: string | null;
     /**
      *
      * @type {Array<LoraName>}
      * @memberof GetImageGenerationTagsResponse
      */
     loras: Array<LoraName>;
+    /**
+     *
+     * @type {ArtStyle}
+     * @memberof GetImageGenerationTagsResponse
+     */
+    artStyle: ArtStyle;
 }
 /**
  * Check if a given object implements the GetImageGenerationTagsResponse interface.

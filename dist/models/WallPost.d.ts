@@ -11,8 +11,9 @@
  */
 import type { ChatbotPreview } from './ChatbotPreview';
 import type { VideoContent } from './VideoContent';
-import type { SharedContentType } from './SharedContentType';
+import type { ContentType } from './ContentType';
 import type { ImageContent } from './ImageContent';
+import type { StoryPreview } from './StoryPreview';
 /**
  *
  * @export
@@ -39,16 +40,22 @@ export interface WallPost {
     chatbot: ChatbotPreview | null;
     /**
      *
-     * @type {Array<ImageContent>}
+     * @type {StoryPreview}
      * @memberof WallPost
      */
-    pictures: Array<ImageContent>;
+    story: StoryPreview | null;
     /**
      *
-     * @type {Array<VideoContent>}
+     * @type {ImageContent}
      * @memberof WallPost
      */
-    videos: Array<VideoContent>;
+    picture: ImageContent | null;
+    /**
+     *
+     * @type {VideoContent}
+     * @memberof WallPost
+     */
+    video: VideoContent | null;
     /**
      *
      * @type {number}
@@ -87,10 +94,10 @@ export interface WallPost {
     liked: boolean;
     /**
      *
-     * @type {SharedContentType}
+     * @type {ContentType}
      * @memberof WallPost
      */
-    type: SharedContentType;
+    type: ContentType;
 }
 /**
  * Check if a given object implements the WallPost interface.

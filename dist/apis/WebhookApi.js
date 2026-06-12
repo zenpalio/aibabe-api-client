@@ -54,6 +54,32 @@ const index_1 = require("../models/index");
  */
 class WebhookApi extends runtime.BaseAPI {
     /**
+     * Rapyd
+     */
+    async rapydWebhookRapydPostRaw(initOverrides) {
+        const queryParameters = {};
+        const headerParameters = {};
+        const response = await this.request({
+            path: `/webhook/rapyd`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse(response);
+        }
+        else {
+            return new runtime.TextApiResponse(response);
+        }
+    }
+    /**
+     * Rapyd
+     */
+    async rapydWebhookRapydPost(initOverrides) {
+        const response = await this.rapydWebhookRapydPostRaw(initOverrides);
+        return await response.value();
+    }
+    /**
      * Truevo
      */
     async truevoWebhookTruevoPostRaw(initOverrides) {

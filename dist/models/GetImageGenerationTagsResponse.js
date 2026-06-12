@@ -18,6 +18,7 @@ exports.GetImageGenerationTagsResponseFromJSON = GetImageGenerationTagsResponseF
 exports.GetImageGenerationTagsResponseFromJSONTyped = GetImageGenerationTagsResponseFromJSONTyped;
 exports.GetImageGenerationTagsResponseToJSON = GetImageGenerationTagsResponseToJSON;
 exports.GetImageGenerationTagsResponseToJSONTyped = GetImageGenerationTagsResponseToJSONTyped;
+const ArtStyle_1 = require("./ArtStyle");
 const LoraName_1 = require("./LoraName");
 /**
  * Check if a given object implements the GetImageGenerationTagsResponse interface.
@@ -31,6 +32,8 @@ function instanceOfGetImageGenerationTagsResponse(value) {
         return false;
     if (!('loras' in value) || value['loras'] === undefined)
         return false;
+    if (!('artStyle' in value) || value['artStyle'] === undefined)
+        return false;
     return true;
 }
 function GetImageGenerationTagsResponseFromJSON(json) {
@@ -43,8 +46,9 @@ function GetImageGenerationTagsResponseFromJSONTyped(json, ignoreDiscriminator) 
     return {
         'tags': json['tags'],
         'downloadUrl': json['download_url'],
-        'chatbotName': json['chatbotName'],
+        'chatbotName': json['chatbot_name'],
         'loras': (json['loras'].map(LoraName_1.LoraNameFromJSON)),
+        'artStyle': (0, ArtStyle_1.ArtStyleFromJSON)(json['art_style']),
     };
 }
 function GetImageGenerationTagsResponseToJSON(json) {
@@ -57,8 +61,9 @@ function GetImageGenerationTagsResponseToJSONTyped(value, ignoreDiscriminator = 
     return {
         'tags': value['tags'],
         'download_url': value['downloadUrl'],
-        'chatbotName': value['chatbotName'],
+        'chatbot_name': value['chatbotName'],
         'loras': (value['loras'].map(LoraName_1.LoraNameToJSON)),
+        'art_style': (0, ArtStyle_1.ArtStyleToJSON)(value['artStyle']),
     };
 }
 //# sourceMappingURL=GetImageGenerationTagsResponse.js.map

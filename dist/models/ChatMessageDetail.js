@@ -61,6 +61,7 @@ function ChatMessageDetailFromJSONTyped(json, ignoreDiscriminator) {
         'audioUrl': json['audio_url'] == null ? undefined : json['audio_url'],
         'audioStatus': json['audio_status'] == null ? undefined : (0, GeneratedAudioStatus_1.GeneratedAudioStatusFromJSON)(json['audio_status']),
         'originalImageId': json['original_image_id'] == null ? undefined : json['original_image_id'],
+        'originalImageUrl': json['original_image_url'] == null ? undefined : json['original_image_url'],
     };
 }
 function ChatMessageDetailToJSON(json) {
@@ -82,6 +83,7 @@ function ChatMessageDetailToJSONTyped(value, ignoreDiscriminator = false) {
         'audio_url': value['audioUrl'],
         'audio_status': (0, GeneratedAudioStatus_1.GeneratedAudioStatusToJSON)(value['audioStatus']),
         'original_image_id': value['originalImageId'],
+        'original_image_url': value['originalImageUrl'],
     };
 }
 //# sourceMappingURL=ChatMessageDetail.js.map

@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { PaymentProviderType } from './PaymentProviderType';
 /**
  *
  * @export
@@ -27,6 +28,18 @@ export interface PostCheckoutResponse {
      * @memberof PostCheckoutResponse
      */
     data: string;
+    /**
+     *
+     * @type {PaymentProviderType}
+     * @memberof PostCheckoutResponse
+     */
+    provider?: PaymentProviderType | null;
+    /**
+     *
+     * @type {string}
+     * @memberof PostCheckoutResponse
+     */
+    redirectUrl?: string | null;
 }
 /**
  * Check if a given object implements the PostCheckoutResponse interface.

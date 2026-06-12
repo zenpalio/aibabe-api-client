@@ -70,6 +70,12 @@ export interface ExploreSearchRequest {
     chatbotId?: string | null;
     /**
      *
+     * @type {string}
+     * @memberof ExploreSearchRequest
+     */
+    storyId?: string | null;
+    /**
+     *
      * @type {PostType}
      * @memberof ExploreSearchRequest
      */
@@ -80,6 +86,24 @@ export interface ExploreSearchRequest {
      * @memberof ExploreSearchRequest
      */
     creatorUserId?: string | null;
+    /**
+     *
+     * @type {boolean}
+     * @memberof ExploreSearchRequest
+     */
+    scene?: boolean;
+    /**
+     *
+     * @type {boolean}
+     * @memberof ExploreSearchRequest
+     */
+    seenStories?: boolean | null;
+    /**
+     *
+     * @type {boolean}
+     * @memberof ExploreSearchRequest
+     */
+    unlockedStories?: boolean | null;
 }
 /**
  * Check if a given object implements the ExploreSearchRequest interface.

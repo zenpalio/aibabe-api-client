@@ -55,10 +55,10 @@ export interface GeneratedVideos {
     id: string;
     /**
      * 
-     * @type {Array<string>}
+     * @type {string}
      * @memberof GeneratedVideos
      */
-    urls: Array<string>;
+    url: string | null;
     /**
      * 
      * @type {Date}
@@ -107,6 +107,12 @@ export interface GeneratedVideos {
      * @memberof GeneratedVideos
      */
     originalImageId: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GeneratedVideos
+     */
+    originalImageUrl: string | null;
 }
 
 
@@ -126,7 +132,7 @@ export type GeneratedVideosTypeEnum = typeof GeneratedVideosTypeEnum[keyof typeo
 export function instanceOfGeneratedVideos(value: object): value is GeneratedVideos {
     if (!('type' in value) || value['type'] === undefined) return false;
     if (!('id' in value) || value['id'] === undefined) return false;
-    if (!('urls' in value) || value['urls'] === undefined) return false;
+    if (!('url' in value) || value['url'] === undefined) return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
     if (!('chatbot' in value) || value['chatbot'] === undefined) return false;
     if (!('eta' in value) || value['eta'] === undefined) return false;
@@ -134,6 +140,7 @@ export function instanceOfGeneratedVideos(value: object): value is GeneratedVide
     if (!('generationId' in value) || value['generationId'] === undefined) return false;
     if (!('seenByUser' in value) || value['seenByUser'] === undefined) return false;
     if (!('originalImageId' in value) || value['originalImageId'] === undefined) return false;
+    if (!('originalImageUrl' in value) || value['originalImageUrl'] === undefined) return false;
     return true;
 }
 
@@ -149,7 +156,7 @@ export function GeneratedVideosFromJSONTyped(json: any, ignoreDiscriminator: boo
         
         'type': json['type'],
         'id': json['id'],
-        'urls': json['urls'],
+        'url': json['url'],
         'createdAt': (new Date(json['created_at'])),
         'chatbot': ChatbotPreviewFromJSON(json['chatbot']),
         'postDetails': json['post_details'] == null ? undefined : PostDetailsFromJSON(json['post_details']),
@@ -158,6 +165,7 @@ export function GeneratedVideosFromJSONTyped(json: any, ignoreDiscriminator: boo
         'generationId': json['generation_id'],
         'seenByUser': json['seen_by_user'],
         'originalImageId': json['original_image_id'],
+        'originalImageUrl': json['original_image_url'],
     };
 }
 
@@ -174,7 +182,7 @@ export function GeneratedVideosFromJSONTyped(json: any, ignoreDiscriminator: boo
         
         'type': value['type'],
         'id': value['id'],
-        'urls': value['urls'],
+        'url': value['url'],
         'created_at': ((value['createdAt']).toISOString()),
         'chatbot': ChatbotPreviewToJSON(value['chatbot']),
         'post_details': PostDetailsToJSON(value['postDetails']),
@@ -183,6 +191,7 @@ export function GeneratedVideosFromJSONTyped(json: any, ignoreDiscriminator: boo
         'generation_id': value['generationId'],
         'seen_by_user': value['seenByUser'],
         'original_image_id': value['originalImageId'],
+        'original_image_url': value['originalImageUrl'],
     };
 }
 

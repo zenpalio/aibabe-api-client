@@ -15,7 +15,7 @@
  */
 export declare const MarketingCampaignName: {
     readonly LimitReset: "limit_reset";
-    readonly FirstTimeOfferReminder: "first_time_offer_reminder";
+    readonly ActiveUserReach: "active_user_reach";
     readonly FailedPaymentReminder: "failed_payment_reminder";
 };
 export type MarketingCampaignName = typeof MarketingCampaignName[keyof typeof MarketingCampaignName];

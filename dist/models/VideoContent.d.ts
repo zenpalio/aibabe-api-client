@@ -38,7 +38,13 @@ export interface VideoContent {
      * @type {string}
      * @memberof VideoContent
      */
-    originalImageId?: string | null;
+    originalImageId: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof VideoContent
+     */
+    originalImageUrl: string | null;
 }
 /**
  * Check if a given object implements the VideoContent interface.
