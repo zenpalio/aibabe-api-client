@@ -4,6 +4,7 @@ export * from './AuthenticationApi';
 export * from './BadgesApi';
 export * from './ChatApi';
 export * from './ChatbotApi';
+export * from './EventApi';
 export * from './ExploreApi';
 export * from './GalleryApi';
 export * from './HeartbeatApi';

@@ -103,6 +103,18 @@ export interface PostSearchRequest {
      * @memberof PostSearchRequest
      */
     storyId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof PostSearchRequest
+     */
+    eventId?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof PostSearchRequest
+     */
+    eventWinners?: boolean;
 }
 
 
@@ -132,6 +144,8 @@ export function PostSearchRequestFromJSONTyped(json: any, ignoreDiscriminator: b
         'ownerFilters': json['owner_filters'] == null ? undefined : ((json['owner_filters'] as Array<any>).map(OwnerFilterFromJSON)),
         'chatbotId': json['chatbot_id'] == null ? undefined : json['chatbot_id'],
         'storyId': json['story_id'] == null ? undefined : json['story_id'],
+        'eventId': json['event_id'] == null ? undefined : json['event_id'],
+        'eventWinners': json['event_winners'] == null ? undefined : json['event_winners'],
     };
 }
 
@@ -154,6 +168,8 @@ export function PostSearchRequestFromJSONTyped(json: any, ignoreDiscriminator: b
         'owner_filters': value['ownerFilters'] == null ? undefined : ((value['ownerFilters'] as Array<any>).map(OwnerFilterToJSON)),
         'chatbot_id': value['chatbotId'],
         'story_id': value['storyId'],
+        'event_id': value['eventId'],
+        'event_winners': value['eventWinners'],
     };
 }
 

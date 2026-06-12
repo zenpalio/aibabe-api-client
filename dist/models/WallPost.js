@@ -21,6 +21,7 @@ exports.WallPostToJSONTyped = WallPostToJSONTyped;
 const ChatbotPreview_1 = require("./ChatbotPreview");
 const VideoContent_1 = require("./VideoContent");
 const ContentType_1 = require("./ContentType");
+const EventSubmissionPreview_1 = require("./EventSubmissionPreview");
 const ImageContent_1 = require("./ImageContent");
 const StoryPreview_1 = require("./StoryPreview");
 /**
@@ -53,6 +54,8 @@ function instanceOfWallPost(value) {
         return false;
     if (!('type' in value) || value['type'] === undefined)
         return false;
+    if (!('eventSubmissionPreviews' in value) || value['eventSubmissionPreviews'] === undefined)
+        return false;
     return true;
 }
 function WallPostFromJSON(json) {
@@ -76,6 +79,7 @@ function WallPostFromJSONTyped(json, ignoreDiscriminator) {
         'updatedAt': (new Date(json['updated_at'])),
         'liked': json['liked'],
         'type': (0, ContentType_1.ContentTypeFromJSON)(json['type']),
+        'eventSubmissionPreviews': (json['event_submission_previews'].map(EventSubmissionPreview_1.EventSubmissionPreviewFromJSON)),
     };
 }
 function WallPostToJSON(json) {
@@ -99,6 +103,7 @@ function WallPostToJSONTyped(value, ignoreDiscriminator = false) {
         'updated_at': ((value['updatedAt']).toISOString()),
         'liked': value['liked'],
         'type': (0, ContentType_1.ContentTypeToJSON)(value['type']),
+        'event_submission_previews': (value['eventSubmissionPreviews'].map(EventSubmissionPreview_1.EventSubmissionPreviewToJSON)),
     };
 }
 //# sourceMappingURL=WallPost.js.map
