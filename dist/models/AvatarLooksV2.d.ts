@@ -11,6 +11,7 @@
  */
 import type { BodyType } from './BodyType';
 import type { HairColor } from './HairColor';
+import type { HairStyle } from './HairStyle';
 /**
  *
  * @export
@@ -29,6 +30,12 @@ export interface AvatarLooksV2 {
      * @memberof AvatarLooksV2
      */
     hairColor: HairColor;
+    /**
+     *
+     * @type {HairStyle}
+     * @memberof AvatarLooksV2
+     */
+    hairstyle?: HairStyle | null;
 }
 /**
  * Check if a given object implements the AvatarLooksV2 interface.

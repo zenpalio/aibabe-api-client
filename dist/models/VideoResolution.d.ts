@@ -14,9 +14,9 @@
  * @export
  */
 export declare const VideoResolution: {
-    readonly _480P: "480P";
-    readonly _720P: "720P";
-    readonly _1080P: "1080P";
+    readonly P480: "P480";
+    readonly P720: "P720";
+    readonly P1080: "P1080";
 };
 export type VideoResolution = typeof VideoResolution[keyof typeof VideoResolution];
 export declare function instanceOfVideoResolution(value: any): boolean;

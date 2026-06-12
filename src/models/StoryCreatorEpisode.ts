@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { UserEpisodeProgressType } from './UserEpisodeProgressType';
+import {
+    UserEpisodeProgressTypeFromJSON,
+    UserEpisodeProgressTypeFromJSONTyped,
+    UserEpisodeProgressTypeToJSON,
+    UserEpisodeProgressTypeToJSONTyped,
+} from './UserEpisodeProgressType';
 import type { StoryCreatorEpisodePrice } from './StoryCreatorEpisodePrice';
 import {
     StoryCreatorEpisodePriceFromJSON,
@@ -20,6 +27,13 @@ import {
     StoryCreatorEpisodePriceToJSON,
     StoryCreatorEpisodePriceToJSONTyped,
 } from './StoryCreatorEpisodePrice';
+import type { EpisodeCounts } from './EpisodeCounts';
+import {
+    EpisodeCountsFromJSON,
+    EpisodeCountsFromJSONTyped,
+    EpisodeCountsToJSON,
+    EpisodeCountsToJSONTyped,
+} from './EpisodeCounts';
 import type { EpisodeVisibility } from './EpisodeVisibility';
 import {
     EpisodeVisibilityFromJSON,
@@ -27,13 +41,13 @@ import {
     EpisodeVisibilityToJSON,
     EpisodeVisibilityToJSONTyped,
 } from './EpisodeVisibility';
-import type { UserStoryProgressType } from './UserStoryProgressType';
+import type { EpisodeRating } from './EpisodeRating';
 import {
-    UserStoryProgressTypeFromJSON,
-    UserStoryProgressTypeFromJSONTyped,
-    UserStoryProgressTypeToJSON,
-    UserStoryProgressTypeToJSONTyped,
-} from './UserStoryProgressType';
+    EpisodeRatingFromJSON,
+    EpisodeRatingFromJSONTyped,
+    EpisodeRatingToJSON,
+    EpisodeRatingToJSONTyped,
+} from './EpisodeRating';
 import type { AccessType } from './AccessType';
 import {
     AccessTypeFromJSON,
@@ -53,7 +67,7 @@ export interface StoryCreatorEpisode {
      * @type {string}
      * @memberof StoryCreatorEpisode
      */
-    title: string;
+    title?: string | null;
     /**
      * 
      * @type {string}
@@ -104,10 +118,10 @@ export interface StoryCreatorEpisode {
     panelsCount: number;
     /**
      * 
-     * @type {number}
+     * @type {EpisodeRating}
      * @memberof StoryCreatorEpisode
      */
-    rating?: number | null;
+    rating?: EpisodeRating | null;
     /**
      * 
      * @type {AccessType}
@@ -116,16 +130,28 @@ export interface StoryCreatorEpisode {
     accessType?: AccessType | null;
     /**
      * 
-     * @type {UserStoryProgressType}
+     * @type {UserEpisodeProgressType}
      * @memberof StoryCreatorEpisode
      */
-    progress?: UserStoryProgressType | null;
+    progress?: UserEpisodeProgressType | null;
     /**
      * 
      * @type {Array<StoryCreatorEpisodePrice>}
      * @memberof StoryCreatorEpisode
      */
-    prices?: Array<StoryCreatorEpisodePrice>;
+    prices?: Array<StoryCreatorEpisodePrice> | null;
+    /**
+     * 
+     * @type {EpisodeCounts}
+     * @memberof StoryCreatorEpisode
+     */
+    counts: EpisodeCounts;
+    /**
+     * 
+     * @type {Date}
+     * @memberof StoryCreatorEpisode
+     */
+    lastSaved: Date;
 }
 
 
@@ -134,11 +160,12 @@ export interface StoryCreatorEpisode {
  * Check if a given object implements the StoryCreatorEpisode interface.
  */
 export function instanceOfStoryCreatorEpisode(value: object): value is StoryCreatorEpisode {
-    if (!('title' in value) || value['title'] === undefined) return false;
     if (!('episodeId' in value) || value['episodeId'] === undefined) return false;
     if (!('visibility' in value) || value['visibility'] === undefined) return false;
     if (!('episodeIndex' in value) || value['episodeIndex'] === undefined) return false;
     if (!('panelsCount' in value) || value['panelsCount'] === undefined) return false;
+    if (!('counts' in value) || value['counts'] === undefined) return false;
+    if (!('lastSaved' in value) || value['lastSaved'] === undefined) return false;
     return true;
 }
 
@@ -152,7 +179,7 @@ export function StoryCreatorEpisodeFromJSONTyped(json: any, ignoreDiscriminator:
     }
     return {
         
-        'title': json['title'],
+        'title': json['title'] == null ? undefined : json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
         'lockAfter': json['lock_after'] == null ? undefined : json['lock_after'],
@@ -161,10 +188,12 @@ export function StoryCreatorEpisodeFromJSONTyped(json: any, ignoreDiscriminator:
         'visibility': EpisodeVisibilityFromJSON(json['visibility']),
         'episodeIndex': json['episode_index'],
         'panelsCount': json['panels_count'],
-        'rating': json['rating'] == null ? undefined : json['rating'],
+        'rating': json['rating'] == null ? undefined : EpisodeRatingFromJSON(json['rating']),
         'accessType': json['access_type'] == null ? undefined : AccessTypeFromJSON(json['access_type']),
-        'progress': json['progress'] == null ? undefined : UserStoryProgressTypeFromJSON(json['progress']),
+        'progress': json['progress'] == null ? undefined : UserEpisodeProgressTypeFromJSON(json['progress']),
         'prices': json['prices'] == null ? undefined : ((json['prices'] as Array<any>).map(StoryCreatorEpisodePriceFromJSON)),
+        'counts': EpisodeCountsFromJSON(json['counts']),
+        'lastSaved': (new Date(json['last_saved'])),
     };
 }
 
@@ -188,10 +217,12 @@ export function StoryCreatorEpisodeFromJSONTyped(json: any, ignoreDiscriminator:
         'visibility': EpisodeVisibilityToJSON(value['visibility']),
         'episode_index': value['episodeIndex'],
         'panels_count': value['panelsCount'],
-        'rating': value['rating'],
+        'rating': EpisodeRatingToJSON(value['rating']),
         'access_type': AccessTypeToJSON(value['accessType']),
-        'progress': UserStoryProgressTypeToJSON(value['progress']),
+        'progress': UserEpisodeProgressTypeToJSON(value['progress']),
         'prices': value['prices'] == null ? undefined : ((value['prices'] as Array<any>).map(StoryCreatorEpisodePriceToJSON)),
+        'counts': EpisodeCountsToJSON(value['counts']),
+        'last_saved': ((value['lastSaved']).toISOString()),
     };
 }
 

@@ -315,6 +315,30 @@ class StoryCreatorApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * Get Story Pictures
+     */
+    async getStoryPicturesStoryCreatorStoriesStoryIdMediaGetRaw(requestParameters, initOverrides) {
+        if (requestParameters['storyId'] == null) {
+            throw new runtime.RequiredError('storyId', 'Required parameter "storyId" was null or undefined when calling getStoryPicturesStoryCreatorStoriesStoryIdMediaGet().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        const response = await this.request({
+            path: `/story-creator/stories/{story_id}/media`.replace(`{${"story_id"}}`, encodeURIComponent(String(requestParameters['storyId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.StoryCreatorStoryMediaFromJSON)(jsonValue));
+    }
+    /**
+     * Get Story Pictures
+     */
+    async getStoryPicturesStoryCreatorStoriesStoryIdMediaGet(requestParameters, initOverrides) {
+        const response = await this.getStoryPicturesStoryCreatorStoriesStoryIdMediaGetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * Get Story
      */
     async getStoryStoryCreatorStoriesStoryIdGetRaw(requestParameters, initOverrides) {
@@ -413,27 +437,6 @@ class StoryCreatorApi extends runtime.BaseAPI {
      */
     async listEpisodesStoryCreatorStoriesStoryIdEpisodesGet(requestParameters, initOverrides) {
         const response = await this.listEpisodesStoryCreatorStoriesStoryIdEpisodesGetRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-    /**
-     * List Stories
-     */
-    async listStoriesStoryCreatorStoriesGetRaw(initOverrides) {
-        const queryParameters = {};
-        const headerParameters = {};
-        const response = await this.request({
-            path: `/story-creator/stories`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.StoryCreatorStoryListResponseFromJSON)(jsonValue));
-    }
-    /**
-     * List Stories
-     */
-    async listStoriesStoryCreatorStoriesGet(initOverrides) {
-        const response = await this.listStoriesStoryCreatorStoriesGetRaw(initOverrides);
         return await response.value();
     }
     /**

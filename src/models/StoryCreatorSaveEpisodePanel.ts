@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { ActorRole } from './ActorRole';
+import {
+    ActorRoleFromJSON,
+    ActorRoleFromJSONTyped,
+    ActorRoleToJSON,
+    ActorRoleToJSONTyped,
+} from './ActorRole';
 import type { EpisodePanelType } from './EpisodePanelType';
 import {
     EpisodePanelTypeFromJSON,
@@ -80,7 +87,25 @@ export interface StoryCreatorSaveEpisodePanel {
      * @type {string}
      * @memberof StoryCreatorSaveEpisodePanel
      */
-    messageActorId?: string | null;
+    actorId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof StoryCreatorSaveEpisodePanel
+     */
+    actorDisplayName?: string | null;
+    /**
+     * 
+     * @type {ActorRole}
+     * @memberof StoryCreatorSaveEpisodePanel
+     */
+    actorRole?: ActorRole | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof StoryCreatorSaveEpisodePanel
+     */
+    actorAvatar?: string | null;
     /**
      * 
      * @type {string}
@@ -155,7 +180,10 @@ export function StoryCreatorSaveEpisodePanelFromJSONTyped(json: any, ignoreDiscr
         'videoUrl': json['video_url'] == null ? undefined : json['video_url'],
         'videoPrompt': json['video_prompt'] == null ? undefined : json['video_prompt'],
         'message': json['message'] == null ? undefined : json['message'],
-        'messageActorId': json['message_actor_id'] == null ? undefined : json['message_actor_id'],
+        'actorId': json['actor_id'] == null ? undefined : json['actor_id'],
+        'actorDisplayName': json['actor_display_name'] == null ? undefined : json['actor_display_name'],
+        'actorRole': json['actor_role'] == null ? undefined : ActorRoleFromJSON(json['actor_role']),
+        'actorAvatar': json['actor_avatar'] == null ? undefined : json['actor_avatar'],
         'voice': json['voice'] == null ? undefined : json['voice'],
         'voiceAutoReplay': json['voice_auto_replay'] == null ? undefined : json['voice_auto_replay'],
         'voiceVolume': json['voice_volume'] == null ? undefined : json['voice_volume'],
@@ -185,7 +213,10 @@ export function StoryCreatorSaveEpisodePanelFromJSONTyped(json: any, ignoreDiscr
         'video_url': value['videoUrl'],
         'video_prompt': value['videoPrompt'],
         'message': value['message'],
-        'message_actor_id': value['messageActorId'],
+        'actor_id': value['actorId'],
+        'actor_display_name': value['actorDisplayName'],
+        'actor_role': ActorRoleToJSON(value['actorRole']),
+        'actor_avatar': value['actorAvatar'],
         'voice': value['voice'],
         'voice_auto_replay': value['voiceAutoReplay'],
         'voice_volume': value['voiceVolume'],

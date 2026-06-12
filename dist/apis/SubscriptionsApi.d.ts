@@ -32,6 +32,14 @@ export interface CheckoutAddonSubscriptionCheckoutAddonPostRequest {
 export interface CheckoutSubscriptionCheckoutPostRequest {
     postCheckoutSessionRequest: PostCheckoutSessionRequest;
 }
+export interface RapydCallbackDeclinedSubscriptionRapydCallbackDeclinedGetRequest {
+    txnRef?: string | null;
+    merchantReferenceId?: string | null;
+}
+export interface RapydCallbackSuccessSubscriptionRapydCallbackSuccessGetRequest {
+    txnRef?: string | null;
+    merchantReferenceId?: string | null;
+}
 export interface ReconcileBillingSubscriptionReconcileBillingPostRequest {
     dryRun?: boolean;
 }
@@ -109,6 +117,22 @@ export declare class SubscriptionsApi extends runtime.BaseAPI {
      * Get Prices
      */
     getPricesSubscriptionPricesGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetPricesResponse>;
+    /**
+     * Rapyd Callback Declined
+     */
+    rapydCallbackDeclinedSubscriptionRapydCallbackDeclinedGetRaw(requestParameters: RapydCallbackDeclinedSubscriptionRapydCallbackDeclinedGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
+    /**
+     * Rapyd Callback Declined
+     */
+    rapydCallbackDeclinedSubscriptionRapydCallbackDeclinedGet(requestParameters?: RapydCallbackDeclinedSubscriptionRapydCallbackDeclinedGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
+    /**
+     * Rapyd Callback Success
+     */
+    rapydCallbackSuccessSubscriptionRapydCallbackSuccessGetRaw(requestParameters: RapydCallbackSuccessSubscriptionRapydCallbackSuccessGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
+    /**
+     * Rapyd Callback Success
+     */
+    rapydCallbackSuccessSubscriptionRapydCallbackSuccessGet(requestParameters?: RapydCallbackSuccessSubscriptionRapydCallbackSuccessGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
     /**
      * Reconcile Billing
      */

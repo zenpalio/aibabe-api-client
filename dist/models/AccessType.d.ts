@@ -18,6 +18,7 @@ export declare const AccessType: {
     readonly Free: "free";
     readonly Purchased: "purchased";
     readonly Locked: "locked";
+    readonly Host: "host";
 };
 export type AccessType = typeof AccessType[keyof typeof AccessType];
 export declare function instanceOfAccessType(value: any): boolean;

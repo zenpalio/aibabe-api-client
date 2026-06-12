@@ -18,16 +18,22 @@ exports.StoryCreatorStoryFromJSON = StoryCreatorStoryFromJSON;
 exports.StoryCreatorStoryFromJSONTyped = StoryCreatorStoryFromJSONTyped;
 exports.StoryCreatorStoryToJSON = StoryCreatorStoryToJSON;
 exports.StoryCreatorStoryToJSONTyped = StoryCreatorStoryToJSONTyped;
-const UserStoryProgressType_1 = require("./UserStoryProgressType");
+const PublicUserPreviewWithFollow_1 = require("./PublicUserPreviewWithFollow");
+const StoryCounts_1 = require("./StoryCounts");
+const StoryVisibility_1 = require("./StoryVisibility");
+const UserEpisodeProgressType_1 = require("./UserEpisodeProgressType");
+const StoryRating_1 = require("./StoryRating");
 /**
  * Check if a given object implements the StoryCreatorStory interface.
  */
 function instanceOfStoryCreatorStory(value) {
-    if (!('title' in value) || value['title'] === undefined)
-        return false;
     if (!('id' in value) || value['id'] === undefined)
         return false;
-    if (!('ownerId' in value) || value['ownerId'] === undefined)
+    if (!('owner' in value) || value['owner'] === undefined)
+        return false;
+    if (!('visibility' in value) || value['visibility'] === undefined)
+        return false;
+    if (!('counts' in value) || value['counts'] === undefined)
         return false;
     return true;
 }
@@ -39,14 +45,16 @@ function StoryCreatorStoryFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
-        'title': json['title'],
+        'title': json['title'] == null ? undefined : json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
-        'newerVersionExists': json['newer_version_exists'] == null ? undefined : json['newer_version_exists'],
         'id': json['id'],
-        'ownerId': json['owner_id'],
-        'rating': json['rating'] == null ? undefined : json['rating'],
-        'progress': json['progress'] == null ? undefined : (0, UserStoryProgressType_1.UserStoryProgressTypeFromJSON)(json['progress']),
+        'owner': (0, PublicUserPreviewWithFollow_1.PublicUserPreviewWithFollowFromJSON)(json['owner']),
+        'rating': json['rating'] == null ? undefined : (0, StoryRating_1.StoryRatingFromJSON)(json['rating']),
+        'progress': json['progress'] == null ? undefined : (0, UserEpisodeProgressType_1.UserEpisodeProgressTypeFromJSON)(json['progress']),
+        'newerVersionExists': json['newer_version_exists'] == null ? undefined : json['newer_version_exists'],
+        'visibility': (0, StoryVisibility_1.StoryVisibilityFromJSON)(json['visibility']),
+        'counts': (0, StoryCounts_1.StoryCountsFromJSON)(json['counts']),
     };
 }
 function StoryCreatorStoryToJSON(json) {
@@ -60,11 +68,13 @@ function StoryCreatorStoryToJSONTyped(value, ignoreDiscriminator = false) {
         'title': value['title'],
         'description': value['description'],
         'cover_image': value['coverImage'],
-        'newer_version_exists': value['newerVersionExists'],
         'id': value['id'],
-        'owner_id': value['ownerId'],
-        'rating': value['rating'],
-        'progress': (0, UserStoryProgressType_1.UserStoryProgressTypeToJSON)(value['progress']),
+        'owner': (0, PublicUserPreviewWithFollow_1.PublicUserPreviewWithFollowToJSON)(value['owner']),
+        'rating': (0, StoryRating_1.StoryRatingToJSON)(value['rating']),
+        'progress': (0, UserEpisodeProgressType_1.UserEpisodeProgressTypeToJSON)(value['progress']),
+        'newer_version_exists': value['newerVersionExists'],
+        'visibility': (0, StoryVisibility_1.StoryVisibilityToJSON)(value['visibility']),
+        'counts': (0, StoryCounts_1.StoryCountsToJSON)(value['counts']),
     };
 }
 //# sourceMappingURL=StoryCreatorStory.js.map

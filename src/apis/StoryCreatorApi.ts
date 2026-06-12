@@ -34,7 +34,7 @@ import type {
   StoryCreatorPurchaseEpisodeResponse,
   StoryCreatorRateEpisodeRequest,
   StoryCreatorSaveEpisodeRequest,
-  StoryCreatorStoryListResponse,
+  StoryCreatorStoryMedia,
   StoryCreatorStoryResponse,
   StoryCreatorStoryWithEpisodesResponse,
   StoryCreatorUpdateActorRequest,
@@ -81,8 +81,8 @@ import {
     StoryCreatorRateEpisodeRequestToJSON,
     StoryCreatorSaveEpisodeRequestFromJSON,
     StoryCreatorSaveEpisodeRequestToJSON,
-    StoryCreatorStoryListResponseFromJSON,
-    StoryCreatorStoryListResponseToJSON,
+    StoryCreatorStoryMediaFromJSON,
+    StoryCreatorStoryMediaToJSON,
     StoryCreatorStoryResponseFromJSON,
     StoryCreatorStoryResponseToJSON,
     StoryCreatorStoryWithEpisodesResponseFromJSON,
@@ -138,6 +138,10 @@ export interface GetCurrentEpisodeVersionStoryCreatorEpisodesEpisodeIdCurrentGet
 
 export interface GetEpisodeStoryCreatorEpisodesEpisodeIdGetRequest {
     episodeId: string;
+}
+
+export interface GetStoryPicturesStoryCreatorStoriesStoryIdMediaGetRequest {
+    storyId: string;
 }
 
 export interface GetStoryStoryCreatorStoriesStoryIdGetRequest {
@@ -573,6 +577,39 @@ export class StoryCreatorApi extends runtime.BaseAPI {
     }
 
     /**
+     * Get Story Pictures
+     */
+    async getStoryPicturesStoryCreatorStoriesStoryIdMediaGetRaw(requestParameters: GetStoryPicturesStoryCreatorStoriesStoryIdMediaGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StoryCreatorStoryMedia>> {
+        if (requestParameters['storyId'] == null) {
+            throw new runtime.RequiredError(
+                'storyId',
+                'Required parameter "storyId" was null or undefined when calling getStoryPicturesStoryCreatorStoriesStoryIdMediaGet().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/story-creator/stories/{story_id}/media`.replace(`{${"story_id"}}`, encodeURIComponent(String(requestParameters['storyId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => StoryCreatorStoryMediaFromJSON(jsonValue));
+    }
+
+    /**
+     * Get Story Pictures
+     */
+    async getStoryPicturesStoryCreatorStoriesStoryIdMediaGet(requestParameters: GetStoryPicturesStoryCreatorStoriesStoryIdMediaGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StoryCreatorStoryMedia> {
+        const response = await this.getStoryPicturesStoryCreatorStoriesStoryIdMediaGetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Get Story
      */
     async getStoryStoryCreatorStoriesStoryIdGetRaw(requestParameters: GetStoryStoryCreatorStoriesStoryIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StoryCreatorStoryWithEpisodesResponse>> {
@@ -711,32 +748,6 @@ export class StoryCreatorApi extends runtime.BaseAPI {
      */
     async listEpisodesStoryCreatorStoriesStoryIdEpisodesGet(requestParameters: ListEpisodesStoryCreatorStoriesStoryIdEpisodesGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StoryCreatorEpisodeListResponse> {
         const response = await this.listEpisodesStoryCreatorStoriesStoryIdEpisodesGetRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * List Stories
-     */
-    async listStoriesStoryCreatorStoriesGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StoryCreatorStoryListResponse>> {
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/story-creator/stories`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => StoryCreatorStoryListResponseFromJSON(jsonValue));
-    }
-
-    /**
-     * List Stories
-     */
-    async listStoriesStoryCreatorStoriesGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StoryCreatorStoryListResponse> {
-        const response = await this.listStoriesStoryCreatorStoriesGetRaw(initOverrides);
         return await response.value();
     }
 

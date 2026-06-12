@@ -18,9 +18,9 @@
  * @export
  */
 export const VideoResolution = {
-    _480P: '480P',
-    _720P: '720P',
-    _1080P: '1080P'
+    P480: 'P480',
+    P720: 'P720',
+    P1080: 'P1080'
 } as const;
 export type VideoResolution = typeof VideoResolution[keyof typeof VideoResolution];
 

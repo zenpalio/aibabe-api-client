@@ -9,7 +9,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { UserStoryProgressType } from './UserStoryProgressType';
+import type { PublicUserPreviewWithFollow } from './PublicUserPreviewWithFollow';
+import type { StoryCounts } from './StoryCounts';
+import type { StoryVisibility } from './StoryVisibility';
+import type { UserEpisodeProgressType } from './UserEpisodeProgressType';
+import type { StoryRating } from './StoryRating';
 /**
  *
  * @export
@@ -21,7 +25,7 @@ export interface StoryCreatorStory {
      * @type {string}
      * @memberof StoryCreatorStory
      */
-    title: string;
+    title?: string | null;
     /**
      *
      * @type {string}
@@ -36,34 +40,46 @@ export interface StoryCreatorStory {
     coverImage?: string | null;
     /**
      *
-     * @type {boolean}
-     * @memberof StoryCreatorStory
-     */
-    newerVersionExists?: boolean | null;
-    /**
-     *
      * @type {string}
      * @memberof StoryCreatorStory
      */
     id: string;
     /**
      *
-     * @type {string}
+     * @type {PublicUserPreviewWithFollow}
      * @memberof StoryCreatorStory
      */
-    ownerId: string;
+    owner: PublicUserPreviewWithFollow;
     /**
      *
-     * @type {number}
+     * @type {StoryRating}
      * @memberof StoryCreatorStory
      */
-    rating?: number | null;
+    rating?: StoryRating | null;
     /**
      *
-     * @type {UserStoryProgressType}
+     * @type {UserEpisodeProgressType}
      * @memberof StoryCreatorStory
      */
-    progress?: UserStoryProgressType | null;
+    progress?: UserEpisodeProgressType | null;
+    /**
+     *
+     * @type {boolean}
+     * @memberof StoryCreatorStory
+     */
+    newerVersionExists?: boolean | null;
+    /**
+     *
+     * @type {StoryVisibility}
+     * @memberof StoryCreatorStory
+     */
+    visibility: StoryVisibility;
+    /**
+     *
+     * @type {StoryCounts}
+     * @memberof StoryCreatorStory
+     */
+    counts: StoryCounts;
 }
 /**
  * Check if a given object implements the StoryCreatorStory interface.

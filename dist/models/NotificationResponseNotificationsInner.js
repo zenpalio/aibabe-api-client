@@ -21,6 +21,7 @@ exports.NotificationResponseNotificationsInnerToJSONTyped = NotificationResponse
 const PublicUserPreview_1 = require("./PublicUserPreview");
 const PostType_1 = require("./PostType");
 const NotificationType_1 = require("./NotificationType");
+const BadgeModel_1 = require("./BadgeModel");
 const WallPost_1 = require("./WallPost");
 /**
  * Check if a given object implements the NotificationResponseNotificationsInner interface.
@@ -44,6 +45,14 @@ function instanceOfNotificationResponseNotificationsInner(value) {
         return false;
     if (!('message' in value) || value['message'] === undefined)
         return false;
+    if (!('episodeId' in value) || value['episodeId'] === undefined)
+        return false;
+    if (!('episodeTitle' in value) || value['episodeTitle'] === undefined)
+        return false;
+    if (!('coverImage' in value) || value['coverImage'] === undefined)
+        return false;
+    if (!('badge' in value) || value['badge'] === undefined)
+        return false;
     return true;
 }
 function NotificationResponseNotificationsInnerFromJSON(json) {
@@ -65,6 +74,10 @@ function NotificationResponseNotificationsInnerFromJSONTyped(json, ignoreDiscrim
         'donationId': json['donation_id'],
         'tokens': json['tokens'],
         'message': json['message'],
+        'episodeId': json['episode_id'],
+        'episodeTitle': json['episode_title'],
+        'coverImage': json['cover_image'],
+        'badge': (0, BadgeModel_1.BadgeModelFromJSON)(json['badge']),
     };
 }
 function NotificationResponseNotificationsInnerToJSON(json) {
@@ -86,6 +99,10 @@ function NotificationResponseNotificationsInnerToJSONTyped(value, ignoreDiscrimi
         'donation_id': value['donationId'],
         'tokens': value['tokens'],
         'message': value['message'],
+        'episode_id': value['episodeId'],
+        'episode_title': value['episodeTitle'],
+        'cover_image': value['coverImage'],
+        'badge': (0, BadgeModel_1.BadgeModelToJSON)(value['badge']),
     };
 }
 //# sourceMappingURL=NotificationResponseNotificationsInner.js.map

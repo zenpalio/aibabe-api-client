@@ -27,7 +27,8 @@ exports.AccessType = {
     Owner: 'owner',
     Free: 'free',
     Purchased: 'purchased',
-    Locked: 'locked'
+    Locked: 'locked',
+    Host: 'host'
 };
 function instanceOfAccessType(value) {
     for (const key in exports.AccessType) {

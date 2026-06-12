@@ -9,9 +9,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { UserEpisodeProgressType } from './UserEpisodeProgressType';
 import type { StoryCreatorEpisodePrice } from './StoryCreatorEpisodePrice';
+import type { EpisodeCounts } from './EpisodeCounts';
 import type { EpisodeVisibility } from './EpisodeVisibility';
-import type { UserStoryProgressType } from './UserStoryProgressType';
+import type { EpisodeRating } from './EpisodeRating';
 import type { AccessType } from './AccessType';
 /**
  *
@@ -24,7 +26,7 @@ export interface StoryCreatorEpisode {
      * @type {string}
      * @memberof StoryCreatorEpisode
      */
-    title: string;
+    title?: string | null;
     /**
      *
      * @type {string}
@@ -75,10 +77,10 @@ export interface StoryCreatorEpisode {
     panelsCount: number;
     /**
      *
-     * @type {number}
+     * @type {EpisodeRating}
      * @memberof StoryCreatorEpisode
      */
-    rating?: number | null;
+    rating?: EpisodeRating | null;
     /**
      *
      * @type {AccessType}
@@ -87,16 +89,28 @@ export interface StoryCreatorEpisode {
     accessType?: AccessType | null;
     /**
      *
-     * @type {UserStoryProgressType}
+     * @type {UserEpisodeProgressType}
      * @memberof StoryCreatorEpisode
      */
-    progress?: UserStoryProgressType | null;
+    progress?: UserEpisodeProgressType | null;
     /**
      *
      * @type {Array<StoryCreatorEpisodePrice>}
      * @memberof StoryCreatorEpisode
      */
-    prices?: Array<StoryCreatorEpisodePrice>;
+    prices?: Array<StoryCreatorEpisodePrice> | null;
+    /**
+     *
+     * @type {EpisodeCounts}
+     * @memberof StoryCreatorEpisode
+     */
+    counts: EpisodeCounts;
+    /**
+     *
+     * @type {Date}
+     * @memberof StoryCreatorEpisode
+     */
+    lastSaved: Date;
 }
 /**
  * Check if a given object implements the StoryCreatorEpisode interface.

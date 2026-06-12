@@ -27,6 +27,12 @@ export interface TextToSpeechRequest {
      * @memberof TextToSpeechRequest
      */
     referenceAudioId: string;
+    /**
+     *
+     * @type {number}
+     * @memberof TextToSpeechRequest
+     */
+    temperature?: number;
 }
 /**
  * Check if a given object implements the TextToSpeechRequest interface.

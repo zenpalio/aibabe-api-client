@@ -64,6 +64,7 @@ function ImageToVideoRequestFromJSONTyped(json, ignoreDiscriminator) {
         'watermark': json['watermark'] == null ? undefined : json['watermark'],
         'promptExtend': json['prompt_extend'] == null ? undefined : json['prompt_extend'],
         'seed': json['seed'] == null ? undefined : json['seed'],
+        'audioGeneration': json['audio_generation'] == null ? undefined : json['audio_generation'],
     };
 }
 function ImageToVideoRequestToJSON(json) {
@@ -87,6 +88,7 @@ function ImageToVideoRequestToJSONTyped(value, ignoreDiscriminator = false) {
         'watermark': value['watermark'],
         'prompt_extend': value['promptExtend'],
         'seed': value['seed'],
+        'audio_generation': value['audioGeneration'],
     };
 }
 //# sourceMappingURL=ImageToVideoRequest.js.map

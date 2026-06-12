@@ -19,16 +19,21 @@ exports.GetGalleryResponseItemsInnerFromJSON = GetGalleryResponseItemsInnerFromJ
 exports.GetGalleryResponseItemsInnerFromJSONTyped = GetGalleryResponseItemsInnerFromJSONTyped;
 exports.GetGalleryResponseItemsInnerToJSON = GetGalleryResponseItemsInnerToJSON;
 exports.GetGalleryResponseItemsInnerToJSONTyped = GetGalleryResponseItemsInnerToJSONTyped;
+const PublicUserPreviewWithFollow_1 = require("./PublicUserPreviewWithFollow");
+const StoryCounts_1 = require("./StoryCounts");
 const ArtStyle_1 = require("./ArtStyle");
 const ChatbotPreview_1 = require("./ChatbotPreview");
 const PostDetails_1 = require("./PostDetails");
+const StoryVisibility_1 = require("./StoryVisibility");
+const StoryRating_1 = require("./StoryRating");
 const VideoGenerationStatus_1 = require("./VideoGenerationStatus");
 /**
  * @export
  */
 exports.GetGalleryResponseItemsInnerTypeEnum = {
     GeneratedImages: 'generatedImages',
-    GeneratedVideos: 'generatedVideos'
+    GeneratedVideos: 'generatedVideos',
+    Stories: 'stories'
 };
 /**
  * Check if a given object implements the GetGalleryResponseItemsInner interface.
@@ -58,6 +63,12 @@ function instanceOfGetGalleryResponseItemsInner(value) {
         return false;
     if (!('originalImageUrl' in value) || value['originalImageUrl'] === undefined)
         return false;
+    if (!('title' in value) || value['title'] === undefined)
+        return false;
+    if (!('visibility' in value) || value['visibility'] === undefined)
+        return false;
+    if (!('counts' in value) || value['counts'] === undefined)
+        return false;
     return true;
 }
 function GetGalleryResponseItemsInnerFromJSON(json) {
@@ -81,6 +92,13 @@ function GetGalleryResponseItemsInnerFromJSONTyped(json, ignoreDiscriminator) {
         'artStyle': (0, ArtStyle_1.ArtStyleFromJSON)(json['art_style']),
         'originalImageId': json['original_image_id'],
         'originalImageUrl': json['original_image_url'],
+        'owner': json['owner'] == null ? undefined : (0, PublicUserPreviewWithFollow_1.PublicUserPreviewWithFollowFromJSON)(json['owner']),
+        'title': json['title'],
+        'description': json['description'] == null ? undefined : json['description'],
+        'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
+        'visibility': (0, StoryVisibility_1.StoryVisibilityFromJSON)(json['visibility']),
+        'rating': json['rating'] == null ? undefined : (0, StoryRating_1.StoryRatingFromJSON)(json['rating']),
+        'counts': (0, StoryCounts_1.StoryCountsFromJSON)(json['counts']),
     };
 }
 function GetGalleryResponseItemsInnerToJSON(json) {
@@ -104,6 +122,13 @@ function GetGalleryResponseItemsInnerToJSONTyped(value, ignoreDiscriminator = fa
         'art_style': (0, ArtStyle_1.ArtStyleToJSON)(value['artStyle']),
         'original_image_id': value['originalImageId'],
         'original_image_url': value['originalImageUrl'],
+        'owner': (0, PublicUserPreviewWithFollow_1.PublicUserPreviewWithFollowToJSON)(value['owner']),
+        'title': value['title'],
+        'description': value['description'],
+        'cover_image': value['coverImage'],
+        'visibility': (0, StoryVisibility_1.StoryVisibilityToJSON)(value['visibility']),
+        'rating': (0, StoryRating_1.StoryRatingToJSON)(value['rating']),
+        'counts': (0, StoryCounts_1.StoryCountsToJSON)(value['counts']),
     };
 }
 //# sourceMappingURL=GetGalleryResponseItemsInner.js.map

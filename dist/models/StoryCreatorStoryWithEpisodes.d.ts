@@ -9,6 +9,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { PublicUserPreviewWithFollow } from './PublicUserPreviewWithFollow';
+import type { StoryCounts } from './StoryCounts';
+import type { StoryVisibility } from './StoryVisibility';
+import type { UserEpisodeProgressType } from './UserEpisodeProgressType';
+import type { StoryRating } from './StoryRating';
 import type { StoryCreatorEpisode } from './StoryCreatorEpisode';
 /**
  *
@@ -21,7 +26,7 @@ export interface StoryCreatorStoryWithEpisodes {
      * @type {string}
      * @memberof StoryCreatorStoryWithEpisodes
      */
-    title: string;
+    title?: string | null;
     /**
      *
      * @type {string}
@@ -36,10 +41,46 @@ export interface StoryCreatorStoryWithEpisodes {
     coverImage?: string | null;
     /**
      *
+     * @type {string}
+     * @memberof StoryCreatorStoryWithEpisodes
+     */
+    id: string;
+    /**
+     *
+     * @type {PublicUserPreviewWithFollow}
+     * @memberof StoryCreatorStoryWithEpisodes
+     */
+    owner: PublicUserPreviewWithFollow;
+    /**
+     *
+     * @type {StoryRating}
+     * @memberof StoryCreatorStoryWithEpisodes
+     */
+    rating?: StoryRating | null;
+    /**
+     *
+     * @type {UserEpisodeProgressType}
+     * @memberof StoryCreatorStoryWithEpisodes
+     */
+    progress?: UserEpisodeProgressType | null;
+    /**
+     *
      * @type {boolean}
      * @memberof StoryCreatorStoryWithEpisodes
      */
     newerVersionExists?: boolean | null;
+    /**
+     *
+     * @type {StoryVisibility}
+     * @memberof StoryCreatorStoryWithEpisodes
+     */
+    visibility: StoryVisibility;
+    /**
+     *
+     * @type {StoryCounts}
+     * @memberof StoryCreatorStoryWithEpisodes
+     */
+    counts: StoryCounts;
     /**
      *
      * @type {Array<StoryCreatorEpisode>}

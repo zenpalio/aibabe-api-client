@@ -13,6 +13,35 @@
  */
 
 import { mapValues } from '../runtime';
+import type { PublicUserPreviewWithFollow } from './PublicUserPreviewWithFollow';
+import {
+    PublicUserPreviewWithFollowFromJSON,
+    PublicUserPreviewWithFollowFromJSONTyped,
+    PublicUserPreviewWithFollowToJSON,
+    PublicUserPreviewWithFollowToJSONTyped,
+} from './PublicUserPreviewWithFollow';
+import type { StoryCounts } from './StoryCounts';
+import {
+    StoryCountsFromJSON,
+    StoryCountsFromJSONTyped,
+    StoryCountsToJSON,
+    StoryCountsToJSONTyped,
+} from './StoryCounts';
+import type { UserEpisodeProgressType } from './UserEpisodeProgressType';
+import {
+    UserEpisodeProgressTypeFromJSON,
+    UserEpisodeProgressTypeFromJSONTyped,
+    UserEpisodeProgressTypeToJSON,
+    UserEpisodeProgressTypeToJSONTyped,
+} from './UserEpisodeProgressType';
+import type { StoryRating } from './StoryRating';
+import {
+    StoryRatingFromJSON,
+    StoryRatingFromJSONTyped,
+    StoryRatingToJSON,
+    StoryRatingToJSONTyped,
+} from './StoryRating';
+
 /**
  * 
  * @export
@@ -30,13 +59,7 @@ export interface StoryPreview {
      * @type {string}
      * @memberof StoryPreview
      */
-    ownerId: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof StoryPreview
-     */
-    title: string;
+    title: string | null;
     /**
      * 
      * @type {string}
@@ -49,15 +72,47 @@ export interface StoryPreview {
      * @memberof StoryPreview
      */
     coverImage?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof StoryPreview
+     */
+    firstEpisodeCoverImage?: string | null;
+    /**
+     * 
+     * @type {StoryRating}
+     * @memberof StoryPreview
+     */
+    rating?: StoryRating | null;
+    /**
+     * 
+     * @type {PublicUserPreviewWithFollow}
+     * @memberof StoryPreview
+     */
+    owner?: PublicUserPreviewWithFollow | null;
+    /**
+     * 
+     * @type {StoryCounts}
+     * @memberof StoryPreview
+     */
+    counts: StoryCounts;
+    /**
+     * 
+     * @type {UserEpisodeProgressType}
+     * @memberof StoryPreview
+     */
+    progress?: UserEpisodeProgressType | null;
 }
+
+
 
 /**
  * Check if a given object implements the StoryPreview interface.
  */
 export function instanceOfStoryPreview(value: object): value is StoryPreview {
     if (!('id' in value) || value['id'] === undefined) return false;
-    if (!('ownerId' in value) || value['ownerId'] === undefined) return false;
     if (!('title' in value) || value['title'] === undefined) return false;
+    if (!('counts' in value) || value['counts'] === undefined) return false;
     return true;
 }
 
@@ -72,10 +127,14 @@ export function StoryPreviewFromJSONTyped(json: any, ignoreDiscriminator: boolea
     return {
         
         'id': json['id'],
-        'ownerId': json['owner_id'],
         'title': json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
+        'firstEpisodeCoverImage': json['first_episode_cover_image'] == null ? undefined : json['first_episode_cover_image'],
+        'rating': json['rating'] == null ? undefined : StoryRatingFromJSON(json['rating']),
+        'owner': json['owner'] == null ? undefined : PublicUserPreviewWithFollowFromJSON(json['owner']),
+        'counts': StoryCountsFromJSON(json['counts']),
+        'progress': json['progress'] == null ? undefined : UserEpisodeProgressTypeFromJSON(json['progress']),
     };
 }
 
@@ -91,10 +150,14 @@ export function StoryPreviewFromJSONTyped(json: any, ignoreDiscriminator: boolea
     return {
         
         'id': value['id'],
-        'owner_id': value['ownerId'],
         'title': value['title'],
         'description': value['description'],
         'cover_image': value['coverImage'],
+        'first_episode_cover_image': value['firstEpisodeCoverImage'],
+        'rating': StoryRatingToJSON(value['rating']),
+        'owner': PublicUserPreviewWithFollowToJSON(value['owner']),
+        'counts': StoryCountsToJSON(value['counts']),
+        'progress': UserEpisodeProgressTypeToJSON(value['progress']),
     };
 }
 

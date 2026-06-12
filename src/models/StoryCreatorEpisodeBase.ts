@@ -24,7 +24,7 @@ export interface StoryCreatorEpisodeBase {
      * @type {string}
      * @memberof StoryCreatorEpisodeBase
      */
-    title: string;
+    title?: string | null;
     /**
      * 
      * @type {string}
@@ -49,7 +49,6 @@ export interface StoryCreatorEpisodeBase {
  * Check if a given object implements the StoryCreatorEpisodeBase interface.
  */
 export function instanceOfStoryCreatorEpisodeBase(value: object): value is StoryCreatorEpisodeBase {
-    if (!('title' in value) || value['title'] === undefined) return false;
     return true;
 }
 
@@ -63,7 +62,7 @@ export function StoryCreatorEpisodeBaseFromJSONTyped(json: any, ignoreDiscrimina
     }
     return {
         
-        'title': json['title'],
+        'title': json['title'] == null ? undefined : json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
         'lockAfter': json['lock_after'] == null ? undefined : json['lock_after'],

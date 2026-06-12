@@ -96,6 +96,12 @@ export interface ImageToVideoRequest {
      * @memberof ImageToVideoRequest
      */
     seed?: number | null;
+    /**
+     *
+     * @type {boolean}
+     * @memberof ImageToVideoRequest
+     */
+    audioGeneration?: boolean;
 }
 /**
  * Check if a given object implements the ImageToVideoRequest interface.

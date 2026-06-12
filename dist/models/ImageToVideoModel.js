@@ -24,9 +24,8 @@ exports.ImageToVideoModelToJSONTyped = ImageToVideoModelToJSONTyped;
  * @export
  */
 exports.ImageToVideoModel = {
-    Wan22I2V: 'WAN_22_I2V',
-    Wan27I2V: 'WAN_27_I2V',
-    Seedance20I2V: 'SEEDANCE_20_I2V'
+    _22I2V: 'WAN_22_I2V',
+    _27I2V: 'WAN_27_I2V'
 };
 function instanceOfImageToVideoModel(value) {
     for (const key in exports.ImageToVideoModel) {
