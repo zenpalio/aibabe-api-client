@@ -34,6 +34,12 @@ export interface GetAboutChatbotResponse {
      * @type {string}
      * @memberof GetAboutChatbotResponse
      */
+    gender: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof GetAboutChatbotResponse
+     */
     story: string | null;
     /**
      *

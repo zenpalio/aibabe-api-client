@@ -10,9 +10,16 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { GetGeneratedImage, GetImageGenerationTagsResponse, ImageParameters, LoraName, PostImagenRequest, PostImagenResponse } from '../models/index';
-export interface ExtractPngInfoImagenPngInfoPostRequest {
-    image: Blob;
+import type { ArtStyle, GetGeneratedImage, GetImageGenerationTagsResponse, GetLorasResponse, LoraName, PostGenerateImageRequest, PostGenerateSceneRequest, PostImagenResponse, PostRestartServersRequest } from '../models/index';
+export interface AttachmentImagenImageIdAttachmentGetRequest {
+    imageId: string;
+    imageName: string;
+}
+export interface DeleteImageImagenImageIdDeleteRequest {
+    imageId: string;
+}
+export interface GenerateSceneImagenGenerateScenePostRequest {
+    postGenerateSceneRequest: PostGenerateSceneRequest;
 }
 export interface GenerationTagsImagenImageIdTagsGetRequest {
     imageId: string;
@@ -20,25 +27,58 @@ export interface GenerationTagsImagenImageIdTagsGetRequest {
 export interface GetImageByFilenameImagenFilenameGetRequest {
     filename: string;
 }
-export interface GetLorasImagenChatbotIdLorasGetRequest {
-    chatbotId: string;
+export interface GetLorasImagenLorasGetRequest {
+    chatbotId?: string | null;
+    imageId?: string | null;
+    artStyle?: string | null;
+}
+export interface RestartServersImagenRestartAllPostRequest {
+    postRestartServersRequest?: PostRestartServersRequest;
 }
 export interface UserGenerateImageImagenGenerateChatbotIdPostRequest {
     chatbotId: string;
-    postImagenRequest: PostImagenRequest;
+    postGenerateImageRequest: PostGenerateImageRequest;
+}
+export interface UserInpaintImageImagenInpaintPostRequest {
+    originalImageId: string;
+    inpaintingMask: Blob;
+    query: string;
+    clientId: string;
+    requestId: string;
+    numberOfImages: number;
+    keepStructure: boolean;
+    chatbotId?: string | null;
+    artStyle?: ArtStyle | null;
+    loras?: Array<LoraName> | null;
 }
 /**
  *
  */
 export declare class ImageApi extends runtime.BaseAPI {
     /**
-     * Extract Png Info
+     * Attachment
      */
-    extractPngInfoImagenPngInfoPostRaw(requestParameters: ExtractPngInfoImagenPngInfoPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ImageParameters>>;
+    attachmentImagenImageIdAttachmentGetRaw(requestParameters: AttachmentImagenImageIdAttachmentGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
     /**
-     * Extract Png Info
+     * Attachment
      */
-    extractPngInfoImagenPngInfoPost(requestParameters: ExtractPngInfoImagenPngInfoPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ImageParameters>;
+    attachmentImagenImageIdAttachmentGet(requestParameters: AttachmentImagenImageIdAttachmentGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
+    /**
+     * Delete Image
+     */
+    deleteImageImagenImageIdDeleteRaw(requestParameters: DeleteImageImagenImageIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
+    /**
+     * Delete Image
+     */
+    deleteImageImagenImageIdDelete(requestParameters: DeleteImageImagenImageIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
+    /**
+     * Generate Scene
+     */
+    generateSceneImagenGenerateScenePostRaw(requestParameters: GenerateSceneImagenGenerateScenePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostImagenResponse>>;
+    /**
+     * Generate Scene
+     */
+    generateSceneImagenGenerateScenePost(requestParameters: GenerateSceneImagenGenerateScenePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PostImagenResponse>;
     /**
      * Generation Tags
      */
@@ -58,11 +98,19 @@ export declare class ImageApi extends runtime.BaseAPI {
     /**
      * Get Loras
      */
-    getLorasImagenChatbotIdLorasGetRaw(requestParameters: GetLorasImagenChatbotIdLorasGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<LoraName>>>;
+    getLorasImagenLorasGetRaw(requestParameters: GetLorasImagenLorasGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetLorasResponse>>;
     /**
      * Get Loras
      */
-    getLorasImagenChatbotIdLorasGet(requestParameters: GetLorasImagenChatbotIdLorasGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<LoraName>>;
+    getLorasImagenLorasGet(requestParameters?: GetLorasImagenLorasGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetLorasResponse>;
+    /**
+     * Restart Servers
+     */
+    restartServersImagenRestartAllPostRaw(requestParameters: RestartServersImagenRestartAllPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
+    /**
+     * Restart Servers
+     */
+    restartServersImagenRestartAllPost(requestParameters?: RestartServersImagenRestartAllPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
     /**
      * User Generate Image
      */
@@ -71,5 +119,13 @@ export declare class ImageApi extends runtime.BaseAPI {
      * User Generate Image
      */
     userGenerateImageImagenGenerateChatbotIdPost(requestParameters: UserGenerateImageImagenGenerateChatbotIdPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PostImagenResponse>;
+    /**
+     * User Inpaint Image
+     */
+    userInpaintImageImagenInpaintPostRaw(requestParameters: UserInpaintImageImagenInpaintPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostImagenResponse>>;
+    /**
+     * User Inpaint Image
+     */
+    userInpaintImageImagenInpaintPost(requestParameters: UserInpaintImageImagenInpaintPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PostImagenResponse>;
 }
 //# sourceMappingURL=ImageApi.d.ts.map

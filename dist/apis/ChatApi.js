@@ -266,6 +266,27 @@ class ChatApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * Get Image Moderation Prompt
+     */
+    async getImageModerationPromptChatImageModerationPromptGetRaw(initOverrides) {
+        const queryParameters = {};
+        const headerParameters = {};
+        const response = await this.request({
+            path: `/chat/image-moderation-prompt`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.GetImageModerationPromptResponseFromJSON)(jsonValue));
+    }
+    /**
+     * Get Image Moderation Prompt
+     */
+    async getImageModerationPromptChatImageModerationPromptGet(initOverrides) {
+        const response = await this.getImageModerationPromptChatImageModerationPromptGetRaw(initOverrides);
+        return await response.value();
+    }
+    /**
      * Regenerate
      */
     async regenerateChatChatbotIdMessageMessageIdRegeneratePostRaw(requestParameters, initOverrides) {
@@ -358,6 +379,37 @@ class ChatApi extends runtime.BaseAPI {
      */
     async updateConversationSettingsChatConversationConversationIdSettingsPatch(requestParameters, initOverrides) {
         const response = await this.updateConversationSettingsChatConversationConversationIdSettingsPatchRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * Update Image Moderation Prompt
+     */
+    async updateImageModerationPromptChatImageModerationPromptPatchRaw(requestParameters, initOverrides) {
+        if (requestParameters['patchImageModerationPromptRequest'] == null) {
+            throw new runtime.RequiredError('patchImageModerationPromptRequest', 'Required parameter "patchImageModerationPromptRequest" was null or undefined when calling updateImageModerationPromptChatImageModerationPromptPatch().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        headerParameters['Content-Type'] = 'application/json';
+        const response = await this.request({
+            path: `/chat/image-moderation-prompt`,
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: (0, index_1.PatchImageModerationPromptRequestToJSON)(requestParameters['patchImageModerationPromptRequest']),
+        }, initOverrides);
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse(response);
+        }
+        else {
+            return new runtime.TextApiResponse(response);
+        }
+    }
+    /**
+     * Update Image Moderation Prompt
+     */
+    async updateImageModerationPromptChatImageModerationPromptPatch(requestParameters, initOverrides) {
+        const response = await this.updateImageModerationPromptChatImageModerationPromptPatchRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**

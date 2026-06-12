@@ -17,6 +17,8 @@ export declare const SortFilter: {
     readonly Trending: "trending";
     readonly Newest: "newest";
     readonly MostLiked: "most_liked";
+    readonly HighestRating: "highest_rating";
+    readonly MostViewed: "most_viewed";
     readonly MostMessages: "most_messages";
     readonly LatestMessage: "latest_message";
 };

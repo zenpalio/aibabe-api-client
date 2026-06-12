@@ -99,6 +99,14 @@ export declare class AuthenticationApi extends runtime.BaseAPI {
      */
     loginAuthLoginPost(requestParameters: LoginAuthLoginPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UserInfoResponse>;
     /**
+     * Logout
+     */
+    logoutAuthLogoutPostRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
+    /**
+     * Logout
+     */
+    logoutAuthLogoutPost(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
+    /**
      * Oauth Login
      */
     oauthLoginAuthOauthAuthorizationGetRaw(requestParameters: OauthLoginAuthOauthAuthorizationGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;

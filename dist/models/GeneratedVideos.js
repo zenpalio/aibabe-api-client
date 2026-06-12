@@ -19,6 +19,7 @@ exports.GeneratedVideosFromJSON = GeneratedVideosFromJSON;
 exports.GeneratedVideosFromJSONTyped = GeneratedVideosFromJSONTyped;
 exports.GeneratedVideosToJSON = GeneratedVideosToJSON;
 exports.GeneratedVideosToJSONTyped = GeneratedVideosToJSONTyped;
+const ChatbotPreview_1 = require("./ChatbotPreview");
 const PostDetails_1 = require("./PostDetails");
 const VideoGenerationStatus_1 = require("./VideoGenerationStatus");
 /**
@@ -36,15 +37,11 @@ function instanceOfGeneratedVideos(value) {
         return false;
     if (!('id' in value) || value['id'] === undefined)
         return false;
-    if (!('chatbotId' in value) || value['chatbotId'] === undefined)
-        return false;
-    if (!('chatbotName' in value) || value['chatbotName'] === undefined)
-        return false;
-    if (!('chatbotAvatar' in value) || value['chatbotAvatar'] === undefined)
-        return false;
-    if (!('urls' in value) || value['urls'] === undefined)
+    if (!('url' in value) || value['url'] === undefined)
         return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined)
+        return false;
+    if (!('chatbot' in value) || value['chatbot'] === undefined)
         return false;
     if (!('eta' in value) || value['eta'] === undefined)
         return false;
@@ -55,6 +52,8 @@ function instanceOfGeneratedVideos(value) {
     if (!('seenByUser' in value) || value['seenByUser'] === undefined)
         return false;
     if (!('originalImageId' in value) || value['originalImageId'] === undefined)
+        return false;
+    if (!('originalImageUrl' in value) || value['originalImageUrl'] === undefined)
         return false;
     return true;
 }
@@ -68,17 +67,16 @@ function GeneratedVideosFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'type': json['type'],
         'id': json['id'],
-        'chatbotId': json['chatbot_id'],
-        'chatbotName': json['chatbot_name'],
-        'chatbotAvatar': json['chatbot_avatar'],
-        'urls': json['urls'],
+        'url': json['url'],
         'createdAt': (new Date(json['created_at'])),
+        'chatbot': (0, ChatbotPreview_1.ChatbotPreviewFromJSON)(json['chatbot']),
         'postDetails': json['post_details'] == null ? undefined : (0, PostDetails_1.PostDetailsFromJSON)(json['post_details']),
         'eta': json['eta'],
         'status': (0, VideoGenerationStatus_1.VideoGenerationStatusFromJSON)(json['status']),
         'generationId': json['generation_id'],
         'seenByUser': json['seen_by_user'],
         'originalImageId': json['original_image_id'],
+        'originalImageUrl': json['original_image_url'],
     };
 }
 function GeneratedVideosToJSON(json) {
@@ -91,17 +89,16 @@ function GeneratedVideosToJSONTyped(value, ignoreDiscriminator = false) {
     return {
         'type': value['type'],
         'id': value['id'],
-        'chatbot_id': value['chatbotId'],
-        'chatbot_name': value['chatbotName'],
-        'chatbot_avatar': value['chatbotAvatar'],
-        'urls': value['urls'],
+        'url': value['url'],
         'created_at': ((value['createdAt']).toISOString()),
+        'chatbot': (0, ChatbotPreview_1.ChatbotPreviewToJSON)(value['chatbot']),
         'post_details': (0, PostDetails_1.PostDetailsToJSON)(value['postDetails']),
         'eta': value['eta'],
         'status': (0, VideoGenerationStatus_1.VideoGenerationStatusToJSON)(value['status']),
         'generation_id': value['generationId'],
         'seen_by_user': value['seenByUser'],
         'original_image_id': value['originalImageId'],
+        'original_image_url': value['originalImageUrl'],
     };
 }
 //# sourceMappingURL=GeneratedVideos.js.map

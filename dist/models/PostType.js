@@ -27,6 +27,7 @@ exports.PostType = {
     Image: 'image',
     Video: 'video',
     Character: 'character',
+    Story: 'story',
     Media: 'media',
     All: 'all'
 };

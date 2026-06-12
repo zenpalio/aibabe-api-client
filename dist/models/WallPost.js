@@ -18,9 +18,11 @@ exports.WallPostFromJSON = WallPostFromJSON;
 exports.WallPostFromJSONTyped = WallPostFromJSONTyped;
 exports.WallPostToJSON = WallPostToJSON;
 exports.WallPostToJSONTyped = WallPostToJSONTyped;
+const ChatbotPreview_1 = require("./ChatbotPreview");
 const VideoContent_1 = require("./VideoContent");
-const SharedContentType_1 = require("./SharedContentType");
+const ContentType_1 = require("./ContentType");
 const ImageContent_1 = require("./ImageContent");
+const StoryPreview_1 = require("./StoryPreview");
 /**
  * Check if a given object implements the WallPost interface.
  */
@@ -29,19 +31,13 @@ function instanceOfWallPost(value) {
         return false;
     if (!('creatorId' in value) || value['creatorId'] === undefined)
         return false;
-    if (!('chatbotId' in value) || value['chatbotId'] === undefined)
+    if (!('chatbot' in value) || value['chatbot'] === undefined)
         return false;
-    if (!('chatbotName' in value) || value['chatbotName'] === undefined)
+    if (!('story' in value) || value['story'] === undefined)
         return false;
-    if (!('chatbotProfilePicture' in value) || value['chatbotProfilePicture'] === undefined)
+    if (!('picture' in value) || value['picture'] === undefined)
         return false;
-    if (!('chatbotProfileVideo' in value) || value['chatbotProfileVideo'] === undefined)
-        return false;
-    if (!('chatbotPublic' in value) || value['chatbotPublic'] === undefined)
-        return false;
-    if (!('pictures' in value) || value['pictures'] === undefined)
-        return false;
-    if (!('videos' in value) || value['videos'] === undefined)
+    if (!('video' in value) || value['video'] === undefined)
         return false;
     if (!('likes' in value) || value['likes'] === undefined)
         return false;
@@ -69,20 +65,17 @@ function WallPostFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'id': json['id'],
         'creatorId': json['creator_id'],
-        'chatbotId': json['chatbot_id'],
-        'chatbotName': json['chatbot_name'],
-        'chatbotProfilePicture': json['chatbot_profile_picture'],
-        'chatbotProfileVideo': json['chatbot_profile_video'],
-        'chatbotPublic': json['chatbot_public'],
-        'pictures': (json['pictures'].map(ImageContent_1.ImageContentFromJSON)),
-        'videos': (json['videos'].map(VideoContent_1.VideoContentFromJSON)),
+        'chatbot': (0, ChatbotPreview_1.ChatbotPreviewFromJSON)(json['chatbot']),
+        'story': (0, StoryPreview_1.StoryPreviewFromJSON)(json['story']),
+        'picture': (0, ImageContent_1.ImageContentFromJSON)(json['picture']),
+        'video': (0, VideoContent_1.VideoContentFromJSON)(json['video']),
         'likes': json['likes'],
         'messageCount': json['message_count'],
         'description': json['description'],
         'createdAt': (new Date(json['created_at'])),
         'updatedAt': (new Date(json['updated_at'])),
         'liked': json['liked'],
-        'type': (0, SharedContentType_1.SharedContentTypeFromJSON)(json['type']),
+        'type': (0, ContentType_1.ContentTypeFromJSON)(json['type']),
     };
 }
 function WallPostToJSON(json) {
@@ -95,20 +88,17 @@ function WallPostToJSONTyped(value, ignoreDiscriminator = false) {
     return {
         'id': value['id'],
         'creator_id': value['creatorId'],
-        'chatbot_id': value['chatbotId'],
-        'chatbot_name': value['chatbotName'],
-        'chatbot_profile_picture': value['chatbotProfilePicture'],
-        'chatbot_profile_video': value['chatbotProfileVideo'],
-        'chatbot_public': value['chatbotPublic'],
-        'pictures': (value['pictures'].map(ImageContent_1.ImageContentToJSON)),
-        'videos': (value['videos'].map(VideoContent_1.VideoContentToJSON)),
+        'chatbot': (0, ChatbotPreview_1.ChatbotPreviewToJSON)(value['chatbot']),
+        'story': (0, StoryPreview_1.StoryPreviewToJSON)(value['story']),
+        'picture': (0, ImageContent_1.ImageContentToJSON)(value['picture']),
+        'video': (0, VideoContent_1.VideoContentToJSON)(value['video']),
         'likes': value['likes'],
         'message_count': value['messageCount'],
         'description': value['description'],
         'created_at': ((value['createdAt']).toISOString()),
         'updated_at': ((value['updatedAt']).toISOString()),
         'liked': value['liked'],
-        'type': (0, SharedContentType_1.SharedContentTypeToJSON)(value['type']),
+        'type': (0, ContentType_1.ContentTypeToJSON)(value['type']),
     };
 }
 //# sourceMappingURL=WallPost.js.map

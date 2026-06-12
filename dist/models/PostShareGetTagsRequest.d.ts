@@ -9,7 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { SharedContentType } from './SharedContentType';
+import type { ContentType } from './ContentType';
 /**
  *
  * @export
@@ -18,10 +18,10 @@ import type { SharedContentType } from './SharedContentType';
 export interface PostShareGetTagsRequest {
     /**
      *
-     * @type {SharedContentType}
+     * @type {ContentType}
      * @memberof PostShareGetTagsRequest
      */
-    sharableContentType: SharedContentType;
+    sharableContentType: ContentType;
 }
 /**
  * Check if a given object implements the PostShareGetTagsRequest interface.

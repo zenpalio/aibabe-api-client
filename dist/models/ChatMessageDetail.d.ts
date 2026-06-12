@@ -85,6 +85,12 @@ export interface ChatMessageDetail {
      * @memberof ChatMessageDetail
      */
     originalImageId?: string | null;
+    /**
+     *
+     * @type {string}
+     * @memberof ChatMessageDetail
+     */
+    originalImageUrl?: string | null;
 }
 /**
  * Check if a given object implements the ChatMessageDetail interface.

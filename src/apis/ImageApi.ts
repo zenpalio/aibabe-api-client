@@ -15,33 +15,51 @@
 
 import * as runtime from '../runtime';
 import type {
+  ArtStyle,
   GetGeneratedImage,
   GetImageGenerationTagsResponse,
+  GetLorasResponse,
   HTTPValidationError,
-  ImageParameters,
   LoraName,
-  PostImagenRequest,
+  PostGenerateImageRequest,
+  PostGenerateSceneRequest,
   PostImagenResponse,
+  PostRestartServersRequest,
 } from '../models/index';
 import {
+    ArtStyleFromJSON,
+    ArtStyleToJSON,
     GetGeneratedImageFromJSON,
     GetGeneratedImageToJSON,
     GetImageGenerationTagsResponseFromJSON,
     GetImageGenerationTagsResponseToJSON,
+    GetLorasResponseFromJSON,
+    GetLorasResponseToJSON,
     HTTPValidationErrorFromJSON,
     HTTPValidationErrorToJSON,
-    ImageParametersFromJSON,
-    ImageParametersToJSON,
     LoraNameFromJSON,
     LoraNameToJSON,
-    PostImagenRequestFromJSON,
-    PostImagenRequestToJSON,
+    PostGenerateImageRequestFromJSON,
+    PostGenerateImageRequestToJSON,
+    PostGenerateSceneRequestFromJSON,
+    PostGenerateSceneRequestToJSON,
     PostImagenResponseFromJSON,
     PostImagenResponseToJSON,
+    PostRestartServersRequestFromJSON,
+    PostRestartServersRequestToJSON,
 } from '../models/index';
 
-export interface ExtractPngInfoImagenPngInfoPostRequest {
-    image: Blob;
+export interface AttachmentImagenImageIdAttachmentGetRequest {
+    imageId: string;
+    imageName: string;
+}
+
+export interface DeleteImageImagenImageIdDeleteRequest {
+    imageId: string;
+}
+
+export interface GenerateSceneImagenGenerateScenePostRequest {
+    postGenerateSceneRequest: PostGenerateSceneRequest;
 }
 
 export interface GenerationTagsImagenImageIdTagsGetRequest {
@@ -52,13 +70,32 @@ export interface GetImageByFilenameImagenFilenameGetRequest {
     filename: string;
 }
 
-export interface GetLorasImagenChatbotIdLorasGetRequest {
-    chatbotId: string;
+export interface GetLorasImagenLorasGetRequest {
+    chatbotId?: string | null;
+    imageId?: string | null;
+    artStyle?: string | null;
+}
+
+export interface RestartServersImagenRestartAllPostRequest {
+    postRestartServersRequest?: PostRestartServersRequest;
 }
 
 export interface UserGenerateImageImagenGenerateChatbotIdPostRequest {
     chatbotId: string;
-    postImagenRequest: PostImagenRequest;
+    postGenerateImageRequest: PostGenerateImageRequest;
+}
+
+export interface UserInpaintImageImagenInpaintPostRequest {
+    originalImageId: string;
+    inpaintingMask: Blob;
+    query: string;
+    clientId: string;
+    requestId: string;
+    numberOfImages: number;
+    keepStructure: boolean;
+    chatbotId?: string | null;
+    artStyle?: ArtStyle | null;
+    loras?: Array<LoraName> | null;
 }
 
 /**
@@ -67,13 +104,61 @@ export interface UserGenerateImageImagenGenerateChatbotIdPostRequest {
 export class ImageApi extends runtime.BaseAPI {
 
     /**
-     * Extract Png Info
+     * Attachment
      */
-    async extractPngInfoImagenPngInfoPostRaw(requestParameters: ExtractPngInfoImagenPngInfoPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ImageParameters>> {
-        if (requestParameters['image'] == null) {
+    async attachmentImagenImageIdAttachmentGetRaw(requestParameters: AttachmentImagenImageIdAttachmentGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
+        if (requestParameters['imageId'] == null) {
             throw new runtime.RequiredError(
-                'image',
-                'Required parameter "image" was null or undefined when calling extractPngInfoImagenPngInfoPost().'
+                'imageId',
+                'Required parameter "imageId" was null or undefined when calling attachmentImagenImageIdAttachmentGet().'
+            );
+        }
+
+        if (requestParameters['imageName'] == null) {
+            throw new runtime.RequiredError(
+                'imageName',
+                'Required parameter "imageName" was null or undefined when calling attachmentImagenImageIdAttachmentGet().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['imageName'] != null) {
+            queryParameters['image_name'] = requestParameters['imageName'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/imagen/{image_id}/attachment`.replace(`{${"image_id"}}`, encodeURIComponent(String(requestParameters['imageId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse<any>(response);
+        } else {
+            return new runtime.TextApiResponse(response) as any;
+        }
+    }
+
+    /**
+     * Attachment
+     */
+    async attachmentImagenImageIdAttachmentGet(requestParameters: AttachmentImagenImageIdAttachmentGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
+        const response = await this.attachmentImagenImageIdAttachmentGetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Delete Image
+     */
+    async deleteImageImagenImageIdDeleteRaw(requestParameters: DeleteImageImagenImageIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
+        if (requestParameters['imageId'] == null) {
+            throw new runtime.RequiredError(
+                'imageId',
+                'Required parameter "imageId" was null or undefined when calling deleteImageImagenImageIdDelete().'
             );
         }
 
@@ -81,42 +166,61 @@ export class ImageApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
-        const consumes: runtime.Consume[] = [
-            { contentType: 'multipart/form-data' },
-        ];
-        // @ts-ignore: canConsumeForm may be unused
-        const canConsumeForm = runtime.canConsumeForm(consumes);
-
-        let formParams: { append(param: string, value: any): any };
-        let useForm = false;
-        // use FormData to transmit files using content-type "multipart/form-data"
-        useForm = canConsumeForm;
-        if (useForm) {
-            formParams = new FormData();
-        } else {
-            formParams = new URLSearchParams();
-        }
-
-        if (requestParameters['image'] != null) {
-            formParams.append('image', requestParameters['image'] as any);
-        }
-
         const response = await this.request({
-            path: `/imagen/png-info`,
-            method: 'POST',
+            path: `/imagen/{image_id}`.replace(`{${"image_id"}}`, encodeURIComponent(String(requestParameters['imageId']))),
+            method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
-            body: formParams,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => ImageParametersFromJSON(jsonValue));
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse<any>(response);
+        } else {
+            return new runtime.TextApiResponse(response) as any;
+        }
     }
 
     /**
-     * Extract Png Info
+     * Delete Image
      */
-    async extractPngInfoImagenPngInfoPost(requestParameters: ExtractPngInfoImagenPngInfoPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ImageParameters> {
-        const response = await this.extractPngInfoImagenPngInfoPostRaw(requestParameters, initOverrides);
+    async deleteImageImagenImageIdDelete(requestParameters: DeleteImageImagenImageIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
+        const response = await this.deleteImageImagenImageIdDeleteRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Generate Scene
+     */
+    async generateSceneImagenGenerateScenePostRaw(requestParameters: GenerateSceneImagenGenerateScenePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostImagenResponse>> {
+        if (requestParameters['postGenerateSceneRequest'] == null) {
+            throw new runtime.RequiredError(
+                'postGenerateSceneRequest',
+                'Required parameter "postGenerateSceneRequest" was null or undefined when calling generateSceneImagenGenerateScenePost().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        const response = await this.request({
+            path: `/imagen/generate-scene`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: PostGenerateSceneRequestToJSON(requestParameters['postGenerateSceneRequest']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => PostImagenResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Generate Scene
+     */
+    async generateSceneImagenGenerateScenePost(requestParameters: GenerateSceneImagenGenerateScenePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PostImagenResponse> {
+        const response = await this.generateSceneImagenGenerateScenePostRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -189,33 +293,71 @@ export class ImageApi extends runtime.BaseAPI {
     /**
      * Get Loras
      */
-    async getLorasImagenChatbotIdLorasGetRaw(requestParameters: GetLorasImagenChatbotIdLorasGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<LoraName>>> {
-        if (requestParameters['chatbotId'] == null) {
-            throw new runtime.RequiredError(
-                'chatbotId',
-                'Required parameter "chatbotId" was null or undefined when calling getLorasImagenChatbotIdLorasGet().'
-            );
+    async getLorasImagenLorasGetRaw(requestParameters: GetLorasImagenLorasGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetLorasResponse>> {
+        const queryParameters: any = {};
+
+        if (requestParameters['chatbotId'] != null) {
+            queryParameters['chatbot_id'] = requestParameters['chatbotId'];
         }
 
-        const queryParameters: any = {};
+        if (requestParameters['imageId'] != null) {
+            queryParameters['image_id'] = requestParameters['imageId'];
+        }
+
+        if (requestParameters['artStyle'] != null) {
+            queryParameters['art_style'] = requestParameters['artStyle'];
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
         const response = await this.request({
-            path: `/imagen/{chatbot_id}/loras`.replace(`{${"chatbot_id"}}`, encodeURIComponent(String(requestParameters['chatbotId']))),
+            path: `/imagen/loras`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(LoraNameFromJSON));
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetLorasResponseFromJSON(jsonValue));
     }
 
     /**
      * Get Loras
      */
-    async getLorasImagenChatbotIdLorasGet(requestParameters: GetLorasImagenChatbotIdLorasGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<LoraName>> {
-        const response = await this.getLorasImagenChatbotIdLorasGetRaw(requestParameters, initOverrides);
+    async getLorasImagenLorasGet(requestParameters: GetLorasImagenLorasGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetLorasResponse> {
+        const response = await this.getLorasImagenLorasGetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Restart Servers
+     */
+    async restartServersImagenRestartAllPostRaw(requestParameters: RestartServersImagenRestartAllPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        const response = await this.request({
+            path: `/imagen/restart-all`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: PostRestartServersRequestToJSON(requestParameters['postRestartServersRequest']),
+        }, initOverrides);
+
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse<any>(response);
+        } else {
+            return new runtime.TextApiResponse(response) as any;
+        }
+    }
+
+    /**
+     * Restart Servers
+     */
+    async restartServersImagenRestartAllPost(requestParameters: RestartServersImagenRestartAllPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
+        const response = await this.restartServersImagenRestartAllPostRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -230,10 +372,10 @@ export class ImageApi extends runtime.BaseAPI {
             );
         }
 
-        if (requestParameters['postImagenRequest'] == null) {
+        if (requestParameters['postGenerateImageRequest'] == null) {
             throw new runtime.RequiredError(
-                'postImagenRequest',
-                'Required parameter "postImagenRequest" was null or undefined when calling userGenerateImageImagenGenerateChatbotIdPost().'
+                'postGenerateImageRequest',
+                'Required parameter "postGenerateImageRequest" was null or undefined when calling userGenerateImageImagenGenerateChatbotIdPost().'
             );
         }
 
@@ -248,7 +390,7 @@ export class ImageApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: PostImagenRequestToJSON(requestParameters['postImagenRequest']),
+            body: PostGenerateImageRequestToJSON(requestParameters['postGenerateImageRequest']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => PostImagenResponseFromJSON(jsonValue));
@@ -259,6 +401,138 @@ export class ImageApi extends runtime.BaseAPI {
      */
     async userGenerateImageImagenGenerateChatbotIdPost(requestParameters: UserGenerateImageImagenGenerateChatbotIdPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PostImagenResponse> {
         const response = await this.userGenerateImageImagenGenerateChatbotIdPostRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * User Inpaint Image
+     */
+    async userInpaintImageImagenInpaintPostRaw(requestParameters: UserInpaintImageImagenInpaintPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostImagenResponse>> {
+        if (requestParameters['originalImageId'] == null) {
+            throw new runtime.RequiredError(
+                'originalImageId',
+                'Required parameter "originalImageId" was null or undefined when calling userInpaintImageImagenInpaintPost().'
+            );
+        }
+
+        if (requestParameters['inpaintingMask'] == null) {
+            throw new runtime.RequiredError(
+                'inpaintingMask',
+                'Required parameter "inpaintingMask" was null or undefined when calling userInpaintImageImagenInpaintPost().'
+            );
+        }
+
+        if (requestParameters['query'] == null) {
+            throw new runtime.RequiredError(
+                'query',
+                'Required parameter "query" was null or undefined when calling userInpaintImageImagenInpaintPost().'
+            );
+        }
+
+        if (requestParameters['clientId'] == null) {
+            throw new runtime.RequiredError(
+                'clientId',
+                'Required parameter "clientId" was null or undefined when calling userInpaintImageImagenInpaintPost().'
+            );
+        }
+
+        if (requestParameters['requestId'] == null) {
+            throw new runtime.RequiredError(
+                'requestId',
+                'Required parameter "requestId" was null or undefined when calling userInpaintImageImagenInpaintPost().'
+            );
+        }
+
+        if (requestParameters['numberOfImages'] == null) {
+            throw new runtime.RequiredError(
+                'numberOfImages',
+                'Required parameter "numberOfImages" was null or undefined when calling userInpaintImageImagenInpaintPost().'
+            );
+        }
+
+        if (requestParameters['keepStructure'] == null) {
+            throw new runtime.RequiredError(
+                'keepStructure',
+                'Required parameter "keepStructure" was null or undefined when calling userInpaintImageImagenInpaintPost().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const consumes: runtime.Consume[] = [
+            { contentType: 'multipart/form-data' },
+        ];
+        // @ts-ignore: canConsumeForm may be unused
+        const canConsumeForm = runtime.canConsumeForm(consumes);
+
+        let formParams: { append(param: string, value: any): any };
+        let useForm = false;
+        // use FormData to transmit files using content-type "multipart/form-data"
+        useForm = canConsumeForm;
+        if (useForm) {
+            formParams = new FormData();
+        } else {
+            formParams = new URLSearchParams();
+        }
+
+        if (requestParameters['originalImageId'] != null) {
+            formParams.append('original_image_id', requestParameters['originalImageId'] as any);
+        }
+
+        if (requestParameters['inpaintingMask'] != null) {
+            formParams.append('inpainting_mask', requestParameters['inpaintingMask'] as any);
+        }
+
+        if (requestParameters['query'] != null) {
+            formParams.append('query', requestParameters['query'] as any);
+        }
+
+        if (requestParameters['clientId'] != null) {
+            formParams.append('client_id', requestParameters['clientId'] as any);
+        }
+
+        if (requestParameters['requestId'] != null) {
+            formParams.append('request_id', requestParameters['requestId'] as any);
+        }
+
+        if (requestParameters['numberOfImages'] != null) {
+            formParams.append('number_of_images', requestParameters['numberOfImages'] as any);
+        }
+
+        if (requestParameters['keepStructure'] != null) {
+            formParams.append('keep_structure', requestParameters['keepStructure'] as any);
+        }
+
+        if (requestParameters['chatbotId'] != null) {
+            formParams.append('chatbot_id', requestParameters['chatbotId'] as any);
+        }
+
+        if (requestParameters['artStyle'] != null) {
+            formParams.append('art_style', requestParameters['artStyle'] as any);
+        }
+
+        if (requestParameters['loras'] != null) {
+            formParams.append('loras', requestParameters['loras']!.join(runtime.COLLECTION_FORMATS["csv"]));
+        }
+
+        const response = await this.request({
+            path: `/imagen/inpaint`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: formParams,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => PostImagenResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * User Inpaint Image
+     */
+    async userInpaintImageImagenInpaintPost(requestParameters: UserInpaintImageImagenInpaintPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PostImagenResponse> {
+        const response = await this.userInpaintImageImagenInpaintPostRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

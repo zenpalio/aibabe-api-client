@@ -91,6 +91,18 @@ export interface PostCustomChatbotV2Payload {
     age: number;
     /**
      * 
+     * @type {string}
+     * @memberof PostCustomChatbotV2Payload
+     */
+    name?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof PostCustomChatbotV2Payload
+     */
+    gender?: string | null;
+    /**
+     * 
      * @type {Array<SpecialFeatures>}
      * @memberof PostCustomChatbotV2Payload
      */
@@ -148,7 +160,7 @@ export interface PostCustomChatbotV2Payload {
      * @type {string}
      * @memberof PostCustomChatbotV2Payload
      */
-    scenario: string;
+    scenario?: string;
     /**
      * 
      * @type {string}
@@ -180,7 +192,6 @@ export function instanceOfPostCustomChatbotV2Payload(value: object): value is Po
     if (!('artStyle' in value) || value['artStyle'] === undefined) return false;
     if (!('looks' in value) || value['looks'] === undefined) return false;
     if (!('difficulty' in value) || value['difficulty'] === undefined) return false;
-    if (!('scenario' in value) || value['scenario'] === undefined) return false;
     if (!('clientId' in value) || value['clientId'] === undefined) return false;
     return true;
 }
@@ -196,6 +207,8 @@ export function PostCustomChatbotV2PayloadFromJSONTyped(json: any, ignoreDiscrim
     return {
         
         'age': json['age'],
+        'name': json['name'] == null ? undefined : json['name'],
+        'gender': json['gender'] == null ? undefined : json['gender'],
         'specialFeatures': ((json['special_features'] as Array<any>).map(SpecialFeaturesFromJSON)),
         'artStyle': ArtStyleFromJSON(json['art_style']),
         'ethnicity': json['ethnicity'] == null ? undefined : EthnicityFromJSON(json['ethnicity']),
@@ -205,7 +218,7 @@ export function PostCustomChatbotV2PayloadFromJSONTyped(json: any, ignoreDiscrim
         'roleplayType': json['roleplay_type'] == null ? undefined : RoleplayTypeFromJSON(json['roleplay_type']),
         'looks': AvatarLooksV2FromJSON(json['looks']),
         'difficulty': SeduceDifficultyFromJSON(json['difficulty']),
-        'scenario': json['scenario'],
+        'scenario': json['scenario'] == null ? undefined : json['scenario'],
         'clientId': json['client_id'],
         'referenceAudioId': json['reference_audio_id'] == null ? undefined : json['reference_audio_id'],
         'userId': json['user_id'] == null ? undefined : json['user_id'],
@@ -224,6 +237,8 @@ export function PostCustomChatbotV2PayloadFromJSONTyped(json: any, ignoreDiscrim
     return {
         
         'age': value['age'],
+        'name': value['name'],
+        'gender': value['gender'],
         'special_features': ((value['specialFeatures'] as Array<any>).map(SpecialFeaturesToJSON)),
         'art_style': ArtStyleToJSON(value['artStyle']),
         'ethnicity': EthnicityToJSON(value['ethnicity']),

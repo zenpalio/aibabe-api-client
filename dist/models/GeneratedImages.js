@@ -19,6 +19,8 @@ exports.GeneratedImagesFromJSON = GeneratedImagesFromJSON;
 exports.GeneratedImagesFromJSONTyped = GeneratedImagesFromJSONTyped;
 exports.GeneratedImagesToJSON = GeneratedImagesToJSON;
 exports.GeneratedImagesToJSONTyped = GeneratedImagesToJSONTyped;
+const ArtStyle_1 = require("./ArtStyle");
+const ChatbotPreview_1 = require("./ChatbotPreview");
 const PostDetails_1 = require("./PostDetails");
 const ImageGenerationStatus_1 = require("./ImageGenerationStatus");
 /**
@@ -36,17 +38,11 @@ function instanceOfGeneratedImages(value) {
         return false;
     if (!('id' in value) || value['id'] === undefined)
         return false;
-    if (!('chatbotId' in value) || value['chatbotId'] === undefined)
-        return false;
-    if (!('chatbotName' in value) || value['chatbotName'] === undefined)
-        return false;
-    if (!('chatbotAvatar' in value) || value['chatbotAvatar'] === undefined)
-        return false;
-    if (!('urls' in value) || value['urls'] === undefined)
+    if (!('url' in value) || value['url'] === undefined)
         return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined)
         return false;
-    if (!('imageIds' in value) || value['imageIds'] === undefined)
+    if (!('chatbot' in value) || value['chatbot'] === undefined)
         return false;
     if (!('eta' in value) || value['eta'] === undefined)
         return false;
@@ -55,6 +51,8 @@ function instanceOfGeneratedImages(value) {
     if (!('generationId' in value) || value['generationId'] === undefined)
         return false;
     if (!('seenByUser' in value) || value['seenByUser'] === undefined)
+        return false;
+    if (!('artStyle' in value) || value['artStyle'] === undefined)
         return false;
     return true;
 }
@@ -68,17 +66,15 @@ function GeneratedImagesFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'type': json['type'],
         'id': json['id'],
-        'chatbotId': json['chatbot_id'],
-        'chatbotName': json['chatbot_name'],
-        'chatbotAvatar': json['chatbot_avatar'],
-        'urls': json['urls'],
+        'url': json['url'],
         'createdAt': (new Date(json['created_at'])),
+        'chatbot': (0, ChatbotPreview_1.ChatbotPreviewFromJSON)(json['chatbot']),
         'postDetails': json['post_details'] == null ? undefined : (0, PostDetails_1.PostDetailsFromJSON)(json['post_details']),
-        'imageIds': json['image_ids'],
         'eta': json['eta'],
         'status': (0, ImageGenerationStatus_1.ImageGenerationStatusFromJSON)(json['status']),
         'generationId': json['generation_id'],
         'seenByUser': json['seen_by_user'],
+        'artStyle': (0, ArtStyle_1.ArtStyleFromJSON)(json['art_style']),
     };
 }
 function GeneratedImagesToJSON(json) {
@@ -91,17 +87,15 @@ function GeneratedImagesToJSONTyped(value, ignoreDiscriminator = false) {
     return {
         'type': value['type'],
         'id': value['id'],
-        'chatbot_id': value['chatbotId'],
-        'chatbot_name': value['chatbotName'],
-        'chatbot_avatar': value['chatbotAvatar'],
-        'urls': value['urls'],
+        'url': value['url'],
         'created_at': ((value['createdAt']).toISOString()),
+        'chatbot': (0, ChatbotPreview_1.ChatbotPreviewToJSON)(value['chatbot']),
         'post_details': (0, PostDetails_1.PostDetailsToJSON)(value['postDetails']),
-        'image_ids': value['imageIds'],
         'eta': value['eta'],
         'status': (0, ImageGenerationStatus_1.ImageGenerationStatusToJSON)(value['status']),
         'generation_id': value['generationId'],
         'seen_by_user': value['seenByUser'],
+        'art_style': (0, ArtStyle_1.ArtStyleToJSON)(value['artStyle']),
     };
 }
 //# sourceMappingURL=GeneratedImages.js.map

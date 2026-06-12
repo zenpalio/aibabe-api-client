@@ -31,7 +31,8 @@ export const TagCategory = {
     Lora: 'lora',
     Style: 'style',
     RoleplayType: 'roleplay_type',
-    CharacterType: 'character_type'
+    CharacterType: 'character_type',
+    Genre: 'genre'
 } as const;
 export type TagCategory = typeof TagCategory[keyof typeof TagCategory];
 

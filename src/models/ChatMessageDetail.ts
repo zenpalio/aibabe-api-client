@@ -114,6 +114,12 @@ export interface ChatMessageDetail {
      * @memberof ChatMessageDetail
      */
     originalImageId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ChatMessageDetail
+     */
+    originalImageUrl?: string | null;
 }
 
 
@@ -153,6 +159,7 @@ export function ChatMessageDetailFromJSONTyped(json: any, ignoreDiscriminator: b
         'audioUrl': json['audio_url'] == null ? undefined : json['audio_url'],
         'audioStatus': json['audio_status'] == null ? undefined : GeneratedAudioStatusFromJSON(json['audio_status']),
         'originalImageId': json['original_image_id'] == null ? undefined : json['original_image_id'],
+        'originalImageUrl': json['original_image_url'] == null ? undefined : json['original_image_url'],
     };
 }
 
@@ -178,6 +185,7 @@ export function ChatMessageDetailFromJSONTyped(json: any, ignoreDiscriminator: b
         'audio_url': value['audioUrl'],
         'audio_status': GeneratedAudioStatusToJSON(value['audioStatus']),
         'original_image_id': value['originalImageId'],
+        'original_image_url': value['originalImageUrl'],
     };
 }
 
