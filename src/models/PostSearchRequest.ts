@@ -97,6 +97,12 @@ export interface PostSearchRequest {
      * @memberof PostSearchRequest
      */
     chatbotId?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof PostSearchRequest
+     */
+    storyId?: string | null;
 }
 
 
@@ -125,6 +131,7 @@ export function PostSearchRequestFromJSONTyped(json: any, ignoreDiscriminator: b
         'dateFilter': json['date_filter'] == null ? undefined : DateRangeFilterFromJSON(json['date_filter']),
         'ownerFilters': json['owner_filters'] == null ? undefined : ((json['owner_filters'] as Array<any>).map(OwnerFilterFromJSON)),
         'chatbotId': json['chatbot_id'] == null ? undefined : json['chatbot_id'],
+        'storyId': json['story_id'] == null ? undefined : json['story_id'],
     };
 }
 
@@ -146,6 +153,7 @@ export function PostSearchRequestFromJSONTyped(json: any, ignoreDiscriminator: b
         'date_filter': DateRangeFilterToJSON(value['dateFilter']),
         'owner_filters': value['ownerFilters'] == null ? undefined : ((value['ownerFilters'] as Array<any>).map(OwnerFilterToJSON)),
         'chatbot_id': value['chatbotId'],
+        'story_id': value['storyId'],
     };
 }
 

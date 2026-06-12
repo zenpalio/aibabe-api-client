@@ -15,14 +15,38 @@
 
 import * as runtime from '../runtime';
 import type {
+  GeneratedAudioItem,
+  GetGeneratedAudioResponse,
   HTTPValidationError,
   Language,
+  SoundEffectResponse,
+  SoundEffectsRequest,
+  TextToSpeechEnhanceRequest,
+  TextToSpeechEnhanceResponse,
+  TextToSpeechRequest,
+  TextToSpeechResponse,
 } from '../models/index';
 import {
+    GeneratedAudioItemFromJSON,
+    GeneratedAudioItemToJSON,
+    GetGeneratedAudioResponseFromJSON,
+    GetGeneratedAudioResponseToJSON,
     HTTPValidationErrorFromJSON,
     HTTPValidationErrorToJSON,
     LanguageFromJSON,
     LanguageToJSON,
+    SoundEffectResponseFromJSON,
+    SoundEffectResponseToJSON,
+    SoundEffectsRequestFromJSON,
+    SoundEffectsRequestToJSON,
+    TextToSpeechEnhanceRequestFromJSON,
+    TextToSpeechEnhanceRequestToJSON,
+    TextToSpeechEnhanceResponseFromJSON,
+    TextToSpeechEnhanceResponseToJSON,
+    TextToSpeechRequestFromJSON,
+    TextToSpeechRequestToJSON,
+    TextToSpeechResponseFromJSON,
+    TextToSpeechResponseToJSON,
 } from '../models/index';
 
 export interface CreateReferenceVoiceReferencesPostRequest {
@@ -34,8 +58,29 @@ export interface CreateReferenceVoiceReferencesPostRequest {
     description?: string;
 }
 
+export interface EnhanceTextToSpeechVoiceEnhancePostRequest {
+    textToSpeechEnhanceRequest: TextToSpeechEnhanceRequest;
+}
+
+export interface GenerateSoundEffectsVoiceSfxPostRequest {
+    soundEffectsRequest: SoundEffectsRequest;
+}
+
+export interface GenerateTextToSpeechVoiceTextToSpeechPostRequest {
+    textToSpeechRequest: TextToSpeechRequest;
+}
+
 export interface GenerateVoiceChatVoiceMessageMessageIdPostRequest {
     messageId: string;
+}
+
+export interface GetAudioVoiceDetailsAudioIdGetRequest {
+    audioId: string;
+}
+
+export interface ListAudioVoiceListGetRequest {
+    paginationToken?: string | null;
+    limit?: number;
 }
 
 export interface StreamVoiceStreamAudioIdGetRequest {
@@ -157,6 +202,114 @@ export class VoiceApi extends runtime.BaseAPI {
     }
 
     /**
+     * Enhance Text To Speech
+     */
+    async enhanceTextToSpeechVoiceEnhancePostRaw(requestParameters: EnhanceTextToSpeechVoiceEnhancePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TextToSpeechEnhanceResponse>> {
+        if (requestParameters['textToSpeechEnhanceRequest'] == null) {
+            throw new runtime.RequiredError(
+                'textToSpeechEnhanceRequest',
+                'Required parameter "textToSpeechEnhanceRequest" was null or undefined when calling enhanceTextToSpeechVoiceEnhancePost().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        const response = await this.request({
+            path: `/voice/enhance`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: TextToSpeechEnhanceRequestToJSON(requestParameters['textToSpeechEnhanceRequest']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => TextToSpeechEnhanceResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Enhance Text To Speech
+     */
+    async enhanceTextToSpeechVoiceEnhancePost(requestParameters: EnhanceTextToSpeechVoiceEnhancePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TextToSpeechEnhanceResponse> {
+        const response = await this.enhanceTextToSpeechVoiceEnhancePostRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Generate Sound Effects
+     */
+    async generateSoundEffectsVoiceSfxPostRaw(requestParameters: GenerateSoundEffectsVoiceSfxPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SoundEffectResponse>> {
+        if (requestParameters['soundEffectsRequest'] == null) {
+            throw new runtime.RequiredError(
+                'soundEffectsRequest',
+                'Required parameter "soundEffectsRequest" was null or undefined when calling generateSoundEffectsVoiceSfxPost().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        const response = await this.request({
+            path: `/voice/sfx`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: SoundEffectsRequestToJSON(requestParameters['soundEffectsRequest']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => SoundEffectResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Generate Sound Effects
+     */
+    async generateSoundEffectsVoiceSfxPost(requestParameters: GenerateSoundEffectsVoiceSfxPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SoundEffectResponse> {
+        const response = await this.generateSoundEffectsVoiceSfxPostRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Generate Text To Speech
+     */
+    async generateTextToSpeechVoiceTextToSpeechPostRaw(requestParameters: GenerateTextToSpeechVoiceTextToSpeechPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TextToSpeechResponse>> {
+        if (requestParameters['textToSpeechRequest'] == null) {
+            throw new runtime.RequiredError(
+                'textToSpeechRequest',
+                'Required parameter "textToSpeechRequest" was null or undefined when calling generateTextToSpeechVoiceTextToSpeechPost().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        const response = await this.request({
+            path: `/voice/text-to-speech`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: TextToSpeechRequestToJSON(requestParameters['textToSpeechRequest']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => TextToSpeechResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Generate Text To Speech
+     */
+    async generateTextToSpeechVoiceTextToSpeechPost(requestParameters: GenerateTextToSpeechVoiceTextToSpeechPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TextToSpeechResponse> {
+        const response = await this.generateTextToSpeechVoiceTextToSpeechPostRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Generate Voice Chat
      */
     async generateVoiceChatVoiceMessageMessageIdPostRaw(requestParameters: GenerateVoiceChatVoiceMessageMessageIdPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
@@ -190,6 +343,73 @@ export class VoiceApi extends runtime.BaseAPI {
      */
     async generateVoiceChatVoiceMessageMessageIdPost(requestParameters: GenerateVoiceChatVoiceMessageMessageIdPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
         const response = await this.generateVoiceChatVoiceMessageMessageIdPostRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Get Audio
+     */
+    async getAudioVoiceDetailsAudioIdGetRaw(requestParameters: GetAudioVoiceDetailsAudioIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GeneratedAudioItem>> {
+        if (requestParameters['audioId'] == null) {
+            throw new runtime.RequiredError(
+                'audioId',
+                'Required parameter "audioId" was null or undefined when calling getAudioVoiceDetailsAudioIdGet().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/voice/details/{audio_id}`.replace(`{${"audio_id"}}`, encodeURIComponent(String(requestParameters['audioId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GeneratedAudioItemFromJSON(jsonValue));
+    }
+
+    /**
+     * Get Audio
+     */
+    async getAudioVoiceDetailsAudioIdGet(requestParameters: GetAudioVoiceDetailsAudioIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GeneratedAudioItem> {
+        const response = await this.getAudioVoiceDetailsAudioIdGetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * List Audio
+     */
+    async listAudioVoiceListGetRaw(requestParameters: ListAudioVoiceListGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetGeneratedAudioResponse>> {
+        const queryParameters: any = {};
+
+        if (requestParameters['paginationToken'] != null) {
+            queryParameters['pagination_token'] = requestParameters['paginationToken'];
+        }
+
+        if (requestParameters['limit'] != null) {
+            queryParameters['limit'] = requestParameters['limit'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/voice/list`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetGeneratedAudioResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * List Audio
+     */
+    async listAudioVoiceListGet(requestParameters: ListAudioVoiceListGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetGeneratedAudioResponse> {
+        const response = await this.listAudioVoiceListGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

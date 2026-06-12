@@ -10,9 +10,11 @@
  * Do not edit the class manually.
  */
 import type { PublicUserPreviewWithFollow } from './PublicUserPreviewWithFollow';
+import type { ChatbotPreview } from './ChatbotPreview';
 import type { VideoContent } from './VideoContent';
-import type { SharedContentType } from './SharedContentType';
+import type { ContentType } from './ContentType';
 import type { ImageContent } from './ImageContent';
+import type { StoryPreview } from './StoryPreview';
 import type { TagModel } from './TagModel';
 /**
  *
@@ -34,46 +36,28 @@ export interface DetailedWallPost {
     creatorId: string;
     /**
      *
-     * @type {string}
+     * @type {ChatbotPreview}
      * @memberof DetailedWallPost
      */
-    chatbotId: string;
+    chatbot: ChatbotPreview | null;
     /**
      *
-     * @type {string}
+     * @type {StoryPreview}
      * @memberof DetailedWallPost
      */
-    chatbotName: string;
+    story: StoryPreview | null;
     /**
      *
-     * @type {string}
+     * @type {ImageContent}
      * @memberof DetailedWallPost
      */
-    chatbotProfilePicture: string;
+    picture: ImageContent | null;
     /**
      *
-     * @type {string}
+     * @type {VideoContent}
      * @memberof DetailedWallPost
      */
-    chatbotProfileVideo: string | null;
-    /**
-     *
-     * @type {boolean}
-     * @memberof DetailedWallPost
-     */
-    chatbotPublic: boolean;
-    /**
-     *
-     * @type {Array<ImageContent>}
-     * @memberof DetailedWallPost
-     */
-    pictures: Array<ImageContent>;
-    /**
-     *
-     * @type {Array<VideoContent>}
-     * @memberof DetailedWallPost
-     */
-    videos: Array<VideoContent>;
+    video: VideoContent | null;
     /**
      *
      * @type {number}
@@ -112,10 +96,10 @@ export interface DetailedWallPost {
     liked: boolean;
     /**
      *
-     * @type {SharedContentType}
+     * @type {ContentType}
      * @memberof DetailedWallPost
      */
-    type: SharedContentType;
+    type: ContentType;
     /**
      *
      * @type {string}

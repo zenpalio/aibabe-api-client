@@ -29,6 +29,8 @@ exports.LLM = {
     Lemonade: 'lemonade',
     Qwen3: 'qwen3',
     Qwen3Premium: 'qwen3_premium',
+    Qwen3Instruct: 'qwen3_instruct',
+    Gemma4Instruct: 'gemma4_instruct',
     LemonadePremium: 'lemonade_premium',
     GemmaPremium: 'gemma_premium'
 };

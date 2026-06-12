@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { Language } from '../models/index';
+import type { GeneratedAudioItem, GetGeneratedAudioResponse, Language, SoundEffectResponse, SoundEffectsRequest, TextToSpeechEnhanceRequest, TextToSpeechEnhanceResponse, TextToSpeechRequest, TextToSpeechResponse } from '../models/index';
 export interface CreateReferenceVoiceReferencesPostRequest {
     name: string;
     audio: Blob;
@@ -19,8 +19,24 @@ export interface CreateReferenceVoiceReferencesPostRequest {
     locale: Language;
     description?: string;
 }
+export interface EnhanceTextToSpeechVoiceEnhancePostRequest {
+    textToSpeechEnhanceRequest: TextToSpeechEnhanceRequest;
+}
+export interface GenerateSoundEffectsVoiceSfxPostRequest {
+    soundEffectsRequest: SoundEffectsRequest;
+}
+export interface GenerateTextToSpeechVoiceTextToSpeechPostRequest {
+    textToSpeechRequest: TextToSpeechRequest;
+}
 export interface GenerateVoiceChatVoiceMessageMessageIdPostRequest {
     messageId: string;
+}
+export interface GetAudioVoiceDetailsAudioIdGetRequest {
+    audioId: string;
+}
+export interface ListAudioVoiceListGetRequest {
+    paginationToken?: string | null;
+    limit?: number;
 }
 export interface StreamVoiceStreamAudioIdGetRequest {
     audioId: string;
@@ -39,6 +55,30 @@ export declare class VoiceApi extends runtime.BaseAPI {
      */
     createReferenceVoiceReferencesPost(requestParameters: CreateReferenceVoiceReferencesPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
     /**
+     * Enhance Text To Speech
+     */
+    enhanceTextToSpeechVoiceEnhancePostRaw(requestParameters: EnhanceTextToSpeechVoiceEnhancePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TextToSpeechEnhanceResponse>>;
+    /**
+     * Enhance Text To Speech
+     */
+    enhanceTextToSpeechVoiceEnhancePost(requestParameters: EnhanceTextToSpeechVoiceEnhancePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TextToSpeechEnhanceResponse>;
+    /**
+     * Generate Sound Effects
+     */
+    generateSoundEffectsVoiceSfxPostRaw(requestParameters: GenerateSoundEffectsVoiceSfxPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SoundEffectResponse>>;
+    /**
+     * Generate Sound Effects
+     */
+    generateSoundEffectsVoiceSfxPost(requestParameters: GenerateSoundEffectsVoiceSfxPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SoundEffectResponse>;
+    /**
+     * Generate Text To Speech
+     */
+    generateTextToSpeechVoiceTextToSpeechPostRaw(requestParameters: GenerateTextToSpeechVoiceTextToSpeechPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TextToSpeechResponse>>;
+    /**
+     * Generate Text To Speech
+     */
+    generateTextToSpeechVoiceTextToSpeechPost(requestParameters: GenerateTextToSpeechVoiceTextToSpeechPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TextToSpeechResponse>;
+    /**
      * Generate Voice Chat
      */
     generateVoiceChatVoiceMessageMessageIdPostRaw(requestParameters: GenerateVoiceChatVoiceMessageMessageIdPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
@@ -46,6 +86,22 @@ export declare class VoiceApi extends runtime.BaseAPI {
      * Generate Voice Chat
      */
     generateVoiceChatVoiceMessageMessageIdPost(requestParameters: GenerateVoiceChatVoiceMessageMessageIdPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
+    /**
+     * Get Audio
+     */
+    getAudioVoiceDetailsAudioIdGetRaw(requestParameters: GetAudioVoiceDetailsAudioIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GeneratedAudioItem>>;
+    /**
+     * Get Audio
+     */
+    getAudioVoiceDetailsAudioIdGet(requestParameters: GetAudioVoiceDetailsAudioIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GeneratedAudioItem>;
+    /**
+     * List Audio
+     */
+    listAudioVoiceListGetRaw(requestParameters: ListAudioVoiceListGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetGeneratedAudioResponse>>;
+    /**
+     * List Audio
+     */
+    listAudioVoiceListGet(requestParameters?: ListAudioVoiceListGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetGeneratedAudioResponse>;
     /**
      * List References
      */

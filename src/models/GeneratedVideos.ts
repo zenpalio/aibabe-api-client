@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { ChatbotPreview } from './ChatbotPreview';
+import {
+    ChatbotPreviewFromJSON,
+    ChatbotPreviewFromJSONTyped,
+    ChatbotPreviewToJSON,
+    ChatbotPreviewToJSONTyped,
+} from './ChatbotPreview';
 import type { PostDetails } from './PostDetails';
 import {
     PostDetailsFromJSON,
@@ -51,31 +58,19 @@ export interface GeneratedVideos {
      * @type {string}
      * @memberof GeneratedVideos
      */
-    chatbotId: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GeneratedVideos
-     */
-    chatbotName: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof GeneratedVideos
-     */
-    chatbotAvatar: string;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof GeneratedVideos
-     */
-    urls: Array<string>;
+    url: string | null;
     /**
      * 
      * @type {Date}
      * @memberof GeneratedVideos
      */
     createdAt: Date;
+    /**
+     * 
+     * @type {ChatbotPreview}
+     * @memberof GeneratedVideos
+     */
+    chatbot: ChatbotPreview | null;
     /**
      * 
      * @type {PostDetails}
@@ -112,6 +107,12 @@ export interface GeneratedVideos {
      * @memberof GeneratedVideos
      */
     originalImageId: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GeneratedVideos
+     */
+    originalImageUrl: string | null;
 }
 
 
@@ -131,16 +132,15 @@ export type GeneratedVideosTypeEnum = typeof GeneratedVideosTypeEnum[keyof typeo
 export function instanceOfGeneratedVideos(value: object): value is GeneratedVideos {
     if (!('type' in value) || value['type'] === undefined) return false;
     if (!('id' in value) || value['id'] === undefined) return false;
-    if (!('chatbotId' in value) || value['chatbotId'] === undefined) return false;
-    if (!('chatbotName' in value) || value['chatbotName'] === undefined) return false;
-    if (!('chatbotAvatar' in value) || value['chatbotAvatar'] === undefined) return false;
-    if (!('urls' in value) || value['urls'] === undefined) return false;
+    if (!('url' in value) || value['url'] === undefined) return false;
     if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
+    if (!('chatbot' in value) || value['chatbot'] === undefined) return false;
     if (!('eta' in value) || value['eta'] === undefined) return false;
     if (!('status' in value) || value['status'] === undefined) return false;
     if (!('generationId' in value) || value['generationId'] === undefined) return false;
     if (!('seenByUser' in value) || value['seenByUser'] === undefined) return false;
     if (!('originalImageId' in value) || value['originalImageId'] === undefined) return false;
+    if (!('originalImageUrl' in value) || value['originalImageUrl'] === undefined) return false;
     return true;
 }
 
@@ -156,17 +156,16 @@ export function GeneratedVideosFromJSONTyped(json: any, ignoreDiscriminator: boo
         
         'type': json['type'],
         'id': json['id'],
-        'chatbotId': json['chatbot_id'],
-        'chatbotName': json['chatbot_name'],
-        'chatbotAvatar': json['chatbot_avatar'],
-        'urls': json['urls'],
+        'url': json['url'],
         'createdAt': (new Date(json['created_at'])),
+        'chatbot': ChatbotPreviewFromJSON(json['chatbot']),
         'postDetails': json['post_details'] == null ? undefined : PostDetailsFromJSON(json['post_details']),
         'eta': json['eta'],
         'status': VideoGenerationStatusFromJSON(json['status']),
         'generationId': json['generation_id'],
         'seenByUser': json['seen_by_user'],
         'originalImageId': json['original_image_id'],
+        'originalImageUrl': json['original_image_url'],
     };
 }
 
@@ -183,17 +182,16 @@ export function GeneratedVideosFromJSONTyped(json: any, ignoreDiscriminator: boo
         
         'type': value['type'],
         'id': value['id'],
-        'chatbot_id': value['chatbotId'],
-        'chatbot_name': value['chatbotName'],
-        'chatbot_avatar': value['chatbotAvatar'],
-        'urls': value['urls'],
+        'url': value['url'],
         'created_at': ((value['createdAt']).toISOString()),
+        'chatbot': ChatbotPreviewToJSON(value['chatbot']),
         'post_details': PostDetailsToJSON(value['postDetails']),
         'eta': value['eta'],
         'status': VideoGenerationStatusToJSON(value['status']),
         'generation_id': value['generationId'],
         'seen_by_user': value['seenByUser'],
         'original_image_id': value['originalImageId'],
+        'original_image_url': value['originalImageUrl'],
     };
 }
 

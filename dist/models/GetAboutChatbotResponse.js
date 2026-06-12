@@ -28,6 +28,8 @@ function instanceOfGetAboutChatbotResponse(value) {
         return false;
     if (!('name' in value) || value['name'] === undefined)
         return false;
+    if (!('gender' in value) || value['gender'] === undefined)
+        return false;
     if (!('story' in value) || value['story'] === undefined)
         return false;
     if (!('bio' in value) || value['bio'] === undefined)
@@ -58,6 +60,7 @@ function GetAboutChatbotResponseFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'userId': json['user_id'],
         'name': json['name'],
+        'gender': json['gender'],
         'story': json['story'],
         'bio': json['bio'],
         'exampleConversation': json['example_conversation'],
@@ -79,6 +82,7 @@ function GetAboutChatbotResponseToJSONTyped(value, ignoreDiscriminator = false) 
     return {
         'user_id': value['userId'],
         'name': value['name'],
+        'gender': value['gender'],
         'story': value['story'],
         'bio': value['bio'],
         'example_conversation': value['exampleConversation'],

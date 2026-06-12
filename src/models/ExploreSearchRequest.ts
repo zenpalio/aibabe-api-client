@@ -105,6 +105,12 @@ export interface ExploreSearchRequest {
     chatbotId?: string | null;
     /**
      * 
+     * @type {string}
+     * @memberof ExploreSearchRequest
+     */
+    storyId?: string | null;
+    /**
+     * 
      * @type {PostType}
      * @memberof ExploreSearchRequest
      */
@@ -115,6 +121,24 @@ export interface ExploreSearchRequest {
      * @memberof ExploreSearchRequest
      */
     creatorUserId?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ExploreSearchRequest
+     */
+    scene?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ExploreSearchRequest
+     */
+    seenStories?: boolean | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ExploreSearchRequest
+     */
+    unlockedStories?: boolean | null;
 }
 
 
@@ -144,8 +168,12 @@ export function ExploreSearchRequestFromJSONTyped(json: any, ignoreDiscriminator
         'dateFilter': json['date_filter'] == null ? undefined : DateRangeFilterFromJSON(json['date_filter']),
         'ownerFilter': json['owner_filter'] == null ? undefined : OwnerFilterFromJSON(json['owner_filter']),
         'chatbotId': json['chatbot_id'] == null ? undefined : json['chatbot_id'],
+        'storyId': json['story_id'] == null ? undefined : json['story_id'],
         'postType': json['post_type'] == null ? undefined : PostTypeFromJSON(json['post_type']),
         'creatorUserId': json['creator_user_id'] == null ? undefined : json['creator_user_id'],
+        'scene': json['scene'] == null ? undefined : json['scene'],
+        'seenStories': json['seen_stories'] == null ? undefined : json['seen_stories'],
+        'unlockedStories': json['unlocked_stories'] == null ? undefined : json['unlocked_stories'],
     };
 }
 
@@ -168,8 +196,12 @@ export function ExploreSearchRequestFromJSONTyped(json: any, ignoreDiscriminator
         'date_filter': DateRangeFilterToJSON(value['dateFilter']),
         'owner_filter': OwnerFilterToJSON(value['ownerFilter']),
         'chatbot_id': value['chatbotId'],
+        'story_id': value['storyId'],
         'post_type': PostTypeToJSON(value['postType']),
         'creator_user_id': value['creatorUserId'],
+        'scene': value['scene'],
+        'seen_stories': value['seenStories'],
+        'unlocked_stories': value['unlockedStories'],
     };
 }
 

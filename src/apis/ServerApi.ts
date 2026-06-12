@@ -15,12 +15,16 @@
 
 import * as runtime from '../runtime';
 import type {
+  GetInstancesDBVastAiListResponse,
   HTTPValidationError,
   InstanceDetails,
   InstanceType,
   PingRequest,
+  PostInstancesDBVastAiListResponse,
 } from '../models/index';
 import {
+    GetInstancesDBVastAiListResponseFromJSON,
+    GetInstancesDBVastAiListResponseToJSON,
     HTTPValidationErrorFromJSON,
     HTTPValidationErrorToJSON,
     InstanceDetailsFromJSON,
@@ -29,6 +33,8 @@ import {
     InstanceTypeToJSON,
     PingRequestFromJSON,
     PingRequestToJSON,
+    PostInstancesDBVastAiListResponseFromJSON,
+    PostInstancesDBVastAiListResponseToJSON,
 } from '../models/index';
 
 export interface PingServerPingPostRequest {
@@ -76,6 +82,32 @@ export class ServerApi extends runtime.BaseAPI {
      */
     async getInstancesServerInstancesGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> {
         const response = await this.getInstancesServerInstancesGetRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Instancesvastai
+     */
+    async instancesVASTAIServerInstancesDBVastAiListGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetInstancesDBVastAiListResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/server/instancesDBVastAiList`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetInstancesDBVastAiListResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Instancesvastai
+     */
+    async instancesVASTAIServerInstancesDBVastAiListGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetInstancesDBVastAiListResponse> {
+        const response = await this.instancesVASTAIServerInstancesDBVastAiListGetRaw(initOverrides);
         return await response.value();
     }
 
@@ -250,6 +282,32 @@ export class ServerApi extends runtime.BaseAPI {
      */
     async syncForceQueuesServerQueuesForceSyncPost(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> {
         const response = await this.syncForceQueuesServerQueuesForceSyncPostRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Syncinstancesvastai
+     */
+    async syncInstancesVASTAIServerInstancesDBVastAiSyncPostRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostInstancesDBVastAiListResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/server/instancesDBVastAiSync`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => PostInstancesDBVastAiListResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Syncinstancesvastai
+     */
+    async syncInstancesVASTAIServerInstancesDBVastAiSyncPost(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PostInstancesDBVastAiListResponse> {
+        const response = await this.syncInstancesVASTAIServerInstancesDBVastAiSyncPostRaw(initOverrides);
         return await response.value();
     }
 

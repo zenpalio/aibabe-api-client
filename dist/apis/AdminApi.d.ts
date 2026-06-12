@@ -10,13 +10,32 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { GetQualityControlImage, GetQualityControlRequest, GiftCodeType, UserInfoResponse } from '../models/index';
+import type { AdminAwardBadgeRequest, AdminBadgeResponse, AuraSubcategory, BadgeCategory, BadgeTimePeriod, ContentType, GetQualityControlImage, GetQualityControlRequest, GiftCodeType, ScoreCategory, SetUserFeatureFlagsRequest, SetUserFeatureFlagsResponse, UserInfoResponse } from '../models/index';
 export interface AddTokensAdminAddTokensPutRequest {
     email: string;
     tokens: number;
 }
 export interface AdminDeleteAdminUserEmailDeleteRequest {
     email: string;
+}
+export interface CreateBadgeAdminBadgesPostRequest {
+    code: string;
+    name: string;
+    badgeCategory: BadgeCategory;
+    image?: Blob;
+    description?: string | null;
+    scoreCategory?: ScoreCategory | null;
+    subcategory?: AuraSubcategory | null;
+    contentType?: ContentType | null;
+    timePeriod?: BadgeTimePeriod | null;
+    requiredRank?: number | null;
+    scoreThreshold?: number | null;
+    tokenPrice?: number | null;
+    tokenAward?: number | null;
+    claimable?: boolean;
+    manuallyProvided?: boolean;
+    usable?: boolean;
+    visible?: boolean;
 }
 export interface GenerateCodesAdminGiftCodesGeneratePostRequest {
     count: number;
@@ -31,8 +50,30 @@ export interface GetTokenBalanceAdminTokenBalanceEmailGetRequest {
 export interface ImpersonateAdminImpersonateEmailPostRequest {
     email: string;
 }
-export interface UpdateGrokModerationPromptAdminModerationPromptPatchRequest {
-    newPrompt: string;
+export interface ProvideAwardAdminBadgesAwardPostRequest {
+    adminAwardBadgeRequest: AdminAwardBadgeRequest;
+}
+export interface SetUserFeatureFlagsAdminUserFeatureFlagsPutRequest {
+    setUserFeatureFlagsRequest: SetUserFeatureFlagsRequest;
+}
+export interface UpdateBadgeAdminBadgesBadgeIdPatchRequest {
+    badgeId: string;
+    image?: Blob;
+    name?: string | null;
+    description?: string | null;
+    badgeCategory?: BadgeCategory | null;
+    scoreCategory?: ScoreCategory | null;
+    subcategory?: AuraSubcategory | null;
+    contentType?: ContentType | null;
+    timePeriod?: BadgeTimePeriod | null;
+    requiredRank?: number | null;
+    scoreThreshold?: number | null;
+    tokenPrice?: number | null;
+    tokenAward?: number | null;
+    claimable?: boolean | null;
+    manuallyProvided?: boolean | null;
+    usable?: boolean | null;
+    visible?: boolean | null;
 }
 /**
  *
@@ -54,6 +95,14 @@ export declare class AdminApi extends runtime.BaseAPI {
      * Admin Delete
      */
     adminDeleteAdminUserEmailDelete(requestParameters: AdminDeleteAdminUserEmailDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
+    /**
+     * Create Badge
+     */
+    createBadgeAdminBadgesPostRaw(requestParameters: CreateBadgeAdminBadgesPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AdminBadgeResponse>>;
+    /**
+     * Create Badge
+     */
+    createBadgeAdminBadgesPost(requestParameters: CreateBadgeAdminBadgesPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AdminBadgeResponse>;
     /**
      * Generate Codes
      */
@@ -87,6 +136,22 @@ export declare class AdminApi extends runtime.BaseAPI {
      */
     impersonateAdminImpersonateEmailPost(requestParameters: ImpersonateAdminImpersonateEmailPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UserInfoResponse>;
     /**
+     * List Badges
+     */
+    listBadgesAdminBadgesGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<AdminBadgeResponse>>>;
+    /**
+     * List Badges
+     */
+    listBadgesAdminBadgesGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AdminBadgeResponse>>;
+    /**
+     * Provide Award
+     */
+    provideAwardAdminBadgesAwardPostRaw(requestParameters: ProvideAwardAdminBadgesAwardPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
+    /**
+     * Provide Award
+     */
+    provideAwardAdminBadgesAwardPost(requestParameters: ProvideAwardAdminBadgesAwardPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
+    /**
      * Reset User Claimables
      */
     resetUserClaimablesAdminUserResetClaimablesPostRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
@@ -95,12 +160,20 @@ export declare class AdminApi extends runtime.BaseAPI {
      */
     resetUserClaimablesAdminUserResetClaimablesPost(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
     /**
-     * Update Grok Moderation Prompt
+     * Set User Feature Flags
      */
-    updateGrokModerationPromptAdminModerationPromptPatchRaw(requestParameters: UpdateGrokModerationPromptAdminModerationPromptPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
+    setUserFeatureFlagsAdminUserFeatureFlagsPutRaw(requestParameters: SetUserFeatureFlagsAdminUserFeatureFlagsPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SetUserFeatureFlagsResponse>>;
     /**
-     * Update Grok Moderation Prompt
+     * Set User Feature Flags
      */
-    updateGrokModerationPromptAdminModerationPromptPatch(requestParameters: UpdateGrokModerationPromptAdminModerationPromptPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
+    setUserFeatureFlagsAdminUserFeatureFlagsPut(requestParameters: SetUserFeatureFlagsAdminUserFeatureFlagsPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SetUserFeatureFlagsResponse>;
+    /**
+     * Update Badge
+     */
+    updateBadgeAdminBadgesBadgeIdPatchRaw(requestParameters: UpdateBadgeAdminBadgesBadgeIdPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
+    /**
+     * Update Badge
+     */
+    updateBadgeAdminBadgesBadgeIdPatch(requestParameters: UpdateBadgeAdminBadgesBadgeIdPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
 }
 //# sourceMappingURL=AdminApi.d.ts.map

@@ -42,7 +42,13 @@ export interface VideoContent {
      * @type {string}
      * @memberof VideoContent
      */
-    originalImageId?: string | null;
+    originalImageId: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof VideoContent
+     */
+    originalImageUrl: string | null;
 }
 
 /**
@@ -52,6 +58,8 @@ export function instanceOfVideoContent(value: object): value is VideoContent {
     if (!('id' in value) || value['id'] === undefined) return false;
     if (!('url' in value) || value['url'] === undefined) return false;
     if (!('generationId' in value) || value['generationId'] === undefined) return false;
+    if (!('originalImageId' in value) || value['originalImageId'] === undefined) return false;
+    if (!('originalImageUrl' in value) || value['originalImageUrl'] === undefined) return false;
     return true;
 }
 
@@ -68,7 +76,8 @@ export function VideoContentFromJSONTyped(json: any, ignoreDiscriminator: boolea
         'id': json['id'],
         'url': json['url'],
         'generationId': json['generation_id'],
-        'originalImageId': json['original_image_id'] == null ? undefined : json['original_image_id'],
+        'originalImageId': json['original_image_id'],
+        'originalImageUrl': json['original_image_url'],
     };
 }
 
@@ -87,6 +96,7 @@ export function VideoContentFromJSONTyped(json: any, ignoreDiscriminator: boolea
         'url': value['url'],
         'generation_id': value['generationId'],
         'original_image_id': value['originalImageId'],
+        'original_image_url': value['originalImageUrl'],
     };
 }
 

@@ -41,8 +41,6 @@ function instanceOfPostCustomChatbotV2Payload(value) {
         return false;
     if (!('difficulty' in value) || value['difficulty'] === undefined)
         return false;
-    if (!('scenario' in value) || value['scenario'] === undefined)
-        return false;
     if (!('clientId' in value) || value['clientId'] === undefined)
         return false;
     return true;
@@ -56,6 +54,8 @@ function PostCustomChatbotV2PayloadFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'age': json['age'],
+        'name': json['name'] == null ? undefined : json['name'],
+        'gender': json['gender'] == null ? undefined : json['gender'],
         'specialFeatures': (json['special_features'].map(SpecialFeatures_1.SpecialFeaturesFromJSON)),
         'artStyle': (0, ArtStyle_1.ArtStyleFromJSON)(json['art_style']),
         'ethnicity': json['ethnicity'] == null ? undefined : (0, Ethnicity_1.EthnicityFromJSON)(json['ethnicity']),
@@ -65,7 +65,7 @@ function PostCustomChatbotV2PayloadFromJSONTyped(json, ignoreDiscriminator) {
         'roleplayType': json['roleplay_type'] == null ? undefined : (0, RoleplayType_1.RoleplayTypeFromJSON)(json['roleplay_type']),
         'looks': (0, AvatarLooksV2_1.AvatarLooksV2FromJSON)(json['looks']),
         'difficulty': (0, SeduceDifficulty_1.SeduceDifficultyFromJSON)(json['difficulty']),
-        'scenario': json['scenario'],
+        'scenario': json['scenario'] == null ? undefined : json['scenario'],
         'clientId': json['client_id'],
         'referenceAudioId': json['reference_audio_id'] == null ? undefined : json['reference_audio_id'],
         'userId': json['user_id'] == null ? undefined : json['user_id'],
@@ -80,6 +80,8 @@ function PostCustomChatbotV2PayloadToJSONTyped(value, ignoreDiscriminator = fals
     }
     return {
         'age': value['age'],
+        'name': value['name'],
+        'gender': value['gender'],
         'special_features': (value['specialFeatures'].map(SpecialFeatures_1.SpecialFeaturesToJSON)),
         'art_style': (0, ArtStyle_1.ArtStyleToJSON)(value['artStyle']),
         'ethnicity': (0, Ethnicity_1.EthnicityToJSON)(value['ethnicity']),

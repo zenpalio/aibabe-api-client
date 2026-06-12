@@ -26,7 +26,10 @@ exports.NotificationTypeToJSONTyped = NotificationTypeToJSONTyped;
 exports.NotificationType = {
     LikePost: 'like_post',
     Donation: 'donation',
-    Follow: 'follow'
+    Follow: 'follow',
+    EpisodeUnlock: 'episode_unlock',
+    Badge: 'badge',
+    NewEpisode: 'new_episode'
 };
 function instanceOfNotificationType(value) {
     for (const key in exports.NotificationType) {

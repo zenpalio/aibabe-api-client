@@ -19,6 +19,7 @@ import type {
   GetClaimablesResponse,
   GetFollowedUsersResponse,
   GetPublicLatestUpdateResponse,
+  GetPublicUsersResponse,
   HTTPValidationError,
   PatchUserRequest,
   PostClaimRequest,
@@ -34,6 +35,7 @@ import type {
   PutPasswordRequest,
   PutPublicUserRequest,
   PutUsernameRequest,
+  RemainingFreeUsesResponse,
 } from '../models/index';
 import {
     DeleteUserRequestFromJSON,
@@ -44,6 +46,8 @@ import {
     GetFollowedUsersResponseToJSON,
     GetPublicLatestUpdateResponseFromJSON,
     GetPublicLatestUpdateResponseToJSON,
+    GetPublicUsersResponseFromJSON,
+    GetPublicUsersResponseToJSON,
     HTTPValidationErrorFromJSON,
     HTTPValidationErrorToJSON,
     PatchUserRequestFromJSON,
@@ -74,6 +78,8 @@ import {
     PutPublicUserRequestToJSON,
     PutUsernameRequestFromJSON,
     PutUsernameRequestToJSON,
+    RemainingFreeUsesResponseFromJSON,
+    RemainingFreeUsesResponseToJSON,
 } from '../models/index';
 
 export interface ClaimUserClaimPostRequest {
@@ -90,6 +96,12 @@ export interface DonateUserDonatePostRequest {
 
 export interface FollowUserUserFollowPostRequest {
     postFollowUserRequest: PostFollowUserRequest;
+}
+
+export interface GetPublicUserLikeUserPublicLikeGetRequest {
+    publicUsername?: string | null;
+    paginationToken?: string | null;
+    limit?: number;
 }
 
 export interface GetPublicUserUserPublicGetRequest {
@@ -344,6 +356,44 @@ export class UserApi extends runtime.BaseAPI {
     }
 
     /**
+     * Get Public User Like
+     */
+    async getPublicUserLikeUserPublicLikeGetRaw(requestParameters: GetPublicUserLikeUserPublicLikeGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetPublicUsersResponse>> {
+        const queryParameters: any = {};
+
+        if (requestParameters['publicUsername'] != null) {
+            queryParameters['public_username'] = requestParameters['publicUsername'];
+        }
+
+        if (requestParameters['paginationToken'] != null) {
+            queryParameters['pagination_token'] = requestParameters['paginationToken'];
+        }
+
+        if (requestParameters['limit'] != null) {
+            queryParameters['limit'] = requestParameters['limit'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/user/public-like`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetPublicUsersResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Get Public User Like
+     */
+    async getPublicUserLikeUserPublicLikeGet(requestParameters: GetPublicUserLikeUserPublicLikeGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetPublicUsersResponse> {
+        const response = await this.getPublicUserLikeUserPublicLikeGetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Get Public User
      */
     async getPublicUserUserPublicGetRaw(requestParameters: GetPublicUserUserPublicGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PublicUserInfo>> {
@@ -450,6 +500,32 @@ export class UserApi extends runtime.BaseAPI {
      */
     async postRatingUserRatingPost(requestParameters: PostRatingUserRatingPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PostRatingResponse> {
         const response = await this.postRatingUserRatingPostRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Remaining Free Uses
+     */
+    async remainingFreeUsesUserRemainingFreeUsesGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<RemainingFreeUsesResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/user/remaining-free-uses`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => RemainingFreeUsesResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Remaining Free Uses
+     */
+    async remainingFreeUsesUserRemainingFreeUsesGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<RemainingFreeUsesResponse> {
+        const response = await this.remainingFreeUsesUserRemainingFreeUsesGetRaw(initOverrides);
         return await response.value();
     }
 
