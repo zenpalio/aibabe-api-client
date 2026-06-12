@@ -46,7 +46,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AssistantChatApi = void 0;
+exports.UpdateAssistantPromptAssistantChatAssistantPromptPatchPromptNameEnum = exports.GetAssistantPromptAssistantChatAssistantPromptGetPromptNameEnum = exports.AssistantChatApi = void 0;
 const runtime = __importStar(require("../runtime"));
 const index_1 = require("../models/index");
 /**
@@ -77,6 +77,38 @@ class AssistantChatApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * Delete Message
+     */
+    async deleteMessageAssistantChatSessionsSessionIdMessagesMessageIdDeleteRaw(requestParameters, initOverrides) {
+        if (requestParameters['sessionId'] == null) {
+            throw new runtime.RequiredError('sessionId', 'Required parameter "sessionId" was null or undefined when calling deleteMessageAssistantChatSessionsSessionIdMessagesMessageIdDelete().');
+        }
+        if (requestParameters['messageId'] == null) {
+            throw new runtime.RequiredError('messageId', 'Required parameter "messageId" was null or undefined when calling deleteMessageAssistantChatSessionsSessionIdMessagesMessageIdDelete().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        const response = await this.request({
+            path: `/assistant-chat/sessions/{session_id}/messages/{message_id}`.replace(`{${"session_id"}}`, encodeURIComponent(String(requestParameters['sessionId']))).replace(`{${"message_id"}}`, encodeURIComponent(String(requestParameters['messageId']))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse(response);
+        }
+        else {
+            return new runtime.TextApiResponse(response);
+        }
+    }
+    /**
+     * Delete Message
+     */
+    async deleteMessageAssistantChatSessionsSessionIdMessagesMessageIdDelete(requestParameters, initOverrides) {
+        const response = await this.deleteMessageAssistantChatSessionsSessionIdMessagesMessageIdDeleteRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * Delete Session
      */
     async deleteSessionAssistantChatSessionsSessionIdDeleteRaw(requestParameters, initOverrides) {
@@ -103,6 +135,35 @@ class AssistantChatApi extends runtime.BaseAPI {
      */
     async deleteSessionAssistantChatSessionsSessionIdDelete(requestParameters, initOverrides) {
         const response = await this.deleteSessionAssistantChatSessionsSessionIdDeleteRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
+     * Get Assistant Prompt
+     */
+    async getAssistantPromptAssistantChatAssistantPromptGetRaw(requestParameters, initOverrides) {
+        const queryParameters = {};
+        if (requestParameters['promptName'] != null) {
+            queryParameters['prompt_name'] = requestParameters['promptName'];
+        }
+        const headerParameters = {};
+        const response = await this.request({
+            path: `/assistant-chat/assistant-prompt`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse(response);
+        }
+        else {
+            return new runtime.TextApiResponse(response);
+        }
+    }
+    /**
+     * Get Assistant Prompt
+     */
+    async getAssistantPromptAssistantChatAssistantPromptGet(requestParameters = {}, initOverrides) {
+        const response = await this.getAssistantPromptAssistantChatAssistantPromptGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
     /**
@@ -191,6 +252,75 @@ class AssistantChatApi extends runtime.BaseAPI {
         const response = await this.postMessageAssistantChatSessionsSessionIdMessagesPostRaw(requestParameters, initOverrides);
         return await response.value();
     }
+    /**
+     * Update Assistant Prompt
+     */
+    async updateAssistantPromptAssistantChatAssistantPromptPatchRaw(requestParameters, initOverrides) {
+        if (requestParameters['prompt'] == null) {
+            throw new runtime.RequiredError('prompt', 'Required parameter "prompt" was null or undefined when calling updateAssistantPromptAssistantChatAssistantPromptPatch().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        const consumes = [
+            { contentType: 'application/x-www-form-urlencoded' },
+        ];
+        // @ts-ignore: canConsumeForm may be unused
+        const canConsumeForm = runtime.canConsumeForm(consumes);
+        let formParams;
+        let useForm = false;
+        if (useForm) {
+            formParams = new FormData();
+        }
+        else {
+            formParams = new URLSearchParams();
+        }
+        if (requestParameters['prompt'] != null) {
+            formParams.append('prompt', requestParameters['prompt']);
+        }
+        if (requestParameters['promptName'] != null) {
+            formParams.append('prompt_name', requestParameters['promptName']);
+        }
+        const response = await this.request({
+            path: `/assistant-chat/assistant-prompt`,
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: formParams,
+        }, initOverrides);
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse(response);
+        }
+        else {
+            return new runtime.TextApiResponse(response);
+        }
+    }
+    /**
+     * Update Assistant Prompt
+     */
+    async updateAssistantPromptAssistantChatAssistantPromptPatch(requestParameters, initOverrides) {
+        const response = await this.updateAssistantPromptAssistantChatAssistantPromptPatchRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
 }
 exports.AssistantChatApi = AssistantChatApi;
+/**
+ * @export
+ */
+exports.GetAssistantPromptAssistantChatAssistantPromptGetPromptNameEnum = {
+    Prompt: 'assistant_prompt',
+    StoryCreatorPrompt: 'assistant_story_creator_prompt',
+    ImageGeneratorPrompt: 'assistant_image_generator_prompt',
+    VideoGeneratorPrompt: 'assistant_video_generator_prompt',
+    CharacterBuilderPrompt: 'assistant_character_builder_prompt'
+};
+/**
+ * @export
+ */
+exports.UpdateAssistantPromptAssistantChatAssistantPromptPatchPromptNameEnum = {
+    Prompt: 'assistant_prompt',
+    StoryCreatorPrompt: 'assistant_story_creator_prompt',
+    ImageGeneratorPrompt: 'assistant_image_generator_prompt',
+    VideoGeneratorPrompt: 'assistant_video_generator_prompt',
+    CharacterBuilderPrompt: 'assistant_character_builder_prompt'
+};
 //# sourceMappingURL=AssistantChatApi.js.map

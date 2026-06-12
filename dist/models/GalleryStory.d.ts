@@ -9,7 +9,10 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { PublicUserPreviewWithFollow } from './PublicUserPreviewWithFollow';
+import type { StoryCounts } from './StoryCounts';
 import type { StoryVisibility } from './StoryVisibility';
+import type { StoryRating } from './StoryRating';
 /**
  *
  * @export
@@ -30,16 +33,16 @@ export interface GalleryStory {
     id: string;
     /**
      *
-     * @type {string}
+     * @type {PublicUserPreviewWithFollow}
      * @memberof GalleryStory
      */
-    ownerId: string;
+    owner?: PublicUserPreviewWithFollow | null;
     /**
      *
      * @type {string}
      * @memberof GalleryStory
      */
-    title: string;
+    title: string | null;
     /**
      *
      * @type {string}
@@ -66,16 +69,16 @@ export interface GalleryStory {
     visibility: StoryVisibility;
     /**
      *
-     * @type {number}
+     * @type {StoryRating}
      * @memberof GalleryStory
      */
-    publicEpisodesCount: number;
+    rating?: StoryRating | null;
     /**
      *
-     * @type {number}
+     * @type {StoryCounts}
      * @memberof GalleryStory
      */
-    publicPanelsCount: number;
+    counts: StoryCounts;
 }
 /**
  * @export

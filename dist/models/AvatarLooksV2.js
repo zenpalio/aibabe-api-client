@@ -20,6 +20,7 @@ exports.AvatarLooksV2ToJSON = AvatarLooksV2ToJSON;
 exports.AvatarLooksV2ToJSONTyped = AvatarLooksV2ToJSONTyped;
 const BodyType_1 = require("./BodyType");
 const HairColor_1 = require("./HairColor");
+const HairStyle_1 = require("./HairStyle");
 /**
  * Check if a given object implements the AvatarLooksV2 interface.
  */
@@ -40,6 +41,7 @@ function AvatarLooksV2FromJSONTyped(json, ignoreDiscriminator) {
     return {
         'bodyType': (0, BodyType_1.BodyTypeFromJSON)(json['body_type']),
         'hairColor': (0, HairColor_1.HairColorFromJSON)(json['hair_color']),
+        'hairstyle': json['hairstyle'] == null ? undefined : (0, HairStyle_1.HairStyleFromJSON)(json['hairstyle']),
     };
 }
 function AvatarLooksV2ToJSON(json) {
@@ -52,6 +54,7 @@ function AvatarLooksV2ToJSONTyped(value, ignoreDiscriminator = false) {
     return {
         'body_type': (0, BodyType_1.BodyTypeToJSON)(value['bodyType']),
         'hair_color': (0, HairColor_1.HairColorToJSON)(value['hairColor']),
+        'hairstyle': (0, HairStyle_1.HairStyleToJSON)(value['hairstyle']),
     };
 }
 //# sourceMappingURL=AvatarLooksV2.js.map

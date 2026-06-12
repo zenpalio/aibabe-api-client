@@ -13,6 +13,7 @@ import type { UserEpisodeProgressType } from './UserEpisodeProgressType';
 import type { StoryCreatorEpisodePrice } from './StoryCreatorEpisodePrice';
 import type { EpisodeCounts } from './EpisodeCounts';
 import type { EpisodeVisibility } from './EpisodeVisibility';
+import type { EpisodeRating } from './EpisodeRating';
 import type { AccessType } from './AccessType';
 /**
  *
@@ -25,7 +26,7 @@ export interface StoryCreatorEpisode {
      * @type {string}
      * @memberof StoryCreatorEpisode
      */
-    title: string;
+    title?: string | null;
     /**
      *
      * @type {string}
@@ -76,10 +77,10 @@ export interface StoryCreatorEpisode {
     panelsCount: number;
     /**
      *
-     * @type {number}
+     * @type {EpisodeRating}
      * @memberof StoryCreatorEpisode
      */
-    rating?: number | null;
+    rating?: EpisodeRating | null;
     /**
      *
      * @type {AccessType}
@@ -104,6 +105,12 @@ export interface StoryCreatorEpisode {
      * @memberof StoryCreatorEpisode
      */
     counts: EpisodeCounts;
+    /**
+     *
+     * @type {Date}
+     * @memberof StoryCreatorEpisode
+     */
+    lastSaved: Date;
 }
 /**
  * Check if a given object implements the StoryCreatorEpisode interface.

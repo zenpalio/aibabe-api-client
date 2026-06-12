@@ -22,13 +22,12 @@ const UserEpisodeProgressType_1 = require("./UserEpisodeProgressType");
 const StoryCreatorEpisodePrice_1 = require("./StoryCreatorEpisodePrice");
 const EpisodeCounts_1 = require("./EpisodeCounts");
 const EpisodeVisibility_1 = require("./EpisodeVisibility");
+const EpisodeRating_1 = require("./EpisodeRating");
 const AccessType_1 = require("./AccessType");
 /**
  * Check if a given object implements the StoryCreatorEpisode interface.
  */
 function instanceOfStoryCreatorEpisode(value) {
-    if (!('title' in value) || value['title'] === undefined)
-        return false;
     if (!('episodeId' in value) || value['episodeId'] === undefined)
         return false;
     if (!('visibility' in value) || value['visibility'] === undefined)
@@ -38,6 +37,8 @@ function instanceOfStoryCreatorEpisode(value) {
     if (!('panelsCount' in value) || value['panelsCount'] === undefined)
         return false;
     if (!('counts' in value) || value['counts'] === undefined)
+        return false;
+    if (!('lastSaved' in value) || value['lastSaved'] === undefined)
         return false;
     return true;
 }
@@ -49,7 +50,7 @@ function StoryCreatorEpisodeFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
-        'title': json['title'],
+        'title': json['title'] == null ? undefined : json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
         'lockAfter': json['lock_after'] == null ? undefined : json['lock_after'],
@@ -58,11 +59,12 @@ function StoryCreatorEpisodeFromJSONTyped(json, ignoreDiscriminator) {
         'visibility': (0, EpisodeVisibility_1.EpisodeVisibilityFromJSON)(json['visibility']),
         'episodeIndex': json['episode_index'],
         'panelsCount': json['panels_count'],
-        'rating': json['rating'] == null ? undefined : json['rating'],
+        'rating': json['rating'] == null ? undefined : (0, EpisodeRating_1.EpisodeRatingFromJSON)(json['rating']),
         'accessType': json['access_type'] == null ? undefined : (0, AccessType_1.AccessTypeFromJSON)(json['access_type']),
         'progress': json['progress'] == null ? undefined : (0, UserEpisodeProgressType_1.UserEpisodeProgressTypeFromJSON)(json['progress']),
         'prices': json['prices'] == null ? undefined : (json['prices'].map(StoryCreatorEpisodePrice_1.StoryCreatorEpisodePriceFromJSON)),
         'counts': (0, EpisodeCounts_1.EpisodeCountsFromJSON)(json['counts']),
+        'lastSaved': (new Date(json['last_saved'])),
     };
 }
 function StoryCreatorEpisodeToJSON(json) {
@@ -82,11 +84,12 @@ function StoryCreatorEpisodeToJSONTyped(value, ignoreDiscriminator = false) {
         'visibility': (0, EpisodeVisibility_1.EpisodeVisibilityToJSON)(value['visibility']),
         'episode_index': value['episodeIndex'],
         'panels_count': value['panelsCount'],
-        'rating': value['rating'],
+        'rating': (0, EpisodeRating_1.EpisodeRatingToJSON)(value['rating']),
         'access_type': (0, AccessType_1.AccessTypeToJSON)(value['accessType']),
         'progress': (0, UserEpisodeProgressType_1.UserEpisodeProgressTypeToJSON)(value['progress']),
         'prices': value['prices'] == null ? undefined : (value['prices'].map(StoryCreatorEpisodePrice_1.StoryCreatorEpisodePriceToJSON)),
         'counts': (0, EpisodeCounts_1.EpisodeCountsToJSON)(value['counts']),
+        'last_saved': ((value['lastSaved']).toISOString()),
     };
 }
 //# sourceMappingURL=StoryCreatorEpisode.js.map

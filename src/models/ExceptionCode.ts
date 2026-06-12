@@ -72,8 +72,11 @@ export const ExceptionCode = {
     LimitsReached: 'limits_reached',
     ClaimInvalid: 'claim_invalid',
     ClaimablesNotFound: 'claimables_not_found',
+    BadgeCodeAlreadyExists: 'badge_code_already_exists',
     BadgeNotFound: 'badge_not_found',
     BadgeNotClaimable: 'badge_not_claimable',
+    BadgeNotManuallyProvided: 'badge_not_manually_provided',
+    BadgeMustBeManuallyProvided: 'badge_must_be_manually_provided',
     BadgeNotUsable: 'badge_not_usable',
     BadgeNotClaimed: 'badge_not_claimed',
     BadgeAlreadyClaimed: 'badge_already_claimed',
@@ -107,8 +110,6 @@ export const ExceptionCode = {
     PanelNotFound: 'panel_not_found',
     MissingOrderIndex: 'missing_order_index',
     StoryNotFoundOrNotAuthorized: 'story_not_found_or_not_authorized',
-    EpisodeNotFoundOrNotAuthorized: 'episode_not_found_or_not_authorized',
-    EpisodeIsFree: 'episode_is_free',
     InvalidIndices: 'invalid_indices',
     PanelDuplicate: 'panel_duplicate',
     ShareContentTypeUnsupported: 'share_content_type_unsupported',
@@ -133,10 +134,12 @@ export const ExceptionCode = {
     MarketingCampaignNotFound: 'marketing_campaign_not_found',
     MarketingCampaignNotAcceptable: 'marketing_campaign_not_acceptable',
     MarketingCampaignNoState: 'marketing_campaign_no_state',
+    EpisodeNotFoundOrNotAuthorized: 'episode_not_found_or_not_authorized',
+    EpisodeIsFree: 'episode_is_free',
     EpisodeAndVersionMismatch: 'episode_and_version_mismatch',
-    EpisodeNotFound: 'episode_not_found',
     PurchasedEpisodeAndVersionMismatch: 'purchased_episode_and_version_mismatch',
-    PurchasedEpisodeVersionNotFound: 'purchased_episode_version_not_found'
+    PurchasedEpisodeVersionNotFound: 'purchased_episode_version_not_found',
+    NotificationNotCreated: 'notification_not_created'
 } as const;
 export type ExceptionCode = typeof ExceptionCode[keyof typeof ExceptionCode];
 

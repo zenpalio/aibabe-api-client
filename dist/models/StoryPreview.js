@@ -18,19 +18,19 @@ exports.StoryPreviewFromJSON = StoryPreviewFromJSON;
 exports.StoryPreviewFromJSONTyped = StoryPreviewFromJSONTyped;
 exports.StoryPreviewToJSON = StoryPreviewToJSON;
 exports.StoryPreviewToJSONTyped = StoryPreviewToJSONTyped;
+const PublicUserPreviewWithFollow_1 = require("./PublicUserPreviewWithFollow");
+const StoryCounts_1 = require("./StoryCounts");
+const UserEpisodeProgressType_1 = require("./UserEpisodeProgressType");
+const StoryRating_1 = require("./StoryRating");
 /**
  * Check if a given object implements the StoryPreview interface.
  */
 function instanceOfStoryPreview(value) {
     if (!('id' in value) || value['id'] === undefined)
         return false;
-    if (!('ownerId' in value) || value['ownerId'] === undefined)
-        return false;
     if (!('title' in value) || value['title'] === undefined)
         return false;
-    if (!('publicEpisodesCount' in value) || value['publicEpisodesCount'] === undefined)
-        return false;
-    if (!('publicPanelsCount' in value) || value['publicPanelsCount'] === undefined)
+    if (!('counts' in value) || value['counts'] === undefined)
         return false;
     return true;
 }
@@ -43,12 +43,14 @@ function StoryPreviewFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'id': json['id'],
-        'ownerId': json['owner_id'],
         'title': json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
-        'publicEpisodesCount': json['public_episodes_count'],
-        'publicPanelsCount': json['public_panels_count'],
+        'firstEpisodeCoverImage': json['first_episode_cover_image'] == null ? undefined : json['first_episode_cover_image'],
+        'rating': json['rating'] == null ? undefined : (0, StoryRating_1.StoryRatingFromJSON)(json['rating']),
+        'owner': json['owner'] == null ? undefined : (0, PublicUserPreviewWithFollow_1.PublicUserPreviewWithFollowFromJSON)(json['owner']),
+        'counts': (0, StoryCounts_1.StoryCountsFromJSON)(json['counts']),
+        'progress': json['progress'] == null ? undefined : (0, UserEpisodeProgressType_1.UserEpisodeProgressTypeFromJSON)(json['progress']),
     };
 }
 function StoryPreviewToJSON(json) {
@@ -60,12 +62,14 @@ function StoryPreviewToJSONTyped(value, ignoreDiscriminator = false) {
     }
     return {
         'id': value['id'],
-        'owner_id': value['ownerId'],
         'title': value['title'],
         'description': value['description'],
         'cover_image': value['coverImage'],
-        'public_episodes_count': value['publicEpisodesCount'],
-        'public_panels_count': value['publicPanelsCount'],
+        'first_episode_cover_image': value['firstEpisodeCoverImage'],
+        'rating': (0, StoryRating_1.StoryRatingToJSON)(value['rating']),
+        'owner': (0, PublicUserPreviewWithFollow_1.PublicUserPreviewWithFollowToJSON)(value['owner']),
+        'counts': (0, StoryCounts_1.StoryCountsToJSON)(value['counts']),
+        'progress': (0, UserEpisodeProgressType_1.UserEpisodeProgressTypeToJSON)(value['progress']),
     };
 }
 //# sourceMappingURL=StoryPreview.js.map

@@ -32,7 +32,7 @@ export interface StoryCreatorCreateStoryRequest {
      * @type {string}
      * @memberof StoryCreatorCreateStoryRequest
      */
-    title: string;
+    title?: string | null;
     /**
      * 
      * @type {string}
@@ -63,19 +63,12 @@ export interface StoryCreatorCreateStoryRequest {
      * @memberof StoryCreatorCreateStoryRequest
      */
     mainCharacterDisplayName: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof StoryCreatorCreateStoryRequest
-     */
-    userDisplayName?: string;
 }
 
 /**
  * Check if a given object implements the StoryCreatorCreateStoryRequest interface.
  */
 export function instanceOfStoryCreatorCreateStoryRequest(value: object): value is StoryCreatorCreateStoryRequest {
-    if (!('title' in value) || value['title'] === undefined) return false;
     if (!('firstEpisode' in value) || value['firstEpisode'] === undefined) return false;
     if (!('mainCharacterChatbotId' in value) || value['mainCharacterChatbotId'] === undefined) return false;
     if (!('mainCharacterDisplayName' in value) || value['mainCharacterDisplayName'] === undefined) return false;
@@ -92,13 +85,12 @@ export function StoryCreatorCreateStoryRequestFromJSONTyped(json: any, ignoreDis
     }
     return {
         
-        'title': json['title'],
+        'title': json['title'] == null ? undefined : json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
         'firstEpisode': StoryCreatorEpisodeBaseFromJSON(json['first_episode']),
         'mainCharacterChatbotId': json['main_character_chatbot_id'],
         'mainCharacterDisplayName': json['main_character_display_name'],
-        'userDisplayName': json['user_display_name'] == null ? undefined : json['user_display_name'],
     };
 }
 
@@ -119,7 +111,6 @@ export function StoryCreatorCreateStoryRequestFromJSONTyped(json: any, ignoreDis
         'first_episode': StoryCreatorEpisodeBaseToJSON(value['firstEpisode']),
         'main_character_chatbot_id': value['mainCharacterChatbotId'],
         'main_character_display_name': value['mainCharacterDisplayName'],
-        'user_display_name': value['userDisplayName'],
     };
 }
 

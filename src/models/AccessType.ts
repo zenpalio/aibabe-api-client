@@ -21,7 +21,8 @@ export const AccessType = {
     Owner: 'owner',
     Free: 'free',
     Purchased: 'purchased',
-    Locked: 'locked'
+    Locked: 'locked',
+    Host: 'host'
 } as const;
 export type AccessType = typeof AccessType[keyof typeof AccessType];
 

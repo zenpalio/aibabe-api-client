@@ -9,6 +9,8 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { EpisodeContent } from './EpisodeContent';
+import type { AssistantChatRoute } from './AssistantChatRoute';
 /**
  *
  * @export
@@ -35,10 +37,34 @@ export interface PostAssistantChatMessageRequest {
     query: string;
     /**
      *
+     * @type {string}
+     * @memberof PostAssistantChatMessageRequest
+     */
+    pagePath: string;
+    /**
+     *
+     * @type {string}
+     * @memberof PostAssistantChatMessageRequest
+     */
+    episodeId?: string | null;
+    /**
+     *
+     * @type {Array<EpisodeContent>}
+     * @memberof PostAssistantChatMessageRequest
+     */
+    episodeContent?: Array<EpisodeContent> | null;
+    /**
+     *
      * @type {boolean}
      * @memberof PostAssistantChatMessageRequest
      */
     debug?: boolean | null;
+    /**
+     * Assistant chat backend route
+     * @type {AssistantChatRoute}
+     * @memberof PostAssistantChatMessageRequest
+     */
+    route?: AssistantChatRoute;
 }
 /**
  * Check if a given object implements the PostAssistantChatMessageRequest interface.

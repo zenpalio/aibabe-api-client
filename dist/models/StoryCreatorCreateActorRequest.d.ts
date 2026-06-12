@@ -39,6 +39,12 @@ export interface StoryCreatorCreateActorRequest {
      * @type {string}
      * @memberof StoryCreatorCreateActorRequest
      */
+    imageTags: string;
+    /**
+     *
+     * @type {string}
+     * @memberof StoryCreatorCreateActorRequest
+     */
     referenceAudioId?: string | null;
 }
 /**

@@ -9,9 +9,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { PublicUserPreviewWithFollow } from './PublicUserPreviewWithFollow';
 import type { StoryCounts } from './StoryCounts';
 import type { StoryVisibility } from './StoryVisibility';
 import type { UserEpisodeProgressType } from './UserEpisodeProgressType';
+import type { StoryRating } from './StoryRating';
 import type { StoryCreatorEpisode } from './StoryCreatorEpisode';
 /**
  *
@@ -24,7 +26,7 @@ export interface StoryCreatorStoryWithEpisodes {
      * @type {string}
      * @memberof StoryCreatorStoryWithEpisodes
      */
-    title: string;
+    title?: string | null;
     /**
      *
      * @type {string}
@@ -45,16 +47,16 @@ export interface StoryCreatorStoryWithEpisodes {
     id: string;
     /**
      *
-     * @type {string}
+     * @type {PublicUserPreviewWithFollow}
      * @memberof StoryCreatorStoryWithEpisodes
      */
-    ownerId: string;
+    owner: PublicUserPreviewWithFollow;
     /**
      *
-     * @type {number}
+     * @type {StoryRating}
      * @memberof StoryCreatorStoryWithEpisodes
      */
-    rating?: number | null;
+    rating?: StoryRating | null;
     /**
      *
      * @type {UserEpisodeProgressType}

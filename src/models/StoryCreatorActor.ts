@@ -50,6 +50,12 @@ export interface StoryCreatorActor {
      * @type {string}
      * @memberof StoryCreatorActor
      */
+    imageTags?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof StoryCreatorActor
+     */
     referenceAudioId?: string | null;
     /**
      * 
@@ -97,6 +103,7 @@ export function StoryCreatorActorFromJSONTyped(json: any, ignoreDiscriminator: b
         'displayName': json['display_name'],
         'role': ActorRoleFromJSON(json['role']),
         'avatar': json['avatar'] == null ? undefined : json['avatar'],
+        'imageTags': json['image_tags'] == null ? undefined : json['image_tags'],
         'referenceAudioId': json['reference_audio_id'] == null ? undefined : json['reference_audio_id'],
         'id': json['id'],
         'storyId': json['story_id'],
@@ -118,6 +125,7 @@ export function StoryCreatorActorFromJSONTyped(json: any, ignoreDiscriminator: b
         'display_name': value['displayName'],
         'role': ActorRoleToJSON(value['role']),
         'avatar': value['avatar'],
+        'image_tags': value['imageTags'],
         'reference_audio_id': value['referenceAudioId'],
         'id': value['id'],
         'story_id': value['storyId'],

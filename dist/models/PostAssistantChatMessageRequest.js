@@ -18,6 +18,8 @@ exports.PostAssistantChatMessageRequestFromJSON = PostAssistantChatMessageReques
 exports.PostAssistantChatMessageRequestFromJSONTyped = PostAssistantChatMessageRequestFromJSONTyped;
 exports.PostAssistantChatMessageRequestToJSON = PostAssistantChatMessageRequestToJSON;
 exports.PostAssistantChatMessageRequestToJSONTyped = PostAssistantChatMessageRequestToJSONTyped;
+const EpisodeContent_1 = require("./EpisodeContent");
+const AssistantChatRoute_1 = require("./AssistantChatRoute");
 /**
  * Check if a given object implements the PostAssistantChatMessageRequest interface.
  */
@@ -27,6 +29,8 @@ function instanceOfPostAssistantChatMessageRequest(value) {
     if (!('requestId' in value) || value['requestId'] === undefined)
         return false;
     if (!('query' in value) || value['query'] === undefined)
+        return false;
+    if (!('pagePath' in value) || value['pagePath'] === undefined)
         return false;
     return true;
 }
@@ -41,7 +45,11 @@ function PostAssistantChatMessageRequestFromJSONTyped(json, ignoreDiscriminator)
         'clientId': json['client_id'],
         'requestId': json['request_id'],
         'query': json['query'],
+        'pagePath': json['page_path'],
+        'episodeId': json['episode_id'] == null ? undefined : json['episode_id'],
+        'episodeContent': json['episode_content'] == null ? undefined : (json['episode_content'].map(EpisodeContent_1.EpisodeContentFromJSON)),
         'debug': json['debug'] == null ? undefined : json['debug'],
+        'route': json['route'] == null ? undefined : (0, AssistantChatRoute_1.AssistantChatRouteFromJSON)(json['route']),
     };
 }
 function PostAssistantChatMessageRequestToJSON(json) {
@@ -55,7 +63,11 @@ function PostAssistantChatMessageRequestToJSONTyped(value, ignoreDiscriminator =
         'client_id': value['clientId'],
         'request_id': value['requestId'],
         'query': value['query'],
+        'page_path': value['pagePath'],
+        'episode_id': value['episodeId'],
+        'episode_content': value['episodeContent'] == null ? undefined : (value['episodeContent'].map(EpisodeContent_1.EpisodeContentToJSON)),
         'debug': value['debug'],
+        'route': (0, AssistantChatRoute_1.AssistantChatRouteToJSON)(value['route']),
     };
 }
 //# sourceMappingURL=PostAssistantChatMessageRequest.js.map

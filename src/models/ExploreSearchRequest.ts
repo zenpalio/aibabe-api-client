@@ -127,6 +127,18 @@ export interface ExploreSearchRequest {
      * @memberof ExploreSearchRequest
      */
     scene?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ExploreSearchRequest
+     */
+    seenStories?: boolean | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ExploreSearchRequest
+     */
+    unlockedStories?: boolean | null;
 }
 
 
@@ -160,6 +172,8 @@ export function ExploreSearchRequestFromJSONTyped(json: any, ignoreDiscriminator
         'postType': json['post_type'] == null ? undefined : PostTypeFromJSON(json['post_type']),
         'creatorUserId': json['creator_user_id'] == null ? undefined : json['creator_user_id'],
         'scene': json['scene'] == null ? undefined : json['scene'],
+        'seenStories': json['seen_stories'] == null ? undefined : json['seen_stories'],
+        'unlockedStories': json['unlocked_stories'] == null ? undefined : json['unlocked_stories'],
     };
 }
 
@@ -186,6 +200,8 @@ export function ExploreSearchRequestFromJSONTyped(json: any, ignoreDiscriminator
         'post_type': PostTypeToJSON(value['postType']),
         'creator_user_id': value['creatorUserId'],
         'scene': value['scene'],
+        'seen_stories': value['seenStories'],
+        'unlocked_stories': value['unlockedStories'],
     };
 }
 

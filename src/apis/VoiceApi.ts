@@ -21,6 +21,8 @@ import type {
   Language,
   SoundEffectResponse,
   SoundEffectsRequest,
+  TextToSpeechEnhanceRequest,
+  TextToSpeechEnhanceResponse,
   TextToSpeechRequest,
   TextToSpeechResponse,
 } from '../models/index';
@@ -37,6 +39,10 @@ import {
     SoundEffectResponseToJSON,
     SoundEffectsRequestFromJSON,
     SoundEffectsRequestToJSON,
+    TextToSpeechEnhanceRequestFromJSON,
+    TextToSpeechEnhanceRequestToJSON,
+    TextToSpeechEnhanceResponseFromJSON,
+    TextToSpeechEnhanceResponseToJSON,
     TextToSpeechRequestFromJSON,
     TextToSpeechRequestToJSON,
     TextToSpeechResponseFromJSON,
@@ -50,6 +56,10 @@ export interface CreateReferenceVoiceReferencesPostRequest {
     referenceText: string;
     locale: Language;
     description?: string;
+}
+
+export interface EnhanceTextToSpeechVoiceEnhancePostRequest {
+    textToSpeechEnhanceRequest: TextToSpeechEnhanceRequest;
 }
 
 export interface GenerateSoundEffectsVoiceSfxPostRequest {
@@ -188,6 +198,42 @@ export class VoiceApi extends runtime.BaseAPI {
      */
     async createReferenceVoiceReferencesPost(requestParameters: CreateReferenceVoiceReferencesPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
         const response = await this.createReferenceVoiceReferencesPostRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Enhance Text To Speech
+     */
+    async enhanceTextToSpeechVoiceEnhancePostRaw(requestParameters: EnhanceTextToSpeechVoiceEnhancePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TextToSpeechEnhanceResponse>> {
+        if (requestParameters['textToSpeechEnhanceRequest'] == null) {
+            throw new runtime.RequiredError(
+                'textToSpeechEnhanceRequest',
+                'Required parameter "textToSpeechEnhanceRequest" was null or undefined when calling enhanceTextToSpeechVoiceEnhancePost().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        const response = await this.request({
+            path: `/voice/enhance`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: TextToSpeechEnhanceRequestToJSON(requestParameters['textToSpeechEnhanceRequest']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => TextToSpeechEnhanceResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Enhance Text To Speech
+     */
+    async enhanceTextToSpeechVoiceEnhancePost(requestParameters: EnhanceTextToSpeechVoiceEnhancePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TextToSpeechEnhanceResponse> {
+        const response = await this.enhanceTextToSpeechVoiceEnhancePostRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

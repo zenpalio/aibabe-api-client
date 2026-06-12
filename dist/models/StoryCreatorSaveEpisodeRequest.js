@@ -23,8 +23,6 @@ const StoryCreatorSaveEpisodePanel_1 = require("./StoryCreatorSaveEpisodePanel")
  * Check if a given object implements the StoryCreatorSaveEpisodeRequest interface.
  */
 function instanceOfStoryCreatorSaveEpisodeRequest(value) {
-    if (!('title' in value) || value['title'] === undefined)
-        return false;
     if (!('panels' in value) || value['panels'] === undefined)
         return false;
     return true;
@@ -37,7 +35,7 @@ function StoryCreatorSaveEpisodeRequestFromJSONTyped(json, ignoreDiscriminator) 
         return json;
     }
     return {
-        'title': json['title'],
+        'title': json['title'] == null ? undefined : json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
         'lockAfter': json['lock_after'] == null ? undefined : json['lock_after'],

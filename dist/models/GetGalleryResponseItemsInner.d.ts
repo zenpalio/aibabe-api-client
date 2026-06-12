@@ -9,10 +9,13 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { PublicUserPreviewWithFollow } from './PublicUserPreviewWithFollow';
+import type { StoryCounts } from './StoryCounts';
 import type { ArtStyle } from './ArtStyle';
 import type { ChatbotPreview } from './ChatbotPreview';
 import type { PostDetails } from './PostDetails';
 import type { StoryVisibility } from './StoryVisibility';
+import type { StoryRating } from './StoryRating';
 import type { VideoGenerationStatus } from './VideoGenerationStatus';
 /**
  *
@@ -100,10 +103,10 @@ export interface GetGalleryResponseItemsInner {
     originalImageUrl: string;
     /**
      *
-     * @type {string}
+     * @type {PublicUserPreviewWithFollow}
      * @memberof GetGalleryResponseItemsInner
      */
-    ownerId: string;
+    owner?: PublicUserPreviewWithFollow;
     /**
      *
      * @type {string}
@@ -130,16 +133,16 @@ export interface GetGalleryResponseItemsInner {
     visibility: StoryVisibility;
     /**
      *
-     * @type {number}
+     * @type {StoryRating}
      * @memberof GetGalleryResponseItemsInner
      */
-    publicEpisodesCount: number;
+    rating?: StoryRating;
     /**
      *
-     * @type {number}
+     * @type {StoryCounts}
      * @memberof GetGalleryResponseItemsInner
      */
-    publicPanelsCount: number;
+    counts: StoryCounts;
 }
 /**
  * @export

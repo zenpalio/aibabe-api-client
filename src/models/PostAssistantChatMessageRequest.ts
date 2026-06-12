@@ -13,6 +13,21 @@
  */
 
 import { mapValues } from '../runtime';
+import type { EpisodeContent } from './EpisodeContent';
+import {
+    EpisodeContentFromJSON,
+    EpisodeContentFromJSONTyped,
+    EpisodeContentToJSON,
+    EpisodeContentToJSONTyped,
+} from './EpisodeContent';
+import type { AssistantChatRoute } from './AssistantChatRoute';
+import {
+    AssistantChatRouteFromJSON,
+    AssistantChatRouteFromJSONTyped,
+    AssistantChatRouteToJSON,
+    AssistantChatRouteToJSONTyped,
+} from './AssistantChatRoute';
+
 /**
  * 
  * @export
@@ -39,11 +54,37 @@ export interface PostAssistantChatMessageRequest {
     query: string;
     /**
      * 
+     * @type {string}
+     * @memberof PostAssistantChatMessageRequest
+     */
+    pagePath: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof PostAssistantChatMessageRequest
+     */
+    episodeId?: string | null;
+    /**
+     * 
+     * @type {Array<EpisodeContent>}
+     * @memberof PostAssistantChatMessageRequest
+     */
+    episodeContent?: Array<EpisodeContent> | null;
+    /**
+     * 
      * @type {boolean}
      * @memberof PostAssistantChatMessageRequest
      */
     debug?: boolean | null;
+    /**
+     * Assistant chat backend route
+     * @type {AssistantChatRoute}
+     * @memberof PostAssistantChatMessageRequest
+     */
+    route?: AssistantChatRoute;
 }
+
+
 
 /**
  * Check if a given object implements the PostAssistantChatMessageRequest interface.
@@ -52,6 +93,7 @@ export function instanceOfPostAssistantChatMessageRequest(value: object): value 
     if (!('clientId' in value) || value['clientId'] === undefined) return false;
     if (!('requestId' in value) || value['requestId'] === undefined) return false;
     if (!('query' in value) || value['query'] === undefined) return false;
+    if (!('pagePath' in value) || value['pagePath'] === undefined) return false;
     return true;
 }
 
@@ -68,7 +110,11 @@ export function PostAssistantChatMessageRequestFromJSONTyped(json: any, ignoreDi
         'clientId': json['client_id'],
         'requestId': json['request_id'],
         'query': json['query'],
+        'pagePath': json['page_path'],
+        'episodeId': json['episode_id'] == null ? undefined : json['episode_id'],
+        'episodeContent': json['episode_content'] == null ? undefined : ((json['episode_content'] as Array<any>).map(EpisodeContentFromJSON)),
         'debug': json['debug'] == null ? undefined : json['debug'],
+        'route': json['route'] == null ? undefined : AssistantChatRouteFromJSON(json['route']),
     };
 }
 
@@ -86,7 +132,11 @@ export function PostAssistantChatMessageRequestFromJSONTyped(json: any, ignoreDi
         'client_id': value['clientId'],
         'request_id': value['requestId'],
         'query': value['query'],
+        'page_path': value['pagePath'],
+        'episode_id': value['episodeId'],
+        'episode_content': value['episodeContent'] == null ? undefined : ((value['episodeContent'] as Array<any>).map(EpisodeContentToJSON)),
         'debug': value['debug'],
+        'route': AssistantChatRouteToJSON(value['route']),
     };
 }
 

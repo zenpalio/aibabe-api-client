@@ -12,6 +12,7 @@
 import type { PublicUserPreview } from './PublicUserPreview';
 import type { PostType } from './PostType';
 import type { NotificationType } from './NotificationType';
+import type { BadgeModel } from './BadgeModel';
 import type { WallPost } from './WallPost';
 /**
  *
@@ -85,6 +86,30 @@ export interface NotificationResponseNotificationsInner {
      * @memberof NotificationResponseNotificationsInner
      */
     message: string;
+    /**
+     *
+     * @type {string}
+     * @memberof NotificationResponseNotificationsInner
+     */
+    episodeId: string;
+    /**
+     *
+     * @type {string}
+     * @memberof NotificationResponseNotificationsInner
+     */
+    episodeTitle: string;
+    /**
+     *
+     * @type {string}
+     * @memberof NotificationResponseNotificationsInner
+     */
+    coverImage: string;
+    /**
+     *
+     * @type {BadgeModel}
+     * @memberof NotificationResponseNotificationsInner
+     */
+    badge: BadgeModel;
 }
 /**
  * Check if a given object implements the NotificationResponseNotificationsInner interface.

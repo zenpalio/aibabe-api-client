@@ -20,7 +20,7 @@ export interface StoryCreatorEpisodeBase {
      * @type {string}
      * @memberof StoryCreatorEpisodeBase
      */
-    title: string;
+    title?: string | null;
     /**
      *
      * @type {string}

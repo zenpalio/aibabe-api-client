@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { PublicUserPreviewWithFollow } from './PublicUserPreviewWithFollow';
+import {
+    PublicUserPreviewWithFollowFromJSON,
+    PublicUserPreviewWithFollowFromJSONTyped,
+    PublicUserPreviewWithFollowToJSON,
+    PublicUserPreviewWithFollowToJSONTyped,
+} from './PublicUserPreviewWithFollow';
 import type { StoryCounts } from './StoryCounts';
 import {
     StoryCountsFromJSON,
@@ -34,6 +41,13 @@ import {
     UserEpisodeProgressTypeToJSON,
     UserEpisodeProgressTypeToJSONTyped,
 } from './UserEpisodeProgressType';
+import type { StoryRating } from './StoryRating';
+import {
+    StoryRatingFromJSON,
+    StoryRatingFromJSONTyped,
+    StoryRatingToJSON,
+    StoryRatingToJSONTyped,
+} from './StoryRating';
 
 /**
  * 
@@ -46,7 +60,7 @@ export interface StoryCreatorStory {
      * @type {string}
      * @memberof StoryCreatorStory
      */
-    title: string;
+    title?: string | null;
     /**
      * 
      * @type {string}
@@ -67,16 +81,16 @@ export interface StoryCreatorStory {
     id: string;
     /**
      * 
-     * @type {string}
+     * @type {PublicUserPreviewWithFollow}
      * @memberof StoryCreatorStory
      */
-    ownerId: string;
+    owner: PublicUserPreviewWithFollow;
     /**
      * 
-     * @type {number}
+     * @type {StoryRating}
      * @memberof StoryCreatorStory
      */
-    rating?: number | null;
+    rating?: StoryRating | null;
     /**
      * 
      * @type {UserEpisodeProgressType}
@@ -109,9 +123,8 @@ export interface StoryCreatorStory {
  * Check if a given object implements the StoryCreatorStory interface.
  */
 export function instanceOfStoryCreatorStory(value: object): value is StoryCreatorStory {
-    if (!('title' in value) || value['title'] === undefined) return false;
     if (!('id' in value) || value['id'] === undefined) return false;
-    if (!('ownerId' in value) || value['ownerId'] === undefined) return false;
+    if (!('owner' in value) || value['owner'] === undefined) return false;
     if (!('visibility' in value) || value['visibility'] === undefined) return false;
     if (!('counts' in value) || value['counts'] === undefined) return false;
     return true;
@@ -127,12 +140,12 @@ export function StoryCreatorStoryFromJSONTyped(json: any, ignoreDiscriminator: b
     }
     return {
         
-        'title': json['title'],
+        'title': json['title'] == null ? undefined : json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
         'id': json['id'],
-        'ownerId': json['owner_id'],
-        'rating': json['rating'] == null ? undefined : json['rating'],
+        'owner': PublicUserPreviewWithFollowFromJSON(json['owner']),
+        'rating': json['rating'] == null ? undefined : StoryRatingFromJSON(json['rating']),
         'progress': json['progress'] == null ? undefined : UserEpisodeProgressTypeFromJSON(json['progress']),
         'newerVersionExists': json['newer_version_exists'] == null ? undefined : json['newer_version_exists'],
         'visibility': StoryVisibilityFromJSON(json['visibility']),
@@ -155,8 +168,8 @@ export function StoryCreatorStoryFromJSONTyped(json: any, ignoreDiscriminator: b
         'description': value['description'],
         'cover_image': value['coverImage'],
         'id': value['id'],
-        'owner_id': value['ownerId'],
-        'rating': value['rating'],
+        'owner': PublicUserPreviewWithFollowToJSON(value['owner']),
+        'rating': StoryRatingToJSON(value['rating']),
         'progress': UserEpisodeProgressTypeToJSON(value['progress']),
         'newer_version_exists': value['newerVersionExists'],
         'visibility': StoryVisibilityToJSON(value['visibility']),

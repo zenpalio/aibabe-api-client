@@ -22,8 +22,6 @@ exports.StoryCreatorEpisodeBaseToJSONTyped = StoryCreatorEpisodeBaseToJSONTyped;
  * Check if a given object implements the StoryCreatorEpisodeBase interface.
  */
 function instanceOfStoryCreatorEpisodeBase(value) {
-    if (!('title' in value) || value['title'] === undefined)
-        return false;
     return true;
 }
 function StoryCreatorEpisodeBaseFromJSON(json) {
@@ -34,7 +32,7 @@ function StoryCreatorEpisodeBaseFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
-        'title': json['title'],
+        'title': json['title'] == null ? undefined : json['title'],
         'description': json['description'] == null ? undefined : json['description'],
         'coverImage': json['cover_image'] == null ? undefined : json['cover_image'],
         'lockAfter': json['lock_after'] == null ? undefined : json['lock_after'],
