@@ -13,20 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { ArtStyle } from './ArtStyle';
+import type { ModelName } from './ModelName';
 import {
-    ArtStyleFromJSON,
-    ArtStyleFromJSONTyped,
-    ArtStyleToJSON,
-    ArtStyleToJSONTyped,
-} from './ArtStyle';
-import type { Gender } from './Gender';
-import {
-    GenderFromJSON,
-    GenderFromJSONTyped,
-    GenderToJSON,
-    GenderToJSONTyped,
-} from './Gender';
+    ModelNameFromJSON,
+    ModelNameFromJSONTyped,
+    ModelNameToJSON,
+    ModelNameToJSONTyped,
+} from './ModelName';
 import type { LoraName } from './LoraName';
 import {
     LoraNameFromJSON,
@@ -34,13 +27,6 @@ import {
     LoraNameToJSON,
     LoraNameToJSONTyped,
 } from './LoraName';
-import type { SexualOrientation } from './SexualOrientation';
-import {
-    SexualOrientationFromJSON,
-    SexualOrientationFromJSONTyped,
-    SexualOrientationToJSON,
-    SexualOrientationToJSONTyped,
-} from './SexualOrientation';
 
 /**
  * 
@@ -62,16 +48,10 @@ export interface GetAboutChatbotResponse {
     name: string | null;
     /**
      * 
-     * @type {Gender}
+     * @type {string}
      * @memberof GetAboutChatbotResponse
      */
-    gender: Gender | null;
-    /**
-     * 
-     * @type {SexualOrientation}
-     * @memberof GetAboutChatbotResponse
-     */
-    sexualOrientation: SexualOrientation | null;
+    gender: string | null;
     /**
      * 
      * @type {string}
@@ -98,10 +78,10 @@ export interface GetAboutChatbotResponse {
     looksDescription: string | null;
     /**
      * 
-     * @type {ArtStyle}
+     * @type {ModelName}
      * @memberof GetAboutChatbotResponse
      */
-    artStyle: ArtStyle | null;
+    model: ModelName | null;
     /**
      * 
      * @type {Array<LoraName>}
@@ -137,12 +117,11 @@ export function instanceOfGetAboutChatbotResponse(value: object): value is GetAb
     if (!('userId' in value) || value['userId'] === undefined) return false;
     if (!('name' in value) || value['name'] === undefined) return false;
     if (!('gender' in value) || value['gender'] === undefined) return false;
-    if (!('sexualOrientation' in value) || value['sexualOrientation'] === undefined) return false;
     if (!('story' in value) || value['story'] === undefined) return false;
     if (!('bio' in value) || value['bio'] === undefined) return false;
     if (!('exampleConversation' in value) || value['exampleConversation'] === undefined) return false;
     if (!('looksDescription' in value) || value['looksDescription'] === undefined) return false;
-    if (!('artStyle' in value) || value['artStyle'] === undefined) return false;
+    if (!('model' in value) || value['model'] === undefined) return false;
     if (!('loras' in value) || value['loras'] === undefined) return false;
     if (!('generationStated' in value) || value['generationStated'] === undefined) return false;
     if (!('profilePicture' in value) || value['profilePicture'] === undefined) return false;
@@ -162,13 +141,12 @@ export function GetAboutChatbotResponseFromJSONTyped(json: any, ignoreDiscrimina
         
         'userId': json['user_id'],
         'name': json['name'],
-        'gender': GenderFromJSON(json['gender']),
-        'sexualOrientation': SexualOrientationFromJSON(json['sexual_orientation']),
+        'gender': json['gender'],
         'story': json['story'],
         'bio': json['bio'],
         'exampleConversation': json['example_conversation'],
         'looksDescription': json['looks_description'],
-        'artStyle': ArtStyleFromJSON(json['art_style']),
+        'model': ModelNameFromJSON(json['model']),
         'loras': (json['loras'] == null ? null : (json['loras'] as Array<any>).map(LoraNameFromJSON)),
         'generationStated': json['generation_stated'],
         'profilePicture': json['profile_picture'],
@@ -189,13 +167,12 @@ export function GetAboutChatbotResponseFromJSONTyped(json: any, ignoreDiscrimina
         
         'user_id': value['userId'],
         'name': value['name'],
-        'gender': GenderToJSON(value['gender']),
-        'sexual_orientation': SexualOrientationToJSON(value['sexualOrientation']),
+        'gender': value['gender'],
         'story': value['story'],
         'bio': value['bio'],
         'example_conversation': value['exampleConversation'],
         'looks_description': value['looksDescription'],
-        'art_style': ArtStyleToJSON(value['artStyle']),
+        'model': ModelNameToJSON(value['model']),
         'loras': (value['loras'] == null ? null : (value['loras'] as Array<any>).map(LoraNameToJSON)),
         'generation_stated': value['generationStated'],
         'profile_picture': value['profilePicture'],

@@ -26,7 +26,6 @@ exports.SeduceDifficultyToJSONTyped = SeduceDifficultyToJSONTyped;
 exports.SeduceDifficulty = {
     Easy: 'easy',
     Medium: 'medium',
-    Normal: 'normal',
     Hard: 'hard',
     Impossible: 'impossible'
 };

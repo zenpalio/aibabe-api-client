@@ -19,22 +19,22 @@
  */
 export const SpecialFeatures = {
     Tattoos: 'tattoos',
-    Tattoo: 'tattoo',
     PubicHair: 'pubic_hair',
     Piercing: 'piercing',
-    Piercings: 'piercings',
     Freckles: 'freckles',
+    Scar: 'scar',
+    Vascularity: 'vascularity',
+    MaleOnlyVascularity: 'male-only vascularity',
+    ChestHair: 'chest_hair',
     Pregnant: 'pregnant',
     Glasses: 'glasses',
-    Vascularity: 'vascularity',
-    Scar: 'scar',
-    ChestHair: 'chest_hair',
     Futa: 'futa',
     Trans: 'trans',
     HugeBreasts: 'huge_breasts',
     RedLipstick: 'red_lipstick',
     LongNails: 'long_nails',
-    PearlEarrings: 'pearl_earrings'
+    PearlEarrings: 'pearl_earrings',
+    Choker: 'choker'
 } as const;
 export type SpecialFeatures = typeof SpecialFeatures[keyof typeof SpecialFeatures];
 

@@ -9,8 +9,6 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { Gender } from './Gender';
-import type { SexualOrientation } from './SexualOrientation';
 /**
  *
  * @export
@@ -37,16 +35,10 @@ export interface PostAdvancedIdentityPayload {
     greetings: string;
     /**
      *
-     * @type {Gender}
+     * @type {string}
      * @memberof PostAdvancedIdentityPayload
      */
-    gender: Gender;
-    /**
-     *
-     * @type {SexualOrientation}
-     * @memberof PostAdvancedIdentityPayload
-     */
-    sexualOrientation?: SexualOrientation | null;
+    gender: string;
 }
 /**
  * Check if a given object implements the PostAdvancedIdentityPayload interface.

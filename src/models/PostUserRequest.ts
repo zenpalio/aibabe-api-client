@@ -13,14 +13,6 @@
  */
 
 import { mapValues } from '../runtime';
-import type { Gender } from './Gender';
-import {
-    GenderFromJSON,
-    GenderFromJSONTyped,
-    GenderToJSON,
-    GenderToJSONTyped,
-} from './Gender';
-
 /**
  * 
  * @export
@@ -51,15 +43,7 @@ export interface PostUserRequest {
      * @memberof PostUserRequest
      */
     isDummy?: boolean | null;
-    /**
-     * 
-     * @type {Gender}
-     * @memberof PostUserRequest
-     */
-    gender?: Gender | null;
 }
-
-
 
 /**
  * Check if a given object implements the PostUserRequest interface.
@@ -85,7 +69,6 @@ export function PostUserRequestFromJSONTyped(json: any, ignoreDiscriminator: boo
         'email': json['email'],
         'password': json['password'],
         'isDummy': json['is_dummy'] == null ? undefined : json['is_dummy'],
-        'gender': json['gender'] == null ? undefined : GenderFromJSON(json['gender']),
     };
 }
 
@@ -104,7 +87,6 @@ export function PostUserRequestFromJSONTyped(json: any, ignoreDiscriminator: boo
         'email': value['email'],
         'password': value['password'],
         'is_dummy': value['isDummy'],
-        'gender': GenderToJSON(value['gender']),
     };
 }
 

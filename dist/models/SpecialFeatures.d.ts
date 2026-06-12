@@ -15,22 +15,22 @@
  */
 export declare const SpecialFeatures: {
     readonly Tattoos: "tattoos";
-    readonly Tattoo: "tattoo";
     readonly PubicHair: "pubic_hair";
     readonly Piercing: "piercing";
-    readonly Piercings: "piercings";
     readonly Freckles: "freckles";
+    readonly Scar: "scar";
+    readonly Vascularity: "vascularity";
+    readonly MaleOnlyVascularity: "male-only vascularity";
+    readonly ChestHair: "chest_hair";
     readonly Pregnant: "pregnant";
     readonly Glasses: "glasses";
-    readonly Vascularity: "vascularity";
-    readonly Scar: "scar";
-    readonly ChestHair: "chest_hair";
     readonly Futa: "futa";
     readonly Trans: "trans";
     readonly HugeBreasts: "huge_breasts";
     readonly RedLipstick: "red_lipstick";
     readonly LongNails: "long_nails";
     readonly PearlEarrings: "pearl_earrings";
+    readonly Choker: "choker";
 };
 export type SpecialFeatures = typeof SpecialFeatures[keyof typeof SpecialFeatures];
 export declare function instanceOfSpecialFeatures(value: any): boolean;

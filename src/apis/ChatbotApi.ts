@@ -35,6 +35,7 @@ import type {
   PostAdvancedIdentityPayload,
   PostAdvancedPersonalityPayload,
   PostCustomAboutPagePayload,
+  PostCustomChatBotPayload,
   PostCustomChatbotResponse,
   PostCustomChatbotV2Payload,
   PostProfilePictureResponse,
@@ -81,6 +82,8 @@ import {
     PostAdvancedPersonalityPayloadToJSON,
     PostCustomAboutPagePayloadFromJSON,
     PostCustomAboutPagePayloadToJSON,
+    PostCustomChatBotPayloadFromJSON,
+    PostCustomChatBotPayloadToJSON,
     PostCustomChatbotResponseFromJSON,
     PostCustomChatbotResponseToJSON,
     PostCustomChatbotV2PayloadFromJSON,
@@ -94,6 +97,10 @@ import {
 export interface AttachmentChatbotChatbotIdAttachmentGetRequest {
     chatbotId: string;
     imageName: string;
+}
+
+export interface CreateCustomChatbotChatbotCustomPostRequest {
+    postCustomChatBotPayload: PostCustomChatBotPayload;
 }
 
 export interface CreateCustomChatbotV2ChatbotCustomV2PostRequest {
@@ -227,6 +234,42 @@ export class ChatbotApi extends runtime.BaseAPI {
      */
     async attachmentChatbotChatbotIdAttachmentGet(requestParameters: AttachmentChatbotChatbotIdAttachmentGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
         const response = await this.attachmentChatbotChatbotIdAttachmentGetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Create Custom Chatbot
+     */
+    async createCustomChatbotChatbotCustomPostRaw(requestParameters: CreateCustomChatbotChatbotCustomPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostCustomChatbotResponse>> {
+        if (requestParameters['postCustomChatBotPayload'] == null) {
+            throw new runtime.RequiredError(
+                'postCustomChatBotPayload',
+                'Required parameter "postCustomChatBotPayload" was null or undefined when calling createCustomChatbotChatbotCustomPost().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        const response = await this.request({
+            path: `/chatbot/custom`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: PostCustomChatBotPayloadToJSON(requestParameters['postCustomChatBotPayload']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => PostCustomChatbotResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Create Custom Chatbot
+     */
+    async createCustomChatbotChatbotCustomPost(requestParameters: CreateCustomChatbotChatbotCustomPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PostCustomChatbotResponse> {
+        const response = await this.createCustomChatbotChatbotCustomPostRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

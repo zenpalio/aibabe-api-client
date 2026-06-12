@@ -19,7 +19,6 @@ exports.PatchUserRequestFromJSONTyped = PatchUserRequestFromJSONTyped;
 exports.PatchUserRequestToJSON = PatchUserRequestToJSON;
 exports.PatchUserRequestToJSONTyped = PatchUserRequestToJSONTyped;
 const UserPreferences_1 = require("./UserPreferences");
-const Gender_1 = require("./Gender");
 const LLM_1 = require("./LLM");
 /**
  * Check if a given object implements the PatchUserRequest interface.
@@ -37,7 +36,6 @@ function PatchUserRequestFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'username': json['username'] == null ? undefined : json['username'],
         'preferences': json['preferences'] == null ? undefined : (0, UserPreferences_1.UserPreferencesFromJSON)(json['preferences']),
-        'gender': json['gender'] == null ? undefined : (0, Gender_1.GenderFromJSON)(json['gender']),
         'llmModel': json['llm_model'] == null ? undefined : (0, LLM_1.LLMFromJSON)(json['llm_model']),
     };
 }
@@ -51,7 +49,6 @@ function PatchUserRequestToJSONTyped(value, ignoreDiscriminator = false) {
     return {
         'username': value['username'],
         'preferences': (0, UserPreferences_1.UserPreferencesToJSON)(value['preferences']),
-        'gender': (0, Gender_1.GenderToJSON)(value['gender']),
         'llm_model': (0, LLM_1.LLMToJSON)(value['llmModel']),
     };
 }

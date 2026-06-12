@@ -23,7 +23,6 @@ export const Ethnicity = {
     Caucasian: 'caucasian',
     Arab: 'arab',
     Latina: 'latina',
-    Hispanic: 'hispanic',
     Indian: 'indian',
     Furry: 'furry'
 } as const;
