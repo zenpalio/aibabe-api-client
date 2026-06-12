@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { EventSubmissionPreview } from './EventSubmissionPreview';
+import type { EffectiveEventStatus } from './EffectiveEventStatus';
 import {
-    EventSubmissionPreviewFromJSON,
-    EventSubmissionPreviewFromJSONTyped,
-    EventSubmissionPreviewToJSON,
-    EventSubmissionPreviewToJSONTyped,
-} from './EventSubmissionPreview';
+    EffectiveEventStatusFromJSON,
+    EffectiveEventStatusFromJSONTyped,
+    EffectiveEventStatusToJSON,
+    EffectiveEventStatusToJSONTyped,
+} from './EffectiveEventStatus';
 
 /**
  * 
@@ -38,7 +38,7 @@ export interface EventPreview {
      * @type {string}
      * @memberof EventPreview
      */
-    name: string;
+    title: string;
     /**
      * 
      * @type {string}
@@ -47,20 +47,43 @@ export interface EventPreview {
     description: string;
     /**
      * 
-     * @type {EventSubmissionPreview}
+     * @type {number}
      * @memberof EventPreview
      */
-    submission: EventSubmissionPreview;
+    timeRemaining: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof EventPreview
+     */
+    prizePool: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof EventPreview
+     */
+    submissionsCount: number;
+    /**
+     * 
+     * @type {EffectiveEventStatus}
+     * @memberof EventPreview
+     */
+    status: EffectiveEventStatus;
 }
+
+
 
 /**
  * Check if a given object implements the EventPreview interface.
  */
 export function instanceOfEventPreview(value: object): value is EventPreview {
     if (!('id' in value) || value['id'] === undefined) return false;
-    if (!('name' in value) || value['name'] === undefined) return false;
+    if (!('title' in value) || value['title'] === undefined) return false;
     if (!('description' in value) || value['description'] === undefined) return false;
-    if (!('submission' in value) || value['submission'] === undefined) return false;
+    if (!('timeRemaining' in value) || value['timeRemaining'] === undefined) return false;
+    if (!('prizePool' in value) || value['prizePool'] === undefined) return false;
+    if (!('submissionsCount' in value) || value['submissionsCount'] === undefined) return false;
+    if (!('status' in value) || value['status'] === undefined) return false;
     return true;
 }
 
@@ -75,9 +98,12 @@ export function EventPreviewFromJSONTyped(json: any, ignoreDiscriminator: boolea
     return {
         
         'id': json['id'],
-        'name': json['name'],
+        'title': json['title'],
         'description': json['description'],
-        'submission': EventSubmissionPreviewFromJSON(json['submission']),
+        'timeRemaining': json['time_remaining'],
+        'prizePool': json['prize_pool'],
+        'submissionsCount': json['submissions_count'],
+        'status': EffectiveEventStatusFromJSON(json['status']),
     };
 }
 
@@ -93,9 +119,12 @@ export function EventPreviewFromJSONTyped(json: any, ignoreDiscriminator: boolea
     return {
         
         'id': value['id'],
-        'name': value['name'],
+        'title': value['title'],
         'description': value['description'],
-        'submission': EventSubmissionPreviewToJSON(value['submission']),
+        'time_remaining': value['timeRemaining'],
+        'prize_pool': value['prizePool'],
+        'submissions_count': value['submissionsCount'],
+        'status': EffectiveEventStatusToJSON(value['status']),
     };
 }
 

@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { EventResponse } from './EventResponse';
+import type { EventPreview } from './EventPreview';
 import {
-    EventResponseFromJSON,
-    EventResponseFromJSONTyped,
-    EventResponseToJSON,
-    EventResponseToJSONTyped,
-} from './EventResponse';
+    EventPreviewFromJSON,
+    EventPreviewFromJSONTyped,
+    EventPreviewToJSON,
+    EventPreviewToJSONTyped,
+} from './EventPreview';
 
 /**
  * 
@@ -29,10 +29,10 @@ import {
 export interface EventListResponse {
     /**
      * 
-     * @type {Array<EventResponse>}
+     * @type {Array<EventPreview>}
      * @memberof EventListResponse
      */
-    events: Array<EventResponse>;
+    events: Array<EventPreview>;
 }
 
 /**
@@ -53,7 +53,7 @@ export function EventListResponseFromJSONTyped(json: any, ignoreDiscriminator: b
     }
     return {
         
-        'events': ((json['events'] as Array<any>).map(EventResponseFromJSON)),
+        'events': ((json['events'] as Array<any>).map(EventPreviewFromJSON)),
     };
 }
 
@@ -68,7 +68,7 @@ export function EventListResponseFromJSONTyped(json: any, ignoreDiscriminator: b
 
     return {
         
-        'events': ((value['events'] as Array<any>).map(EventResponseToJSON)),
+        'events': ((value['events'] as Array<any>).map(EventPreviewToJSON)),
     };
 }
 

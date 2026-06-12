@@ -24,6 +24,9 @@ export interface CreateEventEventPostRequest {
     contentTypes?: ContentTypes | null;
     maxSubmissionsPerUser?: number | null;
 }
+export interface GetEventEventEventIdGetRequest {
+    eventId: string;
+}
 export interface PublishEventEventEventIdPublishPostRequest {
     eventId: string;
 }
@@ -61,6 +64,14 @@ export declare class EventApi extends runtime.BaseAPI {
      * Create Event
      */
     createEventEventPost(requestParameters: CreateEventEventPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EventResponse>;
+    /**
+     * Get Event
+     */
+    getEventEventEventIdGetRaw(requestParameters: GetEventEventEventIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EventResponse>>;
+    /**
+     * Get Event
+     */
+    getEventEventEventIdGet(requestParameters: GetEventEventEventIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EventResponse>;
     /**
      * Get Events
      */

@@ -288,6 +288,7 @@ export * from './StoryCreatorUpdateStoryRequest';
 export * from './StoryPreview';
 export * from './StoryRating';
 export * from './StoryVisibility';
+export * from './SubmissionPreview';
 export * from './Subscription';
 export * from './SubscriptionModel';
 export * from './SubscriptionPrice';

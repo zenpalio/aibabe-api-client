@@ -34,6 +34,13 @@ import {
     ContentTypeToJSON,
     ContentTypeToJSONTyped,
 } from './ContentType';
+import type { EventSubmissionPreview } from './EventSubmissionPreview';
+import {
+    EventSubmissionPreviewFromJSON,
+    EventSubmissionPreviewFromJSONTyped,
+    EventSubmissionPreviewToJSON,
+    EventSubmissionPreviewToJSONTyped,
+} from './EventSubmissionPreview';
 import type { ImageContent } from './ImageContent';
 import {
     ImageContentFromJSON,
@@ -41,13 +48,6 @@ import {
     ImageContentToJSON,
     ImageContentToJSONTyped,
 } from './ImageContent';
-import type { EventPreview } from './EventPreview';
-import {
-    EventPreviewFromJSON,
-    EventPreviewFromJSONTyped,
-    EventPreviewToJSON,
-    EventPreviewToJSONTyped,
-} from './EventPreview';
 import type { StoryPreview } from './StoryPreview';
 import {
     StoryPreviewFromJSON,
@@ -142,10 +142,10 @@ export interface WallPost {
     type: ContentType;
     /**
      * 
-     * @type {Array<EventPreview>}
+     * @type {Array<EventSubmissionPreview>}
      * @memberof WallPost
      */
-    eventPreviews: Array<EventPreview>;
+    eventSubmissionPreviews: Array<EventSubmissionPreview>;
 }
 
 
@@ -167,7 +167,7 @@ export function instanceOfWallPost(value: object): value is WallPost {
     if (!('updatedAt' in value) || value['updatedAt'] === undefined) return false;
     if (!('liked' in value) || value['liked'] === undefined) return false;
     if (!('type' in value) || value['type'] === undefined) return false;
-    if (!('eventPreviews' in value) || value['eventPreviews'] === undefined) return false;
+    if (!('eventSubmissionPreviews' in value) || value['eventSubmissionPreviews'] === undefined) return false;
     return true;
 }
 
@@ -194,7 +194,7 @@ export function WallPostFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
         'updatedAt': (new Date(json['updated_at'])),
         'liked': json['liked'],
         'type': ContentTypeFromJSON(json['type']),
-        'eventPreviews': ((json['event_previews'] as Array<any>).map(EventPreviewFromJSON)),
+        'eventSubmissionPreviews': ((json['event_submission_previews'] as Array<any>).map(EventSubmissionPreviewFromJSON)),
     };
 }
 
@@ -222,7 +222,7 @@ export function WallPostFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
         'updated_at': ((value['updatedAt']).toISOString()),
         'liked': value['liked'],
         'type': ContentTypeToJSON(value['type']),
-        'event_previews': ((value['eventPreviews'] as Array<any>).map(EventPreviewToJSON)),
+        'event_submission_previews': ((value['eventSubmissionPreviews'] as Array<any>).map(EventSubmissionPreviewToJSON)),
     };
 }
 

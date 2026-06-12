@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { EventResultType } from './EventResultType';
+import type { SubmissionPreview } from './SubmissionPreview';
 import {
-    EventResultTypeFromJSON,
-    EventResultTypeFromJSONTyped,
-    EventResultTypeToJSON,
-    EventResultTypeToJSONTyped,
-} from './EventResultType';
+    SubmissionPreviewFromJSON,
+    SubmissionPreviewFromJSONTyped,
+    SubmissionPreviewToJSON,
+    SubmissionPreviewToJSONTyped,
+} from './SubmissionPreview';
 
 /**
  * 
@@ -32,37 +32,35 @@ export interface EventSubmissionPreview {
      * @type {string}
      * @memberof EventSubmissionPreview
      */
-    title: string | null;
+    id: string;
     /**
      * 
      * @type {string}
      * @memberof EventSubmissionPreview
      */
-    description: string | null;
+    name: string;
     /**
      * 
-     * @type {EventResultType}
+     * @type {string}
      * @memberof EventSubmissionPreview
      */
-    resultType: EventResultType | null;
+    description: string;
     /**
      * 
-     * @type {number}
+     * @type {SubmissionPreview}
      * @memberof EventSubmissionPreview
      */
-    rank: number | null;
+    submission: SubmissionPreview;
 }
-
-
 
 /**
  * Check if a given object implements the EventSubmissionPreview interface.
  */
 export function instanceOfEventSubmissionPreview(value: object): value is EventSubmissionPreview {
-    if (!('title' in value) || value['title'] === undefined) return false;
+    if (!('id' in value) || value['id'] === undefined) return false;
+    if (!('name' in value) || value['name'] === undefined) return false;
     if (!('description' in value) || value['description'] === undefined) return false;
-    if (!('resultType' in value) || value['resultType'] === undefined) return false;
-    if (!('rank' in value) || value['rank'] === undefined) return false;
+    if (!('submission' in value) || value['submission'] === undefined) return false;
     return true;
 }
 
@@ -76,10 +74,10 @@ export function EventSubmissionPreviewFromJSONTyped(json: any, ignoreDiscriminat
     }
     return {
         
-        'title': json['title'],
+        'id': json['id'],
+        'name': json['name'],
         'description': json['description'],
-        'resultType': EventResultTypeFromJSON(json['result_type']),
-        'rank': json['rank'],
+        'submission': SubmissionPreviewFromJSON(json['submission']),
     };
 }
 
@@ -94,10 +92,10 @@ export function EventSubmissionPreviewFromJSONTyped(json: any, ignoreDiscriminat
 
     return {
         
-        'title': value['title'],
+        'id': value['id'],
+        'name': value['name'],
         'description': value['description'],
-        'result_type': EventResultTypeToJSON(value['resultType']),
-        'rank': value['rank'],
+        'submission': SubmissionPreviewToJSON(value['submission']),
     };
 }
 

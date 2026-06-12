@@ -9,7 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { EventResponse } from './EventResponse';
+import type { EventPreview } from './EventPreview';
 /**
  *
  * @export
@@ -18,10 +18,10 @@ import type { EventResponse } from './EventResponse';
 export interface EventListResponse {
     /**
      *
-     * @type {Array<EventResponse>}
+     * @type {Array<EventPreview>}
      * @memberof EventListResponse
      */
-    events: Array<EventResponse>;
+    events: Array<EventPreview>;
 }
 /**
  * Check if a given object implements the EventListResponse interface.

@@ -51,6 +51,10 @@ export interface CreateEventEventPostRequest {
     maxSubmissionsPerUser?: number | null;
 }
 
+export interface GetEventEventEventIdGetRequest {
+    eventId: string;
+}
+
 export interface PublishEventEventEventIdPublishPostRequest {
     eventId: string;
 }
@@ -190,6 +194,39 @@ export class EventApi extends runtime.BaseAPI {
      */
     async createEventEventPost(requestParameters: CreateEventEventPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EventResponse> {
         const response = await this.createEventEventPostRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Get Event
+     */
+    async getEventEventEventIdGetRaw(requestParameters: GetEventEventEventIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EventResponse>> {
+        if (requestParameters['eventId'] == null) {
+            throw new runtime.RequiredError(
+                'eventId',
+                'Required parameter "eventId" was null or undefined when calling getEventEventEventIdGet().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/event/{event_id}`.replace(`{${"event_id"}}`, encodeURIComponent(String(requestParameters['eventId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => EventResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Get Event
+     */
+    async getEventEventEventIdGet(requestParameters: GetEventEventEventIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EventResponse> {
+        const response = await this.getEventEventEventIdGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

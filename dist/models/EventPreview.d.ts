@@ -9,7 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { EventSubmissionPreview } from './EventSubmissionPreview';
+import type { EffectiveEventStatus } from './EffectiveEventStatus';
 /**
  *
  * @export
@@ -27,7 +27,7 @@ export interface EventPreview {
      * @type {string}
      * @memberof EventPreview
      */
-    name: string;
+    title: string;
     /**
      *
      * @type {string}
@@ -36,10 +36,28 @@ export interface EventPreview {
     description: string;
     /**
      *
-     * @type {EventSubmissionPreview}
+     * @type {number}
      * @memberof EventPreview
      */
-    submission: EventSubmissionPreview;
+    timeRemaining: number | null;
+    /**
+     *
+     * @type {number}
+     * @memberof EventPreview
+     */
+    prizePool: number | null;
+    /**
+     *
+     * @type {number}
+     * @memberof EventPreview
+     */
+    submissionsCount: number;
+    /**
+     *
+     * @type {EffectiveEventStatus}
+     * @memberof EventPreview
+     */
+    status: EffectiveEventStatus;
 }
 /**
  * Check if a given object implements the EventPreview interface.

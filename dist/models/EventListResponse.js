@@ -18,7 +18,7 @@ exports.EventListResponseFromJSON = EventListResponseFromJSON;
 exports.EventListResponseFromJSONTyped = EventListResponseFromJSONTyped;
 exports.EventListResponseToJSON = EventListResponseToJSON;
 exports.EventListResponseToJSONTyped = EventListResponseToJSONTyped;
-const EventResponse_1 = require("./EventResponse");
+const EventPreview_1 = require("./EventPreview");
 /**
  * Check if a given object implements the EventListResponse interface.
  */
@@ -35,7 +35,7 @@ function EventListResponseFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
-        'events': (json['events'].map(EventResponse_1.EventResponseFromJSON)),
+        'events': (json['events'].map(EventPreview_1.EventPreviewFromJSON)),
     };
 }
 function EventListResponseToJSON(json) {
@@ -46,7 +46,7 @@ function EventListResponseToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
-        'events': (value['events'].map(EventResponse_1.EventResponseToJSON)),
+        'events': (value['events'].map(EventPreview_1.EventPreviewToJSON)),
     };
 }
 //# sourceMappingURL=EventListResponse.js.map

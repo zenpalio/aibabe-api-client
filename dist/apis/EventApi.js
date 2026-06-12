@@ -133,6 +133,30 @@ class EventApi extends runtime.BaseAPI {
         return await response.value();
     }
     /**
+     * Get Event
+     */
+    async getEventEventEventIdGetRaw(requestParameters, initOverrides) {
+        if (requestParameters['eventId'] == null) {
+            throw new runtime.RequiredError('eventId', 'Required parameter "eventId" was null or undefined when calling getEventEventEventIdGet().');
+        }
+        const queryParameters = {};
+        const headerParameters = {};
+        const response = await this.request({
+            path: `/event/{event_id}`.replace(`{${"event_id"}}`, encodeURIComponent(String(requestParameters['eventId']))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+        return new runtime.JSONApiResponse(response, (jsonValue) => (0, index_1.EventResponseFromJSON)(jsonValue));
+    }
+    /**
+     * Get Event
+     */
+    async getEventEventEventIdGet(requestParameters, initOverrides) {
+        const response = await this.getEventEventEventIdGetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+    /**
      * Get Events
      */
     async getEventsEventGetRaw(initOverrides) {

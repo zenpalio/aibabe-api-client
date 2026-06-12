@@ -18,18 +18,18 @@ exports.EventSubmissionPreviewFromJSON = EventSubmissionPreviewFromJSON;
 exports.EventSubmissionPreviewFromJSONTyped = EventSubmissionPreviewFromJSONTyped;
 exports.EventSubmissionPreviewToJSON = EventSubmissionPreviewToJSON;
 exports.EventSubmissionPreviewToJSONTyped = EventSubmissionPreviewToJSONTyped;
-const EventResultType_1 = require("./EventResultType");
+const SubmissionPreview_1 = require("./SubmissionPreview");
 /**
  * Check if a given object implements the EventSubmissionPreview interface.
  */
 function instanceOfEventSubmissionPreview(value) {
-    if (!('title' in value) || value['title'] === undefined)
+    if (!('id' in value) || value['id'] === undefined)
+        return false;
+    if (!('name' in value) || value['name'] === undefined)
         return false;
     if (!('description' in value) || value['description'] === undefined)
         return false;
-    if (!('resultType' in value) || value['resultType'] === undefined)
-        return false;
-    if (!('rank' in value) || value['rank'] === undefined)
+    if (!('submission' in value) || value['submission'] === undefined)
         return false;
     return true;
 }
@@ -41,10 +41,10 @@ function EventSubmissionPreviewFromJSONTyped(json, ignoreDiscriminator) {
         return json;
     }
     return {
-        'title': json['title'],
+        'id': json['id'],
+        'name': json['name'],
         'description': json['description'],
-        'resultType': (0, EventResultType_1.EventResultTypeFromJSON)(json['result_type']),
-        'rank': json['rank'],
+        'submission': (0, SubmissionPreview_1.SubmissionPreviewFromJSON)(json['submission']),
     };
 }
 function EventSubmissionPreviewToJSON(json) {
@@ -55,10 +55,10 @@ function EventSubmissionPreviewToJSONTyped(value, ignoreDiscriminator = false) {
         return value;
     }
     return {
-        'title': value['title'],
+        'id': value['id'],
+        'name': value['name'],
         'description': value['description'],
-        'result_type': (0, EventResultType_1.EventResultTypeToJSON)(value['resultType']),
-        'rank': value['rank'],
+        'submission': (0, SubmissionPreview_1.SubmissionPreviewToJSON)(value['submission']),
     };
 }
 //# sourceMappingURL=EventSubmissionPreview.js.map

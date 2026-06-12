@@ -304,6 +304,7 @@ __exportStar(require("./StoryCreatorUpdateStoryRequest"), exports);
 __exportStar(require("./StoryPreview"), exports);
 __exportStar(require("./StoryRating"), exports);
 __exportStar(require("./StoryVisibility"), exports);
+__exportStar(require("./SubmissionPreview"), exports);
 __exportStar(require("./Subscription"), exports);
 __exportStar(require("./SubscriptionModel"), exports);
 __exportStar(require("./SubscriptionPrice"), exports);

@@ -18,18 +18,24 @@ exports.EventPreviewFromJSON = EventPreviewFromJSON;
 exports.EventPreviewFromJSONTyped = EventPreviewFromJSONTyped;
 exports.EventPreviewToJSON = EventPreviewToJSON;
 exports.EventPreviewToJSONTyped = EventPreviewToJSONTyped;
-const EventSubmissionPreview_1 = require("./EventSubmissionPreview");
+const EffectiveEventStatus_1 = require("./EffectiveEventStatus");
 /**
  * Check if a given object implements the EventPreview interface.
  */
 function instanceOfEventPreview(value) {
     if (!('id' in value) || value['id'] === undefined)
         return false;
-    if (!('name' in value) || value['name'] === undefined)
+    if (!('title' in value) || value['title'] === undefined)
         return false;
     if (!('description' in value) || value['description'] === undefined)
         return false;
-    if (!('submission' in value) || value['submission'] === undefined)
+    if (!('timeRemaining' in value) || value['timeRemaining'] === undefined)
+        return false;
+    if (!('prizePool' in value) || value['prizePool'] === undefined)
+        return false;
+    if (!('submissionsCount' in value) || value['submissionsCount'] === undefined)
+        return false;
+    if (!('status' in value) || value['status'] === undefined)
         return false;
     return true;
 }
@@ -42,9 +48,12 @@ function EventPreviewFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'id': json['id'],
-        'name': json['name'],
+        'title': json['title'],
         'description': json['description'],
-        'submission': (0, EventSubmissionPreview_1.EventSubmissionPreviewFromJSON)(json['submission']),
+        'timeRemaining': json['time_remaining'],
+        'prizePool': json['prize_pool'],
+        'submissionsCount': json['submissions_count'],
+        'status': (0, EffectiveEventStatus_1.EffectiveEventStatusFromJSON)(json['status']),
     };
 }
 function EventPreviewToJSON(json) {
@@ -56,9 +65,12 @@ function EventPreviewToJSONTyped(value, ignoreDiscriminator = false) {
     }
     return {
         'id': value['id'],
-        'name': value['name'],
+        'title': value['title'],
         'description': value['description'],
-        'submission': (0, EventSubmissionPreview_1.EventSubmissionPreviewToJSON)(value['submission']),
+        'time_remaining': value['timeRemaining'],
+        'prize_pool': value['prizePool'],
+        'submissions_count': value['submissionsCount'],
+        'status': (0, EffectiveEventStatus_1.EffectiveEventStatusToJSON)(value['status']),
     };
 }
 //# sourceMappingURL=EventPreview.js.map

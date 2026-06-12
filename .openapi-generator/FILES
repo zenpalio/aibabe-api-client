@@ -316,6 +316,7 @@ src/models/StoryCreatorUpdateStoryRequest.ts
 src/models/StoryPreview.ts
 src/models/StoryRating.ts
 src/models/StoryVisibility.ts
+src/models/SubmissionPreview.ts
 src/models/Subscription.ts
 src/models/SubscriptionModel.ts
 src/models/SubscriptionPrice.ts

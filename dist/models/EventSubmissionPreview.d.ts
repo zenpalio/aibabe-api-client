@@ -9,7 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { EventResultType } from './EventResultType';
+import type { SubmissionPreview } from './SubmissionPreview';
 /**
  *
  * @export
@@ -21,25 +21,25 @@ export interface EventSubmissionPreview {
      * @type {string}
      * @memberof EventSubmissionPreview
      */
-    title: string | null;
+    id: string;
     /**
      *
      * @type {string}
      * @memberof EventSubmissionPreview
      */
-    description: string | null;
+    name: string;
     /**
      *
-     * @type {EventResultType}
+     * @type {string}
      * @memberof EventSubmissionPreview
      */
-    resultType: EventResultType | null;
+    description: string;
     /**
      *
-     * @type {number}
+     * @type {SubmissionPreview}
      * @memberof EventSubmissionPreview
      */
-    rank: number | null;
+    submission: SubmissionPreview;
 }
 /**
  * Check if a given object implements the EventSubmissionPreview interface.
