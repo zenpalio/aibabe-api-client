@@ -9,9 +9,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { ChatbotPreview } from './ChatbotPreview';
 import type { VideoContent } from './VideoContent';
-import type { SharedContentType } from './SharedContentType';
+import type { ContentType } from './ContentType';
 import type { ImageContent } from './ImageContent';
+import type { StoryPreview } from './StoryPreview';
 /**
  *
  * @export
@@ -32,46 +34,28 @@ export interface WallPost {
     creatorId: string;
     /**
      *
-     * @type {string}
+     * @type {ChatbotPreview}
      * @memberof WallPost
      */
-    chatbotId: string;
+    chatbot: ChatbotPreview | null;
     /**
      *
-     * @type {string}
+     * @type {StoryPreview}
      * @memberof WallPost
      */
-    chatbotName: string;
+    story: StoryPreview | null;
     /**
      *
-     * @type {string}
+     * @type {ImageContent}
      * @memberof WallPost
      */
-    chatbotProfilePicture: string;
+    picture: ImageContent | null;
     /**
      *
-     * @type {string}
+     * @type {VideoContent}
      * @memberof WallPost
      */
-    chatbotProfileVideo: string | null;
-    /**
-     *
-     * @type {boolean}
-     * @memberof WallPost
-     */
-    chatbotPublic: boolean;
-    /**
-     *
-     * @type {Array<ImageContent>}
-     * @memberof WallPost
-     */
-    pictures: Array<ImageContent>;
-    /**
-     *
-     * @type {Array<VideoContent>}
-     * @memberof WallPost
-     */
-    videos: Array<VideoContent>;
+    video: VideoContent | null;
     /**
      *
      * @type {number}
@@ -110,10 +94,10 @@ export interface WallPost {
     liked: boolean;
     /**
      *
-     * @type {SharedContentType}
+     * @type {ContentType}
      * @memberof WallPost
      */
-    type: SharedContentType;
+    type: ContentType;
 }
 /**
  * Check if a given object implements the WallPost interface.

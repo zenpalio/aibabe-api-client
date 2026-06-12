@@ -44,6 +44,7 @@ function PostSearchRequestFromJSONTyped(json, ignoreDiscriminator) {
         'dateFilter': json['date_filter'] == null ? undefined : (0, DateRangeFilter_1.DateRangeFilterFromJSON)(json['date_filter']),
         'ownerFilters': json['owner_filters'] == null ? undefined : (json['owner_filters'].map(OwnerFilter_1.OwnerFilterFromJSON)),
         'chatbotId': json['chatbot_id'] == null ? undefined : json['chatbot_id'],
+        'storyId': json['story_id'] == null ? undefined : json['story_id'],
     };
 }
 function PostSearchRequestToJSON(json) {
@@ -61,6 +62,7 @@ function PostSearchRequestToJSONTyped(value, ignoreDiscriminator = false) {
         'date_filter': (0, DateRangeFilter_1.DateRangeFilterToJSON)(value['dateFilter']),
         'owner_filters': value['ownerFilters'] == null ? undefined : (value['ownerFilters'].map(OwnerFilter_1.OwnerFilterToJSON)),
         'chatbot_id': value['chatbotId'],
+        'story_id': value['storyId'],
     };
 }
 //# sourceMappingURL=PostSearchRequest.js.map

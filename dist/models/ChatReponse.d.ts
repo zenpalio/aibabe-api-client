@@ -39,6 +39,18 @@ export interface ChatReponse {
      * @memberof ChatReponse
      */
     imageId: string;
+    /**
+     *
+     * @type {number}
+     * @memberof ChatReponse
+     */
+    remainingFreeMessages?: number | null;
+    /**
+     *
+     * @type {number}
+     * @memberof ChatReponse
+     */
+    remainingFreeImages?: number | null;
 }
 /**
  * Check if a given object implements the ChatReponse interface.

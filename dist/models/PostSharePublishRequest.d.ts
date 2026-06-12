@@ -9,7 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { SharedContentType } from './SharedContentType';
+import type { ContentType } from './ContentType';
 import type { CategoryValues } from './CategoryValues';
 /**
  *
@@ -19,10 +19,10 @@ import type { CategoryValues } from './CategoryValues';
 export interface PostSharePublishRequest {
     /**
      *
-     * @type {SharedContentType}
+     * @type {ContentType}
      * @memberof PostSharePublishRequest
      */
-    sharableContentType: SharedContentType;
+    sharableContentType: ContentType;
     /**
      *
      * @type {CategoryValues}

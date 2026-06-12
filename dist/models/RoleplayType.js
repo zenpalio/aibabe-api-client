@@ -48,7 +48,11 @@ exports.RoleplayType = {
     BratTaming: 'brat_taming',
     GothGirl: 'goth_girl',
     Bully: 'bully',
-    Lesbian: 'lesbian'
+    Lesbian: 'lesbian',
+    FutaTrans: 'futa_trans',
+    Furry: 'furry',
+    Rpg: 'rpg',
+    Neighbor: 'neighbor'
 };
 function instanceOfRoleplayType(value) {
     for (const key in exports.RoleplayType) {
