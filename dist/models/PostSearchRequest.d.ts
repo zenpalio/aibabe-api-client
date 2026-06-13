@@ -68,18 +68,6 @@ export interface PostSearchRequest {
      * @memberof PostSearchRequest
      */
     storyId?: string | null;
-    /**
-     *
-     * @type {string}
-     * @memberof PostSearchRequest
-     */
-    eventId?: string | null;
-    /**
-     *
-     * @type {boolean}
-     * @memberof PostSearchRequest
-     */
-    eventWinners?: boolean;
 }
 /**
  * Check if a given object implements the PostSearchRequest interface.
