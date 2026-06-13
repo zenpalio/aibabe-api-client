@@ -19,6 +19,7 @@ export declare const Ethnicity: {
     readonly Caucasian: "caucasian";
     readonly Arab: "arab";
     readonly Latina: "latina";
+    readonly Hispanic: "hispanic";
     readonly Indian: "indian";
     readonly Furry: "furry";
 };

@@ -20,6 +20,13 @@ import {
     UserPreferencesToJSON,
     UserPreferencesToJSONTyped,
 } from './UserPreferences';
+import type { Gender } from './Gender';
+import {
+    GenderFromJSON,
+    GenderFromJSONTyped,
+    GenderToJSON,
+    GenderToJSONTyped,
+} from './Gender';
 import type { LLM } from './LLM';
 import {
     LLMFromJSON,
@@ -46,6 +53,12 @@ export interface PatchUserRequest {
      * @memberof PatchUserRequest
      */
     preferences?: UserPreferences | null;
+    /**
+     * 
+     * @type {Gender}
+     * @memberof PatchUserRequest
+     */
+    gender?: Gender | null;
     /**
      * 
      * @type {LLM}
@@ -75,6 +88,7 @@ export function PatchUserRequestFromJSONTyped(json: any, ignoreDiscriminator: bo
         
         'username': json['username'] == null ? undefined : json['username'],
         'preferences': json['preferences'] == null ? undefined : UserPreferencesFromJSON(json['preferences']),
+        'gender': json['gender'] == null ? undefined : GenderFromJSON(json['gender']),
         'llmModel': json['llm_model'] == null ? undefined : LLMFromJSON(json['llm_model']),
     };
 }
@@ -92,6 +106,7 @@ export function PatchUserRequestFromJSONTyped(json: any, ignoreDiscriminator: bo
         
         'username': value['username'],
         'preferences': UserPreferencesToJSON(value['preferences']),
+        'gender': GenderToJSON(value['gender']),
         'llm_model': LLMToJSON(value['llmModel']),
     };
 }

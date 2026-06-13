@@ -27,6 +27,10 @@ exports.RoleplayType = {
     FamilyTaboo: 'family_taboo',
     Schoolmate: 'schoolmate',
     Friend: 'friend',
+    FirstDate: 'first_date',
+    CoffeeShop: 'coffee_shop',
+    WorkplaceCrush: 'workplace_crush',
+    BestFriend: 'best_friend',
     Gf: 'gf',
     Cheating: 'cheating',
     Lingerie: 'lingerie',
@@ -43,16 +47,19 @@ exports.RoleplayType = {
     PublicPlay: 'public_play',
     Coworker: 'coworker',
     Breeding: 'breeding',
+    TravelRomance: 'travel_romance',
+    GymBuddy: 'gym_buddy',
+    CozyNightIn: 'cozy_night_in',
+    CollegeDays: 'college_days',
+    OutdoorAdventure: 'outdoor_adventure',
+    HolidayGetaway: 'holiday_getaway',
+    LongDistance: 'long_distance',
     Humiliation: 'humiliation',
     FootFetish: 'foot_fetish',
     BratTaming: 'brat_taming',
     GothGirl: 'goth_girl',
     Bully: 'bully',
-    Lesbian: 'lesbian',
-    FutaTrans: 'futa_trans',
-    Furry: 'furry',
-    Rpg: 'rpg',
-    Neighbor: 'neighbor'
+    Lesbian: 'lesbian'
 };
 function instanceOfRoleplayType(value) {
     for (const key in exports.RoleplayType) {

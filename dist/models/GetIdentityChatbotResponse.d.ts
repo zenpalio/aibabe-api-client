@@ -9,6 +9,8 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { Gender } from './Gender';
+import type { SexualOrientation } from './SexualOrientation';
 /**
  *
  * @export
@@ -29,10 +31,16 @@ export interface GetIdentityChatbotResponse {
     name: string | null;
     /**
      *
-     * @type {string}
+     * @type {Gender}
      * @memberof GetIdentityChatbotResponse
      */
-    gender: string | null;
+    gender: Gender | null;
+    /**
+     *
+     * @type {SexualOrientation}
+     * @memberof GetIdentityChatbotResponse
+     */
+    sexualOrientation: SexualOrientation | null;
     /**
      *
      * @type {string}

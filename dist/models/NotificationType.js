@@ -28,7 +28,6 @@ exports.NotificationType = {
     Donation: 'donation',
     Follow: 'follow',
     EpisodeUnlock: 'episode_unlock',
-    Badge: 'badge',
     NewEpisode: 'new_episode'
 };
 function instanceOfNotificationType(value) {

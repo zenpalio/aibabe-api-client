@@ -20,8 +20,7 @@
 export const FeatureFlagName = {
     GrokModeration: 'GROK_MODERATION',
     MarketingBanners: 'MARKETING_BANNERS',
-    Qwen3: 'QWEN3',
-    Rapyd: 'RAPYD'
+    Qwen3: 'QWEN3'
 } as const;
 export type FeatureFlagName = typeof FeatureFlagName[keyof typeof FeatureFlagName];
 

@@ -18,7 +18,6 @@ exports.PublicUserPreviewWithFollowFromJSON = PublicUserPreviewWithFollowFromJSO
 exports.PublicUserPreviewWithFollowFromJSONTyped = PublicUserPreviewWithFollowFromJSONTyped;
 exports.PublicUserPreviewWithFollowToJSON = PublicUserPreviewWithFollowToJSON;
 exports.PublicUserPreviewWithFollowToJSONTyped = PublicUserPreviewWithFollowToJSONTyped;
-const BadgePreview_1 = require("./BadgePreview");
 /**
  * Check if a given object implements the PublicUserPreviewWithFollow interface.
  */
@@ -26,10 +25,6 @@ function instanceOfPublicUserPreviewWithFollow(value) {
     if (!('userId' in value) || value['userId'] === undefined)
         return false;
     if (!('publicUsername' in value) || value['publicUsername'] === undefined)
-        return false;
-    if (!('avatarUrl' in value) || value['avatarUrl'] === undefined)
-        return false;
-    if (!('selectedBadge' in value) || value['selectedBadge'] === undefined)
         return false;
     if (!('followed' in value) || value['followed'] === undefined)
         return false;
@@ -45,8 +40,7 @@ function PublicUserPreviewWithFollowFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'userId': json['user_id'],
         'publicUsername': json['public_username'],
-        'avatarUrl': json['avatar_url'],
-        'selectedBadge': (0, BadgePreview_1.BadgePreviewFromJSON)(json['selected_badge']),
+        'avatarUrl': json['avatar_url'] == null ? undefined : json['avatar_url'],
         'followed': json['followed'],
     };
 }
@@ -61,7 +55,6 @@ function PublicUserPreviewWithFollowToJSONTyped(value, ignoreDiscriminator = fal
         'user_id': value['userId'],
         'public_username': value['publicUsername'],
         'avatar_url': value['avatarUrl'],
-        'selected_badge': (0, BadgePreview_1.BadgePreviewToJSON)(value['selectedBadge']),
         'followed': value['followed'],
     };
 }
