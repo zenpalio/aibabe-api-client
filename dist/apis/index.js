@@ -22,6 +22,7 @@ __exportStar(require("./AuthenticationApi"), exports);
 __exportStar(require("./BadgesApi"), exports);
 __exportStar(require("./ChatApi"), exports);
 __exportStar(require("./ChatbotApi"), exports);
+__exportStar(require("./EventApi"), exports);
 __exportStar(require("./ExploreApi"), exports);
 __exportStar(require("./GalleryApi"), exports);
 __exportStar(require("./HeartbeatApi"), exports);

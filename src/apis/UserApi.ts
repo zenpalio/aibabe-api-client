@@ -82,6 +82,10 @@ import {
     RemainingFreeUsesResponseToJSON,
 } from '../models/index';
 
+export interface BlacklistUserUserBlacklistUserIdPatchRequest {
+    userId: string;
+}
+
 export interface ClaimUserClaimPostRequest {
     postClaimRequest: PostClaimRequest;
 }
@@ -146,6 +150,43 @@ export interface VerifyPublicUsernameUserPublicVerifyPostRequest {
  * 
  */
 export class UserApi extends runtime.BaseAPI {
+
+    /**
+     * Blacklist User
+     */
+    async blacklistUserUserBlacklistUserIdPatchRaw(requestParameters: BlacklistUserUserBlacklistUserIdPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
+        if (requestParameters['userId'] == null) {
+            throw new runtime.RequiredError(
+                'userId',
+                'Required parameter "userId" was null or undefined when calling blacklistUserUserBlacklistUserIdPatch().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/user/blacklist/{user_id}`.replace(`{${"user_id"}}`, encodeURIComponent(String(requestParameters['userId']))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse<any>(response);
+        } else {
+            return new runtime.TextApiResponse(response) as any;
+        }
+    }
+
+    /**
+     * Blacklist User
+     */
+    async blacklistUserUserBlacklistUserIdPatch(requestParameters: BlacklistUserUserBlacklistUserIdPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
+        const response = await this.blacklistUserUserBlacklistUserIdPatchRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
 
     /**
      * Claim
