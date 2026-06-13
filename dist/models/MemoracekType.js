@@ -37,7 +37,16 @@ exports.MemoracekType = {
     GiftCodeRedeemed: 'gift_code_redeemed',
     AttemptedRichHonic: 'attempted_rich_honic',
     RebilledHonic1month: 'rebilled_honic_1month',
-    RebilledHonic3month: 'rebilled_honic_3month'
+    RebilledHonic3month: 'rebilled_honic_3month',
+    RapydPremiumSubscribed1month: 'rapyd_premium_subscribed_1month',
+    RapydPremiumSubscribed3month: 'rapyd_premium_subscribed_3month',
+    RapydUltraSubscribed1month: 'rapyd_ultra_subscribed_1month',
+    RapydUltraSubscribed3month: 'rapyd_ultra_subscribed_3month',
+    RapydAddon: 'rapyd_addon',
+    RapydPremiumRebilled1month: 'rapyd_premium_rebilled_1month',
+    RapydPremiumRebilled3month: 'rapyd_premium_rebilled_3month',
+    RapydUltraRebilled1month: 'rapyd_ultra_rebilled_1month',
+    RapydUltraRebilled3month: 'rapyd_ultra_rebilled_3month'
 };
 function instanceOfMemoracekType(value) {
     for (const key in exports.MemoracekType) {

@@ -9,7 +9,6 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { Gender } from './Gender';
 import type { LLM } from './LLM';
 /**
  *
@@ -71,12 +70,6 @@ export interface UserPreferenceModel {
      * @memberof UserPreferenceModel
      */
     llmName?: LLM | null;
-    /**
-     *
-     * @type {Gender}
-     * @memberof UserPreferenceModel
-     */
-    gender?: Gender | null;
 }
 /**
  * Check if a given object implements the UserPreferenceModel interface.

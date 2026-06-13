@@ -13,6 +13,14 @@
  */
 
 import { mapValues } from '../runtime';
+import type { PaymentProviderType } from './PaymentProviderType';
+import {
+    PaymentProviderTypeFromJSON,
+    PaymentProviderTypeFromJSONTyped,
+    PaymentProviderTypeToJSON,
+    PaymentProviderTypeToJSONTyped,
+} from './PaymentProviderType';
+
 /**
  * 
  * @export
@@ -31,7 +39,21 @@ export interface PostCheckoutResponse {
      * @memberof PostCheckoutResponse
      */
     data: string;
+    /**
+     * 
+     * @type {PaymentProviderType}
+     * @memberof PostCheckoutResponse
+     */
+    provider?: PaymentProviderType | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof PostCheckoutResponse
+     */
+    redirectUrl?: string | null;
 }
+
+
 
 /**
  * Check if a given object implements the PostCheckoutResponse interface.
@@ -54,6 +76,8 @@ export function PostCheckoutResponseFromJSONTyped(json: any, ignoreDiscriminator
         
         'action': json['action'],
         'data': json['data'],
+        'provider': json['provider'] == null ? undefined : PaymentProviderTypeFromJSON(json['provider']),
+        'redirectUrl': json['redirect_url'] == null ? undefined : json['redirect_url'],
     };
 }
 
@@ -70,6 +94,8 @@ export function PostCheckoutResponseFromJSONTyped(json: any, ignoreDiscriminator
         
         'action': value['action'],
         'data': value['data'],
+        'provider': PaymentProviderTypeToJSON(value['provider']),
+        'redirect_url': value['redirectUrl'],
     };
 }
 

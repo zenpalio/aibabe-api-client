@@ -15,11 +15,7 @@
  */
 export declare const BodyType: {
     readonly Slim: "slim";
-    readonly Fit: "fit";
     readonly Athletic: "athletic";
-    readonly Muscular: "muscular";
-    readonly Average: "average";
-    readonly Dadbod: "dadbod";
     readonly Voluptuous: "voluptuous";
     readonly Curvy: "curvy";
 };

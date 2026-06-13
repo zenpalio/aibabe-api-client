@@ -9,7 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { ArtStyle } from './ArtStyle';
+import type { ModelName } from './ModelName';
 import type { LoraName } from './LoraName';
 /**
  *
@@ -25,10 +25,10 @@ export interface PostAdvancedChatbotProfilePicture {
     description: string;
     /**
      *
-     * @type {ArtStyle}
+     * @type {ModelName}
      * @memberof PostAdvancedChatbotProfilePicture
      */
-    artStyle: ArtStyle;
+    model: ModelName;
     /**
      *
      * @type {Array<LoraName>}

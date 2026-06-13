@@ -18,7 +18,6 @@ exports.PostUserRequestFromJSON = PostUserRequestFromJSON;
 exports.PostUserRequestFromJSONTyped = PostUserRequestFromJSONTyped;
 exports.PostUserRequestToJSON = PostUserRequestToJSON;
 exports.PostUserRequestToJSONTyped = PostUserRequestToJSONTyped;
-const Gender_1 = require("./Gender");
 /**
  * Check if a given object implements the PostUserRequest interface.
  */
@@ -43,7 +42,6 @@ function PostUserRequestFromJSONTyped(json, ignoreDiscriminator) {
         'email': json['email'],
         'password': json['password'],
         'isDummy': json['is_dummy'] == null ? undefined : json['is_dummy'],
-        'gender': json['gender'] == null ? undefined : (0, Gender_1.GenderFromJSON)(json['gender']),
     };
 }
 function PostUserRequestToJSON(json) {
@@ -58,7 +56,6 @@ function PostUserRequestToJSONTyped(value, ignoreDiscriminator = false) {
         'email': value['email'],
         'password': value['password'],
         'is_dummy': value['isDummy'],
-        'gender': (0, Gender_1.GenderToJSON)(value['gender']),
     };
 }
 //# sourceMappingURL=PostUserRequest.js.map

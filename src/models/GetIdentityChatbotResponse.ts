@@ -13,21 +13,6 @@
  */
 
 import { mapValues } from '../runtime';
-import type { Gender } from './Gender';
-import {
-    GenderFromJSON,
-    GenderFromJSONTyped,
-    GenderToJSON,
-    GenderToJSONTyped,
-} from './Gender';
-import type { SexualOrientation } from './SexualOrientation';
-import {
-    SexualOrientationFromJSON,
-    SexualOrientationFromJSONTyped,
-    SexualOrientationToJSON,
-    SexualOrientationToJSONTyped,
-} from './SexualOrientation';
-
 /**
  * 
  * @export
@@ -48,16 +33,10 @@ export interface GetIdentityChatbotResponse {
     name: string | null;
     /**
      * 
-     * @type {Gender}
+     * @type {string}
      * @memberof GetIdentityChatbotResponse
      */
-    gender: Gender | null;
-    /**
-     * 
-     * @type {SexualOrientation}
-     * @memberof GetIdentityChatbotResponse
-     */
-    sexualOrientation: SexualOrientation | null;
+    gender: string | null;
     /**
      * 
      * @type {string}
@@ -72,8 +51,6 @@ export interface GetIdentityChatbotResponse {
     greetings: string | null;
 }
 
-
-
 /**
  * Check if a given object implements the GetIdentityChatbotResponse interface.
  */
@@ -81,7 +58,6 @@ export function instanceOfGetIdentityChatbotResponse(value: object): value is Ge
     if (!('userId' in value) || value['userId'] === undefined) return false;
     if (!('name' in value) || value['name'] === undefined) return false;
     if (!('gender' in value) || value['gender'] === undefined) return false;
-    if (!('sexualOrientation' in value) || value['sexualOrientation'] === undefined) return false;
     if (!('bio' in value) || value['bio'] === undefined) return false;
     if (!('greetings' in value) || value['greetings'] === undefined) return false;
     return true;
@@ -99,8 +75,7 @@ export function GetIdentityChatbotResponseFromJSONTyped(json: any, ignoreDiscrim
         
         'userId': json['user_id'],
         'name': json['name'],
-        'gender': GenderFromJSON(json['gender']),
-        'sexualOrientation': SexualOrientationFromJSON(json['sexual_orientation']),
+        'gender': json['gender'],
         'bio': json['bio'],
         'greetings': json['greetings'],
     };
@@ -119,8 +94,7 @@ export function GetIdentityChatbotResponseFromJSONTyped(json: any, ignoreDiscrim
         
         'user_id': value['userId'],
         'name': value['name'],
-        'gender': GenderToJSON(value['gender']),
-        'sexual_orientation': SexualOrientationToJSON(value['sexualOrientation']),
+        'gender': value['gender'],
         'bio': value['bio'],
         'greetings': value['greetings'],
     };

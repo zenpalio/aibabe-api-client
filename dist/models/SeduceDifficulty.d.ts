@@ -16,7 +16,6 @@
 export declare const SeduceDifficulty: {
     readonly Easy: "easy";
     readonly Medium: "medium";
-    readonly Normal: "normal";
     readonly Hard: "hard";
     readonly Impossible: "impossible";
 };
