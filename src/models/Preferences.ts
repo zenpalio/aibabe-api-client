@@ -20,6 +20,13 @@ import {
     UserPreferenceModelToJSON,
     UserPreferenceModelToJSONTyped,
 } from './UserPreferenceModel';
+import type { Gender } from './Gender';
+import {
+    GenderFromJSON,
+    GenderFromJSONTyped,
+    GenderToJSON,
+    GenderToJSONTyped,
+} from './Gender';
 import type { LLM } from './LLM';
 import {
     LLMFromJSON,
@@ -88,6 +95,12 @@ export interface Preferences {
      * @memberof Preferences
      */
     llmName?: LLM;
+    /**
+     * 
+     * @type {Gender}
+     * @memberof Preferences
+     */
+    gender?: Gender;
 }
 
 
@@ -119,6 +132,7 @@ export function PreferencesFromJSONTyped(json: any, ignoreDiscriminator: boolean
         'displayUnlockWarning': json['display_unlock_warning'] == null ? undefined : json['display_unlock_warning'],
         'usernameUpdated': json['username_updated'] == null ? undefined : json['username_updated'],
         'llmName': json['llm_name'] == null ? undefined : LLMFromJSON(json['llm_name']),
+        'gender': json['gender'] == null ? undefined : GenderFromJSON(json['gender']),
     };
 }
 
@@ -142,6 +156,7 @@ export function PreferencesFromJSONTyped(json: any, ignoreDiscriminator: boolean
         'display_unlock_warning': value['displayUnlockWarning'],
         'username_updated': value['usernameUpdated'],
         'llm_name': LLMToJSON(value['llmName']),
+        'gender': GenderToJSON(value['gender']),
     };
 }
 

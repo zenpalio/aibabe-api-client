@@ -9,8 +9,10 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import type { ModelName } from './ModelName';
+import type { ArtStyle } from './ArtStyle';
+import type { Gender } from './Gender';
 import type { LoraName } from './LoraName';
+import type { SexualOrientation } from './SexualOrientation';
 /**
  *
  * @export
@@ -31,10 +33,16 @@ export interface GetAboutChatbotResponse {
     name: string | null;
     /**
      *
-     * @type {string}
+     * @type {Gender}
      * @memberof GetAboutChatbotResponse
      */
-    gender: string | null;
+    gender: Gender | null;
+    /**
+     *
+     * @type {SexualOrientation}
+     * @memberof GetAboutChatbotResponse
+     */
+    sexualOrientation: SexualOrientation | null;
     /**
      *
      * @type {string}
@@ -61,10 +69,10 @@ export interface GetAboutChatbotResponse {
     looksDescription: string | null;
     /**
      *
-     * @type {ModelName}
+     * @type {ArtStyle}
      * @memberof GetAboutChatbotResponse
      */
-    model: ModelName | null;
+    artStyle: ArtStyle | null;
     /**
      *
      * @type {Array<LoraName>}

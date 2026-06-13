@@ -18,7 +18,6 @@ export declare const PaymentProviderType: {
     readonly Corpay: "corpay";
     readonly Patreon: "patreon";
     readonly Truevo: "truevo";
-    readonly Rapyd: "rapyd";
 };
 export type PaymentProviderType = typeof PaymentProviderType[keyof typeof PaymentProviderType];
 export declare function instanceOfPaymentProviderType(value: any): boolean;

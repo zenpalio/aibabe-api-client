@@ -37,7 +37,24 @@ exports.VisualType = {
     Kawaii: 'kawaii',
     Punk: 'punk',
     Schoolgirl: 'schoolgirl',
-    Tomboy: 'tomboy'
+    Tomboy: 'tomboy',
+    BoyNextDoor: 'boy_next_door',
+    CoffeeShop: 'coffee_shop',
+    Streetwear: 'streetwear',
+    ModernGoth: 'modern_goth',
+    Athlete: 'athlete',
+    Techwear: 'techwear',
+    Raver: 'raver',
+    Gentleman: 'gentleman',
+    Suit: 'suit',
+    Skater: 'skater',
+    SchoolUniform: 'school_uniform',
+    Cowboy: 'cowboy',
+    Police: 'police',
+    Soldier: 'soldier',
+    OldMoney: 'old_money',
+    Vampire: 'vampire',
+    GreekGod: 'greek_god'
 };
 function instanceOfVisualType(value) {
     for (const key in exports.VisualType) {

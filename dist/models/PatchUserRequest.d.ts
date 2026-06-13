@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import type { UserPreferences } from './UserPreferences';
+import type { Gender } from './Gender';
 import type { LLM } from './LLM';
 /**
  *
@@ -29,6 +30,12 @@ export interface PatchUserRequest {
      * @memberof PatchUserRequest
      */
     preferences?: UserPreferences | null;
+    /**
+     *
+     * @type {Gender}
+     * @memberof PatchUserRequest
+     */
+    gender?: Gender | null;
     /**
      *
      * @type {LLM}

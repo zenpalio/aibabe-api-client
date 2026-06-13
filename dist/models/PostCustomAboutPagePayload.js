@@ -18,6 +18,8 @@ exports.PostCustomAboutPagePayloadFromJSON = PostCustomAboutPagePayloadFromJSON;
 exports.PostCustomAboutPagePayloadFromJSONTyped = PostCustomAboutPagePayloadFromJSONTyped;
 exports.PostCustomAboutPagePayloadToJSON = PostCustomAboutPagePayloadToJSON;
 exports.PostCustomAboutPagePayloadToJSONTyped = PostCustomAboutPagePayloadToJSONTyped;
+const Gender_1 = require("./Gender");
+const SexualOrientation_1 = require("./SexualOrientation");
 /**
  * Check if a given object implements the PostCustomAboutPagePayload interface.
  */
@@ -43,6 +45,8 @@ function PostCustomAboutPagePayloadFromJSONTyped(json, ignoreDiscriminator) {
     }
     return {
         'name': json['name'],
+        'gender': json['gender'] == null ? undefined : (0, Gender_1.GenderFromJSON)(json['gender']),
+        'sexualOrientation': json['sexual_orientation'] == null ? undefined : (0, SexualOrientation_1.SexualOrientationFromJSON)(json['sexual_orientation']),
         'bio': json['bio'],
         'greetings': json['greetings'],
         'story': json['story'],
@@ -58,6 +62,8 @@ function PostCustomAboutPagePayloadToJSONTyped(value, ignoreDiscriminator = fals
     }
     return {
         'name': value['name'],
+        'gender': (0, Gender_1.GenderToJSON)(value['gender']),
+        'sexual_orientation': (0, SexualOrientation_1.SexualOrientationToJSON)(value['sexualOrientation']),
         'bio': value['bio'],
         'greetings': value['greetings'],
         'story': value['story'],

@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { Gender } from './Gender';
+import {
+    GenderFromJSON,
+    GenderFromJSONTyped,
+    GenderToJSON,
+    GenderToJSONTyped,
+} from './Gender';
 import type { LLM } from './LLM';
 import {
     LLMFromJSON,
@@ -81,6 +88,12 @@ export interface UserPreferenceModel {
      * @memberof UserPreferenceModel
      */
     llmName?: LLM | null;
+    /**
+     * 
+     * @type {Gender}
+     * @memberof UserPreferenceModel
+     */
+    gender?: Gender | null;
 }
 
 
@@ -112,6 +125,7 @@ export function UserPreferenceModelFromJSONTyped(json: any, ignoreDiscriminator:
         'displayUnlockWarning': json['display_unlock_warning'] == null ? undefined : json['display_unlock_warning'],
         'usernameUpdated': json['username_updated'] == null ? undefined : json['username_updated'],
         'llmName': json['llm_name'] == null ? undefined : LLMFromJSON(json['llm_name']),
+        'gender': json['gender'] == null ? undefined : GenderFromJSON(json['gender']),
     };
 }
 
@@ -135,6 +149,7 @@ export function UserPreferenceModelFromJSONTyped(json: any, ignoreDiscriminator:
         'display_unlock_warning': value['displayUnlockWarning'],
         'username_updated': value['usernameUpdated'],
         'llm_name': LLMToJSON(value['llmName']),
+        'gender': GenderToJSON(value['gender']),
     };
 }
 

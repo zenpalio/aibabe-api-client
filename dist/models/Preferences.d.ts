@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { Gender } from './Gender';
 import type { LLM } from './LLM';
 /**
  *
@@ -70,6 +71,12 @@ export interface Preferences {
      * @memberof Preferences
      */
     llmName?: LLM;
+    /**
+     *
+     * @type {Gender}
+     * @memberof Preferences
+     */
+    gender?: Gender;
 }
 /**
  * Check if a given object implements the Preferences interface.

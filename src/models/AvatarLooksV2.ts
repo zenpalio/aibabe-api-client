@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { BeardStyle } from './BeardStyle';
+import {
+    BeardStyleFromJSON,
+    BeardStyleFromJSONTyped,
+    BeardStyleToJSON,
+    BeardStyleToJSONTyped,
+} from './BeardStyle';
 import type { BodyType } from './BodyType';
 import {
     BodyTypeFromJSON,
@@ -58,7 +65,13 @@ export interface AvatarLooksV2 {
      * @type {HairStyle}
      * @memberof AvatarLooksV2
      */
-    hairstyle?: HairStyle | null;
+    hairStyle?: HairStyle | null;
+    /**
+     * 
+     * @type {BeardStyle}
+     * @memberof AvatarLooksV2
+     */
+    beard?: BeardStyle | null;
 }
 
 
@@ -84,7 +97,8 @@ export function AvatarLooksV2FromJSONTyped(json: any, ignoreDiscriminator: boole
         
         'bodyType': BodyTypeFromJSON(json['body_type']),
         'hairColor': HairColorFromJSON(json['hair_color']),
-        'hairstyle': json['hairstyle'] == null ? undefined : HairStyleFromJSON(json['hairstyle']),
+        'hairStyle': json['hair_style'] == null ? undefined : HairStyleFromJSON(json['hair_style']),
+        'beard': json['beard'] == null ? undefined : BeardStyleFromJSON(json['beard']),
     };
 }
 
@@ -101,7 +115,8 @@ export function AvatarLooksV2FromJSONTyped(json: any, ignoreDiscriminator: boole
         
         'body_type': BodyTypeToJSON(value['bodyType']),
         'hair_color': HairColorToJSON(value['hairColor']),
-        'hairstyle': HairStyleToJSON(value['hairstyle']),
+        'hair_style': HairStyleToJSON(value['hairStyle']),
+        'beard': BeardStyleToJSON(value['beard']),
     };
 }
 

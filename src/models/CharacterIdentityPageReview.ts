@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { AvatarOptionalField } from './AvatarOptionalField';
+import {
+    AvatarOptionalFieldFromJSON,
+    AvatarOptionalFieldFromJSONTyped,
+    AvatarOptionalFieldToJSON,
+    AvatarOptionalFieldToJSONTyped,
+} from './AvatarOptionalField';
 import type { AvatarRequiredField } from './AvatarRequiredField';
 import {
     AvatarRequiredFieldFromJSON,
@@ -39,6 +46,12 @@ export interface CharacterIdentityPageReview {
      * @memberof CharacterIdentityPageReview
      */
     gender?: AvatarRequiredField | null;
+    /**
+     * 
+     * @type {AvatarOptionalField}
+     * @memberof CharacterIdentityPageReview
+     */
+    sexualOrientation?: AvatarOptionalField | null;
     /**
      * 
      * @type {AvatarRequiredField}
@@ -72,6 +85,7 @@ export function CharacterIdentityPageReviewFromJSONTyped(json: any, ignoreDiscri
         
         'characterName': json['character_name'] == null ? undefined : AvatarRequiredFieldFromJSON(json['character_name']),
         'gender': json['gender'] == null ? undefined : AvatarRequiredFieldFromJSON(json['gender']),
+        'sexualOrientation': json['sexual_orientation'] == null ? undefined : AvatarOptionalFieldFromJSON(json['sexual_orientation']),
         'bio': json['bio'] == null ? undefined : AvatarRequiredFieldFromJSON(json['bio']),
         'greetings': json['greetings'] == null ? undefined : AvatarRequiredFieldFromJSON(json['greetings']),
     };
@@ -90,6 +104,7 @@ export function CharacterIdentityPageReviewFromJSONTyped(json: any, ignoreDiscri
         
         'character_name': AvatarRequiredFieldToJSON(value['characterName']),
         'gender': AvatarRequiredFieldToJSON(value['gender']),
+        'sexual_orientation': AvatarOptionalFieldToJSON(value['sexualOrientation']),
         'bio': AvatarRequiredFieldToJSON(value['bio']),
         'greetings': AvatarRequiredFieldToJSON(value['greetings']),
     };

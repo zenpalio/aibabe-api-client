@@ -19,7 +19,6 @@ import type {
   GetClaimablesResponse,
   GetFollowedUsersResponse,
   GetPublicLatestUpdateResponse,
-  GetPublicUsersResponse,
   HTTPValidationError,
   PatchUserRequest,
   PostClaimRequest,
@@ -46,8 +45,6 @@ import {
     GetFollowedUsersResponseToJSON,
     GetPublicLatestUpdateResponseFromJSON,
     GetPublicLatestUpdateResponseToJSON,
-    GetPublicUsersResponseFromJSON,
-    GetPublicUsersResponseToJSON,
     HTTPValidationErrorFromJSON,
     HTTPValidationErrorToJSON,
     PatchUserRequestFromJSON,
@@ -96,12 +93,6 @@ export interface DonateUserDonatePostRequest {
 
 export interface FollowUserUserFollowPostRequest {
     postFollowUserRequest: PostFollowUserRequest;
-}
-
-export interface GetPublicUserLikeUserPublicLikeGetRequest {
-    publicUsername?: string | null;
-    paginationToken?: string | null;
-    limit?: number;
 }
 
 export interface GetPublicUserUserPublicGetRequest {
@@ -352,44 +343,6 @@ export class UserApi extends runtime.BaseAPI {
      */
     async getFollowedUsersUserFollowedGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetFollowedUsersResponse> {
         const response = await this.getFollowedUsersUserFollowedGetRaw(initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * Get Public User Like
-     */
-    async getPublicUserLikeUserPublicLikeGetRaw(requestParameters: GetPublicUserLikeUserPublicLikeGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetPublicUsersResponse>> {
-        const queryParameters: any = {};
-
-        if (requestParameters['publicUsername'] != null) {
-            queryParameters['public_username'] = requestParameters['publicUsername'];
-        }
-
-        if (requestParameters['paginationToken'] != null) {
-            queryParameters['pagination_token'] = requestParameters['paginationToken'];
-        }
-
-        if (requestParameters['limit'] != null) {
-            queryParameters['limit'] = requestParameters['limit'];
-        }
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/user/public-like`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => GetPublicUsersResponseFromJSON(jsonValue));
-    }
-
-    /**
-     * Get Public User Like
-     */
-    async getPublicUserLikeUserPublicLikeGet(requestParameters: GetPublicUserLikeUserPublicLikeGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetPublicUsersResponse> {
-        const response = await this.getPublicUserLikeUserPublicLikeGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

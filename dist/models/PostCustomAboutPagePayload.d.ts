@@ -9,6 +9,8 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { Gender } from './Gender';
+import type { SexualOrientation } from './SexualOrientation';
 /**
  *
  * @export
@@ -21,6 +23,18 @@ export interface PostCustomAboutPagePayload {
      * @memberof PostCustomAboutPagePayload
      */
     name: string;
+    /**
+     *
+     * @type {Gender}
+     * @memberof PostCustomAboutPagePayload
+     */
+    gender?: Gender | null;
+    /**
+     *
+     * @type {SexualOrientation}
+     * @memberof PostCustomAboutPagePayload
+     */
+    sexualOrientation?: SexualOrientation | null;
     /**
      *
      * @type {string}

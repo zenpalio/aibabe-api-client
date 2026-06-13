@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import type { BeardStyle } from './BeardStyle';
 import type { BodyType } from './BodyType';
 import type { HairColor } from './HairColor';
 import type { HairStyle } from './HairStyle';
@@ -35,7 +36,13 @@ export interface AvatarLooksV2 {
      * @type {HairStyle}
      * @memberof AvatarLooksV2
      */
-    hairstyle?: HairStyle | null;
+    hairStyle?: HairStyle | null;
+    /**
+     *
+     * @type {BeardStyle}
+     * @memberof AvatarLooksV2
+     */
+    beard?: BeardStyle | null;
 }
 /**
  * Check if a given object implements the AvatarLooksV2 interface.
