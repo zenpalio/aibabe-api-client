@@ -22,6 +22,7 @@ const PublicUserPreviewWithFollow_1 = require("./PublicUserPreviewWithFollow");
 const ChatbotPreview_1 = require("./ChatbotPreview");
 const VideoContent_1 = require("./VideoContent");
 const ContentType_1 = require("./ContentType");
+const EventSubmissionPreview_1 = require("./EventSubmissionPreview");
 const ImageContent_1 = require("./ImageContent");
 const StoryPreview_1 = require("./StoryPreview");
 const TagModel_1 = require("./TagModel");
@@ -55,6 +56,8 @@ function instanceOfDetailedWallPost(value) {
         return false;
     if (!('type' in value) || value['type'] === undefined)
         return false;
+    if (!('eventSubmissionPreviews' in value) || value['eventSubmissionPreviews'] === undefined)
+        return false;
     if (!('title' in value) || value['title'] === undefined)
         return false;
     if (!('tags' in value) || value['tags'] === undefined)
@@ -84,6 +87,7 @@ function DetailedWallPostFromJSONTyped(json, ignoreDiscriminator) {
         'updatedAt': (new Date(json['updated_at'])),
         'liked': json['liked'],
         'type': (0, ContentType_1.ContentTypeFromJSON)(json['type']),
+        'eventSubmissionPreviews': (json['event_submission_previews'].map(EventSubmissionPreview_1.EventSubmissionPreviewFromJSON)),
         'title': json['title'],
         'tags': (json['tags'].map(TagModel_1.TagModelFromJSON)),
         'creator': (0, PublicUserPreviewWithFollow_1.PublicUserPreviewWithFollowFromJSON)(json['creator']),
@@ -110,6 +114,7 @@ function DetailedWallPostToJSONTyped(value, ignoreDiscriminator = false) {
         'updated_at': ((value['updatedAt']).toISOString()),
         'liked': value['liked'],
         'type': (0, ContentType_1.ContentTypeToJSON)(value['type']),
+        'event_submission_previews': (value['eventSubmissionPreviews'].map(EventSubmissionPreview_1.EventSubmissionPreviewToJSON)),
         'title': value['title'],
         'tags': (value['tags'].map(TagModel_1.TagModelToJSON)),
         'creator': (0, PublicUserPreviewWithFollow_1.PublicUserPreviewWithFollowToJSON)(value['creator']),

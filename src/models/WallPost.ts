@@ -34,6 +34,13 @@ import {
     ContentTypeToJSON,
     ContentTypeToJSONTyped,
 } from './ContentType';
+import type { EventSubmissionPreview } from './EventSubmissionPreview';
+import {
+    EventSubmissionPreviewFromJSON,
+    EventSubmissionPreviewFromJSONTyped,
+    EventSubmissionPreviewToJSON,
+    EventSubmissionPreviewToJSONTyped,
+} from './EventSubmissionPreview';
 import type { ImageContent } from './ImageContent';
 import {
     ImageContentFromJSON,
@@ -133,6 +140,12 @@ export interface WallPost {
      * @memberof WallPost
      */
     type: ContentType;
+    /**
+     * 
+     * @type {Array<EventSubmissionPreview>}
+     * @memberof WallPost
+     */
+    eventSubmissionPreviews: Array<EventSubmissionPreview>;
 }
 
 
@@ -154,6 +167,7 @@ export function instanceOfWallPost(value: object): value is WallPost {
     if (!('updatedAt' in value) || value['updatedAt'] === undefined) return false;
     if (!('liked' in value) || value['liked'] === undefined) return false;
     if (!('type' in value) || value['type'] === undefined) return false;
+    if (!('eventSubmissionPreviews' in value) || value['eventSubmissionPreviews'] === undefined) return false;
     return true;
 }
 
@@ -180,6 +194,7 @@ export function WallPostFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
         'updatedAt': (new Date(json['updated_at'])),
         'liked': json['liked'],
         'type': ContentTypeFromJSON(json['type']),
+        'eventSubmissionPreviews': ((json['event_submission_previews'] as Array<any>).map(EventSubmissionPreviewFromJSON)),
     };
 }
 
@@ -207,6 +222,7 @@ export function WallPostFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
         'updated_at': ((value['updatedAt']).toISOString()),
         'liked': value['liked'],
         'type': ContentTypeToJSON(value['type']),
+        'event_submission_previews': ((value['eventSubmissionPreviews'] as Array<any>).map(EventSubmissionPreviewToJSON)),
     };
 }
 
